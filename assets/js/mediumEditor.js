@@ -1,10 +1,10 @@
-let editor = new MediumEditor('.editable', {
+/*let editor = new MediumEditor('.editable', {
     toolbar: {
         buttons: ['bold', 'italic', 'underline', 'strikethrough', 'quote', 'anchor', 'image', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'superscript', 'subscript', 'orderedlist', 'unorderedlist', 'pre', 'outdent', 'indent', 'h2', 'h3'],
         static: true,
         sticky: true
     }
-});
+});*/
 
 let editorColOne = new MediumEditor('#column-one', {
     toolbar: {
@@ -17,6 +17,7 @@ let editorColOne = new MediumEditor('#column-one', {
     buttonLabels: 'fontawesome'
 });
 
+/*
 let editorColTwo = new MediumEditor('#column-two', {
     toolbar: {
         buttons: ['bold', 'italic', 'underline', 'strikethrough', 'quote', 'anchor', 'image', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'superscript', 'subscript', 'orderedlist', 'unorderedlist', 'pre', 'outdent', 'indent', 'h2', 'h3'],
@@ -37,4 +38,4 @@ let editorColThree = new MediumEditor('#column-three', {
         updateOnEmptySelection: true
     },
     buttonLabels: 'fontawesome'
-});
+});*/

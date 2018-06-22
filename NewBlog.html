@@ -16,11 +16,8 @@
     <!-- Material Kit CSS -->
     <link rel="stylesheet" href="assets/css/material-kit.css">
 
-    <!--Medium Markdown Editor-->
-    <!--<link rel="stylesheet" href="assets/medium-editor-assets/css/mediumEditorCustom.css">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
-    <link rel="stylesheet" href="assets/medium-editor-assets/css/medium-editor.css">
-    <link rel="stylesheet" href="assets/medium-editor-assets/css/themes/default.css" id="medium-editor-theme">-->
+    <!--SIMPLEMDE Markdown Editor-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 
 </head>
 <body>
@@ -84,7 +81,7 @@
 
 
 <!--raised area for parallax-->
-<div class="main main-raised" style="min-height: 700px">
+<div class="main main-raised" style="min-height: 800px">
     <!--second row containing breadcrumb-->
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb">
@@ -94,16 +91,64 @@
     </nav>
 
     <!--parent row-->
-    <div class="container">
-        <label for="column-one">
-            Create Blog Post
-        </label>
-        <div id="column-one" class="form-text">
+    <div class="row">
+        <!--smaller column containing time, similar things, listed by, mail us -->
+        <div class="col-2" style="">
+        </div>
 
+        <!--bigger column containing description, reviews, gallery, faculty, courses -->
+        <div class="col-9" style="margin-right: 3%">
+            <!--row containing image upload-->
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail img-raised">
+                            <img src="http://via.placeholder.com/1200x450" alt="...">
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                        <div>
+                        <span class="btn btn-raised btn-round btn-default btn-file">
+                            <span class="fileinput-new">Select image</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input type="file" name="..."/>
+                        </span>
+                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i
+                                    class="fa fa-times"></i> Remove</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <!--row containing form-->
+            <div class="row d-block">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInput1" class="bmd-label-floating">Add Category</label>
+                        <input type="text" class="form-control" id="exampleInput1">
+                    </div>
+                    <div class="form-group">
+                        <input id="tagHolder" type="text" value="blog,eduatlas" class="tagsinput form-control"
+                               data-role="tagsinput" data-color="info" placeholder="click here">
+                        <label for="tagHolder" class="">Tags</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInput2" class="bmd-label-floating">Article Title</label>
+                        <input type="text" class="form-control" id="exampleInput2">
+                    </div>
+
+                    <!--for markdown editor-->
+                    <!--<div class="form-group">
+                        <label for="blogData">Article</label>
+                        <textarea id="blogData" class="" rows="3">
+                        </textarea>
+                    </div>-->
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
-
-
     <!--parent row ends-->
 </div>
 
@@ -137,15 +182,15 @@
 <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
 <script src="assets/js/material-kit.js?v=2.0.0"></script>
 
-<!--HandleBars for templating-->
-<!--<script src="assets/js/handlebars-v4.0.11.js"></script>-->
-
-<!--importing custom js file-->
-
-
 <!--Medium Markdown Editor-->
-<!--<script src="assets/medium-editor-assets/js/medium-editor.js"></script>
-<script src="assets/js/mediumEditor.js"></script>-->
+<script src="assets/medium-editor-assets/js/medium-editor.js"></script>
+<script src="assets/js/mediumEditor.js"></script>
+
+<!--importing markdown editor -SIMPLEMDE js file-->
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+<!--importing custom js files-->
+<script src="assets/js/newBlog.js"></script>
 
 </body>
 </html>
