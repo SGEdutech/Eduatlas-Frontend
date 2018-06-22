@@ -12,12 +12,13 @@ let context = {
     Address: "test address",
     Phone: "9812153423",
     Email: "heloo@gmail.com",
-    coverPic: ""
+    coverPic: "",
+    Category: "category"
 };
 
 
 AllTuitionJSON.then((data) => {
-    console.log(data)
+    console.log(data);
     for (keys in data) {
         if (data.hasOwnProperty(keys)) {
             context.Name = data[keys].name;
@@ -25,6 +26,7 @@ AllTuitionJSON.then((data) => {
             context.Phone = data[keys].primaryNumber;
             context.Email = data[keys].email;
             context.coverPic = data[keys].img_coverPic;
+            context.Category = data[keys].category;
             $("#content-placeholder").append(template(context));
         }
     }
