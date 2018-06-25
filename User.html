@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>User</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <!-- Material Kit CSS -->
+    <link rel="stylesheet" href="assets/css/material-kit.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/tuition-detail2.0.css">
+
+    <!-- Custom Styles from Tuition-Discovery -->
+    <link rel="stylesheet" href="assets/css/tuitionDiscovery.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+
+</head>
+<body style="height: 2000px">
+
+<nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
+     id="sectionsNav">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand font-weight-bold" href="#">EduAtlas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Explore</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Listing</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark"
+     style="background-image: url(./assets/img/bg6.jpg);">
+</div>
+
+<div id="secondary_info" class="row">
+
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <ul class="nav nav-pills nav-pills-rose flex-column">
+                    <li class="nav-item"><a class="nav-link disabled"
+                                            data-toggle="tab">Edit Tuition</a>
+                    </li>
+                    <hr>
+                    <li class="nav-item"><a class="nav-link active" href="#tab1"
+                                            data-toggle="tab"> Description</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">Results</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab5" data-toggle="tab">Faculty</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab6" data-toggle="tab">Gallery</a></li>
+                </ul>
+                <!--<hr>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <!--<div class="row">-->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title h3">Facilities:</h2>
+                                <div id="facilityContainer">
+                                    <div>
+                                        <!--<i class="material-icons facility-icon">check_circle_outline</i>-->
+                                        <input value="Food" name="" class="form-control" id="fas1">
+                                    </div>
+                                    <div>
+                                        <!--<i class="material-icons facility-icon">check_circle_outline</i>-->
+                                        <input value="Water" name="" class="form-control" id="fas2">
+                                    </div>
+                                    <div>
+                                        <!--<i class="material-icons facility-icon">check_circle_outline</i>-->
+                                        <input value="AC" name="" class="form-control" id="fas3">
+                                    </div>
+                                    <div>
+                                        <!--<i class="material-icons facility-icon">check_circle_outline</i>-->
+                                        <input value="Snack Bars" name="" class="form-control" id="fas4">
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-info" onclick="AddFacility()">Add More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title h3">About Us</h2>
+                                <div id="descriptionOld">
+
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+                                        architecto, consequuntur cumque cupiditate debitis ducimus ex in
+                                        laboriosam
+                                        nemo nobis odit optio quibusdam quisquam recusandae, sint suscipit ullam
+                                        ut
+                                        voluptatum.
+                                    </p>
+                                    <button class="btn btn-outline-info" onclick="editDescription()">Edit</button>
+                                </div>
+                                <div id="descriptionNew">
+                                    <input value="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+                                            architecto, consequuntur cumque cupiditate debitis ducimus ex in laboriosam
+                                            nemo nobis odit optio quibusdam quisquam recusandae, sint suscipit ullam ut
+                                            voluptatum." name="" class="form-control" placeholder="enter text here">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title h3">Catagory</h2>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-info">Save Changes</button>
+
+                    </div>
+
+                    <div class="tab-pane" id="tab2">
+
+                        <div class="row justify-content-around">
+                            <div class="card col-md-6">
+                                <div class="card-body">
+                                    <div class="card-title h3">
+                                        Contact Us:
+                                    </div>
+                                    <div class="card-title h4">
+                                        Contact Person Name
+                                    </div>
+                                    <div>
+                                        <input class="form-control" value="Donald Trump">
+                                    </div>
+                                    <div class="card-title h4">
+                                        Primary Number
+                                    </div>
+                                    <div>
+                                        <input class="form-control" value="+91 9810399682">
+                                    </div>
+                                    <div class="card-title h4">
+                                        Alternate Number
+                                    </div>
+                                    <div>
+                                        <input class="form-control" value="+91 9810399682">
+                                    </div>
+                                    <div class="card-title h4">
+                                        Email
+                                    </div>
+                                    <div>
+                                        <input class="form-control" value="testlongertext@gmail.com">
+                                    </div>
+                                    <div class="card-title h4">
+                                        Website
+                                    </div>
+                                    <div>
+                                        <input class="form-control" value="www.alongtextwebsitename.com">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="opration_hours_containers" class="card card-nav-tabs col-md-5">
+                                <div class="card-header card-header-danger">
+                                    Operates on
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Monday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Tuesday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Wednesday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Thursday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Friday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Saturday: 8AM to 8PM</li>
+                                </ul>
+                                <ul class="list-group list-group-flush" hidden>
+                                    <li class="list-group-item">Monday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Tuesday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Wednesday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Thursday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Friday: 8AM to 8PM</li>
+                                    <li class="list-group-item">Saturday: 8AM to 8PM</li>
+                                </ul>
+                                <button class="btn btn-outline-info">edit</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title h3">
+                                    Social Links:
+                                </div>
+                                <div class="form-group">
+                                    <label for="twitterLink" class="">Twitter</label>
+                                    <input class="form-control" value="twitter.com/user" id="twitterLink">
+                                </div>
+                                <div class="form-group">
+                                    <label for="facebookLink" class="">Facebook</label>
+                                    <input class="form-control" value="fb.com/user" id="facebookLink">
+                                </div>
+                                <div class="form-group">
+                                    <label for="instaLink">Instagram</label>
+                                    <input class="form-control" value="instagram.com/user" id="instaLink">
+                                </div>
+                                <div class="form-group">
+                                    <label for="youtubeLink">Youtube</label>
+                                    <input class="form-control" value="youtube.com/user" id="youtubeLink">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-info">Save Changes</button>
+                    </div>
+
+                    <div class="tab-pane" id="tab3">
+                        <div class="row justify-content-around">
+                            <!-- put a unique id using handleBars-->
+                            <div class="col-4" id="card1">
+                                <div class="card">
+                                    <span style="position: absolute;left: 92%;top: -6%;">
+                                        <!-- send id in function deleteCourse()-->
+                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                onclick="deleteCourse('card1')">
+                                            <i class="material-icons">
+                                                delete
+                                            </i>
+                                        </button>
+                                    </span>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Chemistry</h4>
+                                        <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
+                                        <h6 class="card-text">10th</h6>
+                                        <hr>
+                                        <h6 class=" mb-2 text-muted">Duration</h6>
+                                        <h6 class="card-text">2 months</h6>
+                                        <hr>
+                                        <h6 class=" mb-2 text-muted">Fee</h6>
+                                        <h6 class="card-text">INR 20000</h6>
+                                        <hr>
+                                    </div>
+                                    <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <span style="position: absolute;left: 92%;top: -6%;">
+                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                onclick="deleteCourse()">
+                                            <i class="material-icons">
+                                                delete
+                                            </i>
+                                        </button>
+                                    </span>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Chemistry</h4>
+                                        <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
+                                        <h6 class="card-text">10th</h6>
+                                        <hr>
+                                        <h6 class=" mb-2 text-muted">Duration</h6>
+                                        <h6 class="card-text">2 months</h6>
+                                        <hr>
+                                        <h6 class=" mb-2 text-muted">Fee</h6>
+                                        <h6 class="card-text">INR 20000</h6>
+                                        <hr>
+                                    </div>
+                                    <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <span style="position: absolute;left: 92%;top: -6%;">
+                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                onclick="deleteCourse()">
+                                            <i class="material-icons">
+                                                delete
+                                            </i>
+                                        </button>
+                                    </span>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Chemistry</h4>
+                                        <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
+                                        <h6 class="card-text">10th</h6>
+                                        <hr>
+                                        <h6 class=" mb-2 text-muted">Duration</h6>
+                                        <h6 class="card-text">2 months</h6>
+                                        <hr>
+                                        <h6 class=" mb-2 text-muted">Fee</h6>
+                                        <h6 class="card-text">INR 20000</h6>
+                                        <hr>
+                                    </div>
+                                    <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
+                            Add More Course
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Add Course</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="newCourse">
+                                            <div class="form-group">
+                                                <label for="courseTitle1">Course Title</label>
+                                                <input class="form-control" type="text" id="courseTitle1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="courseAgeGroup">Age Group</label>
+                                                <input class="form-control" type="text" id="courseAgeGroup">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="courseDuration">Duration</label>
+                                                <input class="form-control" type="text" id="courseDuration">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="courseFee">Fee</label>
+                                                <input class="form-control" type="number" id="courseFee">
+                                            </div>
+                                        </form>
+                                        <small><p> Added course will appear after refresh</p></small>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="button" class="btn btn-info" onclick="addCourse()">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab4">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="assets/img/tuition1.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab5">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="card card-nav-tabs">
+                                    <img class="card-img-bottom" src="assets/img/tuition2.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            Mrs. Falana
+                                        </div>
+                                        <div class="card-subtitle mb-2 text-muted">
+                                            Mtech USA
+                                        </div>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card card-nav-tabs">
+                                    <img class="card-img-bottom" src="assets/img/tuition2.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            Mrs. Falana
+                                        </div>
+                                        <div class="card-subtitle mb-2 text-muted">
+                                            Mtech USA
+                                        </div>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card card-nav-tabs">
+                                    <img class="card-img-bottom" src="assets/img/tuition2.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            Mrs. Falana
+                                        </div>
+                                        <div class="card-subtitle mb-2 text-muted">
+                                            Mtech USA
+                                        </div>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab6">
+                        <div class="row ">
+                            <div class="col-md-4">
+                                <img class="img-fluid rounded img-raised my-3"
+                                     src="http://via.placeholder.com/350x150"
+                                     alt="Card image" style="height: 15rem; width: 100%">
+                            </div>
+                            <div class="col-md-4">
+                                <img class="img-fluid rounded img-raised my-3"
+                                     src="http://via.placeholder.com/440x660"
+                                     alt="Card image" style="height: 15rem; width: 100%">
+                            </div>
+                            <div class="col-md-4">
+                                <img class="img-fluid rounded img-raised my-3"
+                                     src="http://via.placeholder.com/350x150"
+                                     alt="Card image" style="height: 15rem; width: 100%">
+                            </div>
+                            <div class="col-md-4">
+                                <img class="img-fluid rounded img-raised my-3"
+                                     src="http://via.placeholder.com/770x770"
+                                     alt="Card image" style="height: 15rem; width: 100%">
+                            </div>
+                            <div class="col-md-4">
+                                <img class="img-fluid rounded img-raised my-3"
+                                     src="http://via.placeholder.com/350x150"
+                                     alt="Card image" style="height: 15rem; width: 100%">
+                            </div>
+                            <div class="col-md-4">
+                                <img class="img-fluid rounded img-raised my-3"
+                                     src="http://via.placeholder.com/1920x1080"
+                                     alt="Card image" style="height: 15rem; width: 100%">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--</div>-->
+            </div>
+        </div>
+
+        <div class="row">
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact via E-mail:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group m-0">
+                        <label for="email_name" class="bmd-label-floating">Name</label>
+                        <input type="text" class="form-control" id="email_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email_message">Message</label>
+                        <textarea class="form-control" id="email_message" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send mail</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="smsModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact via SMS:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group m-0">
+                        <label for="sms_name" class="bmd-label-floating">Name</label>
+                        <input type="text" class="form-control" id="sms_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="sms_message">Message</label>
+                        <textarea class="form-control" id="sms_message" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send sms</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--   Core JS Files   -->
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/bootstrap-material-design.js"></script>
+
+<!-- Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="assets/js/plugins/moment.min.js"></script>
+
+<!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
+<script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+
+<!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
+<script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
+
+<!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
+
+<!-- Plugin for Small Gallery in Product Page -->
+<script src="assets/js/plugins/jquery.flexisel.js"></script>
+
+<!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+<script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
+<script src="assets/js/plugins/nouislider.min.js"></script>
+
+<!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+<script src="assets/js/material-kit.js?v=2.0.0"></script>
+
+<!-- Google Map -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4&callback=initMap"
+        type="text/javascript"></script>
+<script src="assets/js/google-map.js"></script>
+
+<!-- Custom Js file for user-->
+<script src="assets/js/user.js"></script>
+
+</body>
+</html>
