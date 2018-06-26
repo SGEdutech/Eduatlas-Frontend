@@ -96,154 +96,307 @@
                 <!--<div class="row">-->
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
+                        <form id="aboutUsForm">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">Facilities:</h2>
+                                    <small><p class="">separate different things with " <span class="h2">,</span> "</p>
+                                    </small>
+                                    <div id="facilityContainer">
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title h3">Facilities:</h2>
-                                <div id="facilityContainer">
-                                    <div>
-                                        <!--<i class="material-icons facility-icon">check_circle_outline</i>-->
-                                        <input value="Food" name="" class="form-control" id="fas1">
-                                    </div>
-                                    <div>
-                                        <!--<i class="material-icons facility-icon">check_circle_outline</i>-->
-                                        <input value="Water" name="" class="form-control" id="fas2">
-                                    </div>
-                                    <div>
-                                        <!--<i class="material-icons facility-icon">check_circle_outline</i>-->
-                                        <input value="AC" name="" class="form-control" id="fas3">
-                                    </div>
-                                    <div>
-                                        <!--<i class="material-icons facility-icon">check_circle_outline</i>-->
-                                        <input value="Snack Bars" name="" class="form-control" id="fas4">
+                                        <script id="facilityInput" type="text/x-handlebars-template">
+                                            <div>
+                                                <input value="{{facilities}}" name="facilities" class="form-control"
+                                                       id="">
+                                            </div>
+                                        </script>
+
                                     </div>
                                 </div>
-                                <button class="btn btn-outline-info" onclick="AddFacility()">Add More</button>
                             </div>
-                        </div>
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title h3">About Us</h2>
-                                <div id="descriptionOld">
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-                                        architecto, consequuntur cumque cupiditate debitis ducimus ex in
-                                        laboriosam
-                                        nemo nobis odit optio quibusdam quisquam recusandae, sint suscipit ullam
-                                        ut
-                                        voluptatum.
-                                    </p>
-                                    <button class="btn btn-outline-info" onclick="editDescription()">Edit</button>
-                                </div>
-                                <div id="descriptionNew">
-                                    <input value="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-                                            architecto, consequuntur cumque cupiditate debitis ducimus ex in laboriosam
-                                            nemo nobis odit optio quibusdam quisquam recusandae, sint suscipit ullam ut
-                                            voluptatum." name="" class="form-control" placeholder="enter text here">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">About Us</h2>
+                                    <div id="descriptionContainer">
+                                        <script id="descInput" type="text/x-handlebars-template">
+                                            <div>
+                                                <input value="{{desc}}" name="description" class="form-control"
+                                                       id="description">
+                                            </div>
+                                        </script>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title h3">Catagory</h2>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">Category</h2>
+                                    <div id="cateContainer">
+                                        <script id="cateInput" type="text/x-handlebars-template">
+                                            <div>
+                                                <input value="{{cate}}" name="category" class="form-control"
+                                                       id="category">
+                                            </div>
+                                        </script>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <button class="btn btn-info">Save Changes</button>
+                        </form>
+                        <!-- pass id of form to saveDetails function for AJAX put req -->
+                        <button class="btn btn-info" onclick="saveDetails('aboutUsForm')">Save Changes</button>
 
                     </div>
 
                     <div class="tab-pane" id="tab2">
+                        <form id="contactUsForm">
+                            <div class="row justify-content-around">
+                                <div class="card col-md-6">
+                                    <div class="card-body" id="contactPersonContainer">
+                                        <script id="contactPersonInput" type="text/x-handlebars-template">
+                                            <div class="card-title h3">
+                                                Contact Us:
+                                            </div>
+                                            <div class="card-title h4">
+                                                Contact Person Name
+                                            </div>
+                                            <div>
+                                                <input class="form-control" value="{{contactPerson}}"
+                                                       name="contactPerson">
+                                            </div>
+                                            <div class="card-title h4">
+                                                Primary Number
+                                            </div>
+                                            <div>
+                                                <input class="form-control" value="{{primaryNumber}}"
+                                                       name="primaryNumber">
+                                            </div>
+                                            <div class="card-title h4">
+                                                Alternate Number
+                                            </div>
+                                            <div>
+                                                <input class="form-control" value="{{secondaryNumber}}"
+                                                       name="secondaryNumber">
+                                            </div>
+                                            <div class="card-title h4">
+                                                Email
+                                            </div>
+                                            <div>
+                                                <input class="form-control" value="{{email}}" name="email">
+                                            </div>
+                                            <div class="card-title h4">
+                                                Website
+                                            </div>
+                                            <div>
+                                                <input class="form-control" value="{{website}}" name="website">
+                                            </div>
+                                        </script>
+                                    </div>
+                                </div>
 
-                        <div class="row justify-content-around">
-                            <div class="card col-md-6">
-                                <div class="card-body">
+                                <div class="card card-nav-tabs col-md-5">
+                                    <div class="card-header card-header-danger">
+                                        Operates on
+                                    </div>
+                                    <div id="opration_hours_containers" class="">
+                                        <script id="dayAndTimeOfOperationInput"
+                                                type="text/x-handlebars-template">
+
+
+                                            <form class="row" id="monForm">
+                                                <div class="col-4">
+                                                    Monday:
+                                                    <input hidden name="day" value="Monday">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{monFrom}}" name="fromTime"
+                                                           type="text">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{monTo}}" name="toTime"
+                                                           type="text">
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                            onclick="deleteTime('Monday')">
+                                                        <i class="material-icons">
+                                                            delete
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </form>
+
+
+                                            <form class="row" id="tueForm">
+                                                <div class="col-4">
+                                                    Tuesday:
+                                                    <input hidden name="day" value="Tuesday">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{tueFrom}}" name="fromTime">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{tueTo}}" name="toTime">
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                            onclick="deleteTime('Tuesday')">
+                                                        <i class="material-icons">
+                                                            delete
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </form>
+
+
+                                            <form class="row" id="wedForm">
+                                                <div class="col-4">
+                                                    Wednesday:
+                                                    <input hidden name="day" value="Wednesday">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{wedFrom}}" name="fromTime">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{wedTo}}" name="toTime">
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                            onclick="deleteTime('Wednesday')">
+                                                        <i class="material-icons">
+                                                            delete
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </form>
+
+
+                                            <form class="row" id="thrForm">
+                                                <div class="col-4">
+                                                    Thursday:
+                                                    <input hidden name="day" value="Thursday">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{thrFrom}}" name="fromTime">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{thrTo}}" name="toTime">
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                            onclick="deleteTime('Thursday')">
+                                                        <i class="material-icons">
+                                                            delete
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </form>
+
+
+                                            <form class="row" id="friForm">
+                                                <div class="col-4">
+                                                    Friday:
+                                                    <input hidden name="day" value="Friday">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{friFrom}}" name="fromTime">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{friTo}}" name="toTime">
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                            onclick="deleteTime('Friday')">
+                                                        <i class="material-icons">
+                                                            delete
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </form>
+
+
+                                            <form class="row" id="satForm">
+                                                <div class="col-4">
+                                                    Saturday:
+                                                    <input hidden name="day" value="Saturday">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{satFrom}}" name="fromTime">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{satTo}}" name="toTime">
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                            onclick="deleteTime('Saturday')">
+                                                        <i class="material-icons">
+                                                            delete
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </form>
+
+
+                                            <form class="row" id="sunForm">
+                                                <div class="col-4">
+                                                    Sunday:
+                                                    <input hidden name="day" value="Sunday">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{sunFrom}}" name="fromTime">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input class="form-control" value="{{sunTo}}" name="toTime">
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                            onclick="deleteTime('Sunday')">
+                                                        <i class="material-icons">
+                                                            delete
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </form>
+
+
+                                        </script>
+                                    </div>
+                                    <button class="btn btn-outline-info" onclick="addAllTimes()">Save Operating Hours
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body" id="socialLinkContainer">
                                     <div class="card-title h3">
-                                        Contact Us:
+                                        Social Links:
                                     </div>
-                                    <div class="card-title h4">
-                                        Contact Person Name
-                                    </div>
-                                    <div>
-                                        <input class="form-control" value="Donald Trump">
-                                    </div>
-                                    <div class="card-title h4">
-                                        Primary Number
-                                    </div>
-                                    <div>
-                                        <input class="form-control" value="+91 9810399682">
-                                    </div>
-                                    <div class="card-title h4">
-                                        Alternate Number
-                                    </div>
-                                    <div>
-                                        <input class="form-control" value="+91 9810399682">
-                                    </div>
-                                    <div class="card-title h4">
-                                        Email
-                                    </div>
-                                    <div>
-                                        <input class="form-control" value="testlongertext@gmail.com">
-                                    </div>
-                                    <div class="card-title h4">
-                                        Website
-                                    </div>
-                                    <div>
-                                        <input class="form-control" value="www.alongtextwebsitename.com">
-                                    </div>
+                                    <script id="socialLinkInput" type="text/x-handlebars-template">
+                                        <!--div class="form-group">
+                                            <label for="twitterLink" class="">Twitter</label>
+                                            <input class="form-control" value="{{twitter}}" id="twitterLink">
+                                        </div>-->
+                                        <div class="form-group">
+                                            <label for="facebookLink" class="">Facebook</label>
+                                            <input class="form-control" value="{{facebook}}" id="facebookLink"
+                                                   name="fbLink">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="instaLink">Instagram</label>
+                                            <input class="form-control" value="{{instagram}}" id="instaLink"
+                                                   name="instaLink">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="youtubeLink">Youtube</label>
+                                            <input class="form-control" value="{{youtube}}" id="youtubeLink"
+                                                   name="youtubeLink">
+                                        </div>
+                                    </script>
                                 </div>
                             </div>
 
-                            <div id="opration_hours_containers" class="card card-nav-tabs col-md-5">
-                                <div class="card-header card-header-danger">
-                                    Operates on
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Monday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Tuesday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Wednesday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Thursday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Friday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Saturday: 8AM to 8PM</li>
-                                </ul>
-                                <ul class="list-group list-group-flush" hidden>
-                                    <li class="list-group-item">Monday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Tuesday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Wednesday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Thursday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Friday: 8AM to 8PM</li>
-                                    <li class="list-group-item">Saturday: 8AM to 8PM</li>
-                                </ul>
-                                <button class="btn btn-outline-info">edit</button>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title h3">
-                                    Social Links:
-                                </div>
-                                <div class="form-group">
-                                    <label for="twitterLink" class="">Twitter</label>
-                                    <input class="form-control" value="twitter.com/user" id="twitterLink">
-                                </div>
-                                <div class="form-group">
-                                    <label for="facebookLink" class="">Facebook</label>
-                                    <input class="form-control" value="fb.com/user" id="facebookLink">
-                                </div>
-                                <div class="form-group">
-                                    <label for="instaLink">Instagram</label>
-                                    <input class="form-control" value="instagram.com/user" id="instaLink">
-                                </div>
-                                <div class="form-group">
-                                    <label for="youtubeLink">Youtube</label>
-                                    <input class="form-control" value="youtube.com/user" id="youtubeLink">
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-info">Save Changes</button>
+                        </form>
+                        <button class="btn btn-info" onclick="saveDetails('contactUsForm')">Save Changes</button>
                     </div>
 
                     <div class="tab-pane" id="tab3">
@@ -344,19 +497,21 @@
                                         <form id="newCourse">
                                             <div class="form-group">
                                                 <label for="courseTitle1">Course Title</label>
-                                                <input class="form-control" type="text" id="courseTitle1">
+                                                <input class="form-control" name="title" type="text" id="courseTitle1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="courseAgeGroup">Age Group</label>
-                                                <input class="form-control" type="text" id="courseAgeGroup">
+                                                <input class="form-control" name="ageGroup" type="text"
+                                                       id="courseAgeGroup">
                                             </div>
                                             <div class="form-group">
                                                 <label for="courseDuration">Duration</label>
-                                                <input class="form-control" type="text" id="courseDuration">
+                                                <input class="form-control" name="duration" type="text"
+                                                       id="courseDuration">
                                             </div>
                                             <div class="form-group">
                                                 <label for="courseFee">Fee</label>
-                                                <input class="form-control" type="number" id="courseFee">
+                                                <input class="form-control" name="fee" type="number" id="courseFee">
                                             </div>
                                         </form>
                                         <small><p> Added course will appear after refresh</p></small>
@@ -364,16 +519,26 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                                         </button>
-                                        <button type="button" class="btn btn-info" onclick="addCourse()">Save changes</button>
+                                        <button type="button" class="btn btn-info" onclick="addCourse()">Save changes
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab4">
-                        <div class="row">
-                            <div class="col-4">
+                        <div class="row justify-content-around">
+                            <div class="col-4" id="card4">
                                 <div class="card">
+                                    <span style="position: absolute;left: 92%;top: -6%;">
+                                        <!-- send id in function deleteCourse()-->
+                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                onclick="deleteResult('card4')">
+                                            <i class="material-icons">
+                                                delete
+                                            </i>
+                                        </button>
+                                    </span>
                                     <img class="card-img-top" src="assets/img/tuition1.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <p class="card-text">Some quick example text to build on the card title and make
@@ -383,9 +548,54 @@
                             </div>
                             <div class="col-4">
                                 <div class="card">
+                                    <span style="position: absolute;left: 92%;top: -6%;">
+                                        <!-- send id in function deleteCourse()-->
+                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                onclick="deleteResult('card1')">
+                                            <i class="material-icons">
+                                                delete
+                                            </i>
+                                        </button>
+                                    </span>
                                     <div class="card-body">
                                         <p class="card-text">Some quick example text to build on the card title and make
                                             up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
+                            Add More Course
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel2">Add Course</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="newResult">
+                                            <div class="form-group">
+                                                <label for="resultImg">Result Image</label>
+                                                <input class="form-control" name="title" type="image" id="resultImg">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="resultDesc">Description</label>
+                                                <input class="form-control" name="ageGroup" type="text" id="resultDesc">
+                                            </div>
+                                        </form>
+                                        <small><p> Added course will appear after refresh</p></small>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="button" class="btn btn-info" onclick="addCourse()">Save changes
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -550,7 +760,8 @@
 
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
-<script src="assets/js/core/popper.min.js"></script>
+<script
+        src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/bootstrap-material-design.js"></script>
 
 <!-- Plugin for Date Time Picker and Full Calendar Plugin-->
@@ -577,11 +788,8 @@
 <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
 <script src="assets/js/material-kit.js?v=2.0.0"></script>
 
-<!-- Google Map -->
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4&callback=initMap"
-        type="text/javascript"></script>
-<script src="assets/js/google-map.js"></script>
+<!--HandleBars for templating-->
+<script src="assets/js/handlebars-v4.0.11.js"></script>
 
 <!-- Custom Js file for user-->
 <script src="assets/js/user.js"></script>
