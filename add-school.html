@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <div id="school_added_modal" class="modal">
+        <div class="modal-content">
+            <h4>School Added</h4>
+            <p>Keep going</p>
+        </div>
+    </div>
+
+    <h1 class="center-align">Add a school</h1>
+
+    <div class="row">
+        <form id="the_form" class="col s12" action="/school" method="post"
+              enctype="multipart/form-data">
+
+            <div class="input-field col s6">
+                <input name="name" id="name" type="text" class="validate">
+                <label for="name">Name</label>
+            </div>
+
+            <div class="input-field col s6">
+                <select id="facilities" name="facilities" multiple>
+                    <option value="" disabled>Choose your option</option>
+                    <option value="Library/Study Area">Library/Study Area</option>
+                    <option value="Smart Classes">Smart Classes</option>
+                    <option value="Study Material">Study Material</option>
+                    <option value="AC Classes">AC Classes</option>
+                    <option value="Internet/WIFI">Internet/WIFI</option>
+                    <option value="Transport">Transport</option>
+                    <option value="E-Learning">E-Learning</option>
+                </select>
+                <label for="facilities">Facilities</label>
+            </div>
+
+            <div class="input-field col s6">
+                <select id="category" name="category" multiple>
+                    <option value="" disabled>Choose your option</option>
+                    <option value="Library/Study Area">Tuition Centers</option>
+                    <option value="Coaching Centers">Coaching Centers</option>
+                    <option value="Enhanced Learning">Enhanced Learning</option>
+                    <option value="Hobby Centers">Hobby Centers</option>
+                    <option value="Sports Center">Sports Center</option>
+                    <option value="Education Companies">Education Companies</option>
+                </select>
+                <label for="category">Category</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input name="fee" id="fee" type="number" class="validate">
+                <label for="fee">Fee in rupees</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input name="yearFounded" id="year_founded" type="number" class="validate">
+                <label for="year_founded">Year Founded</label>
+            </div>
+
+            <div class="input-field col s6">
+                <select id="type" name="type">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="CBSE">Day School</option>
+                    <option value="ICSE">Boarding School</option>
+                    <option value="State Board">Day Boarding School</option>
+                </select>
+                <label for="type">Type</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input name="principalName" id="principal_name" type="text" class="validate">
+                <label for="principal_name">Principal's Name</label>
+            </div>
+
+            <div class="input-field col s6">
+                <select name="curriculum" id="curriculum">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="CBSE">CBSE</option>
+                    <option value="ICSE">ICSE</option>
+                    <option value="State Board">State Board</option>
+                    <option value="IB">IB</option>
+                    <option value="IGCSC">IGCSC</option>
+                </select>
+                <label for="curriculum">Curriculum</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input name="description" id="description" type="text" class="validate">
+                <label for="description">Description</label>
+            </div>
+
+            <h4 class="col s12">Location:</h4>
+
+            <div class="input-field col s4">
+                <input name="addressLine1" id="address_line_1" type="text" class="validate">
+                <label for="address_line_1">Address Line 1</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="addressLine2" id="address_line_2" type="text" class="validate">
+                <label for="address_line_2">Address Line 2</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="district" id="district" type="text" class="validate">
+                <label for="district">District</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="city" id="city" type="text" class="validate">
+                <label for="city">City</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="state" id="state" type="text" class="validate">
+                <label for="state">State</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="country" id="country" type="text" class="validate">
+                <label for="country">Country</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="pin" id="pin" type="number" class="validate">
+                <label for="pin">Pin</label>
+            </div>
+
+            <h4 class="col s12">Days of operation:</h4>
+
+            <div class="input-field col s5">
+                <select name="fromDay" id="from_day">
+                    <option value="" disabled selected>To</option>
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                </select>
+                <label for="from_day">From</label>
+            </div>
+
+            <p class="center-align col s2">To</p>
+
+            <div class="input-field col s5">
+                <select name="toDay" id="to_day">
+                    <option value="" disabled selected>To</option>
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                </select>
+                <label for="to_day">To</label>
+            </div>
+
+
+            <h4 class="col s12">Timing (school):</h4>
+            <input name="startTimeSchool" type="text" class="timepicker col s5" placeholder="Start">
+            <p class="col s2 center-align">To</p>
+            <input name="endTimeSchool" type="text" class="timepicker col s5" placeholder="End">
+
+            <h4 class="col s12">Timing (office):</h4>
+            <input name="startTimeOffice" type="text" class="timepicker col s5" placeholder="Start">
+            <p class="col s2 center-align">To</p>
+            <input name="endTimeOffice" type="text" class="timepicker col s5" placeholder="End">
+
+            <h4 class="col s12">Grade:</h4>
+
+            <div class="input-field col s5">
+                <select name="fromGrade" id="from_grade">
+                    <option value="" disabled selected>From</option>
+                    <option value="Pre Nursery">Pre Nursery</option>
+                    <option value="Nurcery">Nursery</option>
+                    <option value="Lower Kinder Garden">Lower Kinder Garden</option>
+                    <option value="Upper Kinder Garden">Upper Kinder Garden</option>
+                    <option value="1st">1st</option>
+                    <option value="2nd">2nd</option>
+                    <option value="3rd">3rd</option>
+                    <option value="4th">4th</option>
+                    <option value="5th">5th</option>
+                    <option value="6th">6th</option>
+                    <option value="7th">7th</option>
+                    <option value="8th">8th</option>
+                    <option value="9th">9th</option>
+                    <option value="10th">10th</option>
+                    <option value="11th">11th</option>
+                    <option value="12th">12th</option>
+                </select>
+                <label for="from_grade">From</label>
+            </div>
+
+            <p class="center-align col s2">To</p>
+
+            <div class="input-field col s5">
+                <select name="toGrade" id="to_grade">
+                    <option value="" disabled selected>To</option>
+                    <option value="Pre Nursery">Pre Nursery</option>
+                    <option value="Nurcery">Nursery</option>
+                    <option value="Lower Kinder Garden">Lower Kinder Garden</option>
+                    <option value="Upper Kinder Garden">Upper Kinder Garden</option>
+                    <option value="1st">1st</option>
+                    <option value="2nd">2nd</option>
+                    <option value="3rd">3rd</option>
+                    <option value="4th">4th</option>
+                    <option value="5th">5th</option>
+                    <option value="6th">6th</option>
+                    <option value="7th">7th</option>
+                    <option value="8th">8th</option>
+                    <option value="9th">9th</option>
+                    <option value="10th">10th</option>
+                    <option value="11th">11th</option>
+                    <option value="12th">12th</option>
+                </select>
+                <label for="to_grade">To</label>
+            </div>
+
+            <h4 class="col s12">Contact:</h4>
+
+            <div class="input-field col s4">
+                <input name="contactPerson" id="contact_person" type="text" class="validate" required>
+                <label for="contact_person">Contact Person <i class="red-text accent-3">*</i></label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="primaryNumber" id="primary_number" type="number" class="validate" required>
+                <label for="primary_number">Primary Number <i class="red-text accent-3">*</i></label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="secondaryNumber" id="secondary_number" type="number" class="validate">
+                <label for="secondary_number">Secondary Number</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="email" id="email" type="email" class="validate">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="website" id="website" type="text" class="validate">
+                <label for="website">Website</label>
+            </div>
+
+            <h4 class="col s12">Social:</h4>
+
+            <div class="input-field col s4">
+                <input name="fbLink" id="fbLink" type="text" class="validate">
+                <label for="fbLink">Facebook Link</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="twitter" id="twitter" type="text" class="validate">
+                <label for="twitter">Twitter Link</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="youtubeLink" id="youtubeLink" type="text" class="validate">
+                <label for="youtubeLink">Youtube Link</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="instaLink" id="instaLink" type="text" class="validate">
+                <label for="instaLink">Instagram Link</label>
+            </div>
+
+            <div class="file-field input-field col s12">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file" name="schoolCoverPic">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload cover picture">
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light col s12 center-align" type="submit">Submit
+                <i class="material-icons right">send</i>
+            </button>
+
+        </form>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="assets/js/form.js"></script>
+</body>
+</html>
