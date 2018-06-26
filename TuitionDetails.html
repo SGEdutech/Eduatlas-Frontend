@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Hello, world!</title>
+    <title>Tuition</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
@@ -12,16 +12,21 @@
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 
     <!-- Material Kit CSS -->
     <link rel="stylesheet" href="assets/css/material-kit.css">
 
-    <!--our custom css-->
-    <link rel="stylesheet" href="assets/css/tuitionDetails.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/tuition-detail2.0.css">
+
+    <!-- Custom Styles from Tuition-Discovery -->
+    <link rel="stylesheet" href="assets/css/tuitionDiscovery.css">
 
 </head>
-<body>
-<!--sick navbar-->
+<body style="height: 2000px">
+
 <nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
      id="sectionsNav">
     <div class="container">
@@ -36,10 +41,10 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="#">Explore</a>
                 </li>
                 <li class="nav-item">
@@ -56,368 +61,540 @@
     </div>
 </nav>
 
-
-<!--cover and name wrapped for parallax-->
-<div class="page-header header-filter header-small" data-parallax="true" filter-color="rose"
-     style="background-image: url(./assets/img/bg6.jpg)">
-
-    <!--<div class="container">-->
-        <!--<div class="font-weight-bold">-->
-            <!--<h1 id="name" class="font-weight-bold">Tuition Name</h1>-->
-            <!--<div id="address">Address</div>-->
-            <!--<div id="primaryNum">Primary Number</div>-->
-            <!--<div id="secNumber">Secondary number</div>-->
-            <!--<div id="email">Email</div>-->
-            <!--<div id="web_site">Web Site</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-            <!--<div class="col-3">-->
-                <!--<h5>4.5/5 <a>Write a Review</a></h5>-->
-            <!--</div>-->
-            <!--<div class="col-5"></div>-->
-            <!--<div class="col-3">-->
-                <!--<a>-->
-                    <!--<i class="material-icons">-->
-                        <!--bookmark_border-->
-                    <!--</i>-->
-                <!--</a>-->
-                <!--<a href="#">-->
-                    <!--<span class="badge badge-pill badge-info">Claim</span>-->
-                <!--</a>-->
-                <!--<a>-->
-                    <!--<i class="material-icons">-->
-                        <!--share-->
-                    <!--</i>-->
-                <!--</a>-->
-
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-
+<div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark"
+     style="background-image: url(./assets/img/bg6.jpg);">
 </div>
 
-
-<!--raised area for parallax-->
-<div class="main main-raised">
-    <!--second row containing breadcrumb-->
-    <div class="row">
-        <div class="col-10">
-            <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Tuition</a></li>
-                    <li class="breadcrumb-item active" aria-current="page" id="breadName">TuitionName</li>
-                </ol>
-
-            </nav>
-        </div>
-        <div class="col-2">
-            <i class="material-icons">
-                verified_user
+<div id="main_header" class="container">
+    <div id="info_container" class="main main-raised">
+        <div id="verified-container">
+            <i class="btn btn-info btn-fab btn-round">
+                <i class="material-icons">verified_user</i>
             </i>
+        </div>
+        <div class="row align-items-center">
+            <h1 class="col-md-8">Tuition Name</h1>
+            <span id="rating" class="badge badge-pill badge-success">4.5</span>
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#emailModal">
+                    <i class="material-icons">
+                        email
+                    </i> Email
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#smsModal">
+                    <i class="material-icons">
+                        textsms
+                    </i> SMS
+                </button>
+            </div>
+        </div>
+        <hr>
+        <div class="row text-center">
+            <div class="col-md-6">
+                <h6>Address</h6>
+            </div>
+            <div class="col-md-3">
+                <h6>Phone</h6>
+                <p>+91 9810399682</p>
+            </div>
+            <div class="col-md-3">
+                <h6>Email</h6>
+                <p>entropy.ash@gmail.com</p>
+            </div>
         </div>
     </div>
+</div>
 
-    <!--parent row-->
-    <div class="row">
+<div id="secondary_info" class="row">
 
-        <!--bigger column containing description, reviews, gallery, faculty, courses -->
-        <div class="col-8" style="margin-left: 3%">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="nav nav-pills nav-pills-rose flex-column">
+                            <li class="nav-item"><a class="nav-link active" href="#tab1"
+                                                    data-toggle="tab">Description</a>
+                            </li>
 
-            <div class="card row card-body">
-                <ul class="nav nav-pills nav-pills-rose">
-                    <li class="nav-item"><a class="nav-link active" href="#pill1" data-toggle="tab">Description</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#pill2" data-toggle="tab">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#pill3" data-toggle="tab">Faculty</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#pill4" data-toggle="tab">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link " href="#pill5" data-toggle="tab">Reviews</a></li>
-                </ul>
-                <div class="tab-content tab-space">
-                    <div class="tab-pane active" id="pill1">
-                        <p class="card-text" id="description">description</p>
-                        <br>
-                        <h5 class="h5 m-0">Facilities</h5>
-                        <p class="m-0" id="facilities">facilities</p>
+                            <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Courses</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Results</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">Faculty</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">Gallery</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab5" data-toggle="tab">Reviews</a></li>
+                        </ul>
                     </div>
-                    <div class="tab-pane" id="pill2">
-                        <p class="card-text">Courses</p>
-                    </div>
-                    <div class="tab-pane" id="pill3">
-                        <p class="card-text">Faculty</p>
-                    </div>
-                    <div class="tab-pane" id="pill4">
-                        <p class="card-text">Gallery</p>
-                    </div>
-                    <div class="tab-pane" id="pill5">
-                        <p class="card-text font-weight-bold">No Reviews Here</p>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title h3">
-                                    Rate and write a Review
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Category</h2>
+                                        <button class="btn btn-primary btn-round">Category</button>
+                                    </div>
                                 </div>
-                                <div class="card-subtitle">
-                                    Your review will be posted publicly on the web.
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">About Us</h2>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+                                            architecto, consequuntur cumque cupiditate debitis ducimus ex in laboriosam
+                                            nemo nobis odit optio quibusdam quisquam recusandae, sint suscipit ullam ut
+                                            voluptatum.</p>
+                                    </div>
                                 </div>
-                                <p>*****</p>
 
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInput1" class="bmd-label-floating">Name</label>
-                                        <input type="email" class="form-control" id="exampleInput1">
-                                        <span class="bmd-help">this name will be displayed to public</span>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Facilities:</h2>
+                                        <div>
+                                            <div>
+                                                <i class="material-icons facility-icon">check_circle_outline</i>
+                                                <span>Food</span>
+                                            </div>
+                                            <div>
+                                                <i class="material-icons facility-icon">check_circle_outline</i>
+                                                <span>Water</span>
+                                            </div>
+                                            <div>
+                                                <i class="material-icons facility-icon">check_circle_outline</i>
+                                                <span>AC</span>
+                                            </div>
+                                            <div>
+                                                <i class="material-icons facility-icon">check_circle_outline</i>
+                                                <span>Snack Bars</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1" class="bmd-label-floating">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                               aria-describedby="emailHelp">
-                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email
-                                            with
-                                            anyone
-                                            else.
-                                        </small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputTitle1" class="bmd-label-floating">Title</label>
-                                        <input type="text" class="form-control" id="exampleInputTitle1">
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane" id="tab2">
+
+                                <div class="row justify-content-around">
+                                    <div class="card col-md-6">
+                                        <div class="card-body">
+                                            <div class="card-title h4">
+                                                Contact Person Name
+                                            </div>
+                                            <div>
+                                                Donald Trump
+                                            </div>
+                                            <div class="card-title h4">
+                                                Primary Number
+                                            </div>
+                                            <div>
+                                                +91 9810399682
+                                            </div>
+                                            <div class="card-title h4">
+                                                Alternate Number
+                                            </div>
+                                            <div>
+                                                +91 9810399682
+                                            </div>
+                                            <div class="card-title h4">
+                                                Email
+                                            </div>
+                                            <div>
+                                                testlongertext@gmail.com
+                                            </div>
+                                            <div class="card-title h4">
+                                                Website
+                                            </div>
+                                            <div>
+                                                www.alongtextwebsitename.com
+                                            </div>
+                                            <div class="card-title h4">
+                                                Address
+                                            </div>
+                                            <div>
+                                                Some long address
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="exampleInputReview1" class="bmd-label-floating">Review</label>
-                                        <textarea name="review" type="text" class="form-control"
-                                                  id="exampleInputReview1">
-                            </textarea>
+                                    <div id="opration_hours_containers" class="card card-nav-tabs col-md-5">
+                                        <div class="card-title h3">
+                                            Operation Hours
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Monday: 8AM to 8PM</li>
+                                            <li class="list-group-item">Tuesday: 8AM to 8PM</li>
+                                            <li class="list-group-item">Wednesday: 8AM to 8PM</li>
+                                            <li class="list-group-item">Thursday: 8AM to 8PM</li>
+                                            <li class="list-group-item">Friday: 8AM to 8PM</li>
+                                            <li class="list-group-item">Saturday: 8AM to 8PM</li>
+                                        </ul>
                                     </div>
+                                </div>
 
-                                    <button type="submit" class="btn btn-primary disabled">Submit</button>
-                                </form>
+                                <div class="card m-0" id="map"></div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title h3">
+                                            Social Links:
+                                        </div>
+                                        <button class="btn btn-just-icon btn-round btn-twitter social-icons">
+                                            <i class="fa fa-twitter"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-round btn-facebook social-icons">
+                                            <i class="fa fa-facebook"> </i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-round btn-youtube social-icons">
+                                            <i class="fa fa-youtube"> </i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-round btn-dribbble social-icons">
+                                            <i class="fa fa-instagram"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane" id="tab3">
+                                Completely synergize resource taxing relationships via premier niche markets.
+                                Professionally cultivate one-to-one customer service with robust ideas.
+                                <br><br>Dynamically innovate resource-leveling customer service for state of the
+                                art
+                                customer service.
+                            </div>
+                            <div class="tab-pane" id="tab4">
+                                Completely synergize resource taxing relationships via premier niche markets.
+                                Professionally cultivate one-to-one customer service with robust ideas.
+                                <br><br>Dynamically innovate resource-leveling customer service for state of the
+                                art
+                                customer service.
+                            </div>
+                            <div class="tab-pane" id="tab5">
+                                <p class="card-text font-weight-bold">No Reviews Here</p>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title h3">
+                                            Rate and write a Review
+                                        </div>
+                                        <div class="card-subtitle">
+                                            Your review will be posted publicly on the web.
+                                        </div>
+                                        <p>*****</p>
+
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInput1"
+                                                       class="bmd-label-floating">Name</label>
+                                                <input type="email" class="form-control" id="exampleInput1">
+                                                <span class="bmd-help">this name will be displayed to public</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="bmd-label-floating">Email
+                                                    address</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                                       aria-describedby="emailHelp">
+                                                <small id="emailHelp" class="form-text text-muted">We'll never
+                                                    share
+                                                    your email
+                                                    with
+                                                    anyone
+                                                    else.
+                                                </small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputTitle1"
+                                                       class="bmd-label-floating">Title</label>
+                                                <input type="text" class="form-control" id="exampleInputTitle1">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputReview1"
+                                                       class="bmd-label-floating">Review</label>
+                                                <textarea name="review" type="text" class="form-control"
+                                                          id="exampleInputReview1">
+                                                </textarea>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="h3 m-0">
-                Related Listings
-            </div>
-            <div class="row">
-                <div class="card bg-dark text-white col-3 mx-1">
-                    <img class="card-img" src="assets/img/apple-icon.png" alt="Card image">
-                    <div class="card-img-overlay">
-                        <h4 class="card-title">Name</h4>
-                        <p class="card-text">Address</p>
-                        <p class="card-text">Last updated 3 mins ago</p>
-                    </div>
-                </div>
-                <div class="card bg-dark text-white col-3 mx-1">
-                    <img class="card-img" src="assets/img/apple-icon.png" alt="Card image">
-                    <div class="card-img-overlay">
-                        <h4 class="card-title">Name</h4>
-                        <p class="card-text">Address</p>
-                        <p class="card-text">Last updated 3 mins ago</p>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
-        <!--smaller column containing time, similar things, listed by, mail us -->
-        <div class="col-3" style="margin-right: 3%">
+        <div class="row">
 
-            <!--card for future use-->
+            <h3 class="col-md-12">Related Listings:</h3>
 
-            <!--<div class="card">
-            <img class="card-img-top" src="#" alt="Card image cap">
-            <div class="card-body">
-            <div class="col-12">
-            <div class="row">
-            <i class="material-icons col-2">
-            location_on
-            </i>
-            <p class="card-text col-10" id="location"></p>
-            </div>
-            <div class="row">
-            <i class="material-icons col-2">
-            phone
-            </i>
-            <p class="card-text col-10" id="phone"></p>
-            </div>
-            <div class="row">
-            <i class="material-icons col-2">
-            email
-            </i>
-            <p class="card-text col-10" id="email2"></p>
-            </div>
-            <div class="row">
-            <i class="material-icons col-2">
-            public
-            </i>
-            <p class="card-text col-10" id="site2"></p>
-            </div>
-            <div class="row">
-            <button class="btn btn-social btn-fill btn-facebook">
-            <i class="fa fa-facebook-square"></i>
-            </button>
-            <button class="btn btn-social btn-fill btn-twitter">
-            <i class="fa fa-twitter-square"></i>
-            </button>
-            <button class="btn btn-social btn-fill btn-youtube">
-            <i class="fa fa-youtube-square"></i>
-            </button>
-            <button class="btn btn-social btn-fill btn-instagram">
-            <i class="fa fa-instagram-square"></i>instagram
-            </button>
-            </div>
-            <div class="row">
-            <i class="material-icons col-2">
-            directions_walk
-            </i>
-            <p class="card-text col-10" id="direction"></p>
-            </div>
-            </div>
-            </div>
-            </div>-->
-
-
-            <!--Rotating opening time and map card-->
-            <div class="rotating-card-container">
-                <div class="card card-rotate card-background">
-                    <div class="front front-background">
-                        <div class="card-body m-0 text-left">
-                            <div class="card-title m-0">
-                                Opening Hours
+            <div class="col-md-4">
+                <div class="card" style="">
+                    <!--put src = "assets/img/{{coverPic}}" -->
+                    <img class="card-img tinted" src="assets/img/tuition2.jpg" alt="Card image cap">
+                    <div class="card-img-overlay color-white m-0 p-3">
+                        <div class="row">
+                            <div class="col-9">
+                                <h4 class="card-title color-white m-0 p-0">Name</h4>
                             </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    Mon
-                                </div>
-                                <div class="col-8" id="monday">
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    Tues
-                                </div>
-                                <div class="col-8" id="tuesday">
-
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    Wed
-                                </div>
-                                <div class="col-8" id="wednesday">
-
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    Thurs
-                                </div>
-                                <div class="col-8" id="thrusday">
-
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    Fri
-                                </div>
-                                <div class="col-8" id="friday">
-
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    Sat
-                                </div>
-                                <div class="col-8" id="saturday">
-
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    Sun
-                                </div>
-                                <div class="col-8" id="sunday">
-
-                                </div>
-
+                            <div class="col-2">
+                                <button class="btn btn-info btn-fab btn-round position-absolute">
+                                    <i class="material-icons" style="font-size: 30px">
+                                        verified_user
+                                    </i>
+                                </button>
                             </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <p class="card-text m-0 color-white">Category</p>
+                            </div>
+                            <div class="col-3">
+                                <!--<span class="badge badge-info">{{ifAd}}</span>-->
+                            </div>
 
-                    <div class="back back-background">
-                        <div class="card-body">
-                            Map here
                         </div>
                     </div>
-                </div>
-            </div>
-            <!--contact us card-->
-            <div class="row mb-0">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-title">EduAtlas Contact</div>
-
-                        <form>
-                            <div class="form-group m-0">
-                                <label for="exampleName1" class="bmd-label-floating">Name</label>
-                                <input type="text" class="form-control" id="exampleName1">
-                                <span class="bmd-help">Your name</span>
-                            </div>
-                            <div class="form-group m-0">
-                                <label for="exampleInputEmail2" class="bmd-label-floating">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail2"
-                                       aria-describedby="emailHelp">
-                                <small id="" class="form-text text-muted">We'll never share your email with anyone else.
-                                </small>
-                            </div>
-                            <div class="form-group m-0">
-                                <label for="exampleInputPhone2" class="bmd-label-floating">Phone Number</label>
-                                <input type="number" class="form-control" id="exampleInputPhone2">
-                            </div>
-                            <textarea name="message" type="text" class="form-control" id="exampleInputMessage1"
-                                      placeholder="message">
-                        </textarea>
-
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rotating-card-container">
-                <div class="card card-rotate card-background">
-                    <div class="front front-background">
-                        <div class="card-body">
-                            <h6 class="card-category">Listed By</h6>
-                            <a href="#pablo">
-                                <h3 class="card-title">Name of User</h3>
-                            </a>
-                            <p class="card-description">
+                    <div class="card-body p-4 position-relative">
+                        <button class="btn btn-info btn-fab btn-round position-absolute moveUp">
+                            4
+                        </button>
+                        <div class="row">
+                            <i class="material-icons d-inline-flex icon-small">
+                                place
+                            </i>
+                            <p class="card-text text m-0 ">
+                                <small>Address</small>
                             </p>
                         </div>
-                    </div>
-                    <div class="back back-background">
-                        <div class="card-body">
-                            <button class="btn btn-info">
-                                View Profile
-                            </button>
+                        <div class="row">
+                            <i class="material-icons d-inline-flex icon-small">
+                                local_phone
+                            </i>
+                            <p class="card-text m-0 row">
+                                <small>Phone</small>
+                            </p>
                         </div>
+
+                        <div class="row">
+                            <i class="material-icons d-inline-flex icon-small">
+                                alternate_email
+                            </i>
+                            <p class="card-text m-0 row">
+                                <small>Email</small>
+                            </p>
+                        </div>
+
+
+                        <a href="#" class="btn btn-info">Details</a>
                     </div>
+
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card" style="">
+                    <!--put src = "assets/img/{{coverPic}}" -->
+                    <img class="card-img tinted" src="assets/img/tuition2.jpg" alt="Card image cap">
+                    <div class="card-img-overlay color-white m-0 p-3">
+                        <div class="row">
+                            <div class="col-9">
+                                <h4 class="card-title color-white m-0 p-0">Name</h4>
+                            </div>
+                            <div class="col-2">
+                                <button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
+                                    <i class="material-icons">
+                                        verified_user
+                                    </i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <p class="card-text m-0 color-white">Category</p>
+                            </div>
+                            <div class="col-3">
+                                <!--<span class="badge badge-info">{{ifAd}}</span>-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body p-4 position-relative">
+                        <button class="btn btn-info btn-fab btn-round position-absolute moveUp">
+                            4
+                        </button>
+                        <div class="row">
+                            <i class="material-icons d-inline-flex icon-small">
+                                place
+                            </i>
+                            <p class="card-text text m-0 ">
+                                <small>Address</small>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <i class="material-icons d-inline-flex icon-small">
+                                local_phone
+                            </i>
+                            <p class="card-text m-0 row">
+                                <small>Phone</small>
+                            </p>
+                        </div>
+
+                        <div class="row">
+                            <i class="material-icons d-inline-flex icon-small">
+                                alternate_email
+                            </i>
+                            <p class="card-text m-0 row">
+                                <small>Email</small>
+                            </p>
+                        </div>
 
 
+                        <a href="#" class="btn btn-info">Details</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="">
+                    <!--put src = "assets/img/{{coverPic}}" -->
+                    <img class="card-img tinted" src="assets/img/tuition2.jpg" alt="Card image cap">
+                    <div class="card-img-overlay color-white m-0 p-3">
+                        <div class="row">
+                            <div class="col-9">
+                                <h4 class="card-title color-white m-0 p-0">Name</h4>
+                            </div>
+                            <div class="col-2">
+                                <button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
+                                    <i class="material-icons">
+                                        verified_user
+                                    </i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <p class="card-text m-0 color-white">Category</p>
+                            </div>
+                            <div class="col-3">
+                                <!--<span class="badge badge-info">{{ifAd}}</span>-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body p-4 position-relative">
+                        <button class="btn btn-info btn-fab btn-round position-absolute moveUp">
+                            4
+                        </button>
+                        <div class="row">
+                            <i class="material-icons d-inline-flex icon-small">
+                                place
+                            </i>
+                            <p class="card-text text m-0 ">
+                                <small>Address</small>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <i class="material-icons d-inline-flex icon-small">
+                                local_phone
+                            </i>
+                            <p class="card-text m-0 row">
+                                <small>Phone</small>
+                            </p>
+                        </div>
+
+                        <div class="row">
+                            <i class="material-icons d-inline-flex icon-small">
+                                alternate_email
+                            </i>
+                            <p class="card-text m-0 row">
+                                <small>Email</small>
+                            </p>
+                        </div>
+
+
+                        <a href="#" class="btn btn-info">Details</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card" style="height: 300px; width: 100%; background-color: black">
+            <h2 class="text-center" style="color: white">Irritating Advertisement</h2>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact via E-mail:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group m-0">
+                        <label for="email_name" class="bmd-label-floating">Name</label>
+                        <input type="text" class="form-control" id="email_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email_message">Message</label>
+                        <textarea class="form-control" id="email_message" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send mail</button>
+            </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="smsModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact via SMS:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group m-0">
+                        <label for="sms_name" class="bmd-label-floating">Name</label>
+                        <input type="text" class="form-control" id="sms_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="sms_message">Message</label>
+                        <textarea class="form-control" id="sms_message" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send sms</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
@@ -448,7 +625,11 @@
 <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
 <script src="assets/js/material-kit.js?v=2.0.0"></script>
 
-<!--importing js file-->
-<script src="assets/js/tuitionDetails.js"></script>
+<!-- Google Map -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4&callback=initMap"
+        type="text/javascript"></script>
+<script src="assets/js/google-map.js"></script>
+
 </body>
 </html>

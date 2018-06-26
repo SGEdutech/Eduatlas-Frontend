@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Update tuition</title>
+</head>
+<body>
+
+<div class="container">
+
+    <div id="school_added_modal" class="modal">
+        <div class="modal-content">
+            <h4>Tuition Updated</h4>
+        </div>
+    </div>
+
+    <h1 class="center-align">Update tuition</h1>
+
+    <div class="row">
+        <form id="the_form" class="col s12" method="post" action="http://localhost:6868/tuition"
+              enctype="multipart/form-data">
+
+            <div class="input-field col s6">
+                <input name="name" id="name" type="text" class="validate">
+                <label for="name">Institute Name</label>
+            </div>
+
+            <div class="input-field col s6">
+                <select id="facilities" name="facilities" multiple>
+                    <option value="" disabled>Choose your option</option>
+                    <option value="Library/Study Area">Library/Study Area</option>
+                    <option value="Smart Classes">Smart Classes</option>
+                    <option value="Study Material">Study Material</option>
+                    <option value="AC Classes">AC Classes</option>
+                    <option value="Internet/WIFI">Internet/WIFI</option>
+                    <option value="Transport">Transport</option>
+                    <option value="E-Learning">E-Learning</option>
+                </select>
+                <label for="facilities">Facilities</label>
+            </div>
+
+            <div class="input-field col s6">
+                <select id="category" name="category" multiple>
+                    <option value="" disabled>Choose your option</option>
+                    <option value="Library/Study Area">Tuition Centers</option>
+                    <option value="Coaching Centers">Coaching Centers</option>
+                    <option value="Enhanced Learning">Enhanced Learning</option>
+                    <option value="Hobby Centers">Hobby Centers</option>
+                    <option value="Sports Center">Sports Center</option>
+                    <option value="Education Companies">Education Companies</option>
+                </select>
+                <label for="category">Category</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input name="description" id="description" type="text" class="validate">
+                <label for="description">Description</label>
+            </div>
+
+            <h4 class="col s12">Age Group:</h4>
+
+            <div class="input-field col s6">
+                <input name="fromAge" id="from_age" type="number" class="validate">
+                <label for="from_age">From</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input name="toAge" id="to_age" type="number" class="validate">
+                <label for="to_age">To</label>
+            </div>
+
+            <h4 class="col s12">Location:</h4>
+
+            <div class="input-field col s4">
+                <input name="addressLine1" id="address_line_1" type="text" class="validate">
+                <label for="address_line_1">Address Line 1</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="addressLine2" id="address_line_2" type="text" class="validate">
+                <label for="address_line_2">Address Line 2</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="city" id="city" type="text" class="validate">
+                <label for="city">City</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="state" id="state" type="text" class="validate">
+                <label for="state">State</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="country" id="country" type="text" value="India" class="validate">
+                <label for="country">Country</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="pin" id="pin" type="number" class="validate">
+                <label for="pin">Pin</label>
+            </div>
+
+            <h4 class="col s12">Days of operation:</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Closed</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td id="monFrom"><input name="day_monday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start"></td>
+                    <td id="monTo"><input name="day_monday_to" type="text" class="timepicker col s5" placeholder="End"
+                                         >
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxMon"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td id="tueFrom"><input name="day_tuesday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start"></td>
+                    <td id="tueTo"><input name="day_tuesday_to" type="text" class="timepicker col s5" placeholder="End"
+                                         >
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxTues"/>
+                        <span></span>
+                    </label></td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td id="wedFrom"><input name="day_wednesday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start"></td>
+                    <td id="wedTo"><input name="day_wednesday_to" type="text" class="timepicker col s5"
+                                          placeholder="End"></td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxWed"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td id="thrFrom"><input name="day_thursday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start"></td>
+                    <td id="thrTo"><input name="day_thursday_to" type="text" class="timepicker col s5"
+                                          placeholder="End"></td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxThr"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td id="friFrom"><input name="day_friday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start"></td>
+                    <td id="friTo"><input name="day_friday_to" type="text" class="timepicker col s5" placeholder="End"
+                                         >
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxFri"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td id="satFrom"><input name="day_saturday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start"></td>
+                    <td id="satTo"><input name="day_saturday_to" type="text" class="timepicker col s5"
+                                          placeholder="End"></td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxSat"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td id="sunFrom"><input name="day_sunday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start"></td>
+                    <td id="sunTo"><input name="day_sunday_to" type="text" class="timepicker col s5" placeholder="End"
+                                         >
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxSun"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 class="col s12">Contact:</h4>
+
+            <div class="input-field col s4">
+                <input name="contactPerson" id="contact_person" type="text" class="validate">
+                <label for="contact_person">Contact Person</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="primaryNumber" id="primary_number" type="number" class="validate">
+                <label for="primary_number">Primary Number</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="secondaryNumber" id="secondary_number" type="number" class="validate">
+                <label for="secondary_number">Secondary Number</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="email" id="email" type="email" class="validate">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="website" id="website" type="text" class="validate">
+                <label for="website">Website</label>
+            </div>
+
+            <h4 class="col s12">Social:</h4>
+
+            <div class="input-field col s4">
+                <input name="fbLink" id="fbLink" type="text" class="validate">
+                <label for="fbLink">Facebook Link</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="twitter" id="twitter" type="text" class="validate">
+                <label for="twitter">Twitter Link</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="youtubeLink" id="youtubeLink" type="text" class="validate">
+                <label for="youtubeLink">Youtube Link</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="instaLink" id="instaLink" type="text" class="validate">
+                <label for="instaLink">Instagram Link</label>
+            </div>
+
+            <div class="file-field input-field col s12">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file" name="tuitionCoverPic">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Maximum 1 MB">
+                </div>
+            </div>
+
+            <div class="input-field col s4">
+                <input name="signedBy" id="signed_by" type="text" class="validate">
+                <label for="signed_by">Signed By</label>
+            </div>
+
+            <button class="btn waves-effect waves-light col s12 center-align" type="submit">Submit
+                <i class="material-icons right">send</i>
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="assets/js/tuition-update.js"></script>
+</body>
+</html>
