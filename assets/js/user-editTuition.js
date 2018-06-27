@@ -6,7 +6,7 @@ const TuitionJSON = $.ajax({
 });
 
 TuitionJSON.then((data) => {
-
+    //todo - optimize all the calls
     console.log(data);
     showFacility(data.facilities);
     showDescription(data.description);
@@ -14,16 +14,9 @@ TuitionJSON.then((data) => {
     showContactPerson(data.contactPerson, data.primaryNumber, data.secondaryNumber, data.email, data.website);
     showSocialLinks(data.fbLink, data.instaLink, data.youtubeLink);
     showDaynTime(data.dayAndTimeOfOperation);
-
-    /*Handlebars.registerHelper('list', function (items, options) {
-        let output = '';
-        for (let i = 0, l = items.length; i < l; i++) {
-            output += options.fn(items[i]);
-        }
-        return output;
-    });*/
-
-
+    showCourses(data.courses);
+    showResults(data.bragging);
+    showFaculty(data.team);
 });
 
 function showFacility(fasc) {
@@ -163,7 +156,6 @@ function deleteTime(day) {
 }
 
 function addDayAndTimeOfOperation(id) {
-    // todo
     // data is in Form
     // get the data and send it in post request
     const promise = $.ajax({
@@ -195,16 +187,60 @@ function saveDetails(id) {
     })
 }
 
-// id will be set by handleBars
-function deleteCourse(id) {
+function showCourses(array) {
+    let Input = $("#coursesInput").html();
+    let template = Handlebars.compile(Input);
+    Handlebars.registerHelper('list', function (items, options) {
+        let output = '';
+        for (let i = 0, l = items.length; i < l; i++) {
+            output += options.fn(items[i]);
+        }
+        return output;
+    });
 
-    //todo- send delete req to DB
+    let context = {
+        key: []
+    };
+
+    let counter = 1;
+    array.forEach((obj) => {
+        let newObj = {
+            id: counter,
+            title: obj.title,
+            duration: obj.duration,
+            fee: obj.fee,
+            ageGroup: obj.ageGroup,
+        };
+        context.key.push(newObj);
+        counter++;
+    });
+
+    $("#coursesContainer").append(template(context));
+}
+
+// id will be set by handleBars
+// first argument is title of course you want to delete (for server side), second is id of the card you want to delete (for client side)
+function deleteCourse(title, id) {
+
+    const promise = $.ajax({
+        url: 'http://localhost:6868/tuition/delete/courses/5b2b61f20079142dad3acc94',
+        type: 'DELETE',
+        data: {
+            title: title
+        }
+    });
+
+    promise.then(() => {
+        alert("course deleted successfully")
+    }).catch((err) => {
+        console.log(err);
+        alert("course deletion failed")
+    })
 
     $('#' + id).remove();
 }
 
 function addCourse() {
-    // todo
     // data is in Form
     // form id is newCourse
     // get the data and send it in post request
@@ -222,9 +258,143 @@ function addCourse() {
     })
 }
 
-function deleteResult(id) {
+function showResults(array) {
+    let Input = $("#resultInput").html();
+    let template = Handlebars.compile(Input);
+    Handlebars.registerHelper('list', function (items, options) {
+        let output = '';
+        for (let i = 0, l = items.length; i < l; i++) {
+            output += options.fn(items[i]);
+        }
+        return output;
+    });
 
-    //todo- send delete req to DB
+    let context = {
+        key: []
+    };
+
+    let counter = 1;
+    array.forEach((obj) => {
+        let newObj = {
+            id: counter,
+            img_path: obj.img_path,
+            title: obj.title,
+            description: obj.description,
+        };
+        context.key.push(newObj);
+        counter++;
+    });
+
+    $("#resultsContainer").append(template(context));
+
+}
+
+function addResult() {
+    // data is in Form
+    // form id is newCourse
+    // get the data and send it in post request
+    const promise = $.ajax({
+        url: 'http://localhost:6868/tuition/add/bragging/5b2b61f20079142dad3acc94',
+        type: 'POST',
+        data: $('#newResult').serialize()
+    });
+
+    promise.then(() => {
+        alert("result added successfully")
+    }).catch((err) => {
+        console.log(err);
+        alert("result addition failed")
+    })
+}
+
+function deleteResult(title, id) {
+
+    const promise = $.ajax({
+        url: 'http://localhost:6868/tuition/delete/bragging/5b2b61f20079142dad3acc94',
+        type: 'DELETE',
+        data: {
+            title: title
+        }
+    });
+
+    promise.then((data) => {
+        console.log(data)
+        alert("result deleted successfully")
+    }).catch((err) => {
+        console.log(err);
+        alert("result deletion failed")
+    });
+
+    $('#' + id).remove();
+}
+
+function showFaculty(array) {
+    let Input = $("#facultyInput").html();
+    let template = Handlebars.compile(Input);
+    Handlebars.registerHelper('list', function (items, options) {
+        let output = '';
+        for (let i = 0, l = items.length; i < l; i++) {
+            output += options.fn(items[i]);
+        }
+        return output;
+    });
+
+    let context = {
+        key: []
+    };
+
+    let counter = 1;
+    array.forEach((obj) => {
+        let newObj = {
+            id: counter,
+            img_path: obj.img_path,
+            name: obj.name,
+            description: obj.description,
+            qualification: obj.qualification
+        };
+        context.key.push(newObj);
+        counter++;
+    });
+
+    $("#facultyContainer").append(template(context));
+
+}
+
+function addFaculty() {
+    // data is in Form
+    // form id is newCourse
+    // get the data and send it in post request
+    const promise = $.ajax({
+        url: 'http://localhost:6868/tuition/add/team/5b2b61f20079142dad3acc94',
+        type: 'POST',
+        data: $('#newFaculty').serialize()
+    });
+
+    promise.then(() => {
+        alert("Faculty added successfully")
+    }).catch((err) => {
+        console.log(err);
+        alert("Faculty addition failed")
+    })
+}
+
+function deleteFaculty(name, id) {
+
+    const promise = $.ajax({
+        url: 'http://localhost:6868/tuition/delete/team/5b2b61f20079142dad3acc94',
+        type: 'DELETE',
+        data: {
+            name: name
+        }
+    });
+
+    promise.then((data) => {
+        console.log(data)
+        alert("faculty deleted successfully")
+    }).catch((err) => {
+        console.log(err);
+        alert("faculty deletion failed")
+    });
 
     $('#' + id).remove();
 }
