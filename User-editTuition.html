@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>User</title>
+    <title>User-editTuition</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
@@ -62,8 +62,12 @@
     </div>
 </nav>
 
-<div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark"
-     style="background-image: url(./assets/img/bg6.jpg);">
+<div id="coverImgContainer">
+    <script id="coverInput" type="text/x-handlebars-template">
+        <div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark"
+             style="background-image: url(./public/images/tuitionCoverPics{{path}});">
+        </div>
+    </script>
 </div>
 
 <div id="secondary_info" class="row">
@@ -96,7 +100,81 @@
                 <!--<div class="row">-->
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
+
                         <form id="aboutUsForm">
+
+                            <div id="basicContainer">
+                                <script id="basicInput" type="text/x-handlebars-template">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="card-title h3">Basic Details:</h2>
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <h6>Institute Name</h6>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input id="tName" value="{{name}}" class="form-control" type="text"
+                                                           name="name">
+                                                </div>
+
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <h6>Address</h6>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label for="al1">Address Line 1</label>
+                                                        <input class="form-control" value="{{addressLine1}}" type="text"
+                                                               id="al1" name="addressLine1">
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label for="al2">Address Line 2</label>
+                                                        <input class="form-control" value="{{addressLine2}}" type="text"
+                                                               id="al2" name="addressLine2">
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label for="city">City</label>
+                                                        <input class="form-control" value="{{city}}" type="text"
+                                                               id="city"
+                                                               name="city">
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label for="dist">District</label>
+                                                        <input class="form-control" value="{{district}}" type="text"
+                                                               id="dist"
+                                                               name="district">
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label for="state">State</label>
+                                                        <input class="form-control" value="{{state}}" type="text"
+                                                               id="state"
+                                                               name="state">
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label for="country">Country</label>
+                                                        <input class="form-control" value="{{country}}" type="text"
+                                                               id="country"
+                                                               name="country">
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label for="pin">Pin</label>
+                                                        <input class="form-control" value="{{pin}}" type="number"
+                                                               id="pin"
+                                                               name="pin">
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </script>
+                            </div>
+
+
                             <div class="card">
                                 <div class="card-body">
                                     <h2 class="card-title h3">Facilities:</h2>
@@ -142,6 +220,27 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- not tested-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">Add/Change Cover Pic</h2>
+
+                                    <div class="form-group form-file-upload form-file-multiple">
+                                        <input type="file" multiple="" class="inputFileHidden" name="tuitionCoverPic">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control inputFileVisible"
+                                                   placeholder="Click here">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-fab btn-round btn-primary">
+                                                    <i class="material-icons">attach_file</i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </form>
                         <!-- pass id of form to saveDetails function for AJAX put req -->
                         <button class="btn btn-info" onclick="saveDetails('aboutUsForm')">Save Changes</button>
@@ -451,7 +550,8 @@
                                         <form id="newCourse">
                                             <div class="form-group">
                                                 <label for="courseTitle1">Course Title</label>
-                                                <input required class="form-control" name="title" type="text" id="courseTitle1">
+                                                <input required class="form-control" name="title" type="text"
+                                                       id="courseTitle1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="courseAgeGroup">Age Group</label>
@@ -598,7 +698,8 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel4">Add Faculty</h5>
+                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel4">Add
+                                            Faculty</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
