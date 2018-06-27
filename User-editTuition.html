@@ -400,84 +400,38 @@
                     </div>
 
                     <div class="tab-pane" id="tab3">
-                        <div class="row justify-content-around">
+                        <div class="row justify-content-around" id="coursesContainer">
                             <!-- put a unique id using handleBars-->
-                            <div class="col-4" id="card1">
-                                <div class="card">
+                            <script id="coursesInput" type="text/x-handlebars-template">
+                                {{#list key}}
+                                <div class="col-4" id="course{{id}}">
+                                    <div class="card">
                                     <span style="position: absolute;left: 92%;top: -6%;">
-                                        <!-- send id in function deleteCourse()-->
+                                        <!-- send title of course and id of card in function deleteCourse()-->
                                         <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                                                onclick="deleteCourse('card1')">
+                                                onclick="deleteCourse('{{title}}','course{{id}}')">
                                             <i class="material-icons">
                                                 delete
                                             </i>
                                         </button>
                                     </span>
-                                    <div class="card-body">
-                                        <h4 class="card-title">Chemistry</h4>
-                                        <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
-                                        <h6 class="card-text">10th</h6>
-                                        <hr>
-                                        <h6 class=" mb-2 text-muted">Duration</h6>
-                                        <h6 class="card-text">2 months</h6>
-                                        <hr>
-                                        <h6 class=" mb-2 text-muted">Fee</h6>
-                                        <h6 class="card-text">INR 20000</h6>
-                                        <hr>
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{title}}</h4>
+                                            <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
+                                            <h6 class="card-text">{{ageGroup}}</h6>
+                                            <hr>
+                                            <h6 class=" mb-2 text-muted">Duration</h6>
+                                            <h6 class="card-text">{{duration}}</h6>
+                                            <hr>
+                                            <h6 class=" mb-2 text-muted">Fee</h6>
+                                            <h6 class="card-text">INR {{fee}}</h6>
+                                            <hr>
+                                        </div>
+                                        <h4 class="card-header card-header-info">Next Batch - {{nextBatch}}</h4>
                                     </div>
-                                    <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
                                 </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="card">
-                                    <span style="position: absolute;left: 92%;top: -6%;">
-                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                                                onclick="deleteCourse()">
-                                            <i class="material-icons">
-                                                delete
-                                            </i>
-                                        </button>
-                                    </span>
-                                    <div class="card-body">
-                                        <h4 class="card-title">Chemistry</h4>
-                                        <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
-                                        <h6 class="card-text">10th</h6>
-                                        <hr>
-                                        <h6 class=" mb-2 text-muted">Duration</h6>
-                                        <h6 class="card-text">2 months</h6>
-                                        <hr>
-                                        <h6 class=" mb-2 text-muted">Fee</h6>
-                                        <h6 class="card-text">INR 20000</h6>
-                                        <hr>
-                                    </div>
-                                    <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="card">
-                                    <span style="position: absolute;left: 92%;top: -6%;">
-                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                                                onclick="deleteCourse()">
-                                            <i class="material-icons">
-                                                delete
-                                            </i>
-                                        </button>
-                                    </span>
-                                    <div class="card-body">
-                                        <h4 class="card-title">Chemistry</h4>
-                                        <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
-                                        <h6 class="card-text">10th</h6>
-                                        <hr>
-                                        <h6 class=" mb-2 text-muted">Duration</h6>
-                                        <h6 class="card-text">2 months</h6>
-                                        <hr>
-                                        <h6 class=" mb-2 text-muted">Fee</h6>
-                                        <h6 class="card-text">INR 20000</h6>
-                                        <hr>
-                                    </div>
-                                    <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
-                                </div>
-                            </div>
+                                {{/list}}
+                            </script>
                         </div>
                         <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
                             Add More Course
@@ -497,7 +451,7 @@
                                         <form id="newCourse">
                                             <div class="form-group">
                                                 <label for="courseTitle1">Course Title</label>
-                                                <input class="form-control" name="title" type="text" id="courseTitle1">
+                                                <input required class="form-control" name="title" type="text" id="courseTitle1">
                                             </div>
                                             <div class="form-group">
                                                 <label for="courseAgeGroup">Age Group</label>
@@ -527,53 +481,42 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="tab4">
-                        <div class="row justify-content-around">
-                            <div class="col-4" id="card4">
-                                <div class="card">
+                        <div class="row justify-content-around" id="resultsContainer">
+                            <script id="resultInput" type="text/x-handlebars-template">
+                                {{#list key}}
+                                <div class="col-4" id="result{{id}}">
+                                    <div class="card">
                                     <span style="position: absolute;left: 92%;top: -6%;">
-                                        <!-- send id in function deleteCourse()-->
+                                        <!-- send (_id of result obj received , id of card) as arguments for function deleteResult()-->
                                         <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                                                onclick="deleteResult('card4')">
+                                                onclick="deleteResult('{{title}}','result{{id}}')">
                                             <i class="material-icons">
                                                 delete
                                             </i>
                                         </button>
                                     </span>
-                                    <img class="card-img-top" src="assets/img/tuition1.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's content.</p>
+                                        <img class="card-img-top" src="{{img_path}}" alt="">
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                {{title}}
+                                            </div>
+                                            <p class="card-text">{{description}}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="card">
-                                    <span style="position: absolute;left: 92%;top: -6%;">
-                                        <!-- send id in function deleteCourse()-->
-                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                                                onclick="deleteResult('card1')">
-                                            <i class="material-icons">
-                                                delete
-                                            </i>
-                                        </button>
-                                    </span>
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
+                                {{/list}}
+                            </script>
                         </div>
-                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
-                            Add More Course
+                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal3">
+                            Add More Result
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel2">Add Course</h5>
+                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel3">Add Result</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -581,20 +524,35 @@
                                     <div class="modal-body">
                                         <form id="newResult">
                                             <div class="form-group">
-                                                <label for="resultImg">Result Image</label>
-                                                <input class="form-control" name="title" type="image" id="resultImg">
+                                                <label for="resultTitle1">Result Title</label>
+                                                <input class="form-control" name="title" type="text" id="resultTitle1">
                                             </div>
                                             <div class="form-group">
-                                                <label for="resultDesc">Description</label>
-                                                <input class="form-control" name="ageGroup" type="text" id="resultDesc">
+                                                <label for="resultDescription">Description</label>
+                                                <input class="form-control" name="description" type="text"
+                                                       id="resultDescription">
+                                            </div>
+                                            <div class="form-group form-file-upload form-file-multiple">
+                                                <input type="file" multiple="" class="inputFileHidden">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control inputFileVisible"
+                                                           placeholder="image" name="img_path">
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-fab btn-round btn-primary">
+                                                            <i class="material-icons">
+                                                                add_photo_alternate
+                                                            </i>
+                                                        </button>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </form>
-                                        <small><p> Added course will appear after refresh</p></small>
+                                        <small><p> Added result will appear after refresh</p></small>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                                         </button>
-                                        <button type="button" class="btn btn-info" onclick="addCourse()">Save changes
+                                        <button type="button" class="btn btn-info" onclick="addResult()">Save changes
                                         </button>
                                     </div>
                                 </div>
@@ -602,49 +560,87 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="tab5">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="card card-nav-tabs">
-                                    <img class="card-img-bottom" src="assets/img/tuition2.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <div class="card-title">
-                                            Mrs. Falana
+                        <div class="row" id="facultyContainer">
+                            <script id="facultyInput" type="text/x-handlebars-template">
+                                {{#list key}}
+                                <div class="col-4" id="faculty{{id}}">
+                                    <div class="card card-nav-tabs">
+                                        <span style="position: absolute;left: 92%;top: -6%;">
+                                        <!-- send (name of the faculty , id of card) as arguments for function deleteFaculty()-->
+                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                                                onclick="deleteFaculty('{{name}}','faculty{{id}}')">
+                                            <i class="material-icons">
+                                                delete
+                                            </i>
+                                        </button>
+                                        </span>
+                                        <img class="card-img-bottom" src="{{img_path}}" alt="">
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                {{name}}
+                                            </div>
+                                            <div class="card-subtitle mb-2 text-muted">
+                                                {{qualification}}
+                                            </div>
+                                            <p class="card-text">{{description}}</p>
                                         </div>
-                                        <div class="card-subtitle mb-2 text-muted">
-                                            Mtech USA
-                                        </div>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's content.</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="card card-nav-tabs">
-                                    <img class="card-img-bottom" src="assets/img/tuition2.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <div class="card-title">
-                                            Mrs. Falana
-                                        </div>
-                                        <div class="card-subtitle mb-2 text-muted">
-                                            Mtech USA
-                                        </div>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's content.</p>
+                                {{/list}}
+                            </script>
+                        </div>
+                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal4">
+                            Add More Faculty
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel4" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel4">Add Faculty</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="card card-nav-tabs">
-                                    <img class="card-img-bottom" src="assets/img/tuition2.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <div class="card-title">
-                                            Mrs. Falana
-                                        </div>
-                                        <div class="card-subtitle mb-2 text-muted">
-                                            Mtech USA
-                                        </div>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up the bulk of the card's content.</p>
+                                    <div class="modal-body">
+                                        <form id="newFaculty">
+                                            <div class="form-group">
+                                                <label for="facultyName1">Faculty Name</label>
+                                                <input class="form-control" name="name" type="text" id="facultyName1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="facultyDescription">Description</label>
+                                                <input class="form-control" name="description" type="text"
+                                                       id="facultyDescription">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="facultyQualification">Qualification</label>
+                                                <input class="form-control" name="qualification" type="text"
+                                                       id="facultyQualification">
+                                            </div>
+                                            <div class="form-group form-file-upload form-file-multiple">
+                                                <input type="file" multiple="" class="inputFileHidden">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control inputFileVisible"
+                                                           placeholder="image" name="img_path">
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-fab btn-round btn-primary">
+                                                            <i class="material-icons">
+                                                                add_photo_alternate
+                                                            </i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <small><p> **Note- Added faculty will appear after refresh**</p></small>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="button" class="btn btn-info" onclick="addFaculty()">Save changes
+                                        </button>
                                     </div>
                                 </div>
                             </div>
