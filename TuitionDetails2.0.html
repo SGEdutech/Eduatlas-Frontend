@@ -73,7 +73,7 @@
             </i>
         </div>
         <div class="row align-items-center">
-            <h1 class="col-md-8">Tuition Name</h1>
+            <h1 id="tuition_name" class="col-md-8">Tuition Name</h1>
             <span id="rating" class="badge badge-pill badge-success">4.5</span>
             <div class="col-md-2">
                 <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#emailModal">
@@ -94,14 +94,15 @@
         <div class="row text-center">
             <div class="col-md-6">
                 <h6>Address</h6>
+                <p id="address"></p>
             </div>
             <div class="col-md-3">
                 <h6>Phone</h6>
-                <p>+91 9810399682</p>
+                <p id="phone"></p>
             </div>
             <div class="col-md-3">
                 <h6>Email</h6>
-                <p>entropy.ash@gmail.com</p>
+                <p class="email"></p>
             </div>
         </div>
     </div>
@@ -115,8 +116,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <ul class="nav nav-pills nav-pills-rose flex-column">
-                            <li class="nav-item"><a class="nav-link active" href="#tab1"
-                                                    data-toggle="tab">Description</a>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#tab1" data-toggle="tab">Description</a>
                             </li>
 
                             <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a></li>
@@ -134,23 +135,15 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h2 class="card-title h3">Facilities:</h2>
-                                        <div>
-                                            <div>
-                                                <i class="material-icons facility-icon">check_circle_outline</i>
-                                                <span>Food</span>
-                                            </div>
-                                            <div>
-                                                <i class="material-icons facility-icon">check_circle_outline</i>
-                                                <span>Water</span>
-                                            </div>
-                                            <div>
-                                                <i class="material-icons facility-icon">check_circle_outline</i>
-                                                <span>AC</span>
-                                            </div>
-                                            <div>
-                                                <i class="material-icons facility-icon">check_circle_outline</i>
-                                                <span>Snack Bars</span>
-                                            </div>
+                                        <div id="facilities_container">
+                                            <script id="facility_template" type="text/x-handlebars-template">
+                                                {{#each facilities}}
+                                                <div>
+                                                    <i class="material-icons facility-icon">check_circle_outline</i>
+                                                    <span>{{this}}</span>
+                                                </div>
+                                                {{/each}}
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -158,16 +151,20 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h2 class="card-title h3">About Us</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-                                            architecto, consequuntur cumque cupiditate debitis ducimus ex in laboriosam
-                                            nemo nobis odit optio quibusdam quisquam recusandae, sint suscipit ullam ut
-                                            voluptatum.</p>
+                                        <p id="description"></p>
                                     </div>
                                 </div>
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <h2 class="card-title h3">Catagory</h2>
+                                        <h2 class="card-title h3">Category</h2>
+                                    </div>
+                                    <div id="category_container">
+                                        <script id="category_template" type="text/x-handlebars-template">
+                                            {{#each categories}}
+                                            <span class="badge badge-success">{{this}}</span>
+                                            {{/each}}
+                                        </script>
                                     </div>
                                 </div>
 
@@ -184,47 +181,46 @@
                                             <div class="card-title h4">
                                                 Contact Person Name
                                             </div>
-                                            <div>
+                                            <div id="contact_person">
                                                 Donald Trump
                                             </div>
                                             <div class="card-title h4">
                                                 Primary Number
                                             </div>
-                                            <div>
+                                            <div id="primary_number">
                                                 +91 9810399682
                                             </div>
                                             <div class="card-title h4">
                                                 Alternate Number
                                             </div>
-                                            <div>
+                                            <div id="alternate_number">
                                                 +91 9810399682
                                             </div>
                                             <div class="card-title h4">
                                                 Email
                                             </div>
-                                            <div>
+                                            <div class="email">
                                                 testlongertext@gmail.com
                                             </div>
                                             <div class="card-title h4">
                                                 Website
                                             </div>
-                                            <div>
+                                            <div id="website">
                                                 www.alongtextwebsitename.com
                                             </div>
                                         </div>
                                     </div>
 
                                     <div id="opration_hours_containers" class="card card-nav-tabs col-md-5">
-                                        <div class="card-header card-header-danger">
+                                        <div class="card-title h3">
                                             Operates on
                                         </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">Monday: 8AM to 8PM</li>
-                                            <li class="list-group-item">Tuesday: 8AM to 8PM</li>
-                                            <li class="list-group-item">Wednesday: 8AM to 8PM</li>
-                                            <li class="list-group-item">Thursday: 8AM to 8PM</li>
-                                            <li class="list-group-item">Friday: 8AM to 8PM</li>
-                                            <li class="list-group-item">Saturday: 8AM to 8PM</li>
+                                        <ul id="opration_container" class="list-group list-group-flush">
+                                            <script id="operates_on_template" type="text/x-handlebars-template">
+                                                {{#each dayAndTimeOfOperation}}
+                                                <li class="list-group-item">{{day}}: {{from}} to {{to}}</li>
+                                                {{/each}}
+                                            </script>
                                         </ul>
                                     </div>
                                 </div>
@@ -796,7 +792,13 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4&callback=initMap"
         type="text/javascript"></script>
+
 <script src="assets/js/google-map.js"></script>
+
+<script src="assets/js/handlebars-v4.0.11.js"></script>
+
+<!-- Custom Code -->
+<script src="assets/js/tuition.js"></script>
 
 </body>
 </html>

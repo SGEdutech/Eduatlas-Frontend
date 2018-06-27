@@ -74,14 +74,14 @@
                 <td>{{category}}</td>
                 <td>{{updated}}</td>
                 <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" class="btn btn-info btn-round">
-                        <i class="material-icons">remove_red_eye</i>
-                    </button>
-                    <a href="AddTuition.html">
-                        <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                            <i class="material-icons">edit</i>
+                    <a href="./TuitionDetails2.0.html?{{_id}}">
+                        <button type="button" rel="tooltip" class="btn btn-info btn-round">
+                            <i class="material-icons">remove_red_eye</i>
                         </button>
                     </a>
+                    <button type="button" rel="tooltip" class="btn btn-success btn-round" onclick="alert('Feature coming right up')">
+                        <i class="material-icons">edit</i>
+                    </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round"
                             onclick="deleteTuition('{{_id}}')">
                         <i class="material-icons">close</i>
