@@ -1,5 +1,5 @@
 const form = $('#Form1');
-let userId;
+let userData;
 let tuitionIdCreated;
 form.submit(e => {
     e.preventDefault();
@@ -15,7 +15,7 @@ form.submit(e => {
         if (data == 'LogIn') {
             window.location.replace('./login-page.html');
         } else {
-            userId = data._id;
+            userData = data;
             let ifTuitionSaved = submitTuition();
             tuitionHaveBeenSaved(ifTuitionSaved);
         }
@@ -43,10 +43,10 @@ function tuitionHaveBeenSaved(ifTuitionSaved) {
         const ifUserUpdated = $.ajax({
 
             // todo - need to fix
-            url: 'http://localhost:6868/user/' + userId,
+            url: 'http://localhost:6868/user/' + userData._id,
             method: 'PUT',
             data: {
-                tuitionsOwned: data._id
+                tuitionsOwned: userData.tuitionsOwned + ',' + data._id
             }
         });
 
