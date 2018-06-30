@@ -7,7 +7,7 @@ let template = Handlebars.compile(source);
 // let contextArray = [];
 let context = {
     Name: "Tuition Name",
-    rating: "4",
+    rating: "",
     ifAd: "Ad",
     Address: "test address",
     Phone: "9812153423",

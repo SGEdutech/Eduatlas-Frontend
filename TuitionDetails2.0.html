@@ -41,20 +41,23 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="home-page.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Explore</a>
+                    <a class="nav-link" href="User-dashboard.html">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pages</a>
+                    <a class="nav-link" href="TuitionDiscovery.html">Institutes/Tuition</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="#">Schools</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Add Listing</a>
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="#">Events</a>
+                </li>
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="#">Blogs</a>
                 </li>
             </ul>
         </div>
@@ -67,14 +70,17 @@
 
 <div id="main_header" class="container">
     <div id="info_container" class="main main-raised">
-        <div id="verified-container">
+
+        <!-- todo - add after verification data-->
+        <!--<div id="verified-container">
             <i class="btn btn-info btn-fab btn-round">
                 <i class="material-icons">verified_user</i>
             </i>
-        </div>
+        </div>-->
         <div class="row align-items-center">
             <h1 id="tuition_name" class="col-md-8">Tuition Name</h1>
-            <span id="rating" class="badge badge-pill badge-success">4.5</span>
+            <!--todo - add after rating data-->
+            <!--<span id="rating" class="badge badge-pill badge-success">4.5</span>-->
             <div class="col-md-2">
                 <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#emailModal">
                     <i class="material-icons">
@@ -110,7 +116,7 @@
 
 <div id="secondary_info" class="row">
 
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -211,17 +217,121 @@
                                         </div>
                                     </div>
 
-                                    <div id="opration_hours_containers" class="card card-nav-tabs col-md-5">
+                                    <div id="" class="card card-nav-tabs col-md-5">
                                         <div class="card-title h3">
                                             Operates on
                                         </div>
-                                        <ul id="opration_container" class="list-group list-group-flush">
-                                            <script id="operates_on_template" type="text/x-handlebars-template">
-                                                {{#each dayAndTimeOfOperation}}
-                                                <li class="list-group-item">{{day}}: {{from}} to {{to}}</li>
-                                                {{/each}}
+                                        <div id="opration_hours_containers" class="">
+                                            <script id="dayAndTimeOfOperationInput"
+                                                    type="text/x-handlebars-template">
+
+                                                <div class="col-6">
+                                                    Monday:
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{monFrom}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{monTo}}
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-6">
+                                                    Tuesday:
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{tueFrom}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{tueTo}}
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-6">
+                                                    Wednsday:
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{wedFrom}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{wedTo}}
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-6">
+                                                    Thursday:
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{thrFrom}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{thrTo}}
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-6">
+                                                    Friday:
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{friFrom}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{friTo}}
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-6">
+                                                    Saturday:
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{satFrom}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{satTo}}
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-6">
+                                                    Sunday:
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{sunFrom}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="h6">
+                                                        {{sunTo}}
+                                                    </div>
+                                                </div>
+
+
                                             </script>
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -232,171 +342,97 @@
                                         <div class="card-title h3">
                                             Social Links:
                                         </div>
-                                        <button class="btn btn-just-icon btn-round btn-twitter social-icons">
-                                            <i class="fa fa-twitter"></i>
-                                        </button>
-                                        <button class="btn btn-just-icon btn-round btn-facebook social-icons">
-                                            <i class="fa fa-facebook"> </i>
-                                        </button>
-                                        <button class="btn btn-just-icon btn-round btn-youtube social-icons">
-                                            <i class="fa fa-youtube"> </i>
-                                        </button>
-                                        <button class="btn btn-just-icon btn-round btn-dribbble social-icons">
-                                            <i class="fa fa-instagram"></i>
-                                        </button>
+                                        <div id="linkContainer">
+                                            <script id="linksInput" type="text/x-handlebars-template">
+                                                <a href="{{facebook}}" target="_blank" class="btn btn-just-icon btn-round btn-facebook social-icons">
+                                                    <i class="fa fa-facebook"> </i>
+                                                </a>
+                                                <a href="{{youtube}}" class="btn btn-just-icon btn-round btn-youtube social-icons">
+                                                    <i class="fa fa-youtube"> </i>
+                                                </a>
+                                                <a href="{{instagram}}" class="btn btn-just-icon btn-round btn-dribbble social-icons">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                            </script>
+                                        </div>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="tab-pane" id="tab3">
-                                <div class="row justify-content-start">
-                                    <div class="col-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Chemistry</h4>
-                                                <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
-                                                <h6 class="card-text">10th</h6>
-                                                <hr>
-                                                <h6 class=" mb-2 text-muted">Duration</h6>
-                                                <h6 class="card-text">2 months</h6>
-                                                <hr>
-                                                <h6 class=" mb-2 text-muted">Fee</h6>
-                                                <h6 class="card-text">INR 20000</h6>
-                                                <hr>
+                                <div class="row justify-content-around" id="coursesContainer">
+                                    <!-- put a unique id using handleBars-->
+                                    <script id="coursesInput" type="text/x-handlebars-template">
+                                        {{#list key}}
+                                        <div class="col-4" id="course{{id}}">
+                                            <div class="card">
+                                                <span style="position: absolute;left: 92%;top: -6%;">
+                                                    <!-- send title of course and id of card in function deleteCourse()-->
+                                                </span>
+                                                <div class="card-body">
+                                                    <h4 class="card-title">{{title}}</h4>
+                                                    <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
+                                                    <h6 class="card-text">{{ageGroup}}</h6>
+                                                    <hr>
+                                                    <h6 class=" mb-2 text-muted">Duration</h6>
+                                                    <h6 class="card-text">{{duration}}</h6>
+                                                    <hr>
+                                                    <h6 class=" mb-2 text-muted">Fee</h6>
+                                                    <h6 class="card-text">INR {{fee}}</h6>
+                                                    <hr>
+                                                </div>
+                                                <h4 class="card-header card-header-info">Next Batch - {{nextBatch}}</h4>
                                             </div>
-                                            <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Chemistry</h4>
-                                                <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
-                                                <h6 class="card-text">10th</h6>
-                                                <hr>
-                                                <h6 class=" mb-2 text-muted">Duration</h6>
-                                                <h6 class="card-text">2 months</h6>
-                                                <hr>
-                                                <h6 class=" mb-2 text-muted">Fee</h6>
-                                                <h6 class="card-text">INR 20000</h6>
-                                                <hr>
-                                            </div>
-                                            <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Chemistry</h4>
-                                                <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
-                                                <h6 class="card-text">10th</h6>
-                                                <hr>
-                                                <h6 class=" mb-2 text-muted">Duration</h6>
-                                                <h6 class="card-text">2 months</h6>
-                                                <hr>
-                                                <h6 class=" mb-2 text-muted">Fee</h6>
-                                                <h6 class="card-text">INR 20000</h6>
-                                                <hr>
-                                            </div>
-                                            <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Chemistry</h4>
-                                                <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
-                                                <h6 class="card-text">10th</h6>
-                                                <hr>
-                                                <h6 class=" mb-2 text-muted">Duration</h6>
-                                                <h6 class="card-text">2 months</h6>
-                                                <hr>
-                                                <h6 class=" mb-2 text-muted">Fee</h6>
-                                                <h6 class="card-text">INR 20000</h6>
-                                                <hr>
-                                            </div>
-                                            <h4 class="card-header card-header-info">Next Batch - 23/11/18</h4>
-                                        </div>
-                                    </div>
+                                        {{/list}}
+                                    </script>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab4">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="card">
-                                            <img class="card-img-top" src="assets/img/tuition1.jpg"
-                                                 alt="Card image cap">
-                                            <div class="card-body">
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make
-                                                    up the bulk of the card's content.</p>
+                                <div class="row justify-content-around" id="resultsContainer">
+                                    <script id="resultInput" type="text/x-handlebars-template">
+                                        {{#list key}}
+                                        <div class="col-4" id="result{{id}}">
+                                            <div class="card">
+                                    <span style="position: absolute;left: 92%;top: -6%;">
+                                        <!-- send (_id of result obj received , id of card) as arguments for function deleteResult()-->
+                                    </span>
+                                                <img class="card-img-top" src="{{img_path}}" alt="">
+                                                <div class="card-body">
+                                                    <div class="card-title">
+                                                        {{title}}
+                                                    </div>
+                                                    <p class="card-text">{{description}}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make
-                                                    up the bulk of the card's content.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        {{/list}}
+                                    </script>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab5">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="card card-nav-tabs">
-                                            <img class="card-img-bottom" src="assets/img/tuition2.jpg"
-                                                 alt="Card image cap">
-                                            <div class="card-body">
-                                                <div class="card-title">
-                                                    Mrs. Falana
+                                <div class="row" id="facultyContainer">
+                                    <script id="facultyInput" type="text/x-handlebars-template">
+                                        {{#list key}}
+                                        <div class="col-4" id="faculty{{id}}">
+                                            <div class="card card-nav-tabs">
+                                        <span style="position: absolute;left: 92%;top: -6%;">
+                                        <!-- send (name of the faculty , id of card) as arguments for function deleteFaculty()-->
+                                        </span>
+                                                <img class="card-img-bottom" src="{{img_path}}" alt="">
+                                                <div class="card-body">
+                                                    <div class="card-title">
+                                                        {{name}}
+                                                    </div>
+                                                    <div class="card-subtitle mb-2 text-muted">
+                                                        {{qualification}}
+                                                    </div>
+                                                    <p class="card-text">{{description}}</p>
                                                 </div>
-                                                <div class="card-subtitle mb-2 text-muted">
-                                                    Mtech USA
-                                                </div>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make
-                                                    up the bulk of the card's content.</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="card card-nav-tabs">
-                                            <img class="card-img-bottom" src="assets/img/tuition2.jpg"
-                                                 alt="Card image cap">
-                                            <div class="card-body">
-                                                <div class="card-title">
-                                                    Mrs. Falana
-                                                </div>
-                                                <div class="card-subtitle mb-2 text-muted">
-                                                    Mtech USA
-                                                </div>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make
-                                                    up the bulk of the card's content.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="card card-nav-tabs">
-                                            <img class="card-img-bottom" src="assets/img/tuition2.jpg"
-                                                 alt="Card image cap">
-                                            <div class="card-body">
-                                                <div class="card-title">
-                                                    Mrs. Falana
-                                                </div>
-                                                <div class="card-subtitle mb-2 text-muted">
-                                                    Mtech USA
-                                                </div>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make
-                                                    up the bulk of the card's content.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        {{/list}}
+                                    </script>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab6">
@@ -491,204 +527,76 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="relatedTuitionContainer">
 
             <h3 class="col-md-12">Related Listings:</h3>
 
-            <div class="col-md-4">
-                <div class="card" style="">
-                    <!--put src = "assets/img/{{coverPic}}" -->
-                    <img class="card-img tinted" src="assets/img/tuition2.jpg" alt="Card image cap">
-                    <div class="card-img-overlay color-white m-0 p-3">
-                        <div class="row">
-                            <div class="col-9">
-                                <h4 class="card-title color-white m-0 p-0">Name</h4>
+            <script id="entry-template2" type="text/x-handlebars-template">
+                <div class="col-4">
+                    <div class="card" style="">
+                        <!--put src = "assets/img/{{coverPic}}" -->
+                        <img class="card-img tinted" src="assets/img/tuition2.jpg" alt="Card image cap">
+                        <div class="card-img-overlay color-white m-0 p-3">
+                            <div class="row">
+                                <div class="col-9">
+                                    <h4 class="card-title color-white m-0 p-0">{{Name}}</h4>
+                                </div>
+                                <div class="col-2">
+                                    <!-- todo - uncomment when verification data there -->
+                                    <!--<button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
+                                        <i class="material-icons">
+                                            verified_user
+                                        </i>
+                                    </button>-->
+                                </div>
                             </div>
-                            <div class="col-2">
-                                <button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
-                                    <i class="material-icons">
-                                        verified_user
-                                    </i>
-                                </button>
+                            <div class="row">
+                                <div class="col-8">
+                                    <p class="card-text m-0 color-white">{{Category}}</p>
+                                </div>
+                                <div class="col-3">
+                                    <!--<span class="badge badge-info">{{ifAd}}</span>-->
+                                </div>
+
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-8">
-                                <p class="card-text m-0 color-white">Category</p>
+                        <div class="card-body px-4 position-relative">
+                            <!-- todo uncomment when rating available-->
+                            <!--<button class="btn btn-info btn-fab btn-round position-absolute moveUp">
+                                {{rating}}
+                            </button>-->
+                            <div class="row">
+                                <i class="material-icons d-inline-flex icon-small">
+                                    place
+                                </i>
+                                <p class="card-text text m-0 ">{{Address}}</p>
                             </div>
-                            <div class="col-3">
-                                <!--<span class="badge badge-info">{{ifAd}}</span>-->
+                            <div class="row">
+                                <i class="material-icons d-inline-flex icon-small">
+                                    local_phone
+                                </i>
+                                <p class="card-text m-0 row">{{Phone}}</p>
                             </div>
 
+                            <div class="row">
+                                <i class="material-icons d-inline-flex icon-small">
+                                    alternate_email
+                                </i>
+                                <p class="card-text m-0 row">{{Email}} </p>
+                            </div>
+
+
+                            <a href="http://localhost:6868/app/TuitionDetails2.0.html?_id={{id}}" class="btn btn-info">Details</a>
                         </div>
+
                     </div>
-                    <div class="card-body p-4 position-relative">
-                        <button class="btn btn-info btn-fab btn-round position-absolute moveUp">
-                            4
-                        </button>
-                        <div class="row">
-                            <i class="material-icons d-inline-flex icon-small">
-                                place
-                            </i>
-                            <p class="card-text text m-0 ">
-                                <small>Address</small>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <i class="material-icons d-inline-flex icon-small">
-                                local_phone
-                            </i>
-                            <p class="card-text m-0 row">
-                                <small>Phone</small>
-                            </p>
-                        </div>
-
-                        <div class="row">
-                            <i class="material-icons d-inline-flex icon-small">
-                                alternate_email
-                            </i>
-                            <p class="card-text m-0 row">
-                                <small>Email</small>
-                            </p>
-                        </div>
-
-
-                        <a href="#" class="btn btn-info">Details</a>
-                    </div>
-
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="">
-                    <!--put src = "assets/img/{{coverPic}}" -->
-                    <img class="card-img tinted" src="assets/img/tuition2.jpg" alt="Card image cap">
-                    <div class="card-img-overlay color-white m-0 p-3">
-                        <div class="row">
-                            <div class="col-9">
-                                <h4 class="card-title color-white m-0 p-0">Name</h4>
-                            </div>
-                            <div class="col-2">
-                                <button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
-                                    <i class="material-icons">
-                                        verified_user
-                                    </i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-8">
-                                <p class="card-text m-0 color-white">Category</p>
-                            </div>
-                            <div class="col-3">
-                                <!--<span class="badge badge-info">{{ifAd}}</span>-->
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="card-body p-4 position-relative">
-                        <button class="btn btn-info btn-fab btn-round position-absolute moveUp">
-                            4
-                        </button>
-                        <div class="row">
-                            <i class="material-icons d-inline-flex icon-small">
-                                place
-                            </i>
-                            <p class="card-text text m-0 ">
-                                <small>Address</small>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <i class="material-icons d-inline-flex icon-small">
-                                local_phone
-                            </i>
-                            <p class="card-text m-0 row">
-                                <small>Phone</small>
-                            </p>
-                        </div>
-
-                        <div class="row">
-                            <i class="material-icons d-inline-flex icon-small">
-                                alternate_email
-                            </i>
-                            <p class="card-text m-0 row">
-                                <small>Email</small>
-                            </p>
-                        </div>
-
-
-                        <a href="#" class="btn btn-info">Details</a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="">
-                    <!--put src = "assets/img/{{coverPic}}" -->
-                    <img class="card-img tinted" src="assets/img/tuition2.jpg" alt="Card image cap">
-                    <div class="card-img-overlay color-white m-0 p-3">
-                        <div class="row">
-                            <div class="col-9">
-                                <h4 class="card-title color-white m-0 p-0">Name</h4>
-                            </div>
-                            <div class="col-2">
-                                <button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
-                                    <i class="material-icons">
-                                        verified_user
-                                    </i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-8">
-                                <p class="card-text m-0 color-white">Category</p>
-                            </div>
-                            <div class="col-3">
-                                <!--<span class="badge badge-info">{{ifAd}}</span>-->
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="card-body p-4 position-relative">
-                        <button class="btn btn-info btn-fab btn-round position-absolute moveUp">
-                            4
-                        </button>
-                        <div class="row">
-                            <i class="material-icons d-inline-flex icon-small">
-                                place
-                            </i>
-                            <p class="card-text text m-0 ">
-                                <small>Address</small>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <i class="material-icons d-inline-flex icon-small">
-                                local_phone
-                            </i>
-                            <p class="card-text m-0 row">
-                                <small>Phone</small>
-                            </p>
-                        </div>
-
-                        <div class="row">
-                            <i class="material-icons d-inline-flex icon-small">
-                                alternate_email
-                            </i>
-                            <p class="card-text m-0 row">
-                                <small>Email</small>
-                            </p>
-                        </div>
-
-
-                        <a href="#" class="btn btn-info">Details</a>
-                    </div>
-
-                </div>
-            </div>
+            </script>
         </div>
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
 
         <div class="card" style="height: 300px; width: 100%; background-color: black">
             <h2 class="text-center" style="color: white">Irritating Advertisement</h2>
@@ -795,6 +703,7 @@
 
 <script src="assets/js/google-map.js"></script>
 
+<!--handle bars-->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 
 <!-- Custom Code -->

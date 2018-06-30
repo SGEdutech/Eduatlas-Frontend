@@ -1,6 +1,12 @@
 let url_string = location.href; //window.location.href
 let url = new URL(url_string);
-let TuitionId = url.searchParams.get("a");
+let TuitionId = '';
+TuitionId = url.searchParams.get("a");
+if (TuitionId == '') {
+    TuitionId = '5b2b61f20079142dad3acc94'
+} else if (!TuitionId) {
+    TuitionId = '5b2b61f20079142dad3acc94'
+}
 
 const TuitionJSON = $.ajax({
     url: 'http://localhost:6868/tuition/',
@@ -190,7 +196,7 @@ function addDayAndTimeOfOperation(id) {
     // data is in Form
     // get the data and send it in post request
     const promise = $.ajax({
-        url: 'http://localhost:6868/tuition/add/dayAndTimeOfOperation/'+TuitionId,
+        url: 'http://localhost:6868/tuition/add/dayAndTimeOfOperation/' + TuitionId,
         type: 'POST',
         data: $('#' + id).serialize()
     });
@@ -254,7 +260,7 @@ function showCourses(array) {
 function deleteCourse(title, id) {
 
     const promise = $.ajax({
-        url: 'http://localhost:6868/tuition/delete/courses/'+TuitionId,
+        url: 'http://localhost:6868/tuition/delete/courses/' + TuitionId,
         type: 'DELETE',
         data: {
             title: title
@@ -276,7 +282,7 @@ function addCourse() {
     // form id is newCourse
     // get the data and send it in post request
     const AddedCourse = $.ajax({
-        url: 'http://localhost:6868/tuition/add/courses/'+TuitionId,
+        url: 'http://localhost:6868/tuition/add/courses/' + TuitionId,
         type: 'POST',
         data: $('#newCourse').serialize()
     });
@@ -325,7 +331,7 @@ function addResult() {
     // form id is newCourse
     // get the data and send it in post request
     const promise = $.ajax({
-        url: 'http://localhost:6868/tuition/add/bragging/'+TuitionId,
+        url: 'http://localhost:6868/tuition/add/bragging/' + TuitionId,
         type: 'POST',
         data: $('#newResult').serialize()
     });
@@ -341,7 +347,7 @@ function addResult() {
 function deleteResult(title, id) {
 
     const promise = $.ajax({
-        url: 'http://localhost:6868/tuition/delete/bragging/'+TuitionId,
+        url: 'http://localhost:6868/tuition/delete/bragging/' + TuitionId,
         type: 'DELETE',
         data: {
             title: title
@@ -395,7 +401,7 @@ function addFaculty() {
     // form id is newCourse
     // get the data and send it in post request
     const promise = $.ajax({
-        url: 'http://localhost:6868/tuition/add/team/'+TuitionId,
+        url: 'http://localhost:6868/tuition/add/team/' + TuitionId,
         type: 'POST',
         data: $('#newFaculty').serialize()
     });
@@ -411,7 +417,7 @@ function addFaculty() {
 function deleteFaculty(name, id) {
 
     const promise = $.ajax({
-        url: 'http://localhost:6868/tuition/delete/team/'+TuitionId,
+        url: 'http://localhost:6868/tuition/delete/team/' + TuitionId,
         type: 'DELETE',
         data: {
             name: name

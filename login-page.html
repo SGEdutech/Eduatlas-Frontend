@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>User-dashboard</title>
+    <title>User-editDetails</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="assets/css/user.css">
 
 </head>
-<body style="height: 2000px">
+<body>
 
 <nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
      id="sectionsNav">
@@ -41,10 +41,10 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link" href="home-page.html">Home</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="User-dashboard.html">Dashboard</a>
                 </li>
                 <li class="nav-item">
@@ -64,111 +64,72 @@
     </div>
 </nav>
 
-<div id="coverImgContainer">
+<!--<div id="coverImgContainer">
     <div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark"
          style="background-image: url(assets/img/bg2.jpg);">
     </div>
-</div>
-
-<div id="secondary_info" class="row">
-
-    <div class="col-md-3">
-
-        <div class="card">
-            <div class="card-body">
-                <div class="fileinput fileinput-new text-center">
-                    <div class="fileinput-new thumbnail img-raised" id="userProfilePicContainer">
-
-                    </div>
-                </div>
-                <div class="card-subtitle text-muted h5" id="userIdContainer"></div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <!-- todo - put image in same form as other details-->
-                <ul class="nav nav-pills nav-pills-rose flex-column">
-                    <hr>
-                    <li class="nav-item"><a class="nav-link active" href="#tab1"
-                                            data-toggle="tab"> Dashboard</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="./User-editDetails.html"> Edit Profile</a>
-                    </li>
-
-                    <li class="nav-item"><a class="nav-link" href="./User-addTuition.html"> Add Your Institute/Tuition</a>
-                    </li>
-
-                </ul>
-                <!--<hr>-->
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-9">
-        <div class="card">
-            <div class="card-body">
-                <!--<div class="row">-->
-                <div class="tab-content">
-
-                    <div class="tab-pane active" id="tab1">
-
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title">
-                                    Manage Your Institute/Tuition
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title">
-                                    Manage Your Schools
-                                </div>
+</div>-->
+<div class="page-header header-filter" filter-color="purple"
+     style="background-image: url(assets/img/bg7.jpg); background-size: cover; background-position: top center;height: 1000px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 ml-auto mr-auto">
+                <div class="card ">
+                    <form class="form" method="POST" action="http://localhost:6868/auth/local/login">
+                        <div class="card-header card-header-primary text-center">
+                            <h4 class="card-title">Log in</h4>
+                            <div class="social-line">
+                                <a href="#pablo" class="btn btn-just-icon btn-link">
+                                    <i class="fa fa-facebook-square"></i>
+                                </a>
+                                <a href="#pablo" class="btn btn-just-icon btn-link">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
                             </div>
                         </div>
 
-                    </div>
+                        <p class="description text-center">Or Be Classical</p>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">mail</i>
+                                        </span>
+                                </div>
+                                <input type="email" class="form-control" placeholder="Email..." name="username">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Password..." name="password">
+                            </div>
+                            <!-- If you want to add a checkbox to this form, uncomment this code
 
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="optionsCheckboxes" checked>
+                                    Subscribe to newsletter
+                                </label>
+                            </div> -->
+                        </div>
+                        <div class="footer text-center">
+                            <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</button>
+                        </div>
+                        <hr>
+                        <div class="container text-center">
+                            <p>Don't have a account ?</p>
+                            <a href="signup-page.html" class="btn btn-primary rounded">SignUp</a>
+                        </div>
+                    </form>
                 </div>
-                <!--</div>-->
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<!-- Email Modal -->
-<div class="modal fade" id="emailModal" tabindex="-1" role="dialog"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Contact via E-mail:</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group m-0">
-                        <label for="email_name" class="bmd-label-floating">Name</label>
-                        <input type="text" class="form-control" id="email_name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email_message">Message</label>
-                        <textarea class="form-control" id="email_message" rows="3"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send mail</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
@@ -204,7 +165,7 @@
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 
 <!-- Custom Js file for user-->
-<script src="assets/js/user.js"></script>
+<script src="assets/js/login-page.js"></script>
 
 
 </body>
