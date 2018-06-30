@@ -1,5 +1,5 @@
 const promise = $.ajax({
-    url: 'http://localhost:6868/auth/local/login',
+    url: 'http://eduatlas.com/auth/local/login',
 });
 
 promise.then((data) => {

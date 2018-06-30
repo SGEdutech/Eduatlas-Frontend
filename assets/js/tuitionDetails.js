@@ -1,5 +1,5 @@
 let tuitionDeytails = $.ajax({
-    url: 'http://localhost:6868/tuition?_id=5b2a27743b14e67234d4d9ce',
+    url: 'http://eduatlas.com/tuition?_id=5b2a27743b14e67234d4d9ce',
 });
 
 tuitionDeytails.then((data) => {

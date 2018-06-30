@@ -6,7 +6,7 @@ form.submit(e => {
 
     //check if user Logged in
     const ifUserLoggedIn = $.ajax({
-        url: 'http://localhost:6868/user',
+        url: 'http://eduatlas.com/user',
     });
 
     // todo - this thing below won't protect our server from user-less entries
@@ -43,7 +43,7 @@ function tuitionHaveBeenSaved(ifTuitionSaved) {
         const ifUserUpdated = $.ajax({
 
             // todo - need to fix
-            url: 'http://localhost:6868/user/' + userData._id,
+            url: 'http://eduatlas.com/user/' + userData._id,
             method: 'PUT',
             data: {
                 tuitionsOwned: userData.tuitionsOwned + ',' + data._id
