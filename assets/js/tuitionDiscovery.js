@@ -13,7 +13,8 @@ let context = {
     Phone: "9812153423",
     Email: "heloo@gmail.com",
     coverPic: "",
-    Category: "category"
+    Category: "category",
+    id: ""
 };
 
 
@@ -21,6 +22,7 @@ AllTuitionJSON.then((data) => {
     console.log(data);
     for (keys in data) {
         if (data.hasOwnProperty(keys)) {
+            context.id = data[keys]._id;
             context.Name = data[keys].name;
             context.Address = `${data[keys].addressLine1},${data[keys].addressLine2},${data[keys].city},${data[keys].state}`;
             context.Phone = data[keys].primaryNumber;
