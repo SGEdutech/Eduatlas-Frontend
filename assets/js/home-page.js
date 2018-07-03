@@ -1,6 +1,10 @@
 $(function () {
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition/all',
+        url: 'http://localhost:6868/tuition/all',
+        data: {
+            items: 3,
+            page: 1
+        }
     });
 
     let source = $("#entry-template2").html();
@@ -14,7 +18,7 @@ $(function () {
         Email: "email",
         coverPic: "",
         Category: "category",
-        id:"#"
+        id: "#"
     };
 
     promise.then((data) => {

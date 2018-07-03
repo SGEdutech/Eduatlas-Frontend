@@ -1,4 +1,3 @@
-// let queryId = window.location.search.slice(1);
 let url_string = location.href; //window.location.href
 let url = new URL(url_string);
 let queryId = url.searchParams.get("_id");

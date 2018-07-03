@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Hello, world!</title>
+    <title>Institutes/Tuition</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
@@ -182,6 +182,32 @@
                 </script>-->
 
 
+            </div>
+            <div class="row justify-content-around">
+                <nav aria-label="...">
+                    <ul class="pagination" id="paginationContainer">
+                        <script id="entry-template3" type="text/x-handlebars-template">
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="http://localhost:6868/app/TuitionDiscovery.html?page={{pageM1}}&items={{items}}"
+                                   tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="http://localhost:6868/app/TuitionDiscovery.html?page={{pageM1}}&items={{items}}">{{pageM1}}</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">{{page}} <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                                     href="http://localhost:6868/app/TuitionDiscovery.html?page={{pageP1}}&items={{items}}">{{pageP1}}</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="http://localhost:6868/app/TuitionDiscovery.html?page={{pageP1}}&items={{items}}">Next</a>
+                            </li>
+                        </script>
+                    </ul>
+                </nav>
             </div>
         </div>
 
