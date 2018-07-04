@@ -3,7 +3,8 @@ $(function () {
         url: 'http://localhost:6868/tuition/all',
         data: {
             items: 3,
-            page: 1
+            page: 1,
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category'
         }
     });
 

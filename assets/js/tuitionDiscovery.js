@@ -1,15 +1,18 @@
 let url_string = location.href; //window.location.href
 let url = new URL(url_string);
 let itemsPerPage = url.searchParams.get("items");
-let pageNum = url.searchParams.get("page");
-let pageP1 = parseInt(pageNum) + 1;
-let pageM1 = parseInt(pageNum) === 0 ? parseInt(pageNum) : parseInt(pageNum) - 1;
+let pageNum = parseInt(url.searchParams.get("page"));
+let pageP1 = pageNum + 1;
+let pageM1 = pageNum === 0 ? pageNum : pageNum - 1;
+
+console.log(itemsPerPage + '-' + pageNum);
 
 const AllTuitionJSON = $.ajax({
     url: 'http://localhost:6868/tuition/all',
     data: {
         items: itemsPerPage,
-        page: pageNum
+        page: pageNum,
+        demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category'
     }
 });
 
