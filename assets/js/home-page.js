@@ -42,3 +42,29 @@ $(function () {
 
 
 });
+
+let suggestionBox = $('#suggestions');
+
+function getSearchResults(value) {
+    $.ajax({
+        url: 'http://localhost:6868/tuition/search',
+        data: {
+            search: value
+        }
+    }).then(data => {
+        suggestionBox.empty();
+        let toAdd = '';
+        data.forEach(obj => {
+            toAdd += `<a href="http://localhost:6868/app/TuitionDetails2.0.html?_id=${obj._id}" class="color-white">${obj.name}</a><br>`
+        });
+        suggestionBox.append(toAdd)
+
+    }).catch(err => {
+        console.log(err);
+    })
+
+}
+
+function removeSuggestions() {
+    suggestionBox.empty();
+}
