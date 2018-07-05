@@ -3,11 +3,12 @@
 // dummy user data
 function tryToGetData() {
     const promise = $.ajax({
-        url: 'http://eduatlas.com/user/',
+        url: 'http://eduatlas.com/user/check',
     });
 
 
     promise.then((data) => {
+        // console.log(data);
         if (data == 'LogIn') {
             window.location.replace('./login-page.html');
         }
@@ -67,7 +68,7 @@ function getUserOwnedTuition(ids) {
 
             context.id = data._id;
             context.Name = data.name;
-            context.Address =`${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
+            context.Address = `${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
             context.Phone = data.primaryNumber;
             context.Email = data.email;
             context.coverPic = data.img_coverPic;
@@ -87,7 +88,7 @@ function getUserOwnedTuition(ids) {
 
 function editUser(id) {
     const editUserPromise = $.ajax({
-        url: 'http://localhost:6868/user/' + userData._id,
+        url: 'http://eduatlas.com/user/' + userData._id,
         type: 'PUT',
         data: $('#' + id).serialize()
     });

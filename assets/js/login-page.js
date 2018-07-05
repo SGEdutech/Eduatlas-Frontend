@@ -1,5 +1,6 @@
+/*
 const promise = $.ajax({
-    url: 'http://eduatlas.com/auth/local/login',
+    url: 'http://localhost:6868/auth/local/login',
 });
 
 promise.then((data) => {
@@ -7,4 +8,4 @@ promise.then((data) => {
     window.location.replace('./User-dashboard.html?a=')
 }).catch((err) => {
     console.log(err)
-});
+});*/
