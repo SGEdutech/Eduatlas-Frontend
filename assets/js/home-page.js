@@ -1,6 +1,6 @@
 $(function () {
     const promise = $.ajax({
-        url: 'http://localhost:6868/tuition/all',
+        url: 'http://eduatlas.com/tuition/all',
         data: {
             items: 3,
             page: 1,
@@ -47,7 +47,7 @@ let suggestionBox = $('#suggestions');
 
 function getSearchResults(value) {
     $.ajax({
-        url: 'http://localhost:6868/tuition/search',
+        url: 'http://eduatlas.com/tuition/search',
         data: {
             search: value
         }
@@ -55,7 +55,7 @@ function getSearchResults(value) {
         suggestionBox.empty();
         let toAdd = '';
         data.forEach(obj => {
-            toAdd += `<a href="http://localhost:6868/app/TuitionDetails2.0.html?_id=${obj._id}" class="color-white">${obj.name}</a><br>`
+            toAdd += `<a href="http://eduatlas.com/app/TuitionDetails2.0.html?_id=${obj._id}" class="color-white">${obj.name}</a><br>`
         });
         suggestionBox.append(toAdd)
 
@@ -65,6 +65,7 @@ function getSearchResults(value) {
 
 }
 
+/*
 function removeSuggestions() {
     suggestionBox.empty();
-}
+}*/
