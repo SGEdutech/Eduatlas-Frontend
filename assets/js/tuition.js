@@ -218,7 +218,7 @@ function getRelatedListing(category) {
     // maybe add server side route to get this
     let arrayOfCategory = category.split(',');
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition?category=' + arrayOfCategory[0],
+        url: '/tuition?category=' + arrayOfCategory[0],
         method: 'GET'
     });
 
