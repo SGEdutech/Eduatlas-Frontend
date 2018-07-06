@@ -46,7 +46,7 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="User-dashboard.html">Dashboard</a>
+                    <a class="nav-link" onclick="checkLogin('./User-dashboard.html')" style="cursor:pointer">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="TuitionDiscovery.html">Institutes/Tuition</a>
@@ -54,12 +54,25 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Schools</a>
                 </li>
-                <li class="nav-item disabled">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false"><i class="material-icons">
+                        add
+                    </i>
+                        ADD LISTING</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" onclick="checkLogin('./User-addTuition.html')">Add Tuition</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>
+                    </div>
+                </li>
+
+                <!--<li class="nav-item disabled">
                     <a class="nav-link" href="#">Events</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link" href="#">Blogs</a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>
@@ -763,6 +776,9 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4&callback=initMap"
         type="text/javascript"></script>
 <script src="assets/js/google-map.js"></script>
+
+<!--custom js file-->
+<script src="assets/js/login-check.js"></script>
 
 </body>
 </html>
