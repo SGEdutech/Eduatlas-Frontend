@@ -76,9 +76,9 @@
     <div class="col-md-3">
 
         <div class="card">
-            <div class="card-body">
+            <div class="card-body text-center">
                 <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                    <div class="fileinput-new thumbnail img-raised">
+                    <div class="fileinput-new thumbnail img-raised" id="profilePicContainer">
                         <img src="https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">
                     </div>
                     <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
@@ -129,220 +129,230 @@
                         <form id="Form1" method="" action="">
 
                             <div id="basicContainer">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2 class="card-title h3">Personal Info:</h2>
-                                        <div class="row align-items-center">
+                                <script id="userProfileInput" type="text/x-handlebars-template">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="card-title h3">Personal Info:</h2>
+                                            <div class="row align-items-center">
 
-                                            <div class="form-group col-4">
-                                                <label for="firstName" class="">First Name</label>
-                                                <input type="text" class="form-control" id="firstName"
-                                                       name="firstName">
-                                            </div>
-
-                                            <div class="form-group col-4">
-                                                <label for="exampleInput2" class="bmd-label-floating">Middle
-                                                    Name</label>
-                                                <input type="text" class="form-control" id="exampleInput2"
-                                                       name="middleName">
-                                            </div>
-
-                                            <div class="form-group col-4">
-                                                <label for="exampleInput3" class="bmd-label-floating">Last Name</label>
-                                                <input type="text" class="form-control" id="exampleInput3"
-                                                       name="lastName">
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="primaryEmail" class="">Primary
-                                                    Email/Username (can't change)</label>
-                                                <input type="email" class="form-control" id="primaryEmail" name=""
-                                                       value="test@gmail.com">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput5" class="bmd-label-floating">Secondary Email
-                                                    (optional)</label>
-                                                <input type="email" class="form-control" id="exampleInput5"
-                                                       name="secondaryEmail" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput6" class="bmd-label-floating">Contact
-                                                    Number</label>
-                                                <input type="number" class="form-control" id="exampleInput6"
-                                                       name="phone" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput7" class="bmd-label-floating">Address Line
-                                                    1</label>
-                                                <input type="text" class="form-control" id="exampleInput7"
-                                                       name="addressLine1" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput8" class="bmd-label-floating">Address Line
-                                                    2</label>
-                                                <input type="text" class="form-control" id="exampleInput8"
-                                                       name="addressLine2" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput9" class="bmd-label-floating">City</label>
-                                                <input type="text" class="form-control" id="exampleInput9"
-                                                       name="city" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput10" class="bmd-label-floating">District</label>
-                                                <input type="text" class="form-control" id="exampleInput10"
-                                                       name="district" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput11" class="bmd-label-floating">State</label>
-                                                <input type="text" class="form-control" id="exampleInput11"
-                                                       name="state" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput12" class="bmd-label-floating">Country</label>
-                                                <input type="text" class="form-control" id="exampleInput12"
-                                                       name="country" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput13" class="bmd-label-floating">Pin</label>
-                                                <input type="number" class="form-control" id="exampleInput13"
-                                                       name="pin" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="exampleInput14" class="">Date of birth</label>
-                                                <input type="date" class="form-control" id="exampleInput14"
-                                                       name="dateOfBirth" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-12">
-
-                                                <div class="row">
-                                                    <p class="text-muted">Gender</p>
+                                                <div class="form-group col-4">
+                                                    <label for="firstName" class="">First Name</label>
+                                                    <input type="text" class="form-control" id="firstName"
+                                                           name="firstName" value="{{firstName}}">
                                                 </div>
-                                                <div class="row justify-content-around">
-                                                    <div class="form-check form-check-radio">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="radio"
-                                                                   name="isMale" id="exampleRadios2" value="true"
-                                                                   checked>
-                                                            Male
-                                                            <span class="circle">
+
+                                                <div class="form-group col-4">
+                                                    <label for="exampleInput2" class="bmd-label-floating">Middle
+                                                        Name</label>
+                                                    <input type="text" class="form-control" id="exampleInput2"
+                                                           name="middleName" value="{{middleName}}">
+                                                </div>
+
+                                                <div class="form-group col-4">
+                                                    <label for="exampleInput3" class="bmd-label-floating">Last
+                                                        Name</label>
+                                                    <input type="text" class="form-control" id="exampleInput3"
+                                                           name="lastName" value="{{lastName}}">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="primaryEmail" class="">Primary
+                                                        Email/Username (can't change)</label>
+                                                    <input type="email" class="form-control" id="primaryEmail" name=""
+                                                           value="{{primaryEmail}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput5" class="bmd-label-floating">Secondary
+                                                        Email
+                                                        (optional)</label>
+                                                    <input type="email" class="form-control" id="exampleInput5"
+                                                           name="secondaryEmail" value="{{secondaryEmail}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput6" class="bmd-label-floating">Contact
+                                                        Number</label>
+                                                    <input type="number" class="form-control" id="exampleInput6"
+                                                           name="phone" value="{{phone}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput7" class="bmd-label-floating">Address Line
+                                                        1</label>
+                                                    <input type="text" class="form-control" id="exampleInput7"
+                                                           name="addressLine1" value="{{addressLine1}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput8" class="bmd-label-floating">Address Line
+                                                        2</label>
+                                                    <input type="text" class="form-control" id="exampleInput8"
+                                                           name="addressLine2" value="{{addressLine2}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput9" class="bmd-label-floating">City</label>
+                                                    <input type="text" class="form-control" id="exampleInput9"
+                                                           name="city" value="{{city}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput10"
+                                                           class="bmd-label-floating">District</label>
+                                                    <input type="text" class="form-control" id="exampleInput10"
+                                                           name="district" value="{{district}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput11" class="bmd-label-floating">State</label>
+                                                    <input type="text" class="form-control" id="exampleInput11"
+                                                           name="state" value="{{state}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput12"
+                                                           class="bmd-label-floating">Country</label>
+                                                    <input type="text" class="form-control" id="exampleInput12"
+                                                           name="country" value="{{country}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput13" class="bmd-label-floating">Pin</label>
+                                                    <input type="number" class="form-control" id="exampleInput13"
+                                                           name="pin" value="{{pin}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="exampleInput14" class="">Date of birth</label>
+                                                    <input type="date" class="form-control" id="exampleInput14"
+                                                           name="dateOfBirth" value="{{dateOfBirth}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+
+                                                    <div class="row">
+                                                        <p class="text-muted">Gender</p>
+                                                    </div>
+                                                    <div class="row justify-content-around">
+                                                        <div class="form-check form-check-radio">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" type="radio"
+                                                                       name="isMale" id="exampleRadios2" value="true"
+                                                                       {{maleChecked}}>
+                                                                Male
+                                                                <span class="circle">
                                                             <span class="check"></span>
                                                         </span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-radio ">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="radio"
-                                                                   name="isMale" id="exampleRadios1" value="false">
-                                                            Female
-                                                            <span class="circle">
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-radio ">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" type="radio"
+                                                                       name="isMale" id="exampleRadios1" value="false"
+                                                                       {{femaleChecked}}>
+                                                                Female
+                                                                <span class="circle">
                                                             <span class="check"></span>
                                                         </span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-radio ">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" disabled type="radio"
-                                                                   name="isMale" id="exampleRadios0" value="">
-                                                            Other
-                                                            <span class="circle">
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-radio ">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" disabled type="radio"
+                                                                       name="isMale" id="exampleRadios0" value="">
+                                                                Other
+                                                                <span class="circle">
                                                             <span class="check"></span>
                                                         </span>
-                                                        </label>
+                                                            </label>
+                                                        </div>
                                                     </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+
+                                                    <div class="row">
+                                                        <p class="text-muted">Role</p>
+                                                    </div>
+
+                                                    <div class="row justify-content-around">
+
+                                                        <div class="form-check form-check-radio">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" type="radio"
+                                                                       name="primaryRole"
+                                                                       id="exampleRadios3" value="Student"
+                                                                       {{studentChecked}}>
+                                                                Student
+                                                                <span class="circle">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="form-check form-check-radio">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" type="radio"
+                                                                       name="primaryRole"
+                                                                       id="exampleRadios4" value="Parent"
+                                                                       {{parentChecked}}>
+                                                                Parent
+                                                                <span class="circle">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="form-check form-check-radio">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" type="radio"
+                                                                       name="primaryRole"
+                                                                       id="exampleRadios5" value="Institute"
+                                                                       {{instituteChecked}}>
+                                                                Institute
+                                                                <span class="circle">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                            </label>
+                                                        </div>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
 
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-12">
-
-                                                <div class="row">
-                                                    <p class="text-muted">Role</p>
-                                                </div>
-
-                                                <div class="row justify-content-around">
-
-                                                    <div class="form-check form-check-radio">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="radio"
-                                                                   name="primaryRole"
-                                                                   id="exampleRadios3" value="Student" checked>
-                                                            Student
-                                                            <span class="circle">
-                                                                <span class="check"></span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-radio">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="radio"
-                                                                   name="primaryRole"
-                                                                   id="exampleRadios4" value="Parent">
-                                                            Parent
-                                                            <span class="circle">
-                                                                <span class="check"></span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-radio">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="radio"
-                                                                   name="primaryRole"
-                                                                   id="exampleRadios5" value="Institute">
-                                                            Institute
-                                                            <span class="circle">
-                                                                <span class="check"></span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-
                                     </div>
-                                </div>
+                                </script>
                             </div>
 
                         </form>
@@ -354,53 +364,55 @@
 
                         <form id="Form2" method="" action="">
 
-                            <div class="card">
-                                <div class="card-body">
-                                    <h2 class="card-title h3">Social Connect:</h2>
+                            <div class="card" id="userSocialLinksContainer">
+                                <script id="userSocialInput" type="text/x-handlebars-template">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Social Connect:</h2>
 
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <label for="fbLink" class="bmd-label-floating">Facebook Link</label>
-                                            <input type="text" class="form-control" id="fbLink" name="fbLink"
-                                                   value="">
+                                        <div class="row">
+                                            <div class="form-group col-12">
+                                                <label for="fbLink" class="bmd-label-floating">Facebook Link</label>
+                                                <input type="text" class="form-control" id="fbLink" name="fbLink"
+                                                       value="{{fbLink}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-12">
+                                                <label for="twitterLink" class="bmd-label-floating">Twitter Link</label>
+                                                <input type="text" class="form-control" id="twitterLink" name="fbLink"
+                                                       value="{{twitterLink}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-12">
+                                                <label for="youtubeLink" class="bmd-label-floating">Youtube Link</label>
+                                                <input type="text" class="form-control" id="youtubeLink"
+                                                       name="youtubeLink"
+                                                       value="{{youtubeLink}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-12">
+                                                <label for="instaLink" class="bmd-label-floating">Instagram Link</label>
+                                                <input type="text" class="form-control" id="instaLink" name="instaLink"
+                                                       value="{{instaLink}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-12">
+                                                <label for="linkedinLink" class="bmd-label-floating">LinkedIn
+                                                    Link</label>
+                                                <input type="text" class="form-control" id="linkedinLink"
+                                                       name="linkedinLink"
+                                                       value="{{linkedinLink}}">
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <label for="twitterLink" class="bmd-label-floating">Twitter Link</label>
-                                            <input type="text" class="form-control" id="twitterLink" name="fbLink"
-                                                   value="">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <label for="youtubeLink" class="bmd-label-floating">Youtube Link</label>
-                                            <input type="text" class="form-control" id="youtubeLink" name="youtubeLink"
-                                                   value="">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <label for="instaLink" class="bmd-label-floating">Instagram Link</label>
-                                            <input type="text" class="form-control" id="instaLink" name="instaLink"
-                                                   value="">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <label for="linkedinLink" class="bmd-label-floating">LinkedIn Link</label>
-                                            <input type="text" class="form-control" id="linkedinLink"
-                                                   name="linkedinLink"
-                                                   value="">
-                                        </div>
-                                    </div>
-
-
-                                </div>
+                                </script>
                             </div>
 
                         </form>
@@ -539,7 +551,7 @@
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 
 <!-- Custom Js file for user-->
-<script src="assets/js/user.js"></script>
+<script src="assets/js/user-editDetails.js"></script>
 
 
 </body>
