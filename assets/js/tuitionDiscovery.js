@@ -20,7 +20,7 @@ let source = $("#entry-template2").html();
 let template = Handlebars.compile(source);
 let context = {
     Name: "Tuition Name",
-    rating: "",
+    rating: "2.5",
     ifAd: "Ad",
     Address: "test address",
     Phone: "9812153423",
@@ -35,6 +35,7 @@ AllTuitionJSON.then((data) => {
     console.log(data);
     for (keys in data) {
         if (data.hasOwnProperty(keys)) {
+            context.rating = data[keys].rating? data[keys].rating:"2.5";
             context.id = data[keys]._id;
             context.Name = data[keys].name;
             context.Address = `${data[keys].addressLine1},${data[keys].addressLine2},${data[keys].city},${data[keys].state}`;

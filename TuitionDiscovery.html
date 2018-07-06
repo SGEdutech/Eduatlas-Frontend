@@ -83,14 +83,6 @@
 
 <!--raised area for parallax-->
 <div class="main main-raised">
-    <!--second row containing breadcrumb-->
-    <nav aria-label="breadcrumb" role="navigation">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="#">Tuition</a></li>
-        </ol>
-    </nav>
-
     <!--parent row-->
     <div class="row">
 
@@ -109,11 +101,12 @@
                                         <h4 class="card-title color-white m-0 p-0">{{Name}}</h4>
                                     </div>
                                     <div class="col-2">
-                                        <button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
+                                        <!--todo - uncomment after data available-->
+                                        <!--<button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
                                             <i class="material-icons">
                                                 verified_user
                                             </i>
-                                        </button>
+                                        </button>-->
                                     </div>
                                 </div>
                                 <div class="row">
@@ -127,7 +120,7 @@
                                 </div>
                             </div>
                             <div class="card-body px-4 position-relative">
-                                <button class="btn btn-info btn-fab btn-round position-absolute moveUp">
+                                <button class="btn btn-warning btn-fab btn-round position-absolute moveUp">
                                     {{rating}}
                                 </button>
                                 <div class="row">
@@ -135,7 +128,7 @@
                                         place
                                     </i>
                                     <p class="card-text text m-0 ">
-                                        <small>{{Address}}</small>
+                                        {{Address}}
                                     </p>
                                 </div>
                                 <div class="row">
@@ -143,7 +136,7 @@
                                         local_phone
                                     </i>
                                     <p class="card-text m-0 row">
-                                        <small>{{Phone}}</small>
+                                        {{Phone}}
                                     </p>
                                 </div>
 
@@ -152,7 +145,7 @@
                                         alternate_email
                                     </i>
                                     <p class="card-text m-0 row">
-                                        <small>{{Email}}</small>
+                                        {{Email}}
                                     </p>
                                 </div>
 
