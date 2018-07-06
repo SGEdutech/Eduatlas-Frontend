@@ -1,8 +1,9 @@
 $(function () {
+
     const promise = $.ajax({
-        url: 'http://localhost:6868/tuition/all',
+        url: '/tuition/all',
         data: {
-            items: 3,
+            items: 6,
             page: 1,
             demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category'
         }
@@ -36,10 +37,46 @@ $(function () {
                 $("#tuitionContainer").append(template(context));
             }
         }
+        $('.responsive').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
     }).catch(err => {
         console.log(err);
     });
-
 
 });
 
@@ -47,7 +84,7 @@ let suggestionBox = $('#suggestions');
 
 function getSearchResults(value) {
     $.ajax({
-        url: 'http://localhost:6868/tuition/search',
+        url: '/tuition/search',
         data: {
             search: value
         }
@@ -55,7 +92,7 @@ function getSearchResults(value) {
         suggestionBox.empty();
         let toAdd = '';
         data.forEach(obj => {
-            toAdd += `<a href="http://localhost:6868/app/TuitionDetails2.0.html?_id=${obj._id}" class="color-white">${obj.name}</a><br>`
+            toAdd += `<a href="/app/TuitionDetails2.0.html?_id=${obj._id}" class="color-white">${obj.name}</a><br>`
         });
         suggestionBox.append(toAdd)
 
@@ -65,6 +102,7 @@ function getSearchResults(value) {
 
 }
 
+/*
 function removeSuggestions() {
     suggestionBox.empty();
-}
+}*/

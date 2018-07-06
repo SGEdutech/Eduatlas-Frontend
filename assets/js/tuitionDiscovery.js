@@ -8,7 +8,7 @@ let pageM1 = pageNum === 0 ? pageNum : pageNum - 1;
 console.log(itemsPerPage + '-' + pageNum);
 
 const AllTuitionJSON = $.ajax({
-    url: 'http://localhost:6868/tuition/all',
+    url: '/tuition/all',
     data: {
         items: itemsPerPage,
         page: pageNum,

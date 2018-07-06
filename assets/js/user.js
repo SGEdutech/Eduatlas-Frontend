@@ -1,13 +1,16 @@
 // todo - fetch cookie and send to server to get user details
 
+let userData;
+
 // dummy user data
 function tryToGetData() {
     const promise = $.ajax({
-        url: 'http://eduatlas.com/user/',
+        url: 'http://localhost:6868/user/check',
     });
 
 
     promise.then((data) => {
+        userData = data;
         if (data == 'LogIn') {
             window.location.replace('./login-page.html');
         }
@@ -15,21 +18,25 @@ function tryToGetData() {
 
         let profilePicContainer = $('#userProfilePicContainer');
         let userIdContainer = $('#userIdContainer');
-        let firstNameInput = $('#firstName');
-        let primaryEmailInput = $('#primaryEmail');
-        // console.log(data);
+       /* let firstNameInput = $('#firstName');
+        let primaryEmailInput = $('#primaryEmail');*/
 
         // put fetched image path in src of image and add
-        let pic = `<img src="https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">`;
+        let pic = '';
+        if (data.img_userProfilePic === '' || data.img_userProfilePic === undefined) {
+            pic = `<img src="https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">`;
+        } else {
+            pic = `<img src="${data.img_userProfilePic}" alt="..." class="image profilePic rounded w-100">`;
+        }
+
         profilePicContainer.html(pic);
 
         userIdContainer.html(data.firstName);
 
-        firstNameInput.val(data.firstName);
-        primaryEmailInput.val(data.primaryEmail);
-
+        console.log('then');
     }).catch((err) => {
         console.log(err);
+        console.log('catch');
         window.location.replace('./login-page.html');
     });
 }
@@ -38,6 +45,9 @@ tryToGetData();
 
 
 function getUserOwnedTuition(ids) {
+    if (ids == undefined) {
+        return
+    }
     let idArray = ids.split(',');
 
     idArray.forEach((tuitionId) => {
@@ -45,7 +55,7 @@ function getUserOwnedTuition(ids) {
         // todo - fix Algorithm to get related listing
         // maybe add server side route to get this
         const promise = $.ajax({
-            url: 'http://eduatlas.com/tuition?_id=' + tuitionId,
+            url: 'http://localhost:6868/tuition?_id=' + tuitionId,
             method: 'GET'
         });
 
@@ -67,7 +77,7 @@ function getUserOwnedTuition(ids) {
 
             context.id = data._id;
             context.Name = data.name;
-            context.Address =`${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
+            context.Address = `${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
             context.Phone = data.primaryNumber;
             context.Email = data.email;
             context.coverPic = data.img_coverPic;
@@ -83,19 +93,3 @@ function getUserOwnedTuition(ids) {
 
 }
 
-/*
-
-function editUser(id) {
-    const editUserPromise = $.ajax({
-        url: 'http://localhost:6868/user/' + userData._id,
-        type: 'PUT',
-        data: $('#' + id).serialize()
-    });
-
-    editUserPromise.then(data => {
-        alert("Saved SuccessFully")
-    }).catch((err) => {
-        console.log(err);
-        alert("failed")
-    })
-}*/

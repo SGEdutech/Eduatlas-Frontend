@@ -43,23 +43,34 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                    <a class="nav-link" href="home-page.html">Home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="User-dashboard.html">Dashboard</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="TuitionDiscovery.html">Institutes/Tuition</a>
+                    <a class="nav-link" onclick="checkLogin('./User-dashboard.html')" style="cursor:pointer">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link" href="#">Schools</a>
                 </li>
-                <li class="nav-item disabled">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">
+                        add
+                    </i>
+                        ADD LISTING</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" onclick="checkLogin('./User-addTuition.html')">Add Tuition</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>
+                    </div>
+                </li>
+                <!--<li class="nav-item disabled">
                     <a class="nav-link" href="#">Events</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link" href="#">Blogs</a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>
@@ -73,7 +84,7 @@
 
 <div id="secondary_info" class="row">
 
-    <div class="col-md-3">
+    <div class="col-md-3 text-center">
 
         <div class="card">
             <div class="card-body">
@@ -178,9 +189,9 @@
                                                     </div>
 
 
-                                                    <a href="http://eduatlas.com/app/TuitionDetails2.0.html?_id={{id}}"
+                                                    <a href="http://localhost:6868/app/TuitionDetails2.0.html?_id={{id}}"
                                                        class="btn btn-info">Details</a>
-                                                    <a href="http://eduatlas.com/app/User-editTuition.html?a={{id}}"
+                                                    <a href="http://localhost:6868/app/User-editTuition.html?a={{id}}"
                                                        class="btn btn-info">edit</a>
                                                 </div>
 
@@ -274,6 +285,7 @@
 
 <!-- Custom Js file for user-->
 <script src="assets/js/user.js"></script>
+<script src="assets/js/login-check.js"></script>
 
 
 </body>

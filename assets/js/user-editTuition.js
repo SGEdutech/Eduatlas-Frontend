@@ -9,7 +9,7 @@ if (TuitionId == '') {
 }
 
 const TuitionJSON = $.ajax({
-    url: 'http://eduatlas.com/tuition/',
+    url: '/tuition/',
     data: {
         _id: TuitionId
     }
@@ -177,7 +177,7 @@ function addAllTimes() {
 
 function deleteTime(day) {
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition/delete/dayAndTimeOfOperation/' + TuitionId,
+        url: '/tuition/delete/dayAndTimeOfOperation/' + TuitionId,
         type: 'DELETE',
         data: {
             day: day
@@ -196,7 +196,7 @@ function addDayAndTimeOfOperation(id) {
     // data is in Form
     // get the data and send it in post request
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition/add/dayAndTimeOfOperation/' + TuitionId,
+        url: '/tuition/add/dayAndTimeOfOperation/' + TuitionId,
         type: 'POST',
         data: $('#' + id).serialize()
     });
@@ -211,7 +211,7 @@ function addDayAndTimeOfOperation(id) {
 
 function saveDetails(id) {
     const Promise = $.ajax({
-        url: 'http://eduatlas.com/tuition/' + TuitionId,
+        url: '/tuition/' + TuitionId,
         type: 'PUT',
         data: $('#' + id).serialize()
     });
@@ -260,7 +260,7 @@ function showCourses(array) {
 function deleteCourse(title, id) {
 
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition/delete/courses/' + TuitionId,
+        url: '/tuition/delete/courses/' + TuitionId,
         type: 'DELETE',
         data: {
             title: title
@@ -282,7 +282,7 @@ function addCourse() {
     // form id is newCourse
     // get the data and send it in post request
     const AddedCourse = $.ajax({
-        url: 'http://eduatlas.com/tuition/add/courses/' + TuitionId,
+        url: '/tuition/add/courses/' + TuitionId,
         type: 'POST',
         data: $('#newCourse').serialize()
     });
@@ -331,7 +331,7 @@ function addResult() {
     // form id is newCourse
     // get the data and send it in post request
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition/add/bragging/' + TuitionId,
+        url: '/tuition/add/bragging/' + TuitionId,
         type: 'POST',
         data: $('#newResult').serialize()
     });
@@ -347,7 +347,7 @@ function addResult() {
 function deleteResult(title, id) {
 
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition/delete/bragging/' + TuitionId,
+        url: '/tuition/delete/bragging/' + TuitionId,
         type: 'DELETE',
         data: {
             title: title
@@ -401,7 +401,7 @@ function addFaculty() {
     // form id is newCourse
     // get the data and send it in post request
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition/add/team/' + TuitionId,
+        url: '/tuition/add/team/' + TuitionId,
         type: 'POST',
         data: $('#newFaculty').serialize()
     });
@@ -417,7 +417,7 @@ function addFaculty() {
 function deleteFaculty(name, id) {
 
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition/delete/team/' + TuitionId,
+        url: '/tuition/delete/team/' + TuitionId,
         type: 'DELETE',
         data: {
             name: name

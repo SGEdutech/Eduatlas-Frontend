@@ -194,13 +194,13 @@ function showSocialLinks(f, i, y) {
 }
 
 function doTheTemplateStuff(data) {
-    const facilityArr = data.facilities.split(',');
+    const facilityArr = data.facilities ? data.facilities.split(',') : [];
     const facilitySource = $('#facility_template').html();
     const facilityTemplate = Handlebars.compile(facilitySource);
     const facilityHtml = facilityTemplate({facilities: facilityArr});
     $('#facilities_container').html(facilityHtml);
 
-    const categoryArr = data.facilities.split(',');
+    const categoryArr = data.category ? data.category.split(',') : [];
     const categorySource = $('#category_template').html();
     const categoryTemplate = Handlebars.compile(categorySource);
     const categoryHtml = categoryTemplate({categories: categoryArr});
@@ -213,12 +213,15 @@ function doTheTemplateStuff(data) {
 }
 
 function getRelatedListing(category) {
+    if (!category) {
+        return
+    }
 
     // todo - fix Algorithm to get related listing
     // maybe add server side route to get this
     let arrayOfCategory = category.split(',');
     const promise = $.ajax({
-        url: 'http://eduatlas.com/tuition?category=' + arrayOfCategory[0],
+        url: '/tuition?category=' + arrayOfCategory[0],
         method: 'GET'
     });
 
