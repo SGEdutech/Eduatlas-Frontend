@@ -18,8 +18,8 @@ function tryToGetData() {
 
         let profilePicContainer = $('#userProfilePicContainer');
         let userIdContainer = $('#userIdContainer');
-       /* let firstNameInput = $('#firstName');
-        let primaryEmailInput = $('#primaryEmail');*/
+        /* let firstNameInput = $('#firstName');
+         let primaryEmailInput = $('#primaryEmail');*/
 
         // put fetched image path in src of image and add
         let pic = '';
@@ -59,11 +59,11 @@ function getUserOwnedTuition(ids) {
             method: 'GET'
         });
 
-        let source = $("#entry-template2").html();
-        let template = Handlebars.compile(source);
+        /*let source = $("#entry-template2").html();
+        let template = Handlebars.compile(source);*/
         let context = {
             Name: "Tuition Name",
-            rating: "",
+            rating: "2.5",
             ifAd: "",
             Address: "address",
             Phone: "phone",
@@ -74,7 +74,7 @@ function getUserOwnedTuition(ids) {
         };
 
         promise.then((data) => {
-
+            context.rating = data.rating ? data.rating : "2.5";
             context.id = data._id;
             context.Name = data.name;
             context.Address = `${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
@@ -82,7 +82,8 @@ function getUserOwnedTuition(ids) {
             context.Email = data.email;
             context.coverPic = data.img_coverPic;
             context.Category = data.category;
-            $("#userOwnedTuitionContainer").append(template(context));
+            let result = Handlebars.templates.userDashboardTuitionCard(context);
+            $("#userOwnedTuitionContainer").append(result);
 
         }).catch(err => {
             console.log(err);

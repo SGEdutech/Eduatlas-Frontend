@@ -32,17 +32,18 @@ TuitionJSON.then((data) => {
 });
 
 function showCover(path) {
-    let Input = $("#coverInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#coverInput").html();
+    let template = Handlebars.compile(Input);*/
     let context = {
         path: path
     };
-    $("#coverImgContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionCover(context);
+    $("#coverImgContainer").append(result);
 }
 
 function showBasic(name, al1, al2, city, distt, state, country, pin) {
-    let Input = $("#basicInput").html();
-    let template = Handlebars.compile(Input);
+   /* let Input = $("#basicInput").html();
+    let template = Handlebars.compile(Input);*/
     let context = {
         name: name,
         addressLine1: al1,
@@ -53,39 +54,43 @@ function showBasic(name, al1, al2, city, distt, state, country, pin) {
         country: country,
         pin: pin
     };
-    $("#basicContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionBasic(context);
+    $("#basicContainer").append(result);
 }
 
 function showFacility(fasc) {
-    let facilityInput = $("#facilityInput").html();
-    let template = Handlebars.compile(facilityInput);
+    /*let facilityInput = $("#facilityInput").html();
+    let template = Handlebars.compile(facilityInput);*/
     let context = {
         facilities: fasc,
     };
-    $("#facilityContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionFacility(context);
+    $("#facilityContainer").append(result);
 }
 
 function showDescription(desc) {
-    let descInput = $("#descInput").html();
-    let template = Handlebars.compile(descInput);
+    /*let descInput = $("#descInput").html();
+    let template = Handlebars.compile(descInput);*/
     let context = {
         desc: desc,
     };
-    $("#descriptionContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionDesc(context);
+    $("#descriptionContainer").append(result);
 }
 
 function showCategory(cate) {
-    let Input = $("#cateInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#cateInput").html();
+    let template = Handlebars.compile(Input);*/
     let context = {
         cate: cate,
     };
-    $("#cateContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionCategory(context);
+    $("#cateContainer").append(result);
 }
 
 function showContactPerson(contactP, pNumber, sNumber, email, site) {
-    let Input = $("#contactPersonInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#contactPersonInput").html();
+    let template = Handlebars.compile(Input);*/
     let context = {
         contactPerson: contactP,
         primaryNumber: pNumber,
@@ -93,24 +98,26 @@ function showContactPerson(contactP, pNumber, sNumber, email, site) {
         email: email,
         website: site
     };
-    $("#contactPersonContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionContactP(context);
+    $("#contactPersonContainer").append(result);
 }
 
 function showSocialLinks(f, i, y) {
-    let Input = $("#socialLinkInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#socialLinkInput").html();
+    let template = Handlebars.compile(Input);*/
     let context = {
         // twitter: t,
         facebook: f,
         instagram: i,
         youtube: y,
     };
-    $("#socialLinkContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionSocial(context);
+    $("#socialLinkContainer").append(result);
 }
 
 function showDaynTime(array) {
-    let Input = $("#dayAndTimeOfOperationInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#dayAndTimeOfOperationInput").html();
+    let template = Handlebars.compile(Input);*/
     let context = {
         monFrom: '',
         monTo: '',
@@ -161,7 +168,8 @@ function showDaynTime(array) {
         }
     });
 
-    $("#opration_hours_containers").append(template(context));
+    let result = Handlebars.templates.userEditTuitionHours(context);
+    $("#opration_hours_containers").append(result);
 }
 
 function addAllTimes() {
@@ -225,8 +233,8 @@ function saveDetails(id) {
 }
 
 function showCourses(array) {
-    let Input = $("#coursesInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#coursesInput").html();
+    let template = Handlebars.compile(Input);*/
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -252,7 +260,8 @@ function showCourses(array) {
         counter++;
     });
 
-    $("#coursesContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionCourses(context);
+    $("#coursesContainer").append(result);
 }
 
 // id will be set by handleBars
@@ -296,8 +305,8 @@ function addCourse() {
 }
 
 function showResults(array) {
-    let Input = $("#resultInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#resultInput").html();
+    let template = Handlebars.compile(Input);*/
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -322,7 +331,8 @@ function showResults(array) {
         counter++;
     });
 
-    $("#resultsContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionResults(context);
+    $("#resultsContainer").append(result);
 
 }
 
@@ -365,8 +375,8 @@ function deleteResult(title, id) {
 }
 
 function showFaculty(array) {
-    let Input = $("#facultyInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#facultyInput").html();
+    let template = Handlebars.compile(Input);*/
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -392,7 +402,8 @@ function showFaculty(array) {
         counter++;
     });
 
-    $("#facultyContainer").append(template(context));
+    let result = Handlebars.templates.userEditTuitionFaculty(context);
+    $("#facultyContainer").append(result);
 
 }
 

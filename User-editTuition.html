@@ -77,11 +77,11 @@
 </nav>
 
 <div id="coverImgContainer">
-    <script id="coverInput" type="text/x-handlebars-template">
+   <!-- <script id="coverInput" type="text/x-handlebars-template">
         <div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark"
              style="background-image: url(./public/images/tuitionCoverPics{{path}});">
         </div>
-    </script>
+    </script>-->
 </div>
 
 <div id="secondary_info" class="row">
@@ -118,7 +118,7 @@
                         <form id="aboutUsForm">
 
                             <div id="basicContainer">
-                                <script id="basicInput" type="text/x-handlebars-template">
+                                <!--<script id="basicInput" type="text/x-handlebars-template">
                                     <div class="card">
                                         <div class="card-body">
                                             <h2 class="card-title h3">Basic Details:</h2>
@@ -185,7 +185,7 @@
 
                                         </div>
                                     </div>
-                                </script>
+                                </script>-->
                             </div>
 
 
@@ -196,12 +196,12 @@
                                     </small>
                                     <div id="facilityContainer">
 
-                                        <script id="facilityInput" type="text/x-handlebars-template">
+                                        <!--<script id="facilityInput" type="text/x-handlebars-template">
                                             <div>
                                                 <input value="{{facilities}}" name="facilities" class="form-control"
                                                        id="">
                                             </div>
-                                        </script>
+                                        </script>-->
 
                                     </div>
                                 </div>
@@ -211,12 +211,12 @@
                                 <div class="card-body">
                                     <h2 class="card-title h3">About Us</h2>
                                     <div id="descriptionContainer">
-                                        <script id="descInput" type="text/x-handlebars-template">
+                                        <!--<script id="descInput" type="text/x-handlebars-template">
                                             <div>
                                                 <input value="{{desc}}" name="description" class="form-control"
                                                        id="description">
                                             </div>
-                                        </script>
+                                        </script>-->
                                     </div>
                                 </div>
                             </div>
@@ -225,12 +225,12 @@
                                 <div class="card-body">
                                     <h2 class="card-title h3">Category</h2>
                                     <div id="cateContainer">
-                                        <script id="cateInput" type="text/x-handlebars-template">
+                                        <!--<script id="cateInput" type="text/x-handlebars-template">
                                             <div>
                                                 <input value="{{cate}}" name="category" class="form-control"
                                                        id="category">
                                             </div>
-                                        </script>
+                                        </script>-->
                                     </div>
                                 </div>
                             </div>
@@ -266,7 +266,7 @@
                             <div class="row justify-content-around">
                                 <div class="card col-md-6">
                                     <div class="card-body" id="contactPersonContainer">
-                                        <script id="contactPersonInput" type="text/x-handlebars-template">
+                                        <!--<script id="contactPersonInput" type="text/x-handlebars-template">
                                             <div class="card-title h3">
                                                 Contact Us:
                                             </div>
@@ -303,7 +303,7 @@
                                             <div>
                                                 <input class="form-control" value="{{website}}" name="website">
                                             </div>
-                                        </script>
+                                        </script>-->
                                     </div>
                                 </div>
 
@@ -312,7 +312,7 @@
                                         Operates on
                                     </div>
                                     <div id="opration_hours_containers" class="">
-                                        <script id="dayAndTimeOfOperationInput"
+                                       <!-- <script id="dayAndTimeOfOperationInput"
                                                 type="text/x-handlebars-template">
 
 
@@ -472,7 +472,7 @@
                                             </form>
 
 
-                                        </script>
+                                        </script>-->
                                     </div>
                                     <button class="btn btn-outline-info" onclick="addAllTimes()">Save Operating Hours
                                     </button>
@@ -484,11 +484,11 @@
                                     <div class="card-title h3">
                                         Social Links:
                                     </div>
-                                    <script id="socialLinkInput" type="text/x-handlebars-template">
-                                        <!--div class="form-group">
+                                    <!--<script id="socialLinkInput" type="text/x-handlebars-template">
+                                        &lt;!&ndash;div class="form-group">
                                             <label for="twitterLink" class="">Twitter</label>
                                             <input class="form-control" value="{{twitter}}" id="twitterLink">
-                                        </div>-->
+                                        </div>&ndash;&gt;
                                         <div class="form-group">
                                             <label for="facebookLink" class="">Facebook</label>
                                             <input class="form-control" value="{{facebook}}" id="facebookLink"
@@ -504,7 +504,7 @@
                                             <input class="form-control" value="{{youtube}}" id="youtubeLink"
                                                    name="youtubeLink">
                                         </div>
-                                    </script>
+                                    </script>-->
                                 </div>
                             </div>
 
@@ -515,12 +515,12 @@
                     <div class="tab-pane" id="tab3">
                         <div class="row justify-content-around" id="coursesContainer">
                             <!-- put a unique id using handleBars-->
-                            <script id="coursesInput" type="text/x-handlebars-template">
+                           <!-- <script id="coursesInput" type="text/x-handlebars-template">
                                 {{#list key}}
                                 <div class="col-4" id="course{{id}}">
                                     <div class="card">
                                     <span style="position: absolute;left: 92%;top: -6%;">
-                                        <!-- send title of course and id of card in function deleteCourse()-->
+                                        &lt;!&ndash; send title of course and id of card in function deleteCourse()&ndash;&gt;
                                         <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
                                                 onclick="deleteCourse('{{title}}','course{{id}}')">
                                             <i class="material-icons">
@@ -544,7 +544,7 @@
                                     </div>
                                 </div>
                                 {{/list}}
-                            </script>
+                            </script>-->
                         </div>
                         <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
                             Add More Course
@@ -596,12 +596,12 @@
                     </div>
                     <div class="tab-pane" id="tab4">
                         <div class="row justify-content-around" id="resultsContainer">
-                            <script id="resultInput" type="text/x-handlebars-template">
+                            <!--<script id="resultInput" type="text/x-handlebars-template">
                                 {{#list key}}
                                 <div class="col-4" id="result{{id}}">
                                     <div class="card">
                                     <span style="position: absolute;left: 92%;top: -6%;">
-                                        <!-- send (_id of result obj received , id of card) as arguments for function deleteResult()-->
+                                        &lt;!&ndash; send (_id of result obj received , id of card) as arguments for function deleteResult()&ndash;&gt;
                                         <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
                                                 onclick="deleteResult('{{title}}','result{{id}}')">
                                             <i class="material-icons">
@@ -619,7 +619,7 @@
                                     </div>
                                 </div>
                                 {{/list}}
-                            </script>
+                            </script>-->
                         </div>
                         <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal3">
                             Add More Result
@@ -675,12 +675,12 @@
                     </div>
                     <div class="tab-pane" id="tab5">
                         <div class="row" id="facultyContainer">
-                            <script id="facultyInput" type="text/x-handlebars-template">
+                            <!--<script id="facultyInput" type="text/x-handlebars-template">
                                 {{#list key}}
                                 <div class="col-4" id="faculty{{id}}">
                                     <div class="card card-nav-tabs">
                                         <span style="position: absolute;left: 92%;top: -6%;">
-                                        <!-- send (name of the faculty , id of card) as arguments for function deleteFaculty()-->
+                                        &lt;!&ndash; send (name of the faculty , id of card) as arguments for function deleteFaculty()&ndash;&gt;
                                         <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
                                                 onclick="deleteFaculty('{{name}}','faculty{{id}}')">
                                             <i class="material-icons">
@@ -701,7 +701,7 @@
                                     </div>
                                 </div>
                                 {{/list}}
-                            </script>
+                            </script>-->
                         </div>
                         <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal4">
                             Add More Faculty
@@ -901,6 +901,7 @@
 
 <!--HandleBars for templating-->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
+<script src="assets/js/templates.js"></script>
 
 <!-- Custom Js file for user-->
 <script src="assets/js/user-editTuition.js"></script>

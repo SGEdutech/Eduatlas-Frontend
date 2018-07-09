@@ -18,8 +18,8 @@ promise.then((data) => {
     profilePicContainer.html(pic);
 
 
-    let source = $("#userProfileInput").html();
-    let template = Handlebars.compile(source);
+    /*let source = $("#userProfileInput").html();
+    let template = Handlebars.compile(source);*/
     let context = {
         firstName: "",
         middleName: "",
@@ -75,11 +75,12 @@ promise.then((data) => {
         context.instituteChecked = 'checked'
     }
 
-    $("#basicContainer").append(template(context));
+    let result1 = Handlebars.templates.userProfileInput(context);
+    $("#basicContainer").append(result1);
 
 
-    let sourceSocial = $("#userSocialInput").html();
-    let templateSocial = Handlebars.compile(sourceSocial);
+    /*let sourceSocial = $("#userSocialInput").html();
+    let templateSocial = Handlebars.compile(sourceSocial);*/
     let contextSocial = {
         fbLink: "",
         twitterLink: "",
@@ -94,8 +95,8 @@ promise.then((data) => {
     contextSocial.instaLink = data.instaLink;
     contextSocial.linkedinLink = data.linkedinLink;
 
-
-    $("#userSocialLinksContainer").append(templateSocial(contextSocial));
+    let result2 = Handlebars.templates.userSocialInput(context);
+    $("#userSocialLinksContainer").append(result2);
 
 
 }).catch((err) => {

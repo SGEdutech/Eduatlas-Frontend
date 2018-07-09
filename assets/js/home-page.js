@@ -3,14 +3,11 @@ $(function () {
     const promise = $.ajax({
         url: '/tuition/all',
         data: {
-            items: 6,
-            page: 1,
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category'
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category',
+            limit: 4,
         }
     });
 
-    let source = $("#entry-template2").html();
-    let template = Handlebars.compile(source);
     let context = {
         Name: "Tuition Name",
         rating: "2.5",
@@ -23,8 +20,10 @@ $(function () {
         id: "#",
     };
 
+
     promise.then((data) => {
         console.log(data);
+        let result = '';
         for (keys in data) {
             if (data.hasOwnProperty(keys)) {
                 context.rating = data[keys].rating ? data[keys].rating : "2.5";
@@ -35,9 +34,11 @@ $(function () {
                 context.Email = data[keys].email;
                 context.coverPic = data[keys].img_coverPic;
                 context.Category = data[keys].category;
-                $("#tuitionContainer").append(template(context));
+                result += Handlebars.templates.tuitionCard(context);
             }
         }
+        $("#tuitionContainer").append(result);
+
         $('.responsive').slick({
             dots: true,
             infinite: true,
@@ -87,7 +88,11 @@ function getSearchResults(value) {
     $.ajax({
         url: '/tuition/search',
         data: {
-            search: value
+            name: JSON.stringify({
+                search: value,
+                fullTextSearch: false,
+            }),
+           /* limit: 5,*/
         }
     }).then(data => {
         suggestionBox.empty();

@@ -132,71 +132,6 @@
 
         </div>
 
-        <div class="row" id="">
-            <script id="entry-template2" type="text/x-handlebars-template">
-                <div class="p-2">
-                    <div class="">
-                        <div class="card" style="">
-                            <!--put src = "assets/img/{{coverPic}}" -->
-                            <img class="card-img tinted" src="assets/img/tuition2.jpg" alt="Card image cap">
-                            <div class="card-img-overlay color-white m-0 p-3">
-                                <div class="row">
-                                    <div class="col-9">
-                                        <h4 class="card-title color-white m-0 p-0">{{Name}}</h4>
-                                    </div>
-                                    <div class="col-2">
-                                        <!-- todo - uncomment when verification data there -->
-                                        <!--<button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
-                                            <i class="material-icons">
-                                                verified_user
-                                            </i>
-                                        </button>-->
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-8">
-                                        <p class="card-text m-0 color-white">{{Category}}</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <!--<span class="badge badge-info">{{ifAd}}</span>-->
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-body px-4 position-relative">
-                                <!-- todo uncomment when rating available-->
-                                <button class="btn btn-warning btn-fab btn-round position-absolute moveUp">
-                                    {{rating}}
-                                </button>
-                                <div class="row">
-                                    <i class="material-icons d-inline-flex icon-small">
-                                        place
-                                    </i>
-                                    <p class="card-text text m-0 ">{{Address}}</p>
-                                </div>
-                                <div class="row">
-                                    <i class="material-icons d-inline-flex icon-small">
-                                        local_phone
-                                    </i>
-                                    <p class="card-text m-0 row">{{Phone}}</p>
-                                </div>
-
-                                <div class="row">
-                                    <i class="material-icons d-inline-flex icon-small">
-                                        alternate_email
-                                    </i>
-                                    <p class="card-text m-0 row">{{Email}} </p>
-                                </div>
-
-
-                                <a href="/app/TuitionDetails2.0.html?_id={{id}}" class="btn btn-info">Details</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </script>
-        </div>
         <div class="row justify-content-around">
             <a class="btn btn-info" href="/app/TuitionDiscovery.html?page=1&items=18">Show More
                 Institutes/Tuition</a>
@@ -340,6 +275,9 @@
 
 <!--env var-->
 <script src="assets/js/env-var.js"></script>
+
+<!-- handlebars precompiled templates-->
+<script src="assets/js/templates.js"></script>
 
 <!-- Custom Code -->
 <script src="assets/js/home-page.js"></script>

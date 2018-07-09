@@ -11,7 +11,7 @@ function updateThePage(data) {
 
     getRelatedListing(data.category);
 
-    console.log(data);
+    // console.log(data);
     $('#tuition_name').html(data.name);
     $('#address').html(data.addressLine1 + ', ' + data.addressLine2);
     $('#phone').html(data.primaryNumber);
@@ -21,7 +21,6 @@ function updateThePage(data) {
     $('#primary_number').html(data.primaryNumber);
     $('#alternate_number').html(data.secondaryNumber);
     $('#website').html(data.website);
-
     showDaynTime(data.dayAndTimeOfOperation);
     showCourses(data.courses);
     showResults(data.bragging);
@@ -32,8 +31,8 @@ function updateThePage(data) {
 }
 
 function showDaynTime(array) {
-    let Input = $("#dayAndTimeOfOperationInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#dayAndTimeOfOperationInput").html();
+    let template = Handlebars.compile(Input);*/
     let context = {
         monFrom: '',
         monTo: '',
@@ -83,13 +82,13 @@ function showDaynTime(array) {
                 break;
         }
     });
-
-    $("#opration_hours_containers").append(template(context));
+    let result = Handlebars.templates.tuitionOperationHours(context);
+    $("#opration_hours_containers").append(result);
 }
 
 function showCourses(array) {
-    let Input = $("#coursesInput").html();
-    let template = Handlebars.compile(Input);
+    /* let Input = $("#coursesInput").html();
+     let template = Handlebars.compile(Input);*/
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -114,13 +113,13 @@ function showCourses(array) {
         context.key.push(newObj);
         counter++;
     });
-
-    $("#coursesContainer").append(template(context));
+    let result = Handlebars.templates.tuitionCourses(context);
+    $("#coursesContainer").append(result);
 }
 
 function showResults(array) {
-    let Input = $("#resultInput").html();
-    let template = Handlebars.compile(Input);
+    /*let Input = $("#resultInput").html();
+    let template = Handlebars.compile(Input);*/
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -145,13 +144,14 @@ function showResults(array) {
         counter++;
     });
 
-    $("#resultsContainer").append(template(context));
+    let result = Handlebars.templates.tuitionResult(context);
+    $("#resultsContainer").append(result);
 
 }
 
 function showFaculty(array) {
-    let Input = $("#facultyInput").html();
-    let template = Handlebars.compile(Input);
+    /* let Input = $("#facultyInput").html();
+     let template = Handlebars.compile(Input);*/
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -177,39 +177,44 @@ function showFaculty(array) {
         counter++;
     });
 
-    $("#facultyContainer").append(template(context));
+    let result = Handlebars.templates.tuitionFaculty(context);
+    $("#facultyContainer").append(result);
 
 }
 
 function showSocialLinks(f, i, y) {
-    let Input = $("#linksInput").html();
-    let template = Handlebars.compile(Input);
+    /* let Input = $("#linksInput").html();
+     let template = Handlebars.compile(Input);*/
     let context = {
         // twitter: t,
         facebook: f == "" ? '#' : f,
         instagram: i == "" ? '#' : i,
         youtube: y == "" ? '#' : y
     };
-    $("#linkContainer").append(template(context));
+
+    let result = Handlebars.templates.tuitionLinks(context);
+    $("#linkContainer").append(result);
 }
 
 function doTheTemplateStuff(data) {
     const facilityArr = data.facilities ? data.facilities.split(',') : [];
-    const facilitySource = $('#facility_template').html();
-    const facilityTemplate = Handlebars.compile(facilitySource);
-    const facilityHtml = facilityTemplate({facilities: facilityArr});
-    $('#facilities_container').html(facilityHtml);
+    /*const facilitySource = $('#facility_template').html();
+    const facilityTemplate = Handlebars.compile(facilitySource);*/
+    let result1 = Handlebars.templates.tuitionFacility({facilities: facilityArr});
+    // const facilityHtml = facilityTemplate({facilities: facilityArr});
+    $('#facilities_container').html(result1);
 
     const categoryArr = data.category ? data.category.split(',') : [];
-    const categorySource = $('#category_template').html();
-    const categoryTemplate = Handlebars.compile(categorySource);
-    const categoryHtml = categoryTemplate({categories: categoryArr});
-    $('#category_container').html(categoryHtml);
+    /*const categorySource = $('#category_template').html();
+    const categoryTemplate = Handlebars.compile(categorySource);*/
+    let result2 = Handlebars.templates.tuitionCategory({categories: categoryArr});
+    // const categoryHtml = categoryTemplate({categories: categoryArr});
+    $('#category_container').html(result2);
 
-    const operationSource = $('#operates_on_template').html();
-    const operationTemplate = Handlebars.compile(operationSource);
-    const operationHtml = operationTemplate({dayAndTimeOfOperation: data.dayAndTimeOfOperation});
-    $('#opration_container').html(operationHtml);
+    /*const operationSource = $('#operates_on_template').html();
+    const operationTemplate = Handlebars.compile(operationSource);*/
+    /*const operationHtml = operationTemplate({dayAndTimeOfOperation: data.dayAndTimeOfOperation});
+    $('#opration_container').html(operationHtml);*/
 }
 
 function getRelatedListing(category) {
@@ -225,11 +230,11 @@ function getRelatedListing(category) {
         method: 'GET'
     });
 
-    let source = $("#entry-template2").html();
-    let template = Handlebars.compile(source);
+    /*let source = $("#entry-template2").html();
+    let template = Handlebars.compile(source);*/
     let context = {
         Name: "Tuition Name",
-        rating: "",
+        rating: "2.5",
         ifAd: "",
         Address: "address",
         Phone: "phone",
@@ -248,6 +253,7 @@ function getRelatedListing(category) {
         if (!Array.isArray(data)) {
             // for (keys in data) {
             //     if (data.hasOwnProperty(keys)) {
+            context.rating = data.rating ? data.rating : "2.5";
             context.id = data._id;
             context.Name = data.name;
             context.Address = `${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
@@ -255,7 +261,8 @@ function getRelatedListing(category) {
             context.Email = data.email;
             context.coverPic = data.img_coverPic;
             context.Category = data.category;
-            $("#relatedTuitionContainer").append(template(context));
+            let result = Handlebars.templates.tuitionCard(context);
+            $("#relatedTuitionContainer").append(result);
             // }
             // }
         }

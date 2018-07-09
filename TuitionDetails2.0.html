@@ -153,14 +153,6 @@
                                     <div class="card-body">
                                         <h2 class="card-title h3">Facilities:</h2>
                                         <div id="facilities_container">
-                                            <script id="facility_template" type="text/x-handlebars-template">
-                                                {{#each facilities}}
-                                                <div>
-                                                    <i class="material-icons facility-icon">check_circle_outline</i>
-                                                    <span>{{this}}</span>
-                                                </div>
-                                                {{/each}}
-                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -177,11 +169,6 @@
                                         <h2 class="card-title h3">Category</h2>
                                     </div>
                                     <div id="category_container">
-                                        <script id="category_template" type="text/x-handlebars-template">
-                                            {{#each categories}}
-                                            <span class="badge badge-success">{{this}}</span>
-                                            {{/each}}
-                                        </script>
                                     </div>
                                 </div>
 
@@ -233,115 +220,6 @@
                                             Operates on
                                         </div>
                                         <div id="opration_hours_containers" class="">
-                                            <script id="dayAndTimeOfOperationInput"
-                                                    type="text/x-handlebars-template">
-
-                                                <div class="col-6">
-                                                    Monday:
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{monFrom}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{monTo}}
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-6">
-                                                    Tuesday:
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{tueFrom}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{tueTo}}
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-6">
-                                                    Wednsday:
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{wedFrom}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{wedTo}}
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-6">
-                                                    Thursday:
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{thrFrom}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{thrTo}}
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-6">
-                                                    Friday:
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{friFrom}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{friTo}}
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-6">
-                                                    Saturday:
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{satFrom}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{satTo}}
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-6">
-                                                    Sunday:
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{sunFrom}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="h6">
-                                                        {{sunTo}}
-                                                    </div>
-                                                </div>
-
-
-                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -354,20 +232,6 @@
                                             Social Links:
                                         </div>
                                         <div id="linkContainer">
-                                            <script id="linksInput" type="text/x-handlebars-template">
-                                                <a href="{{facebook}}" target="_blank"
-                                                   class="btn btn-just-icon btn-round btn-facebook social-icons">
-                                                    <i class="fa fa-facebook"> </i>
-                                                </a>
-                                                <a href="{{youtube}}"
-                                                   class="btn btn-just-icon btn-round btn-youtube social-icons">
-                                                    <i class="fa fa-youtube"> </i>
-                                                </a>
-                                                <a href="{{instagram}}"
-                                                   class="btn btn-just-icon btn-round btn-dribbble social-icons">
-                                                    <i class="fa fa-instagram"></i>
-                                                </a>
-                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -376,77 +240,14 @@
                             <div class="tab-pane" id="tab3">
                                 <div class="row justify-content-around" id="coursesContainer">
                                     <!-- put a unique id using handleBars-->
-                                    <script id="coursesInput" type="text/x-handlebars-template">
-                                        {{#list key}}
-                                        <div class="col-4" id="course{{id}}">
-                                            <div class="card">
-                                                <span style="position: absolute;left: 92%;top: -6%;">
-                                                    <!-- send title of course and id of card in function deleteCourse()-->
-                                                </span>
-                                                <div class="card-body">
-                                                    <h4 class="card-title">{{title}}</h4>
-                                                    <h6 class=" mb-2 text-muted">Standard/Age Group</h6>
-                                                    <h6 class="card-text">{{ageGroup}}</h6>
-                                                    <hr>
-                                                    <h6 class=" mb-2 text-muted">Duration</h6>
-                                                    <h6 class="card-text">{{duration}}</h6>
-                                                    <hr>
-                                                    <h6 class=" mb-2 text-muted">Fee</h6>
-                                                    <h6 class="card-text">INR {{fee}}</h6>
-                                                    <hr>
-                                                </div>
-                                                <h4 class="card-header card-header-info">Next Batch - {{nextBatch}}</h4>
-                                            </div>
-                                        </div>
-                                        {{/list}}
-                                    </script>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab4">
                                 <div class="row justify-content-around" id="resultsContainer">
-                                    <script id="resultInput" type="text/x-handlebars-template">
-                                        {{#list key}}
-                                        <div class="col-4" id="result{{id}}">
-                                            <div class="card">
-                                    <span style="position: absolute;left: 92%;top: -6%;">
-                                        <!-- send (_id of result obj received , id of card) as arguments for function deleteResult()-->
-                                    </span>
-                                                <img class="card-img-top" src="{{img_path}}" alt="">
-                                                <div class="card-body">
-                                                    <div class="card-title">
-                                                        {{title}}
-                                                    </div>
-                                                    <p class="card-text">{{description}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{/list}}
-                                    </script>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab5">
                                 <div class="row" id="facultyContainer">
-                                    <script id="facultyInput" type="text/x-handlebars-template">
-                                        {{#list key}}
-                                        <div class="col-4" id="faculty{{id}}">
-                                            <div class="card card-nav-tabs">
-                                        <span style="position: absolute;left: 92%;top: -6%;">
-                                        <!-- send (name of the faculty , id of card) as arguments for function deleteFaculty()-->
-                                        </span>
-                                                <img class="card-img-bottom" src="{{img_path}}" alt="">
-                                                <div class="card-body">
-                                                    <div class="card-title">
-                                                        {{name}}
-                                                    </div>
-                                                    <div class="card-subtitle mb-2 text-muted">
-                                                        {{qualification}}
-                                                    </div>
-                                                    <p class="card-text">{{description}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{/list}}
-                                    </script>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab6">
@@ -545,67 +346,6 @@
 
             <h3 class="col-md-12">Related Listings:</h3>
 
-            <script id="entry-template2" type="text/x-handlebars-template">
-                <div class="col-4">
-                    <div class="card" style="">
-                        <!--put src = "assets/img/{{coverPic}}" -->
-                        <img class="card-img tinted" src="assets/img/tuition2.jpg" alt="Card image cap">
-                        <div class="card-img-overlay color-white m-0 p-3">
-                            <div class="row">
-                                <div class="col-9">
-                                    <h4 class="card-title color-white m-0 p-0">{{Name}}</h4>
-                                </div>
-                                <div class="col-2">
-                                    <!-- todo - uncomment when verification data there -->
-                                    <!--<button class="btn btn-info btn-fab btn-fab-mini btn-round position-absolute">
-                                        <i class="material-icons">
-                                            verified_user
-                                        </i>
-                                    </button>-->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-8">
-                                    <p class="card-text m-0 color-white">{{Category}}</p>
-                                </div>
-                                <div class="col-3">
-                                    <!--<span class="badge badge-info">{{ifAd}}</span>-->
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="card-body px-4 position-relative">
-                            <!-- todo uncomment when rating available-->
-                            <!--<button class="btn btn-info btn-fab btn-round position-absolute moveUp">
-                                {{rating}}
-                            </button>-->
-                            <div class="row">
-                                <i class="material-icons d-inline-flex icon-small">
-                                    place
-                                </i>
-                                <p class="card-text text m-0 ">{{Address}}</p>
-                            </div>
-                            <div class="row">
-                                <i class="material-icons d-inline-flex icon-small">
-                                    local_phone
-                                </i>
-                                <p class="card-text m-0 row">{{Phone}}</p>
-                            </div>
-
-                            <div class="row">
-                                <i class="material-icons d-inline-flex icon-small">
-                                    alternate_email
-                                </i>
-                                <p class="card-text m-0 row">{{Email}} </p>
-                            </div>
-
-
-                            <a href="http://localhost:6868/app/TuitionDetails2.0.html?_id={{id}}" class="btn btn-info">Details</a>
-                        </div>
-
-                    </div>
-                </div>
-            </script>
         </div>
 
     </div>
@@ -639,8 +379,16 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group m-0">
-                        <label for="email_name" class="bmd-label-floating">Name</label>
+                        <label for="email_name" class="bmd-label-floating">Your Name</label>
                         <input type="text" class="form-control" id="email_name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email_phone" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="email_phone">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email_email" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="email_email">
                     </div>
                     <div class="form-group">
                         <label for="email_message">Message</label>
@@ -669,8 +417,16 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group m-0">
-                        <label for="sms_name" class="bmd-label-floating">Name</label>
+                        <label for="sms_name" class="bmd-label-floating">Your Name</label>
                         <input type="text" class="form-control" id="sms_name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="sms_phone" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="sms_phone">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="sms_email" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="sms_email">
                     </div>
                     <div class="form-group">
                         <label for="sms_message">Message</label>
@@ -724,6 +480,7 @@
 
 <!--handle bars-->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
+<script src="assets/js/templates.js"></script>
 
 <!-- Custom Code -->
 <script src="assets/js/tuition.js"></script>
