@@ -37,44 +37,74 @@
     <h1 class="center-align">Add a school</h1>
 
     <div class="row">
-        <form id="the_form" class="col s12" action="/school" method="post"
+        <form id="the_form" class="col s12" action="http://localhost:8080/school" method="post"
               enctype="multipart/form-data">
 
             <div class="input-field col s6">
-                <input name="name" id="name" type="text" class="validate">
-                <label for="name">Name</label>
+                <input name="name" id="name" type="text" class="validate" required>
+                <label for="name">Name<i class="red-text accent-3">*</i></label>
             </div>
 
             <div class="input-field col s6">
-                <select id="facilities" name="facilities" multiple>
-                    <option value="" disabled>Choose your option</option>
-                    <option value="Library/Study Area">Library/Study Area</option>
-                    <option value="Smart Classes">Smart Classes</option>
-                    <option value="Study Material">Study Material</option>
-                    <option value="AC Classes">AC Classes</option>
-                    <option value="Internet/WIFI">Internet/WIFI</option>
-                    <option value="Transport">Transport</option>
-                    <option value="E-Learning">E-Learning</option>
+                <select name="curriculum" id="curriculum" required>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="CBSE">CBSE</option>
+                    <option value="ICSE">ICSE</option>
+                    <option value="State Board">State Board</option>
+                    <option value="Open School">Open School</option>
+                    <option value="IGCSC">IGCSC</option>
+                    <option value="CIE">CIE</option>
+                    <option value="IB">IB</option>
+                    <option value="Others">Others</option>
                 </select>
-                <label for="facilities">Facilities</label>
+                <label for="curriculum">Curriculum<i class="red-text accent-3">*</i></label>
+            </div>
+
+            <div class="input-field col s6">
+                <select name="grades" id="grades" multiple>
+                    <option value="" disabled selected>Choose multiple</option>
+                    <option value="Nursery">Nursery</option>
+                    <option value="Kindergarten">Kindergarten</option>
+                    <option value="1st">1st</option>
+                    <option value="2nd">2nd</option>
+                    <option value="3rd">3rd</option>
+                    <option value="4th">4th</option>
+                    <option value="5th">5th</option>
+                    <option value="6th">6th</option>
+                    <option value="7th">7th</option>
+                    <option value="8th">8th</option>
+                    <option value="9th">9th</option>
+                    <option value="10th">10th</option>
+                    <option value="11th">11th</option>
+                    <option value="12th">12th</option>
+                    <!--<option value="Others">Others</option>-->
+                </select>
+                <label for="grades">Grades/Classes<i class="red-text accent-3">*</i></label>
+            </div>
+
+            <div class="input-field col s6">
+                <select id="type" name="type">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="Day">Day School</option>
+                    <option value="Day Boarding">Day Boarding</option>
+                    <option value="Boarding/Residential">Boarding/Residential</option>
+                </select>
+                <label for="type">Type<i class="red-text accent-3">*</i></label>
             </div>
 
             <div class="input-field col s6">
                 <select id="category" name="category" multiple>
                     <option value="" disabled>Choose your option</option>
-                    <option value="Library/Study Area">Tuition Centers</option>
-                    <option value="Coaching Centers">Coaching Centers</option>
-                    <option value="Enhanced Learning">Enhanced Learning</option>
-                    <option value="Hobby Centers">Hobby Centers</option>
-                    <option value="Sports Center">Sports Center</option>
-                    <option value="Education Companies">Education Companies</option>
+                    <option value="Pre/Play School">Pre/Play School</option>
+                    <option value="Day Care">Day Care</option>
+                    <option value="Formal School">Formal School</option>
                 </select>
-                <label for="category">Category</label>
+                <label for="category">Category<i class="red-text accent-3">*</i></label>
             </div>
 
             <div class="input-field col s6">
-                <input name="fee" id="fee" type="number" class="validate">
-                <label for="fee">Fee in rupees</label>
+                <input name="principalName" id="principal_name" type="text" class="validate" required>
+                <label for="principal_name">Principal's Name<i class="red-text accent-3">*</i></label>
             </div>
 
             <div class="input-field col s6">
@@ -83,165 +113,210 @@
             </div>
 
             <div class="input-field col s6">
-                <select id="type" name="type">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="CBSE">Day School</option>
-                    <option value="ICSE">Boarding School</option>
-                    <option value="State Board">Day Boarding School</option>
+                <select id="facilities" name="facilities" multiple>
+                    <option value="" disabled>Choose your option</option>
+                    <option value="Smart Classes">Smart Classes</option>
+                    <option value="AC Classes">AC Classes</option>
+                    <option value="Transport">Transport</option>
+                    <option value="E-Learning">E-Learning</option>
+                    <option value="Library/Study Area">Library/Study Area</option>
+                    <option value="Science Labs">Science Labs</option>
+                    <option value="Playing Fields">Playing Fields</option>
+                    <option value="Canteen">Canteen</option>
+                    <option value="Medical Centre">Medical Centre</option>
+                    <option value="Book Store">Book Store</option>
+                    <option value="Uniform Store">Uniform Store</option>
+                    <option value="Counselling Support">Counselling Support</option>
+                    <option value="Swimming Pool">Swimming Pool</option>
+                    <!--<option value="Others">Others</option>-->
                 </select>
-                <label for="type">Type</label>
-            </div>
-
-            <div class="input-field col s6">
-                <input name="principalName" id="principal_name" type="text" class="validate">
-                <label for="principal_name">Principal's Name</label>
-            </div>
-
-            <div class="input-field col s6">
-                <select name="curriculum" id="curriculum">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="CBSE">CBSE</option>
-                    <option value="ICSE">ICSE</option>
-                    <option value="State Board">State Board</option>
-                    <option value="IB">IB</option>
-                    <option value="IGCSC">IGCSC</option>
-                </select>
-                <label for="curriculum">Curriculum</label>
+                <label for="facilities">Facilities</label>
             </div>
 
             <div class="input-field col s12">
-                <input name="description" id="description" type="text" class="validate">
-                <label for="description">Description</label>
+                <input name="description" id="description" type="text" class="validate" required>
+                <label for="description">Description<i class="red-text accent-3">*</i></label>
             </div>
 
-            <h4 class="col s12">Location:</h4>
+            <h4 class="col s12">Admission Details:</h4>
+
+            <div class="input-field col s12">
+                <input name="admissionProcess" id="admissionProcess" type="text" class="validate">
+                <label for="admissionProcess">Admission Process</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input name="eligibilityCriteria" id="eligibilityCriteria" type="text" class="validate">
+                <label for="eligibilityCriteria">Eligibility Criteria</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input name="fee" id="fee" type="number" class="validate" required>
+                <label for="fee">Average Fee<i class="red-text accent-3">*</i></label>
+            </div>
+
+            <h5 class="col s12">School Timings: <i class="red-text accent-3">*</i></h5>
+            <table>
+                <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Closed</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td id="monFrom"><input name="day_monday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start" required></td>
+                    <td id="monTo"><input name="day_monday_to" type="text" class="timepicker col s5" placeholder="End"
+                                          required>
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxMon"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td id="tueFrom"><input name="day_tuesday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start" required></td>
+                    <td id="tueTo"><input name="day_tuesday_to" type="text" class="timepicker col s5" placeholder="End"
+                                          required>
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxTues"/>
+                        <span></span>
+                    </label></td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td id="wedFrom"><input name="day_wednesday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start" required></td>
+                    <td id="wedTo"><input name="day_wednesday_to" type="text" class="timepicker col s5"
+                                          placeholder="End" required></td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxWed"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td id="thrFrom"><input name="day_thursday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start" required></td>
+                    <td id="thrTo"><input name="day_thursday_to" type="text" class="timepicker col s5"
+                                          placeholder="End" required></td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxThr"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td id="friFrom"><input name="day_friday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start" required></td>
+                    <td id="friTo"><input name="day_friday_to" type="text" class="timepicker col s5" placeholder="End"
+                                          required>
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxFri"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td id="satFrom"><input name="day_saturday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start" required></td>
+                    <td id="satTo"><input name="day_saturday_to" type="text" class="timepicker col s5"
+                                          placeholder="End" required></td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxSat"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td id="sunFrom"><input name="day_sunday_from" type="text" class="timepicker col s5"
+                                            placeholder="Start" required></td>
+                    <td id="sunTo"><input name="day_sunday_to" type="text" class="timepicker col s5" placeholder="End"
+                                          required>
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="cboxSun"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5 class="col s12">Important Dates:</h5>
 
             <div class="input-field col s4">
-                <input name="addressLine1" id="address_line_1" type="text" class="validate">
-                <label for="address_line_1">Address Line 1</label>
+                <input name="n_importantDates_title_1" hidden value="Admission Start Date">
+                <input name="n_importantDates_date_1" id="admissionStartDate" type="text" class="validate datepicker col s5">
+                <label for="admissionStartDate">Admission Start Date</label>
             </div>
 
             <div class="input-field col s4">
-                <input name="addressLine2" id="address_line_2" type="text" class="validate">
-                <label for="address_line_2">Address Line 2</label>
+                <input name="n_importantDates_title_2" hidden value="Admission End Date">
+                <input name="n_importantDates_date_2" id="admissionEndDate" type="text" class="validate datepicker col s5">
+                <label for="admissionEndDate">Admission End Date</label>
             </div>
 
             <div class="input-field col s4">
-                <input name="district" id="district" type="text" class="validate">
-                <label for="district">District</label>
+                <input name="n_importantDates_title_3" hidden value="Session Start Date">
+                <input name="n_importantDates_date_3" id="sessionStartDate" type="text" class="validate datepicker col s5">
+                <label for="sessionStartDate">Session Start Date</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input name="otherInfo" id="otherInfo" type="text" class="validate">
+                <label for="otherInfo">Other Information</label>
+            </div>
+
+            <h4 class="col s12">Address:</h4>
+
+            <div class="input-field col s4">
+                <input name="addressLine1" id="address_line_1" type="text" class="validate" required>
+                <label for="address_line_1">Address Line 1<i class="red-text accent-3">*</i></label>
             </div>
 
             <div class="input-field col s4">
-                <input name="city" id="city" type="text" class="validate">
-                <label for="city">City</label>
+                <input name="addressLine2" id="address_line_2" type="text" class="validate" required>
+                <label for="address_line_2">Address Line 2<i class="red-text accent-3">*</i></label>
             </div>
 
             <div class="input-field col s4">
-                <input name="state" id="state" type="text" class="validate">
-                <label for="state">State</label>
+                <input name="district" id="district" type="text" class="validate" required>
+                <label for="district">District<i class="red-text accent-3">*</i></label>
             </div>
 
             <div class="input-field col s4">
-                <input name="country" id="country" type="text" class="validate">
-                <label for="country">Country</label>
+                <input name="city" id="city" type="text" class="validate" required>
+                <label for="city">City<i class="red-text accent-3">*</i></label>
             </div>
 
             <div class="input-field col s4">
-                <input name="pin" id="pin" type="number" class="validate">
-                <label for="pin">Pin</label>
+                <input name="state" id="state" type="text" class="validate" required>
+                <label for="state">State<i class="red-text accent-3">*</i></label>
             </div>
 
-            <h4 class="col s12">Days of operation:</h4>
-
-            <div class="input-field col s5">
-                <select name="fromDay" id="from_day">
-                    <option value="" disabled selected>To</option>
-                    <option value="Sunday">Sunday</option>
-                    <option value="Monday">Monday</option>
-                    <option value="Tuesday">Tuesday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                    <option value="Saturday">Saturday</option>
-                </select>
-                <label for="from_day">From</label>
+            <div class="input-field col s4">
+                <input name="country" id="country" type="text" class="validate" required>
+                <label for="country">Country<i class="red-text accent-3">*</i></label>
             </div>
 
-            <p class="center-align col s2">To</p>
-
-            <div class="input-field col s5">
-                <select name="toDay" id="to_day">
-                    <option value="" disabled selected>To</option>
-                    <option value="Sunday">Sunday</option>
-                    <option value="Monday">Monday</option>
-                    <option value="Tuesday">Tuesday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                    <option value="Saturday">Saturday</option>
-                </select>
-                <label for="to_day">To</label>
-            </div>
-
-
-            <h4 class="col s12">Timing (school):</h4>
-            <input name="startTimeSchool" type="text" class="timepicker col s5" placeholder="Start">
-            <p class="col s2 center-align">To</p>
-            <input name="endTimeSchool" type="text" class="timepicker col s5" placeholder="End">
-
-            <h4 class="col s12">Timing (office):</h4>
-            <input name="startTimeOffice" type="text" class="timepicker col s5" placeholder="Start">
-            <p class="col s2 center-align">To</p>
-            <input name="endTimeOffice" type="text" class="timepicker col s5" placeholder="End">
-
-            <h4 class="col s12">Grade:</h4>
-
-            <div class="input-field col s5">
-                <select name="fromGrade" id="from_grade">
-                    <option value="" disabled selected>From</option>
-                    <option value="Pre Nursery">Pre Nursery</option>
-                    <option value="Nurcery">Nursery</option>
-                    <option value="Lower Kinder Garden">Lower Kinder Garden</option>
-                    <option value="Upper Kinder Garden">Upper Kinder Garden</option>
-                    <option value="1st">1st</option>
-                    <option value="2nd">2nd</option>
-                    <option value="3rd">3rd</option>
-                    <option value="4th">4th</option>
-                    <option value="5th">5th</option>
-                    <option value="6th">6th</option>
-                    <option value="7th">7th</option>
-                    <option value="8th">8th</option>
-                    <option value="9th">9th</option>
-                    <option value="10th">10th</option>
-                    <option value="11th">11th</option>
-                    <option value="12th">12th</option>
-                </select>
-                <label for="from_grade">From</label>
-            </div>
-
-            <p class="center-align col s2">To</p>
-
-            <div class="input-field col s5">
-                <select name="toGrade" id="to_grade">
-                    <option value="" disabled selected>To</option>
-                    <option value="Pre Nursery">Pre Nursery</option>
-                    <option value="Nurcery">Nursery</option>
-                    <option value="Lower Kinder Garden">Lower Kinder Garden</option>
-                    <option value="Upper Kinder Garden">Upper Kinder Garden</option>
-                    <option value="1st">1st</option>
-                    <option value="2nd">2nd</option>
-                    <option value="3rd">3rd</option>
-                    <option value="4th">4th</option>
-                    <option value="5th">5th</option>
-                    <option value="6th">6th</option>
-                    <option value="7th">7th</option>
-                    <option value="8th">8th</option>
-                    <option value="9th">9th</option>
-                    <option value="10th">10th</option>
-                    <option value="11th">11th</option>
-                    <option value="12th">12th</option>
-                </select>
-                <label for="to_grade">To</label>
+            <div class="input-field col s4">
+                <input name="pin" id="pin" type="number" class="validate" required>
+                <label for="pin">Pin<i class="red-text accent-3">*</i></label>
             </div>
 
             <h4 class="col s12">Contact:</h4>
@@ -262,8 +337,8 @@
             </div>
 
             <div class="input-field col s4">
-                <input name="email" id="email" type="email" class="validate">
-                <label for="email">Email</label>
+                <input name="email" id="email" type="email" class="validate" required>
+                <label for="email">Email <i class="red-text accent-3">*</i></label>
             </div>
 
             <div class="input-field col s4">
@@ -279,8 +354,8 @@
             </div>
 
             <div class="input-field col s4">
-                <input name="twitter" id="twitter" type="text" class="validate">
-                <label for="twitter">Twitter Link</label>
+                <input name="twitterLink" id="twitterLink" type="text" class="validate">
+                <label for="twitterLink">Twitter Link</label>
             </div>
 
             <div class="input-field col s4">
@@ -295,12 +370,129 @@
 
             <div class="file-field input-field col s12">
                 <div class="btn">
-                    <span>File</span>
+                    <span>Cover Pic</span>
                     <input type="file" name="schoolCoverPic">
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Upload cover picture">
                 </div>
+            </div>
+
+            <div class="file-field input-field col s12">
+                <div class="btn">
+                    <span> Gallery </span>
+                    <input type="file" name="schoolGalleryPic" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload one/more pics">
+                </div>
+            </div>
+
+            <h5 class="col s12">Office Timings: <i class="red-text accent-3">*</i></h5>
+            <table>
+                <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Closed</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td id="OmonFrom"><input name="day_monday_from" type="text" class="timepicker col s5"
+                                             placeholder="Start" required></td>
+                    <td id="OmonTo"><input name="day_monday_to" type="text" class="timepicker col s5" placeholder="End"
+                                           required>
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="OcboxMon"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td id="OtueFrom"><input name="day_tuesday_from" type="text" class="timepicker col s5"
+                                             placeholder="Start" required></td>
+                    <td id="OtueTo"><input name="day_tuesday_to" type="text" class="timepicker col s5" placeholder="End"
+                                           required>
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="OcboxTues"/>
+                        <span></span>
+                    </label></td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td id="OwedFrom"><input name="day_wednesday_from" type="text" class="timepicker col s5"
+                                             placeholder="Start" required></td>
+                    <td id="OwedTo"><input name="day_wednesday_to" type="text" class="timepicker col s5"
+                                           placeholder="End" required></td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="OcboxWed"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td id="OthrFrom"><input name="day_thursday_from" type="text" class="timepicker col s5"
+                                             placeholder="Start" required></td>
+                    <td id="OthrTo"><input name="day_thursday_to" type="text" class="timepicker col s5"
+                                           placeholder="End" required></td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="OcboxThr"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td id="OfriFrom"><input name="day_friday_from" type="text" class="timepicker col s5"
+                                             placeholder="Start" required></td>
+                    <td id="OfriTo"><input name="day_friday_to" type="text" class="timepicker col s5" placeholder="End"
+                                           required>
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="OcboxFri"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td id="OsatFrom"><input name="day_saturday_from" type="text" class="timepicker col s5"
+                                             placeholder="Start" required></td>
+                    <td id="OsatTo"><input name="day_saturday_to" type="text" class="timepicker col s5"
+                                           placeholder="End" required></td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="OcboxSat"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td id="OsunFrom"><input name="day_sunday_from" type="text" class="timepicker col s5"
+                                             placeholder="Start" required></td>
+                    <td id="OsunTo"><input name="day_sunday_to" type="text" class="timepicker col s5" placeholder="End"
+                                           required>
+                    </td>
+                    <td><label>
+                        <input type="checkbox" class="filled-in" id="OcboxSun"/>
+                        <span></span>
+                    </label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="input-field col s4">
+                <input name="signedBy" id="signed_by" type="text" class="validate">
+                <label for="signed_by">Signed By</label>
             </div>
 
             <button class="btn waves-effect waves-light col s12 center-align" type="submit">Submit
