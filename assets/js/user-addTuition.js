@@ -43,10 +43,10 @@ function tuitionHaveBeenSaved(ifTuitionSaved) {
         const ifUserUpdated = $.ajax({
 
             // todo - need to fix
-            url: '/user/' + userData._id,
-            method: 'PUT',
+            url: '/user/add/tuitionsOwned/' + userData._id,
+            method: 'POST',
             data: {
-                tuitionsOwned: userData.tuitionsOwned + ',' + data._id
+                string: data._id
             }
         });
 
