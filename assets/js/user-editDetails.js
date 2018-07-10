@@ -120,3 +120,22 @@ function editUser(id) {
         alert("failed")
     })
 }
+
+const form = $('#userImgForm');
+
+form.submit(e => {
+    e.preventDefault();
+    const formData = new FormData(form[0]);
+    $.ajax({
+        type: form.attr('method'),
+        url: form.attr('action'),
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: data => {
+            console.log(data);
+        },
+        error: err => console.error(err)
+    })
+});
