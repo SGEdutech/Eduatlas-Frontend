@@ -5,7 +5,7 @@ let userData;
 // dummy user data
 function tryToGetData() {
     const promise = $.ajax({
-        url: 'http://localhost:6868/user/check',
+        url: '/user/check',
     });
 
 
@@ -55,7 +55,7 @@ function getUserOwnedTuition(ids) {
         // todo - fix Algorithm to get related listing
         // maybe add server side route to get this
         const promise = $.ajax({
-            url: 'http://localhost:6868/tuition?_id=' + tuitionId,
+            url: '/tuition?_id=' + tuitionId,
             method: 'GET'
         });
 

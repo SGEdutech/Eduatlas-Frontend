@@ -1,6 +1,6 @@
 function checkLogin(redirectAddress) {
     $.ajax({
-        url: 'http://localhost:6868/user/check',
+        url: '/user/check',
     }).then((data) => {
         console.log(data);
         if (data == 'LogIn') {

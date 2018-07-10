@@ -1,6 +1,6 @@
 /*
 const promise = $.ajax({
-    url: 'http://localhost:6868/auth/local/login',
+    url: '/auth/local/login',
 });
 
 promise.then((data) => {

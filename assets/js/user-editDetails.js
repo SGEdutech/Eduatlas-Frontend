@@ -1,5 +1,5 @@
 const promise = $.ajax({
-    url: 'http://localhost:6868/user/check',
+    url: '/user/check',
 });
 promise.then((data) => {
     userData = data;
@@ -107,7 +107,7 @@ promise.then((data) => {
 
 function editUser(id) {
     const editUserPromise = $.ajax({
-        url: 'http://localhost:6868/user/' + userData._id,
+        url: '/user/' + userData._id,
         type: 'PUT',
         data: $('#' + id).serialize()
     });
