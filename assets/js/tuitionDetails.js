@@ -3,8 +3,7 @@ let tuitionDeytails = $.ajax({
 });
 
 tuitionDeytails.then((data) => {
-    console.log(data)
-
+    console.log(data);
     //needs improvement
     //splitting facilities
     let facilities = data.facilities.split(",");

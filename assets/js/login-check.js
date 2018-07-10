@@ -6,7 +6,11 @@ function checkLogin(redirectAddress) {
         if (data == 'LogIn') {
             window.location.replace('./login-page.html');
         } else {
-            window.location.replace(redirectAddress);
+            if (redirectAddress === undefined || redirectAddress === '') {
+                // do nothing
+            } else {
+                window.location.replace(redirectAddress);
+            }
         }
     }).catch(err => {
         console.log(err);

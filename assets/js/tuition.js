@@ -12,6 +12,21 @@ function updateThePage(data) {
     getRelatedListing(data.category);
 
     // console.log(data);
+    if (data.claimedBy === undefined || data.claimedBy === '') {
+        $('#claimContainer').append(`<button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#claimModal"
+                            onclick="checkLogin()">
+                        Claim This Page
+                    </button>`)
+    } else {
+        $('#claimContainer').append(`<button type="button" class="btn btn-block btn-info">
+                        <i class="material-icons">
+                            done
+                        </i>
+                        Claimed
+                    </button>`)
+    }
+
+    $('#idOfTuition').val(data._id);
     $('#tuition_name').html(data.name);
     $('#address').html(data.addressLine1 + ', ' + data.addressLine2);
     $('#phone').html(data.primaryNumber);
@@ -21,6 +36,12 @@ function updateThePage(data) {
     $('#primary_number').html(data.primaryNumber);
     $('#alternate_number').html(data.secondaryNumber);
     $('#website').html(data.website);
+    if (data.rating === undefined || data.rating === '') {
+        $('#rating').html('2.5');
+    } else {
+        $('#rating').html(data.rating);
+    }
+
     showDaynTime(data.dayAndTimeOfOperation);
     showCourses(data.courses);
     showResults(data.bragging);
@@ -272,4 +293,45 @@ function getRelatedListing(category) {
     });
 
 
+}
+
+function claimListing() {
+    let user = {};
+    $.ajax({
+        url: '/user/check',
+    }).then(data => {
+        user = data;
+        $.ajax({
+            url: '/tuition/' + queryId,
+            type: 'PUT',
+            data: {claimedBy: user._id}
+        }).then(data => {
+            console.log("tuition updated");
+        });
+
+        $.ajax({
+            url: '/user/add/tuitionsOwned/' + user._id,
+            type: 'POST',
+            data: {string: queryId}
+        }).then(data => {
+            console.log('user updated');
+            alert('Success')
+        })
+    }).catch(err => {
+        console.log(err);
+        alert('failed')
+    })
+}
+
+function submitIssue(id) {
+    $.ajax({
+        url: '/issue',
+        method: 'POST',
+        data: $('#' + id).serialize()
+    }).then((data) => {
+        alert('Issue submitted successful. ISSUE ID =' + data._id)
+    }).catch(err => {
+        console.log(err);
+        alert('failed')
+    })
 }

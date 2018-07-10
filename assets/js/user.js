@@ -14,6 +14,7 @@ function tryToGetData() {
         if (data == 'LogIn') {
             window.location.replace('./login-page.html');
         }
+        console.log(data.tuitionsOwned);
         getUserOwnedTuition(data.tuitionsOwned);
 
         let profilePicContainer = $('#userProfilePicContainer');
@@ -45,12 +46,11 @@ tryToGetData();
 
 
 function getUserOwnedTuition(ids) {
-    if (ids == undefined) {
+    if (ids == undefined || ids === []) {
         return
     }
-    let idArray = ids.split(',');
 
-    idArray.forEach((tuitionId) => {
+    ids.forEach((tuitionId) => {
 
         // todo - fix Algorithm to get related listing
         // maybe add server side route to get this

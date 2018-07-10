@@ -46,7 +46,8 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" onclick="checkLogin('./User-dashboard.html')" style="cursor:pointer">Dashboard</a>
+                    <a class="nav-link" onclick="checkLogin('./User-dashboard.html')"
+                       style="cursor:pointer">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
@@ -55,7 +56,8 @@
                     <a class="nav-link" href="#">Schools</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false"><i class="material-icons">
                         add
                     </i>
                         ADD LISTING</a>
@@ -88,21 +90,25 @@
 
         <div class="card">
             <div class="card-body text-center">
-                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                    <div class="fileinput-new thumbnail img-raised" id="profilePicContainer">
-                        <img src="https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">
-                    </div>
-                    <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
-                    <div>
+                <form id="userImgForm" method="post" action="/user" enctype="multipart/form-data">
+                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail img-raised" id="profilePicContainer">
+                            <img src="https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                        <div>
                         <span class="btn btn-raised btn-round btn-default btn-file">
                             <span class="fileinput-new">Select image</span>
                             <span class="fileinput-exists">Change</span>
-                            <input type="file" name="..."/>
+                            <input type="file" name="">
                         </span>
-                        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i
-                                class="fa fa-times"></i> Remove</a>
+                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i
+                                    class="fa fa-times"></i> Remove</a>
+                        </div>
                     </div>
-                </div>
+                    <button class="btn btn-info" type="submit">Save new image</button>
+                </form>
+
             </div>
         </div>
 

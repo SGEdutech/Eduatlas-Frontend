@@ -45,7 +45,8 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" onclick="checkLogin('./User-dashboard.html')" style="cursor:pointer">Dashboard</a>
+                    <a class="nav-link" onclick="checkLogin('./User-dashboard.html')"
+                       style="cursor:pointer">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
@@ -54,10 +55,13 @@
                     <a class="nav-link" href="#">Schools</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">
-                        add
-                    </i>
-                        ADD LISTING</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">
+                            add
+                        </i>
+                        ADD LISTING
+                    </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" onclick="checkLogin('./User-addTuition.html')">Add Tuition</a>
                         <div class="dropdown-divider"></div>
@@ -91,7 +95,7 @@
         <div class="row align-items-center">
             <h1 id="tuition_name" class="col-md-8">Tuition Name</h1>
             <!--todo - add after rating data-->
-            <!--<span id="rating" class="badge badge-pill badge-success">4.5</span>-->
+            <span id="rating" class="badge badge-pill badge-success"></span>
             <div class="col-md-2">
                 <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#emailModal">
                     <i class="material-icons">
@@ -351,14 +355,26 @@
     </div>
 
     <div class="col-md-3">
-
-        <div class="card bg-warning">
-            <p class="card-body">
-                <i class="material-icons">
-                    warning
-                </i>
-                Claim this Tuition
-            </p>
+        <div class="card">
+            <div class="card-body">
+                <div id="claimContainer">
+                    <!--<button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#claimModal"
+                            onclick="checkLogin()">
+                        Claim This Page
+                    </button>
+                    <button type="button" class="btn btn-block btn-info">
+                        <i class="material-icons">
+                            done
+                        </i>
+                        Claimed
+                    </button>-->
+                </div>
+                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#reportModal">
+                    <i class="material-icons">
+                        warning
+                    </i>Report Page
+                </button>
+            </div>
         </div>
 
     </div>
@@ -442,6 +458,66 @@
     </div>
 </div>
 
+<div class="modal fade" id="claimModal" tabindex="-1" role="dialog" aria-labelledby="claimModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="claimModalLabel">Claim This Institute/Tuition</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> We may call to confirm</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Not my institute</button>
+                <button type="button" class="btn btn-primary" onclick="claimListing()">Yes Claim</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Report issue with this page</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/issue" method="POST" id="issueForm">
+                    <div class="form-group m-0">
+                        <label for="name" class="bmd-label-floating">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="contact" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="contact" name="contact">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Message</label>
+                        <textarea class="form-control" name="description" id="desc" rows="3"></textarea>
+                    </div>
+                    <input name="id" id="idOfTuition" value="" hidden>
+                    <input name="type" value="tuition" hidden>
+                </form>
+                <button onclick="submitIssue('issueForm')" class="btn btn-info">submit</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
@@ -471,10 +547,10 @@
 <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
 <script src="assets/js/material-kit.js?v=2.0.0"></script>
 
-<!-- Google Map -->
-<!--<script async defer-->
-<!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4&callback=initMap"-->
-<!--type="text/javascript"></script>-->
+Google Map
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4&callback=initMap"
+        type="text/javascript"></script>
 
 <script src="assets/js/google-map.js"></script>
 
