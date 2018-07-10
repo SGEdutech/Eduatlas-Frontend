@@ -42,8 +42,8 @@ function showCover(path) {
 }
 
 function showBasic(name, al1, al2, city, distt, state, country, pin) {
-   /* let Input = $("#basicInput").html();
-    let template = Handlebars.compile(Input);*/
+    /* let Input = $("#basicInput").html();
+     let template = Handlebars.compile(Input);*/
     let context = {
         name: name,
         addressLine1: al1,
