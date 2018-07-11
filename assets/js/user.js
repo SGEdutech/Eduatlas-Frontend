@@ -91,6 +91,18 @@ function getUserOwnedTuition(ids) {
 
     });
 
+}
 
+function logout() {
+    $.ajax({
+        url: '/auth/local/logout',
+        method: 'GET'
+    }).then(data => {
+        if(data.done){
+            window.location.replace('/');
+        }
+    }).catch(err => {
+        console.log(err);
+    })
 }
 
