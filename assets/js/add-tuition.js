@@ -7,6 +7,8 @@ let cboxSat = document.getElementById("cboxSat");
 let cboxSun = document.getElementById("cboxSun");
 
 
+
+
 cboxMon.onchange = function () {
 
     if (this.checked) {
