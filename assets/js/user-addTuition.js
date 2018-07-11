@@ -6,7 +6,7 @@ form.submit(e => {
 
     //check if user Logged in
     const ifUserLoggedIn = $.ajax({
-        url: '/user',
+        url: '/user/check',
     });
 
     // todo - this thing below won't protect our server from user-less entries
@@ -15,6 +15,7 @@ form.submit(e => {
         if (data == 'LogIn') {
             window.location.replace('./login-page.html');
         } else {
+            console.log('logged in')
             userData = data;
             let ifTuitionSaved = submitTuition();
             tuitionHaveBeenSaved(ifTuitionSaved);
@@ -38,10 +39,11 @@ function submitTuition() {
 }
 
 function tuitionHaveBeenSaved(ifTuitionSaved) {
+    console.log('tuition saved')
     ifTuitionSaved.then((data) => {
+        console.log(userData);
         tuitionIdCreated = data._id;
         const ifUserUpdated = $.ajax({
-
             // todo - need to fix
             url: '/user/add/tuitionsOwned/' + userData._id,
             method: 'POST',
@@ -59,6 +61,7 @@ function tuitionHaveBeenSaved(ifTuitionSaved) {
 
 function userHaveBeenUpdated(ifUserUpdated) {
     ifUserUpdated.then((data) => {
+        console.log('user updated')
         console.log(data);
         window.location.replace('./User-editTuition.html?a=' + tuitionIdCreated)
     }).catch(err => {
