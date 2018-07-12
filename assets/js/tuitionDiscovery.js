@@ -78,6 +78,18 @@ if (!complexSearch) {
 
     });
 } else {
+    let container = $("#content-placeholder");
+    suggestionBox.empty();
+    container.empty();
+
+    let contextShowingResultsFor = {
+        name: name,
+        city: city,
+        state: state
+    };
+    let ShowingResultsForHTML = Handlebars.templates.showSearchResult(contextShowingResultsFor);
+    container.append(ShowingResultsForHTML);
+
     console.log(name + '-' + city + '-' + state);
     $.ajax({
         url: '/tuition/search',
@@ -101,7 +113,6 @@ if (!complexSearch) {
         }
     }).then(data => {
         console.log(data);
-        let container = $("#content-placeholder");
         let result = '';
         let context = {
             Name: "Tuition Name",
@@ -114,9 +125,6 @@ if (!complexSearch) {
             Category: "category",
             id: "",
         };
-
-        suggestionBox.empty();
-        container.empty();
 
         for (keys in data) {
             if (data.hasOwnProperty(keys)) {
@@ -188,7 +196,20 @@ function getSearchResultsComplex() {
     city = $('#citySearch').val();
     sortBy = $('#sortByInput').val();
     name = $('#searchBox').val();
-    // console.log(sortBy);
+    let container = $("#content-placeholder");
+
+    suggestionBox.empty();
+    container.empty();
+
+    let contextShowingResultsFor = {
+        name: name,
+        city: city,
+        state: state
+    };
+    let ShowingResultsForHTML = Handlebars.templates.showSearchResult(contextShowingResultsFor);
+    container.append(ShowingResultsForHTML);
+
+
     $.ajax({
         url: '/tuition/search',
         data: {
@@ -210,8 +231,6 @@ function getSearchResultsComplex() {
             sortBy: sortBy
         }
     }).then(data => {
-        console.log(data);
-        let container = $("#content-placeholder");
         let result = '';
         let context = {
             Name: "Tuition Name",
@@ -224,9 +243,6 @@ function getSearchResultsComplex() {
             Category: "category",
             id: "",
         };
-
-        suggestionBox.empty();
-        container.empty();
 
         for (keys in data) {
             if (data.hasOwnProperty(keys)) {

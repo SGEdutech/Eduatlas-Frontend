@@ -95,7 +95,7 @@
             </div>
             <div class="col-4">
                 <input type="text" class="form-control searchInput" placeholder="Search"
-                       onkeyup="getSearchResultsImmediate(this.value)" onblur="removeSuggestions()" id="searchBox">
+                       onkeyup="getSearchResultsImmediate(this.value)" id="searchBox">
                 <div id="suggestions" class="position-absolute">
                 </div>
             </div>
@@ -141,6 +141,11 @@
         <!--bigger column containing description, reviews, gallery, faculty, courses -->
         <div class="col-9" style="margin-left: 3%">
             <div class="row" id="content-placeholder">
+                <!--<div id="complexSearchContainer" class="card mb-0">
+                    <div class="card-body">
+                        <p class="m-0">Showing Results of: <span class="font-weight-bold">&nbsp State-</span>{{state}} <span class="font-weight-bold">&nbsp City-</span>{{city}}<span class="font-weight-bold">&nbsp Query-</span>{{query}}</p>
+                    </div>
+                </div>-->
 
                 <!--<script id="entry-template2" type="text/x-handlebars-template">
                     <div class="col-4">
@@ -241,7 +246,7 @@
             </div>
             <div class="row justify-content-around">
                 <nav aria-label="...">
-                    <ul class="pagination" id="paginationContainer">
+                    <ul class="pagination my-3" id="paginationContainer">
                         <!--<script id="entry-template3" type="text/x-handlebars-template">
                             <li class="page-item">
                                 <a class="page-link"
