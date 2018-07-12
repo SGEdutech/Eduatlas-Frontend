@@ -9,7 +9,7 @@ $.ajax({
 
 function updateThePage(data) {
 
-    getRelatedListing(data.category);
+    getRelatedListing(data.city);
 
     // console.log(data);
     if (data.claimedBy === undefined || data.claimedBy === '') {
@@ -238,16 +238,15 @@ function doTheTemplateStuff(data) {
     $('#opration_container').html(operationHtml);*/
 }
 
-function getRelatedListing(category) {
-    if (!category) {
+function getRelatedListing(city) {
+    if (!city) {
         return
     }
 
     // todo - fix Algorithm to get related listing
     // maybe add server side route to get this
-    let arrayOfCategory = category.split(',');
     const promise = $.ajax({
-        url: '/tuition?category=' + arrayOfCategory[0],
+        url: '/tuition?city=' + city,
         method: 'GET'
     });
 
@@ -282,7 +281,7 @@ function getRelatedListing(category) {
             context.Email = data.email;
             context.coverPic = data.img_coverPic;
             context.Category = data.category;
-            let result = Handlebars.templates.tuitionCard(context);
+            let result = Handlebars.templates.tuitionCardCol4(context);
             $("#relatedTuitionContainer").append(result);
             // }
             // }
