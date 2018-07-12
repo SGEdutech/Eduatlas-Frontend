@@ -15,7 +15,7 @@ form.submit(e => {
         if (data == 'LogIn') {
             window.location.replace('./login-page.html');
         } else {
-            console.log('logged in')
+            // console.log('logged in')
             userData = data;
             let ifTuitionSaved = submitTuition();
             tuitionHaveBeenSaved(ifTuitionSaved);
@@ -27,6 +27,7 @@ form.submit(e => {
 });
 
 function submitTuition() {
+    $('#claimedByInput').val(userData._id);
     const formData = new FormData(form[0]);
     return $.ajax({
         type: form.attr('method'),
