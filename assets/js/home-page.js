@@ -92,7 +92,7 @@ function getSearchResults(value) {
                 search: value,
                 fullTextSearch: false,
             }),
-           /* limit: 5,*/
+            limit: 5,
         }
     }).then(data => {
         suggestionBox.empty();
@@ -108,7 +108,7 @@ function getSearchResults(value) {
 
 }
 
-/*
+// todo - decide when to clear suggestion box
 function removeSuggestions() {
     suggestionBox.empty();
-}*/
+}
