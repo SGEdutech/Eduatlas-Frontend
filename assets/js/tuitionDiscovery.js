@@ -7,18 +7,17 @@ let city = url.searchParams.get("city");
 let sortBy = url.searchParams.get("sortBy");
 let state = url.searchParams.get("state");
 let name = url.searchParams.get("name");
+// c means complex (there are two search- normal and complex)
 let complexSearch = url.searchParams.get("c");
+// converting boolean from string
 complexSearch = (complexSearch === 'true');
 
 let pageP1 = pageNum + 1;
 let pageM1 = pageNum === 1 ? pageNum : pageNum - 1;
 let skip = (pageNum - 1) * itemsPerPage;
 
-
-// console.log(itemsPerPage + '-' + pageNum);
-
-
 if (!complexSearch) {
+    //if search type is not complex
     const AllTuitionJSON = $.ajax({
         url: '/tuition/all',
         data: {
@@ -28,8 +27,6 @@ if (!complexSearch) {
         }
     });
 
-    /*let source = $("#entry-template2").html();
-    let template = Handlebars.compile(source);*/
     let context = {
         Name: "Tuition Name",
         rating: "2.5",
@@ -59,8 +56,9 @@ if (!complexSearch) {
                 result += Handlebars.templates.tuitionCardCol4(context);
             }
         }
-        $("#content-placeholder").append(result);
 
+        //updating the pagination links
+        $("#content-placeholder").append(result);
         let contextPagination = {
             page: pageNum,
             pageM1: pageM1,
@@ -72,12 +70,13 @@ if (!complexSearch) {
             city: "",
             sortBy: ""*/
         };
-
         let resultPagi = Handlebars.templates.paginationT(contextPagination);
         $("#paginationContainer").append(resultPagi);
+        //updating pagination done
 
     });
 } else {
+    // if search type is complex
     let container = $("#content-placeholder");
     suggestionBox.empty();
     container.empty();
@@ -141,6 +140,7 @@ if (!complexSearch) {
         }
         container.append(result);
 
+        //updating the pagination-links
         let contextPagination = {
             page: pageNum,
             pageM1: pageM1,
@@ -152,15 +152,16 @@ if (!complexSearch) {
             city: city,
             sortBy: sortBy
         };
-
         let resultPagi = Handlebars.templates.paginationT(contextPagination);
         $("#paginationContainer").append(resultPagi);
+        //pagination updating done
 
     }).catch(err => {
         console.log(err);
     })
 }
 
+//for showing immediate results as you start typing name
 function getSearchResultsImmediate(value) {
     $.ajax({
         url: '/tuition/search',
@@ -259,9 +260,9 @@ function getSearchResultsComplex() {
         }
         container.append(result);
 
+        //updating the pagination for the first time according to complex search
         let pagiContainer = $("#paginationContainer");
         pagiContainer.empty();
-
         let contextPagination = {
             page: pageNum,
             pageM1: pageM1,
@@ -273,16 +274,9 @@ function getSearchResultsComplex() {
             city: city,
             sortBy: sortBy
         };
-
         let resultPagi = Handlebars.templates.paginationT(contextPagination);
         pagiContainer.append(resultPagi);
-
-
-        /* let toAdd = '';
-         data.forEach(obj => {
-             toAdd += `<a href="/TuitionDetails2.0.html?_id=${obj._id}" class="color-white">${obj.name}</a><br>`
-         });
-         suggestionBox.append(toAdd)*/
+        //pagination updating done
 
     }).catch(err => {
         console.log(err);

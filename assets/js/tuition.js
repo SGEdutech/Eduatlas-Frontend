@@ -52,8 +52,6 @@ function updateThePage(data) {
 }
 
 function showDaynTime(array) {
-    /*let Input = $("#dayAndTimeOfOperationInput").html();
-    let template = Handlebars.compile(Input);*/
     let context = {
         monFrom: '',
         monTo: '',
@@ -108,8 +106,6 @@ function showDaynTime(array) {
 }
 
 function showCourses(array) {
-    /* let Input = $("#coursesInput").html();
-     let template = Handlebars.compile(Input);*/
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -139,8 +135,6 @@ function showCourses(array) {
 }
 
 function showResults(array) {
-    /*let Input = $("#resultInput").html();
-    let template = Handlebars.compile(Input);*/
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -171,8 +165,6 @@ function showResults(array) {
 }
 
 function showFaculty(array) {
-    /* let Input = $("#facultyInput").html();
-     let template = Handlebars.compile(Input);*/
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -204,8 +196,6 @@ function showFaculty(array) {
 }
 
 function showSocialLinks(f, i, y) {
-    /* let Input = $("#linksInput").html();
-     let template = Handlebars.compile(Input);*/
     let context = {
         // twitter: t,
         facebook: f == "" ? '#' : f,
@@ -219,23 +209,12 @@ function showSocialLinks(f, i, y) {
 
 function doTheTemplateStuff(data) {
     const facilityArr = data.facilities ? data.facilities.split(',') : [];
-    /*const facilitySource = $('#facility_template').html();
-    const facilityTemplate = Handlebars.compile(facilitySource);*/
     let result1 = Handlebars.templates.tuitionFacility({facilities: facilityArr});
-    // const facilityHtml = facilityTemplate({facilities: facilityArr});
     $('#facilities_container').html(result1);
 
     const categoryArr = data.category ? data.category.split(',') : [];
-    /*const categorySource = $('#category_template').html();
-    const categoryTemplate = Handlebars.compile(categorySource);*/
     let result2 = Handlebars.templates.tuitionCategory({categories: categoryArr});
-    // const categoryHtml = categoryTemplate({categories: categoryArr});
     $('#category_container').html(result2);
-
-    /*const operationSource = $('#operates_on_template').html();
-    const operationTemplate = Handlebars.compile(operationSource);*/
-    /*const operationHtml = operationTemplate({dayAndTimeOfOperation: data.dayAndTimeOfOperation});
-    $('#opration_container').html(operationHtml);*/
 }
 
 function getRelatedListing(city) {
@@ -250,8 +229,6 @@ function getRelatedListing(city) {
         method: 'GET'
     });
 
-    /*let source = $("#entry-template2").html();
-    let template = Handlebars.compile(source);*/
     let context = {
         Name: "Tuition Name",
         rating: "2.5",
@@ -265,10 +242,6 @@ function getRelatedListing(city) {
     };
 
     promise.then((data) => {
-        console.log("related***************");
-        console.log(data);
-        console.log("related**************");
-
 
         if (!Array.isArray(data)) {
             // for (keys in data) {
@@ -296,10 +269,12 @@ function getRelatedListing(city) {
 
 function claimListing() {
     let user = {};
+    //first check if user is logged-in
     $.ajax({
         url: '/user/check',
     }).then(data => {
         user = data;
+        //now update tuition by adding claimedBy
         $.ajax({
             url: '/tuition/' + queryId,
             type: 'PUT',
@@ -307,7 +282,7 @@ function claimListing() {
         }).then(data => {
             console.log("tuition updated");
         });
-
+        //now update user by inserting id of tuition to tuitionsOwned array
         $.ajax({
             url: '/user/add/tuitionsOwned/' + user._id,
             type: 'POST',
@@ -323,6 +298,7 @@ function claimListing() {
 }
 
 function submitIssue(id) {
+    //for submitting issues
     $.ajax({
         url: '/issue',
         method: 'POST',

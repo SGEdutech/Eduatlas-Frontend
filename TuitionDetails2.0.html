@@ -129,14 +129,14 @@
     </div>
 </div>
 
-<div id="secondary_info" class="row">
+<div id="secondary_info" class="row p-0">
 
     <div class="col-md-9">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body p-1 p-md-3">
                 <div class="row">
                     <div class="col-md-3">
-                        <ul class="nav nav-pills nav-pills-rose flex-column">
+                        <ul class="nav nav-pills nav-pills-rose flex-row flex-md-column">
                             <li class="nav-item">
                                 <a class="nav-link active" href="#tab1" data-toggle="tab">Description</a>
                             </li>
@@ -180,7 +180,7 @@
 
                             <div class="tab-pane" id="tab2">
 
-                                <div class="row justify-content-around">
+                                <div class="row justify-content-around m-0">
                                     <div class="card col-md-6">
                                         <div class="card-body">
                                             <div class="card-title h3">
@@ -506,8 +506,8 @@
                         <label for="desc">Message</label>
                         <textarea class="form-control" name="description" id="desc" rows="3"></textarea>
                     </div>
-                    <input name="id" id="idOfTuition" value="" hidden>
-                    <input name="type" value="tuition" hidden>
+                    <input class="form-control" name="id" id="idOfTuition" hidden>
+                    <input class="form-control" name="type" value="tuition" hidden>
                 </form>
                 <button onclick="submitIssue('issueForm')" class="btn btn-info">submit</button>
             </div>

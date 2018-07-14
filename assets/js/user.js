@@ -15,8 +15,6 @@ function tryToGetData() {
 
         let profilePicContainer = $('#userProfilePicContainer');
         let userIdContainer = $('#userIdContainer');
-        /* let firstNameInput = $('#firstName');
-         let primaryEmailInput = $('#primaryEmail');*/
 
         // put fetched image path in src of image and add
         let pic = '';
