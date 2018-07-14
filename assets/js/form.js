@@ -19,7 +19,7 @@ form.submit(e => {
         data: formData,
         success: data => {
             instance.open();
-            $('input').val('');
+            $('input').not('.hide').val('');
         },
         error: err => console.error(err)
     })

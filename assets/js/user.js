@@ -11,10 +11,6 @@ function tryToGetData() {
 
     promise.then((data) => {
         userData = data;
-        if (data == 'LogIn') {
-            window.location.replace('./login-page.html');
-        }
-        console.log(data.tuitionsOwned);
         getUserOwnedTuition(data.tuitionsOwned);
 
         let profilePicContainer = $('#userProfilePicContainer');

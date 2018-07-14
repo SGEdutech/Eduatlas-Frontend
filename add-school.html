@@ -37,7 +37,7 @@
     <h1 class="center-align">Add a school</h1>
 
     <div class="row">
-        <form id="the_form" class="col s12" action="http://localhost:8080/school" method="post"
+        <form id="the_form" class="col s12" action="/school" method="post"
               enctype="multipart/form-data">
 
             <div class="input-field col s6">
@@ -169,10 +169,13 @@
                 <tbody>
                 <tr>
                     <td>Monday</td>
-                    <td id="monFrom"><input name="day_monday_from" type="text" class="timepicker col s5"
-                                            placeholder="Start" required></td>
-                    <td id="monTo"><input name="day_monday_to" type="text" class="timepicker col s5" placeholder="End"
-                                          required>
+                    <td id="monFrom">
+                        <input type="text" value="monday" name="n_" id="">
+                        <input name="n_schoolTiming_fromTime_1" type="text" class="timepicker col s5"
+                               placeholder="Start" required>
+                    </td>
+                    <td id="monTo">
+                        <input name="day_monday_to" type="text" class="timepicker col s5" placeholder="End" required>
                     </td>
                     <td><label>
                         <input type="checkbox" class="filled-in" id="cboxMon"/>
@@ -261,19 +264,22 @@
 
             <div class="input-field col s4">
                 <input name="n_importantDates_title_1" hidden value="Admission Start Date">
-                <input name="n_importantDates_date_1" id="admissionStartDate" type="text" class="validate datepicker col s5">
+                <input name="n_importantDates_date_1" id="admissionStartDate" type="text"
+                       class="validate datepicker col s5">
                 <label for="admissionStartDate">Admission Start Date</label>
             </div>
 
             <div class="input-field col s4">
                 <input name="n_importantDates_title_2" hidden value="Admission End Date">
-                <input name="n_importantDates_date_2" id="admissionEndDate" type="text" class="validate datepicker col s5">
+                <input name="n_importantDates_date_2" id="admissionEndDate" type="text"
+                       class="validate datepicker col s5">
                 <label for="admissionEndDate">Admission End Date</label>
             </div>
 
             <div class="input-field col s4">
                 <input name="n_importantDates_title_3" hidden value="Session Start Date">
-                <input name="n_importantDates_date_3" id="sessionStartDate" type="text" class="validate datepicker col s5">
+                <input name="n_importantDates_date_3" id="sessionStartDate" type="text"
+                       class="validate datepicker col s5">
                 <label for="sessionStartDate">Session Start Date</label>
             </div>
 
