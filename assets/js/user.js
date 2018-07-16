@@ -21,7 +21,7 @@ function tryToGetData() {
         if (data.img_userProfilePic === '' || data.img_userProfilePic === undefined) {
             pic = `<img src="https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">`;
         } else {
-            pic = `<img src="${data.img_userProfilePic}" alt="..." class="image profilePic rounded w-100">`;
+            pic = `<img src="images/${data.img_userProfilePic}" alt="..." class="image profilePic rounded w-100">`;
         }
 
         profilePicContainer.html(pic);

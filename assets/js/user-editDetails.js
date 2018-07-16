@@ -129,8 +129,8 @@ form.submit(e => {
     e.preventDefault();
     const formData = new FormData(form[0]);
     $.ajax({
-        type: form.attr('method'),
-        url: form.attr('action'),
+        type: 'PUT',
+        url: '/user/' + userData._id,
         cache: false,
         contentType: false,
         processData: false,
@@ -138,7 +138,10 @@ form.submit(e => {
         success: data => {
             console.log(data);
         },
-        error: err => console.error(err)
+        error: err =>{
+            alert(err)
+            console.error(err)
+        }
     })
 });
 
