@@ -42,3 +42,5 @@ gulp.task('watch', () => {
     gulp.watch('assets/img/*', ['imageMin']);
     gulp.watch('template/*.handlebars', ['templates']);
 });
+
+gulp.task('default', ['minify', 'imageMin', 'templates', 'watch']);

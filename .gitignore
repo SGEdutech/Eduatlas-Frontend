@@ -1,4 +1,5 @@
 \.idea/
 images/
-
+dist
 assets/scss/
+assets/js/compiledTemplates
