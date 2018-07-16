@@ -12,7 +12,7 @@ const wrap = require('gulp-wrap');
 const declare = require('gulp-declare');
 
 gulp.task('minify', () =>
-    gulp.src('src/*.html')
+    gulp.src('*.html')
         .pipe(useref())
         .pipe(gulpIf('*.js', babel({presets: ['env']})))
         .pipe(gulpIf('*.js', uglify()))
@@ -21,29 +21,24 @@ gulp.task('minify', () =>
 );
 
 gulp.task('imageMin', () =>
-    gulp.src('src/img/*')
+    gulp.src('assets/img/*')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img'))
 );
 
-gulp.task('watch', () => {
-    gulp.watch('src/js/*.js', ['scripts']);
-    gulp.watch('src/images/*', ['imageMin']);
-    gulp.watch('src/*.html', ['copyHtml']);
-});
-
 gulp.task('templates', function(){
-    gulp.src('src/templates/*.hbs')
+    gulp.src('templates/*.handlebars')
         .pipe(handlebars())
         .pipe(wrap('Handlebars.template(<%= contents %>)'))
         .pipe(declare({
             namespace: 'template',
             noRedeclare: true, // Avoid duplicate declarations
         }))
-        // .pipe(concat('templates.js'))
-        .pipe(gulp.dest('src/js/compiledTemplates/'));
+        .pipe(gulp.dest('assets/js/compiledTemplates/'));
 });
 
-// gulp.task('default', ['copyHtml', 'imageMin', 'scripts', 'watch']);
-
-gulp.task('default', ['minify', 'imageMin', 'templates']);
+gulp.task('watch', () => {
+    gulp.watch('*.html', ['minify']);
+    gulp.watch('assets/img/*', ['imageMin']);
+    gulp.watch('template/*.handlebars', ['templates']);
+});
