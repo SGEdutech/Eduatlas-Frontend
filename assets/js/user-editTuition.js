@@ -18,7 +18,7 @@ const TuitionJSON = $.ajax({
 TuitionJSON.then((data) => {
     //todo - optimize all the calls
     console.log(data);
-    showCover(data.img_coverPic);
+    showCover(data.img_tuitionCoverPic);
     showBasic(data.name, data.addressLine1, data.addressLine2, data.city, data.district, data.state, data.country, data.pin);
     showFacility(data.facilities);
     showDescription(data.description);
@@ -32,6 +32,7 @@ TuitionJSON.then((data) => {
 });
 
 function showCover(path) {
+    console.log(path)
     /*let Input = $("#coverInput").html();
     let template = Handlebars.compile(Input);*/
     let context = {
@@ -217,11 +218,16 @@ function addDayAndTimeOfOperation(id) {
     })
 }
 
-function saveDetails(id,nextTab) {
+function saveDetails(id, nextTab) {
+    const form = $('#' + id);
+    const formData = new FormData(form[0]);
     const Promise = $.ajax({
         url: '/tuition/' + TuitionId,
         type: 'PUT',
-        data: $('#' + id).serialize()
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
     });
 
     Promise.then(() => {
@@ -453,6 +459,7 @@ function showNextTab(idOfNextTab) {
     //scroll 100 pixels
     document.body.scrollTop = document.documentElement.scrollTop = 100;
 }
+
 function takeMeToDashboard() {
     window.location.assign('User-dashboard.html')
 }
