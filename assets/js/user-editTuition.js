@@ -217,7 +217,7 @@ function addDayAndTimeOfOperation(id) {
     })
 }
 
-function saveDetails(id) {
+function saveDetails(id,nextTab) {
     const Promise = $.ajax({
         url: '/tuition/' + TuitionId,
         type: 'PUT',
@@ -225,7 +225,8 @@ function saveDetails(id) {
     });
 
     Promise.then(() => {
-        alert('Saved Successfully')
+        // alert('Saved Successfully')
+        showNextTab(nextTab)
     }).catch((err) => {
         alert('Saving Unsuccessful');
         console.log(err)
@@ -286,7 +287,7 @@ function deleteCourse(title, id) {
     $('#' + id).remove();
 }
 
-function addCourse() {
+function addCourse(courseTabId) {
     // data is in Form
     // form id is newCourse
     // get the data and send it in post request
@@ -298,6 +299,8 @@ function addCourse() {
 
     AddedCourse.then(() => {
         alert("course added successfully")
+        // window.location.reload();
+        // showNextTab(courseTabId);
     }).catch((err) => {
         console.log(err);
         alert("course addition failed")
@@ -443,4 +446,13 @@ function deleteFaculty(name, id) {
     });
 
     $('#' + id).remove();
+}
+
+function showNextTab(idOfNextTab) {
+    $(`[href="#${idOfNextTab}"]`).tab('show');
+    //scroll 100 pixels
+    document.body.scrollTop = document.documentElement.scrollTop = 100;
+}
+function takeMeToDashboard() {
+    window.location.assign('User-dashboard.html')
 }

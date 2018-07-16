@@ -13,7 +13,7 @@ form.submit(e => {
     // todo - apply a check at server side and prevent this
     ifUserLoggedIn.then((data) => {
         if (data == 'LogIn') {
-            window.location.replace('./login-page.html');
+            window.location.assign('./login-page.html');
         } else {
             // console.log('logged in')
             userData = data;
@@ -64,7 +64,7 @@ function userHaveBeenUpdated(ifUserUpdated) {
     ifUserUpdated.then((data) => {
         console.log('user updated')
         console.log(data);
-        window.location.replace('./User-editTuition.html?a=' + tuitionIdCreated)
+        window.location.assign('./User-editTuition.html?a=' + tuitionIdCreated)
     }).catch(err => {
         console.log(err);
     });

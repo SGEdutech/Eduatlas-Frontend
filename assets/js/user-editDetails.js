@@ -4,7 +4,7 @@ const promise = $.ajax({
 promise.then((data) => {
     userData = data;
     if (data == 'LogIn') {
-        window.location.replace('./login-page.html');
+        window.location.assign('./login-page.html');
     }
 
 
@@ -101,11 +101,11 @@ promise.then((data) => {
 
 }).catch((err) => {
     console.log(err);
-    window.location.replace('./login-page.html');
+    window.location.assign('./login-page.html');
 });
 
 
-function editUser(id) {
+function editUser(id,nextTab) {
     const editUserPromise = $.ajax({
         url: '/user/' + userData._id,
         type: 'PUT',
@@ -114,11 +114,13 @@ function editUser(id) {
 
     editUserPromise.then(data => {
         console.log(data);
-        alert("Saved SuccessFully")
+        // alert("Saved SuccessFully")
+        showNextTab(nextTab)
     }).catch((err) => {
         console.log(err);
         alert("failed")
-    })
+    });
+
 }
 
 const form = $('#userImgForm');
@@ -139,3 +141,9 @@ form.submit(e => {
         error: err => console.error(err)
     })
 });
+
+function showNextTab(idOfNextTab) {
+    $(`[href="#${idOfNextTab}"]`).tab('show');
+    //scroll 100 pixels
+    document.body.scrollTop = document.documentElement.scrollTop = 100;
+}

@@ -4,12 +4,12 @@ function checkLogin(redirectAddress) {
     }).then((data) => {
         console.log(data);
         if (data == 'LogIn') {
-            window.location.replace('./login-page.html');
+            window.location.assign('./login-page.html');
         } else {
             if (redirectAddress === undefined || redirectAddress === '') {
                 // do nothing
             } else {
-                window.location.replace(redirectAddress);
+                window.location.assign(redirectAddress);
             }
         }
     }).catch(err => {

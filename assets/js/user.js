@@ -32,7 +32,7 @@ function tryToGetData() {
     }).catch((err) => {
         console.log(err);
         console.log('catch');
-        window.location.replace('./login-page.html');
+        window.location.assign('./login-page.html');
     });
 }
 
@@ -93,7 +93,7 @@ function logout() {
         method: 'GET'
     }).then(data => {
         if(data.done){
-            window.location.replace('/');
+            window.location.assign('/');
         }
     }).catch(err => {
         console.log(err);

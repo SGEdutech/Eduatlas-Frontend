@@ -289,7 +289,8 @@ function claimListing() {
             data: {string: queryId}
         }).then(data => {
             console.log('user updated');
-            alert('Success')
+            // alert('Success')
+            window.location.assign('User-dashboard.html')
         })
     }).catch(err => {
         console.log(err);
