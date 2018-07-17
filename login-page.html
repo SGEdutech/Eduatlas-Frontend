@@ -45,25 +45,12 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/User-dashboard.html">Dashboard</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link" href="#">Schools</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="true" aria-expanded="false"><i class="material-icons">
-                        add
-                    </i>
-                        ADD LISTING</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" onclick="checkLogin('./User-addTuition.html')">Add Tuition</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>
-                    </div>
+                <li class="nav-item dropdown" id="dynamicUserBtn">
                 </li>
             </ul>
         </div>
