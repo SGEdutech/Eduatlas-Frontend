@@ -14,7 +14,7 @@ const declare = require('gulp-declare');
 gulp.task('minify', () =>
     gulp.src('*.html')
         .pipe(useref())
-        .pipe(gulpIf('*.js', babel({presets: ['env']})))
+        .pipe(gulpIf('*.js', babel({presets: ['env'], compact: false})))
         .pipe(gulpIf('*.js', uglify()))
         .on('error', err => gutil.log(gutil.colors.red('[Error]'), err.toString()))
         .pipe(gulp.dest('dist'))
