@@ -34,7 +34,8 @@ $(function () {
                 context.Email = data[keys].email;
                 context.coverPic = data[keys].img_coverPic;
                 context.Category = data[keys].category;
-                result += Handlebars.templates.tuitionCard(context);
+                console.log(Handlebars.templates.newCard(context))
+                result += Handlebars.templates.newCard(context);
             }
         }
         $("#tuitionContainer").append(result);
@@ -51,7 +52,7 @@ $(function () {
                 {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 1,
                         slidesToScroll: 1,
                         infinite: true,
                         dots: true
@@ -60,7 +61,7 @@ $(function () {
                 {
                     breakpoint: 600,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 1,
                         slidesToScroll: 1
                     }
                 },
@@ -98,7 +99,7 @@ function getSearchResults(value) {
         suggestionBox.empty();
         let toAdd = '';
         data.forEach(obj => {
-            toAdd += `<a href="/TuitionDetails2.0.html?_id=${obj._id}" class="color-white">${obj.name}</a><br>`
+            toAdd += `<a href="/TuitionDetails2.0.html?_id=${obj._id}" class="color">${obj.name}</a><br>`
         });
         suggestionBox.append(toAdd)
 

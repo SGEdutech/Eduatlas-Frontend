@@ -18,7 +18,7 @@ const TuitionJSON = $.ajax({
 TuitionJSON.then((data) => {
     //todo - optimize all the calls
     console.log(data);
-    showCover(data.img_tuitionCoverPic);
+    showCover(data.img_coverPic);
     showBasic(data.name, data.addressLine1, data.addressLine2, data.city, data.district, data.state, data.country, data.pin);
     showFacility(data.facilities);
     showDescription(data.description);
@@ -32,7 +32,6 @@ TuitionJSON.then((data) => {
 });
 
 function showCover(path) {
-    console.log(path)
     /*let Input = $("#coverInput").html();
     let template = Handlebars.compile(Input);*/
     let context = {
@@ -218,21 +217,15 @@ function addDayAndTimeOfOperation(id) {
     })
 }
 
-function saveDetails(id, nextTab) {
-    const form = $('#' + id);
-    const formData = new FormData(form[0]);
+function saveDetails(id) {
     const Promise = $.ajax({
         url: '/tuition/' + TuitionId,
         type: 'PUT',
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
+        data: $('#' + id).serialize()
     });
 
     Promise.then(() => {
-        // alert('Saved Successfully')
-        showNextTab(nextTab)
+        alert('Saved Successfully')
     }).catch((err) => {
         alert('Saving Unsuccessful');
         console.log(err)
@@ -293,7 +286,7 @@ function deleteCourse(title, id) {
     $('#' + id).remove();
 }
 
-function addCourse(courseTabId) {
+function addCourse() {
     // data is in Form
     // form id is newCourse
     // get the data and send it in post request
@@ -305,8 +298,6 @@ function addCourse(courseTabId) {
 
     AddedCourse.then(() => {
         alert("course added successfully")
-        // window.location.reload();
-        // showNextTab(courseTabId);
     }).catch((err) => {
         console.log(err);
         alert("course addition failed")
@@ -452,14 +443,4 @@ function deleteFaculty(name, id) {
     });
 
     $('#' + id).remove();
-}
-
-function showNextTab(idOfNextTab) {
-    $(`[href="#${idOfNextTab}"]`).tab('show');
-    //scroll 100 pixels
-    document.body.scrollTop = document.documentElement.scrollTop = 100;
-}
-
-function takeMeToDashboard() {
-    window.location.assign('User-dashboard.html')
 }

@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Tuition</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <!-- Material Kit CSS -->
+    <link rel="stylesheet" href="assets/css/material-kit.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/tuition-detail2.0.css">
+
+    <!-- Custom Styles from Tuition-Discovery -->
+    <link rel="stylesheet" href="assets/css/tuitionDiscovery.css">
+
+</head>
+<body style="height: 2000px">
+
+<nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
+     id="sectionsNav">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand font-weight-bold" href="#">EduAtlas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="checkLogin('./User-dashboard.html')"
+                       style="cursor:pointer">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
+                </li>
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="#">Schools</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">
+                            add
+                        </i>
+                        ADD LISTING
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" onclick="checkLogin('./User-addTuition.html')">Add Tuition</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>
+                    </div>
+                </li>
+                <!--<li class="nav-item disabled">
+                    <a class="nav-link" href="#">Events</a>
+                </li>
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="#">Blogs</a>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark"
+     style="background-image: url(./assets/img/bg6.jpg);">
+</div>
+
+<div id="main_header" class="container">
+    <div id="info_container" class="main main-raised">
+
+        <!-- todo - add after verification data-->
+        <!--<div id="verified-container">
+            <i class="btn btn-info btn-fab btn-round">
+                <i class="material-icons">verified_user</i>
+            </i>
+        </div>-->
+        <div class="row align-items-center">
+            <h1 id="tuition_name" class="col-md-8">Tuition Name</h1>
+            <!--todo - add after rating data-->
+            <span id="rating" class="badge badge-pill badge-success"></span>
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#emailModal">
+                    <i class="material-icons">
+                        email
+                    </i> Email
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#smsModal">
+                    <i class="material-icons">
+                        textsms
+                    </i> SMS
+                </button>
+            </div>
+        </div>
+        <hr>
+        <div class="row text-center">
+            <div class="col-md-6">
+                <h6>Address</h6>
+                <p id="address"></p>
+            </div>
+            <div class="col-md-3">
+                <h6>Phone</h6>
+                <p id="phone"></p>
+            </div>
+            <div class="col-md-3">
+                <h6>Email</h6>
+                <p class="email"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="secondary_info" class="row p-0">
+
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body p-1 p-md-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="nav nav-pills nav-pills-rose flex-row flex-md-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#tab1" data-toggle="tab">Description</a>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">Courses</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">Results</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab5" data-toggle="tab">Faculty</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab6" data-toggle="tab">Gallery</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab7" data-toggle="tab">Reviews</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Facilities:</h2>
+                                        <div id="facilities_container">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">About Us</h2>
+                                        <p id="description"></p>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Category</h2>
+                                    </div>
+                                    <div id="category_container">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane" id="tab2">
+
+                                <div class="row justify-content-around m-0">
+                                    <div class="card col-md-6">
+                                        <div class="card-body">
+                                            <div class="card-title h3">
+                                                Contact Us:
+                                            </div>
+                                            <div class="card-title h4">
+                                                Contact Person Name
+                                            </div>
+                                            <div id="contact_person">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Primary Number
+                                            </div>
+                                            <div id="primary_number">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Alternate Number
+                                            </div>
+                                            <div id="alternate_number">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Email
+                                            </div>
+                                            <div class="email">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Website
+                                            </div>
+                                            <div id="website">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="" class="card card-nav-tabs col-md-5">
+                                        <div class="card-title h3">
+                                            Operates on
+                                        </div>
+                                        <div id="opration_hours_containers" class="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card m-0" id="map"></div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title h3">
+                                            Social Links:
+                                        </div>
+                                        <div id="linkContainer">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane" id="tab3">
+                                <div class="row justify-content-around" id="coursesContainer">
+                                    <!-- put a unique id using handleBars-->
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab4">
+                                <div class="row justify-content-around" id="resultsContainer">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab5">
+                                <div class="row" id="facultyContainer">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab6">
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <img class="img-fluid rounded img-raised my-3"
+                                             src="http://via.placeholder.com/350x150"
+                                             alt="Card image" style="height: 10rem; width: 100%">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="img-fluid rounded img-raised my-3"
+                                             src="http://via.placeholder.com/440x660"
+                                             alt="Card image" style="height: 10rem; width: 100%">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="img-fluid rounded img-raised my-3"
+                                             src="http://via.placeholder.com/350x150"
+                                             alt="Card image" style="height: 10rem; width: 100%">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="img-fluid rounded img-raised my-3"
+                                             src="http://via.placeholder.com/770x770"
+                                             alt="Card image" style="height: 10rem; width: 100%">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="img-fluid rounded img-raised my-3"
+                                             src="http://via.placeholder.com/350x150"
+                                             alt="Card image" style="height: 10rem; width: 100%">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="img-fluid rounded img-raised my-3"
+                                             src="http://via.placeholder.com/1920x1080"
+                                             alt="Card image" style="height: 10rem; width: 100%">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab7">
+                                <p class="card-text font-weight-bold">No Reviews Here</p>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title h3">
+                                            Rate and write a Review
+                                        </div>
+                                        <div class="card-subtitle">
+                                            Your review will be posted publicly on the web.
+                                        </div>
+                                        <p>*****</p>
+
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInput1"
+                                                       class="bmd-label-floating">Name</label>
+                                                <input type="email" class="form-control" id="exampleInput1">
+                                                <span class="bmd-help">this name will be displayed to public</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1" class="bmd-label-floating">Email
+                                                    address</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                                       aria-describedby="emailHelp">
+                                                <small id="emailHelp" class="form-text text-muted">We'll never
+                                                    share
+                                                    your email
+                                                    with
+                                                    anyone
+                                                    else.
+                                                </small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputTitle1"
+                                                       class="bmd-label-floating">Title</label>
+                                                <input type="text" class="form-control" id="exampleInputTitle1">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputReview1"
+                                                       class="bmd-label-floating">Review</label>
+                                                <textarea name="review" type="text" class="form-control"
+                                                          id="exampleInputReview1">
+                                                </textarea>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="relatedTuitionContainer">
+
+            <h3 class="col-md-12">Related Listings:</h3>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <div id="claimContainer">
+                    <!--<button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#claimModal"
+                            onclick="checkLogin()">
+                        Claim This Page
+                    </button>
+                    <button type="button" class="btn btn-block btn-info">
+                        <i class="material-icons">
+                            done
+                        </i>
+                        Claimed
+                    </button>-->
+                </div>
+                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#reportModal">
+                    <i class="material-icons">
+                        warning
+                    </i>Report Page
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact via E-mail:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group m-0">
+                        <label for="email_name" class="bmd-label-floating">Your Name</label>
+                        <input type="text" class="form-control" id="email_name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email_phone" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="email_phone">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email_email" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="email_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="email_message">Message</label>
+                        <textarea class="form-control" id="email_message" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send mail</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="smsModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact via SMS:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group m-0">
+                        <label for="sms_name" class="bmd-label-floating">Your Name</label>
+                        <input type="text" class="form-control" id="sms_name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="sms_phone" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="sms_phone">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="sms_email" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="sms_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="sms_message">Message</label>
+                        <textarea class="form-control" id="sms_message" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send sms</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="claimModal" tabindex="-1" role="dialog" aria-labelledby="claimModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="claimModalLabel">Claim This Institute/Tuition</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> We may call to confirm</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Not my institute</button>
+                <button type="button" class="btn btn-primary" onclick="claimListing()">Yes Claim</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Report issue with this page</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/issue" method="POST" id="issueForm">
+                    <div class="form-group m-0">
+                        <label for="name" class="bmd-label-floating">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="contact" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="contact" name="contact">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Message</label>
+                        <textarea class="form-control" name="description" id="desc" rows="3"></textarea>
+                    </div>
+                    <input class="form-control" name="id" id="idOfTuition" hidden>
+                    <input class="form-control" name="type" value="tuition" hidden>
+                </form>
+                <button onclick="submitIssue('issueForm')" class="btn btn-info">submit</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/tuition-details.js"></script>
+
+</body>
+</html>

@@ -245,7 +245,7 @@
 
                         </form>
                         <!-- pass id of form to saveDetails function for AJAX put req -->
-                        <button class="btn btn-info" onclick="saveDetails('aboutUsForm','tab2')">Save and Continue</button>
+                        <button class="btn btn-info" onclick="saveDetails('aboutUsForm')">Save Changes</button>
 
                     </div>
 
@@ -497,7 +497,7 @@
                             </div>
 
                         </form>
-                        <button class="btn btn-info" onclick="saveDetails('contactUsForm','tab3')">Save Changes</button>
+                        <button class="btn btn-info" onclick="saveDetails('contactUsForm')">Save Changes</button>
                     </div>
 
                     <div class="tab-pane" id="tab3">
@@ -575,13 +575,12 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                                         </button>
-                                        <button type="button" class="btn btn-info" onclick="addCourse('tab3')">Save changes
+                                        <button type="button" class="btn btn-info" onclick="addCourse()">Save changes
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-info" onclick="showNextTab('tab4')">Save and Continue</button>
                     </div>
                     <div class="tab-pane" id="tab4">
                         <div class="row justify-content-around" id="resultsContainer">
@@ -661,7 +660,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-info" onclick="showNextTab('tab5')">Save and Continue</button>
                     </div>
                     <div class="tab-pane" id="tab5">
                         <div class="row" id="facultyContainer">
@@ -750,7 +748,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-info" onclick="showNextTab('tab6')">Save and Continue</button>
                     </div>
                     <div class="tab-pane" id="tab6">
                         <div class="row ">
@@ -786,7 +783,6 @@
                             </div>
 
                         </div>
-                        <button class="btn btn-info" onclick="takeMeToDashboard()">Save and Exit</button>
                     </div>
                 </div>
                 <!--</div>-->
@@ -861,7 +857,6 @@
     </div>
 </div>
 
-<!-- build:js js/user-edit-tuition.js -->
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
 <script
@@ -899,8 +894,11 @@
 <!-- Custom Js file for user-->
 <script src="assets/js/user-editTuition.js"></script>
 <script src="assets/js/login-check.js"></script>
+<<<<<<< HEAD
+=======
 <script src="assets/js/updateNavBar.js"></script>
 <!-- endbuild -->
+>>>>>>> 7e7919747ae1cc255d8e873bc41e328847ac7203
 
 </body>
 </html>

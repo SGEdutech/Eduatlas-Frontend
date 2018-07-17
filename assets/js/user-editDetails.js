@@ -4,7 +4,7 @@ const promise = $.ajax({
 promise.then((data) => {
     userData = data;
     if (data == 'LogIn') {
-        window.location.assign('./login-page.html');
+        window.location.replace('./login-page.html');
     }
 
 
@@ -101,11 +101,11 @@ promise.then((data) => {
 
 }).catch((err) => {
     console.log(err);
-    window.location.assign('./login-page.html');
+    window.location.replace('./login-page.html');
 });
 
 
-function editUser(id,nextTab) {
+function editUser(id) {
     const editUserPromise = $.ajax({
         url: '/user/' + userData._id,
         type: 'PUT',
@@ -114,13 +114,11 @@ function editUser(id,nextTab) {
 
     editUserPromise.then(data => {
         console.log(data);
-        // alert("Saved SuccessFully")
-        showNextTab(nextTab)
+        alert("Saved SuccessFully")
     }).catch((err) => {
         console.log(err);
         alert("failed")
-    });
-
+    })
 }
 
 const form = $('#userImgForm');
@@ -129,8 +127,8 @@ form.submit(e => {
     e.preventDefault();
     const formData = new FormData(form[0]);
     $.ajax({
-        type: 'PUT',
-        url: '/user/' + userData._id,
+        type: form.attr('method'),
+        url: form.attr('action'),
         cache: false,
         contentType: false,
         processData: false,
@@ -138,15 +136,6 @@ form.submit(e => {
         success: data => {
             console.log(data);
         },
-        error: err =>{
-            alert(err)
-            console.error(err)
-        }
+        error: err => console.error(err)
     })
 });
-
-function showNextTab(idOfNextTab) {
-    $(`[href="#${idOfNextTab}"]`).tab('show');
-    //scroll 100 pixels
-    document.body.scrollTop = document.documentElement.scrollTop = 100;
-}
