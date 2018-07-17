@@ -1,30 +1,309 @@
 <!doctype html>
 <html lang="en">
 <head>
+<style>
+.color{color:black!important;font-family: calibri;font-size: 15px;font-weight: bold;}
+.bmd-form-group .form-control{color:white!important;}
+.form{background: beige!important;
+      padding: 5px!important;
+      font-family: calibri!important;}
+</style>
+<link rel="stylesheet" type="text/css" href="assets/css/slider.css">
+ <!-- <style>
+.aicon{color:#ff9800!important;}
+.aicon:hover{color:#337ab7!important;}
+.content{font-size: 12px;color:black;font-family: 'Slabo 27px', serif;font-family: 'PT Serif', serif;}
+.bg-white {
+  background-color: #ffffff !important;
+}
+.bg-grey {
+  background-color: #eeeeee !important;
+}
+.bg-black {
+  background-color: #555555 !important;
+}
+.bg-red {
+  background-color: #f75353 !important;
+}
+.bg-green {
+  background-color: #51d466 !important;
+}
+.bg-lblue {
+  background-color: #32c8de !important;
+}
+.bg-blue {
+  background-color: #609cec !important;
+}
+.bg-orange {
+  background-color: #f78153 !important;
+}
+.bg-yellow {
+  background-color: #fcd419 !important;
+}
+.bg-purple {
+  background-color: #cb79e6 !important;
+}
+.bg-rose {
+  background-color: #ff61e7 !important;
+}
+.bg-brown {
+  background-color: #d08166 !important;
+}
+/* Button classes */
+.btn {
+    border-radius: 2px;
+    position: relative;
+}
+.btn.btn-no-border {
+    border: 0px !important;
+}
+/* Button colors */
+.btn.btn-white {
+    background: #ffffff;
+    color: #666666;
+    border: 1px solid #dddddd;
+}
+.btn.btn-white:hover,
+.btn.btn-white:focus,
+.btn.btn-white.active,
+.btn.btn-white:active {
+    background: #f7f7f7;
+    color: #666666;
+}
+.btn.btn-grey {
+    background: #eeeeee;
+    color: #666666;
+    border: 1px solid #d5d5d5;
+}
+.btn.btn-grey:hover,
+.btn.btn-grey:focus,
+.btn.btn-grey.active,
+.btn.btn-grey:active {
+    background: #d5d5d5;
+    color: #999;
+}
+.btn.btn-black {
+    color: #ffffff;
+    background: #666666;
+    border: 1px solid #4d4d4d;
+}
+.btn.btn-black:hover,
+.btn.btn-black:focus,
+.btn.btn-black.active,
+.btn.btn-black:active {
+    background: #4d4d4d;
+    color: #ffffff;
+}
+.btn.btn-red {
+    color: #ffffff;
+    background: #ed5441;
+    border: 1px solid #e52d16;
+}
+.btn.btn-red:hover,
+.btn.btn-red:focus,
+.btn.btn-red.active,
+.btn.btn-red:active {
+    color: #ffffff;
+    background: #e52d16;
+}
+.btn.btn-green {
+    color: #ffffff;
+    background: #51d466;
+    border: 1px solid #30c247;
+}
+.btn.btn-green:hover,
+.btn.btn-green:focus,
+.btn.btn-green.active,
+.btn.btn-green:active {
+    background: #30c247;
+    color: #ffffff;
+}
+.btn.btn-lblue {
+    color: #ffffff;
+    background: #32c8de;
+    border: 1px solid #1faabe;
+}
+.btn.btn-lblue:hover,
+.btn.btn-lblue:focus,
+.btn.btn-lblue.active,
+.btn.btn-lblue:active {
+    background: #1faabe;
+    color: #ffffff;
+}
+.btn.btn-blue {
+    color: #ffffff;
+    background: #609cec;
+    border: 1px solid #3280e7;
+}
+.btn.btn-blue:hover,
+.btn.btn-blue:focus,
+.btn.btn-blue.active,
+.btn.btn-blue:active {
+    background: #3280e7;
+    color: #ffffff;
+}
+.btn.btn-orange {
+    color: #ffffff;
+    background: #f8a841;
+    border: 1px solid #f69110;
+}
+.btn.btn-orange:hover,
+.btn.btn-orange:focus,
+.btn.btn-orange.active,
+.btn.btn-orange:active {
+    background: #f69110;
+    color: #ffffff;
+}
+.btn.btn-yellow {
+    background: #fcd419;
+    color: #ffffff;
+    border: 1px solid #dfb803;
+}
+.btn.btn-yellow:hover,
+.btn.btn-yellow:focus,
+.btn.btn-yellow.active,
+.btn.btn-yellow:active {
+    background: #dfb803;
+    color: #ffffff;
+}
+.btn.btn-purple {
+    background: #cb79e6;
+    color: #ffffff;
+    border: 1px solid #ba4ede;
+}
+.btn.btn-purple:hover,
+.btn.btn-purple:focus,
+.btn.btn-purple.active,
+.btn.btn-purple:active {
+    background: #ba4ede;
+    color: #ffffff;
+}
+.btn.btn-rose {
+    background: #ff61e7;
+    color: #ffffff;
+    border: 1px solid #ff2edf;
+}
+.btn.btn-rose:hover,
+.btn.btn-rose:focus,
+.btn.btn-rose.active,
+.btn.btn-rose:active {
+    background: #ff2edf;
+    color: #ffffff;
+}
+.btn.btn-brown {
+    background: #d08166;
+    color: #ffffff;
+    border: 1px solid #c4613f;
+}
+.btn.btn-brown:hover,
+.btn.btn-brown:focus,
+.btn.btn-brown.active,
+.btn.btn-brown:active {
+    background: #c4613f;
+    color: #ffffff;
+}
+
+.shop-items{
+    max-width:1150px;
+    margin:10px auto;
+    padding:0px 20px;
+}
+.shop-items .item {
+    position: relative;
+    max-width: 360px;
+    margin: 15px auto;
+    padding: 5px;
+    text-align: center;
+    border-radius: 4px;
+    overflow: hidden;
+    border:2px solid #eee;
+}
+.shop-items .item:hover{    
+    border:2px solid #32c8de;
+}
+.shop-items .item img {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    border: 1px solid #eee;
+    border-radius: 3px;
+}
+.shop-items .item  .item-dtls h4 {
+    margin-top: 13px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.shop-items .item  .item-dtls .price {
+    display: block;
+    margin-bottom: 13px;
+    font-size: 25px;
+}
+.shop-items .item  .ecom {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding-bottom:10px;
+    padding-top: 10px;
+    -webkit-transition: all 0.35s ease-in;
+    -moz-transition: all 0.35s ease-in;
+    -ms-transition: all 0.35s ease-in;
+    -o-transition: all 0.35s ease-in;
+    transition: all 0.35s ease-in;
+}
+.shop-items .item:hover  .ecom { 
+    margin-top: -50px; 
+}
+.shop-items .item  .ecom  a.btn{
+    border:1px solid #fff;
+    color:#fff;
+    background:transparent;
+    -webkit-transition: all 0.35s ease-in;
+    -moz-transition: all 0.35s ease-in;
+    -ms-transition: all 0.35s ease-in;
+    -o-transition: all 0.35s ease-in;
+    transition: all 0.35s ease-in;
+}
+.shop-items .item  .ecom  a.btn:hover{
+    background:#fff;
+    color:#777;
+}                
+</style> -->
     <title>home</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif|Slabo+27px" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <style type="text/css">
+        .menu{}
+        .menu:hover{background-color: #00bcd4;}
+        .search{background-color: #ff9800!important;}
+        .search:hover{background-color: #ff9800!important;color:white!important;font-weight:bold;}
+        .upcomingevents{background-color: #ff9800!important;
+    color: white!important;
+    text-align: center!important;
+    padding: 5px!important;}
+    </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'UA-121945570-1');
     </script>
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-
+    rel="stylesheet">
     <!-- Material Kit CSS -->
     <link rel="stylesheet" href="assets/css/material-kit.css">
 
@@ -32,21 +311,16 @@
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" />
-
-
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/tuition-detail2.0.css">
     <link rel="stylesheet" href="assets/css/tuitionDiscovery.css">
     <link rel="stylesheet" href="assets/css/slick-slider-fix.css">
-
     <!-- Custom Styles from searchBar -->
     <!--<link rel="stylesheet" href="assets/css/searchBar.css">-->
-
 </head>
 <body>
-
 <nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
-     id="sectionsNav">
+     id="sectionsNav" style="background-color: black!important;padding-top: 1px;">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand font-weight-bold" href="#">EduAtlas</a>
@@ -60,19 +334,19 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#" style="background-color: #00bcd4;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/User-dashboard.html">Dashboard</a>
+                    <a class="nav-link menu" href="/User-dashboard.html">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
+                    <a class="nav-link menu" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
                 </li>
                 <li class="nav-item disabled">
-                    <a class="nav-link" href="#">Schools</a>
+                    <a class="nav-link menu" href="#">Schools</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    <a class="nav-link dropdown-toggle menu" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="false"><i class="material-icons">
                         add
                     </i>
@@ -87,67 +361,77 @@
         </div>
     </div>
 </nav>
-
-<div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark"
-     style="background-image: url(./assets/img/bg10.jpg);">
+<!-- Start WOWSlider.com BODY section -->
+<!-- Start WOWSlider.com BODY section -->
+<div id="wowslider-container1">
+<div class="ws_images"><ul>
+        <li><img src="data1/images/s4.jpg" alt="s4" title="s4" id="wows1_0"/></li>
+        <li><a href="http://wowslider.com"><img src="data1/images/s1.jpg" alt="wow slider" title="s1" id="wows1_1"/></a></li>
+        <li><img src="data1/images/s3.jpg" alt="s3" title="s3" id="wows1_2"/></li>
+    </ul></div>
+    <div class="ws_bullets"><div>
+        <a href="#" title="s4"><span><img src="data1/tooltips/s4.jpg" alt="s4"/>1</span></a>
+        <a href="#" title="s1"><span><img src="data1/tooltips/s1.jpg" alt="s1"/>2</span></a>
+        <a href="#" title="s3"><span><img src="data1/tooltips/s3.jpg" alt="s3"/>3</span></a>
+    </div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">http://wowslider.net/</a> by WOWSlider.com v8.7</div>
+<div class="ws_shadow"></div>
+</div>  
+<script type="text/javascript" src="engine1/wowslider.js"></script>
+<script type="text/javascript" src="engine1/script.js"></script>
+<!-- End WOWSlider.com BODY section -->
+<!-- End WOWSlider.com BODY section -->
+<div data-parallax="true" 
+     style="background-color: #00bcd4;min-height: 82px!important;padding: 16px!important;">
     <div class="container">
         <div class="row justify-content-around text-center">
             <div class="col-2">
                 <div class="row">
                     <div class="col-md-2 d-none d-md-block">
-                        <i class="material-icons">
+                        <i class="material-icons" style="color: white;">
                             location_on
                         </i>
                     </div>
                     <div class="col-md-10">
-                        <input class="form-control" placeholder="State">
+                        <input class="form-control form" placeholder="State" style="                     color:black!important;">
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
-                <input type="text" class="form-control searchInput" placeholder="Search"
-                       onkeyup="getSearchResults(this.value)" onblur="removeSuggestions()" id="searchBox">
+                <input type="text" class="form-control searchInput form" placeholder="Search"
+                       onkeyup="getSearchResults(this.value)" onblur="removeSuggestions()" id="searchBox" style="
+                       color:black!important;">
                 <div id="suggestions" class="position-absolute">
                 </div>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-info rounded">Search</button>
+                <button class="btn btn-info rounded search">Search</button>
             </div>
         </div>
     </div>
 </div>
-
-
 <div id="secondary_info" class="row">
-
-    <div class="col-md-9">
-
-        <div class="slider-nav responsive container" id="tuitionContainer">
-
-        </div>
-
-        <div class="row justify-content-around">
-            <a class="btn btn-info" href="/TuitionDiscovery.html?page=1&items=18">Show More
-                Institutes/Tuition</a>
-        </div>
-
-    </div>
-
-    <div class="col-md-3">
-
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title">
-                    Upcoming Events
-                </div>
-            </div>
-        </div>
-
-    </div>
-
+<div class="col-md-9">
+<div class="shop-items">
+<div class="container-fluid">
+<div class="row slider-nav responsive container" id="tuitionContainer">
 </div>
-
-
+<!-- <div class="row" id="tuitionContainer">            
+</div> -->
+<a class="btn btn-info" href="/TuitionDiscovery.html?page=1&items=18">Show More
+Institutes/Tuition</a>
+    </div></div>
+    </div>
+    <div class="col-md-3">
+    <div class="card">
+    <div class="card-body">
+    <div class="card-title upcomingevents">
+     Upcoming Events
+    </div>   
+    </h4>
+    </div>
+    </div>
+    </div>
+</div>
 <footer class="footer footer-black footer-big">
     <div class="container">
         <div class="content">
@@ -179,10 +463,19 @@
                 <div class="col-md-4 color-white">
                     <h5>Contact Us</h5>
                     <div class="row justify-content-center">
-                        916, Block i, Sector 1, Palam Vihar
+                    <span><i class="fas fa-map-marker-alt"></i></span>
+                    <p style="color:white;margin-left: 9px;">916, Block i, Sector 1, Palam Vihar</p>
                     </div>
                     <div class="row justify-content-center">
                         Gurgaon
+                    </div><br>
+                    <div class="row justify-content-center">
+                    <span><i class="fa fa-mobile" aria-hidden="true"></i></span>
+                    <p style="color:white;margin-left: 9px;">+91 9999999999</p>
+                    </div>
+                    <div class="row justify-content-center">
+                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <p style="color:white;margin-left: 9px;">eduatalas21@gmail.com</p>
                     </div>
                 </div>
             </div>
@@ -190,22 +483,22 @@
         <hr>
         <ul class="float-left color-white">
             <li>
-                <a href="index.html">
+                <a href="index.html" class="menu">
                     Home
                 </a>
             </li>
             <li>
-                <a class="nav-link" onclick="checkLogin('./User-dashboard.html')" style="cursor: pointer;">
+                <a class="nav-link menu" class="menu" onclick="checkLogin('./User-dashboard.html')" style="cursor: pointer;">
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="TuitionDiscovery.html?page=1&items=18">
+                <a href="TuitionDiscovery.html?page=1&items=18" class="menu">
                     Institutes/Tuition
                 </a>
             </li>
             <li>
-                <a href="#pablo">
+                <a href="#pablo" class="menu">
                     Schools
                 </a>
             </li>
@@ -229,55 +522,38 @@
         </div>
     </div>
 </footer>
-
-<!-- build:js js/index.js -->
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/bootstrap-material-design.js"></script>
-
 <!-- Plugin for Date Time Picker and Full Calendar Plugin-->
 <script src="assets/js/plugins/moment.min.js"></script>
-
 <!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
 <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
-
 <!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
 <script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
-
 <!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
-
 <!-- Plugin for Small Gallery in Product Page -->
 <script src="assets/js/plugins/jquery.flexisel.js"></script>
-
 <!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
 <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
-
 <!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
 <script src="assets/js/plugins/nouislider.min.js"></script>
-
 <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
 <script src="assets/js/material-kit.js?v=2.0.0"></script>
-
 <!-- handle bars -->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
-
 <!--slick carousel-->
 <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>-->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-
 <!--env var-->
 <script src="assets/js/env-var.js"></script>
-
 <!-- handlebars precompiled templates-->
 <script src="assets/js/templates.js"></script>
-
 <!-- Custom Code -->
 <script src="assets/js/home-page.js"></script>
 <script src="assets/js/login-check.js"></script>
-<!-- endbuild -->
-
 </body>
 </html>

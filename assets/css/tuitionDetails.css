@@ -8,3 +8,8 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+.upcomingevents{background-color: #ff9800;
+    color: white;
+    text-align: center;
+    padding: 5px;}
