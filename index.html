@@ -6,7 +6,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-121945570-1');
@@ -30,8 +34,8 @@
 
     <!-- Add the slick-theme.css if you want default styling -->
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet"/>
 
 
     <!-- Custom Styles -->
@@ -62,26 +66,16 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/User-dashboard.html">Dashboard</a>
-                </li>
+                <!-- <li class="nav-item">
+                     <a class="nav-link" href="/User-dashboard.html">Dashboard</a>
+                 </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link" href="#">Schools</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="true" aria-expanded="false"><i class="material-icons">
-                        add
-                    </i>
-                        ADD LISTING</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" onclick="checkLogin('./User-addTuition.html')">Add Tuition</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>
-                    </div>
+                <li class="nav-item dropdown" id="dynamicUserBtn">
                 </li>
             </ul>
         </div>
@@ -277,6 +271,7 @@
 <!-- Custom Code -->
 <script src="assets/js/home-page.js"></script>
 <script src="assets/js/login-check.js"></script>
+<script src="assets/js/updateNavBar.js"></script>
 <!-- endbuild -->
 
 </body>

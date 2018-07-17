@@ -28,10 +28,8 @@ function tryToGetData() {
 
         userIdContainer.html(data.firstName);
 
-        console.log('then');
     }).catch((err) => {
         console.log(err);
-        console.log('catch');
         window.location.assign('./login-page.html');
     });
 }
