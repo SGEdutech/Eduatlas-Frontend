@@ -8,10 +8,17 @@ $.ajax({
 function appendCards(tuitionsArray) {
     let cardHtml = '';
     tuitionsArray.forEach(tuition => {
+        sanatiseData(tuition);
         cardHtml += template.listgoCard(tuition)
     });
     $('#cards_container').html(cardHtml);
     initSlick();
+}
+
+function sanatiseData(tuition) {
+    if (tuition.description.length > 70) {
+        tuition.description = tuition.description.slice(0, 67) + '...';
+    }
 }
 
 function initSlick() {
