@@ -3,15 +3,15 @@ this["template"]["tuitionFaculty"] = Handlebars.template({"1":function(container
 
   return "    <div class=\"col-4\" id=\"faculty"
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-    + "\">\n        <div class=\"card card-nav-tabs\">\n                                        <span style=\"position: absolute;left: 92%;top: -6%;\">\n                                        <!-- send (name of the faculty , id of card) as arguments for function deleteFaculty()-->\n                                        </span>\n            <img class=\"card-img-bottom\" src=\""
+    + "\">\r\n        <div class=\"card card-nav-tabs\">\r\n                                        <span style=\"position: absolute;left: 92%;top: -6%;\">\r\n                                        <!-- send (name of the faculty , id of card) as arguments for function deleteFaculty()-->\r\n                                        </span>\r\n            <img class=\"card-img-bottom\" src=\""
     + alias4(((helper = (helper = helpers.img_path || (depth0 != null ? depth0.img_path : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"img_path","hash":{},"data":data}) : helper)))
-    + "\" alt=\"\">\n            <div class=\"card-body\">\n                <div class=\"card-title\">\n                    "
+    + "\" alt=\"\">\r\n            <div class=\"card-body\">\r\n                <div class=\"card-title\">\r\n                    "
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "\n                </div>\n                <div class=\"card-subtitle mb-2 text-muted\">\n                    "
+    + "\r\n                </div>\r\n                <div class=\"card-subtitle mb-2 text-muted\">\r\n                    "
     + alias4(((helper = (helper = helpers.qualification || (depth0 != null ? depth0.qualification : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"qualification","hash":{},"data":data}) : helper)))
-    + "\n                </div>\n                <p class=\"card-text\">"
+    + "\r\n                </div>\r\n                <p class=\"card-text\">"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "</p>\n            </div>\n        </div>\n    </div>\n";
+    + "</p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 

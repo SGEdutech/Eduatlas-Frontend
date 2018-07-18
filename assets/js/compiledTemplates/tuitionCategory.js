@@ -1,7 +1,7 @@
 this["template"]["tuitionCategory"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     return "    <span class=\"badge badge-success\">"
     + container.escapeExpression(container.lambda(depth0, depth0))
-    + "</span>\n";
+    + "</span>\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
