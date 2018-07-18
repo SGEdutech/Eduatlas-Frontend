@@ -19,7 +19,7 @@ function tryToGetData() {
         // put fetched image path in src of image and add
         let pic = '';
         if (data.img_userProfilePic === '' || data.img_userProfilePic === undefined) {
-            pic = `<img src="https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">`;
+            pic = `<img src="/assets/img/logo.png" alt="...">`;
         } else {
             pic = `<img src="images/${data.img_userProfilePic}" alt="..." class="image profilePic rounded w-100">`;
         }
@@ -38,22 +38,22 @@ tryToGetData();
 
 
 function getUserOwnedTuition(ids) {
-    if (ids == undefined || ids === []) {
+    if (ids == undefined || ids == [] || ids.length===0) {
+        console.log("hi");
+        let card = $('#userOwnedTuitionCard');
+        card.empty();
+        card.append(`<h3 class="card-title"> Welcome to Eduatlas </h3><p>Please add/claim your Institute</p>`)
+
         return
     }
-
     ids.forEach((tuitionId) => {
 
-        // todo - fix Algorithm to get related listing
-        // maybe add server side route to get this
         const promise = $.ajax({
             url: '/tuition?_id=' + tuitionId,
             method: 'GET',
             demands: 'name addressLine1 addressLine2 city state primaryNumber email category'
         });
 
-        /*let source = $("#entry-template2").html();
-        let template = Handlebars.compile(source);*/
         let context = {
             Name: "Tuition Name",
             rating: "2.5",
@@ -113,7 +113,7 @@ function editUserProfile() {
         let profilePicContainer = $('#profilePicContainer');
         let pic = '';
         if (data.img_userProfilePic === '' || data.img_userProfilePic === undefined) {
-            pic = `<img src="https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">`;
+            pic = `<img src="/assets/img/logo.png" alt="...">`;
         } else {
             pic = `<img src="images/${data.img_userProfilePic}" alt="..." class="image profilePic rounded">`;
         }
@@ -237,6 +237,7 @@ form.submit(e => {
         processData: false,
         data: formData,
         success: data => {
+            alert('success')
             console.log(data);
         },
         error: err => console.error(err)
