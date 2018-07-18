@@ -3,7 +3,7 @@ $(function () {
     const promise = $.ajax({
         url: '/tuition/all',
         data: {
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category img_tuitionCoverPic',
             limit: 4,
         }
     });
@@ -32,7 +32,7 @@ $(function () {
                 context.Address = `${data[keys].addressLine1},${data[keys].addressLine2},${data[keys].city},${data[keys].state}`;
                 context.Phone = data[keys].primaryNumber;
                 context.Email = data[keys].email;
-                context.coverPic = data[keys].img_coverPic;
+                context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
                 context.Category = data[keys].category;
                 console.log(Handlebars.templates.newCard(context))
                 result += Handlebars.templates.newCard(context);
@@ -111,5 +111,22 @@ function getSearchResults(value) {
 
 // todo - decide when to clear suggestion box
 function removeSuggestions() {
-    suggestionBox.empty();
+    setTimeout(function () {
+        suggestionBox.empty();
+    }, 500)
+
+}
+
+function redirectToDiscovery() {
+    let typeOfInsitute = $('#typeOfInstitute').val();
+    let searchName = $('#searchBox').val();
+    switch (typeOfInsitute) {
+        case 'tuition':
+            window.location.assign('TuitionDiscovery.html?items=18&page=1&c=true&name=' + searchName);
+            break;
+        case 'school':
+            break;
+        default:
+
+    }
 }

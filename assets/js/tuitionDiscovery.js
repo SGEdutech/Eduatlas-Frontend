@@ -21,7 +21,7 @@ if (!complexSearch) {
     const AllTuitionJSON = $.ajax({
         url: '/tuition/all',
         data: {
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category',
             limit: itemsPerPage,
             skip: skip
         }
@@ -51,7 +51,7 @@ if (!complexSearch) {
                 context.Address = `${data[keys].addressLine1},${data[keys].addressLine2},${data[keys].city},${data[keys].state}`;
                 context.Phone = data[keys].primaryNumber;
                 context.Email = data[keys].email;
-                context.coverPic = data[keys].img_coverPic;
+                context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
                 context.Category = data[keys].category;
                 result += Handlebars.templates.tuitionCardCol4(context);
             }
@@ -133,7 +133,7 @@ if (!complexSearch) {
                 context.Address = `${data[keys].addressLine1},${data[keys].addressLine2},${data[keys].city},${data[keys].state}`;
                 context.Phone = data[keys].primaryNumber;
                 context.Email = data[keys].email;
-                context.coverPic = data[keys].img_coverPic;
+                context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
                 context.Category = data[keys].category;
                 result += Handlebars.templates.tuitionCardCol4(context);
             }
@@ -253,7 +253,7 @@ function getSearchResultsComplex() {
                 context.Address = `${data[keys].addressLine1},${data[keys].addressLine2},${data[keys].city},${data[keys].state}`;
                 context.Phone = data[keys].primaryNumber;
                 context.Email = data[keys].email;
-                context.coverPic = data[keys].img_coverPic;
+                context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
                 context.Category = data[keys].category;
                 result += Handlebars.templates.tuitionCardCol4(context);
             }

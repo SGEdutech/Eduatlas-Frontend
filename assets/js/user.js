@@ -53,7 +53,8 @@ function getUserOwnedTuition(ids) {
         // maybe add server side route to get this
         const promise = $.ajax({
             url: '/tuition?_id=' + tuitionId,
-            method: 'GET'
+            method: 'GET',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category'
         });
 
         /*let source = $("#entry-template2").html();
@@ -77,7 +78,7 @@ function getUserOwnedTuition(ids) {
             context.Address = `${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
             context.Phone = data.primaryNumber;
             context.Email = data.email;
-            context.coverPic = data.img_coverPic;
+            context.coverPic = 'assets/img/tuition2.jpg';
             context.Category = data.category;
             let result = Handlebars.templates.userDashboardTuitionCard(context);
             $("#userOwnedTuitionContainer").append(result);
@@ -95,8 +96,8 @@ function logout() {
         url: '/auth/local/logout',
         method: 'GET'
     }).then(data => {
-        if(data.done){
-            window.location.replace('/');
+        if (data.done) {
+            window.location.assign('/');
         }
     }).catch(err => {
         console.log(err);

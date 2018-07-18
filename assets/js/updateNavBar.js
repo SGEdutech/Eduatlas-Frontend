@@ -16,7 +16,7 @@ $(function () {
                     <div class="dropdown-menu dropdown-menu-right">
                         <h6 class="dropdown-header">${data.firstName}</h6>
                         <a class="dropdown-item" style="cursor: pointer" href="/User-dashboard.html">Dashboard</a>
-                        <a class="dropdown-item" style="cursor: pointer" href="user-addTuition.js" ">
+                        <a class="dropdown-item" style="cursor: pointer" href="User-addTuition.html" ">
                             Add Tuition
                         </a>
                         <a class="dropdown-item" style="cursor: pointer" href="#">Add School</a>

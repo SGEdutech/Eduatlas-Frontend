@@ -116,7 +116,7 @@
                                     </a>
                                     <h4> or be classical </h4>
                                 </div>
-                                <form class="form" method="POST" action="/auth/local/signup">
+                                <form class="form" method="POST" action="/auth/local/signup" onsubmit="return checkForm(this);">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -146,7 +146,19 @@
                                                         <i class="material-icons">lock_outline</i>
                                                     </span>
                                             </div>
-                                            <input type="password" placeholder="Password..." class="form-control" name="password"/>
+                                            <input type="password" placeholder="Password..." class="form-control"
+                                                   name="password"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="material-icons">lock_outline</i>
+                                                    </span>
+                                            </div>
+                                            <input type="password" placeholder="Confirm Password" class="form-control"
+                                                   name="password2"/>
                                         </div>
                                     </div>
                                     <div class="form-check">
@@ -160,7 +172,8 @@
                                         </label>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" href="#pablo" class="btn btn-primary btn-round">Get Started</button>
+                                        <input type="submit" href="#pablo" class="btn btn-primary btn-round">
+                                        <!--Get Started</input>-->
                                     </div>
                                 </form>
                             </div>
@@ -207,6 +220,7 @@
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 
 <!-- Custom Js file for user-->
+<script src="assets/js/signup.js"></script>
 <!--<script src="assets/js/signup-page.js"></script>-->
 
 

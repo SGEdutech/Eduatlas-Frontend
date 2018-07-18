@@ -26,6 +26,13 @@ function updateThePage(data) {
                     </button>`)
     }
 
+    if (data.img_tuitionCoverPic === undefined || data.img_tuitionCoverPic === '') {
+        $('#cover_image').css('background-image', 'url(/assets/img/bg6.jpg)');
+    } else {
+        $('#cover_image').css('background-image', 'url(images/' + data.img_tuitionCoverPic + ')');
+
+    }
+
     $('#idOfTuition').val(data._id);
     $('#tuition_name').html(data.name);
     $('#address').html(data.addressLine1 + ', ' + data.addressLine2);
@@ -252,7 +259,7 @@ function getRelatedListing(city) {
             context.Address = `${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
             context.Phone = data.primaryNumber;
             context.Email = data.email;
-            context.coverPic = data.img_coverPic;
+            context.coverPic = data.img_tuitionCoverPic ? 'images/' + data.img_tuitionCoverPic : 'assets/img/tuition2.jpg';
             context.Category = data.category;
             let result = Handlebars.templates.tuitionCardCol4(context);
             $("#relatedTuitionContainer").append(result);
