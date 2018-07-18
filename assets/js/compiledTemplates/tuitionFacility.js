@@ -1,7 +1,7 @@
 this["template"]["tuitionFacility"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    return "    <div>\r\n        <i class=\"material-icons facility-icon\">check_circle_outline</i>\r\n        <span>"
+    return "    <div>\n        <i class=\"material-icons facility-icon\">check_circle_outline</i>\n        <span>"
     + container.escapeExpression(container.lambda(depth0, depth0))
-    + "</span>\r\n    </div>\r\n";
+    + "</span>\n    </div>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
