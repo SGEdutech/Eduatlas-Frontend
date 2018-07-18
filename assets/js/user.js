@@ -30,7 +30,7 @@ function tryToGetData() {
 
     }).catch((err) => {
         console.log(err);
-        window.location.assign('./login-page.html');
+        window.location.assign('/');
     });
 }
 
@@ -89,7 +89,7 @@ function getUserOwnedTuition(ids) {
 function logout() {
     $.ajax({
         url: '/auth/local/logout',
-        method: 'GET'
+        method: 'POST'
     }).then(data => {
         if (data.done) {
             window.location.assign('/');
@@ -106,7 +106,7 @@ function editUserProfile() {
     promise.then((data) => {
         userData = data;
         if (data == 'LogIn') {
-            window.location.replace('./login-page.html');
+            window.location.assign('/');
         }
 
 
@@ -203,7 +203,7 @@ function editUserProfile() {
 
     }).catch((err) => {
         console.log(err);
-        window.location.replace('./login-page.html');
+        window.location.assign('/');
     });
 
 }

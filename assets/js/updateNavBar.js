@@ -5,7 +5,7 @@ $(function () {
     let btnContainer = $('#dynamicUserBtn');
     promise.then((data) => {
         if (data == 'LogIn') {
-            btnContainer.append(`<a class="btn btn-primary btn-sm" href="login-page.html">Login</a>`)
+            btnContainer.append(`<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#loginModal">Login</button>`)
         } else {
             if (data.img_userProfilePic === undefined || data.img_userProfilePic === '') {
                 btnContainer.append(`<a href="#pablo" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
@@ -73,7 +73,8 @@ function logout() {
         method: 'GET'
     }).then(data => {
         if (data.done) {
-            window.location.reload();
+            console.log('hi')
+            window.location.assign('/');
         }
     }).catch(err => {
         console.log(err);
