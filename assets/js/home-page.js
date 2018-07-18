@@ -113,7 +113,7 @@ function getSearchResults(value) {
 function removeSuggestions() {
     setTimeout(function () {
         suggestionBox.empty();
-    }, 500)
+    }, 250)
 
 }
 

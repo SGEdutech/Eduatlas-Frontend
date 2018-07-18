@@ -1,6 +1,9 @@
 const autoCompleteContainer = $('#autocomplete_container');
 
-function autoComplete(query) {
+function autoComplete(event, query) {
+    if (event.keyCode === 13) {
+        redirectToDiscovery();
+    }
     $.ajax({
         url: '/tuition/search',
         data: {

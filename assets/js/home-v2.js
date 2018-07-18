@@ -60,3 +60,13 @@ function initSlick() {
         ]
     });
 }
+
+function removeSuggestions(suggestionBoxId) {
+    setTimeout(function () {
+        $('#' + suggestionBoxId).empty();
+    }, 500)
+}
+
+function redirectToDiscovery() {
+    window.location.assign('TuitionDiscovery.html?items=18&page=1&c=true&city=&state=&name=' + $('#searchBox').val());
+}

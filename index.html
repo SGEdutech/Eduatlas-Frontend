@@ -95,11 +95,12 @@
                                         <div class="col-md-3">
                                             <div class="form-group bmd-form-group">
                                                 <input type="text" placeholder="Search" class="form-control"
-                                                       onkeyup="autoComplete(this.value)">
+                                                       onkeyup="autoComplete(event,this.value)"
+                                                       onblur='removeSuggestions("autocomplete_container")' id="searchBox">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <button type="button" class="btn btn-primary btn-block">Search</button>
+                                            <button type="button" class="btn btn-info btn-block" onclick="redirectToDiscovery()">Search</button>
                                         </div>
                                     </div>
                                     <div id="autocomplete_container" class="searchview">
@@ -136,7 +137,7 @@
                                 <!-- Some <br /> tags to push the text to align with the image, you can remove it if you have more text on the right side :-) -->
                                 <h2 class="title">How It Works</h2>
                                 <div class="info info-horizontal">
-                                    <div class="icon icon-primary">
+                                    <div class="icon icon-info">
                                         <i class="material-icons">directions_run</i>
                                     </div>
                                     <div class="description">
@@ -147,7 +148,7 @@
                                     </div>
                                 </div>
                                 <div class="info info-horizontal">
-                                    <div class="icon icon-primary">
+                                    <div class="icon icon-info">
                                         <i class="material-icons">add</i>
                                     </div>
                                     <div class="description">
@@ -157,7 +158,7 @@
                                     </div>
                                 </div>
                                 <div class="info info-horizontal">
-                                    <div class="icon icon-primary">
+                                    <div class="icon icon-info">
                                         <i class="material-icons">hotel</i>
                                     </div>
                                     <div class="description">
@@ -185,7 +186,7 @@
                                 <h5 class="description">You need more information? Check what other persons are saying
                                     about our product. They are very happy with their purchase.</h5>
                                 <div class="info info-horizontal">
-                                    <div class="icon icon-primary">
+                                    <div class="icon icon-info">
                                         <i class="material-icons">pin_drop</i>
                                     </div>
                                     <div class="description">
@@ -197,7 +198,7 @@
                                     </div>
                                 </div>
                                 <div class="info info-horizontal">
-                                    <div class="icon icon-primary">
+                                    <div class="icon icon-info">
                                         <i class="material-icons">phone</i>
                                     </div>
                                     <div class="description">
@@ -212,7 +213,7 @@
                             <div class="col-md-5 ml-auto">
                                 <div class="card card-contact">
                                     <form id="contact-form" method="post">
-                                        <div class="card-header card-header-raised card-header-primary text-center">
+                                        <div class="card-header card-header-raised card-header-info text-center">
                                             <h4 class="card-title">Contact Us</h4>
                                         </div>
                                         <div class="card-body">
@@ -255,7 +256,7 @@
                         </span>
                                                 </label>
                                             </div>
-                                            <button type="submit" class="btn btn-primary pull-right">Send Message
+                                            <button type="submit" class="btn btn-info pull-right">Send Message
                                             </button>
                                         </div>
                                     </form>
