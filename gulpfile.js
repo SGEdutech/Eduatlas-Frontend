@@ -38,9 +38,9 @@ gulp.task('templates', function(){
 });
 
 gulp.task('watch', () => {
-    gulp.watch('*.html', ['minify']);
-    gulp.watch('assets/img/*', ['imageMin']);
-    gulp.watch('template/*.handlebars', ['templates']);
+    // gulp.watch('*.html', ['minify']);
+    // gulp.watch('assets/img/*', ['imageMin']);
+    gulp.watch('templates/*.handlebars', ['templates']);
 });
 
 gulp.task('default', ['minify', 'imageMin', 'templates', 'watch']);
