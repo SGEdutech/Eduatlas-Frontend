@@ -3,7 +3,7 @@ this["template"]["searchResult"] = Handlebars.template({"compiler":[7,">= 4.0.0"
 
   return "<a href=\"/TuitionDetails2.0.html?_id="
     + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
-    + "\" style=\"display: block\">\n    <div class=\"test\">"
+    + "\" style=\"display: block\">\r\n    <div class=\"test\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</div>\n</a>\n<br>";
+    + "</div>\r\n</a>\r\n<br>";
 },"useData":true});

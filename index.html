@@ -22,9 +22,47 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="assets/css/slick-slider-fix.css">
     <link rel="stylesheet" href="assets/css/home-page-v2.css">
+
+    <!-- Material Kit CSS -->
+    <link rel="stylesheet" href="assets/css/material-kit.css">
 </head>
 
 <body class="sections-page sidebar-collapse">
+<nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
+     id="sectionsNav">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand font-weight-bold" href="#">EduAtlas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
+                </li>
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="#">Schools</a>
+                </li>
+                <li class="nav-item dropdown" id="dynamicUserBtn">
+                </li>
+                <!--<li class="nav-item disabled">
+                    <a class="nav-link" href="#">Events</a>
+                </li>
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="#">Blogs</a>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <div class="main">
     <!-- <div class="section-space"></div> -->
@@ -231,7 +269,14 @@
         </div>
     </div>
 </div>
+<div id="loginModalContainer">
+</div>
+
 <script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/bootstrap-material-design.js"></script>
+<!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 <script src="assets/js/compiledTemplates/listgoCard.js"></script>
@@ -239,6 +284,15 @@
 <script src="assets/js/home-v2.js"></script>
 <script src="assets/js/auto-complete.js"></script>
 <script src="assets/js/card-link.js"></script>
+
+<!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+<script src="assets/js/material-kit.js?v=2.0.0"></script>
+
+<!--update navbar-->
+<script src="assets/js/updateNavBar.js"></script>
+
+<!--login modal-->
+<script src="assets/js/loginModal.js"></script>
 </body>
 
 </html>
