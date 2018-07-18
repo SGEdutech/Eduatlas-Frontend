@@ -16,8 +16,8 @@ function appendCards(tuitionsArray) {
 }
 
 function sanatiseData(tuition) {
-    if (tuition.description.length > 30) {
-        tuition.description = tuition.description.slice(0, 27) + '...';
+    if (tuition.description.length > 70) {
+        tuition.description = tuition.description.slice(0, 67) + '...';
     }
 }
 
