@@ -1,7 +1,7 @@
 $.ajax({
     url: '/tuition/all',
     method: 'GET',
-    data: {limit: 15, skip: 1000}
+    data: {limit: 15}
 }).then(appendCards)
     .catch(err => console.error(err));
 

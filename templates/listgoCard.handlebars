@@ -1,10 +1,9 @@
-<div class="col-12">
+<div class="col-12 tuition-cards" onclick="openTuitionPage('{{_id}}')">
     <article class="popular-listing-post">
         <div class="post-thumb">
             <img src="nav/img//10.jpg" alt="img" class="img-responsive">
             <div class="listing-info">
-                <!-- <h4><a href="javascript:void(0)">Hotel California</a></h4> -->
-                <p style="font-weight: 600">{{name}}</p>
+                 <h4><a href="javascript:void(0)">{{name}}</a></h4>
             </div>
             <div class="rating-area">
                 <ul>
@@ -16,19 +15,19 @@
                 </ul>
                 <span>(2.5/5)</span>
             </div>
-            <div class="option-block">
-                <ul>
-                    <li>
-                        <a href="javascript:void(0)" class="bookmark"></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" data-lat="40.715877,-73.993959" data-toggle="modal"
-                           data-target="#post_listing_modal_two">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <!--<div class="option-block">-->
+                <!--<ul>-->
+                    <!--<li>-->
+                        <!--<a href="javascript:void(0)" class="bookmark"></a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="javascript:void(0)" data-toggle="modal"-->
+                           <!--data-target="#post_listing_modal_two">-->
+                            <!--<i class="fa fa-eye" aria-hidden="true"></i>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
             <div class="overlay"></div>
         </div>
         <div class="post-details">
@@ -43,9 +42,6 @@
                 <!--</div>-->
             </div>
             <div class="post-entry-block">
-                <div class="post-author">
-                    <img src="nav/img/1.jpg" alt="img" class="img-responsive">
-                </div>
                 <p class="post-entry">{{description}}</p>
             </div>
             <div class="post-footer">

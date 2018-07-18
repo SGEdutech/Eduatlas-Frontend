@@ -18,7 +18,6 @@ function autoComplete(query) {
 function appendAutoComplete(results) {
     let autoCompleteValue = '';
     results.forEach(result => {
-        console.log(result);
         autoCompleteValue += template.searchResult(result);
     });
     autoCompleteContainer.html(autoCompleteValue);
