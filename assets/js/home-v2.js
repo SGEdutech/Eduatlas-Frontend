@@ -1,5 +1,5 @@
 $.ajax({
-    url: 'http://eduatlas.com/tuition/all',
+    url: '/tuition/all',
     method: 'GET',
     data: {limit: 15, skip: 1000}
 }).then(appendCards)

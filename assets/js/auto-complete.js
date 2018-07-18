@@ -2,7 +2,7 @@ const autoCompleteContainer = $('#autocomplete_container');
 
 function autoComplete(query) {
     $.ajax({
-        url: 'http://eduatlas.com/tuition/search',
+        url: '/tuition/search',
         data: {
             name: JSON.stringify({
                 search: query,
@@ -18,7 +18,8 @@ function autoComplete(query) {
 function appendAutoComplete(results) {
     let autoCompleteValue = '';
     results.forEach(result => {
-        autoCompleteValue += template.searchResult({result: result.name});
+        console.log(result);
+        autoCompleteValue += template.searchResult(result);
     });
     autoCompleteContainer.html(autoCompleteValue);
 }
