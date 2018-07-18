@@ -185,12 +185,6 @@ iframe {
   border-radius:8px;
   box-shadow: 1px 1px 2px 1px;
 }
-.searchview div
-{
-width:100%;color: #615959;padding: 10px;padding-top: 2px;padding-bottom: 2px;
-}
-.test{}
-.test:hover{background-color: #9c27b0;color:white!important;box-shadow: 1px 1px 2px 1px;transform: scale(1);}
 /*--- all button style --*/
 .icon-btn {
   width: 177px;
@@ -3493,3 +3487,9 @@ ul.social {
         transition: 0.3s ease-in; }
         .footer-bottom-block .footer-nav li a:hover, .footer-bottom-block .footer-nav li a:active, .footer-bottom-block .footer-nav li a:focus {
           color: #fd880a; }
+.searchview div
+{
+  width:100%;color: #615959;padding: 10px;padding-top: 2px;padding-bottom: 2px;
+}
+.test{}
+.test:hover{background-color: #9c27b0;color:white!important;box-shadow: 1px 1px 2px 1px;transform: scale(1);}
