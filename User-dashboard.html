@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="assets/css/tuitionDiscovery.css">
 
 </head>
-<body style="height: 2000px">
+<body>
 
 <nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
      id="sectionsNav">
@@ -94,10 +94,11 @@
                     <li class="nav-item"><a class="nav-link active" href="#tab1"
                                             data-toggle="tab"> Dashboard</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="./User-editDetails.html"> Edit Profile</a>
+                    <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab" onclick="editUserProfile()">
+                        Edit Profile</a>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="./User-addTuition.html"> Add Your
+                    <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab"> Add Your
                         Institute/Tuition</a>
                     </li>
 
@@ -199,7 +200,206 @@
                         </div>
 
                     </div>
+                    <div class="tab-pane" id="tab2">
+                        <form id="userImgForm" method="post" action="/user" enctype="multipart/form-data">
+                            <h2 class="card-title h3">Change Profile Pic:</h2>
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail img-raised w-25" id="profilePicContainer">
+                                    <!--<img src="https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">-->
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                                <div>
+                                    <span class="btn btn-raised btn-round btn-default btn-file">
+                                        <span class="fileinput-new">Select image</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="file" name="">
+                                    </span>
+                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists"
+                                       data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                </div>
+                            </div>
+                            <button class="btn btn-info" type="submit">Save new image</button>
+                        </form>
 
+
+                        <form id="Form1" method="" action="">
+
+                            <div id="basicContainer">
+                            </div>
+
+                        </form>
+                        <button class="btn btn-info" onclick="editUser('Form1')">Save Personal Info</button>
+                        <form id="Form2" method="" action="">
+
+                            <div class="card" id="userSocialLinksContainer">
+                            </div>
+
+                        </form>
+
+                        <button class="btn btn-info" onclick="editUser('Form2')">Save Social Links</button>
+                       <!-- <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title h3">Change Password:</h2>
+                                <h5 class="modal-title text-muted">Sorry for the inconvenience but we will add this
+                                    functionality
+                                    soon</h5>
+                                <button class="btn btn-primary btn-round" data-toggle="modal"
+                                        data-target="#emailModal">
+                                    <i class="material-icons">
+                                        email
+                                    </i> Email
+                                </button>
+                            </div>
+
+                            &lt;!&ndash; todo - add db handling and uncomment below card body&ndash;&gt;
+
+                        </div>-->
+                    </div>
+                    <div class="tab-pane" id="tab3">
+
+                        <form id="addTuition" method="POST" action="/tuition/">
+
+                            <div id="basicContainerTuition">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Basic Details:</h2>
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3">
+                                                <h6>Institute Name</h6>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input id="tName" value="" class="form-control" type="text"
+                                                       name="name">
+                                            </div>
+
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <h6>Address</h6>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="al1">Address Line 1</label>
+                                                    <input class="form-control" value="" type="text"
+                                                           id="al1" name="addressLine1">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="al2">Address Line 2</label>
+                                                    <input class="form-control" value="" type="text"
+                                                           id="al2" name="addressLine2">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="city">City</label>
+                                                    <input class="form-control" value="" type="text"
+                                                           id="city"
+                                                           name="city">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="dist">District</label>
+                                                    <input class="form-control" value="" type="text"
+                                                           id="dist"
+                                                           name="district">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="state">State</label>
+                                                    <input class="form-control" value="" type="text"
+                                                           id="state"
+                                                           name="state">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="country">Country</label>
+                                                    <input class="form-control" value="" type="text"
+                                                           id="country"
+                                                           name="country">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="pin">Pin</label>
+                                                    <input class="form-control" value="" type="number"
+                                                           id="pin"
+                                                           name="pin">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">Facilities:</h2>
+                                    <div id="facilityContainer">
+                                        <div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect2">choose facilities you provide</label>
+                                                <select multiple name="facilities" class="form-control selectpicker"
+                                                        data-style="btn btn-link" id="exampleFormControlSelect2">
+                                                    <option value="Library/Study Area">Library/Study Area</option>
+                                                    <option value="Smart Classes">Smart Classes</option>
+                                                    <option value="Study Material">Study Material</option>
+                                                    <option value="AC Classes">AC Classes</option>
+                                                    <option value="Internet/WIFI">Internet/WIFI</option>
+                                                    <option value="Transport">Transport</option>
+                                                    <option value="E-Learning">E-Learning</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">About Us</h2>
+                                    <div id="descriptionContainer">
+                                        <div>
+                                            <input value="" name="description" class="form-control"
+                                                   id="description">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">Category</h2>
+                                    <div id="cateContainer">
+                                        <div>
+                                            <input value="" name="category" class="form-control"
+                                                   id="category">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- not tested-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">Add/Change Cover Pic</h2>
+
+                                    <div class="form-group form-file-upload form-file-multiple">
+                                        <input type="file" multiple="" class="inputFileHidden" name="tuitionCoverPic">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control inputFileVisible"
+                                                   placeholder="Click here">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-fab btn-round btn-primary">
+                                                    <i class="material-icons">attach_file</i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input name="claimedBy" id="claimedByInput" type="hidden">
+                            <button class="btn btn-info" type="submit">Proceed</button>
+                        </form>
+                        <!-- pass id of form to initTuition function for AJAX POST req -->
+
+
+                    </div>
                 </div>
                 <!--</div>-->
             </div>
@@ -276,6 +476,7 @@
 <!-- Custom Js file for user-->
 <script src="assets/js/user.js"></script>
 <script src="assets/js/login-check.js"></script>
+<script src="assets/js/user-addTuition.js"></script>
 <script src="assets/js/updateNavBar.js"></script>
 <!-- endbuild -->
 

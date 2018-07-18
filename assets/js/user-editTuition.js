@@ -8,6 +8,8 @@ if (TuitionId == '') {
     TuitionId = '5b2b61f20079142dad3acc94'
 }
 
+console.log(TuitionId)
+
 const TuitionJSON = $.ajax({
     url: '/tuition/',
     data: {
@@ -116,8 +118,9 @@ function showSocialLinks(f, i, y) {
 }
 
 function showDaynTime(array) {
-    /*let Input = $("#dayAndTimeOfOperationInput").html();
-    let template = Handlebars.compile(Input);*/
+    if (!array) {
+        return
+    }
     let context = {
         monFrom: '',
         monTo: '',
@@ -233,8 +236,9 @@ function saveDetails(id) {
 }
 
 function showCourses(array) {
-    /*let Input = $("#coursesInput").html();
-    let template = Handlebars.compile(Input);*/
+    if (!array) {
+        return
+    }
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -305,8 +309,9 @@ function addCourse() {
 }
 
 function showResults(array) {
-    /*let Input = $("#resultInput").html();
-    let template = Handlebars.compile(Input);*/
+    if (!array) {
+        return
+    }
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
@@ -375,8 +380,9 @@ function deleteResult(title, id) {
 }
 
 function showFaculty(array) {
-    /*let Input = $("#facultyInput").html();
-    let template = Handlebars.compile(Input);*/
+    if(!array){
+        return
+    }
     Handlebars.registerHelper('list', function (items, options) {
         let output = '';
         for (let i = 0, l = items.length; i < l; i++) {
