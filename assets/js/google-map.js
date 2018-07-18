@@ -9,5 +9,6 @@ function initMap() {
             position: location,
             map: map
         })
-    },2000);
+    },3000);
 }
+google.maps.event.addDomListener(window, 'load', initMap)
