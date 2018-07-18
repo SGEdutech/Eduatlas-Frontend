@@ -8,8 +8,6 @@ if (TuitionId == '') {
     TuitionId = '5b2b61f20079142dad3acc94'
 }
 
-console.log(TuitionId)
-
 const TuitionJSON = $.ajax({
     url: '/tuition/',
     data: {
@@ -220,15 +218,22 @@ function addDayAndTimeOfOperation(id) {
     })
 }
 
-function saveDetails(id) {
+function saveDetails(id, nextTab) {
+    const form = $('#' + id);
+    const formData = new FormData(form[0]);
+
     const Promise = $.ajax({
         url: '/tuition/' + TuitionId,
         type: 'PUT',
-        data: $('#' + id).serialize()
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
     });
 
     Promise.then(() => {
-        alert('Saved Successfully')
+        showNextTab(nextTab);
+        // alert('Saved Successfully')
     }).catch((err) => {
         alert('Saving Unsuccessful');
         console.log(err)
@@ -380,7 +385,7 @@ function deleteResult(title, id) {
 }
 
 function showFaculty(array) {
-    if(!array){
+    if (!array) {
         return
     }
     Handlebars.registerHelper('list', function (items, options) {
@@ -449,4 +454,10 @@ function deleteFaculty(name, id) {
     });
 
     $('#' + id).remove();
+}
+
+function showNextTab(idOfNextTab) {
+    $(`[href="#${idOfNextTab}"]`).tab('show');
+    //scroll 100 pixels
+    document.body.scrollTop = document.documentElement.scrollTop = 100;
 }

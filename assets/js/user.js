@@ -1,5 +1,13 @@
-// todo - fetch cookie and send to server to get user details
-
+let url_string = location.href; //window.location.href
+let url = new URL(url_string);
+let Tab = url.searchParams.get("tab");
+if (Tab === undefined || Tab === '') {
+// do nothing
+} else {
+    // open the tab
+    if(Tab=='addTuition')
+    showNextTab('tab3')
+}
 let userData;
 
 // dummy user data
@@ -38,7 +46,7 @@ tryToGetData();
 
 
 function getUserOwnedTuition(ids) {
-    if (ids == undefined || ids == [] || ids.length===0) {
+    if (ids == undefined || ids == [] || ids.length === 0) {
         console.log("hi");
         let card = $('#userOwnedTuitionCard');
         card.empty();
@@ -243,4 +251,10 @@ form.submit(e => {
         error: err => console.error(err)
     })
 });
+
+function showNextTab(idOfNextTab) {
+    $(`[href="#${idOfNextTab}"]`).tab('show');
+    //scroll 100 pixels
+    document.body.scrollTop = document.documentElement.scrollTop = 100;
+}
 
