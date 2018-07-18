@@ -30,12 +30,7 @@ function tryToGetData() {
 
     }).catch((err) => {
         console.log(err);
-<<<<<<< HEAD
-        console.log('catch');
-        window.location.replace('./login-page.html');
-=======
         window.location.assign('./login-page.html');
->>>>>>> 7e7919747ae1cc255d8e873bc41e328847ac7203
     });
 }
 
