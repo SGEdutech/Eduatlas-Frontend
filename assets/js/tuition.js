@@ -263,6 +263,9 @@ function getRelatedListing(city) {
             context.Category = data.category;
             let result = Handlebars.templates.tuitionCardCol4(context);
             $("#relatedTuitionContainer").append(result);
+
+            //send address to get geo code
+            getGeocode(context.Address)
             // }
             // }
         }
@@ -272,6 +275,19 @@ function getRelatedListing(city) {
     });
 
 
+}
+
+let lat, lng;
+
+function getGeocode(address) {
+    const promise = $.ajax({
+        url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4`,
+    });
+    promise.then(data => {
+        lat = data.results[0].geometry.location.lat;
+        lng = data.results[0].geometry.location.lng;
+        console.log(lat+'-'+lng)
+    })
 }
 
 function claimListing() {
