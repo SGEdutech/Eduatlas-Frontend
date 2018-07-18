@@ -1,0 +1,9 @@
+#discover {
+    position: relative;
+}
+
+#autocomplete_container {
+    position: absolute;
+    top: 150%;          /*Hard coded*/
+    left: 0;
+}
