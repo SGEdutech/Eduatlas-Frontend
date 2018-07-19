@@ -851,6 +851,16 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
     padding: 10px 30px;
     border-bottom: 1px solid #e7e7e7;
     background: #fff; }
+
+    .popular-listing-post .post-meta-search {
+      padding: 0px 10px!important;
+      border-bottom: 1px solid #e7e7e7;
+      background: #fff; }
+
+    .popular-listing-post .post-meta-search {
+      padding: 10px 30px;
+      border-bottom: 1px solid #e7e7e7;
+      background: #fff; }
     .popular-listing-post .post-meta .location,
     .popular-listing-post .post-meta .tag {
       display: inline-block;
@@ -875,6 +885,9 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
   .popular-listing-post .post-entry-block {
     padding: 15px 20px;
     background: #fff; }
+    .popular-listing-post .post-entry-block-search {
+      padding: 0px 10px;
+      background: #fff; }
     .popular-listing-post .post-entry-block .post-author {
       width: 18%;
       margin-top: 10px;
@@ -895,6 +908,9 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
   .popular-listing-post .post-footer {
     padding: 10px 30px;
     background: #f7f7f7; }
+    .popular-listing-post .post-footer-search {
+      padding: 0px 10px;
+      background: #f7f7f7; }
     .popular-listing-post .post-footer .contact-no,
     .popular-listing-post .post-footer .schedule-info {
       display: inline-block;
