@@ -30,7 +30,7 @@
      id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand font-weight-bold" href="#">EduAtlas</a>
+            <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -48,6 +48,18 @@
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link" href="#">Schools</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false"><i class="material-icons">
+                        add
+                    </i>
+                        ADD LISTING</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add Tuition</a>
+                        <!--<div class="dropdown-divider"></div>
+                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
+                    </div>
                 </li>
                 <li class="nav-item dropdown" id="dynamicUserBtn">
                 </li>
