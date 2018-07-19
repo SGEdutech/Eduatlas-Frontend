@@ -1,6 +1,7 @@
 let url_string = location.href; //window.location.href
 let url = new URL(url_string);
 let queryId = url.searchParams.get("_id");
+let isClaimed = false;
 
 $.ajax({
     url: '/tuition',
@@ -11,13 +12,25 @@ function updateThePage(data) {
 
     getRelatedListing(data.city);
 
-    // console.log(data);
+    console.log(data);
     if (data.claimedBy === undefined || data.claimedBy === '') {
-        $('#claimContainer').append(`<button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#claimModal"
-                            onclick="checkLogin()">
+
+        const promise = $.ajax({
+            url: '/user/check',
+        });
+        promise.then((data) => {
+            if (data === 'LogIn') {
+                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#loginModal">
                         Claim This Page
                     </button>`)
+            } else {
+                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#claimModal">
+                        Claim This Page
+                    </button>`)
+            }
+        });
     } else {
+        isClaimed = true;
         $('#claimContainer').append(`<button type="button" class="btn btn-block btn-info">
                         <i class="material-icons">
                             done
@@ -286,7 +299,7 @@ function getGeocode(address) {
     promise.then(data => {
         lat = data.results[0].geometry.location.lat;
         lng = data.results[0].geometry.location.lng;
-        console.log(lat+'-'+lng)
+        console.log(lat + '-' + lng)
     })
 }
 
