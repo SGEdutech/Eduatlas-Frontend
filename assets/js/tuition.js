@@ -1,6 +1,7 @@
 let url_string = location.href; //window.location.href
 let url = new URL(url_string);
 let queryId = url.searchParams.get("_id");
+let isClaimed = false;
 
 $.ajax({
     url: '/tuition',
@@ -13,11 +14,12 @@ function updateThePage(data) {
 
     // console.log(data);
     if (data.claimedBy === undefined || data.claimedBy === '') {
-        $('#claimContainer').append(`<button id="claimModalTrigger" type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#claimModal"
+        /*$('#claimContainer').append(`<button id="claimModalTrigger" type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#claimModal"
                             onclick="checkLogin()">
                         Claim This Page
-                    </button>`)
+                    </button>`)*/
     } else {
+        isClaimed = true;
         $('#claimContainer').append(`<button type="button" class="btn btn-block btn-info">
                         <i class="material-icons">
                             done

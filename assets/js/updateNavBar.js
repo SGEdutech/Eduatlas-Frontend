@@ -6,9 +6,6 @@ $(function () {
     promise.then((data) => {
         if (data == 'LogIn') {
             btnContainer.append(`<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#loginModal">Login</button>`);
-            if ($('#claimModalTrigger')) {
-                $('#claimModalTrigger').attr('data-target','#');
-            }
         } else {
             if (data.img_userProfilePic === undefined || data.img_userProfilePic === '') {
                 btnContainer.append(`<a href="#pablo" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">

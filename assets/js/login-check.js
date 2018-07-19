@@ -2,7 +2,6 @@ function checkLogin(redirectAddress) {
     $.ajax({
         url: '/user/check',
     }).then((data) => {
-        console.log(data);
         if (data == 'LogIn') {
             $('#loginModal').modal('show');
         } else {
