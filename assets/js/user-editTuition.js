@@ -17,8 +17,7 @@ const TuitionJSON = $.ajax({
 
 TuitionJSON.then((data) => {
     //todo - optimize all the calls
-    console.log(data);
-    showCover(data.img_coverPic);
+    showCover(data.img_tuitionCoverPic);
     showBasic(data.name, data.addressLine1, data.addressLine2, data.city, data.district, data.state, data.country, data.pin);
     showFacility(data.facilities);
     showDescription(data.description);
@@ -32,11 +31,10 @@ TuitionJSON.then((data) => {
 });
 
 function showCover(path) {
-    /*let Input = $("#coverInput").html();
-    let template = Handlebars.compile(Input);*/
     let context = {
         path: path
     };
+    console.log(context.path)
     let result = Handlebars.templates.userEditTuitionCover(context);
     $("#coverImgContainer").append(result);
 }
