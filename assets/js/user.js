@@ -107,6 +107,7 @@ function logout() {
     })
 }
 
+editUserProfile();
 function editUserProfile() {
     const promise = $.ajax({
         url: '/user/check',
