@@ -44,7 +44,7 @@ let modal = `<div class="modal fade" id="loginModal" tabindex="-1" role="">
                         </div>
                     </div>
                     <div class="modal-footer justify-content-center">
-                        <button type="submit" class="btn btn-info rounded btn-wd btn-lg">Login</button>
+                        <button type="submit" class="btn btn-info rounded px-4">Login</button>
                     </div>
                 </form>
                 <hr>
