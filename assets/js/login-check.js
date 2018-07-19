@@ -4,7 +4,7 @@ function checkLogin(redirectAddress) {
     }).then((data) => {
         console.log(data);
         if (data == 'LogIn') {
-            window.location.replace('');
+            $('#loginModal').modal('show');
         } else {
             if (redirectAddress === undefined || redirectAddress === '') {
                 // do nothing
