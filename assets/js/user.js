@@ -1,5 +1,6 @@
 let url_string = location.href; //window.location.href
 let url = new URL(url_string);
+$('#addTuitionSubMenu').hide();
 let Tab = url.searchParams.get("tab");
 if (Tab === undefined || Tab === '') {
 // do nothing
@@ -87,9 +88,9 @@ function getUserOwnedTuition(ids) {
                     <div class="row">
                         ${result}
                     </div>
-                    <div class="row justify-content-around mb-md-2">
+                    <div class="row justify-content-around mb-md-4">
                         <a href="User-editTuition.html?a=${context._id}" class="btn btn-info">edit</a>
-                        <a onclick="unclaimTuition(context._id)" class="btn btn-danger">unclaim</a>
+                        <a onclick="unclaimListing('${context._id}')" class="btn btn-danger">unclaim</a>
                     </div>
                  </div>`;
 
@@ -265,6 +266,7 @@ form.submit(e => {
 
 function showNextTab(idOfNextTab) {
     $(`[href="#${idOfNextTab}"]`).tab('show');
+    $('#addTuitionSubMenu').show();
     //scroll 100 pixels
     document.body.scrollTop = document.documentElement.scrollTop = 100;
 }
@@ -276,27 +278,37 @@ function unclaimListing(tuitionId) {
         url: '/user/check',
     }).then(data => {
         user = data;
-        //now update tuition by adding claimedBy
+        //now update tuition by removing claimedBy
         $.ajax({
             url: '/tuition/' + tuitionId,
             type: 'PUT',
             data: {claimedBy: ''}
         }).then(data => {
-            console.log("tuition updated");
+            console.log("tuition-------");
+            console.log(data);
         });
         //now update user by inserting id of tuition to tuitionsOwned array
         //todo - we need to delete from array
         $.ajax({
-            url: '/user/add/tuitionsOwned/' + user._id,
-            type: 'POST',
-            data: {string: queryId}
+            url: '/user/delete/tuitionsOwned/' + user._id,
+            type: 'DELETE',
+            data: {string: tuitionId}
         }).then(data => {
-            console.log('user updated');
-            window.location.assign('User-dashboard.html')
+            console.log("user-----");
+            console.log(data);
+            // window.location.assign('User-dashboard.html')
         })
     }).catch(err => {
         console.log(err);
         alert('failed')
     })
 }
+
+$('a[href="#tab3"]').on('show.bs.tab', function (e) {
+    $('#addTuitionSubMenu').show();
+});
+
+$('a[href="#tab3"]').on('hide.bs.tab', function (e) {
+    $('#addTuitionSubMenu').hide();
+});
 

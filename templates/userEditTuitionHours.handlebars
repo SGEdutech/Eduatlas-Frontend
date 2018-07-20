@@ -1,154 +1,71 @@
 <form class="row" id="monForm">
-    <div class="col-4">
-        Monday:
+    <div class="col-3">
+        Mon:
         <input hidden name="day" value="Monday">
     </div>
-    <div class="col-3">
-        <input class="form-control" value="{{monFrom}}" name="fromTime"
-               type="text">
-    </div>
-    <div class="col-3">
-        <input class="form-control" value="{{monTo}}" name="toTime"
-               type="text">
-    </div>
-    <div class="col-2">
-        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                onclick="deleteTime('Monday')">
-            <i class="material-icons">
-                delete
-            </i>
-        </button>
-    </div>
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{monFrom}}" name="fromTime"
+           type="time">
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{monTo}}" name="toTime"
+           type="time">
 </form>
 
 
 <form class="row" id="tueForm">
-    <div class="col-4">
-        Tuesday:
+    <div class="col-3">
+        Tue:
         <input hidden name="day" value="Tuesday">
     </div>
-    <div class="col-3">
-        <input class="form-control" value="{{tueFrom}}" name="fromTime">
-    </div>
-    <div class="col-3">
-        <input class="form-control" value="{{tueTo}}" name="toTime">
-    </div>
-    <div class="col-2">
-        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                onclick="deleteTime('Tuesday')">
-            <i class="material-icons">
-                delete
-            </i>
-        </button>
-    </div>
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{tueFrom}}" name="fromTime" type="time">
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{tueTo}}" name="toTime" type="time">
+
 </form>
 
 
 <form class="row" id="wedForm">
-    <div class="col-4">
-        Wednesday:
+    <div class="col-3">
+        Wed:
         <input hidden name="day" value="Wednesday">
     </div>
-    <div class="col-3">
-        <input class="form-control" value="{{wedFrom}}" name="fromTime">
-    </div>
-    <div class="col-3">
-        <input class="form-control" value="{{wedTo}}" name="toTime">
-    </div>
-    <div class="col-2">
-        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                onclick="deleteTime('Wednesday')">
-            <i class="material-icons">
-                delete
-            </i>
-        </button>
-    </div>
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{wedFrom}}" name="fromTime" type="time">
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{wedTo}}" name="toTime" type="time">
 </form>
 
 
 <form class="row" id="thrForm">
-    <div class="col-4">
-        Thursday:
+    <div class="col-3">
+        Thr:
         <input hidden name="day" value="Thursday">
     </div>
-    <div class="col-3">
-        <input class="form-control" value="{{thrFrom}}" name="fromTime">
-    </div>
-    <div class="col-3">
-        <input class="form-control" value="{{thrTo}}" name="toTime">
-    </div>
-    <div class="col-2">
-        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                onclick="deleteTime('Thursday')">
-            <i class="material-icons">
-                delete
-            </i>
-        </button>
-    </div>
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{thrFrom}}" name="fromTime" type="time">
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{thrTo}}" name="toTime" type="time">
 </form>
 
 
 <form class="row" id="friForm">
-    <div class="col-4">
-        Friday:
+    <div class="col-3">
+        Fri:
         <input hidden name="day" value="Friday">
     </div>
-    <div class="col-3">
-        <input class="form-control" value="{{friFrom}}" name="fromTime">
-    </div>
-    <div class="col-3">
-        <input class="form-control" value="{{friTo}}" name="toTime">
-    </div>
-    <div class="col-2">
-        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                onclick="deleteTime('Friday')">
-            <i class="material-icons">
-                delete
-            </i>
-        </button>
-    </div>
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{friFrom}}" name="fromTime" type="time">
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{friTo}}" name="toTime" type="time">
 </form>
 
 
 <form class="row" id="satForm">
-    <div class="col-4">
-        Saturday:
+    <div class="col-3">
+        Sat:
         <input hidden name="day" value="Saturday">
     </div>
-    <div class="col-3">
-        <input class="form-control" value="{{satFrom}}" name="fromTime">
-    </div>
-    <div class="col-3">
-        <input class="form-control" value="{{satTo}}" name="toTime">
-    </div>
-    <div class="col-2">
-        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                onclick="deleteTime('Saturday')">
-            <i class="material-icons">
-                delete
-            </i>
-        </button>
-    </div>
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{satFrom}}" name="fromTime" type="time">
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{satTo}}" name="toTime" type="time">
 </form>
 
 
 <form class="row" id="sunForm">
-    <div class="col-4">
-        Sunday:
+    <div class="col-3">
+        Sun:
         <input hidden name="day" value="Sunday">
     </div>
-    <div class="col-3">
-        <input class="form-control" value="{{sunFrom}}" name="fromTime">
-    </div>
-    <div class="col-3">
-        <input class="form-control" value="{{sunTo}}" name="toTime">
-    </div>
-    <div class="col-2">
-        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                onclick="deleteTime('Sunday')">
-            <i class="material-icons">
-                delete
-            </i>
-        </button>
-    </div>
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{sunFrom}}" name="fromTime" type="time">
+    <input class="form-control col-4 m-md-0 p-md-1" value="{{sunTo}}" name="toTime" type="time">
 </form>

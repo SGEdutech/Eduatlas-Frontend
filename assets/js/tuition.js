@@ -12,7 +12,6 @@ function updateThePage(data) {
 
     getRelatedListing(data.city);
 
-    console.log(data);
     if (data.claimedBy === undefined || data.claimedBy === '') {
 
         const promise = $.ajax({
@@ -72,50 +71,53 @@ function updateThePage(data) {
 }
 
 function showDaynTime(array) {
-    let context = {
-        monFrom: '',
-        monTo: '',
-        tueFrom: '',
-        tueTo: '',
-        wedFrom: '',
-        wedTo: '',
-        thrFrom: '',
-        thrTo: '',
-        friFrom: '',
-        friTo: '',
-        satFrom: '',
-        satTo: '',
-        sunFrom: '',
-        sunTo: '',
-    };
+    if (array === undefined || array === []){
+        return;
+    }
+        let context = {
+            monFrom: '',
+            monTo: '',
+            tueFrom: '',
+            tueTo: '',
+            wedFrom: '',
+            wedTo: '',
+            thrFrom: '',
+            thrTo: '',
+            friFrom: '',
+            friTo: '',
+            satFrom: '',
+            satTo: '',
+            sunFrom: '',
+            sunTo: '',
+        };
     array.forEach((obj) => {
-        let expr = obj.day;
+        let expr = obj.day.toLowerCase();
         switch (expr) {
-            case 'Monday':
+            case 'monday':
                 context.monFrom = obj.fromTime;
                 context.monTo = obj.toTime;
                 break;
-            case 'Tuesday':
+            case 'tuesday':
                 context.tueFrom = obj.fromTime;
                 context.tueTo = obj.toTime;
                 break;
-            case 'Wednesday':
+            case 'wednesday':
                 context.wedFrom = obj.fromTime;
                 context.wedTo = obj.toTime;
                 break;
-            case 'Thursday':
+            case 'thursday':
                 context.thrFrom = obj.fromTime;
                 context.thrTo = obj.toTime;
                 break;
-            case 'Friday':
+            case 'friday':
                 context.friFrom = obj.fromTime;
                 context.friTo = obj.toTime;
                 break;
-            case 'Saturday':
+            case 'saturday':
                 context.satFrom = obj.fromTime;
                 context.satTo = obj.toTime;
                 break;
-            case 'Sunday':
+            case 'sunday':
                 context.sunFrom = obj.fromTime;
                 context.sunTo = obj.toTime;
                 break;

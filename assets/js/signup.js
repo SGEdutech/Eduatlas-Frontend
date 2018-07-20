@@ -22,12 +22,12 @@ function checkForm(form) {
             form.password.focus();
             return false;
         }
-        re = /[0-9]/;
+        /*re = /[0-9]/;
         if (!re.test(form.password.value)) {
             alert("Error: password must contain at least one number (0-9)!");
             form.password.focus();
             return false;
-        }
+        }*/
         re = /[a-z]/;
         if (!re.test(form.password.value)) {
             alert("Error: password must contain at least one lowercase letter (a-z)!");

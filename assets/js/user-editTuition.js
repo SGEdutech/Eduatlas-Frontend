@@ -114,9 +114,11 @@ function showSocialLinks(f, i, y) {
 }
 
 function showDaynTime(array) {
-    if (!array) {
-        return
+    if (array === undefined || array === []) {
+        return;
     }
+    $('#saveTimeBtn').click(addAllTimes(array));
+
     let context = {
         monFrom: '',
         monTo: '',
@@ -134,33 +136,33 @@ function showDaynTime(array) {
         sunTo: '',
     };
     array.forEach((obj) => {
-        let expr = obj.day;
+        let expr = obj.day.toLowerCase();
         switch (expr) {
-            case 'Monday':
+            case 'monday':
                 context.monFrom = obj.fromTime;
                 context.monTo = obj.toTime;
                 break;
-            case 'Tuesday':
+            case 'tuesday':
                 context.tueFrom = obj.fromTime;
                 context.tueTo = obj.toTime;
                 break;
-            case 'Wednesday':
+            case 'wednesday':
                 context.wedFrom = obj.fromTime;
                 context.wedTo = obj.toTime;
                 break;
-            case 'Thursday':
+            case 'thursday':
                 context.thrFrom = obj.fromTime;
                 context.thrTo = obj.toTime;
                 break;
-            case 'Friday':
+            case 'friday':
                 context.friFrom = obj.fromTime;
                 context.friTo = obj.toTime;
                 break;
-            case 'Saturday':
+            case 'saturday':
                 context.satFrom = obj.fromTime;
                 context.satTo = obj.toTime;
                 break;
-            case 'Sunday':
+            case 'sunday':
                 context.sunFrom = obj.fromTime;
                 context.sunTo = obj.toTime;
                 break;
@@ -171,8 +173,16 @@ function showDaynTime(array) {
     $("#opration_hours_containers").append(result);
 }
 
-function addAllTimes() {
+function addAllTimes(array) {
     // todo - fix the memory leak
+    // temporary - let's delete the time and operation first and add new
+    const TuitionJSON = $.ajax({
+        url: '/tuition/' + TuitionId,
+        method: 'PUT',
+        data: {
+            dayAndTimeOfOperation: []
+        }
+    });
     addDayAndTimeOfOperation('monForm');
     addDayAndTimeOfOperation('tueForm');
     addDayAndTimeOfOperation('wedForm');
@@ -180,23 +190,6 @@ function addAllTimes() {
     addDayAndTimeOfOperation('friForm');
     addDayAndTimeOfOperation('satForm');
     addDayAndTimeOfOperation('sunForm');
-}
-
-function deleteTime(day) {
-    const promise = $.ajax({
-        url: '/tuition/delete/dayAndTimeOfOperation/' + TuitionId,
-        type: 'DELETE',
-        data: {
-            day: day
-        }
-    });
-
-    promise.then(() => {
-        alert("time deleted successfully")
-    }).catch((err) => {
-        console.log(err);
-        alert("time deletion failed")
-    })
 }
 
 function addDayAndTimeOfOperation(id) {
