@@ -5,8 +5,8 @@ if (Tab === undefined || Tab === '') {
 // do nothing
 } else {
     // open the tab
-    if(Tab=='addTuition')
-    showNextTab('tab3')
+    if (Tab == 'addTuition')
+        showNextTab('tab3')
 }
 let userData;
 
@@ -63,27 +63,36 @@ function getUserOwnedTuition(ids) {
         });
 
         let context = {
-            Name: "Tuition Name",
+            _id: '',
+            name: "Tuition Name",
+            state: '',
+            description: '',
+            primaryNumber: "phone",
             rating: "2.5",
             ifAd: "",
-            Address: "address",
-            Phone: "phone",
-            Email: "email",
             coverPic: "",
             Category: "category",
-            id: "#"
         };
 
         promise.then((data) => {
-            context.rating = data.rating ? data.rating : "2.5";
-            context.id = data._id;
-            context.Name = data.name;
-            context.Address = `${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
-            context.Phone = data.primaryNumber;
-            context.Email = data.email;
-            context.coverPic = 'assets/img/tuition2.jpg';
-            context.Category = data.category;
-            let result = Handlebars.templates.userDashboardTuitionCard(context);
+            // context.rating = data.rating ? data.rating : "2.5";
+            context._id = data._id;
+            context.name = data.name;
+            context.state = data.state;
+            context.primaryNumber = data.primaryNumber;
+            context.description = data.description;
+            let result = template.listgoCard(context);
+            result =
+                `<div class="col-4">
+                    <div class="row">
+                        ${result}
+                    </div>
+                    <div class="row justify-content-around mb-md-2">
+                        <a href="User-editTuition.html?a=${context._id}" class="btn btn-info">edit</a>
+                        <a onclick="unclaimTuition(context._id)" class="btn btn-danger">unclaim</a>
+                    </div>
+                 </div>`;
+
             $("#userOwnedTuitionContainer").append(result);
 
         }).catch(err => {
@@ -108,6 +117,7 @@ function logout() {
 }
 
 editUserProfile();
+
 function editUserProfile() {
     const promise = $.ajax({
         url: '/user/check',
@@ -257,5 +267,36 @@ function showNextTab(idOfNextTab) {
     $(`[href="#${idOfNextTab}"]`).tab('show');
     //scroll 100 pixels
     document.body.scrollTop = document.documentElement.scrollTop = 100;
+}
+
+function unclaimListing(tuitionId) {
+    let user = {};
+    //first check if user is logged-in
+    $.ajax({
+        url: '/user/check',
+    }).then(data => {
+        user = data;
+        //now update tuition by adding claimedBy
+        $.ajax({
+            url: '/tuition/' + tuitionId,
+            type: 'PUT',
+            data: {claimedBy: ''}
+        }).then(data => {
+            console.log("tuition updated");
+        });
+        //now update user by inserting id of tuition to tuitionsOwned array
+        //todo - we need to delete from array
+        $.ajax({
+            url: '/user/add/tuitionsOwned/' + user._id,
+            type: 'POST',
+            data: {string: queryId}
+        }).then(data => {
+            console.log('user updated');
+            window.location.assign('User-dashboard.html')
+        })
+    }).catch(err => {
+        console.log(err);
+        alert('failed')
+    })
 }
 
