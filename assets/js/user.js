@@ -296,7 +296,7 @@ function unclaimListing(tuitionId) {
         }).then(data => {
             console.log("user-----");
             console.log(data);
-            // window.location.assign('User-dashboard.html')
+            window.location.assign('User-dashboard.html')
         })
     }).catch(err => {
         console.log(err);
