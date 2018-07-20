@@ -71,25 +71,25 @@ function updateThePage(data) {
 }
 
 function showDaynTime(array) {
-    if (array === undefined || array === []){
+    if (array === undefined || array === []) {
         return;
     }
-        let context = {
-            monFrom: '',
-            monTo: '',
-            tueFrom: '',
-            tueTo: '',
-            wedFrom: '',
-            wedTo: '',
-            thrFrom: '',
-            thrTo: '',
-            friFrom: '',
-            friTo: '',
-            satFrom: '',
-            satTo: '',
-            sunFrom: '',
-            sunTo: '',
-        };
+    let context = {
+        monFrom: '',
+        monTo: '',
+        tueFrom: '',
+        tueTo: '',
+        wedFrom: '',
+        wedTo: '',
+        thrFrom: '',
+        thrTo: '',
+        friFrom: '',
+        friTo: '',
+        satFrom: '',
+        satTo: '',
+        sunFrom: '',
+        sunTo: '',
+    };
     array.forEach((obj) => {
         let expr = obj.day.toLowerCase();
         switch (expr) {
@@ -148,6 +148,7 @@ function showCourses(array) {
             duration: obj.duration,
             fee: obj.fee,
             ageGroup: obj.ageGroup,
+            nextBatch: obj.nextBatch ? obj.nextBatch.split('T')[0] : ''
         };
         context.key.push(newObj);
         counter++;

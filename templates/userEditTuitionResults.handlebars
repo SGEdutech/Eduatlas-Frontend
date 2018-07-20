@@ -1,16 +1,16 @@
 {{#list key}}
     <div class="col-4" id="result{{id}}">
         <div class="card">
-                                    <span style="position: absolute;left: 92%;top: -6%;">
-                                        <!-- send (_id of result obj received , id of card) as arguments for function deleteResult()-->
-                                        <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                                                onclick="deleteResult('{{title}}','result{{id}}')">
-                                            <i class="material-icons">
-                                                delete
-                                            </i>
-                                        </button>
-                                    </span>
-            <img class="card-img-top" src="{{img_path}}" alt="">
+            <span style="position: absolute;left: 92%;top: -6%;">
+                <!-- send (_id of result obj received , id of card) as arguments for function deleteResult()-->
+                <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
+                        onclick="deleteResult('{{title}}','result{{id}}')">
+                    <i class="material-icons">
+                        delete
+                    </i>
+                </button>
+            </span>
+            <img class="card-img-top" src="images/{{img_path}}" alt="">
             <div class="card-body">
                 <div class="card-title">
                     {{title}}

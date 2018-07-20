@@ -2,6 +2,15 @@ let url_string = location.href; //window.location.href
 let url = new URL(url_string);
 let TuitionId = '';
 TuitionId = url.searchParams.get("a");
+let Tab = url.searchParams.get("tab");
+if (Tab == 'courses') {
+    Tab = 'tab3'
+} else if (Tab == 'results') {
+    Tab = 'tab4'
+} else if (Tab == 'faculty') {
+    Tab = 'tab5'
+}
+showNextTab(Tab);
 if (TuitionId == '') {
     TuitionId = '5b2b61f20079142dad3acc94'
 } else if (!TuitionId) {
@@ -34,7 +43,6 @@ function showCover(path) {
     let context = {
         path: path
     };
-    console.log(context.path)
     let result = Handlebars.templates.userEditTuitionCover(context);
     $("#coverImgContainer").append(result);
 }
@@ -117,7 +125,7 @@ function showDaynTime(array) {
     if (array === undefined || array === []) {
         return;
     }
-    $('#saveTimeBtn').click(addAllTimes(array));
+    $('#saveTimeBtn').click(() => addAllTimes(array));
 
     let context = {
         monFrom: '',
@@ -139,32 +147,32 @@ function showDaynTime(array) {
         let expr = obj.day.toLowerCase();
         switch (expr) {
             case 'monday':
-                context.monFrom = obj.fromTime;
-                context.monTo = obj.toTime;
+                context.monFrom = obj.fromTime ? obj.fromTime : '';
+                context.monTo = obj.toTime ? obj.toTime : '';
                 break;
             case 'tuesday':
-                context.tueFrom = obj.fromTime;
-                context.tueTo = obj.toTime;
+                context.tueFrom = obj.fromTime ? obj.fromTime : '';
+                context.tueTo = obj.toTime ? obj.toTime : '';
                 break;
             case 'wednesday':
-                context.wedFrom = obj.fromTime;
-                context.wedTo = obj.toTime;
+                context.wedFrom = obj.fromTime ? obj.fromTime : '';
+                context.wedTo = obj.toTime ? obj.toTime : '';
                 break;
             case 'thursday':
-                context.thrFrom = obj.fromTime;
-                context.thrTo = obj.toTime;
+                context.thrFrom = obj.fromTime ? obj.fromTime : '';
+                context.thrTo = obj.toTime ? obj.toTime : '';
                 break;
             case 'friday':
-                context.friFrom = obj.fromTime;
-                context.friTo = obj.toTime;
+                context.friFrom = obj.fromTime ? obj.fromTime : '';
+                context.friTo = obj.toTime ? obj.toTime : '';
                 break;
             case 'saturday':
-                context.satFrom = obj.fromTime;
-                context.satTo = obj.toTime;
+                context.satFrom = obj.fromTime ? obj.fromTime : '';
+                context.satTo = obj.toTime ? obj.toTime : '';
                 break;
             case 'sunday':
-                context.sunFrom = obj.fromTime;
-                context.sunTo = obj.toTime;
+                context.sunFrom = obj.fromTime ? obj.fromTime : '';
+                context.sunTo = obj.toTime ? obj.toTime : '';
                 break;
         }
     });
@@ -176,20 +184,22 @@ function showDaynTime(array) {
 function addAllTimes(array) {
     // todo - fix the memory leak
     // temporary - let's delete the time and operation first and add new
-    const TuitionJSON = $.ajax({
-        url: '/tuition/' + TuitionId,
-        method: 'PUT',
-        data: {
-            dayAndTimeOfOperation: []
-        }
+    $.ajax({
+        url: '/tuition/empty/dayAndTimeOfOperation',
+        type: 'DELETE',
+        data: {_id: TuitionId}
+    }).then((data) => {
+        console.log(data);
+        addDayAndTimeOfOperation('monForm');
+        addDayAndTimeOfOperation('tueForm');
+        addDayAndTimeOfOperation('wedForm');
+        addDayAndTimeOfOperation('thrForm');
+        addDayAndTimeOfOperation('friForm');
+        addDayAndTimeOfOperation('satForm');
+        addDayAndTimeOfOperation('sunForm');
+    }).catch(err => {
+        console.log(err);
     });
-    addDayAndTimeOfOperation('monForm');
-    addDayAndTimeOfOperation('tueForm');
-    addDayAndTimeOfOperation('wedForm');
-    addDayAndTimeOfOperation('thrForm');
-    addDayAndTimeOfOperation('friForm');
-    addDayAndTimeOfOperation('satForm');
-    addDayAndTimeOfOperation('sunForm');
 }
 
 function addDayAndTimeOfOperation(id) {
@@ -201,7 +211,7 @@ function addDayAndTimeOfOperation(id) {
         data: $('#' + id).serialize()
     });
 
-    promise.then(() => {
+    promise.then((data) => {
         // alert("time updated successfully")
     }).catch((err) => {
         console.log(err);
@@ -255,6 +265,7 @@ function showCourses(array) {
             duration: obj.duration,
             fee: obj.fee,
             ageGroup: obj.ageGroup,
+            nextBatch: obj.nextBatch ? obj.nextBatch.split('T')[0] : ''
         };
         context.key.push(newObj);
         counter++;
@@ -277,13 +288,12 @@ function deleteCourse(title, id) {
     });
 
     promise.then(() => {
+        $('#' + id).remove();
         alert("course deleted successfully")
     }).catch((err) => {
         console.log(err);
         alert("course deletion failed")
     });
-
-    $('#' + id).remove();
 }
 
 function addCourse() {
@@ -296,8 +306,9 @@ function addCourse() {
         data: $('#newCourse').serialize()
     });
 
-    AddedCourse.then(() => {
-        alert("course added successfully")
+    AddedCourse.then((data) => {
+        window.location.assign(`User-editTuition.html?a=${data._id}&tab=courses`);
+        // alert("course added successfully")
     }).catch((err) => {
         console.log(err);
         alert("course addition failed")
@@ -338,17 +349,23 @@ function showResults(array) {
 }
 
 function addResult() {
+    const form = $('#newResult');
+    const formData = new FormData(form[0]);
     // data is in Form
     // form id is newCourse
     // get the data and send it in post request
     const promise = $.ajax({
         url: '/tuition/add/bragging/' + TuitionId,
         type: 'POST',
-        data: $('#newResult').serialize()
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
     });
 
-    promise.then(() => {
-        alert("result added successfully")
+    promise.then((data) => {
+        // alert("result added successfully");
+        window.location.assign(`User-editTuition.html?a=${data._id}&tab=results`);
     }).catch((err) => {
         console.log(err);
         alert("result addition failed")
@@ -410,17 +427,23 @@ function showFaculty(array) {
 }
 
 function addFaculty() {
+    const form = $('#newFaculty');
+    const formData = new FormData(form[0]);
     // data is in Form
-    // form id is newCourse
+    // form id is newFaculty
     // get the data and send it in post request
     const promise = $.ajax({
         url: '/tuition/add/team/' + TuitionId,
         type: 'POST',
-        data: $('#newFaculty').serialize()
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
     });
 
-    promise.then(() => {
-        alert("Faculty added successfully")
+    promise.then((data) => {
+        // alert("Faculty added successfully")
+        window.location.assign(`User-editTuition.html?a=${data._id}&tab=faculty`);
     }).catch((err) => {
         console.log(err);
         alert("Faculty addition failed")
@@ -450,5 +473,5 @@ function deleteFaculty(name, id) {
 function showNextTab(idOfNextTab) {
     $(`[href="#${idOfNextTab}"]`).tab('show');
     //scroll 100 pixels
-    document.body.scrollTop = document.documentElement.scrollTop = 100;
+    document.body.scrollTop = document.documentElement.scrollTop = 150;
 }

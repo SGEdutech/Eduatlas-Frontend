@@ -280,9 +280,9 @@ function unclaimListing(tuitionId) {
         user = data;
         //now update tuition by removing claimedBy
         $.ajax({
-            url: '/tuition/' + tuitionId,
-            type: 'PUT',
-            data: {claimedBy: ''}
+            url: '/tuition/empty/claimedBy',
+            type: 'DELETE',
+            data: {_id: tuitionId}
         }).then(data => {
             console.log("tuition-------");
             console.log(data);
