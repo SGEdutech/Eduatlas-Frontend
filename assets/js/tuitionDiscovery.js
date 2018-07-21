@@ -155,7 +155,10 @@ if (!complexSearch) {
 }
 
 //for showing immediate results as you start typing name
-function getSearchResultsImmediate(value) {
+function getSearchResultsImmediate(event, value) {
+    if (event.keyCode === 13) {
+        getSearchResultsComplex();
+    }
     $.ajax({
         url: '/tuition/search',
         data: {
@@ -283,6 +286,11 @@ function removeSuggestions(suggestionBoxId) {
     }, 500)
 }
 
+function pressEnter(event) {
+    if (event.keyCode === 13) {
+        getSearchResultsComplex();
+    }
+}
 
 
 

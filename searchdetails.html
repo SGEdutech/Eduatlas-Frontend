@@ -47,7 +47,7 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link active" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
+                    <a class="nav-link active" href="searchdetails.html?page=1&items=18">Institutes/Tuition</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link" href="#">Schools</a>
@@ -78,30 +78,42 @@
             <div class="lis-relative">
                 <h5 class="mb-2 mt-md-5" style="font-weight: bold;">What are you looking for?</h5>
                 <p>Search by Category</p>
-                <div class="form-group lis-relative">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                          <span class="input-group-text">
+                              <i class="fa fa-search lis-primary lis-left-0"></i>
+                          </span>
+                    </div>
                     <input type="text"
                            class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4 searchInput"
-                           placeholder="What are you looking for?" onkeyup="getSearchResultsImmediate(this.value)"
+                           placeholder="What are you looking for?" onkeyup="getSearchResultsImmediate(event,this.value)"
                            onblur="removeSuggestions('suggestions')" id="searchBox">
-                    <div id="suggestions" class="position-absolute">
+                </div>
+                <div id="suggestions" class="position-absolute col-12 text-center">
+                </div>
+                <hr>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                          <span class="input-group-text">
+                              <i class="fa fa-map-o lis-primary lis-left-0"></i>
+                          </span>
                     </div>
-                    <div class="lis-search"><i class="fa fa-search lis-primary lis-left-0"></i></div>
-                </div>
-                <div class="form-group lis-relative">
                     <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4"
-                           placeholder="City" id="citySearch">
-                    <div class="lis-search"><i class="fa fa-map-o lis-primary lis-left-0"></i></div>
-                    <div class="lis-search"><a href="#" class="lis-light"><i
-                            class="fa fa-crosshairs lis-left-auto lis-right-0"></i></a></div>
+                           placeholder="City" id="citySearch" onkeyup="pressEnter(event)">
                 </div>
-                <div class="form-group lis-relative">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                          <span class="input-group-text">
+                              <i class="fa fa-sliders lis-primary lis-left-0"></i>
+                          </span>
+                    </div>
                     <select id="sortByInput" class="form-control border-0 pl-4">
                         <option selected value="default">Sort-By</option>
                         <option value="rating">Reviews</option>
                         <option value="views">Popularity</option>
                     </select>
-                    <div class="lis-search"><i class="fa fa-sliders lis-primary lis-left-0"></i></div>
                 </div>
+                <!--<i class="fa fa-crosshairs lis-left-auto lis-right-0"></i>-->
                 <div class="form-group lis-relative">
                 </div>
                 <p class="lis-dark">More Filters</p>
