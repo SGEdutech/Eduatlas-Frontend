@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
-        Eduatlas
+        Search
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
           name='viewport'/>
@@ -26,12 +26,14 @@
     <!-- Material Kit CSS -->
     <link rel="stylesheet" href="assets/css/material-kit.css">
 </head>
-<body class="sections-page sidebar-collapse">
+<body class="sections-page sidebar-collapse" style="height: 1000px">
+
+<!--sick navbar-->
 <nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
-     id="sectionsNav" style="background-color: black!important;">
+     id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand font-weight-bold" href="#">EduAtlas</a>
+            <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,357 +43,106 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link" href="#">Schools</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false"><i class="material-icons">
+                        add
+                    </i>
+                        ADD LISTING</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add
+                            Tuition</a>
+                        <!--<div class="dropdown-divider"></div>
+                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
+                    </div>
+                </li>
                 <li class="nav-item dropdown" id="dynamicUserBtn">
-                </li>                
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container-fluid maincontainer">
+<div class="container-fluid maincontainer mt-md-0">
     <div class="row">
         <div class="col-12 col-xl-3 py-5 order-xl-1 order-2 left-sidebar z-index-99">
             <div class="lis-relative">
-                <h5 class="mb-2" style="font-weight: bold;">What are you looking for?</h5>
+                <h5 class="mb-2 mt-md-5" style="font-weight: bold;">What are you looking for?</h5>
                 <p>Search by Category</p>
                 <div class="form-group lis-relative">
-                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4" placeholder="What are you looking for?">
-                    <div class="lis-search"> <i class="fa fa-search lis-primary lis-left-0"></i> </div>
+                    <input type="text"
+                           class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4 searchInput"
+                           placeholder="What are you looking for?" onkeyup="getSearchResultsImmediate(this.value)"
+                           onblur="removeSuggestions('suggestions')" id="searchBox">
+                    <div id="suggestions" class="position-absolute">
+                    </div>
+                    <div class="lis-search"><i class="fa fa-search lis-primary lis-left-0"></i></div>
                 </div>
                 <div class="form-group lis-relative">
-                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4" placeholder="Location">
-                    <div class="lis-search"> <i class="fa fa-map-o lis-primary lis-left-0"></i> </div>
-                    <div class="lis-search"> <a href="#" class="lis-light"><i class="fa fa-crosshairs lis-left-auto lis-right-0"></i></a> </div>
+                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4"
+                           placeholder="City" id="citySearch">
+                    <div class="lis-search"><i class="fa fa-map-o lis-primary lis-left-0"></i></div>
+                    <div class="lis-search"><a href="#" class="lis-light"><i
+                            class="fa fa-crosshairs lis-left-auto lis-right-0"></i></a></div>
                 </div>
                 <div class="form-group lis-relative">
-                    <select class="style-select form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4">
-                        <option> All Categories</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                    <select id="sortByInput" class="form-control border-0 pl-4">
+                        <option selected value="default">Sort-By</option>
+                        <option value="rating">Reviews</option>
+                        <option value="views">Popularity</option>
                     </select>
-                    <div class="lis-search"> <i class="fa fa-tags lis-primary lis-left-0"></i> </div>
+                    <div class="lis-search"><i class="fa fa-sliders lis-primary lis-left-0"></i></div>
                 </div>
-                <div class="form-group lis-relative">                    
-                   </div>
+                <div class="form-group lis-relative">
+                </div>
                 <p class="lis-dark">More Filters</p>
                 <div class="row mt-3">
                     <div class="col-12 col-xl-6">
-                        <label id="checkbox1" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input"> 
-                            <span class="custom-control-indicator"></span> 
-                            <span class="custom-control-description">Schools</span> </label>
-                        <label id="checkbox5" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input"> 
-                            <span class="custom-control-indicator"></span> 
-                            <span class="custom-control-description">Colleges</span> </label>
                         <label id="checkbox3" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input"> 
+                            <input type="checkbox" class="custom-control-input" checked="checked" disabled>
                             <span class="custom-control-indicator"></span>
-                             <span class="custom-control-description">Institutes </span> </label>
-                        <label id="checkbox7" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input"> 
-                            <span class="custom-control-indicator"></span> 
-                            <span class="custom-control-description">Friendly </span> </label>
-                    </div>                    
-                    <div class="col-12 col-md-12 pt-4"> <a href="#" class="btn btn-primary btn-default"><i class="fa fa-search pr-2"></i> Search Place</a> </div>
+                            <span class="custom-control-description">Institute/Tuition </span> </label>
+                        <label id="checkbox1" class="custom-control custom-checkbox d-block">
+                            <input type="checkbox" class="custom-control-input" disabled>
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Schools</span> </label>
+                        <!--<label id="checkbox5" class="custom-control custom-checkbox d-block">
+                            <input type="checkbox" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Colleges</span> </label>-->
+                    </div>
+                    <div class="col-12 col-md-12 pt-4">
+                        <button onclick="getSearchResultsComplex()" class="btn btn-info"><i
+                                class="fa fa-search pr-2"></i> Search Place
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-12 col-xl-9 order-xl-2 order-1 px-0">
             <section class="py-5 px-3">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 align-self-center">
-                            <p>Showing results 1 - 6</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="float-sm-right shorting">
-                                <div class="form-group lis-relative">
-                                    <select class="form-control border-0 pl-4">
-                                        <option selected=""> Newest Listing</option>
-                                        <option>Default</option>
-                                        <option>Newest</option>
-                                        <option>Top Rated</option>
-                                    </select>
-                                    <div class="lis-search"> <i class="fa fa-sliders lis-primary lis-left-0"></i> </div>
-                                </div>
-                            </div>
+                    <div class="row mt-md-5">
+                        <div class="col-sm-12 align-self-center">
+                            <p id="showingResultsContainer">Showing results</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4">
-                            <article class="popular-listing-post">
-                                <div class="post-thumb">
-                                    <img src="nav/img/9.jpg" alt="img" class="img-responsive">
-                                    <div class="listing-info">
-                                        <!-- <h4><a href="javascript:void(0)">Hotel California</a></h4> -->
-                                        <p><i class="fa fa-bed" aria-hidden="true"></i> The Brain Lab</p>
-                                    </div>
-                                    <div class="rating-area">
-                                        <ul>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>                                            
-                                        </ul>
-                                        <span>
-                        (5.0/4)
-                      </span>
-                                    </div>
-                                    <div class="option-block">
-                                        <ul>
-                                            <li>
-                                                <a href="javascript:void(0)" class="bookmark">
-    
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" data-lat="40.715877,-73.993959" data-toggle="modal" data-target="#post_listing_modal_one">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="overlay"></div>
-                                </div>
-                                <div class="post-details">
-                                    <div class="post-meta post-meta-search">
-                                        <div class="location">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <h5><a href="javascript:void(0)">Gurgaon</a></h5>
-                                        </div>
-                                        <div class="tag">
-                                            <span>Ad</span>
-                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="post-entry-block post-entry-block-search">
-                                        <div class="post-author">
-                                            <img src="nav/img/1.jpg" alt="img" class="img-responsive">
-                                        </div>
-                                        <p class="post-entry">
-                                            Lorem ipsum dolor sit </p>
-                                    </div>
-                                    <div class="post-footer post-footer-search">
-                                        <div class="contact-no">
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <h5> +1-0000-000-000</h5>
-                                        </div>
-                                        <div class="schedule-info closed">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            <h5>Opened Now</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                            <article class="popular-listing-post">
-                                <div class="post-thumb">
-                                    <img src="nav/img/9.jpg" alt="img" class="img-responsive">
-                                    <div class="listing-info">
-                                        <!-- <h4><a href="javascript:void(0)">Hotel California</a></h4> -->
-                                        <p><i class="fa fa-bed" aria-hidden="true"></i> The Brain Lab</p>
-                                    </div>
-                                    <div class="rating-area">
-                                        <ul>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>                                            
-                                        </ul>
-                                        <span>
-                        (5.0/4)
-                      </span>
-                                    </div>
-                                    <div class="option-block">
-                                        <ul>
-                                            <li>
-                                                <a href="javascript:void(0)" class="bookmark">
-    
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" data-lat="40.715877,-73.993959" data-toggle="modal" data-target="#post_listing_modal_one">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="overlay"></div>
-                                </div>
-                                <div class="post-details">
-                                    <div class="post-meta post-meta-search">
-                                        <div class="location">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <h5><a href="javascript:void(0)">Gurgaon</a></h5>
-                                        </div>
-                                        <div class="tag">
-                                            <span>Ad</span>
-                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="post-entry-block post-entry-block-search">
-                                        <div class="post-author">
-                                            <img src="nav/img/1.jpg" alt="img" class="img-responsive">
-                                        </div>
-                                        <p class="post-entry">
-                                            Lorem ipsum dolor sit </p>
-                                    </div>
-                                    <div class="post-footer post-footer-search">
-                                        <div class="contact-no">
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <h5> +1-0000-000-000</h5>
-                                        </div>
-                                        <div class="schedule-info closed">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            <h5>Opened Now</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                            <article class="popular-listing-post">
-                                <div class="post-thumb">
-                                    <img src="nav/img/9.jpg" alt="img" class="img-responsive">
-                                    <div class="listing-info">
-                                        <!-- <h4><a href="javascript:void(0)">Hotel California</a></h4> -->
-                                        <p><i class="fa fa-bed" aria-hidden="true"></i> The Brain Lab</p>
-                                    </div>
-                                    <div class="rating-area">
-                                        <ul>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>                                            
-                                        </ul>
-                                        <span>
-                        (5.0/4)
-                      </span>
-                                    </div>
-                                    <div class="option-block">
-                                        <ul>
-                                            <li>
-                                                <a href="javascript:void(0)" class="bookmark">
-    
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" data-lat="40.715877,-73.993959" data-toggle="modal" data-target="#post_listing_modal_one">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="overlay"></div>
-                                </div>
-                                <div class="post-details">
-                                    <div class="post-meta post-meta-search">
-                                        <div class="location">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <h5><a href="javascript:void(0)">Gurgaon</a></h5>
-                                        </div>
-                                        <div class="tag">
-                                            <span>Ad</span>
-                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="post-entry-block post-entry-block-search">
-                                        <div class="post-author">
-                                            <img src="nav/img/1.jpg" alt="img" class="img-responsive">
-                                        </div>
-                                        <p class="post-entry">
-                                            Lorem ipsum dolor sit </p>
-                                    </div>
-                                    <div class="post-footer post-footer-search">
-                                        <div class="contact-no">
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <h5> +1-0000-000-000</h5>
-                                        </div>
-                                        <div class="schedule-info closed">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            <h5>Opened Now</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                            <article class="popular-listing-post">
-                                <div class="post-thumb">
-                                    <img src="nav/img/9.jpg" alt="img" class="img-responsive">
-                                    <div class="listing-info">
-                                        <!-- <h4><a href="javascript:void(0)">Hotel California</a></h4> -->
-                                        <p><i class="fa fa-bed" aria-hidden="true"></i> The Brain Lab</p>
-                                    </div>
-                                    <div class="rating-area">
-                                        <ul>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>                                            
-                                        </ul>
-                                        <span>
-                        (5.0/4)
-                      </span>
-                                    </div>
-                                    <div class="option-block">
-                                        <ul>
-                                            <li>
-                                                <a href="javascript:void(0)" class="bookmark">
-    
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" data-lat="40.715877,-73.993959" data-toggle="modal" data-target="#post_listing_modal_one">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="overlay"></div>
-                                </div>
-                                <div class="post-details">
-                                    <div class="post-meta post-meta-search">
-                                        <div class="location">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <h5><a href="javascript:void(0)">Gurgaon</a></h5>
-                                        </div>
-                                        <div class="tag">
-                                            <span>Ad</span>
-                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="post-entry-block post-entry-block-search">
-                                        <div class="post-author">
-                                            <img src="nav/img/1.jpg" alt="img" class="img-responsive">
-                                        </div>
-                                        <p class="post-entry">
-                                            Lorem ipsum dolor sit </p>
-                                    </div>
-                                    <div class="post-footer post-footer-search">
-                                        <div class="contact-no">
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <h5> +1-0000-000-000</h5>
-                                        </div>
-                                        <div class="schedule-info closed">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            <h5>Opened Now</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-
-
-
-
-                           
-                        
+                    <div class="row" id="content-placeholder">
+                    </div>
+                    <div class="row justify-content-around">
+                        <nav aria-label="...">
+                            <ul class="pagination my-3" id="paginationContainer">
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </section>
@@ -401,27 +152,53 @@
 <div id="loginModalContainer">
 </div>
 
+
+<!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/bootstrap-material-design.js"></script>
+
+<!-- Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="assets/js/plugins/moment.min.js"></script>
+
+<!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
+<script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+
+<!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
+<script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
+
 <!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-<script src="assets/js/handlebars-v4.0.11.js"></script>
-<script src="assets/js/compiledTemplates/listgoCard.js"></script>
-<script src="assets/js/compiledTemplates/searchResult.js"></script>
-<script src="assets/js/home-v2.js"></script>
-<script src="assets/js/auto-complete.js"></script>
-<script src="assets/js/card-link.js"></script>
+
+<!-- Plugin for Small Gallery in Product Page -->
+<script src="assets/js/plugins/jquery.flexisel.js"></script>
+
+<!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+<script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
+<script src="assets/js/plugins/nouislider.min.js"></script>
 
 <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
 <script src="assets/js/material-kit.js?v=2.0.0"></script>
 
-<!--update navbar-->
-<script src="assets/js/updateNavBar.js"></script>
+<!--HandleBars for templating-->
+<script src="assets/js/handlebars-v4.0.11.js"></script>
+<script src="assets/js/templates.js"></script>
 
 <!--login modal-->
 <script src="assets/js/loginModal.js"></script>
+
+<!--importing custom js file-->
+<script src="assets/js/tuitionDiscovery.js"></script>
+<script src="assets/js/login-check.js"></script>
+<script src="assets/js/updateNavBar.js"></script>
+<script src="assets/js/compiledTemplates/listgoCard.js"></script>
+<script src="assets/js/compiledTemplates/searchResult.js"></script>
+<!--<script src="assets/js/home-v2.js"></script>-->
+<script src="assets/js/auto-complete.js"></script>
+<script src="assets/js/card-link.js"></script>
+<!-- endbuild -->
 </body>
 
 </html>
