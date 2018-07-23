@@ -28,15 +28,14 @@ if (!complexSearch) {
     });
 
     let context = {
-        Name: "Tuition Name",
-        rating: "2.5",
-        ifAd: "",
-        Address: "test address",
-        Phone: "",
-        Email: "heloo@gmail.com",
-        coverPic: "",
-        Category: "category",
-        id: "",
+        name: "Tuition Name",
+        state: '',
+        description: '',
+        primaryNumber: "",
+        // rating: "2.5",
+        // ifAd: "",
+        // coverPic: "",
+        _id: "",
     };
 
 
@@ -45,30 +44,26 @@ if (!complexSearch) {
         let result = '';
         for (keys in data) {
             if (data.hasOwnProperty(keys)) {
-                context.rating = data[keys].rating ? data[keys].rating : "2.5";
-                context.id = data[keys]._id;
-                context.Name = data[keys].name;
-                context.Address = `${data[keys].addressLine1},${data[keys].addressLine2},${data[keys].city},${data[keys].state}`;
-                context.Phone = data[keys].primaryNumber;
-                context.Email = data[keys].email;
-                context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
-                context.Category = data[keys].category;
-                result += Handlebars.templates.tuitionCardCol4(context);
+                // context.rating = data[keys].rating ? data[keys].rating : "2.5";
+                context._id = data[keys]._id;
+                context.name = data[keys].name;
+                context.state = data[keys].state;
+                context.primaryNumber = data[keys].primaryNumber;
+                // context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
+                // context.Category = data[keys].category;
+                result += `<div class="col-md-4">${template.listgoCard(context)}</div>`
             }
         }
 
-        //updating the pagination links
         $("#content-placeholder").append(result);
+
+        //updating the pagination links
         let contextPagination = {
             page: pageNum,
             pageM1: pageM1,
             pageP1: pageP1,
             items: itemsPerPage,
             c: complexSearch,
-            /*name: "",
-            state: "",
-            city: "",
-            sortBy: ""*/
         };
         let resultPagi = Handlebars.templates.paginationT(contextPagination);
         $("#paginationContainer").append(resultPagi);
@@ -81,15 +76,16 @@ if (!complexSearch) {
     suggestionBox.empty();
     container.empty();
 
-    let contextShowingResultsFor = {
-        name: name,
-        city: city,
-        state: state
-    };
-    let ShowingResultsForHTML = Handlebars.templates.showSearchResult(contextShowingResultsFor);
-    container.append(ShowingResultsForHTML);
+    let queryEntered = '';
+    let cityEntered = '';
+    if (name) {
+        queryEntered = `<span class="badge badge-info">${name}</span>`;
+    }
+    if (city) {
+        cityEntered = `<span class="badge badge-info"> City = ${city}</span>`;
+    }
+    $('#showingResultsContainer').html('Showing results : ' + queryEntered + ' ' + cityEntered);
 
-    console.log(name + '-' + city + '-' + state);
     $.ajax({
         url: '/tuition/search',
         data: {
@@ -111,31 +107,28 @@ if (!complexSearch) {
             sortBy: sortBy
         }
     }).then(data => {
-        console.log(data);
         let result = '';
         let context = {
-            Name: "Tuition Name",
-            rating: "2.5",
-            ifAd: "",
-            Address: "test address",
-            Phone: "",
-            Email: "heloo@gmail.com",
-            coverPic: "",
-            Category: "category",
-            id: "",
+            name: "Tuition Name",
+            state: '',
+            description: '',
+            primaryNumber: "",
+            // rating: "2.5",
+            // ifAd: "",
+            // coverPic: "",
+            _id: "",
         };
 
         for (keys in data) {
             if (data.hasOwnProperty(keys)) {
-                context.rating = data[keys].rating ? data[keys].rating : "2.5";
-                context.id = data[keys]._id;
-                context.Name = data[keys].name;
-                context.Address = `${data[keys].addressLine1},${data[keys].addressLine2},${data[keys].city},${data[keys].state}`;
-                context.Phone = data[keys].primaryNumber;
-                context.Email = data[keys].email;
-                context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
-                context.Category = data[keys].category;
-                result += Handlebars.templates.tuitionCardCol4(context);
+                // context.rating = data[keys].rating ? data[keys].rating : "2.5";
+                context._id = data[keys]._id;
+                context.name = data[keys].name;
+                context.state = data[keys].state;
+                context.primaryNumber = data[keys].primaryNumber;
+                // context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
+                // context.Category = data[keys].category;
+                result += `<div class="col-md-4">${template.listgoCard(context)}</div>`
             }
         }
         container.append(result);
@@ -162,7 +155,10 @@ if (!complexSearch) {
 }
 
 //for showing immediate results as you start typing name
-function getSearchResultsImmediate(value) {
+function getSearchResultsImmediate(event, value) {
+    if (event.keyCode === 13) {
+        getSearchResultsComplex();
+    }
     $.ajax({
         url: '/tuition/search',
         data: {
@@ -170,7 +166,7 @@ function getSearchResultsImmediate(value) {
                 search: value,
                 fullTextSearch: false,
             }),
-            limit: 5,
+            limit: 1,
         }
     }).then(data => {
         suggestionBox.empty();
@@ -193,7 +189,7 @@ function getSearchResultsComplex() {
     pageM1 = 1;
     pageP1 = 2;
     skip = (pageNum - 1) * itemsPerPage;
-    state = $('#stateSearch').val();
+    /*state = $('#stateSearch').val();*/
     city = $('#citySearch').val();
     sortBy = $('#sortByInput').val();
     name = $('#searchBox').val();
@@ -202,13 +198,15 @@ function getSearchResultsComplex() {
     suggestionBox.empty();
     container.empty();
 
-    let contextShowingResultsFor = {
-        name: name,
-        city: city,
-        state: state
-    };
-    let ShowingResultsForHTML = Handlebars.templates.showSearchResult(contextShowingResultsFor);
-    container.append(ShowingResultsForHTML);
+    let queryEntered = '';
+    let cityEntered = '';
+    if (name) {
+        queryEntered = `<span class="badge badge-info">${name}</span>`;
+    }
+    if (city) {
+        cityEntered = `<span class="badge badge-info"> City = ${city}</span>`;
+    }
+    $('#showingResultsContainer').html('Showing results : ' + queryEntered + ' ' + cityEntered);
 
 
     $.ajax({
@@ -218,10 +216,10 @@ function getSearchResultsComplex() {
                 search: name,
                 fullText: false
             }),
-            state: JSON.stringify({
+            /*state: JSON.stringify({
                 search: state,
                 fullText: true
-            }),
+            }),*/
             city: JSON.stringify({
                 search: city,
                 fullText: true
@@ -234,28 +232,26 @@ function getSearchResultsComplex() {
     }).then(data => {
         let result = '';
         let context = {
-            Name: "Tuition Name",
-            rating: "2.5",
-            ifAd: "",
-            Address: "test address",
-            Phone: "",
-            Email: "heloo@gmail.com",
-            coverPic: "",
-            Category: "category",
-            id: "",
+            name: "Tuition Name",
+            state: '',
+            description: '',
+            primaryNumber: "",
+            // rating: "2.5",
+            // ifAd: "",
+            // coverPic: "",
+            _id: "",
         };
 
         for (keys in data) {
             if (data.hasOwnProperty(keys)) {
-                context.rating = data[keys].rating ? data[keys].rating : "2.5";
-                context.id = data[keys]._id;
-                context.Name = data[keys].name;
-                context.Address = `${data[keys].addressLine1},${data[keys].addressLine2},${data[keys].city},${data[keys].state}`;
-                context.Phone = data[keys].primaryNumber;
-                context.Email = data[keys].email;
-                context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
-                context.Category = data[keys].category;
-                result += Handlebars.templates.tuitionCardCol4(context);
+                // context.rating = data[keys].rating ? data[keys].rating : "2.5";
+                context._id = data[keys]._id;
+                context.name = data[keys].name;
+                context.state = data[keys].state;
+                context.primaryNumber = data[keys].primaryNumber;
+                // context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
+                // context.Category = data[keys].category;
+                result += `<div class="col-md-4">${template.listgoCard(context)}</div>`
             }
         }
         container.append(result);
@@ -284,6 +280,17 @@ function getSearchResultsComplex() {
 
 }
 
+function removeSuggestions(suggestionBoxId) {
+    setTimeout(function () {
+        $('#' + suggestionBoxId).empty();
+    }, 500)
+}
+
+function pressEnter(event) {
+    if (event.keyCode === 13) {
+        getSearchResultsComplex();
+    }
+}
 
 
 

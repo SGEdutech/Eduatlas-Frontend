@@ -32,7 +32,7 @@
      id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand font-weight-bold" href="#">EduAtlas</a>
+            <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,10 +46,23 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="TuitionDiscovery.html?page=1&items=18">Institutes/Tuition</a>
+                    <a class="nav-link" href="searchdetails.html?page=1&items=18">Institutes/Tuition</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link" href="#">Schools</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false"><i class="material-icons">
+                        add
+                    </i>
+                        ADD LISTING</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add
+                            Tuition</a>
+                        <!--<div class="dropdown-divider"></div>
+                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
+                    </div>
                 </li>
                 <li class="nav-item dropdown" id="dynamicUserBtn">
                 </li>
@@ -96,11 +109,14 @@
                                             <div class="form-group bmd-form-group">
                                                 <input type="text" placeholder="Search" class="form-control"
                                                        onkeyup="autoComplete(event,this.value)"
-                                                       onblur='removeSuggestions("autocomplete_container")' id="searchBox">
+                                                       onblur='removeSuggestions("autocomplete_container")'
+                                                       id="searchBox">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <button type="button" class="btn btn-info btn-block" onclick="redirectToDiscovery()">Search</button>
+                                            <button type="button" class="btn btn-info btn-block"
+                                                    onclick="redirectToDiscovery()">Search
+                                            </button>
                                         </div>
                                     </div>
                                     <div id="autocomplete_container" class="searchview">
@@ -112,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="popular-listing-section">
+            <div class="popular-listing-section mb-md-4">
                 <div class="container">
                     <div class="section-title">
                         <h2>Most Popular Institutes/Tuition</h2>
@@ -123,65 +139,114 @@
                     </div>
                 </div>
             </div>
-            <div class="cd-section" id="features" style="margin-top: -95px;">
-                <div class="container">
-                    <!--     *********     FEATURES 3      *********      -->
-                    <div class="features-3">
-                        <div class="row">
-                            <div class="col-md-6 d-none d-md-block">
-                                <div class="phone-container">
-                                    <a href="#"> <img src="assets/img/bg7.jpg" style="width:293px;height:400px;"></a>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Some <br /> tags to push the text to align with the image, you can remove it if you have more text on the right side :-) -->
-                                <h2 class="title">How It Works</h2>
-                                <div class="info info-horizontal">
-                                    <div class="icon icon-info">
-                                        <i class="material-icons">directions_run</i>
-                                    </div>
-                                    <div class="description">
-                                        <h4 class="info-title">Sign Up</h4>
-                                        <p>The moment you use Material Kit, you know you’ve never felt anything like it.
-                                            With a single use, this powerfull UI Kit lets you do more than ever
-                                            before. </p>
-                                    </div>
-                                </div>
-                                <div class="info info-horizontal">
-                                    <div class="icon icon-info">
-                                        <i class="material-icons">add</i>
-                                    </div>
-                                    <div class="description">
-                                        <h4 class="info-title">Add/Review Listing</h4>
-                                        <p>Divide details about your product or agency work into parts. Write a few
-                                            lines about each one. A paragraph describing a feature will be enough.</p>
-                                    </div>
-                                </div>
-                                <div class="info info-horizontal">
-                                    <div class="icon icon-info">
-                                        <i class="material-icons">hotel</i>
-                                    </div>
-                                    <div class="description">
-                                        <h4 class="info-title">Grow Your Business</h4>
-                                        <p>Divide details about your product or agency work into parts. Write a few
-                                            lines about each one. A paragraph describing a feature will be enough.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
 
             <div class="cd-section" id="contactus">
                 <!--     *********    CONTACT US 1     *********      -->
                 <div class="contactus-1 section-image" style="background-image: url('./assets/img/office2.jpg')">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
+                                <div class="container">
+                                    <!--     *********     FEATURES 3      *********      -->
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!-- Some <br /> tags to push the text to align with the image, you can remove it if you have more text on the right side :-) -->
+                                                <h2 class="title">How It Works</h2>
+                                                <div class="info info-horizontal">
+                                                    <div class="icon icon-info">
+                                                        <i class="material-icons">directions_run</i>
+                                                    </div>
+                                                    <div class="description">
+                                                        <h4 class="info-title">Sign Up</h4>
+                                                        <p>The moment you use Material Kit, you know you’ve never felt
+                                                            anything like it.
+                                                            With a single use, this powerfull UI Kit lets you do more
+                                                            than ever
+                                                            before. </p>
+                                                    </div>
+                                                </div>
+                                                <div class="info info-horizontal">
+                                                    <div class="icon icon-info">
+                                                        <i class="material-icons">add</i>
+                                                    </div>
+                                                    <div class="description">
+                                                        <h4 class="info-title">Add/Review Listing</h4>
+                                                        <p>Divide details about your product or agency work into parts.
+                                                            Write a few
+                                                            lines about each one. A paragraph describing a feature will
+                                                            be enough.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="info info-horizontal">
+                                                    <div class="icon icon-info">
+                                                        <i class="material-icons">hotel</i>
+                                                    </div>
+                                                    <div class="description">
+                                                        <h4 class="info-title">Grow Your Business</h4>
+                                                        <p>Divide details about your product or agency work into parts.
+                                                            Write a few
+                                                            lines about each one. A paragraph describing a feature will
+                                                            be enough.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- <div class="card card-contact">
+                                     <form id="contact-form" method="post">
+                                         <div class="card-header card-header-raised card-header-info text-center">
+                                             <h4 class="card-title">Contact Us</h4>
+                                         </div>
+                                         <div class="card-body">
+                                             <div class="row">
+                                                 <div class="col-md-6">
+                                                     <div class="form-group label-floating is-empty bmd-form-group">
+                                                         <label class="bmd-label-floating">First name</label>
+                                                         <input type="text" name="name" class="form-control">
+                                                         <span class="material-input"></span>
+                                                     </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                     <div class="form-group label-floating is-empty bmd-form-group">
+                                                         <label class="bmd-label-floating">Last name</label>
+                                                         <input type="text" name="name" class="form-control">
+                                                         <span class="material-input"></span>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                             <div class="form-group label-floating is-empty bmd-form-group">
+                                                 <label class="bmd-label-floating">Email address</label>
+                                                 <input type="email" name="email" class="form-control">
+                                                 <span class="material-input"></span>
+                                             </div>
+                                             <div class="form-group label-floating is-empty bmd-form-group">
+                                                 <label for="exampleMessage1" class="bmd-label-floating">Your
+                                                     Message</label>
+                                                 <textarea name="message" class="form-control" id="exampleMessage1"
+                                                           rows="6"></textarea>
+                                                 <span class="material-input"></span>
+                                             </div>
+                                         </div>
+                                         <div class="card-footer justify-content-between">
+                                             <div class="form-check">
+                                                 <label class="form-check-label">
+                                                     <input class="form-check-input" type="checkbox" value=""> I'm not a
+                                                     robot
+                                                     <span class="form-check-sign">
+                           <span class="check"></span>
+                         </span>
+                                                 </label>
+                                             </div>
+                                             <button type="submit" class="btn btn-info pull-right">Send Message
+                                             </button>
+                                         </div>
+                                     </form>
+                                 </div>-->
+                            </div>
+                            <div class="col-md-6">
                                 <h2 class="title">Get in Touch</h2>
                                 <h5 class="description">You need more information? Check what other persons are saying
                                     about our product. They are very happy with their purchase.</h5>
@@ -203,63 +268,10 @@
                                     </div>
                                     <div class="description">
                                         <h4 class="info-title">Give us a ring</h4>
-                                        <p> Vikas Saini
-                                            <br> +91 935 552 9720
+                                        <p> +91 935 552 9720
                                             <br> Mon - Sun, 8:00-24:00
                                         </p>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5 ml-auto">
-                                <div class="card card-contact">
-                                    <form id="contact-form" method="post">
-                                        <div class="card-header card-header-raised card-header-info text-center">
-                                            <h4 class="card-title">Contact Us</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group label-floating is-empty bmd-form-group">
-                                                        <label class="bmd-label-floating">First name</label>
-                                                        <input type="text" name="name" class="form-control">
-                                                        <span class="material-input"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group label-floating is-empty bmd-form-group">
-                                                        <label class="bmd-label-floating">Last name</label>
-                                                        <input type="text" name="name" class="form-control">
-                                                        <span class="material-input"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group label-floating is-empty bmd-form-group">
-                                                <label class="bmd-label-floating">Email address</label>
-                                                <input type="email" name="email" class="form-control">
-                                                <span class="material-input"></span>
-                                            </div>
-                                            <div class="form-group label-floating is-empty bmd-form-group">
-                                                <label for="exampleMessage1" class="bmd-label-floating">Your
-                                                    Message</label>
-                                                <textarea name="message" class="form-control" id="exampleMessage1"
-                                                          rows="6"></textarea>
-                                                <span class="material-input"></span>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer justify-content-between">
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value=""> I'm not a
-                                                    robot
-                                                    <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                                                </label>
-                                            </div>
-                                            <button type="submit" class="btn btn-info pull-right">Send Message
-                                            </button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -270,6 +282,89 @@
         </div>
     </div>
 </div>
+<footer class="footer footer-black">
+
+    <!--Footer Links-->
+    <div class="container">
+
+        <!--Grid row-->
+        <div class="row text-center d-flex justify-content-center">
+
+            <!--Grid column-->
+            <div class="col-md-2">
+                <h6 class="title font-bold my-1 my-md-2"><a href="#!">About us</a></h6>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-2">
+                <h6 class="title font-bold my-1 my-md-2"><a href="#!">Careers</a></h6>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-2">
+                <h6 class="title font-bold my-1 my-md-2"><a href="#!">Partner with Us</a></h6>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-2">
+                <h6 class="title font-bold my-1 my-md-2"><a href="#!">Privacy Policy</a></h6>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-2">
+                <h6 class="title font-bold my-1 my-md-2"><a href="#!">Terms of Use</a></h6>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-2">
+                <h6 class="title font-bold my-1 my-md-2"><a href="#!">Disclaimer</a></h6>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <!--<div class="col-md-2">
+                <h6 class="title font-bold"><a href="#!">Contact Us</a></h6>
+            </div>-->
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+        <!--Grid row-->
+        <div class="row">
+
+            <!--Grid column-->
+            <div class="col-md-12">
+
+                <div class="footer-socials justify-content-between justify-content-md-center">
+                    <!--Facebook-->
+                    <a class="icons-sm fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-4"> </i></a>
+                    <!--Twitter-->
+                    <a class="icons-sm tw-ic"><i class="fa fa-twitter fa-lg white-text mx-md-4"> </i></a>
+                    <!--Google +-->
+                    <a class="icons-sm gplus-ic"><i class="fa fa-google-plus fa-lg white-text mx-md-4"> </i></a>
+                    <!--Linkedin-->
+                    <a class="icons-sm li-ic"><i class="fa fa-linkedin fa-lg white-text mx-md-4"> </i></a>
+                    <!--Instagram-->
+                    <a class="icons-sm ins-ic"><i class="fa fa-instagram fa-lg white-text mx-md-4"> </i></a>
+                    <!--Pinterest-->
+                    <a class="icons-sm pin-ic"><i class="fa fa-pinterest fa-lg white-text ml-md-4"> </i></a>
+                </div>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+    </div>
+    <!--/Footer Links-->
+
+</footer>
+<!--/Footer-->
 <div id="loginModalContainer">
 </div>
 
@@ -292,8 +387,11 @@
 <!--update navbar-->
 <script src="assets/js/updateNavBar.js"></script>
 
-<!--login modal-->
+<!--login Modal-->
 <script src="assets/js/loginModal.js"></script>
+
+<!--check login-->
+<script src="assets/js/login-check.js"></script>
 </body>
 
 </html>

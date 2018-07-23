@@ -68,5 +68,5 @@ function removeSuggestions(suggestionBoxId) {
 }
 
 function redirectToDiscovery() {
-    window.location.assign('TuitionDiscovery.html?items=18&page=1&c=true&city=&state=&name=' + $('#searchBox').val());
+    window.location.assign('searchdetails.html?items=18&page=1&c=true&city=&state=&name=' + $('#searchBox').val());
 }

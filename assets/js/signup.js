@@ -22,12 +22,12 @@ function checkForm(form) {
             form.password.focus();
             return false;
         }
-        re = /[0-9]/;
+        /*re = /[0-9]/;
         if (!re.test(form.password.value)) {
             alert("Error: password must contain at least one number (0-9)!");
             form.password.focus();
             return false;
-        }
+        }*/
         re = /[a-z]/;
         if (!re.test(form.password.value)) {
             alert("Error: password must contain at least one lowercase letter (a-z)!");
@@ -49,3 +49,30 @@ function checkForm(form) {
     // alert("You entered a valid password: " + form.password.value);
     return true;
 }
+
+let form = $('#signupForm');
+// Set up an event listener for the contact form.
+$(form).submit(function (event) {
+    // Stop the browser from submitting the form.
+    event.preventDefault();
+
+    // Serialize the form data.
+    let formData = $(form).serialize();
+
+    //put some restrictions
+    let isOkey = checkForm(this);
+    //send AJAX
+    if (isOkey) {
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: formData,
+        }).then(() => {
+            window.location.assign('/?m=login');
+        }).catch(err => {
+            alert(err.responseText);
+        });
+    } else {
+
+    }
+});

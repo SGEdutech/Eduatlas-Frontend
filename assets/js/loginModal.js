@@ -1,3 +1,7 @@
+let url_string = location.href; //window.location.href
+let url = new URL(url_string);
+let messageToShow = url.searchParams.get("m");
+
 let modal = `<div class="modal fade" id="loginModal" tabindex="-1" role="">
     <div class="modal-dialog modal-login" role="document">
         <div class="modal-content">
@@ -19,7 +23,7 @@ let modal = `<div class="modal fade" id="loginModal" tabindex="-1" role="">
                         </div>
                     </div>
                 </div>
-                <form class="form" method="POST" action="/auth/local/login">
+                <form class="form" method="POST" action="/auth/local/login" id="loginForm">
                     <div class="modal-body">
                         <div class="card-body">
                             <div class="form-group bmd-form-group">
@@ -43,9 +47,9 @@ let modal = `<div class="modal fade" id="loginModal" tabindex="-1" role="">
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="submit" class="btn btn-info rounded btn-wd btn-lg">Login</button>
-                    </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="submit" class="btn btn-info rounded px-4">Login</button>
+                </div>
                 </form>
                 <hr>
                 <div class="container text-center">
@@ -58,3 +62,37 @@ let modal = `<div class="modal fade" id="loginModal" tabindex="-1" role="">
 </div>`;
 
 $('#loginModalContainer').append(modal);
+
+//open modal after looking at url
+if (messageToShow == 'login') {
+    alert('User Created Successfully. Now Please Login')
+}
+
+let form = $('#loginForm');
+
+// Set up an event listener for the contact form.
+$(form).submit(function (event) {
+    console.log('hi');
+    // Stop the browser from submitting the form.
+    event.preventDefault();
+
+    // Serialize the form data.
+    let formData = $(form).serialize();
+
+    //send AJAX
+    $.ajax({
+        url: form.attr('action'),
+        type: form.attr('method'),
+        data: formData,
+    }).then(() => {
+        window.location = window.location.href.split("?")[0];
+    }).catch(err => {
+        let errorResponse = err.responseText;
+        if (errorResponse === 'Bad Request') {
+            alert('please fill both username and password')
+        } else {
+            let messageToDisplay = errorResponse.match(new RegExp('<pre>' + "(.*)" + '</pre>'))[1];
+            alert(messageToDisplay)
+        }
+    });
+});
