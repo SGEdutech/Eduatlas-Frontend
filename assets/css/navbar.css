@@ -397,6 +397,35 @@ ul.social {
 .gallary-section {
   padding: 100px 0 70px 0; }
 
+  .imgheading{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    line-height: 1.1em;
+    margin: calc(2rem - .05em) 0 1rem;
+    font-weight: 600;
+    padding: 0;    font-size: 209%!important;    color: #3c3939!important;
+    padding: 11px;;
+  }
+  .btable{background-color: #2091bc!important;color: #FFF!important;width: 20%!important;
+    padding: 3px!important;
+    margin: 13px!important;
+    margin-left:0px;
+    text-align: center!important;}
+.btable mb0 {
+    color: white!important;
+    margin-top: 10px!important;margin-bottom: 0px!important;
+    font-weight: bolder!important;margin-left:0px!important;font-family: calibri!important;
+}
+.side{padding:5px 2px!important;}
+.sidebars{width:100%!important;}
+  .address{color:#89959B;}
+.rdiv{width: 85px;
+  float: right;padding: 3px;
+  border-radius: .28571429rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 39px;background: #9ACD32;
+  border-color: #9ACD32!important;}
 .gallary-image {
   margin-bottom: 30px; }
 

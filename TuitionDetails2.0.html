@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
@@ -20,6 +20,7 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/tuition-detail2.0.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
 
     <!-- Custom Styles from Tuition-Discovery -->
     <link rel="stylesheet" href="assets/css/tuitionDiscovery.css">
@@ -77,51 +78,151 @@
 
 <div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark">
 </div>
-
 <div id="main_header" class="container">
-    <div id="info_container" class="main main-raised">
-
-        <!-- todo - add after verification data-->
-        <!--<div id="verified-container">
-            <i class="btn btn-info btn-fab btn-round">
-                <i class="material-icons">verified_user</i>
-            </i>
-        </div>-->
-        <div class="row align-items-center">
-            <h1 id="tuition_name" class="col-md-8">Tuition Name</h1>
-            <!--todo - add after rating data-->
-            <span id="rating" class="badge badge-pill badge-success"></span>
-            <div class="col-md-2">
-                <button class="btn btn-info btn-round" data-toggle="modal" data-target="#emailModal">
-                    <i class="material-icons">
-                        email
-                    </i> Email
-                </button>
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-info btn-round" data-toggle="modal" data-target="#smsModal">
-                    <i class="material-icons">
-                        textsms
-                    </i> SMS
-                </button>
-            </div>
-        </div>
-        <hr>
-        <div class="row text-center">
-            <div class="col-md-6">
-                <h6>Address</h6>
-                <p id="address"></p>
-            </div>
-            <div class="col-md-3">
-                <h6>Phone</h6>
-                <p id="phone"></p>
-            </div>
-            <div class="col-md-3">
-                <h6>Email</h6>
-                <p class="email"></p>
-            </div>
-        </div>
+<div class="row">
+<div class="col-md-9 card" style="height:529px;">
+    <a href="#">
+    <img src="assets/img/image1.jpg" style="width:100%;padding:9px;"></a>
+    <div class="row">
+        <div class="col-md-9">
+        <h2 class="imgheading">
+        Informal by Imperfecto</h2>
+        </h1>
+    <div>
+    <a href="#" class="address" >
+    <i class="fa fa-map-marker address" aria-hidden="true" ></i>
+                                    Janpath
+                                </a>                                                                                                                    <span class="middot grey-text">&nbsp;&nbsp;·&nbsp;</span>
+    <span class="address">
+            <i class="fa fa-phone address" aria-hidden="true"></i>
+    <a  title="#" href="#" class="address">Lounge</a>, 
+    <a  title="#" href="#" class="address">Bar</a>                                       
+   </span>                            
+    </div> 
+    <div class="btable">
+    <a id="booktable" href="#">
+            <i class="fa fa-star"></i>
+    <span class="mb0" >Rate Here</span>
+    </a>
+    </span>
     </div>
+    </div>
+    <div class="col-md-2" style="margin-top:24px;">
+   <div tabindex="0" aria-label="Rated" data-res-id="18168125" class="rdiv">
+                    3.6<span>/5</span></div><br><br>  
+                    <span  tabindex="0" aria-label="1924  votes" style="color:#89959B;float:right;">
+                            <span>
+                            <span>1924</span>  votes</span>                                                       
+   </div>
+   </div>
+
+    </div>
+    
+    
+<div class="col-md-3 card">
+    <div class="row">
+            <div class="col-6 tuition-cards">
+                    <article class="popular-listing-post">
+                        <div class="post-thumb">
+                            <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
+                            <div class="listing-info">                                 
+                            </div>
+                            <div class="rating-area">                            
+                                
+                            </div>                        
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="post-details">
+                            <div class="post-meta side">
+                                <div class="location sidebars">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <h5>{{state}}</h5>
+                                </div>
+                               
+                            </div>
+                            <div class="post-entry-block side">
+                                <p class="post-entry">{{description}}</p>
+                            </div>
+                            <div class="post-footer side sidebars">
+                                <div class="contact-no sidebars">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <h5>{{primaryNumber}}</h5>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+            <div class="col-6 tuition-cards">
+                    <article class="popular-listing-post">
+                        <div class="post-thumb">
+                            <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
+                            <div class="listing-info">                                 
+                            </div>
+                            <div class="rating-area">                            
+                                
+                            </div>                        
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="post-details">
+                            <div class="post-meta side">
+                                <div class="location sidebars">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <h5>{{state}}</h5>
+                                </div>
+                               
+                            </div>
+                            <div class="post-entry-block side">
+                                <p class="post-entry">{{description}}</p>
+                            </div>
+                            <div class="post-footer side sidebars">
+                                <div class="contact-no sidebars">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <h5>{{primaryNumber}}</h5>
+                                </div>                              
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 tuition-cards">
+                        <article class="popular-listing-post">
+                            <div class="post-thumb">
+                                <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
+                                <div class="listing-info">                                 
+                                </div>
+                                <div class="rating-area">                            
+                                    
+                                </div>                        
+                                <div class="overlay"></div>
+                            </div>
+                            <div class="post-details">
+                                <div class="post-meta side">
+                                    <div class="location sidebars">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        <h5>{{state}}</h5>
+                                    </div>
+                                   
+                                </div>
+                                <div class="post-entry-block side">
+                                    <p class="post-entry">{{description}}</p>
+                                </div>
+                                <div class="post-footer side sidebars">
+                                    <div class="contact-no sidebars">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        <h5>{{primaryNumber}}</h5>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                
+
+</div>
+
+</div>
 </div>
 
 <div id="secondary_info" class="row p-0">
