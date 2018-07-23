@@ -1,5 +1,5 @@
-let url_string = location.href; //window.location.href
-let url = new URL(url_string);
+url_string = location.href; //window.location.href
+url = new URL(url_string);
 let messageToShow = url.searchParams.get("m");
 
 let modal = `<div class="modal fade" id="loginModal" tabindex="-1" role="">
@@ -85,7 +85,11 @@ $(form).submit(function (event) {
         type: form.attr('method'),
         data: formData,
     }).then(() => {
-        window.location = window.location.href.split("?")[0];
+        if (window.location.href.split('?')) {
+            if (window.location.split('?')[1] == 'm=login') {
+                window.location = window.location.href.split("?")[0];
+            }
+        }
     }).catch(err => {
         let errorResponse = err.responseText;
         if (errorResponse === 'Bad Request') {
