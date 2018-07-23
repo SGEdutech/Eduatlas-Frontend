@@ -86,7 +86,7 @@ $(form).submit(function (event) {
         data: formData,
     }).then(() => {
         if (window.location.href.split('?')) {
-            if (window.location.split('?')[1] == 'm=login') {
+            if (window.location.href.split('?')[1] == 'm=login') {
                 window.location = window.location.href.split("?")[0];
             }
         }
