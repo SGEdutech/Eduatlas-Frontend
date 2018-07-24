@@ -247,50 +247,55 @@ function getRelatedListing(city) {
 
     // todo - fix Algorithm to get related listing
     // maybe add server side route to get this
-    const promise = $.ajax({
-        url: '/tuition?city=' + city,
-        method: 'GET'
+    let promise = $.ajax({
+        url: '/tuition/search',
+        data: {
+            city: JSON.stringify({
+                search: city,
+                fullText: true
+            }),
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category',
+            limit: 3,
+            skip: 0,
+            sortBy: ''
+        }
     });
 
+    let result = '';
     let context = {
-        Name: "Tuition Name",
-        rating: "2.5",
-        ifAd: "",
-        Address: "address",
-        Phone: "phone",
-        Email: "email",
-        coverPic: "",
-        Category: "category",
-        id: "#"
+        name: "Tuition Name",
+        state: '',
+        description: '',
+        primaryNumber: "",
+        // rating: "2.5",
+        // ifAd: "",
+        // coverPic: "",
+        _id: "",
     };
 
     promise.then((data) => {
+        if (data === undefined) {
+            return
+        }
+        console.log(data.length);
+        if (data.length === 0) {
 
-        if (!Array.isArray(data)) {
-            // for (keys in data) {
-            //     if (data.hasOwnProperty(keys)) {
-            context.rating = data.rating ? data.rating : "2.5";
-            context.id = data._id;
-            context.Name = data.name;
-            context.Address = `${data.addressLine1},${data.addressLine2},${data.city},${data.state}`;
-            context.Phone = data.primaryNumber;
-            context.Email = data.email;
-            context.coverPic = data.img_tuitionCoverPic ? 'images/' + data.img_tuitionCoverPic : 'assets/img/tuition2.jpg';
-            context.Category = data.category;
-            let result = Handlebars.templates.tuitionCardCol4(context);
+        } else {
+            data.forEach(obj => {
+                context._id = obj._id;
+                context.name = obj.name;
+                context.description = obj.description;
+                context.state = obj.state;
+                context.primaryNumber = obj.primaryNumber;
+                result += `<div class="col-md-4">${template.listgoCard(context)}</div>`
+            });
             $("#relatedTuitionContainer").append(result);
-
             //send address to get geo code
-            getGeocode(context.Address)
-            // }
-            // }
         }
 
     }).catch(err => {
         console.log(err);
     });
-
-
 }
 
 function getPopularListing(city) {
@@ -343,7 +348,6 @@ function getPopularListing(city) {
             });
             $("#sponsoredPopular").append(result);
             //send address to get geo code
-            getGeocode(data.Address)
         }
 
     }).catch(err => {

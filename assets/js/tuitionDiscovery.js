@@ -46,6 +46,7 @@ if (!complexSearch) {
             if (data.hasOwnProperty(keys)) {
                 // context.rating = data[keys].rating ? data[keys].rating : "2.5";
                 context._id = data[keys]._id;
+                context.description = data[keys].description;
                 context.name = data[keys].name;
                 context.state = data[keys].state;
                 context.primaryNumber = data[keys].primaryNumber;
