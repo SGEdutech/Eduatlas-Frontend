@@ -21,7 +21,7 @@ if (!complexSearch) {
     const AllTuitionJSON = $.ajax({
         url: '/tuition/all',
         data: {
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email category',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category description',
             limit: itemsPerPage,
             skip: skip
         }
@@ -102,7 +102,7 @@ if (!complexSearch) {
                 search: city,
                 fullText: true
             }),
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category description',
             limit: itemsPerPage,
             skip: skip,
             sortBy: sortBy
@@ -125,6 +125,7 @@ if (!complexSearch) {
                 // context.rating = data[keys].rating ? data[keys].rating : "2.5";
                 context._id = data[keys]._id;
                 context.name = data[keys].name;
+                context.description = data[keys].description;
                 context.state = data[keys].state;
                 context.primaryNumber = data[keys].primaryNumber;
                 // context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
@@ -225,7 +226,7 @@ function getSearchResultsComplex() {
                 search: city,
                 fullText: true
             }),
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category description',
             limit: itemsPerPage,
             skip: skip,
             sortBy: sortBy
@@ -248,6 +249,7 @@ function getSearchResultsComplex() {
                 // context.rating = data[keys].rating ? data[keys].rating : "2.5";
                 context._id = data[keys]._id;
                 context.name = data[keys].name;
+                context.description = data[keys].description;
                 context.state = data[keys].state;
                 context.primaryNumber = data[keys].primaryNumber;
                 // context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
