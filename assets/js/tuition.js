@@ -45,6 +45,8 @@ function updateThePage(data) {
 
     }
 
+    getGeocode(data.addressLine1 + ', ' + data.addressLine2 + ',' + data.city + ',' + data.district + ',' + data.state)
+
     $('#idOfTuition').val(data._id);
     $('#tuition_name').html(data.name);
     $('#address').html(data.addressLine1 + ', ' + data.addressLine2);
@@ -277,7 +279,6 @@ function getRelatedListing(city) {
         if (data === undefined) {
             return
         }
-        console.log(data.length);
         if (data.length === 0) {
 
         } else {
@@ -335,7 +336,6 @@ function getPopularListing(city) {
         if (data === undefined) {
             return
         }
-        console.log(data.length);
         if (data.length === 0) {
 
         } else {
@@ -367,6 +367,7 @@ function getGeocode(address) {
     promise.then(data => {
         lat = data.results[0].geometry.location.lat;
         lng = data.results[0].geometry.location.lng;
+        console.log(lat);
     })
 }
 

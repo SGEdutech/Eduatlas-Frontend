@@ -11,4 +11,4 @@ function initMap() {
         })
     },3000);
 }
-google.maps.event.addDomListener(window, 'load', initMap)
+// google.maps.event.addDomListener(window, 'load', initMap)
