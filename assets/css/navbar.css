@@ -75,6 +75,21 @@
 | 1. General Style
 |----------------------------------------------------------------------------
 */
+.slick-next 
+{
+  display:block!important;
+}
+
+@media only screen and (max-width: 500px) {
+  .slick-next  {
+    display:none!important;
+  }
+}
+
+.form-control{
+  padding-left: 11px!important;
+  font-family: calibri!important;
+}
 html, html a {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important; }
