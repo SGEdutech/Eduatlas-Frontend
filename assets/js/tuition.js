@@ -9,8 +9,8 @@ $.ajax({
 }).then(updateThePage);
 
 function updateThePage(data) {
-    console.log(data);
     getRelatedListing(data.city);
+    getPopularListing(data.city);
 
     if (data.claimedBy === undefined || data.claimedBy === '') {
 
@@ -284,6 +284,66 @@ function getRelatedListing(city) {
             getGeocode(context.Address)
             // }
             // }
+        }
+
+    }).catch(err => {
+        console.log(err);
+    });
+
+
+}
+
+function getPopularListing(city) {
+    if (!city) {
+        return
+    }
+
+    // todo - fix Algorithm to get related listing
+    // maybe add server side route to get this
+    let promise = $.ajax({
+        url: '/tuition/search',
+        data: {
+            city: JSON.stringify({
+                search: city,
+                fullText: true
+            }),
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category',
+            limit: 2,
+            skip: 0,
+            sortBy: 'views'
+        }
+    });
+
+    let result = '';
+    let context = {
+        name: "Tuition Name",
+        state: '',
+        description: '',
+        primaryNumber: "",
+        // rating: "2.5",
+        // ifAd: "",
+        // coverPic: "",
+        _id: "",
+    };
+
+    promise.then((data) => {
+        if (data === undefined) {
+            return
+        }
+        console.log(data.length);
+        if (data.length === 0) {
+
+        } else {
+            data.forEach(obj => {
+                context._id = obj._id;
+                context.name = obj.name;
+                context.state = obj.state;
+                context.primaryNumber = obj.primaryNumber;
+                result += `<div class="col-md-12">${template.listgoCard(context)}</div>`
+            });
+            $("#sponsoredPopular").append(result);
+            //send address to get geo code
+            getGeocode(data.Address)
         }
 
     }).catch(err => {
