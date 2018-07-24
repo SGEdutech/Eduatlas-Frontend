@@ -340,6 +340,7 @@ function getPopularListing(city) {
 
         } else {
             data.forEach(obj => {
+                sanatiseData(obj);
                 context._id = obj._id;
                 context.name = obj.name;
                 context.state = obj.state;
@@ -411,4 +412,10 @@ function submitIssue(id) {
         console.log(err);
         alert('failed')
     })
+}
+
+function sanatiseData(tuition) {
+    if (tuition.description && tuition.description.length > 70) {
+        tuition.description = tuition.description.slice(0, 67) + '...';
+    }
 }

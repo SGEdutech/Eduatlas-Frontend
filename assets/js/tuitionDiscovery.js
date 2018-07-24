@@ -40,10 +40,10 @@ if (!complexSearch) {
 
 
     AllTuitionJSON.then((data) => {
-        console.log(data);
         let result = '';
         for (keys in data) {
             if (data.hasOwnProperty(keys)) {
+                sanatiseData(data[keys]);
                 // context.rating = data[keys].rating ? data[keys].rating : "2.5";
                 context._id = data[keys]._id;
                 context.description = data[keys].description;
@@ -122,6 +122,7 @@ if (!complexSearch) {
 
         for (keys in data) {
             if (data.hasOwnProperty(keys)) {
+                sanatiseData(data[keys]);
                 // context.rating = data[keys].rating ? data[keys].rating : "2.5";
                 context._id = data[keys]._id;
                 context.name = data[keys].name;
@@ -246,6 +247,7 @@ function getSearchResultsComplex() {
 
         for (keys in data) {
             if (data.hasOwnProperty(keys)) {
+                sanatiseData(data[keys]);
                 // context.rating = data[keys].rating ? data[keys].rating : "2.5";
                 context._id = data[keys]._id;
                 context.name = data[keys].name;
@@ -295,6 +297,11 @@ function pressEnter(event) {
     }
 }
 
+function sanatiseData(tuition) {
+    if (tuition.description && tuition.description.length > 70) {
+        tuition.description = tuition.description.slice(0, 67) + '...';
+    }
+}
 
 
 
