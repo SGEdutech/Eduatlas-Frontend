@@ -9,7 +9,7 @@ $.ajax({
 }).then(updateThePage);
 
 function updateThePage(data) {
-
+    console.log(data);
     getRelatedListing(data.city);
 
     if (data.claimedBy === undefined || data.claimedBy === '') {
@@ -39,9 +39,9 @@ function updateThePage(data) {
     }
 
     if (data.img_tuitionCoverPic === undefined || data.img_tuitionCoverPic === '') {
-        $('#cover_image').css('background-image', 'url(/assets/img/bg6.jpg)');
+        $('#cover_image').attr("src", "/assets/img/cover.jpg");
     } else {
-        $('#cover_image').css('background-image', 'url(images/' + data.img_tuitionCoverPic + ')');
+        $('#cover_image').attr('src', 'images/' + data.img_tuitionCoverPic);
 
     }
 
@@ -302,7 +302,6 @@ function getGeocode(address) {
     promise.then(data => {
         lat = data.results[0].geometry.location.lat;
         lng = data.results[0].geometry.location.lng;
-        console.log(lat + '-' + lng)
     })
 }
 
