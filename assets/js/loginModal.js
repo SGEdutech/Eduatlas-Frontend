@@ -88,7 +88,11 @@ $(form).submit(function (event) {
         if (window.location.href.split('?')) {
             if (window.location.href.split('?')[1] == 'm=login') {
                 window.location = window.location.href.split("?")[0];
+            } else {
+                window.location.reload();
             }
+        } else {
+            window.location.reload();
         }
     }).catch(err => {
         let errorResponse = err.responseText;
