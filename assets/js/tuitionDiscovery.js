@@ -94,10 +94,10 @@ if (!complexSearch) {
                 search: name,
                 fullText: false
             }),
-            state: JSON.stringify({
+            /*state: JSON.stringify({
                 search: state,
                 fullText: true
-            }),
+            }),*/
             city: JSON.stringify({
                 search: city,
                 fullText: true
@@ -286,7 +286,7 @@ function getSearchResultsComplex() {
 function removeSuggestions(suggestionBoxId) {
     setTimeout(function () {
         $('#' + suggestionBoxId).empty();
-    }, 500)
+    }, 250)
 }
 
 function pressEnter(event) {
