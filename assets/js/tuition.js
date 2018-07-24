@@ -358,7 +358,7 @@ function getPopularListing(city) {
 
 }
 
-let lat, lng;
+// let lat, lng;
 
 function getGeocode(address) {
     const promise = $.ajax({
@@ -368,6 +368,7 @@ function getGeocode(address) {
         lat = data.results[0].geometry.location.lat;
         lng = data.results[0].geometry.location.lng;
         console.log(lat);
+        initMap(lat,lng)
     })
 }
 

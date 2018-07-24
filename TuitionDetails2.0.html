@@ -101,7 +101,7 @@
                         <a href="#" id="phone" class="address">
                             Phone number
                         </a>
-                        <i class="fa fa-mail address" aria-hidden="true"></i>
+                        <i class="fa fa-at address" aria-hidden="true"></i>
                         <a href="#" class="address email">
                             Phone number
                         </a>
@@ -285,7 +285,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab7">
-                                <div class="m-2">
+                                <div class="m-2" id="noReviews">
                                     <small>No Reviews Here</small>
                                 </div>
                                 <div class="card">
@@ -293,47 +293,43 @@
                                         <div class="card-title h3">
                                             Rate and write a Review
                                         </div>
-                                        <div class="card-subtitle">
+                                        <small class="card-subtitle">
                                             Your review will be posted publicly on the web.
-                                        </div>
-                                        <p>*****</p>
-
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="exampleInput1"
-                                                       class="bmd-label-floating">Name</label>
-                                                <input type="email" class="form-control" id="exampleInput1">
-                                                <span class="bmd-help">this name will be displayed to public</span>
+                                        </small>
+                                        <form action="" id="reviewForm">
+                                            <div class="col-12" id="ratingContainer">
+                                                <i id="s1" class="material-icons" style="cursor: pointer"
+                                                   onclick="changeColor(1)">
+                                                    star
+                                                </i>
+                                                <i id="s2" class="material-icons" style="cursor: pointer"
+                                                   onclick="changeColor(2)">
+                                                    star
+                                                </i>
+                                                <i id="s3" class="material-icons" style="cursor: pointer"
+                                                   onclick="changeColor(3)">
+                                                    star
+                                                </i>
+                                                <i id="s4" class="material-icons" style="cursor: pointer"
+                                                   onclick="changeColor(4)">
+                                                    star
+                                                </i>
+                                                <i id="s5" class="material-icons" style="cursor: pointer"
+                                                   onclick="changeColor(5)">
+                                                    star
+                                                </i>
                                             </div>
+                                            <input id="reviewOwnerInput" type="hidden" name="owner" value="">
+                                            <input id="reviewRatingInput" type="hidden" name="rating" value="">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1" class="bmd-label-floating">Email
-                                                    address</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                       aria-describedby="emailHelp">
-                                                <small id="emailHelp" class="form-text text-muted">We'll never
-                                                    share
-                                                    your email
-                                                    with
-                                                    anyone
-                                                    else.
-                                                </small>
+                                                <label for="exampleFormControlTextarea1">Review</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                                          name="description"></textarea>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputTitle1"
-                                                       class="bmd-label-floating">Title</label>
-                                                <input type="text" class="form-control" id="exampleInputTitle1">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleInputReview1"
-                                                       class="bmd-label-floating">Review</label>
-                                                <textarea name="review" type="text" class="form-control"
-                                                          id="exampleInputReview1">
-                                                </textarea>
-                                            </div>
-
-                                            <button type="submit" class="btn btn-info" disabled="">Submit</button>
                                         </form>
+                                        <button type="submit" class="btn btn-info" onclick="submitReview('reviewForm')">
+                                            Submit
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -653,11 +649,12 @@
 <script src="assets/js/login-check.js"></script>
 <script src="assets/js/updateNavBar.js"></script>
 <script src="assets/js/claimBtnAppend.js"></script>
+<script src="assets/js/reviews.js"></script>
 <!-- endbuild -->
 
 <!--Google Map-->
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4&callback=initMap"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4"
         type="text/javascript"></script>
 
 <script src="assets/js/google-map.js"></script>
