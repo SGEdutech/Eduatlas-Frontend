@@ -1,4 +1,4 @@
-<article class="popular-listing-post">
+<article class="popular-listing-post" id="{{_id}}">
     <div class=" tuition-cards" onclick="openTuitionPage('{{_id}}')">
         <div class="post-thumb">
             <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
@@ -39,12 +39,6 @@
         <div class=" tuition-cards" onclick="openTuitionPage('{{_id}}')">
             <div class="post-meta">
                 <div class="location">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <div class="col-12">{{addressLine1}},{{addressLine2}},{{city}},{{state}}</div>
-                </div>
-            </div>
-            <div class="post-meta">
-                <div class="location">
                     <i class="fa fa-phone" aria-hidden="true"></i>
                     <h5>{{primaryNumber}}</h5>
                 </div>
@@ -62,18 +56,13 @@
             </div>-->
         </div>
         <div class="post-footer">
-            <div class="contact-no">
-                <!--<i class="material-icons">
-                    share
-                </i>-->
-                <i class="fa fa-bookmark" onclick="bookmark('{{_id}}')" style="cursor: pointer"></i>
-            </div>
             <!-- <span class="contact-no">
                  <a onclick="bookmark()" class="bookmark"></a>
              </span>-->
             <div class="schedule-info closed">
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <h6>Open Now</h6>
+                <div class="row justify-content-around mb-md-4">
+                    <button class="btn btn-info" onclick="removeBookmarks('{{_id}}')">remove</button>
+                </div>
             </div>
         </div>
     </div>

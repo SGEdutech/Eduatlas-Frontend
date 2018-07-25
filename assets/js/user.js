@@ -21,6 +21,7 @@ function tryToGetData() {
     promise.then((data) => {
         userData = data;
         getUserOwnedTuition(data.tuitionsOwned);
+        getUserBookmarks(data.bookmarkTuitions);
 
         let profilePicContainer = $('#userProfilePicContainer');
         let userIdContainer = $('#userIdContainer');
@@ -48,7 +49,6 @@ tryToGetData();
 
 function getUserOwnedTuition(ids) {
     if (ids == undefined || ids == [] || ids.length === 0) {
-        console.log("hi");
         let card = $('#userOwnedTuitionCard');
         card.empty();
         card.append(`<h3 class="card-title"> Welcome to Eduatlas </h3><p>Please add/claim your Institute</p>`)
@@ -95,6 +95,53 @@ function getUserOwnedTuition(ids) {
                  </div>`;
 
             $("#userOwnedTuitionContainer").append(result);
+
+        }).catch(err => {
+            console.log(err);
+        });
+
+    });
+
+}
+
+function getUserBookmarks(ids) {
+    if (ids == undefined || ids == [] || ids.length === 0) {
+        return
+    }
+    ids.forEach((tuitionId) => {
+
+        const promise = $.ajax({
+            url: '/tuition?_id=' + tuitionId,
+            method: 'GET',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category'
+        });
+
+        let context = {
+            _id: '',
+            name: "Tuition Name",
+            state: '',
+            description: '',
+            primaryNumber: "phone",
+            rating: "2.5",
+            ifAd: "",
+            coverPic: "",
+            Category: "category",
+        };
+
+        promise.then((data) => {
+            // context.rating = data.rating ? data.rating : "2.5";
+            context._id = data._id;
+            context.name = data.name;
+            context.state = data.state;
+            context.primaryNumber = data.primaryNumber;
+            context.description = data.description;
+            let result = template.listgoCardBookmark(context);
+            result =
+                `<div class="col-md-3 m-1">
+                        ${result}
+                 </div>`;
+
+            $("#userTuitionBookmarks").append(result);
 
         }).catch(err => {
             console.log(err);
@@ -311,4 +358,23 @@ $('a[href="#tab3"]').on('show.bs.tab', function (e) {
 $('a[href="#tab3"]').on('hide.bs.tab', function (e) {
     $('#addTuitionSubMenu').hide();
 });
+
+function removeBookmarks(queryId) {
+
+    $.ajax({
+        url: '/user/check',
+    }).then((userdata) => {
+        $.ajax({
+            url: '/user/delete/bookmarkTuitions/' + userdata._id,
+            method: 'DELETE',
+            data: {
+                string: queryId
+            }
+        }).then(data => {
+            $('#' + queryId).empty()
+        })
+    }).catch(err => {
+        console.log(err);
+    })
+}
 

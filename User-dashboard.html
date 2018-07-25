@@ -108,10 +108,12 @@
                     <li class="nav-item"><a class="nav-link active" href="#tab1"
                                             data-toggle="tab"> Dashboard</a>
                     </li>
+                    <li class="nav-item"><a class="nav-link " href="#tab4"
+                                            data-toggle="tab"> Bookmarks</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">
                         Edit Profile</a>
                     </li>
-
                     <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab"> Add Your
                         Institute/Tuition</a>
                     </li>
@@ -179,7 +181,6 @@
                         <button class="btn btn-info" onclick="editUser('Form2')">Save Social Links</button>
                     </div>
                     <div class="tab-pane" id="tab3">
-
                         <form id="addTuition" method="POST" action="/tuition/">
 
                             <div id="basicContainerTuition">
@@ -396,8 +397,13 @@
                             <button class="btn btn-info" type="submit">Proceed</button>
                         </form>
                         <!-- pass id of form to initTuition function for AJAX POST req -->
-
-
+                    </div>
+                    <div class="tab-pane" id="tab4">
+                        <div id="userTuitionBookmarks" class="row">
+                            <div class="card-title col-12">
+                                Your Bookmarks
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!--</div>-->
@@ -472,6 +478,7 @@
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 <script src="assets/js/templates.js"></script>
 <script src="assets/js/compiledTemplates/listgoCard.js"></script>
+<script src="assets/js/compiledTemplates/listgoCardBookmark.js"></script>
 
 <!-- Custom Js file for user-->
 <script src="assets/js/user.js"></script>

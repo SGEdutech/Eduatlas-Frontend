@@ -21,56 +21,34 @@ if (!complexSearch) {
     const AllTuitionJSON = $.ajax({
         url: '/tuition/all',
         data: {
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email category description',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy',
             limit: itemsPerPage,
             skip: skip
         }
     });
 
-    let context = {
-        name: "Tuition Name",
-        state: '',
-        description: '',
-        primaryNumber: "",
-        // rating: "2.5",
-        // ifAd: "",
-        // coverPic: "",
-        _id: "",
-    };
-
-
     AllTuitionJSON.then((data) => {
-        let result = '';
-        for (keys in data) {
-            if (data.hasOwnProperty(keys)) {
-                sanatiseData(data[keys]);
-                // context.rating = data[keys].rating ? data[keys].rating : "2.5";
-                context._id = data[keys]._id;
-                context.description = data[keys].description;
-                context.name = data[keys].name;
-                context.state = data[keys].state;
-                context.primaryNumber = data[keys].primaryNumber;
-                // context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
-                // context.Category = data[keys].category;
-                result += `<div class="col-md-4">${template.listgoCard(context)}</div>`
-            }
+            let result = '';
+            data.forEach(obj => {
+                result += `<div class="col-md-4">${template.listgoCard(obj)}</div>`
+            });
+
+            $("#content-placeholder").append(result);
+
+            //updating the pagination links
+            let contextPagination = {
+                page: pageNum,
+                pageM1: pageM1,
+                pageP1: pageP1,
+                items: itemsPerPage,
+                c: complexSearch,
+            };
+            let resultPagi = Handlebars.templates.paginationT(contextPagination);
+            $("#paginationContainer").append(resultPagi);
+            //updating pagination done
+
         }
-
-        $("#content-placeholder").append(result);
-
-        //updating the pagination links
-        let contextPagination = {
-            page: pageNum,
-            pageM1: pageM1,
-            pageP1: pageP1,
-            items: itemsPerPage,
-            c: complexSearch,
-        };
-        let resultPagi = Handlebars.templates.paginationT(contextPagination);
-        $("#paginationContainer").append(resultPagi);
-        //updating pagination done
-
-    });
+    );
 } else {
     // if search type is complex
     let container = $("#content-placeholder");
@@ -301,6 +279,42 @@ function sanatiseData(tuition) {
     if (tuition.description && tuition.description.length > 70) {
         tuition.description = tuition.description.slice(0, 67) + '...';
     }
+}
+
+function bookmark(queryId) {
+
+    $.ajax({
+        url: '/user/check',
+    }).then((userdata) => {
+        if (userdata == 'LogIn') {
+            $('#loginModal').modal('show');
+        } else {
+            let AlreadyBookmarked = false;
+            userdata.bookmarkTuitions.forEach(tuitionID => {
+                if (tuitionID == queryId) {
+                    AlreadyBookmarked = true;
+                }
+            });
+            if (AlreadyBookmarked) {
+                //already bookmarked do nothing
+                alert('already bookmarked')
+            } else {
+                //bookmark now
+                $.ajax({
+                    url: '/user/add/bookmarkTuitions/' + userdata._id,
+                    method: 'POST',
+                    data: {
+                        string: queryId
+                    }
+                }).then(data => {
+                    alert('bookmarked successfully')
+                })
+            }
+
+        }
+    }).catch(err => {
+        console.log(err);
+    })
 }
 
 
