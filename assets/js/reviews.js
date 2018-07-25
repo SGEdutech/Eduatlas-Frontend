@@ -13,7 +13,7 @@ function submitReview(id) {
                 // submit review then update user
                 const form = $('#' + id);
                 //queryId(global var) comes from tuition.js file
-                $('#reviewOwnerInput').val(queryId);
+                $('#reviewOwnerInput').val(user._id);
                 $.ajax({
                     url: '/tuition/add/reviews/' + queryId,
                     method: 'POST',

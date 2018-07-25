@@ -43,7 +43,7 @@ function showCover(path) {
     let context = {
         path: path
     };
-    let result = Handlebars.templates.userEditTuitionCover(context);
+    let result = template.userEditTuitionCover(context);
     $("#coverImgContainer").append(result);
 }
 
@@ -60,7 +60,7 @@ function showBasic(name, al1, al2, city, distt, state, country, pin) {
         country: country,
         pin: pin
     };
-    let result = Handlebars.templates.userEditTuitionBasic(context);
+    let result = template.userEditTuitionBasic(context);
     $("#basicContainer").append(result);
 }
 
@@ -70,7 +70,7 @@ function showFacility(fasc) {
     let context = {
         facilities: fasc,
     };
-    let result = Handlebars.templates.userEditTuitionFacility(context);
+    let result = template.userEditTuitionFacility(context);
     $("#facilityContainer").append(result);
 }
 
@@ -80,7 +80,7 @@ function showDescription(desc) {
     let context = {
         desc: desc,
     };
-    let result = Handlebars.templates.userEditTuitionDesc(context);
+    let result = template.userEditTuitionDesc(context);
     $("#descriptionContainer").append(result);
 }
 
@@ -90,7 +90,7 @@ function showCategory(cate) {
     let context = {
         cate: cate,
     };
-    let result = Handlebars.templates.userEditTuitionCategory(context);
+    let result = template.userEditTuitionCategory(context);
     $("#cateContainer").append(result);
 }
 
@@ -104,7 +104,7 @@ function showContactPerson(contactP, pNumber, sNumber, email, site) {
         email: email,
         website: site
     };
-    let result = Handlebars.templates.userEditTuitionContactP(context);
+    let result = template.userEditTuitionContactP(context);
     $("#contactPersonContainer").append(result);
 }
 
@@ -117,7 +117,7 @@ function showSocialLinks(f, i, y) {
         instagram: i,
         youtube: y,
     };
-    let result = Handlebars.templates.userEditTuitionSocial(context);
+    let result = template.userEditTuitionSocial(context);
     $("#socialLinkContainer").append(result);
 }
 
@@ -177,7 +177,7 @@ function showDaynTime(array) {
         }
     });
 
-    let result = Handlebars.templates.userEditTuitionHours(context);
+    let result = template.userEditTuitionHours(context);
     $("#opration_hours_containers").append(result);
 }
 
@@ -271,7 +271,7 @@ function showCourses(array) {
         counter++;
     });
 
-    let result = Handlebars.templates.userEditTuitionCourses(context);
+    let result = template.userEditTuitionCourses(context);
     $("#coursesContainer").append(result);
 }
 
@@ -343,7 +343,7 @@ function showResults(array) {
         counter++;
     });
 
-    let result = Handlebars.templates.userEditTuitionResults(context);
+    let result = template.userEditTuitionResults(context);
     $("#resultsContainer").append(result);
 
 }
@@ -421,7 +421,7 @@ function showFaculty(array) {
         counter++;
     });
 
-    let result = Handlebars.templates.userEditTuitionFaculty(context);
+    let result = template.userEditTuitionFaculty(context);
     $("#facultyContainer").append(result);
 
 }

@@ -43,7 +43,7 @@ if (!complexSearch) {
                 items: itemsPerPage,
                 c: complexSearch,
             };
-            let resultPagi = Handlebars.templates.paginationT(contextPagination);
+            let resultPagi = template.paginationT(contextPagination);
             $("#paginationContainer").append(resultPagi);
             //updating pagination done
 
@@ -126,7 +126,7 @@ if (!complexSearch) {
             city: city,
             sortBy: sortBy
         };
-        let resultPagi = Handlebars.templates.paginationT(contextPagination);
+        let resultPagi = template.paginationT(contextPagination);
         $("#paginationContainer").append(resultPagi);
         //pagination updating done
 
@@ -253,7 +253,7 @@ function getSearchResultsComplex() {
             city: city,
             sortBy: sortBy
         };
-        let resultPagi = Handlebars.templates.paginationT(contextPagination);
+        let resultPagi = template.paginationT(contextPagination);
         pagiContainer.append(resultPagi);
         //pagination updating done
 

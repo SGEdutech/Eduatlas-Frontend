@@ -5,24 +5,12 @@ let isClaimed = false;
 
 $.ajax({
     url: '/tuition',
-    data: { _id: queryId }
+    data: {_id: queryId}
 }).then(updateThePage);
 
 function updateThePage(data) {
-    let toAppend = ''
-    data.reviews.forEach(obj => {
-        toAppend += `
-        <div class="card col-12" style="">
-            <div class="card-body">
-                <h4 class="card-title">${obj.rating}/5</h4>
-                <p class="card-text">${obj.description}</p>
-            </div>
-        </div>`
-        //
-    })
-    $('#savedReviews').append(toAppend)
 
-
+    getReviews(data.reviews);
     getRelatedListing(data.city);
     getPopularListing(data.city);
 
@@ -248,11 +236,11 @@ function showSocialLinks(f, i, y) {
 
 function doTheTemplateStuff(data) {
     const facilityArr = data.facilities ? data.facilities.split(',') : [];
-    let result1 = Handlebars.templates.tuitionFacility({ facilities: facilityArr });
+    let result1 = Handlebars.templates.tuitionFacility({facilities: facilityArr});
     $('#facilities_container').html(result1);
 
     const categoryArr = data.category ? data.category.split(',') : [];
-    let result2 = Handlebars.templates.tuitionCategory({ categories: categoryArr });
+    let result2 = Handlebars.templates.tuitionCategory({categories: categoryArr});
     $('#category_container').html(result2);
 }
 
@@ -397,7 +385,7 @@ function claimListing() {
         $.ajax({
             url: '/tuition/' + queryId,
             type: 'PUT',
-            data: { claimedBy: user._id }
+            data: {claimedBy: user._id}
         }).then(data => {
             console.log("tuition updated");
         });
@@ -405,7 +393,7 @@ function claimListing() {
         $.ajax({
             url: '/user/add/tuitionsOwned/' + user._id,
             type: 'POST',
-            data: { string: queryId }
+            data: {string: queryId}
         }).then(data => {
             console.log('user updated');
             window.location.assign('User-dashboard.html')
@@ -434,4 +422,20 @@ function sanatiseData(tuition) {
     if (tuition.description && tuition.description.length > 70) {
         tuition.description = tuition.description.slice(0, 67) + '...';
     }
+}
+
+function getReviews(reviewsArray) {
+    console.log(reviewsArray);
+    let toAppend = '';
+    reviewsArray.forEach(obj => {
+        toAppend += `
+        <div class="card col-12" style="">
+            <div class="card-body">
+                <h4 class="card-title">${obj.rating}/5</h4>
+                <p class="card-text">${obj.description}</p>
+            </div>
+        </div>`
+        //
+    });
+    $('#savedReviews').append(toAppend)
 }

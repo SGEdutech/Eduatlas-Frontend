@@ -22,6 +22,7 @@ function tryToGetData() {
         userData = data;
         getUserOwnedTuition(data.tuitionsOwned);
         getUserBookmarks(data.bookmarkTuitions);
+        getUserReviews(data.reviewsOwned);
 
         let profilePicContainer = $('#userProfilePicContainer');
         let userIdContainer = $('#userIdContainer');
@@ -149,6 +150,40 @@ function getUserBookmarks(ids) {
 
     });
 
+}
+
+function getUserReviews(reviewArray) {
+    let HTML = '';
+    if (reviewArray == undefined || reviewArray == [] || reviewArray.length === 0) {
+        return
+    }
+    reviewArray.forEach((userReview) => {
+
+        const promise = $.ajax({
+            url: '/tuition?_id=' + userReview.outerId,
+            method: 'GET',
+            demands: 'name reviews'
+        });
+
+        promise.then((data) => {
+            let reviewWeNeed = '';
+            data.reviews.forEach(obj => {
+                if (obj._id == userReview.innerId) {
+                    reviewWeNeed = obj;
+                }
+            });
+            let context = {
+                name: data.name,
+                rating: reviewWeNeed.rating,
+                description: reviewWeNeed.description
+            };
+            HTML += Handlebars.templates.DashboardReview(context);
+        }).catch(err => {
+            console.log(err);
+        });
+
+    });
+    $("#userReviews").append(HTML);
 }
 
 function logout() {
