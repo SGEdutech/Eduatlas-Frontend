@@ -80,11 +80,16 @@
   display:block!important;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   .slick-next  {
     display:none!important;
   }
 }
+  @media only screen and (max-width: 750px) {
+  .searchview {
+    margin-top: -88px!important;
+  }
+  }
 
 .form-control{
   padding-left: 11px!important;

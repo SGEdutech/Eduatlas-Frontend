@@ -76,29 +76,22 @@
 
     <div id="secondary_info" class="container row p-0">
 
-    <div class="col-md-9">
-        <div class="card">
-            <div>
-                <img id="cover_image" src="" class="rounded-top" style="width:100%;">
-            </div>
-            <div class="row justify-content-around">
-                <div class="col-md-9">
-                    <h2 class="imgheading" id="tuition_name">
-                        Tuition Name</h2>
-                    <div>
-                        <i class="fa fa-map-marker address" aria-hidden="true"></i>
-                        <a href="#" class="address" id="address">
-                            Address
-                        </a> <span class="middot grey-text">&nbsp;&nbsp;·&nbsp;</span>
-                        <i class="fa fa-phone address" aria-hidden="true"></i>
-                        <a href="#" id="phone" class="address">
-                            Phone number
-                        </a>
-                        <i class="fa fa-at address" aria-hidden="true"></i>
-                        <a href="#" class="address email">
-                            Phone number
-                        </a>
-                        <!--<span class="middot grey-text">&nbsp;&nbsp;·&nbsp;</span>
+        <div class="col-md-9">
+            <div class="card">
+                <div>
+                    <img id="cover_image" src="" class="rounded-top" style="width:100%;">
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-md-8">
+                        <h2 class="imgheading" id="tuition_name">
+                            Education Point</h2>
+                        <div>
+                            <span class="badge badge-pill badge-default">Tag1</span>
+                            <span class="badge badge-pill badge-default">Tag2</span>
+                            <span class="badge badge-pill badge-default">Tag3</span>
+                            <span class="badge badge-pill badge-default">Tag4</span>
+                            <span class="badge badge-pill badge-default">Tag5</span>
+                            <!--<span class="middot grey-text">&nbsp;&nbsp;·&nbsp;</span>
                         <span class="address">
                             <i class="fa fa-phone address" aria-hidden="true"></i>
                             <a title="#" href="#" class="address">Lounge</a>,
@@ -106,143 +99,156 @@
                         </span>-->
                         </div>
                     </div>
-                    <div class="col-md-2" style="margin-top:24px;">
-                        <div tabindex="0" aria-label="Rated" data-res-id="18168125" class="rdiv">
-                            2.5
-                            <span>/5</span>
+
+
+                    <div class="col-md-4 justify-content-around" style="margin-top:24px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-info">Verified</button>
+                        <div tabindex="0" aria-label="Rated">
+                            <div class="col-12" id="ratingContainer">
+                                <i id="s1" class="material-icons" style="cursor: pointer" onclick="changeColor(1)">
+                                    star
+                                </i>
+                                <i id="s2" class="material-icons" style="cursor: pointer" onclick="changeColor(2)">
+                                    star
+                                </i>
+                                <i id="s3" class="material-icons" style="cursor: pointer" onclick="changeColor(3)">
+                                    star
+                                </i>
+                                <i id="s4" class="material-icons" style="cursor: pointer" onclick="changeColor(4)">
+                                    star
+                                </i>
+                                <i id="s5" class="material-icons" style="cursor: pointer" onclick="changeColor(5)">
+                                    star
+                                </i>
+                            </div>
                         </div>
-                        <br>
-                        <br>
-                        <span tabindex="0" aria-label="1924  votes" style="color:#89959B;float:right;">
-                            <span>
-                                <span>0</span> votes</span>
-                        </span>
                     </div>
                 </div>
-
             </div>
 
-            <div class="card">
-                <div class="card-body p-1 p-md-3">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <ul class="nav nav-pills nav-pills-rose flex-row flex-md-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#tab1" data-toggle="tab">Description</a>
-                                </li>
+        </div>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab3" data-toggle="tab">Courses</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab4" data-toggle="tab">Results</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab5" data-toggle="tab">Faculty</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab6" data-toggle="tab">Gallery</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab7" data-toggle="tab">Reviews</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab1">
+        <div class="card">
+            <div class="card-body p-1 p-md-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="nav nav-pills nav-pills-rose flex-row flex-md-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#tab1" data-toggle="tab">Description</a>
+                            </li>
 
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h2 class="card-title h3">Facilities:</h2>
-                                            <div id="facilities_container">
-                                            </div>
-                                        </div>
-                                    </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab3" data-toggle="tab">Courses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab4" data-toggle="tab">Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab5" data-toggle="tab">Faculty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab6" data-toggle="tab">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab7" data-toggle="tab">Reviews</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
 
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h2 class="card-title h3">About Us</h2>
-                                            <p id="description"></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h2 class="card-title h3">Category</h2>
-                                        </div>
-                                        <div id="category_container">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Facilities:</h2>
+                                        <div id="facilities_container">
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="tab-pane" id="tab2">
-                                    <div class="row justify-content-around m-0">
-                                        <div class="card col-md-6">
-                                            <div class="card-body">
-                                                <div class="card-title h3">
-                                                    Contact Us:
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Contact Person Name
-                                                </div>
-                                                <div id="contact_person">
-
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Primary Number
-                                                </div>
-                                                <div id="primary_number">
-
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Alternate Number
-                                                </div>
-                                                <div id="alternate_number">
-
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Email
-                                                </div>
-                                                <div class="email">
-
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Website
-                                                </div>
-                                                <div id="website">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div id="" class="card card-nav-tabs col-md-5">
-                                            <div class="card-title h3">
-                                                Operates on
-                                            </div>
-                                            <div id="opration_hours_containers" class="row">
-                                            </div>
-                                        </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">About Us</h2>
+                                        <p id="description"></p>
                                     </div>
+                                </div>
 
-                                    <div class="card m-0" id="map"></div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Category</h2>
+                                    </div>
+                                    <div id="category_container">
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <div class="card">
+                            <div class="tab-pane" id="tab2">
+                                <div class="row justify-content-around m-0">
+                                    <div class="card col-md-6">
                                         <div class="card-body">
                                             <div class="card-title h3">
-                                                Social Links:
+                                                Contact Us:
                                             </div>
-                                            <div id="linkContainer">
+                                            <div class="card-title h4">
+                                                Contact Person Name
+                                            </div>
+                                            <div id="contact_person">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Primary Number
+                                            </div>
+                                            <div id="primary_number">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Alternate Number
+                                            </div>
+                                            <div id="alternate_number">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Email
+                                            </div>
+                                            <div class="email">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Website
+                                            </div>
+                                            <div id="website">
+
                                             </div>
                                         </div>
                                     </div>
 
+                                    <div id="" class="card card-nav-tabs col-md-5">
+                                        <div class="card-title h3">
+                                            Operates on
+                                        </div>
+                                        <div id="opration_hours_containers" class="row">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="tab-pane" id="tab3">
-                                        
+
+                                <div class="card m-0" id="map"></div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title h3">
+                                            Social Links:
+                                        </div>
+                                        <div id="linkContainer">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane" id="tab3">
 
 
 
@@ -255,8 +261,9 @@
 
 
 
-                                      <div class="row justify-content-around" id="coursesContainer">
-                                  
+
+                                <div class="row justify-content-around" id="coursesContainer">
+
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab4">
@@ -270,34 +277,22 @@
                             <div class="tab-pane" id="tab6">
                                 <div class="row ">
                                     <div class="col-md-4">
-                                        <img class="img-fluid rounded img-raised my-3"
-                                             src="http://via.placeholder.com/350x150"
-                                             alt="Card image" style="height: 10rem; width: 100%">
+                                        <img class="img-fluid rounded img-raised my-3" src="http://via.placeholder.com/350x150" alt="Card image" style="height: 10rem; width: 100%">
                                     </div>
                                     <div class="col-md-4">
-                                        <img class="img-fluid rounded img-raised my-3"
-                                             src="http://via.placeholder.com/440x660"
-                                             alt="Card image" style="height: 10rem; width: 100%">
+                                        <img class="img-fluid rounded img-raised my-3" src="http://via.placeholder.com/440x660" alt="Card image" style="height: 10rem; width: 100%">
                                     </div>
                                     <div class="col-md-4">
-                                        <img class="img-fluid rounded img-raised my-3"
-                                             src="http://via.placeholder.com/350x150"
-                                             alt="Card image" style="height: 10rem; width: 100%">
+                                        <img class="img-fluid rounded img-raised my-3" src="http://via.placeholder.com/350x150" alt="Card image" style="height: 10rem; width: 100%">
                                     </div>
                                     <div class="col-md-4">
-                                        <img class="img-fluid rounded img-raised my-3"
-                                             src="http://via.placeholder.com/770x770"
-                                             alt="Card image" style="height: 10rem; width: 100%">
+                                        <img class="img-fluid rounded img-raised my-3" src="http://via.placeholder.com/770x770" alt="Card image" style="height: 10rem; width: 100%">
                                     </div>
                                     <div class="col-md-4">
-                                        <img class="img-fluid rounded img-raised my-3"
-                                             src="http://via.placeholder.com/350x150"
-                                             alt="Card image" style="height: 10rem; width: 100%">
+                                        <img class="img-fluid rounded img-raised my-3" src="http://via.placeholder.com/350x150" alt="Card image" style="height: 10rem; width: 100%">
                                     </div>
                                     <div class="col-md-4">
-                                        <img class="img-fluid rounded img-raised my-3"
-                                             src="http://via.placeholder.com/1920x1080"
-                                             alt="Card image" style="height: 10rem; width: 100%">
+                                        <img class="img-fluid rounded img-raised my-3" src="http://via.placeholder.com/1920x1080" alt="Card image" style="height: 10rem; width: 100%">
                                     </div>
                                 </div>
                             </div>
@@ -315,24 +310,19 @@
                                         </small>
                                         <form action="" id="reviewForm">
                                             <div class="col-12" id="ratingContainer">
-                                                <i id="s1" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(1)">
+                                                <i id="s1" class="material-icons" style="cursor: pointer" onclick="changeColor(1)">
                                                     star
                                                 </i>
-                                                <i id="s2" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(2)">
+                                                <i id="s2" class="material-icons" style="cursor: pointer" onclick="changeColor(2)">
                                                     star
                                                 </i>
-                                                <i id="s3" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(3)">
+                                                <i id="s3" class="material-icons" style="cursor: pointer" onclick="changeColor(3)">
                                                     star
                                                 </i>
-                                                <i id="s4" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(4)">
+                                                <i id="s4" class="material-icons" style="cursor: pointer" onclick="changeColor(4)">
                                                     star
                                                 </i>
-                                                <i id="s5" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(5)">
+                                                <i id="s5" class="material-icons" style="cursor: pointer" onclick="changeColor(5)">
                                                     star
                                                 </i>
                                             </div>
@@ -340,8 +330,7 @@
                                             <input id="reviewRatingInput" type="hidden" name="rating" value="">
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">Review</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                          name="description"></textarea>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
                                             </div>
                                         </form>
                                         <button type="submit" class="btn btn-info" onclick="submitReview('reviewForm')">
@@ -349,29 +338,29 @@
                                         </button>
                                     </div>
                                 </div>
-                                    <div id="savedReviews">
+                                <div id="savedReviews">
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row" id="relatedTuitionContainer">
+        <div class="row" id="relatedTuitionContainer">
 
-                <h6 class="col-md-12 card-title">Related Listing:</h6>
-
-            </div>
+            <h6 class="col-md-12 card-title">Related Listing:</h6>
 
         </div>
 
-        <div class="col-md-3">
-            <div class="col">
-                <div class="row" id="sponsoredPopular">
-                    <small class="col-12">Sponsored And Popular</small>
-                    <!--<div class="col-6 tuition-cards">
+    </div>
+
+    <div class="col-md-3">
+        <div class="col">
+            <div class="row" id="sponsoredPopular">
+                <small class="col-12">Sponsored And Popular</small>
+                <!--<div class="col-6 tuition-cards">
                     <article class="popular-listing-post">
                         <div class="post-thumb">
                             <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
@@ -466,22 +455,22 @@
                         </div>
                     </article>
                 </div>-->
-                </div>
-
-            </div>
-            <div class="">
-                <div class="card-body">
-                    <div id="claimContainer">
-                    </div>
-                    <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#reportModal">
-                        <i class="material-icons">
-                            warning
-                        </i>Report Page
-                    </button>
-                </div>
             </div>
 
         </div>
+        <div class="">
+            <div class="card-body">
+                <div id="claimContainer">
+                </div>
+                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#reportModal">
+                    <i class="material-icons">
+                        warning
+                    </i>Report Page
+                </button>
+            </div>
+        </div>
+
+    </div>
 
     </div>
 
@@ -660,18 +649,16 @@
     <!--login modal-->
     <script src="assets/js/loginModal.js"></script>
 
-<!-- Custom Code -->
-<script src="assets/js/tuition.js"></script>
-<script src="assets/js/login-check.js"></script>
-<script src="assets/js/updateNavBar.js"></script>
-<script src="assets/js/claimBtnAppend.js"></script>
-<script src="assets/js/reviews.js"></script>
-<!-- endbuild -->
+    <!-- Custom Code -->
+    <script src="assets/js/tuition.js"></script>
+    <script src="assets/js/login-check.js"></script>
+    <script src="assets/js/updateNavBar.js"></script>
+    <script src="assets/js/claimBtnAppend.js"></script>
+    <script src="assets/js/reviews.js"></script>
+    <!-- endbuild -->
 
-<!--Google Map-->
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4"
-        type="text/javascript"></script>
+    <!--Google Map-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4" type="text/javascript"></script>
 
     <script src="assets/js/google-map.js"></script>
 
