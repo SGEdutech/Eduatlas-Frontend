@@ -127,7 +127,7 @@ function showDaynTime(array) {
                 break;
         }
     });
-    let result = Handlebars.templates.tuitionOperationHours(context);
+    let result = template.tuitionOperationHours(context);
     $("#opration_hours_containers").append(result);
 }
 
@@ -157,7 +157,7 @@ function showCourses(array) {
         context.key.push(newObj);
         counter++;
     });
-    let result = Handlebars.templates.tuitionCourses(context);
+    let result = template.tuitionCourses(context);
     $("#coursesContainer").append(result);
 }
 
@@ -186,7 +186,7 @@ function showResults(array) {
         counter++;
     });
 
-    let result = Handlebars.templates.tuitionResult(context);
+    let result = template.tuitionResult(context);
     $("#resultsContainer").append(result);
 
 }
@@ -217,7 +217,7 @@ function showFaculty(array) {
         counter++;
     });
 
-    let result = Handlebars.templates.tuitionFaculty(context);
+    let result = template.tuitionFaculty(context);
     $("#facultyContainer").append(result);
 
 }
@@ -230,17 +230,17 @@ function showSocialLinks(f, i, y) {
         youtube: y == "" ? '#' : y
     };
 
-    let result = Handlebars.templates.tuitionLinks(context);
+    let result = template.tuitionLinks(context);
     $("#linkContainer").append(result);
 }
 
 function doTheTemplateStuff(data) {
     const facilityArr = data.facilities ? data.facilities.split(',') : [];
-    let result1 = Handlebars.templates.tuitionFacility({facilities: facilityArr});
+    let result1 = template.tuitionFacility({facilities: facilityArr});
     $('#facilities_container').html(result1);
 
     const categoryArr = data.category ? data.category.split(',') : [];
-    let result2 = Handlebars.templates.tuitionCategory({categories: categoryArr});
+    let result2 = template.tuitionCategory({categories: categoryArr});
     $('#category_container').html(result2);
 }
 
@@ -428,14 +428,7 @@ function getReviews(reviewsArray) {
     console.log(reviewsArray);
     let toAppend = '';
     reviewsArray.forEach(obj => {
-        toAppend += `
-        <div class="card col-12" style="">
-            <div class="card-body">
-                <h4 class="card-title">${obj.rating}/5</h4>
-                <p class="card-text">${obj.description}</p>
-            </div>
-        </div>`
-        //
+        toAppend += template.tuitionReviews(obj)
     });
     $('#savedReviews').append(toAppend)
 }
