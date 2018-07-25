@@ -437,11 +437,11 @@ function deleteReview(userId, tuitionId, reviewId) {
             outerId: tuitionId
         }
     }).then(updatedUser => {
-        console.log('user updated')
+        console.log('user updated');
+        $('#' + reviewId).remove();
     }).catch(err => {
         console.log(err);
         alert('this is embarrassing something went wrong');
-        $('#' + reviewId).remove();
     })
 }
 

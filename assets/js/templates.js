@@ -10,7 +10,7 @@ this["template"]["dashboardReviews"] = Handlebars.template({"compiler":[7,">= 4.
     + alias4(((helper = (helper = helpers.rating || (depth0 != null ? depth0.rating : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rating","hash":{},"data":data}) : helper)))
     + "/5</h6>\r\n        <p class=\"card-text\">"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "</p>\r\n        <button onclick=\"deleteReview('"
+    + "</p>\r\n        <button class=\"btn btn-danger btn-round\" onclick=\"deleteReview('"
     + alias4(((helper = (helper = helpers.userId || (depth0 != null ? depth0.userId : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"userId","hash":{},"data":data}) : helper)))
     + "','"
     + alias4(((helper = (helper = helpers.tuitionId || (depth0 != null ? depth0.tuitionId : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tuitionId","hash":{},"data":data}) : helper)))
