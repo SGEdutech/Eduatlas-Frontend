@@ -21,7 +21,7 @@ if (!complexSearch) {
     const AllTuitionJSON = $.ajax({
         url: '/tuition/all',
         data: {
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation',
             limit: itemsPerPage,
             skip: skip
         }
@@ -30,6 +30,7 @@ if (!complexSearch) {
     AllTuitionJSON.then((data) => {
             let result = '';
             data.forEach(obj => {
+                openNowInit(obj);
                 result += `<div class="col-md-4">${template.listgoCard(obj)}</div>`
             });
 
@@ -80,38 +81,17 @@ if (!complexSearch) {
                 search: city,
                 fullText: true
             }),
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category description',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation',
             limit: itemsPerPage,
             skip: skip,
             sortBy: sortBy
         }
     }).then(data => {
         let result = '';
-        let context = {
-            name: "Tuition Name",
-            state: '',
-            description: '',
-            primaryNumber: "",
-            // rating: "2.5",
-            // ifAd: "",
-            // coverPic: "",
-            _id: "",
-        };
-
-        for (keys in data) {
-            if (data.hasOwnProperty(keys)) {
-                sanatiseData(data[keys]);
-                // context.rating = data[keys].rating ? data[keys].rating : "2.5";
-                context._id = data[keys]._id;
-                context.name = data[keys].name;
-                context.description = data[keys].description;
-                context.state = data[keys].state;
-                context.primaryNumber = data[keys].primaryNumber;
-                // context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
-                // context.Category = data[keys].category;
-                result += `<div class="col-md-4">${template.listgoCard(context)}</div>`
-            }
-        }
+        data.forEach(obj => {
+            openNowInit(obj);
+            result += `<div class="col-md-4">${template.listgoCard(obj)}</div>`
+        });
         container.append(result);
 
         //updating the pagination-links
@@ -205,38 +185,17 @@ function getSearchResultsComplex() {
                 search: city,
                 fullText: true
             }),
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category description',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation',
             limit: itemsPerPage,
             skip: skip,
             sortBy: sortBy
         }
     }).then(data => {
         let result = '';
-        let context = {
-            name: "Tuition Name",
-            state: '',
-            description: '',
-            primaryNumber: "",
-            // rating: "2.5",
-            // ifAd: "",
-            // coverPic: "",
-            _id: "",
-        };
-
-        for (keys in data) {
-            if (data.hasOwnProperty(keys)) {
-                sanatiseData(data[keys]);
-                // context.rating = data[keys].rating ? data[keys].rating : "2.5";
-                context._id = data[keys]._id;
-                context.name = data[keys].name;
-                context.description = data[keys].description;
-                context.state = data[keys].state;
-                context.primaryNumber = data[keys].primaryNumber;
-                // context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
-                // context.Category = data[keys].category;
-                result += `<div class="col-md-4">${template.listgoCard(context)}</div>`
-            }
-        }
+        data.forEach(obj => {
+            openNowInit(obj);
+            result += `<div class="col-md-4">${template.listgoCard(obj)}</div>`
+        });
         container.append(result);
 
         //updating the pagination for the first time according to complex search
@@ -315,6 +274,58 @@ function bookmark(queryId) {
     }).catch(err => {
         console.log(err);
     })
+}
+
+function openNowInit(data) {
+    let d = new Date(); // current date and time
+
+    //lets assume institute is closed right now
+    data.openedNow = false;
+
+    const weekday = new Array(7);
+    weekday[0] = "sunday";
+    weekday[1] = "monday";
+    weekday[2] = "tuesday";
+    weekday[3] = "wednesday";
+    weekday[4] = "thursday";
+    weekday[5] = "friday";
+    weekday[6] = "saturday";
+    let day = weekday[d.getDay()];
+
+    let dayNTimeOfOperation = data.dayAndTimeOfOperation;
+    let todaysHours;
+    dayNTimeOfOperation.forEach(obj => {
+        if (obj.day == day) {
+            todaysHours = obj;
+        }
+    });
+    if (todaysHours) {
+        let toTime = convertTo24Hours(todaysHours.toTime);
+        let fromTime = convertTo24Hours(todaysHours.fromTime);
+        let currentHours = d.getHours();
+        if (currentHours <= toTime.hours && currentHours >= fromTime.hours) {
+            data.openedNow = true;
+        }
+    }
+
+    //get current hours and minutes
+
+    // console.log(dayNTimeOfOperation);
+}
+
+//for converting a
+function convertTo24Hours(timeToConvert) {
+    let time = timeToConvert;
+    let hours = Number(time.match(/^(\d+)/)[1]);
+    let minutes = Number(time.match(/:(\d+)/)[1]);
+    let AMPM = time.match(/\s(.*)$/)[1];
+    if (AMPM == "PM" && hours < 12) hours = hours + 12;
+    if (AMPM == "AM" && hours == 12) hours = hours - 12;
+    /*let sHours = hours.toString();
+    let sMinutes = minutes.toString();
+    if (hours < 10) sHours = "0" + sHours;
+    if (minutes < 10) sMinutes = "0" + sMinutes;*/
+    return {hours: hours, minutes: minutes}
 }
 
 
