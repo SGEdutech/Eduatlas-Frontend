@@ -318,6 +318,9 @@ function openNowInit(data) {
 
 //for converting a
 function convertTo24Hours(timeToConvert) {
+    if (timeToConvert === undefined || timeToConvert === '') {
+        return
+    }
     let time = timeToConvert;
     let hours = Number(time.match(/^(\d+)/)[1]);
     let minutes = Number(time.match(/:(\d+)/)[1]);
