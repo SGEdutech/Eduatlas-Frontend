@@ -277,6 +277,9 @@ function bookmark(queryId) {
 }
 
 function openNowInit(data) {
+    if (data === undefined || data === []) {
+        return
+    }
     let d = new Date(); // current date and time
 
     //lets assume institute is closed right now
@@ -333,13 +336,11 @@ let requestUrl = "http://ip-api.com/json";
 $.ajax({
     url: requestUrl,
     type: 'GET',
-    success: function(json)
-    {
+    success: function (json) {
         $('#citySearch').val(json.city);
         // console.log("My city is: " + json.city);
     },
-    error: function(err)
-    {
+    error: function (err) {
         console.log("Auto pick location failed, error= " + err);
     }
 });
