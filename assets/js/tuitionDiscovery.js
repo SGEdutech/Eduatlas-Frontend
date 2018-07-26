@@ -328,6 +328,22 @@ function convertTo24Hours(timeToConvert) {
     return {hours: hours, minutes: minutes}
 }
 
+//auto pick location
+let requestUrl = "http://ip-api.com/json";
+$.ajax({
+    url: requestUrl,
+    type: 'GET',
+    success: function(json)
+    {
+        $('#citySearch').val(json.city);
+        // console.log("My city is: " + json.city);
+    },
+    error: function(err)
+    {
+        console.log("Auto pick location failed, error= " + err);
+    }
+});
+
 
 
 
