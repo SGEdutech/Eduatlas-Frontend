@@ -34,8 +34,8 @@ $(function () {
                 context.Email = data[keys].email;
                 context.coverPic = data[keys].img_tuitionCoverPic ? 'images/' + data[keys].img_tuitionCoverPic : 'assets/img/tuition2.jpg';
                 context.Category = data[keys].category;
-                console.log(Handlebars.templates.newCard(context))
-                result += Handlebars.templates.newCard(context);
+                console.log(template.newCard(context))
+                result += template.newCard(context);
             }
         }
         $("#tuitionContainer").append(result);

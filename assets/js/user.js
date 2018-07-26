@@ -22,6 +22,7 @@ function tryToGetData() {
         userData = data;
         getUserOwnedTuition(data.tuitionsOwned);
         getUserBookmarks(data.bookmarkTuitions);
+        getUserReviews(data.reviewsOwned, data._id);
 
         let profilePicContainer = $('#userProfilePicContainer');
         let userIdContainer = $('#userIdContainer');
@@ -151,6 +152,43 @@ function getUserBookmarks(ids) {
 
 }
 
+function getUserReviews(reviewArray, userId) {
+    let HTML = '';
+    if (reviewArray == undefined || reviewArray == [] || reviewArray.length === 0) {
+        return
+    }
+    reviewArray.forEach((userReview) => {
+
+        const promise = $.ajax({
+            url: '/tuition?_id=' + userReview.outerId,
+            method: 'GET',
+            demands: 'name reviews'
+        });
+
+        promise.then((data) => {
+            let reviewWeNeed = '';
+            data.reviews.forEach(obj => {
+                if (obj._id == userReview.innerId) {
+                    reviewWeNeed = obj;
+                }
+            });
+            let context = {
+                tuitionId: userReview.outerId,
+                reviewId: userReview.innerId,
+                userId: userId,
+                name: data.name,
+                rating: reviewWeNeed.rating,
+                description: reviewWeNeed.description
+            };
+            HTML = template.dashboardReviews(context);
+            $("#userReviews").append(HTML);
+        }).catch(err => {
+            console.log(err);
+        });
+
+    });
+}
+
 function logout() {
     $.ajax({
         url: '/auth/local/logout',
@@ -244,7 +282,7 @@ function editUserProfile() {
             context.instituteChecked = 'checked'
         }
 
-        let result1 = Handlebars.templates.userProfileInput(context);
+        let result1 = template.userProfileInput(context);
         $("#basicContainer").append(result1);
 
 
@@ -264,7 +302,7 @@ function editUserProfile() {
         contextSocial.instaLink = data.instaLink;
         contextSocial.linkedinLink = data.linkedinLink;
 
-        let result2 = Handlebars.templates.userSocialInput(context);
+        let result2 = template.userSocialInput(context);
         $("#userSocialLinksContainer").append(result2);
 
 
@@ -371,10 +409,39 @@ function removeBookmarks(queryId) {
                 string: queryId
             }
         }).then(data => {
-            $('#' + queryId).empty()
+            $('#' + queryId).remove()
         })
     }).catch(err => {
         console.log(err);
+    })
+}
+
+function deleteReview(userId, tuitionId, reviewId) {
+    $.ajax({
+        url: '/tuition/delete/reviews/' + tuitionId,
+        type: 'DELETE',
+        data: {
+            owner: userId
+        }
+    }).then((updatedTuition) => {
+        console.log('tuition Updated')
+    }).catch(err => {
+        console.log(err);
+        alert('this is embarrassing something went wrong');
+    });
+
+    $.ajax({
+        url: '/user/delete/reviewsOwned/' + userId,
+        method: 'DELETE',
+        data: {
+            outerId: tuitionId
+        }
+    }).then(updatedUser => {
+        console.log('user updated');
+        $('#' + reviewId).remove();
+    }).catch(err => {
+        console.log(err);
+        alert('this is embarrassing something went wrong');
     })
 }
 

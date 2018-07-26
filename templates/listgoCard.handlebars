@@ -71,10 +71,12 @@
             <!-- <span class="contact-no">
                  <a onclick="bookmark()" class="bookmark"></a>
              </span>-->
-            <div class="schedule-info closed">
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <h6>Open Now</h6>
-            </div>
+            {{#if openedNow}}
+                <div class="schedule-info closed">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <h6>Open Now</h6>
+                </div>
+            {{/if}}
         </div>
     </div>
 </article>

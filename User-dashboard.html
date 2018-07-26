@@ -104,12 +104,14 @@
         <div class="card">
             <div class="card-body p-1 p-md-3">
                 <ul class="nav nav-pills nav-pills-info flex-column">
-                    <hr>
                     <li class="nav-item"><a class="nav-link active" href="#tab1"
                                             data-toggle="tab"> Dashboard</a>
                     </li>
                     <li class="nav-item"><a class="nav-link " href="#tab4"
                                             data-toggle="tab"> Bookmarks</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link " href="#tab5"
+                                            data-toggle="tab"> My Reviews</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">
                         Edit Profile</a>
@@ -405,6 +407,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="tab-pane" id="tab5">
+                        <div id="userReviews" class="row p-2">
+                            <div class="card-title col-12">
+                                Your Reviews
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!--</div>-->
             </div>
@@ -477,8 +486,6 @@
 <!--HandleBars for templating-->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 <script src="assets/js/templates.js"></script>
-<script src="assets/js/compiledTemplates/listgoCard.js"></script>
-<script src="assets/js/compiledTemplates/listgoCardBookmark.js"></script>
 
 <!-- Custom Js file for user-->
 <script src="assets/js/user.js"></script>

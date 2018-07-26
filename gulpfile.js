@@ -34,7 +34,8 @@ gulp.task('templates', function(){
             namespace: 'template',
             noRedeclare: true, // Avoid duplicate declarations
         }))
-        .pipe(gulp.dest('assets/js/compiledTemplates/'));
+        .pipe(concat('templates.js'))
+        .pipe(gulp.dest('assets/js/'));
 });
 
 gulp.task('watch', () => {

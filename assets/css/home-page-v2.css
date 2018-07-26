@@ -11,3 +11,7 @@
 .tuition-cards {
     cursor: pointer;
 }
+/* the slides */
+.slick-slide {
+    margin: 0 27px;
+}
