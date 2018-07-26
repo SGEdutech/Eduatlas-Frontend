@@ -482,7 +482,6 @@
         </div>
 
         <div class="row" id="relatedTuitionContainer">
-
             <h6 class="col-md-12 card-title">Related Listing:</h6>
         </div>
 
@@ -490,77 +489,10 @@
 
     <div class="col-md-3">
         <div class="col">
-            <div class="row">     
-                    <small class="col-12" style="color:white;">Sponsored And Popular</small><br>           
-                <div class="col-12 tuition-cards">
-                <article class="popular-listing-post">
-                    <div class="post-thumb">
-                        <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive tutionimg" style="border-radius: 7px;">
-                        <div class="listing-info">
-                        </div>
-                        <div class="rating-area">
-                        </div>
-                        <!-- <div class="overlay"></div> -->
-                    </div>
-                    <div class="post-details" style="width:100%;">
-                        <div class="post-meta side">
-                            <div class="location sidebars" style="width:48%!important;margin-left:4px;float:left;border-right: 2px solid #e0d6d6;
-                            margin-top: 6px;">
-                            <button type="button"  class="tutionbutton"  data-toggle="modal" data-target="#emailModal" >
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <h5>E-Mail Us</h5>
-                            </button>
-                           
-                            </div>
-                            <div class="location tutionbutton" style="width:48%!important;margin-left:4px;float:left;border-right: 2px solid #e0d6d6;
-                            margin-top: 6px;">
-                            <button type="button" class="tutionbutton" style="background: none;border:none;"   data-toggle="modal" data-target="#smsModal" >
-                                    <i class="fa fa-inbox"></i>
-                                    <h5>Message Us</h5>
-                            </button>
-                                </div>
-                        </div>
-
-                        
-                        <div class="post-entry-block side">                                
-                           
-                        </div><br>
-                        <div class="post-footer side sidebars">
-                            <div class="contact-no sidebars"><br>
-                                    <i class="fa fa-address-card" aria-hidden="true"></i>
-                                <h5>The Brain Lab,New Palam Vihar</h5><br>
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <h5>+91 6767676767</h5><br>
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <h5>Testtesttest@gmail.com</h5><br>
-                            </div>
-
-                           
-
-                        </div>
-                    </div>
-                </article>
-            </div>
-           
-        
-            </div>
-
-        </div>
-        <div class="">
-            <div class="card-body">
-                <div id="claimContainer">
-                </div>
-                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#reportModal">
-                    <i class="material-icons">
-                        warning
-                    </i>Report Page
-                </button>
-            </div>
-        </div>
-
-        <div class="row">
+                 <!-- <div class="row" id="sponsoredPopular"> -->
+                  <div class="row">
                 <small class="col-12">Sponsored And Popular</small>
-                <div class="col-12 tuition-cards">
+                <div class="col-6 tuition-cards">
                 <article class="popular-listing-post">
                     <div class="post-thumb">
                         <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
@@ -592,10 +524,83 @@
                     </div>
                 </article>
             </div>
-            
+            <div class="col-6 tuition-cards">
+                <article class="popular-listing-post">
+                    <div class="post-thumb">
+                        <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
+                        <div class="listing-info">
+                        </div>
+                        <div class="rating-area">
 
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="post-details">
+                        <div class="post-meta side">
+                            <div class="location sidebars">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <h5>{{state}}</h5>
+                            </div>
 
+                        </div>
+                        <div class="post-entry-block side">
+                            <p class="post-entry">{{description}}</p>
+                        </div>
+                        <div class="post-footer side sidebars">
+                            <div class="contact-no sidebars">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <h5>{{primaryNumber}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-6 tuition-cards">
+                <article class="popular-listing-post">
+                    <div class="post-thumb">
+                        <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
+                        <div class="listing-info">
+                        </div>
+                        <div class="rating-area">
 
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="post-details">
+                        <div class="post-meta side">
+                            <div class="location sidebars">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <h5>{{state}}</h5>
+                            </div>
+
+                        </div>
+                        <div class="post-entry-block side">
+                            <p class="post-entry">{{description}}</p>
+                        </div>
+                        <div class="post-footer side sidebars">
+                            <div class="contact-no sidebars">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <h5>{{primaryNumber}}</h5>
+                            </div>
+
+                        </div>
+                    </div>
+                </article>
+            </div>
+            </div>
+
+        </div>
+        <div class="">
+            <div class="card-body">
+                <div id="claimContainer">
+                </div>
+                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#reportModal">
+                    <i class="material-icons">
+                        warning
+                    </i>Report Page
+                </button>
+            </div>
+        </div>
 
     </div>
 

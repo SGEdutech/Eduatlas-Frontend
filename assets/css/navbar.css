@@ -75,6 +75,17 @@
 | 1. General Style
 |----------------------------------------------------------------------------
 */
+.tutionimg
+{
+  border-radius: 7px;
+  height: 150px;
+  width: 100%;
+  margin-top: 9px;
+}
+.tutionbutton
+{
+  background: none;border:none;
+}
 .sub-main-w3 {
   display: -webkit-flex;
   display: -webkit-box;
@@ -1285,6 +1296,7 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
       vertical-align: middle;
       margin-bottom: 0; }
   .popular-listing-post .post-footer {
+    
     padding: 10px 30px;
     background: #f7f7f7; }
     .popular-listing-post .post-footer-search {
