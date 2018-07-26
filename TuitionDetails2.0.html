@@ -5,13 +5,14 @@
     <title>Tuition</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
     />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Material Kit CSS -->
     <link rel="stylesheet" href="assets/css/material-kit.css">
@@ -24,58 +25,61 @@
 </head>
 
 <body style="height: 2000px">
-    <nav class="navbar bg-dark fixed-top navbar-expand-lg" id="sectionsNav">
-        <div class="container">
-            <div class="navbar-translate">
-                <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="searchdetails.html?page=1&items=18">Institutes/Tuition</a>
-                    </li>
-                    <li class="nav-item disabled">
-                        <a class="nav-link" href="#">Schools</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">
-                                add
-                            </i>
-                            ADD LISTING</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add Tuition
-                            </a>
-                            <!--<div class="dropdown-divider"></div>
-                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown" id="dynamicUserBtn">
-                    </li>
-                    <!--<li class="nav-item disabled">
-                    <a class="nav-link" href="#">Events</a>
+<nav class="navbar bg-dark fixed-top navbar-expand-lg" id="sectionsNav">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="searchdetails.html?page=1&items=18">Institutes/Tuition</a>
                 </li>
                 <li class="nav-item disabled">
-                    <a class="nav-link" href="#">Blogs</a>
-                </li>-->
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div id="main_header" class="container mt-5">
-        <div class="row">
+                    <a class="nav-link" href="#">Schools</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">
+                            add
+                        </i>
+                        ADD LISTING</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add
+                            Tuition
+                        </a>
+                        <!--<div class="dropdown-divider"></div>
+                    <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
+                    </div>
+                </li>
+                <li class="nav-item dropdown" id="dynamicUserBtn">
+                </li>
+                <!--<li class="nav-item disabled">
+                <a class="nav-link" href="#">Events</a>
+            </li>
+            <li class="nav-item disabled">
+                <a class="nav-link" href="#">Blogs</a>
+            </li>-->
+            </ul>
         </div>
     </div>
+</nav>
+<div id="main_header" class="container mt-5">
+    <div class="row">
+    </div>
+</div>
 
-    <div id="secondary_info" class="container row p-0">
+<div id="secondary_info" class="container row p-0">
 
     <div class="col-md-9">
         <div class="card">
@@ -105,146 +109,146 @@
                             <a title="#" href="#" class="address">Lounge</a>,
                             <a title="#" href="#" class="address">Bar</a>
                         </span>-->
-                        </div>
                     </div>
-                    <div class="col-md-2" style="margin-top:24px;">
-                        <div tabindex="0" aria-label="Rated" data-res-id="18168125" class="rdiv">
-                            2.5
-                            <span>/5</span>
-                        </div>
-                        <br>
-                        <br>
-                        <span tabindex="0" aria-label="1924  votes" style="color:#89959B;float:right;">
+                </div>
+                <div class="col-md-2" style="margin-top:24px;">
+                    <div tabindex="0" aria-label="Rated" data-res-id="18168125" class="rdiv">
+                        2.5
+                        <span>/5</span>
+                    </div>
+                    <br>
+                    <br>
+                    <span tabindex="0" aria-label="1924  votes" style="color:#89959B;float:right;">
                             <span>
                                 <span>0</span> votes</span>
                         </span>
-                    </div>
                 </div>
-
             </div>
 
-            <div class="card">
-                <div class="card-body p-1 p-md-3">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <ul class="nav nav-pills nav-pills-rose flex-row flex-md-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#tab1" data-toggle="tab">Description</a>
-                                </li>
+        </div>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab3" data-toggle="tab">Courses</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab4" data-toggle="tab">Results</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab5" data-toggle="tab">Faculty</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab6" data-toggle="tab">Gallery</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#tab7" data-toggle="tab">Reviews</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab1">
+        <div class="card">
+            <div class="card-body p-1 p-md-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="nav nav-pills nav-pills-rose flex-row flex-md-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#tab1" data-toggle="tab">Description</a>
+                            </li>
 
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h2 class="card-title h3">Facilities:</h2>
-                                            <div id="facilities_container">
-                                            </div>
-                                        </div>
-                                    </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab3" data-toggle="tab">Courses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab4" data-toggle="tab">Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab5" data-toggle="tab">Faculty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab6" data-toggle="tab">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab7" data-toggle="tab">Reviews</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
 
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h2 class="card-title h3">About Us</h2>
-                                            <p id="description"></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h2 class="card-title h3">Category</h2>
-                                        </div>
-                                        <div id="category_container">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Facilities:</h2>
+                                        <div id="facilities_container">
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="tab-pane" id="tab2">
-                                    <div class="row justify-content-around m-0">
-                                        <div class="card col-md-6">
-                                            <div class="card-body">
-                                                <div class="card-title h3">
-                                                    Contact Us:
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Contact Person Name
-                                                </div>
-                                                <div id="contact_person">
-
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Primary Number
-                                                </div>
-                                                <div id="primary_number">
-
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Alternate Number
-                                                </div>
-                                                <div id="alternate_number">
-
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Email
-                                                </div>
-                                                <div class="email">
-
-                                                </div>
-                                                <div class="card-title h4">
-                                                    Website
-                                                </div>
-                                                <div id="website">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div id="" class="card card-nav-tabs col-md-5">
-                                            <div class="card-title h3">
-                                                Operates on
-                                            </div>
-                                            <div id="opration_hours_containers" class="row">
-                                            </div>
-                                        </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">About Us</h2>
+                                        <p id="description"></p>
                                     </div>
+                                </div>
 
-                                    <div class="card m-0" id="map"></div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Category</h2>
+                                    </div>
+                                    <div id="category_container">
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <div class="card">
+                            <div class="tab-pane" id="tab2">
+                                <div class="row justify-content-around m-0">
+                                    <div class="card col-md-6">
                                         <div class="card-body">
                                             <div class="card-title h3">
-                                                Social Links:
+                                                Contact Us:
                                             </div>
-                                            <div id="linkContainer">
+                                            <div class="card-title h4">
+                                                Contact Person Name
+                                            </div>
+                                            <div id="contact_person">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Primary Number
+                                            </div>
+                                            <div id="primary_number">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Alternate Number
+                                            </div>
+                                            <div id="alternate_number">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Email
+                                            </div>
+                                            <div class="email">
+
+                                            </div>
+                                            <div class="card-title h4">
+                                                Website
+                                            </div>
+                                            <div id="website">
+
                                             </div>
                                         </div>
                                     </div>
 
+                                    <div id="" class="card card-nav-tabs col-md-5">
+                                        <div class="card-title h3">
+                                            Operates on
+                                        </div>
+                                        <div id="opration_hours_containers" class="row">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="tab-pane" id="tab3">                       
-                                    <div class="row justify-content-around" id="coursesContainer">
-                                  
+
+                                <div class="card m-0" id="map"></div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title h3">
+                                            Social Links:
+                                        </div>
+                                        <div id="linkContainer">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane" id="tab3">
+                                <div class="row justify-content-around" id="coursesContainer">
+
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab4">
@@ -256,154 +260,160 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab6">
-                                    <div class="row blog-masonry" style="position: relative; height: 728.63px;">
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 0%; top: 0px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/m1.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                        
-                                                       
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                <div class="row blog-masonry" style="position: relative; height: 728.63px;">
+                                    <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                         style="position: absolute; left: 0%; top: 0px;">
+                                        <div class="blog-wrapper blog-column">
+                                            <div class="blog-thumb">
+                                                <a href="blog-details.html">
+                                                    <img src="assets/img/m1.jpg" alt="">
+                                                </a>
                                             </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 33.3333%; top: 0px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/8.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                       
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                            <div class="blog-content">
+
+
                                             </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 66.6667%; top: 0px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/m4.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                        
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                            <div class="meta-info">
+                                                <ul>
+                                                    <li class="posts-time">January 28, 2017</li>
+                                                    <li class="comments-count">
+                                                        <a href="#">4 Comments</a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 33.3333%; top: 275px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/5.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                       
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 66.6667%; top: 335px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/m2.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">                                                
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 0%; top: 410px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/m6.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                        
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                           <!--  <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 33.3333%; top: 982px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-content">
-                                                                                     
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                                         </div>
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="pagination">                            
-                                                </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                         style="position: absolute; left: 33.3333%; top: 0px;">
+                                        <div class="blog-wrapper blog-column">
+                                            <div class="blog-thumb">
+                                                <a href="blog-details.html">
+                                                    <img src="assets/img/8.jpg" alt="">
+                                                </a>
                                             </div>
-                                        </div>                                
+                                            <div class="blog-content">
+
+
+                                            </div>
+                                            <div class="meta-info">
+                                                <ul>
+                                                    <li class="posts-time">January 28, 2017</li>
+                                                    <li class="comments-count">
+                                                        <a href="#">4 Comments</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                         style="position: absolute; left: 66.6667%; top: 0px;">
+                                        <div class="blog-wrapper blog-column">
+                                            <div class="blog-thumb">
+                                                <a href="blog-details.html">
+                                                    <img src="assets/img/m4.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="blog-content">
+
+
+                                            </div>
+                                            <div class="meta-info">
+                                                <ul>
+                                                    <li class="posts-time">January 28, 2017</li>
+                                                    <li class="comments-count">
+                                                        <a href="#">4 Comments</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                         style="position: absolute; left: 33.3333%; top: 275px;">
+                                        <div class="blog-wrapper blog-column">
+                                            <div class="blog-thumb">
+                                                <a href="blog-details.html">
+                                                    <img src="assets/img/5.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="blog-content">
+
+
+                                            </div>
+                                            <div class="meta-info">
+                                                <ul>
+                                                    <li class="posts-time">January 28, 2017</li>
+                                                    <li class="comments-count">
+                                                        <a href="#">4 Comments</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                         style="position: absolute; left: 66.6667%; top: 335px;">
+                                        <div class="blog-wrapper blog-column">
+                                            <div class="blog-thumb">
+                                                <a href="blog-details.html">
+                                                    <img src="assets/img/m2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="blog-content">
+
+                                            </div>
+                                            <div class="meta-info">
+                                                <ul>
+                                                    <li class="posts-time">January 28, 2017</li>
+                                                    <li class="comments-count">
+                                                        <a href="#">4 Comments</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                         style="position: absolute; left: 0%; top: 410px;">
+                                        <div class="blog-wrapper blog-column">
+                                            <div class="blog-thumb">
+                                                <a href="blog-details.html">
+                                                    <img src="assets/img/m6.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="blog-content">
+
+
+                                            </div>
+                                            <div class="meta-info">
+                                                <ul>
+                                                    <li class="posts-time">January 28, 2017</li>
+                                                    <li class="comments-count">
+                                                        <a href="#">4 Comments</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 33.3333%; top: 982px;">
+                                         <div class="blog-wrapper blog-column">
+                                             <div class="blog-content">
+
+                                             </div>
+                                             <div class="meta-info">
+                                                 <ul>
+                                                     <li class="posts-time">January 28, 2017</li>
+                                                     <li class="comments-count">
+                                                         <a href="#">4 Comments</a>
+                                                     </li>
+                                                 </ul>
+                                             </div>
+                                         </div>
+                                     </div> -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="pagination">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane" id="tab7">
                                 <div class="m-2" id="noReviews">
@@ -453,316 +463,316 @@
                                         </button>
                                     </div>
                                 </div>
-                                    <div id="savedReviews">
+                                <div id="savedReviews">
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row" id="relatedTuitionContainer">
+        <div class="row" id="relatedTuitionContainer">
 
-                <h6 class="col-md-12 card-title">Related Listing:</h6>
-
-            </div>
+            <h6 class="col-md-12 card-title">Related Listing:</h6>
 
         </div>
 
-        <div class="col-md-3">
-            <div class="col">
-                <div class="row" id="sponsoredPopular">
-                    <small class="col-12">Sponsored And Popular</small>
-                    <!--<div class="col-6 tuition-cards">
-                    <article class="popular-listing-post">
-                        <div class="post-thumb">
-                            <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
-                            <div class="listing-info">
-                            </div>
-                            <div class="rating-area">
+    </div>
 
-                            </div>
-                            <div class="overlay"></div>
+    <div class="col-md-3">
+        <div class="col">
+            <div class="row" id="sponsoredPopular">
+                <small class="col-12">Sponsored And Popular</small>
+                <!--<div class="col-6 tuition-cards">
+                <article class="popular-listing-post">
+                    <div class="post-thumb">
+                        <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
+                        <div class="listing-info">
                         </div>
-                        <div class="post-details">
-                            <div class="post-meta side">
-                                <div class="location sidebars">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <h5>{{state}}</h5>
-                                </div>
+                        <div class="rating-area">
 
-                            </div>
-                            <div class="post-entry-block side">
-                                <p class="post-entry">{{description}}</p>
-                            </div>
-                            <div class="post-footer side sidebars">
-                                <div class="contact-no sidebars">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <h5>{{primaryNumber}}</h5>
-                                </div>
-
-                            </div>
                         </div>
-                    </article>
-                </div>
-                <div class="col-6 tuition-cards">
-                    <article class="popular-listing-post">
-                        <div class="post-thumb">
-                            <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
-                            <div class="listing-info">
-                            </div>
-                            <div class="rating-area">
-
-                            </div>
-                            <div class="overlay"></div>
-                        </div>
-                        <div class="post-details">
-                            <div class="post-meta side">
-                                <div class="location sidebars">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <h5>{{state}}</h5>
-                                </div>
-
-                            </div>
-                            <div class="post-entry-block side">
-                                <p class="post-entry">{{description}}</p>
-                            </div>
-                            <div class="post-footer side sidebars">
-                                <div class="contact-no sidebars">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <h5>{{primaryNumber}}</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-6 tuition-cards">
-                    <article class="popular-listing-post">
-                        <div class="post-thumb">
-                            <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
-                            <div class="listing-info">
-                            </div>
-                            <div class="rating-area">
-
-                            </div>
-                            <div class="overlay"></div>
-                        </div>
-                        <div class="post-details">
-                            <div class="post-meta side">
-                                <div class="location sidebars">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <h5>{{state}}</h5>
-                                </div>
-
-                            </div>
-                            <div class="post-entry-block side">
-                                <p class="post-entry">{{description}}</p>
-                            </div>
-                            <div class="post-footer side sidebars">
-                                <div class="contact-no sidebars">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <h5>{{primaryNumber}}</h5>
-                                </div>
-
-                            </div>
-                        </div>
-                    </article>
-                </div>-->
-                </div>
-
-            </div>
-            <div class="">
-                <div class="card-body">
-                    <div id="claimContainer">
+                        <div class="overlay"></div>
                     </div>
-                    <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#reportModal">
-                        <i class="material-icons">
-                            warning
-                        </i>Report Page
-                    </button>
-                </div>
+                    <div class="post-details">
+                        <div class="post-meta side">
+                            <div class="location sidebars">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <h5>{{state}}</h5>
+                            </div>
+
+                        </div>
+                        <div class="post-entry-block side">
+                            <p class="post-entry">{{description}}</p>
+                        </div>
+                        <div class="post-footer side sidebars">
+                            <div class="contact-no sidebars">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <h5>{{primaryNumber}}</h5>
+                            </div>
+
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-6 tuition-cards">
+                <article class="popular-listing-post">
+                    <div class="post-thumb">
+                        <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
+                        <div class="listing-info">
+                        </div>
+                        <div class="rating-area">
+
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="post-details">
+                        <div class="post-meta side">
+                            <div class="location sidebars">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <h5>{{state}}</h5>
+                            </div>
+
+                        </div>
+                        <div class="post-entry-block side">
+                            <p class="post-entry">{{description}}</p>
+                        </div>
+                        <div class="post-footer side sidebars">
+                            <div class="contact-no sidebars">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <h5>{{primaryNumber}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-6 tuition-cards">
+                <article class="popular-listing-post">
+                    <div class="post-thumb">
+                        <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
+                        <div class="listing-info">
+                        </div>
+                        <div class="rating-area">
+
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="post-details">
+                        <div class="post-meta side">
+                            <div class="location sidebars">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <h5>{{state}}</h5>
+                            </div>
+
+                        </div>
+                        <div class="post-entry-block side">
+                            <p class="post-entry">{{description}}</p>
+                        </div>
+                        <div class="post-footer side sidebars">
+                            <div class="contact-no sidebars">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <h5>{{primaryNumber}}</h5>
+                            </div>
+
+                        </div>
+                    </div>
+                </article>
+            </div>-->
             </div>
 
         </div>
+        <div class="">
+            <div class="card-body">
+                <div id="claimContainer">
+                </div>
+                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#reportModal">
+                    <i class="material-icons">
+                        warning
+                    </i>Report Page
+                </button>
+            </div>
+        </div>
 
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Contact via E-mail:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group m-0">
-                            <label for="email_name" class="bmd-label-floating">Your Name</label>
-                            <input type="text" class="form-control" id="email_name">
-                        </div>
-                        <div class="form-group m-0">
-                            <label for="email_phone" class="bmd-label-floating">Your Phone Number</label>
-                            <input type="number" class="form-control" id="email_phone">
-                        </div>
-                        <div class="form-group m-0">
-                            <label for="email_email" class="bmd-label-floating">Your Email Address</label>
-                            <input type="email" class="form-control" id="email_email">
-                        </div>
-                        <div class="form-group">
-                            <label for="email_message">Message</label>
-                            <textarea class="form-control" id="email_message" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-info">Send mail</button>
-                </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact via E-mail:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group m-0">
+                        <label for="email_name" class="bmd-label-floating">Your Name</label>
+                        <input type="text" class="form-control" id="email_name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email_phone" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="email_phone">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email_email" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="email_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="email_message">Message</label>
+                        <textarea class="form-control" id="email_message" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info">Send mail</button>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="smsModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Contact via SMS:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group m-0">
-                            <label for="sms_name" class="bmd-label-floating">Your Name</label>
-                            <input type="text" class="form-control" id="sms_name">
-                        </div>
-                        <div class="form-group m-0">
-                            <label for="sms_phone" class="bmd-label-floating">Your Phone Number</label>
-                            <input type="number" class="form-control" id="sms_phone">
-                        </div>
-                        <div class="form-group m-0">
-                            <label for="sms_email" class="bmd-label-floating">Your Email Address</label>
-                            <input type="email" class="form-control" id="sms_email">
-                        </div>
-                        <div class="form-group">
-                            <label for="sms_message">Message</label>
-                            <textarea class="form-control" id="sms_message" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-info">Send sms</button>
-                </div>
+<div class="modal fade" id="smsModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contact via SMS:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group m-0">
+                        <label for="sms_name" class="bmd-label-floating">Your Name</label>
+                        <input type="text" class="form-control" id="sms_name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="sms_phone" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="sms_phone">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="sms_email" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="sms_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="sms_message">Message</label>
+                        <textarea class="form-control" id="sms_message" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info">Send sms</button>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="claimModal" tabindex="-1" role="dialog" aria-labelledby="claimModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="claimModalLabel">Claim This Institute/Tuition</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p> We may call to confirm</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Not my institute</button>
-                    <button type="button" class="btn btn-info" onclick="claimListing()">Yes Claim</button>
-                </div>
+<div class="modal fade" id="claimModal" tabindex="-1" role="dialog" aria-labelledby="claimModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="claimModalLabel">Claim This Institute/Tuition</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> We may call to confirm</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Not my institute</button>
+                <button type="button" class="btn btn-info" onclick="claimListing()">Yes Claim</button>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Report issue with this page</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="/issue" method="POST" id="issueForm">
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Report issue with this page</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/issue" method="POST" id="issueForm">
 
-                        <div class="form-group m-0">
-                            <label for="name" class="bmd-label-floating">Your Name</label>
-                            <input type="text" class="form-control" id="name" name="name">
-                        </div>
-                        <div class="form-group m-0">
-                            <label for="contact" class="bmd-label-floating">Your Phone Number</label>
-                            <input type="number" class="form-control" id="contact" name="contact">
-                        </div>
-                        <div class="form-group m-0">
-                            <label for="email" class="bmd-label-floating">Your Email Address</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="desc">Message</label>
-                            <textarea class="form-control" name="description" id="desc" rows="3"></textarea>
-                        </div>
-                        <input class="form-control" name="id" id="idOfTuition" hidden>
-                        <input class="form-control" name="type" value="tuition" hidden>
-                    </form>
-                    <button onclick="submitIssue('issueForm')" class="btn btn-info">submit</button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                    <div class="form-group m-0">
+                        <label for="name" class="bmd-label-floating">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="contact" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="contact" name="contact">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Message</label>
+                        <textarea class="form-control" name="description" id="desc" rows="3"></textarea>
+                    </div>
+                    <input class="form-control" name="id" id="idOfTuition" hidden>
+                    <input class="form-control" name="type" value="tuition" hidden>
+                </form>
+                <button onclick="submitIssue('issueForm')" class="btn btn-info">submit</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-    <div id="loginModalContainer">
-    </div>
+</div>
+<div id="loginModalContainer">
+</div>
 
-    <!--   Core JS Files   -->
-    <script src="assets/js/core/jquery.min.js"></script>
-    <script src="assets/js/core/popper.min.js"></script>
-    <script src="assets/js/bootstrap-material-design.js"></script>
+<!--   Core JS Files   -->
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/bootstrap-material-design.js"></script>
 
-    <!-- Plugin for Date Time Picker and Full Calendar Plugin-->
-    <script src="assets/js/plugins/moment.min.js"></script>
+<!-- Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="assets/js/plugins/moment.min.js"></script>
 
-    <!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
-    <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+<!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
+<script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
 
-    <!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
-    <script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
+<!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
+<script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
 
-    <!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
+<!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
 
-    <!-- Plugin for Small Gallery in Product Page -->
-    <script src="assets/js/plugins/jquery.flexisel.js"></script>
+<!-- Plugin for Small Gallery in Product Page -->
+<script src="assets/js/plugins/jquery.flexisel.js"></script>
 
-    <!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-    <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+<!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+<script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
 
-    <!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
-    <script src="assets/js/plugins/nouislider.min.js"></script>
+<!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
+<script src="assets/js/plugins/nouislider.min.js"></script>
 
-    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
-    <script src="assets/js/material-kit.js?v=2.0.0"></script>
+<!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+<script src="assets/js/material-kit.js?v=2.0.0"></script>
 
-    <!--handle bars-->
-    <script src="assets/js/handlebars-v4.0.11.js"></script>
-    <script src="assets/js/templates.js"></script>
-    <script src="assets/js/compiledTemplates/listgoCard.js"></script>
-    <script src="assets/js/card-link.js"></script>
+<!--handle bars-->
+<script src="assets/js/handlebars-v4.0.11.js"></script>
+<script src="assets/js/templates.js"></script>
+<script src="assets/js/compiledTemplates/listgoCard.js"></script>
+<script src="assets/js/card-link.js"></script>
 
-    <!--login modal-->
-    <script src="assets/js/loginModal.js"></script>
+<!--login modal-->
+<script src="assets/js/loginModal.js"></script>
 
 <!-- Custom Code -->
 <script src="assets/js/tuition.js"></script>
@@ -777,7 +787,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4"
         type="text/javascript"></script>
 
-    <script src="assets/js/google-map.js"></script>
+<script src="assets/js/google-map.js"></script>
 
 </body>
 
