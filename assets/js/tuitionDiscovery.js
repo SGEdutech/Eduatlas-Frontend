@@ -306,9 +306,11 @@ function openNowInit(data) {
         let toTime = convertTo24Hours(todaysHours.toTime);
         let fromTime = convertTo24Hours(todaysHours.fromTime);
         let currentHours = d.getHours();
-        if (toTime.hours && fromTime.hours) {
-            if (currentHours <= toTime.hours && currentHours >= fromTime.hours) {
-                data.openedNow = true;
+        if (fromTime && toTime) {
+            if (toTime.hours && fromTime.hours) {
+                if (currentHours <= toTime.hours && currentHours >= fromTime.hours) {
+                    data.openedNow = true;
+                }
             }
         }
     }
