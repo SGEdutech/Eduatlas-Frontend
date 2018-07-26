@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="assets/css/tuitionDiscovery.css">
 </head>
 
-<body style="height: 2000px">
+<body>
 <nav class="navbar bg-dark fixed-top navbar-expand-lg" id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
@@ -79,528 +79,531 @@
     </div>
 </div>
 
-<div id="secondary_info" class="container row p-0">
-
-    <div class="col-md-9">
-        <div class="card">
-            <div>
-                <img id="cover_image" src="" class="rounded-top" style="width:100%;">
-            </div>
-            <div class="row justify-content-around">
-                <div class="col-md-8">
-                    <h2 class="imgheading" id="tuition_name">
-                        Tuition Name</h2>
-                    <div>
-                        <span class="badge badge-pill badge-default">Tag1</span>
-                        <span class="badge badge-pill badge-default">Tag2</span>
-                        <span class="badge badge-pill badge-default">Tag3</span>
-                        <span class="badge badge-pill badge-default">Tag4</span>
-                        <span class="badge badge-pill badge-default">Tag5</span>
-                        <!--<span class="middot grey-text">&nbsp;&nbsp;·&nbsp;</span>
-                    <span class="address">
-                        <i class="fa fa-phone address" aria-hidden="true"></i>
-                        <a title="#" href="#" class="address">Lounge</a>,
-                        <a title="#" href="#" class="address">Bar</a>
-                    </span>-->
-                    </div>
+<div id="secondary_info" class="container p-0">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card my-md-0">
+                <div>
+                    <img id="cover_image" src="" class="rounded-top" style="width:100%;">
                 </div>
-                <div class="col-md-4 justify-content-around" style="margin-top:24px;">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-info">Verified</button>
-                    <div tabindex="0" aria-label="Rated">
-                        <div class="col-12">
-                            <i class="material-icons" style="cursor: pointer" onclick="changeColor(1)">
-                                star
-                            </i>
-                            <i class="material-icons" style="cursor: pointer" onclick="changeColor(2)">
-                                star
-                            </i>
-                            <i class="material-icons" style="cursor: pointer" onclick="changeColor(3)">
-                                star
-                            </i>
-                            <i class="material-icons" style="cursor: pointer" onclick="changeColor(4)">
-                                star
-                            </i>
-                            <i class="material-icons" style="cursor: pointer" onclick="changeColor(5)">
-                                star
-                            </i>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="row">
+                                <h2 class="card-title" id="tuition_name">
+                                    Tuition Name
+                                </h2>
+                            </div>
+                            <div class="row" id="categoryPills">
+                                <!--<span class="badge badge-pill badge-default">Tag1</span>
+                                <span class="badge badge-pill badge-default">Tag2</span>
+                                <span class="badge badge-pill badge-default">Tag3</span>
+                                <span class="badge badge-pill badge-default">Tag4</span>
+                                <span class="badge badge-pill badge-default">Tag5</span>-->
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <!--<div class="col-md-2" style="margin-top:24px;">-->
-                    <!--<div tabindex="0" aria-label="Rated" data-res-id="18168125" class="rdiv">-->
-                        <!--2.5-->
-                        <!--<span>/5</span>-->
-                    <!--</div>-->
-                    <!--<br>-->
-                    <!--<br>-->
-                    <!--<span tabindex="0" aria-label="1924  votes" style="color:#89959B;float:right;">-->
-                            <!--<span>-->
-                                <!--<span>0</span> votes</span>-->
-                        <!--</span>-->
-                <!--</div>-->
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body p-1 p-md-3">
-                <div class="row">
-                    <div class="col-md-3">
-                        <ul class="nav nav-pills nav-pills-rose flex-row flex-md-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#tab1" data-toggle="tab">Description</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#tab3" data-toggle="tab">Courses</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#tab4" data-toggle="tab">Results</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#tab5" data-toggle="tab">Faculty</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#tab6" data-toggle="tab">Gallery</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#tab7" data-toggle="tab">Reviews</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tab1">
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2 class="card-title h3">Facilities:</h2>
-                                        <div id="facilities_container">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2 class="card-title h3">About Us</h2>
-                                        <p id="description"></p>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2 class="card-title h3">Category</h2>
-                                    </div>
-                                    <div id="category_container">
-                                    </div>
-                                </div>
+                        <div class="col-md-2">
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-info btn-round" style="cursor: default"
+                                        id="verified">Verified
+                                </button>
                             </div>
-
-                            <div class="tab-pane" id="tab2">
-                                <div class="row justify-content-around m-0">
-                                    <div class="card col-md-6">
-                                        <div class="card-body">
-                                            <div class="card-title h3">
-                                                Contact Us:
-                                            </div>
-                                            <div class="card-title h4">
-                                                Contact Person Name
-                                            </div>
-                                            <div id="contact_person">
-
-                                            </div>
-                                            <div class="card-title h4">
-                                                Primary Number
-                                            </div>
-                                            <div id="primary_number">
-
-                                            </div>
-                                            <div class="card-title h4">
-                                                Alternate Number
-                                            </div>
-                                            <div id="alternate_number">
-
-                                            </div>
-                                            <div class="card-title h4">
-                                                Email
-                                            </div>
-                                            <div class="email">
-
-                                            </div>
-                                            <div class="card-title h4">
-                                                Website
-                                            </div>
-                                            <div id="website">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="" class="card card-nav-tabs col-md-5">
-                                        <div class="card-title h3">
-                                            Operates on
-                                        </div>
-                                        <div id="opration_hours_containers" class="row">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card m-0" id="map"></div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title h3">
-                                            Social Links:
-                                        </div>
-                                        <div id="linkContainer">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="tab-pane" id="tab3">
-
-
-                                <div class="row justify-content-around" id="coursesContainer">
-
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tab4">
-                                <div class="row justify-content-around" id="resultsContainer">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tab5">
-                                <div class="row" id="facultyContainer">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tab6">
-                                    <div class="row blog-masonry" style="position: relative; height: 728.63px;">
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 0%; top: 0px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/m1.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                        
-                                                       
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 33.3333%; top: 0px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/8.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                       
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 66.6667%; top: 0px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/m4.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                        
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 33.3333%; top: 275px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/5.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                       
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 66.6667%; top: 335px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/m2.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">                                                
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 0%; top: 410px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-thumb">
-                                                        <a href="blog-details.html">
-                                                            <img src="assets/img/m6.jpg" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-content">
-                                                        
-                                                        
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                           <!--  <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 33.3333%; top: 982px;">
-                                                <div class="blog-wrapper blog-column">
-                                                    <div class="blog-content">
-                                                                                     
-                                                    </div>
-                                                    <div class="meta-info">
-                                                        <ul>
-                                                            <li class="posts-time">January 28, 2017</li>
-                                                            <li class="comments-count">
-                                                                <a href="#">4 Comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="pagination">                            
-                                                </div>
-                                            </div>
-                                        </div>                                
-                            </div>
-                            <div class="tab-pane" id="tab7">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title h3">
-                                            Rate and write a Review
-                                        </div>
-                                        <small class="card-subtitle">
-                                            Your review will be posted publicly on the web.
-                                        </small>
-                                        <form action="" id="reviewForm">
-                                            <div class="col-12" id="ratingContainer">
-                                                <i id="s1" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(1)">
-                                                    star
-                                                </i>
-                                                <i id="s2" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(2)">
-                                                    star
-                                                </i>
-                                                <i id="s3" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(3)">
-                                                    star
-                                                </i>
-                                                <i id="s4" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(4)">
-                                                    star
-                                                </i>
-                                                <i id="s5" class="material-icons" style="cursor: pointer"
-                                                   onclick="changeColor(5)">
-                                                    star
-                                                </i>
-                                            </div>
-                                            <input id="reviewOwnerInput" type="hidden" name="owner" value="">
-                                            <input id="reviewRatingInput" type="hidden" name="rating" value="">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlTextarea1">Review</label>
-                                                <textarea class="form-control" id="reviewDescriptionInput" rows="3"
-                                                          name="description"></textarea>
-                                            </div>
-                                        </form>
-                                        <button type="submit" class="btn btn-info" onclick="submitReview('reviewForm')">
-                                            Submit
-                                        </button>
-                                    </div>
-                                </div>
-                                <div id="savedReviews">
-
-                                </div>
+                            <div class="row justify-content-center">
+                                <i class="material-icons" id="star1">
+                                    star
+                                </i>
+                                <i class="material-icons" id="star2">
+                                    star
+                                </i>
+                                <i class="material-icons" id="star3">
+                                    star
+                                </i>
+                                <i class="material-icons" id="star4">
+                                    star
+                                </i>
+                                <i class="material-icons" id="star5">
+                                    star
+                                </i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="row" id="relatedTuitionContainer">
-
-            <h6 class="col-md-12 card-title">Related Listing:</h6>
-        </div>
-
-    </div>
-
-    <div class="col-md-3">
-        <div class="col">
-            <div class="row">     
-                    <small class="col-12" style="color:white;">Sponsored And Popular</small><br>           
-                <div class="col-12 tuition-cards">
-                <article class="popular-listing-post">
-                    <div class="post-thumb">
-                        <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive tutionimg" style="border-radius: 7px;">
-                        <div class="listing-info">
-                        </div>
-                        <div class="rating-area">
-                        </div>
-                        <!-- <div class="overlay"></div> -->
+        <div class="col-md-3">
+            <!--<article class="popular-listing-post">
+                <div class="post-thumb">
+                    <img src="/assets/img/Info_Simple.svg" alt="img" class="img-responsive tutionimg"
+                         style="border-radius: 7px;">
+                    <div class="listing-info">
                     </div>
-                    <div class="post-details" style="width:100%;">
-                        <div class="post-meta side">
-                            <div class="location sidebars" style="width:48%!important;margin-left:4px;float:left;border-right: 2px solid #e0d6d6;
+                    <div class="rating-area">
+                    </div>
+                    &lt;!&ndash; <div class="overlay"></div> &ndash;&gt;
+                </div>
+                <div class="post-details" style="width:100%;">
+                    <div class="post-meta side">
+                        <div class="location sidebars" style="width:48%!important;margin-left:4px;float:left;border-right: 2px solid #e0d6d6;
                             margin-top: 6px;">
-                            <button type="button"  class="tutionbutton"  data-toggle="modal" data-target="#emailModal" >
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <button type="button" class="tutionbutton" data-toggle="modal"
+                                    data-target="#emailModal">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <h5>E-Mail Us</h5>
                             </button>
-                           
-                            </div>
-                            <div class="location tutionbutton" style="width:48%!important;margin-left:4px;float:left;border-right: 2px solid #e0d6d6;
+
+                        </div>
+                        <div class="location tutionbutton" style="width:48%!important;margin-left:4px;float:left;border-right: 2px solid #e0d6d6;
                             margin-top: 6px;">
-                            <button type="button" class="tutionbutton" style="background: none;border:none;"   data-toggle="modal" data-target="#smsModal" >
-                                    <i class="fa fa-inbox"></i>
-                                    <h5>Message Us</h5>
+                            <button type="button" class="tutionbutton" style="background: none;border:none;"
+                                    data-toggle="modal" data-target="#smsModal">
+                                <i class="fa fa-inbox"></i>
+                                <h5>Message Us</h5>
                             </button>
-                                </div>
-                        </div>
-
-                        
-                        <div class="post-entry-block side">                                
-                           
-                        </div><br>
-                        <div class="post-footer side sidebars">
-                            <div class="contact-no sidebars"><br>
-                                    <i class="fa fa-address-card" aria-hidden="true"></i>
-                                <h5>The Brain Lab,New Palam Vihar</h5><br>
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <h5>+91 6767676767</h5><br>
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <h5>Testtesttest@gmail.com</h5><br>
-                            </div>
-
-                           
-
                         </div>
                     </div>
-                </article>
-            </div>
-           
-        
-            </div>
 
-        </div>
-        <div class="">
-            <div class="card-body">
-                <div id="claimContainer">
+
+                    <div class="post-entry-block side">
+                    </div>
+                    <br>
+                    <div class="post-footer side sidebars">
+                        <div class="contact-no sidebars"><br>
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                            <h5>The Brain Lab,New Palam Vihar</h5><br>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <h5>+91 6767676767</h5><br>
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <h5>Testtesttest@gmail.com</h5><br>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#reportModal">
-                    <i class="material-icons">
-                        warning
-                    </i>Report Page
-                </button>
+            </article>-->
+            <div class="card my-md-0" id="map" style="height: 11rem"></div>
+            <div class="card my-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 m-0 p-0">
+                            <button class="btn btn-block btn-outline-info btn-round" data-toggle="modal"
+                                    data-target="#emailModal">Email Us
+                            </button>
+                        </div>
+                        <div class="col-md-6 m-0 p-0" data-toggle="modal"
+                             data-target="#smsModal">
+                            <button class="btn btn-block btn-outline-info btn-round">Message Us</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1 px-0">
+                            <i class="material-icons" style="color: #00bcd4">
+                                location_on
+                            </i>
+                        </div>
+                        <div class="col-11">
+                            <p id="address"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1 px-0">
+                            <i class="material-icons" style="color: #00bcd4">
+                                phone
+                            </i>
+                        </div>
+                        <div class="col-11">
+                            <p id="phone"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1 px-0">
+                            <i class="material-icons" style="color: #00bcd4">
+                                email
+                            </i>
+                        </div>
+                        <div class="col-11">
+                            <p id="email"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="row">
-                <small class="col-12">Sponsored And Popular</small>
-                <div class="col-12 tuition-cards">
-                <article class="popular-listing-post">
-                    <div class="post-thumb">
-                        <img src="/assets/img/fourgirls.jpeg" alt="img" class="img-responsive">
-                        <div class="listing-info">
-                        </div>
-                        <div class="rating-area">
-
-                        </div>
-                        <div class="overlay"></div>
-                    </div>
-                    <div class="post-details">
-                        <div class="post-meta side">
-                            <div class="location sidebars">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <h5>{{state}}</h5>
-                            </div>
-
-                        </div>
-                        <div class="post-entry-block side">
-                            <p class="post-entry">{{description}}</p>
-                        </div>
-                        <div class="post-footer side sidebars">
-                            <div class="contact-no sidebars">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <h5>{{primaryNumber}}</h5>
-                            </div>
-
-                        </div>
-                    </div>
-                </article>
-            </div>
-            
-
-
-
-
     </div>
+    <div class="row align-content-between">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body p-1 p-md-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <ul class="nav nav-pills nav-pills-info flex-row flex-md-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#tab1" data-toggle="tab">Description</a>
+                                </li>
 
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#tab3" data-toggle="tab">Courses</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#tab4" data-toggle="tab">Results</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#tab5" data-toggle="tab">Faculty</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#tab6" data-toggle="tab">Gallery</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#tab7" data-toggle="tab">Reviews</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab1">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="card-title h3">Facilities:</h2>
+                                            <div id="facilities_container">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="card-title h3">About Us</h2>
+                                            <p id="description"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="card-title h3">Category</h2>
+                                        </div>
+                                        <div id="category_container">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="tab2">
+                                    <div class="row justify-content-around m-0">
+                                        <div class="card col-md-6">
+                                            <div class="card-body">
+                                                <div class="card-title h3">
+                                                    Contact Us:
+                                                </div>
+                                                <div class="card-title h4">
+                                                    Contact Person Name
+                                                </div>
+                                                <div id="contact_person">
+
+                                                </div>
+                                                <div class="card-title h4">
+                                                    Primary Number
+                                                </div>
+                                                <div id="primary_number">
+
+                                                </div>
+                                                <div class="card-title h4">
+                                                    Alternate Number
+                                                </div>
+                                                <div id="alternate_number">
+
+                                                </div>
+                                                <div class="card-title h4">
+                                                    Email
+                                                </div>
+                                                <div class="email">
+
+                                                </div>
+                                                <div class="card-title h4">
+                                                    Website
+                                                </div>
+                                                <div id="website">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="" class="card card-nav-tabs col-md-5">
+                                            <div class="card-title h3">
+                                                Operates on
+                                            </div>
+                                            <div id="opration_hours_containers" class="row">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--<div class="card m-0" id="map"></div>-->
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-title h3">
+                                                Social Links:
+                                            </div>
+                                            <div id="linkContainer">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane" id="tab3">
+
+
+                                    <div class="row justify-content-around" id="coursesContainer">
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab4">
+                                    <div class="row justify-content-around" id="resultsContainer">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab5">
+                                    <div class="row" id="facultyContainer">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab6">
+                                    <div class="row blog-masonry" style="position: relative; height: 728.63px;">
+                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                             style="position: absolute; left: 0%; top: 0px;">
+                                            <div class="blog-wrapper blog-column">
+                                                <div class="blog-thumb">
+                                                    <a href="blog-details.html">
+                                                        <img src="assets/img/m1.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+
+
+                                                </div>
+                                                <div class="meta-info">
+                                                    <ul>
+                                                        <li class="posts-time">January 28, 2017</li>
+                                                        <li class="comments-count">
+                                                            <a href="#">4 Comments</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                             style="position: absolute; left: 33.3333%; top: 0px;">
+                                            <div class="blog-wrapper blog-column">
+                                                <div class="blog-thumb">
+                                                    <a href="blog-details.html">
+                                                        <img src="assets/img/8.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+
+
+                                                </div>
+                                                <div class="meta-info">
+                                                    <ul>
+                                                        <li class="posts-time">January 28, 2017</li>
+                                                        <li class="comments-count">
+                                                            <a href="#">4 Comments</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                             style="position: absolute; left: 66.6667%; top: 0px;">
+                                            <div class="blog-wrapper blog-column">
+                                                <div class="blog-thumb">
+                                                    <a href="blog-details.html">
+                                                        <img src="assets/img/m4.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+
+
+                                                </div>
+                                                <div class="meta-info">
+                                                    <ul>
+                                                        <li class="posts-time">January 28, 2017</li>
+                                                        <li class="comments-count">
+                                                            <a href="#">4 Comments</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                             style="position: absolute; left: 33.3333%; top: 275px;">
+                                            <div class="blog-wrapper blog-column">
+                                                <div class="blog-thumb">
+                                                    <a href="blog-details.html">
+                                                        <img src="assets/img/5.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+
+
+                                                </div>
+                                                <div class="meta-info">
+                                                    <ul>
+                                                        <li class="posts-time">January 28, 2017</li>
+                                                        <li class="comments-count">
+                                                            <a href="#">4 Comments</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                             style="position: absolute; left: 66.6667%; top: 335px;">
+                                            <div class="blog-wrapper blog-column">
+                                                <div class="blog-thumb">
+                                                    <a href="blog-details.html">
+                                                        <img src="assets/img/m2.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+
+                                                </div>
+                                                <div class="meta-info">
+                                                    <ul>
+                                                        <li class="posts-time">January 28, 2017</li>
+                                                        <li class="comments-count">
+                                                            <a href="#">4 Comments</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
+                                             style="position: absolute; left: 0%; top: 410px;">
+                                            <div class="blog-wrapper blog-column">
+                                                <div class="blog-thumb">
+                                                    <a href="blog-details.html">
+                                                        <img src="assets/img/m6.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="blog-content">
+
+
+                                                </div>
+                                                <div class="meta-info">
+                                                    <ul>
+                                                        <li class="posts-time">January 28, 2017</li>
+                                                        <li class="comments-count">
+                                                            <a href="#">4 Comments</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--  <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 33.3333%; top: 982px;">
+                                             <div class="blog-wrapper blog-column">
+                                                 <div class="blog-content">
+
+                                                 </div>
+                                                 <div class="meta-info">
+                                                     <ul>
+                                                         <li class="posts-time">January 28, 2017</li>
+                                                         <li class="comments-count">
+                                                             <a href="#">4 Comments</a>
+                                                         </li>
+                                                     </ul>
+                                                 </div>
+                                             </div>
+                                         </div> -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="pagination">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab7">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-title h3">
+                                                Rate and write a Review
+                                            </div>
+                                            <small class="card-subtitle">
+                                                Your review will be posted publicly on the web.
+                                            </small>
+                                            <form action="" id="reviewForm">
+                                                <div class="col-12" id="ratingContainer">
+                                                    <i id="s1" class="material-icons" style="cursor: pointer"
+                                                       onclick="changeColor(1)">
+                                                        star
+                                                    </i>
+                                                    <i id="s2" class="material-icons" style="cursor: pointer"
+                                                       onclick="changeColor(2)">
+                                                        star
+                                                    </i>
+                                                    <i id="s3" class="material-icons" style="cursor: pointer"
+                                                       onclick="changeColor(3)">
+                                                        star
+                                                    </i>
+                                                    <i id="s4" class="material-icons" style="cursor: pointer"
+                                                       onclick="changeColor(4)">
+                                                        star
+                                                    </i>
+                                                    <i id="s5" class="material-icons" style="cursor: pointer"
+                                                       onclick="changeColor(5)">
+                                                        star
+                                                    </i>
+                                                </div>
+                                                <input id="reviewOwnerInput" type="hidden" name="owner" value="">
+                                                <input id="reviewRatingInput" type="hidden" name="rating" value="">
+                                                <div class="form-group">
+                                                    <label for="reviewDescriptionInput">Review</label>
+                                                    <textarea class="form-control" id="reviewDescriptionInput" rows="3"
+                                                              name="description"></textarea>
+                                                </div>
+                                            </form>
+                                            <button type="submit" class="btn btn-info"
+                                                    onclick="submitReview('reviewForm')">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div id="savedReviews">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="relatedTuitionContainer">
+
+                <h6 class="col-md-12 card-title">Related Listing:</h6>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="">
+                <div class="my-3">
+                    <div id="claimContainer">
+                    </div>
+                    <button type="button" class="btn btn-block btn-danger" data-toggle="modal"
+                            data-target="#reportModal">
+                        <i class="material-icons">
+                            warning
+                        </i>Report Page
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <small class="col-12">Sponsored And Popular</small>
+                <hr>
+                <div class="col-12" id="sponsoredPopular">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -718,7 +721,7 @@
                     </div>
                     <div class="form-group m-0">
                         <label for="email" class="bmd-label-floating">Your Email Address</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="email" class="form-control" id="email2" name="email">
                     </div>
                     <div class="form-group">
                         <label for="desc">Message</label>

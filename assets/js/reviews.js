@@ -78,3 +78,11 @@ function changeColor(rating) {
         array[i].css('color', '#00bcd4')
     }
 }
+
+function changeColorInit(rating) {
+    $('#reviewRatingInput').val(rating);
+    let array = [$('#star1'), $('#star2'), $('#star3'), $('#star4'), $('#star5')];
+    for (let i = 0; i < rating; i++) {
+        array[i].css('color', '#00bcd4')
+    }
+}

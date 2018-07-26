@@ -41,17 +41,17 @@ function updateThePage(data) {
     }
 
     if (data.img_tuitionCoverPic === undefined || data.img_tuitionCoverPic === '') {
-        $('#cover_image').attr("src", "/assets/img/cover.jpg");
+        $('#cover_image').attr("src", "/assets/img/fourgirls.jpeg");
     } else {
         $('#cover_image').attr('src', 'images/' + data.img_tuitionCoverPic);
 
     }
 
-    getGeocode(data.addressLine1 + ', ' + data.addressLine2 + ',' + data.city + ',' + data.district + ',' + data.state)
+    getGeocode(data.addressLine1 + ', ' + data.addressLine2 + ',' + data.city + ',' + data.district + ',' + data.state);
 
     $('#idOfTuition').val(data._id);
     $('#tuition_name').html(data.name);
-    $('#address').html(data.addressLine1 + ', ' + data.addressLine2);
+    $('#address').html(data.addressLine1 + ', ' + data.addressLine2 + ',' + data.city + ',' + data.pin);
     $('#phone').html(data.primaryNumber);
     $('.email').html(data.email);
     $('#description').html(data.description);
@@ -60,10 +60,30 @@ function updateThePage(data) {
     $('#alternate_number').html(data.secondaryNumber);
     $('#website').html(data.website);
     if (data.rating === undefined || data.rating === '') {
-        $('#rating').html('2.5');
+        changeColorInit(2.5)
     } else {
-        $('#rating').html(data.rating);
+        changeColorInit(data.rating);
     }
+
+    if (data.claimedBy === undefined || data.claimedBy === '') {
+        //hide verified
+        $('#verified').hide()
+    } else {
+        // do nothing
+    }
+
+    if (data.category === undefined || data.category === '') {
+        // do nothing
+    } else {
+        // show pills
+        let toAppend = ''
+        data.category.split(',').forEach(category => {
+            toAppend += `<span class="badge badge-pill badge-info">${category}</span>`
+        });
+
+        $('#categoryPills').append(toAppend)
+    }
+
 
     showDaynTime(data.dayAndTimeOfOperation);
     showCourses(data.courses);
