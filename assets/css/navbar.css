@@ -163,11 +163,11 @@
   .form {
   margin: calc(var(--formFieldMargin) * -1);
   }
-  .form input[type='password'],
+  /* .form input[type='password'],
   .form input[type='text'],
   .form input[type='submit'] {
   width: 100%;
-  }
+  } */
   .form__field {
   display: flex;
   margin: var(--formFieldMargin);
