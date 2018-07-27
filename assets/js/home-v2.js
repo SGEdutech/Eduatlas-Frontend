@@ -9,7 +9,9 @@ function appendCards(tuitionsArray) {
     let cardHtml = '';
     tuitionsArray.forEach(tuition => {
         sanatiseData(tuition);
-        cardHtml += template.listgoCard(tuition)
+        tuition.rating = getAvgRating(tuition.reviews);
+        openNowInit(tuition);
+        cardHtml += template.smoothCardHomePage(tuition)
     });
     $('#cards_container').html(cardHtml);
     initSlick();

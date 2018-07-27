@@ -91,12 +91,14 @@ function getAvgRating(reviewsArray) {
     if (reviewsArray === undefined || reviewsArray === [] || reviewsArray.length === 0) {
         return 2.5;
     }
-    let toReturn = 5;
+    console.log(reviewsArray);
+    let toReturn = 0;
     reviewsArray.forEach(reviewObj => {
         if (reviewObj.rating) {
-            toReturn = (toReturn + reviewObj.rating) / 2;
+            toReturn = toReturn + reviewObj.rating;
         }
     });
+    toReturn = toReturn / reviewsArray.length;
     return toReturn;
 
 }

@@ -21,7 +21,7 @@ if (!complexSearch) {
     const AllTuitionJSON = $.ajax({
         url: '/tuition/all',
         data: {
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation',
+            demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
             limit: itemsPerPage,
             skip: skip
         }
@@ -30,8 +30,10 @@ if (!complexSearch) {
     AllTuitionJSON.then((data) => {
             let result = '';
             data.forEach(obj => {
+                console.log(obj);
+                obj.rating = getAvgRating(obj.reviews);
                 openNowInit(obj);
-                result += `<div class="col-md-4">${template.listgoCard(obj)}</div>`
+                result += template.smoothCard(obj);
             });
 
             $("#content-placeholder").append(result);
@@ -89,8 +91,9 @@ if (!complexSearch) {
     }).then(data => {
         let result = '';
         data.forEach(obj => {
+            obj.rating = getAvgRating(obj.reviews);
             openNowInit(obj);
-            result += `<div class="col-md-4">${template.listgoCard(obj)}</div>`
+            result += template.smoothCard(obj);
         });
         container.append(result);
 
@@ -193,8 +196,9 @@ function getSearchResultsComplex() {
     }).then(data => {
         let result = '';
         data.forEach(obj => {
+            obj.rating = getAvgRating(obj.reviews);
             openNowInit(obj);
-            result += `<div class="col-md-4">${template.listgoCard(obj)}</div>`
+            result += template.smoothCard(obj);
         });
         container.append(result);
 
@@ -238,42 +242,6 @@ function sanatiseData(tuition) {
     if (tuition.description && tuition.description.length > 70) {
         tuition.description = tuition.description.slice(0, 67) + '...';
     }
-}
-
-function bookmark(queryId) {
-
-    $.ajax({
-        url: '/user/check',
-    }).then((userdata) => {
-        if (userdata == 'LogIn') {
-            $('#loginModal').modal('show');
-        } else {
-            let AlreadyBookmarked = false;
-            userdata.bookmarkTuitions.forEach(tuitionID => {
-                if (tuitionID == queryId) {
-                    AlreadyBookmarked = true;
-                }
-            });
-            if (AlreadyBookmarked) {
-                //already bookmarked do nothing
-                alert('already bookmarked')
-            } else {
-                //bookmark now
-                $.ajax({
-                    url: '/user/add/bookmarkTuitions/' + userdata._id,
-                    method: 'POST',
-                    data: {
-                        string: queryId
-                    }
-                }).then(data => {
-                    alert('bookmarked successfully')
-                })
-            }
-
-        }
-    }).catch(err => {
-        console.log(err);
-    })
 }
 
 //auto pick location

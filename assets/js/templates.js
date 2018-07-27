@@ -198,6 +198,72 @@ this["template"]["showSearchResult"] = Handlebars.template({"compiler":[7,">= 4.
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "\"</p>\r\n    </div>\r\n</div>";
 },"useData":true});
+this["template"]["smoothCard"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    return "                        <span class=\"badge badge-info\">verified</span>\r\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "                    <p class=\"font-weight-bold text-success\">Open Now</p>\r\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<div class=\"col-4\">\r\n    <div class=\"card newFont\">\r\n        <div class=\" tuition-cards\" onclick=\"openTuitionPage('"
+    + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
+    + "')\">\r\n            <div class=\"card p-0 m-0 rounded-0 rounded-top\"\r\n                 style=\"overflow: hidden;text-overflow: ellipsis\">\r\n                <div class=\"rounded-top\"\r\n                     style=\"position: absolute; height: 192px;width: 100%;background-color: rgba(0,0,0,0.5)\">\r\n                </div>\r\n                <img class=\"card-img-top\" src=\"/assets/img/fourgirls.jpeg\" alt=\"Tuition Image\"\r\n                     style=\"height: 192px;width: 100%;\">\r\n                <div class=\"card-img-overlay\">\r\n                    <h4 class=\"card-title text-white\">"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</h4>\r\n                    <span class=\"badge badge-info\">"
+    + alias4(((helper = (helper = helpers.rating || (depth0 != null ? depth0.rating : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rating","hash":{},"data":data}) : helper)))
+    + "/5</span>\r\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.claimedBy : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"card-body pb-0\">\r\n            <div class=\"row\">\r\n                <div class=\"col-1 px-0\">\r\n                    <i class=\"material-icons md-18\" style=\"color: #00bcd4\">\r\n                        location_on\r\n                    </i>\r\n                </div>\r\n                <div class=\"col-11\">\r\n                    <p id=\"address\">"
+    + alias4(((helper = (helper = helpers.addressLine1 || (depth0 != null ? depth0.addressLine1 : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"addressLine1","hash":{},"data":data}) : helper)))
+    + ","
+    + alias4(((helper = (helper = helpers.addressLine2 || (depth0 != null ? depth0.addressLine2 : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"addressLine2","hash":{},"data":data}) : helper)))
+    + ","
+    + alias4(((helper = (helper = helpers.city || (depth0 != null ? depth0.city : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"city","hash":{},"data":data}) : helper)))
+    + ","
+    + alias4(((helper = (helper = helpers.state || (depth0 != null ? depth0.state : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"state","hash":{},"data":data}) : helper)))
+    + "</p>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-1 px-0\">\r\n                    <i class=\"material-icons md-18\" style=\"color: #00bcd4\">\r\n                        phone\r\n                    </i>\r\n                </div>\r\n                <div class=\"col-11\">\r\n                    <p id=\"phone\">"
+    + alias4(((helper = (helper = helpers.primaryNumber || (depth0 != null ? depth0.primaryNumber : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"primaryNumber","hash":{},"data":data}) : helper)))
+    + "</p>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-1 px-0\">\r\n                    <i class=\"material-icons md-18\" style=\"color: #00bcd4\">\r\n                        email\r\n                    </i>\r\n                </div>\r\n                <div class=\"col-11\">\r\n                    <p id=\"email\">"
+    + alias4(((helper = (helper = helpers.primaryEmail || (depth0 != null ? depth0.primaryEmail : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"primaryEmail","hash":{},"data":data}) : helper)))
+    + "</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"pb-0 pt-2 rounded-0 card-footer justify-content-center\">\r\n            <div class=\"col\">\r\n                <!--<i class=\"material-icons\" style=\"cursor: pointer\">\r\n                    bookmark\r\n                </i>-->\r\n                <i class=\"material-icons\" style=\"cursor: pointer\" onclick=\"bookmark('"
+    + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
+    + "')\">\r\n                    bookmark_border\r\n                </i>\r\n            </div>\r\n            <div class=\"col-6 text-center\">\r\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.openedNow : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "            </div>\r\n            <div class=\"col\">\r\n                <i class=\"material-icons\">\r\n                    share\r\n                </i>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
+},"useData":true});
+this["template"]["smoothCardHomePage"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    return "                    <span class=\"badge badge-info\">verified</span>\r\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "                <p class=\"font-weight-bold text-success\">Open Now</p>\r\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<div class=\"card newFont\">\r\n    <div class=\" tuition-cards\" onclick=\"openTuitionPage('"
+    + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
+    + "')\">\r\n        <div class=\"card p-0 m-0 rounded-0 rounded-top\"\r\n             style=\"overflow: hidden;text-overflow: ellipsis\">\r\n            <div class=\"rounded-top\"\r\n                 style=\"position: absolute; height: 192px;width: 100%;background-color: rgba(0,0,0,0.5)\">\r\n            </div>\r\n            <img class=\"card-img-top\" src=\"/assets/img/fourgirls.jpeg\" alt=\"Tuition Image\"\r\n                 style=\"height: 192px;width: 100%;\">\r\n            <div class=\"card-img-overlay\">\r\n                <h4 class=\"card-title text-white\">"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</h4>\r\n                <span class=\"badge badge-info\">"
+    + alias4(((helper = (helper = helpers.rating || (depth0 != null ? depth0.rating : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rating","hash":{},"data":data}) : helper)))
+    + "/5</span>\r\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.claimedBy : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"card-body pb-0\">\r\n        <div class=\"row\">\r\n            <div class=\"col-1 px-0\">\r\n                <i class=\"material-icons md-18\" style=\"color: #00bcd4\">\r\n                    location_on\r\n                </i>\r\n            </div>\r\n            <div class=\"col-11\">\r\n                <p id=\"address\">"
+    + alias4(((helper = (helper = helpers.addressLine1 || (depth0 != null ? depth0.addressLine1 : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"addressLine1","hash":{},"data":data}) : helper)))
+    + ","
+    + alias4(((helper = (helper = helpers.addressLine2 || (depth0 != null ? depth0.addressLine2 : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"addressLine2","hash":{},"data":data}) : helper)))
+    + ","
+    + alias4(((helper = (helper = helpers.city || (depth0 != null ? depth0.city : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"city","hash":{},"data":data}) : helper)))
+    + ","
+    + alias4(((helper = (helper = helpers.state || (depth0 != null ? depth0.state : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"state","hash":{},"data":data}) : helper)))
+    + "</p>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-1 px-0\">\r\n                <i class=\"material-icons md-18\" style=\"color: #00bcd4\">\r\n                    phone\r\n                </i>\r\n            </div>\r\n            <div class=\"col-11\">\r\n                <p id=\"phone\">"
+    + alias4(((helper = (helper = helpers.primaryNumber || (depth0 != null ? depth0.primaryNumber : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"primaryNumber","hash":{},"data":data}) : helper)))
+    + "</p>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-1 px-0\">\r\n                <i class=\"material-icons md-18\" style=\"color: #00bcd4\">\r\n                    email\r\n                </i>\r\n            </div>\r\n            <div class=\"col-11\">\r\n                <p id=\"email\">"
+    + alias4(((helper = (helper = helpers.primaryEmail || (depth0 != null ? depth0.primaryEmail : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"primaryEmail","hash":{},"data":data}) : helper)))
+    + "</p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"pb-0 pt-2 rounded-0 card-footer justify-content-center\">\r\n        <div class=\"col\">\r\n            <!--<i class=\"material-icons\" style=\"cursor: pointer\">\r\n                bookmark\r\n            </i>-->\r\n            <i class=\"material-icons\" style=\"cursor: pointer\" onclick=\"bookmark('"
+    + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
+    + "')\">\r\n                bookmark_border\r\n            </i>\r\n        </div>\r\n        <div class=\"col-6 text-center\">\r\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.openedNow : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "        </div>\r\n        <div class=\"col\">\r\n            <i class=\"material-icons\">\r\n                share\r\n            </i>\r\n        </div>\r\n    </div>\r\n</div>";
+},"useData":true});
 this["template"]["tuitionCard"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
