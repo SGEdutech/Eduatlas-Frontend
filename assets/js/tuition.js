@@ -21,18 +21,18 @@ function updateThePage(data) {
         });
         promise.then((data) => {
             if (data === 'LogIn') {
-                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#loginModal">
+                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#loginModal">
                         Claim This Page
                     </button>`)
             } else {
-                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#claimModal">
+                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#claimModal">
                         Claim This Page
                     </button>`)
             }
         });
     } else {
         isClaimed = true;
-        $('#claimContainer').append(`<button type="button" class="btn btn-block btn-info">
+        $('#claimContainer').append(`<button type="button" class="btn btn-block btn-round btn-info">
                         <i class="material-icons">
                             done
                         </i>
@@ -44,7 +44,6 @@ function updateThePage(data) {
         $('#cover_image').attr("src", "/assets/img/fourgirls.jpeg");
     } else {
         $('#cover_image').attr('src', 'images/' + data.img_tuitionCoverPic);
-
     }
 
     getGeocode(data.addressLine1 + ', ' + data.addressLine2 + ',' + data.city + ',' + data.district + ',' + data.state);
@@ -59,11 +58,6 @@ function updateThePage(data) {
     $('#primary_number').html(data.primaryNumber);
     $('#alternate_number').html(data.secondaryNumber);
     $('#website').html(data.website);
-    if (data.rating === undefined || data.rating === '') {
-        changeColorInit(2.5)
-    } else {
-        changeColorInit(data.rating);
-    }
 
     if (data.claimedBy === undefined || data.claimedBy === '') {
         //hide verified
@@ -83,13 +77,18 @@ function updateThePage(data) {
 
         $('#categoryPills').append(toAppend)
     }
-
-
+    openNowInit(data);
+    if (data.openedNow) {
+        $('#openNow').append(`<span class="badge badge-pill badge-success">open now</span>`)
+    } else {
+        $('#openNow').append(`<span class="badge badge-pill badge-danger">closed now</span>`)
+    }
     showDaynTime(data.dayAndTimeOfOperation);
     showCourses(data.courses);
     showResults(data.bragging);
     showFaculty(data.team);
     showSocialLinks(data.fbLink, data.instaLink, data.youtubeLink);
+    showGallery(data.gallery);
 
     doTheTemplateStuff(data);
 }
@@ -254,6 +253,17 @@ function showSocialLinks(f, i, y) {
     $("#linkContainer").append(result);
 }
 
+function showGallery(array) {
+    if (array === undefined || array === []) {
+        return
+    }
+    let result = '';
+    array.forEach(imgPath => {
+        result += template.galleryImg({path: imgPath});
+    });
+    $("#gallery").append(result);
+}
+
 function doTheTemplateStuff(data) {
     const facilityArr = data.facilities ? data.facilities.split(',') : [];
     let result1 = template.tuitionFacility({facilities: facilityArr});
@@ -389,7 +399,6 @@ function getGeocode(address) {
     promise.then(data => {
         lat = data.results[0].geometry.location.lat;
         lng = data.results[0].geometry.location.lng;
-        console.log(lat);
         initMap(lat, lng)
     })
 }
@@ -445,7 +454,11 @@ function sanatiseData(tuition) {
 }
 
 function getReviews(reviewsArray) {
-    console.log(reviewsArray);
+    if (reviewsArray === undefined || reviewsArray === []) {
+        return;
+    }
+    let avgRating= getAvgRating(reviewsArray);
+    changeColorInit(avgRating);
     let toAppend = '';
     reviewsArray.forEach(obj => {
         toAppend += template.tuitionReviews(obj)
