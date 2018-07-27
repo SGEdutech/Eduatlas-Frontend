@@ -1,0 +1,28 @@
+.wrapper{
+width: 37%!important;
+margin: auto!important;
+background-color: #f1f1ec!important;
+padding: 60px!important;
+height: auto!important;
+margin-top: 143px!important;
+}
+.logininput{
+border:1px solid #f96332;
+
+}
+
+@media only screen and (max-width: 650px) {
+    .wrapper{
+    width: 90%!important;
+    margin: auto!important;
+    background-color: #f1f1ec!important;
+    padding: 60px!important;
+    height: auto!important;
+    margin-top: 130px!important;
+}
+}
+
+.loginbutton
+{
+    float:right;
+}
