@@ -487,39 +487,21 @@
                         <button class="btn btn-info" onclick="showNextTab('tab6')">Save And Continue</button>
                     </div>
                     <div class="tab-pane" id="tab6">
-                        <div class="row ">
-                            <div class="col-md-4">
-                                <img class="img-fluid rounded img-raised my-3"
-                                     src="http://via.placeholder.com/350x150"
-                                     alt="Card image" style="height: 15rem; width: 100%">
-                            </div>
-                            <div class="col-md-4">
-                                <img class="img-fluid rounded img-raised my-3"
-                                     src="http://via.placeholder.com/440x660"
-                                     alt="Card image" style="height: 15rem; width: 100%">
-                            </div>
-                            <div class="col-md-4">
-                                <img class="img-fluid rounded img-raised my-3"
-                                     src="http://via.placeholder.com/350x150"
-                                     alt="Card image" style="height: 15rem; width: 100%">
-                            </div>
-                            <div class="col-md-4">
-                                <img class="img-fluid rounded img-raised my-3"
-                                     src="http://via.placeholder.com/770x770"
-                                     alt="Card image" style="height: 15rem; width: 100%">
-                            </div>
-                            <div class="col-md-4">
-                                <img class="img-fluid rounded img-raised my-3"
-                                     src="http://via.placeholder.com/350x150"
-                                     alt="Card image" style="height: 15rem; width: 100%">
-                            </div>
-                            <div class="col-md-4">
-                                <img class="img-fluid rounded img-raised my-3"
-                                     src="http://via.placeholder.com/1920x1080"
-                                     alt="Card image" style="height: 15rem; width: 100%">
-                            </div>
+                        <div class="form-group form-file-upload form-file-multiple">
+                            <form id="galleryForm">
+                                <input type="file" multiple="" class="inputFileHidden">
+                                <div class="input-group">
+                                    <input type="text" class="form-control inputFileVisible"
+                                           placeholder="click here and choose less than 8 pics" multiple>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-fab btn-round btn-info">
+                                            <i class="material-icons">layers</i>
+                                        </button>
+                                </span>
+                                </div>
+                            </form>
                         </div>
-                        <a class="btn btn-info" href="User-dashboard.html">Save And Exit</a>
+                        <button class="btn btn-info" onclick="addGallery()">Save And Exit</button>
                     </div>
                 </div>
                 <!--</div>-->

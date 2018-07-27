@@ -21,18 +21,18 @@ function updateThePage(data) {
         });
         promise.then((data) => {
             if (data === 'LogIn') {
-                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#loginModal">
+                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#loginModal">
                         Claim This Page
                     </button>`)
             } else {
-                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#claimModal">
+                $('#claimContainer').append(`<button id="" type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#claimModal">
                         Claim This Page
                     </button>`)
             }
         });
     } else {
         isClaimed = true;
-        $('#claimContainer').append(`<button type="button" class="btn btn-block btn-info">
+        $('#claimContainer').append(`<button type="button" class="btn btn-block btn-round btn-info">
                         <i class="material-icons">
                             done
                         </i>
@@ -44,7 +44,6 @@ function updateThePage(data) {
         $('#cover_image').attr("src", "/assets/img/fourgirls.jpeg");
     } else {
         $('#cover_image').attr('src', 'images/' + data.img_tuitionCoverPic);
-
     }
 
     getGeocode(data.addressLine1 + ', ' + data.addressLine2 + ',' + data.city + ',' + data.district + ',' + data.state);
@@ -83,13 +82,20 @@ function updateThePage(data) {
 
         $('#categoryPills').append(toAppend)
     }
-
-
+    console.log(data.dayAndTimeOfOperation);
+    openNowInit(data);
+    console.log(data.dayAndTimeOfOperation);
+    if (data.openedNow) {
+        $('#openNow').append(`<span class="badge badge-pill badge-success">open now</span>`)
+    }else{
+        $('#openNow').append(`<span class="badge badge-pill badge-danger">closed now</span>`)
+    }
     showDaynTime(data.dayAndTimeOfOperation);
     showCourses(data.courses);
     showResults(data.bragging);
     showFaculty(data.team);
     showSocialLinks(data.fbLink, data.instaLink, data.youtubeLink);
+    showGallery(data.gallery);
 
     doTheTemplateStuff(data);
 }
@@ -252,6 +258,17 @@ function showSocialLinks(f, i, y) {
 
     let result = template.tuitionLinks(context);
     $("#linkContainer").append(result);
+}
+
+function showGallery(array) {
+    if (array === undefined || array === []) {
+        return
+    }
+    let result = '';
+    array.forEach(imgPath => {
+        result += template.galleryImg({path: imgPath});
+    });
+    $("#gallery").append(result);
 }
 
 function doTheTemplateStuff(data) {

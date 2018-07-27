@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/tuition-detail2.0.css">
+    <!--for gallery-->
+    <link rel="stylesheet" href="assets/css/lightbox.min.css">
+    <link rel="stylesheet" href="assets/css/gallery.css">
+
     <!-- Custom Styles from Tuition-Discovery -->
     <link rel="stylesheet" href="assets/css/tuitionDiscovery.css">
 </head>
@@ -89,10 +93,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-10">
-                            <div class="row">
+                            <div class="row align-items-center">
                                 <h2 class="card-title mb-2" id="tuition_name">
                                     Tuition Name
                                 </h2>
+                                <div class="mx-3" id="openNow">
+
+                                </div>
                             </div>
                             <div class="row" id="categoryPills">
                                 <!--<span class="badge badge-pill badge-default">Tag1</span>
@@ -363,159 +370,47 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab6">
-                                    <div class="row blog-masonry" style="position: relative; height: 728.63px;">
-                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
-                                             style="position: absolute; left: 0%; top: 0px;">
-                                            <div class="blog-wrapper blog-column">
-                                                <div class="blog-thumb">
-                                                    <a href="blog-details.html">
-                                                        <img src="assets/img/m1.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="blog-content">
-
-
-                                                </div>
-                                                <div class="meta-info">
-                                                    <ul>
-                                                        <li class="posts-time">January 28, 2017</li>
-                                                        <li class="comments-count">
-                                                            <a href="#">4 Comments</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                    <div class="row" id="gallery">
+                                        <!--<div class="image-container col-md-4 p-1">
+                                            <a href="assets/img/bg.jpg" data-lightbox="gallery">
+                                                <img class="img-thumbnail" src="assets/img/bg.jpg">
+                                            </a>
                                         </div>
-                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
-                                             style="position: absolute; left: 33.3333%; top: 0px;">
-                                            <div class="blog-wrapper blog-column">
-                                                <div class="blog-thumb">
-                                                    <a href="blog-details.html">
-                                                        <img src="assets/img/8.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="blog-content">
-
-
-                                                </div>
-                                                <div class="meta-info">
-                                                    <ul>
-                                                        <li class="posts-time">January 28, 2017</li>
-                                                        <li class="comments-count">
-                                                            <a href="#">4 Comments</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <div class="image-container col-md-4 p-1">
+                                            <a href="assets/img/bg0.jpg" data-lightbox="gallery">
+                                                <img class="img-thumbnail" src="assets/img/bg0.jpg">
+                                            </a>
                                         </div>
-                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
-                                             style="position: absolute; left: 66.6667%; top: 0px;">
-                                            <div class="blog-wrapper blog-column">
-                                                <div class="blog-thumb">
-                                                    <a href="blog-details.html">
-                                                        <img src="assets/img/m4.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="blog-content">
-
-
-                                                </div>
-                                                <div class="meta-info">
-                                                    <ul>
-                                                        <li class="posts-time">January 28, 2017</li>
-                                                        <li class="comments-count">
-                                                            <a href="#">4 Comments</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <div class="image-container col-md-4 p-1">
+                                            <a href="assets/img/bg2.jpg" data-lightbox="gallery">
+                                                <img class="img-thumbnail" src="assets/img/dg1.jpg">
+                                            </a>
                                         </div>
-                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
-                                             style="position: absolute; left: 33.3333%; top: 275px;">
-                                            <div class="blog-wrapper blog-column">
-                                                <div class="blog-thumb">
-                                                    <a href="blog-details.html">
-                                                        <img src="assets/img/5.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="blog-content">
-
-
-                                                </div>
-                                                <div class="meta-info">
-                                                    <ul>
-                                                        <li class="posts-time">January 28, 2017</li>
-                                                        <li class="comments-count">
-                                                            <a href="#">4 Comments</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <div class="image-container col-md-4 p-1">
+                                            <a href="assets/img/bg3.jpg" data-lightbox="gallery">
+                                                <img class="img-thumbnail" src="assets/img/bg3.jpg">
+                                            </a>
                                         </div>
-                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
-                                             style="position: absolute; left: 66.6667%; top: 335px;">
-                                            <div class="blog-wrapper blog-column">
-                                                <div class="blog-thumb">
-                                                    <a href="blog-details.html">
-                                                        <img src="assets/img/m2.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="blog-content">
-
-                                                </div>
-                                                <div class="meta-info">
-                                                    <ul>
-                                                        <li class="posts-time">January 28, 2017</li>
-                                                        <li class="comments-count">
-                                                            <a href="#">4 Comments</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <div class="image-container col-md-4 p-1">
+                                            <a href="assets/img/bg5.jpg" data-lightbox="gallery">
+                                                <img class="img-thumbnail" src="assets/img/bg5.jpg">
+                                            </a>
                                         </div>
-                                        <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40"
-                                             style="position: absolute; left: 0%; top: 410px;">
-                                            <div class="blog-wrapper blog-column">
-                                                <div class="blog-thumb">
-                                                    <a href="blog-details.html">
-                                                        <img src="assets/img/m6.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="blog-content">
-
-
-                                                </div>
-                                                <div class="meta-info">
-                                                    <ul>
-                                                        <li class="posts-time">January 28, 2017</li>
-                                                        <li class="comments-count">
-                                                            <a href="#">4 Comments</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <div class="image-container col-md-4 p-1">
+                                            <a href="assets/img/bg6.jpg" data-lightbox="gallery">
+                                                <img class="img-thumbnail" src="assets/img/bg6.jpg">
+                                            </a>
                                         </div>
-                                        <!--  <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12 blog-item mb-40" style="position: absolute; left: 33.3333%; top: 982px;">
-                                             <div class="blog-wrapper blog-column">
-                                                 <div class="blog-content">
-
-                                                 </div>
-                                                 <div class="meta-info">
-                                                     <ul>
-                                                         <li class="posts-time">January 28, 2017</li>
-                                                         <li class="comments-count">
-                                                             <a href="#">4 Comments</a>
-                                                         </li>
-                                                     </ul>
-                                                 </div>
-                                             </div>
-                                         </div> -->
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-12">
-                                            <div class="pagination">
-                                            </div>
+                                        <div class="image-container col-md-4 p-1">
+                                            <a href="assets/img/bg7.jpg" data-lightbox="gallery">
+                                                <img class="img-thumbnail" src="assets/img/bg7.jpg">
+                                            </a>
                                         </div>
+                                        <div class="image-container col-md-4 p-1">
+                                            <a href="assets/img/bg8.jpg" data-lightbox="gallery">
+                                                <img class="img-thumbnail" src="assets/img/bg8.jpg">
+                                            </a>
+                                        </div>-->
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab7">
@@ -586,7 +481,7 @@
                 <div class="my-3">
                     <div id="claimContainer">
                     </div>
-                    <button type="button" class="btn btn-block btn-danger" data-toggle="modal"
+                    <button type="button" class="btn btn-block btn-round btn-danger" data-toggle="modal"
                             data-target="#reportModal">
                         <i class="material-icons">
                             warning
@@ -784,6 +679,12 @@
 <script src="assets/js/updateNavBar.js"></script>
 <script src="assets/js/claimBtnAppend.js"></script>
 <script src="assets/js/reviews.js"></script>
+<script src="assets/js/openNow.js"></script>
+
+<!--for gallery-->
+<script src="assets/js/lightbox.min.js"></script>
+<script src="assets/js/gallery.js"></script>
+
 <!-- endbuild -->
 
 <!--Google Map-->

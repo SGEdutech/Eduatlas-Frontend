@@ -18,6 +18,15 @@ this["template"]["dashboardReviews"] = Handlebars.template({"compiler":[7,">= 4.
     + alias4(((helper = (helper = helpers.reviewId || (depth0 != null ? depth0.reviewId : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"reviewId","hash":{},"data":data}) : helper)))
     + "')\">Delete</button>\r\n    </div>\r\n</div>";
 },"useData":true});
+this["template"]["galleryImg"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<div class=\"image-container col-md-4 p-1\">\r\n    <a href=\"images/"
+    + alias4(((helper = (helper = helpers.path || (depth0 != null ? depth0.path : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"path","hash":{},"data":data}) : helper)))
+    + "\" data-lightbox=\"gallery\">\r\n        <img class=\"img-thumbnail\" src=\"images/"
+    + alias4(((helper = (helper = helpers.path || (depth0 != null ? depth0.path : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"path","hash":{},"data":data}) : helper)))
+    + "\">\r\n    </a>\r\n</div>";
+},"useData":true});
 this["template"]["listgoCard"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     return "                        <li>\r\n                            <div class=\"tag\">\r\n                                <i class=\"fa fa-check-circle\" aria-hidden=\"true\"></i>\r\n                            </div>\r\n                        </li>\r\n";
 },"3":function(container,depth0,helpers,partials,data) {
