@@ -82,7 +82,21 @@ function changeColor(rating) {
 function changeColorInit(rating) {
     $('#reviewRatingInput').val(rating);
     let array = [$('#star1'), $('#star2'), $('#star3'), $('#star4'), $('#star5')];
-    for (let i = 0; i < rating; i++) {
+    for (let i = 0; i < rating - 1; i++) {
         array[i].css('color', '#00bcd4')
     }
+}
+
+function getAvgRating(reviewsArray) {
+    if (reviewsArray === undefined || reviewsArray === [] || reviewsArray.length === 0) {
+        return 2.5;
+    }
+    let toReturn = 5;
+    reviewsArray.forEach(reviewObj => {
+        if (reviewObj.rating) {
+            toReturn = (toReturn + reviewObj.rating) / 2;
+        }
+    });
+    return toReturn;
+
 }

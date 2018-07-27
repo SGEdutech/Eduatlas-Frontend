@@ -58,11 +58,6 @@ function updateThePage(data) {
     $('#primary_number').html(data.primaryNumber);
     $('#alternate_number').html(data.secondaryNumber);
     $('#website').html(data.website);
-    if (data.rating === undefined || data.rating === '') {
-        changeColorInit(2.5)
-    } else {
-        changeColorInit(data.rating);
-    }
 
     if (data.claimedBy === undefined || data.claimedBy === '') {
         //hide verified
@@ -82,12 +77,10 @@ function updateThePage(data) {
 
         $('#categoryPills').append(toAppend)
     }
-    console.log(data.dayAndTimeOfOperation);
     openNowInit(data);
-    console.log(data.dayAndTimeOfOperation);
     if (data.openedNow) {
         $('#openNow').append(`<span class="badge badge-pill badge-success">open now</span>`)
-    }else{
+    } else {
         $('#openNow').append(`<span class="badge badge-pill badge-danger">closed now</span>`)
     }
     showDaynTime(data.dayAndTimeOfOperation);
@@ -406,7 +399,6 @@ function getGeocode(address) {
     promise.then(data => {
         lat = data.results[0].geometry.location.lat;
         lng = data.results[0].geometry.location.lng;
-        console.log(lat);
         initMap(lat, lng)
     })
 }
@@ -462,7 +454,11 @@ function sanatiseData(tuition) {
 }
 
 function getReviews(reviewsArray) {
-    console.log(reviewsArray);
+    if (reviewsArray === undefined || reviewsArray === []) {
+        return;
+    }
+    let avgRating= getAvgRating(reviewsArray);
+    changeColorInit(avgRating);
     let toAppend = '';
     reviewsArray.forEach(obj => {
         toAppend += template.tuitionReviews(obj)
