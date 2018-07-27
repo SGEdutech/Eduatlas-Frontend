@@ -52,7 +52,7 @@ function updateThePage(data) {
     $('#tuition_name').html(data.name);
     $('#address').html(data.addressLine1 + ', ' + data.addressLine2 + ',' + data.city + ',' + data.pin);
     $('#phone').html(data.primaryNumber);
-    $('.email').html(data.email);
+    $('#email').html(data.email);
     $('#description').html(data.description);
     $('#contact_person').html(data.contactPerson);
     $('#primary_number').html(data.primaryNumber);
