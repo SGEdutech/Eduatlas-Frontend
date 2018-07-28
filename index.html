@@ -37,52 +37,10 @@
     <link rel="stylesheet" href="assets/css/material-kit.css">
 </head>
 <body class="sections-page sidebar-collapse">
-    <nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
-        <div class="container">
-            <div class="navbar-translate">
-                <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="searchdetails.html?page=1&items=18">Institutes/Tuition</a>
-                    </li>
-                    <li class="nav-item disabled">
-                        <a class="nav-link" href="#">Schools</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">
-                                add
-                            </i>
-                            ADD LISTING</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add Tuition
-                            </a>
-                            <!--<div class="dropdown-divider"></div>
-                    <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown" id="dynamicUserBtn">
-                    </li>
-                    <!--<li class="nav-item disabled">
-                <a class="nav-link" href="#">Events</a>
-            </li>
-            <li class="nav-item disabled">
-                <a class="nav-link" href="#">Blogs</a>
-            </li>-->
-                </ul>
-            </div>
-        </div>
-    </nav>
+
+    <div id="nav_container">
+
+    </div>
 
     <div class="main">
         <!-- <div class="section-space"></div> -->
@@ -386,8 +344,7 @@
 
     </footer>
     <!--/Footer-->
-    <div id="loginModalContainer">
-    </div>
+    <div id="login_modal_container"></div>
 
     <script src="assets/js/core/jquery.min.js"></script>
     <script src="assets/js/core/popper.min.js"></script>
@@ -397,24 +354,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="assets/js/handlebars-v4.0.11.js"></script>
     <script src="assets/js/templates.js"></script>
-    <script src="assets/js/home-v2.js"></script>
-    <script src="assets/js/auto-complete.js"></script>
-    <script src="assets/js/card-link.js"></script>
-    <script src="assets/js/reviews.js"></script>
-    <script src="assets/js/openNow.js"></script>
-    <script src="assets/js/bookmark.js"></script>
 
     <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
     <script src="assets/js/material-kit.js?v=2.0.0"></script>
 
-    <!--update navbar-->
-    <script src="assets/js/updateNavBar.js"></script>
+    <!--<script src="assets/js/home-v2.js"></script>-->
+    <!--<script src="assets/js/auto-complete.js"></script>-->
+    <!--<script src="assets/js/card-link.js"></script>-->
+    <!--<script src="assets/js/reviews.js"></script>-->
+    <!--<script src="assets/js/openNow.js"></script>-->
+    <!--<script src="assets/js/bookmark.js"></script>-->
 
-    <!--login Modal-->
+    <!--&lt;!&ndash;update navbar&ndash;&gt;-->
+    <!--<script src="assets/js/updateNavBar.js"></script>-->
+
+    <!--&lt;!&ndash;login Modal&ndash;&gt;-->
     <script src="assets/js/loginModal.js"></script>
 
-    <!--check login-->
-    <script src="assets/js/login-check.js"></script>
+    <!--&lt;!&ndash;check login&ndash;&gt;-->
+    <!--<script src="assets/js/login-check.js"></script>-->
+
+    <script src="assets/js/home-code.js"></script>
 </body>
 
 </html>
