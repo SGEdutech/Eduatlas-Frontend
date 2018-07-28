@@ -234,7 +234,9 @@ this["template"]["smoothCard"] = Handlebars.template({"1":function(container,dep
 this["template"]["smoothCardBookmark"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<div class=\"col-md-3\">\r\n    <div class=\"card newFont\">\r\n        <div class=\" tuition-cards\" onclick=\"openTuitionPage('"
+  return "<div class=\"col-md-3\" id=\""
+    + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
+    + "\">\r\n    <div class=\"card newFont\">\r\n        <div class=\" tuition-cards\" onclick=\"openTuitionPage('"
     + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
     + "')\">\r\n            <div class=\"card p-0 m-0 rounded-0 rounded-top\"\r\n                 style=\"overflow: hidden;text-overflow: ellipsis;cursor: pointer\">\r\n                <div class=\"rounded-top\"\r\n                     style=\"position: absolute; height: 192px;width: 100%;background-color: rgba(0,0,0,0.5)\">\r\n                </div>\r\n                <img class=\"card-img-top\" src=\"/assets/img/fourgirls.jpeg\" alt=\"Tuition Image\"\r\n                     style=\"height: 192px;width: 100%;\">\r\n                <div class=\"card-img-overlay\">\r\n                    <h4 class=\"card-title text-white\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
@@ -269,7 +271,11 @@ this["template"]["smoothCardDashboard"] = Handlebars.template({"compiler":[7,">=
     + alias4(((helper = (helper = helpers.city || (depth0 != null ? depth0.city : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"city","hash":{},"data":data}) : helper)))
     + ","
     + alias4(((helper = (helper = helpers.state || (depth0 != null ? depth0.state : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"state","hash":{},"data":data}) : helper)))
-    + "</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"pb-0 pt-2 rounded-0 card-footer justify-content-center\">\r\n            <div class=\"col\">\r\n                <a href=\"User-editTuition.html?a=${context._id}\" class=\"btn btn-info\">edit</a>\r\n            </div>\r\n            <div class=\"col\">\r\n                <a onclick=\"unclaimListing('${context._id}')\" class=\"btn btn-danger\">unclaim</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
+    + "</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"pb-0 pt-2 rounded-0 card-footer justify-content-center\">\r\n            <div class=\"col\">\r\n                <a href=\"User-editTuition.html?a="
+    + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
+    + "\" class=\"btn btn-info\">edit</a>\r\n            </div>\r\n            <div class=\"col\">\r\n                <a onclick=\"unclaimListing('"
+    + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
+    + "')\" class=\"btn btn-danger\">unclaim</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
 },"useData":true});
 this["template"]["smoothCardHomePage"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     return "                    <span class=\"badge badge-info\">verified</span>\r\n";
