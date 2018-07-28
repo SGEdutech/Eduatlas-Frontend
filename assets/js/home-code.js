@@ -81,12 +81,17 @@ const tuitionCards = (() => {
         return cardsHtml;
     }
 
-    function render(tuitionInfoArray) {
-        const cardsHtml = getCardsHtml(tuitionInfoArray);
-        $cardsContainer.html(cardsHtml);
+    function render() {
+        let cardsHtml;
+        getTuitionInfo()
+            .then(tuitionInfoArray => {
+                cardsHtml = getCardsHtml(tuitionInfoArray)
+                $cardsContainer.html(cardsHtml);
+            })
+            .catch(err => console.error(err));
+        
     }
-
-    getTuitionInfo().then(render).catch(err => console.error(err));
+    render();
 })();
 
 const user = (() => {
