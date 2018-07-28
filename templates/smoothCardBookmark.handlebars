@@ -1,0 +1,35 @@
+<div class="col-md-3">
+    <div class="card newFont">
+        <div class=" tuition-cards" onclick="openTuitionPage('{{_id}}')">
+            <div class="card p-0 m-0 rounded-0 rounded-top"
+                 style="overflow: hidden;text-overflow: ellipsis;cursor: pointer">
+                <div class="rounded-top"
+                     style="position: absolute; height: 192px;width: 100%;background-color: rgba(0,0,0,0.5)">
+                </div>
+                <img class="card-img-top" src="/assets/img/fourgirls.jpeg" alt="Tuition Image"
+                     style="height: 192px;width: 100%;">
+                <div class="card-img-overlay">
+                    <h4 class="card-title text-white">{{name}}</h4>
+                    <span class="badge badge-info">{{rating}}/5</span>
+                </div>
+            </div>
+        </div>
+        <!--<div class="card-body pb-0">
+            <div class="row">
+                <div class="col-1 px-0">
+                    <i class="material-icons md-18" style="color: #00bcd4">
+                        location_on
+                    </i>
+                </div>
+                <div class="col-11">
+                    <p id="address">{{addressLine1}},{{addressLine2}},{{city}},{{state}}</p>
+                </div>
+            </div>
+        </div>-->
+        <div class="pb-0 pt-2 rounded-0 card-footer justify-content-center">
+            <div class="col">
+                <button class="btn btn-danger" onclick="removeBookmarks('{{_id}}')">remove</button>
+            </div>
+        </div>
+    </div>
+</div>
