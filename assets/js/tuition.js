@@ -288,7 +288,7 @@ function getRelatedListing(city) {
                 search: city,
                 fullText: true
             }),
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category',
+            demands: 'name addressLine1 addressLine2 city state claimedBy reviews',
             limit: 3,
             skip: 0,
             sortBy: ''
@@ -296,16 +296,6 @@ function getRelatedListing(city) {
     });
 
     let result = '';
-    let context = {
-        name: "Tuition Name",
-        state: '',
-        description: '',
-        primaryNumber: "",
-        // rating: "2.5",
-        // ifAd: "",
-        // coverPic: "",
-        _id: "",
-    };
 
     promise.then((data) => {
         if (data === undefined) {
@@ -315,15 +305,10 @@ function getRelatedListing(city) {
 
         } else {
             data.forEach(obj => {
-                context._id = obj._id;
-                context.name = obj.name;
-                context.description = obj.description;
-                context.state = obj.state;
-                context.primaryNumber = obj.primaryNumber;
-                result += `<div class="col-md-4">${template.listgoCard(context)}</div>`
+                obj.rating = getAvgRating(obj.reviews);
+                result += template.smoothCardRelated(obj);
             });
             $("#relatedTuitionContainer").append(result);
-            //send address to get geo code
         }
 
     }).catch(err => {
@@ -345,7 +330,7 @@ function getPopularListing(city) {
                 search: city,
                 fullText: true
             }),
-            demands: 'name addressLine1 addressLine2 city state primaryNumber email img_coverPic category',
+            demands: 'name claimedBy reviews',
             limit: 2,
             skip: 0,
             sortBy: 'views'
@@ -353,16 +338,6 @@ function getPopularListing(city) {
     });
 
     let result = '';
-    let context = {
-        name: "Tuition Name",
-        state: '',
-        description: '',
-        primaryNumber: "",
-        // rating: "2.5",
-        // ifAd: "",
-        // coverPic: "",
-        _id: "",
-    };
 
     promise.then((data) => {
         if (data === undefined) {
@@ -372,15 +347,10 @@ function getPopularListing(city) {
 
         } else {
             data.forEach(obj => {
-                sanatiseData(obj);
-                context._id = obj._id;
-                context.name = obj.name;
-                context.state = obj.state;
-                context.primaryNumber = obj.primaryNumber;
-                result += `<div class="col-md-12">${template.listgoCard(context)}</div>`
+                obj.rating = getAvgRating(obj.reviews);
+                result += template.smoothCardSponsored(obj);
             });
             $("#sponsoredPopular").append(result);
-            //send address to get geo code
         }
 
     }).catch(err => {
@@ -457,7 +427,7 @@ function getReviews(reviewsArray) {
     if (reviewsArray === undefined || reviewsArray === []) {
         return;
     }
-    let avgRating= getAvgRating(reviewsArray);
+    let avgRating = getAvgRating(reviewsArray);
     changeColorInit(avgRating);
     let toAppend = '';
     reviewsArray.forEach(obj => {
