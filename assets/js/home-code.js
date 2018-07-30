@@ -1,16 +1,45 @@
-const loginModal = {
-    cacheDom: function () {
-        this.$loginModalContainer = $('#login_modal_container');
+const scripts = {
+    logout() {
+        $.get({url: '/auth/local/logout'})
+            .then(data => {
+                if (data.done) window.location.assign('/');
+            });
     },
-    submitData: function () {
-        let formData = $(form).serialize();
 
-        $.get({
-            url: form.attr('action'),
+    executeAllFunctions(...funtionArray) {
+        funtionArray.forEach(fn => fn());
+    }
+};
+
+const loginModal = (() => {
+    const $loginModalContainer = $('#login_modal_container');
+    let $form;
+    let $submitBtn;
+
+    function cacheDynamicDom() {
+        $form = $('#login_form');
+        $submitBtn = $form.find('#submit_btn')
+    }
+
+    function getHtml() {
+        const url = 'login-modal.html';
+        const dataType = 'html';
+        return $.get({url, dataType}); // Returns Promise
+    }
+
+    function bindEvents() {
+        $form.submit(submitForm);
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        let formData = $form.serialize();
+        $.post({
+            url: $form.attr('action'),
             data: formData,
         }).then(() => window.location.reload())
             .catch(err => {
-                let errorResponse = err.responseText;
+                const errorResponse = err.responseText;
                 if (errorResponse === 'Bad Request') {
                     alert('please fill both username and password')
                 } else {
@@ -18,23 +47,51 @@ const loginModal = {
                     alert(messageToDisplay)
                 }
             });
-    },
-    render: function () {
-        this.$loginModalContainer.load('login-modal.html');
-
-    },
-    init: function () {
-        this.cacheDom();
-        this.render();
     }
-};
+
+    function render() {
+        return new Promise((resolve, reject) => {
+            getHtml().then(html => {
+                $loginModalContainer.html(html);
+                resolve();
+            }).catch(err => reject(err));
+        })
+    }
+
+    render().then(() => {
+        cacheDynamicDom();
+        bindEvents();
+    });
+})();
 
 const navigationBar = (() => {
     const $navContainer = $('#nav_container');
+    const navHtml = getHtml();
+    let $logOutBtn;
+    let $addTuitionBtn;
+    let $dynamicUserBtn;
+    let user;
 
-    function updateUserStatus(user) {
+    // TODO: Further Optimise
+    function cacheDynamicDom() {
+        $logOutBtn = $navContainer.find('#log_out_btn')
+        $addTuitionBtn = $navContainer.find('#add_tuition_btn');
+        $dynamicUserBtn = $navContainer.find('#dynamic_user_btn');
+    }
+
+    function updateUserStatus() {
+        user.loggedIn = Boolean(user);
         const dynamicButtonHtml = template.userStatus(user);
-        $('#dynamic_user_btn').html(dynamicButtonHtml);
+        $dynamicUserBtn.html(dynamicButtonHtml);
+    }
+
+    function updateAddTuitionLink() {
+        if (user) {
+            $addTuitionBtn.attr('href', './User-dashboard.html?tab=addTuition');
+        } else {
+            $addTuitionBtn.attr('data-toggle', 'modal');
+            $addTuitionBtn.attr('data-target', '#loginModal');
+        }
     }
 
     function getHtml() {
@@ -43,11 +100,24 @@ const navigationBar = (() => {
         return $.get({url, dataType}); // Returns Promise
     }
 
-    function render() {
-        getHtml().then(navHtml => $navContainer.html(navHtml));
+    function bindEvents() {
+        if (user) $logOutBtn.click(scripts.logout);
     }
 
-    render();
+    function render() {
+        return new Promise((resolve, reject) => {
+            navHtml.then(navHtml => {
+                $navContainer.html(navHtml);
+                PubSub.publish('nav.load');
+                resolve();
+            }).catch(err => reject(err));
+        })
+    }
+
+    PubSub.subscribeOnce('user.load', (msg, userInfo) => {
+        user = userInfo;
+        render().then(() => scripts.executeAllFunctions(cacheDynamicDom, updateUserStatus, cacheDynamicDom, bindEvents, updateAddTuitionLink));
+    });
 })();
 
 const tuitionCards = (() => {
@@ -82,15 +152,16 @@ const tuitionCards = (() => {
     }
 
     function render() {
-        let cardsHtml;
         getTuitionInfo()
             .then(tuitionInfoArray => {
-                cardsHtml = getCardsHtml(tuitionInfoArray)
+                const cardsHtml = getCardsHtml(tuitionInfoArray);
                 $cardsContainer.html(cardsHtml);
+                PubSub.publish('cards.load', $cardsContainer);
             })
             .catch(err => console.error(err));
-        
+
     }
+
     render();
 })();
 
@@ -100,9 +171,59 @@ const user = (() => {
         return $.get({url}); // Returns a promise
     }
 
-    return {
-        getInfo
+    getInfo().then(user => PubSub.publish('user.load', user));
+})();
+
+const searchSuggestion = (() => {
+    const $suggestionContainer = $('#autocomplete_container');
+    const $searchInput = $('#search_input');
+    let query;
+
+    function bindEvents() {
+        $searchInput.keyup(checkKey);
+        $searchInput.blur()
     }
+
+    function removeSuggestion() {
+        setTimeout(function () {
+            $suggestionContainer.empty();
+        }, 1);
+    }
+
+    function checkKey(event) {
+        if (event.keyCode === 13) {
+            redirectToSearchPage();
+        } else {
+            getSuggestion().then(render);
+        }
+    }
+    
+    function redirectToSearchPage() {
+        query = $searchInput.val();
+        window.location.assign('TuitionDiscovery.html?items=18&page=1&c=true&name=' + query);
+    }
+
+    function getSuggestion() {
+        query = $searchInput.val();
+        const url = '/tuition/search';
+        const data = {
+            name: JSON.stringify({
+                search: query,
+                fullTextSearch: false,
+            }),
+            limit: 5,
+            demands: 'name'
+        };
+        return $.ajax({url, data}); //Returns a promise
+    }
+
+    function render(suggestionArray) {
+        const context = {suggestionArray};
+        const suggestionHtml = template.searchResult(context);
+        $suggestionContainer.html(suggestionHtml);
+    }
+
+    bindEvents();
 })();
 
 const carousel = (() => {
@@ -143,4 +264,6 @@ const carousel = (() => {
             }
         ]
     };
+
+    PubSub.subscribeOnce('cards.load', (msg, container) => container.slick(config));
 })();
