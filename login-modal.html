@@ -1,4 +1,4 @@
-<div class="modal fade" id="loginModal" tabindex="-1" role="">
+<div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-login" role="document">
         <div class="modal-content">
             <div class="card card-signup card-plain">
@@ -10,7 +10,7 @@
 
                         <h4 class="card-title">Log in</h4>
                         <div class="social-line">
-                            <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                            <a href="#" class="btn btn-just-icon btn-link btn-white">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
                             <a href="/auth/google" class="btn btn-just-icon btn-link btn-white">
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </div>
-                <form class="form" method="POST" action="/auth/local/login" id="loginForm">
+                <form class="form" method="POST" action="/auth/local/login" id="login_form">
                     <div class="modal-body">
                         <div class="card-body">
                             <div class="form-group bmd-form-group">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-center">
-                        <button type="submit" class="btn btn-info rounded px-4">Login</button>
+                        <button id="submit_btn" type="submit" class="btn btn-info rounded px-4">Login</button>
                     </div>
                 </form>
                 <hr>
