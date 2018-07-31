@@ -1,6 +1,5 @@
 const navigationBar = (() => {
     const $navContainer = $('#nav_container');
-    const navHtml = getHtml();
     let $logOutBtn;
     let $addTuitionBtn;
     let $dynamicUserBtn;
@@ -8,7 +7,7 @@ const navigationBar = (() => {
 
     // TODO: Further Optimise
     function cacheDynamicDom() {
-        $logOutBtn = $navContainer.find('#log_out_btn')
+        $logOutBtn = $navContainer.find('#log_out_btn');
         $addTuitionBtn = $navContainer.find('#add_tuition_btn');
         $dynamicUserBtn = $navContainer.find('#dynamic_user_btn');
     }
@@ -39,17 +38,30 @@ const navigationBar = (() => {
     }
 
     function render() {
-        return new Promise((resolve, reject) => {
-            navHtml.then(navHtml => {
-                $navContainer.html(navHtml);
-                PubSub.publish('nav.load');
-                resolve();
-            }).catch(err => reject(err));
-        })
+        getHtml().then(navHtml => {
+            $navContainer.html(navHtml);
+            PubSub.publish('nav.load');
+            cacheDynamicDom();
+            updateUserStatus();
+            cacheDynamicDom();
+            bindEvents();
+            updateAddTuitionLink();
+        }).catch(err => reject(err));
     }
 
     PubSub.subscribeOnce('user.load', (msg, userInfo) => {
-        user = userInfo;
-        render().then(() => scripts.executeAllFunctions(cacheDynamicDom, updateUserStatus, cacheDynamicDom, bindEvents, updateAddTuitionLink));
+        user = userInfo; // Returns a empty string when not logged in
+        render();
     });
+
+    PubSub.subscribe('user.logout', () => {
+        user = '';
+        render();
+    });
+
+    PubSub.subscribe('user.login', (msg, userInfo) => {
+        console.log('hi');
+        user = userInfo;
+        render();
+    })
 })();

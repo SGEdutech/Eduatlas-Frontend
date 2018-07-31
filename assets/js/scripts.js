@@ -1,9 +1,8 @@
 const scripts = {
     logout() {
         $.get({url: '/auth/local/logout'})
-            .then(data => {
-                if (data.done) window.location.assign('/');
-            });
+            .then(data => PubSub.publish('user.logout'))
+            .catch(err => console.error(err));
     },
 
     executeAllFunctions(...funtionArray) {

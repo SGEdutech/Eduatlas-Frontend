@@ -4,8 +4,9 @@ const loginModal = (() => {
     let $submitBtn;
 
     function cacheDynamicDom() {
+        $loginModal = $('#loginModal');
         $form = $('#login_form');
-        $submitBtn = $form.find('#submit_btn')
+        $submitBtn = $form.find('#submit_btn');
     }
 
     function getHtml() {
@@ -19,13 +20,16 @@ const loginModal = (() => {
     }
 
     function submitForm(event) {
+        // TODO: Make more elegent
         event.preventDefault();
         let formData = $form.serialize();
         $.post({
             url: $form.attr('action'),
             data: formData,
-        }).then(() => window.location.reload())
-            .catch(err => {
+        }).then(user => {
+            PubSub.publish('user.login', user);
+            $loginModal.modal('hide');
+        }).catch(err => {
                 const errorResponse = err.responseText;
                 if (errorResponse === 'Bad Request') {
                     alert('please fill both username and password')
