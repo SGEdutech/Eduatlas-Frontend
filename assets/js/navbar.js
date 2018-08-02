@@ -38,7 +38,7 @@ const navigationBar = (() => {
     }
 
     function bindEvents() {
-        if (user) $logOutBtn.click(scripts.logout);
+        if (user) $logOutBtn.click(helperScripts.logout);
     }
 
     function render(userInfo) {

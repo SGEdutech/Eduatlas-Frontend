@@ -1,14 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-    
-            gtag('config', 'UA-121945570-1');
-        </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-121945570-1');
+    </script>
     <title>Tuition</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -36,55 +40,10 @@
 </head>
 
 <body>
-<nav class="navbar bg-dark fixed-top navbar-expand-lg" id="sectionsNav">
-    <div class="container">
-        <div class="navbar-translate">
-            <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="searchdetails.html?page=1&items=18">Institutes/Tuition</a>
-                </li>
-                <li class="nav-item disabled">
-                    <a class="nav-link" href="#">Schools</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">
-                            add
-                        </i>
-                        ADD LISTING</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add
-                            Tuition
-                        </a>
-                        <!--<div class="dropdown-divider"></div>
-                    <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
-                    </div>
-                </li>
-                <li class="nav-item dropdown" id="dynamicUserBtn">
-                </li>
-                <!--<li class="nav-item disabled">
-                <a class="nav-link" href="#">Events</a>
-            </li>
-            <li class="nav-item disabled">
-                <a class="nav-link" href="#">Blogs</a>
-            </li>-->
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="nav_container">
+    <!--nav bar comes here-->
+</div>
+
 <div id="main_header" class="container mt-5">
     <div class="row">
     </div>
@@ -119,7 +78,7 @@
                         <div class="col-md-2">
                             <div class="row justify-content-center">
                                 <button type="button" class="btn btn-info btn-round" style="cursor: default"
-                                        id="verified">Verified
+                                        id="verifiedBadge" hidden>Verified
                                 </button>
                             </div>
                             <div class="row justify-content-center">
@@ -400,6 +359,20 @@
             <div class="">
                 <div class="my-3">
                     <div id="claimContainer">
+                        <button id="claimButton" type="button" class="btn btn-block btn-round btn-info">
+                            <i class="material-icons">
+                                done
+                            </i>
+                            Claimed
+                        </button>
+
+                       <!-- <button type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#claimModal">
+                            Claim This Page
+                        </button>
+
+                        <button type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#loginModal">
+                            Claim This Page
+                        </button>-->
                     </div>
                     <button type="button" class="btn btn-block btn-round btn-danger" data-toggle="modal"
                             data-target="#reportModal">
@@ -553,7 +526,7 @@
         </div>
     </div>
 </div>
-<div id="loginModalContainer">
+<div id="login_modal_container">
 </div>
 
 <!--   Core JS Files   -->
@@ -588,23 +561,28 @@
 <!--handle bars-->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 <script src="assets/js/templates.js"></script>
-<script src="assets/js/card-link.js"></script>
-
-<!--login modal-->
-<script src="assets/js/loginModal.js"></script>
+<!--<script src="assets/js/card-link.js"></script>-->
 
 <!-- Custom Code -->
-<script src="assets/js/tuition.js"></script>
-<script src="assets/js/login-check.js"></script>
-<script src="assets/js/updateNavBar.js"></script>
-<script src="assets/js/claimBtnAppend.js"></script>
+<!--<script src="assets/js/tuition.js"></script>
 <script src="assets/js/reviews.js"></script>
 <script src="assets/js/openNow.js"></script>
-<script src="assets/js/bookmark.js"></script>
+<script src="assets/js/bookmark.js"></script>-->
 
 <!--for gallery-->
 <script src="assets/js/lightbox.min.js"></script>
 <script src="assets/js/gallery.js"></script>
+
+<!--Docs at: https://github.com/mroderick/PubSubJS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
+<script src="assets/js/tuition-info.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script src="assets/js/login-modal.js"></script>
+<script src="assets/js/navbar.js"></script>
+<script src="assets/js/user.js"></script>
+<script src="assets/js/map.js"></script>
+<script src="assets/js/query-string.js"></script>
+<script src="assets/js/tuition-details-service.js"></script>
 
 <!-- endbuild -->
 
