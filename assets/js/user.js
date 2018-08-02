@@ -4,6 +4,5 @@ const user = (() => {
         return $.get({url}); // Returns a promise
     }
 
-    getInfo().then(user => PubSub.publish('user.load', user))
-    .catch(err => console.error(err));
+    return {getInfo};
 })();

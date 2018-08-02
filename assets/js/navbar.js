@@ -1,9 +1,13 @@
 const navigationBar = (() => {
-    const $navContainer = $('#nav_container');
+    let $navContainer;
     let $logOutBtn;
     let $addTuitionBtn;
     let $dynamicUserBtn;
     let user;
+
+    function cacheDom() {
+        $navContainer = $('#nav_container');
+    }
 
     // TODO: Further Optimise
     function cacheDynamicDom() {
@@ -37,10 +41,10 @@ const navigationBar = (() => {
         if (user) $logOutBtn.click(scripts.logout);
     }
 
-    function render() {
+    function render(userInfo) {
+        user = userInfo;
         getHtml().then(navHtml => {
             $navContainer.html(navHtml);
-            PubSub.publish('nav.load');
             cacheDynamicDom();
             updateUserStatus();
             cacheDynamicDom();
@@ -49,19 +53,10 @@ const navigationBar = (() => {
         }).catch(err => reject(err));
     }
 
-    PubSub.subscribeOnce('user.load', (msg, userInfo) => {
-        user = userInfo; // Returns a empty string when not logged in
-        render();
-    });
+    function init(userInfo) {
+        cacheDom();
+        render(userInfo);
+    }
 
-    PubSub.subscribe('user.logout', () => {
-        user = '';
-        render();
-    });
-
-    PubSub.subscribe('user.login', (msg, userInfo) => {
-        console.log('hi');
-        user = userInfo;
-        render();
-    })
+    return {init, render};
 })();

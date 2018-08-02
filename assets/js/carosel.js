@@ -37,5 +37,9 @@ const carousel = (() => {
         ]
     };
 
-    PubSub.subscribeOnce('cards.load', (msg, container) => container.slick(config));
+    function init(container) {
+        container.slick(config)
+    }
+
+    return {init};
 })();

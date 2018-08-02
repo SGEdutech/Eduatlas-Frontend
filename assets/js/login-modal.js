@@ -1,7 +1,12 @@
 const loginModal = (() => {
-    const $loginModalContainer = $('#login_modal_container');
+    let $loginModalContainer;
     let $form;
     let $submitBtn;
+    let $loginModal;
+
+    function cacheDom() {
+        $loginModalContainer = $('#login_modal_container');
+    }
 
     function cacheDynamicDom() {
         $loginModal = $('#loginModal');
@@ -49,8 +54,13 @@ const loginModal = (() => {
         })
     }
 
-    render().then(() => {
-        cacheDynamicDom();
-        bindEvents();
-    });
+    function init() {
+        cacheDom();
+        render().then(() => {
+            cacheDynamicDom();
+            bindEvents();
+        });
+    }
+
+    return {init};
 })();

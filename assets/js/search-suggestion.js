@@ -1,7 +1,12 @@
 const searchSuggestion = (() => {
-    const $suggestionContainer = $('#autocomplete_container');
-    const $searchInput = $('#search_input');
+    let $suggestionContainer = $('#autocomplete_container');
+    let $searchInput = $('#search_input');
     let query;
+
+    function cacheDom() {
+        $suggestionContainer = $('#autocomplete_container');
+        $searchInput = $('#search_input');
+    }
 
     function bindEvents() {
         $searchInput.keyup(checkKey);
@@ -47,5 +52,10 @@ const searchSuggestion = (() => {
         $suggestionContainer.html(suggestionHtml);
     }
 
-    bindEvents();
+    function init() {
+        cacheDom();
+        bindEvents();
+    }
+
+    return {init};
 })();

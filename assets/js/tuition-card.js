@@ -1,5 +1,9 @@
 const tuitionCards = (() => {
-    const $cardsContainer = $('#cards_container');
+    let $cardsContainer;
+
+    function cacheDom() {
+        $cardsContainer = $('#cards_container');
+    }
 
     function getTuitionInfo() {
         const url = '/tuition/all';
@@ -29,16 +33,21 @@ const tuitionCards = (() => {
         return cardsHtml;
     }
 
-    function render() {
-        getTuitionInfo()
-            .then(tuitionInfoArray => {
-                const cardsHtml = getCardsHtml(tuitionInfoArray);
-                $cardsContainer.html(cardsHtml);
-                PubSub.publish('cards.load', $cardsContainer);
-            })
-            .catch(err => console.error(err));
-
+    function render(tuitionInfoArray) {
+        const cardsHtml = getCardsHtml(tuitionInfoArray);
+        $cardsContainer.html(cardsHtml);
     }
 
-    render();
+    //Returns card container
+    function init() {
+        return new Promise((resolve, reject) => {
+            cacheDom();
+            getTuitionInfo().then(tuitionInfoArray => {
+                render(tuitionInfoArray);
+                resolve($cardsContainer);
+            }).catch(err => reject(err));
+        })
+    }
+
+    return {init};
 })();
