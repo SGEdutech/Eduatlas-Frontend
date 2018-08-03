@@ -71,7 +71,6 @@ const helperScripts = {
         // console.log(dayNTimeOfOperation);
     },
 
-//for converting a
     convertTo24Hours(timeToConvert) {
         if (timeToConvert === undefined || timeToConvert === '') {
             return

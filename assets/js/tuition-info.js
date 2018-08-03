@@ -1,5 +1,6 @@
 const tuitionInfo = (() => {
     let queryObj;
+    let user;
 
     let $tuitionName;
     let $address;
@@ -14,7 +15,6 @@ const tuitionInfo = (() => {
     let $reviewRationInput;
     let $star1, $star2, $star3, $star4, $star5;
     let $coverImage;
-    let $claimButton;
     let $sponsoredPopular;
     let $openNow;
     let $verifiedBadge;
@@ -24,6 +24,11 @@ const tuitionInfo = (() => {
     let $facilities_container;
     let $category_container;
     let $linkContainer;
+    let $coursesContainer;
+    let $resultsContainer;
+    let $facultyContainer;
+    let $gallery;
+    let $claimButton;
 
 
     function cache() {
@@ -44,7 +49,6 @@ const tuitionInfo = (() => {
         $star4 = $('#star4');
         $star5 = $('#star5');
         $coverImage = $('#cover_image');
-        $claimButton = $('#claimButton');
         $sponsoredPopular = $("#sponsoredPopular");
         $openNow = $('#openNow');
         $verifiedBadge = $('#verifiedBadge');
@@ -54,6 +58,15 @@ const tuitionInfo = (() => {
         $facilities_container = $('#facilities_container');
         $category_container = $('#category_container');
         $linkContainer = $("#linkContainer");
+        $coursesContainer = $("#coursesContainer");
+        $resultsContainer = $("#resultsContainer");
+        $facultyContainer = $("#facultyContainer");
+        $gallery = $("#gallery");
+        $claimButton = $('#claimButton');
+    }
+
+    function bindEvents() {
+
     }
 
     function getTuitionInfo() {
@@ -119,16 +132,6 @@ const tuitionInfo = (() => {
         }
     }
 
-    function updateClaimButtonModal(userInfo) {
-        if (userInfo) {
-            $claimButton.attr('data-toggle', 'modal');
-            $claimButton.attr('data-target', '#claimModal');
-        } else {
-            $claimButton.attr('data-toggle', 'modal');
-            $claimButton.attr('data-target', '#loginModal');
-        }
-    }
-
     function updateOpenNow(data) {
         helperScripts.openNowInit(data);
         if (data.openedNow) {
@@ -167,6 +170,85 @@ const tuitionInfo = (() => {
         const categoryArr = categories ? categories.split(',') : [];
         let result2 = template.tuitionCategory({categories: categoryArr});
         $category_container.html(result2);
+    }
+
+    function showCourses(array) {
+        let context = {
+            courses: []
+        };
+
+        let counter = 1;
+        array.forEach((obj) => {
+            let newObj = {
+                id: counter,
+                title: obj.title,
+                duration: obj.duration,
+                fee: obj.fee,
+                ageGroup: obj.ageGroup,
+                nextBatch: obj.nextBatch ? obj.nextBatch.split('T')[0] : ''
+            };
+            context.courses.push(newObj);
+            counter++;
+        });
+        let result = template.tuitionCourses(context);
+        $coursesContainer.append(result);
+    }
+
+    function showResults(array) {
+        let context = {
+            results: []
+        };
+
+        let counter = 1;
+        array.forEach((obj) => {
+            let newObj = {
+                id: counter,
+                img_path: obj.img_path,
+                title: obj.title,
+                description: obj.description,
+            };
+            context.results.push(newObj);
+            counter++;
+        });
+
+        let result = template.tuitionResult(context);
+        $resultsContainer.append(result);
+
+    }
+
+    function showFaculty(array) {
+        let context = {
+            faculty: []
+        };
+
+        let counter = 1;
+        array.forEach((obj) => {
+            let newObj = {
+                id: counter,
+                img_path: obj.img_path,
+                name: obj.name,
+                description: obj.description,
+                qualification: obj.qualification
+            };
+            context.faculty.push(newObj);
+            counter++;
+        });
+
+        let result = template.tuitionFaculty(context);
+        $facultyContainer.append(result);
+
+    }
+
+    function showGallery(array) {
+        if (array === undefined || array === [] || array.length === 0) {
+            $gallery.append(`<p>Nothing to show</p>`);
+            return
+        }
+        let result = '';
+        array.forEach(imgPath => {
+            result += template.galleryImg({path: imgPath});
+        });
+        $gallery.append(result);
     }
 
     function updateSocialLinks(f, i, y) {
@@ -322,13 +404,16 @@ const tuitionInfo = (() => {
         }).catch(err => {
             console.log(err);
         });
+    }
 
-
+    function updateUser(userInfo) {
+        user = userInfo;
     }
 
     function render(obj) {
         queryObj = obj;
         cache();
+        bindEvents();
         getTuitionInfo()
             .then(tuitionInfoObj => {
                 PubSub.publish('address.ready', tuitionInfoObj.addressLine1 + ',' + tuitionInfoObj.addressLine2 + ',' + tuitionInfoObj.city + ',' + tuitionInfoObj.state);
@@ -343,12 +428,16 @@ const tuitionInfo = (() => {
                 getReviews(tuitionInfoObj.reviews);
                 getPopularListing(tuitionInfoObj.city);
                 updateCategoryPills(tuitionInfoObj.category);
-                updateDaynTime(tuitionInfoObj.dayAndTimeOfOperation);
-                updateSocialLinks(tuitionInfoObj.fbLink, tuitionInfoObj.instaLink, tuitionInfoObj.youtubeLink);
+                setTimeout(() => updateDaynTime(tuitionInfoObj.dayAndTimeOfOperation));
+                setTimeout(() => updateSocialLinks(tuitionInfoObj.fbLink, tuitionInfoObj.instaLink, tuitionInfoObj.youtubeLink));
+                setTimeout(() => showCourses(tuitionInfoObj.courses));
+                setTimeout(() => showResults(tuitionInfoObj.bragging));
+                setTimeout(() => showFaculty(tuitionInfoObj.team));
+                setTimeout(() => showGallery(tuitionInfoObj.gallery));
                 // getRelatedListing(tuitionInfoObj.city);
             })
             .catch(err => console.error(err));
     }
 
-    return {render, updateClaimButtonModal}
+    return {render, updateUser}
 })();

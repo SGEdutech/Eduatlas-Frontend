@@ -294,7 +294,7 @@
                                 </div>
                                 <div class="tab-pane" id="tab7">
                                     <div class="card">
-                                        <div class="card-body">
+                                        <div class="card-body" id="reviewCardbody">
                                             <div class="card-title h3">
                                                 Rate and write a Review
                                             </div>
@@ -303,24 +303,19 @@
                                             </small>
                                             <form action="" id="reviewForm">
                                                 <div class="col-12" id="ratingContainer">
-                                                    <i id="s1" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(1)">
+                                                    <i id="s1" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
-                                                    <i id="s2" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(2)">
+                                                    <i id="s2" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
-                                                    <i id="s3" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(3)">
+                                                    <i id="s3" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
-                                                    <i id="s4" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(4)">
+                                                    <i id="s4" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
-                                                    <i id="s5" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(5)">
+                                                    <i id="s5" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
                                                 </div>
@@ -329,11 +324,10 @@
                                                 <div class="form-group">
                                                     <label for="reviewDescriptionInput">Review</label>
                                                     <textarea class="form-control" id="reviewDescriptionInput" rows="3"
-                                                              name="description" onfocus="checkLogin()"></textarea>
+                                                              name="description"></textarea>
                                                 </div>
                                             </form>
-                                            <button type="submit" class="btn btn-info"
-                                                    onclick="submitReview('reviewForm')">
+                                            <button type="submit" class="btn btn-info" id="submitReviewButton">
                                                 Submit
                                             </button>
                                         </div>
@@ -366,16 +360,16 @@
                             Claimed
                         </button>
 
-                       <!-- <button type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#claimModal">
-                            Claim This Page
-                        </button>
+                        <!-- <button type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#claimModal">
+                             Claim This Page
+                         </button>
 
-                        <button type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#loginModal">
-                            Claim This Page
-                        </button>-->
+                         <button type="button" class="btn btn-block btn-round btn-info" data-toggle="modal" data-target="#loginModal">
+                             Claim This Page
+                         </button>-->
                     </div>
                     <button type="button" class="btn btn-block btn-round btn-danger" data-toggle="modal"
-                            data-target="#reportModal">
+                            data-target="#reportModal" id="reportButton">
                         <i class="material-icons">
                             warning
                         </i>Report Page
@@ -467,66 +461,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="claimModal" tabindex="-1" role="dialog" aria-labelledby="claimModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="claimModalLabel">Claim This Institute/Tuition</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p> We may call to confirm</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Not my institute</button>
-                <button type="button" class="btn btn-info" onclick="claimListing()">Yes Claim</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Report issue with this page</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/issue" method="POST" id="issueForm">
-
-                    <div class="form-group m-0">
-                        <label for="name" class="bmd-label-floating">Your Name</label>
-                        <input type="text" class="form-control" id="name" name="name">
-                    </div>
-                    <div class="form-group m-0">
-                        <label for="contact" class="bmd-label-floating">Your Phone Number</label>
-                        <input type="number" class="form-control" id="contact" name="contact">
-                    </div>
-                    <div class="form-group m-0">
-                        <label for="email" class="bmd-label-floating">Your Email Address</label>
-                        <input type="email" class="form-control" id="email2" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="desc">Message</label>
-                        <textarea class="form-control" name="description" id="desc" rows="3"></textarea>
-                    </div>
-                    <input class="form-control" name="id" id="idOfTuition" hidden>
-                    <input class="form-control" name="type" value="tuition" hidden>
-                </form>
-                <button onclick="submitIssue('issueForm')" class="btn btn-info">submit</button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="login_modal_container">
+</div>
+<div id="claim_modal_container">
+</div>
+<div id="report_modal_container">
 </div>
 
 <!--   Core JS Files   -->
@@ -564,10 +503,7 @@
 <!--<script src="assets/js/card-link.js"></script>-->
 
 <!-- Custom Code -->
-<!--<script src="assets/js/tuition.js"></script>
-<script src="assets/js/reviews.js"></script>
-<script src="assets/js/openNow.js"></script>
-<script src="assets/js/bookmark.js"></script>-->
+<script src="assets/js/bookmark.js"></script>
 
 <!--for gallery-->
 <script src="assets/js/lightbox.min.js"></script>
@@ -577,10 +513,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
 <script src="assets/js/tuition-info.js"></script>
 <script src="assets/js/scripts.js"></script>
+<script src="assets/js/reviews.js"></script>
 <script src="assets/js/login-modal.js"></script>
 <script src="assets/js/navbar.js"></script>
 <script src="assets/js/user.js"></script>
 <script src="assets/js/map.js"></script>
+<script src="assets/js/claim-modal.js"></script>
+<script src="assets/js/report-modal.js"></script>
 <script src="assets/js/query-string.js"></script>
 <script src="assets/js/tuition-details-service.js"></script>
 
