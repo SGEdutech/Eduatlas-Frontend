@@ -125,8 +125,7 @@ const tuitionInfo = (() => {
                                 done
                             </i>
                             Claimed`);
-            $claimButton.removeAttr('data-target');
-            $claimButton.removeAttr('data-toggle');
+            $claimButton.attr('disabled', 'true');
         } else {
             $claimButton.html(`Claim This Page`);
         }

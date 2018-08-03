@@ -4,6 +4,7 @@ PubSub.subscribe('user', (msg, userInfo) => {
     tuitionInfo.updateUser(userInfo);
     claimModal.updateUserInfo(userInfo);
     reviews.updateUserInfo(userInfo);
+    bookmark.updateUserInfo(userInfo);
 });
 
 PubSub.subscribeOnce('query.load', (msg, queryObject) => {
@@ -25,6 +26,7 @@ user.getInfo().then(userInfo => {
     claimModal.updateUserInfo(userInfo);
     tuitionInfo.updateUser(userInfo);
     reviews.updateUserInfo(userInfo);
+    bookmark.updateUserInfo(userInfo);
 });
 
 loginModal.init();

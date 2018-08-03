@@ -45,14 +45,15 @@ const reviews = (() => {
 
     function updateUserInfo(info) {
         userInfo = info;
-        updateReviewDiv(info);
+        updateReviewDiv();
     }
 
-    function updateReviewDiv(info) {
-        if (info === undefined || user === '') {
-            //user logged in
+    function updateReviewDiv() {
+        if (userInfo === undefined || userInfo === '') {
+            $reviewDiv.click(() => {$loginModal.modal('show')})
         } else {
-            $reviewDiv.click(() => {$loginModal.modal('show'); console.log($loginModal)})
+            // user logged in
+            $reviewDiv.off('click')
         }
     }
 
@@ -74,7 +75,7 @@ const reviews = (() => {
             //check if a review already there
             let reviewAlredythere = false;
             userInfo.reviewsOwned.forEach(obj => {
-                if (obj.outerId == queryId) {
+                if (obj.outerId == tuitionId) {
                     reviewAlredythere = true;
                 }
             });
@@ -101,7 +102,6 @@ const reviews = (() => {
                             addedReviewID = obj._id;
                         }
                     });
-                    console.log(addedReviewID);
                     // update user now
                     $.ajax({
                         url: '/user/add/reviewsOwned/' + userInfo._id,
@@ -127,6 +127,7 @@ const reviews = (() => {
         cacheDom();
         cacheDynamicDom();
         bindEvents();
+        updateReviewDiv();
     }
 
     return {init, updateUserInfo, updateTuitionInfo};
