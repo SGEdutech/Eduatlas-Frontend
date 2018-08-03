@@ -46,6 +46,33 @@
 | 1. General Style
 |----------------------------------------------------------------------------
 */
+
+.tutiondetailscard
+{
+
+}
+.tutionclaim
+{
+
+}
+
+@media only screen and (max-width: 800px) 
+{
+  .tutiondetailscard{margin-top: 200px;}
+  
+}
+
+@media only screen and (max-width: 900px) and (min-width:750px) 
+{
+  .tutionclaim{margin-top: 140px!important;}
+}
+
+.contactus-1 .info .icon
+{
+  margin-right:25px!important;
+}
+
+
 .button{
   width:100%!important;
   }
@@ -188,6 +215,7 @@
   }
   .login {
   color: var(--loginColor);
+  width:100%!important;
   }
   .login label,
   .login input[type='text'],
@@ -195,7 +223,14 @@
   .login input[type='submit'] {
   border-radius: var(--loginBorderRadus);
   padding: 1rem;
+ /* width:100%!important;*/
   }
+
+  @media only screen and (max-width: 400px) {
+    .login input[type='text'] {
+      width:100%!important;
+    }
+}
   .login label {
   background-color: var(--loginLabelBackgroundColor);
   border-bottom-right-radius: 0;
