@@ -7,5 +7,9 @@ const scripts = {
 
     executeAllFunctions(...funtionArray) {
         funtionArray.forEach(fn => fn());
+    },
+
+    async(fn) {
+        setTimeout()
     }
 };
