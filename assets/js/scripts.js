@@ -20,7 +20,7 @@ const helperScripts = {
         reviewArray.forEach(review => totalStars += review.rating);
         return totalStars / totalReviews;
     },
-    
+
     openNowInit(data) {
         if (data === undefined || data === []) {
             return

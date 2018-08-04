@@ -13,6 +13,8 @@ tuitionCards.init().then(cardsContainer => {
     bookmark.init();
 });
 
+searchBtn.init();
+
 setTimeout(loginModal.init());
 
 searchSuggestion.init();
