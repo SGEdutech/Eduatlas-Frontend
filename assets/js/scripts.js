@@ -44,7 +44,6 @@ const helperScripts = {
         let todaysHours;
         if (data.dayAndTimeOfOperation) {
             let dayNTimeOfOperation = data.dayAndTimeOfOperation;
-            todaysHours;
             dayNTimeOfOperation.forEach(obj => {
                 if (obj.day) {
                     if (obj.day.toLowerCase() == day) {

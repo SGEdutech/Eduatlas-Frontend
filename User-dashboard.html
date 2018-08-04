@@ -37,54 +37,9 @@
 </head>
 <body>
 
-<nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
-     id="sectionsNav">
-    <div class="container">
-        <div class="navbar-translate">
-            <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="searchdetails.html?page=1&items=18">Institutes/Tuition</a>
-                </li>
-                <li class="nav-item disabled">
-                    <a class="nav-link" href="#">Schools</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="true" aria-expanded="false"><i class="material-icons">
-                        add
-                    </i>
-                        ADD LISTING</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add
-                            Tuition</a>
-                        <!--<div class="dropdown-divider"></div>
-                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
-                    </div>
-                </li>
-                <li class="nav-item dropdown" id="dynamicUserBtn">
-                </li>
-                <!--<li class="nav-item disabled">
-                    <a class="nav-link" href="#">Events</a>
-                </li>
-                <li class="nav-item disabled">
-                    <a class="nav-link" href="#">Blogs</a>
-                </li>-->
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="nav_container">
+
+</div>
 
 <div id="coverImgContainer">
     <div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark"
@@ -99,8 +54,8 @@
         <div class="card">
             <div class="card-body">
                 <div class="fileinput fileinput-new text-center">
-                    <div class="fileinput-new thumbnail img-raised" id="userProfilePicContainer">
-
+                    <div class="fileinput-new thumbnail img-raised">
+                        <img id="profile_pic" src="" alt="User Profile Pic">
                     </div>
                 </div>
                 <div class="card-subtitle text-muted h5" id="userIdContainer"></div>
@@ -158,9 +113,9 @@
                         <div class="card p-md-1" id="userOwnedTuitionCard">
                             <div class="card-body">
                                 <div id="userOwnedTuitionContainer" class="row">
-                                    <div class="card-title col-12">
-                                        Manage Your Institute/Tuition
-                                    </div>
+                                    <!--<div class="card-title col-12">-->
+                                        <!--Manage Your Institute/Tuition-->
+                                    <!--</div>-->
                                 </div>
                             </div>
                         </div>
@@ -496,16 +451,25 @@
 <script src="assets/js/templates.js"></script>
 
 <!-- Custom Js file for user-->
-<script src="assets/js/user-program.js"></script>
-<script src="assets/js/login-check.js"></script>
-<script src="assets/js/user-addTuition.js"></script>
-<script src="assets/js/updateNavBar.js"></script>
-<script src="assets/js/card-link.js"></script>
-<script src="assets/js/reviews.js"></script>
+<!--<script src="assets/js/user-program.js"></script>-->
+<!--<script src="assets/js/login-check.js"></script>-->
+<!--<script src="assets/js/user-addTuition.js"></script>-->
+<!--<script src="assets/js/updateNavBar.js"></script>-->
+<!--<script src="assets/js/card-link.js"></script>-->
+<!--<script src="assets/js/reviews.js"></script>-->
 
 <!--seed cities-->
+<!--Docs at: https://github.com/mroderick/PubSubJS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
+
 <script src="assets/cities/seed.js"></script>
-<!-- endbuild -->
+
+<script src="assets/js/navbar.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script src="assets/js/user.js"></script>
+<script src="assets/js/dashboard-name-and-img.js"></script>
+<script src="assets/js/user-claimed.js"></script>
+<script src="assets/js/dashboard-service.js"></script>
 
 </body>
 </html>

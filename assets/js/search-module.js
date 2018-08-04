@@ -154,7 +154,7 @@ const searchModule = (() => {
                         search: queryObj.city,
                         fullText: true
                     }),
-                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation,reviews',
+                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
                     limit: queryObj.items,
                     skip: skip,
                     sortBy: queryObj.sortBy
