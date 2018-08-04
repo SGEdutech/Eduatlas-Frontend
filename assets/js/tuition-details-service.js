@@ -1,5 +1,4 @@
 PubSub.subscribe('user', (msg, userInfo) => {
-    console.log(userInfo);
     navigationBar.render(userInfo);
     tuitionInfo.updateUser(userInfo);
     claimModal.updateUserInfo(userInfo);
