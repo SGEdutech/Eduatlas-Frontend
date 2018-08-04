@@ -57,6 +57,7 @@ const loginModal = (() => {
     function init() {
         cacheDom();
         render().then(() => {
+            PubSub.publish('loginModal.load', null);
             cacheDynamicDom();
             bindEvents();
         });
