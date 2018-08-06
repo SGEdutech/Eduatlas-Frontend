@@ -201,19 +201,6 @@ function editUserProfile() {
             instituteChecked: "",
         };
 
-        context.firstName = data.firstName;
-        context.middleName = data.middleName;
-        context.lastName = data.lastName;
-        context.addressLine1 = data.addressLine1;
-        context.addressLine2 = data.addressLine2;
-        context.state = data.state;
-        context.city = data.city;
-        context.district = data.district;
-        context.country = data.country;
-        context.pin = data.pin;
-        context.phone = data.phone;
-        context.primaryEmail = data.primaryEmail;
-        context.secondaryEmail = data.secondaryEmail;
 
         if (data.isMale) {
             //if user is male

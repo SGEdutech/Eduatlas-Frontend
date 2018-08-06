@@ -5,6 +5,7 @@ const queryString = (() => {
         let url = new URL(url_string);
         let objToReturn = {};
         objToReturn._id = url.searchParams.get("_id");
+        objToReturn.a = url.searchParams.get("a");
         objToReturn.page = url.searchParams.get("page");
         objToReturn.page = parseInt(objToReturn.page);
         objToReturn.items = url.searchParams.get("items");

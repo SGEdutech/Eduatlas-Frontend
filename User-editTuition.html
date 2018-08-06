@@ -1,14 +1,18 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-    
-            gtag('config', 'UA-121945570-1');
-        </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-121945570-1');
+    </script>
     <title>User-EditTuition</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -36,54 +40,9 @@
 </head>
 <body style="height: 2000px">
 
-<nav class="navbar navbar-color-on-scroll navbar-transparent bg-dark fixed-top navbar-expand-lg " color-on-scroll="100"
-     id="sectionsNav">
-    <div class="container">
-        <div class="navbar-translate">
-            <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="searchdetails.html?page=1&items=18">Institutes/Tuition</a>
-                </li>
-                <li class="nav-item disabled">
-                    <a class="nav-link" href="#">Schools</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="true" aria-expanded="false"><i class="material-icons">
-                        add
-                    </i>
-                        ADD LISTING</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add
-                            Tuition</a>
-                        <!--<div class="dropdown-divider"></div>
-                        <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
-                    </div>
-                </li>
-                <li class="nav-item dropdown" id="dynamicUserBtn">
-                </li>
-                <!--<li class="nav-item disabled">
-                    <a class="nav-link" href="#">Events</a>
-                </li>
-                <li class="nav-item disabled">
-                    <a class="nav-link" href="#">Blogs</a>
-                </li>-->
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="nav_container">
+
+</div>
 
 <div id="coverImgContainer">
     <!-- <script id="coverInput" type="text/x-handlebars-template">
@@ -619,9 +578,26 @@
 <script src="assets/js/templates.js"></script>
 
 <!-- Custom Js file for user-->
-<script src="assets/js/user-editTuition.js"></script>
+<!--<script src="assets/js/user-editTuition.js"></script>
 <script src="assets/js/login-check.js"></script>
-<script src="assets/js/updateNavBar.js"></script>
+<script src="assets/js/updateNavBar.js"></script>-->
+
+<!--Docs at: https://github.com/mroderick/PubSubJS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
+
+<script src="assets/js/navbar.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script src="assets/js/user.js"></script>
+<script src="assets/js/cover-image.js"></script>
+<script src="assets/js/basic-details.js"></script>
+<script src="assets/js/facilities-description-category.js"></script>
+<script src="assets/js/contact-us-tab.js"></script>
+<script src="assets/js/courses-tab.js"></script>
+<script src="assets/js/results-tab.js"></script>
+<script src="assets/js/faculty-tab.js"></script>
+<script src="assets/js/tuition-details.js"></script>
+<script src="assets/js/query-string.js"></script>
+<script src="assets/js/edit-tuition-service.js"></script>
 <!-- endbuild -->
 
 </body>

@@ -1,14 +1,18 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-    
-            gtag('config', 'UA-121945570-1');
-        </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-121945570-1');
+    </script>
     <title>User-dashboard</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -79,7 +83,7 @@
                     <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">
                         Edit Profile</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab"> Add Your
+                    <li class="nav-item"><a id="subMenuTrigger" class="nav-link" href="#tab3" data-toggle="tab"> Add Your
                         Institute/Tuition</a>
                     </li>
 
@@ -113,9 +117,7 @@
                         <div class="card p-md-1" id="userOwnedTuitionCard">
                             <div class="card-body">
                                 <div id="userOwnedTuitionContainer" class="row">
-                                    <!--<div class="card-title col-12">-->
-                                        <!--Manage Your Institute/Tuition-->
-                                    <!--</div>-->
+
                                 </div>
                             </div>
                         </div>
@@ -135,7 +137,7 @@
                             </div>
 
                         </form>
-                        <button class="btn btn-info" onclick="editUser('Form1')">Save Personal Info</button>
+                        <button id="saveFrom1" class="btn btn-info">Save Personal Info</button>
                         <form id="Form2" method="" action="">
 
                             <div class="card" id="userSocialLinksContainer">
@@ -143,7 +145,7 @@
 
                         </form>
 
-                        <button class="btn btn-info" onclick="editUser('Form2')">Save Social Links</button>
+                        <button id="saveFrom2" class="btn btn-info">Save Social Links</button>
                     </div>
                     <div class="tab-pane" id="tab3">
                         <form id="addTuition" method="POST" action="/tuition/">
@@ -467,7 +469,12 @@
 <script src="assets/js/navbar.js"></script>
 <script src="assets/js/scripts.js"></script>
 <script src="assets/js/user.js"></script>
+<script src="assets/js/dashboard-bookmarks.js"></script>
+<script src="assets/js/dashboard-reviews.js"></script>
+<script src="assets/js/dashboard-edit-profile.js"></script>
 <script src="assets/js/dashboard-name-and-img.js"></script>
+<script src="assets/js/dashboard-hide-submenu.js"></script>
+<script src="assets/js/dashboard-add-tuition.js"></script>
 <script src="assets/js/user-claimed.js"></script>
 <script src="assets/js/dashboard-service.js"></script>
 

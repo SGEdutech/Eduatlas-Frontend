@@ -21,6 +21,15 @@ const userClaimedTuition = (() => {
     }
 
     function getTuitionCardHtml(tuitionIdArr) {
+        if (tuitionIdArr.length === 0) {
+            $claimedTuitionContainer.append(`<div class="card-title col-12">
+                                                 Claim or List your institute if you own one
+                                           </div>`)
+        }else {
+            $claimedTuitionContainer.append(`<div class="card-title col-12">
+                                                 Manage Your Institute/Tuition
+                                           </div>`)
+        }
         const tuitionInfoPromiseArr = [];
         tuitionIdArr.forEach(tuitionId => tuitionInfoPromiseArr.push(getTuitionsInfo(tuitionId)));
 
@@ -39,7 +48,7 @@ const userClaimedTuition = (() => {
     }
 
     function render(userInfo) {
-        getTuitionCardHtml(userInfo.tuitionsOwned).then(cardsHtml => $claimedTuitionContainer.html(cardsHtml))
+        getTuitionCardHtml(userInfo.tuitionsOwned).then(cardsHtml => $claimedTuitionContainer.append(cardsHtml))
     }
 
     function init(userInfo) {
