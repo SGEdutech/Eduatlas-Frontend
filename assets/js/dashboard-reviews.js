@@ -1,8 +1,17 @@
 const dashboardReviews = (() => {
     let $userReviews;
+    let $deleteReviewButton;
 
     function cache() {
         $userReviews = $("#userReviews");
+    }
+
+    function cacheDynamic() {
+        $deleteReviewButton = $(".delete-review-button");
+    }
+
+    function bindEvents() {
+        $deleteReviewButton.click(e => deleteReview(e))
     }
 
     function getReviewsInfo(reviewInfoObj) {
@@ -51,9 +60,44 @@ const dashboardReviews = (() => {
         });
     }
 
+    function deleteReview(event) {
+        let tuitionId = $(event.target).attr('data-tuition-id');
+        let userId = $(event.target).attr('data-user-id');
+        let reviewId = $(event.target).attr('data-review-id');
+
+        let updateTuitionPromise = $.ajax({
+            url: '/tuition/delete/reviews/' + tuitionId,
+            type: 'DELETE',
+            data: {
+                owner: userId
+            }
+        });
+
+        let updateUserPromise = $.ajax({
+            url: '/user/delete/reviewsOwned/' + userId,
+            method: 'DELETE',
+            data: {
+                outerId: tuitionId
+            }
+        });
+
+        Promise.all([updateTuitionPromise, updateUserPromise]).then(() => {
+            eagerRemoveCard(reviewId);
+        }).catch(err => console.error(err))
+    }
+
+    function eagerRemoveCard(cardId) {
+        //todo - cache properly
+        $('#' + cardId).remove()
+    }
+
     function render(user) {
         if (user) {
-            getUserReviewsHtml(user).then(cardsHtml => $userReviews.append(cardsHtml));
+            getUserReviewsHtml(user).then(cardsHtml => {
+                $userReviews.append(cardsHtml);
+                cacheDynamic();
+                bindEvents();
+            });
         }
     }
 

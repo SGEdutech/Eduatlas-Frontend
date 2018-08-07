@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="card-subtitle text-muted h5" id="userIdContainer"></div>
-                <button class="btn btn-outline-info" onclick="logout()">Logout</button>
+                <button class="btn btn-outline-info btn-round" onclick="logout()">Logout</button>
             </div>
 
         </div>
@@ -137,7 +137,7 @@
                             </div>
 
                         </form>
-                        <button id="saveFrom1" class="btn btn-info">Save Personal Info</button>
+                        <button id="saveFrom1" class="btn btn-info btn-round">Save Personal Info</button>
                         <form id="Form2" method="" action="">
 
                             <div class="card" id="userSocialLinksContainer">
@@ -145,7 +145,7 @@
 
                         </form>
 
-                        <button id="saveFrom2" class="btn btn-info">Save Social Links</button>
+                        <button id="saveFrom2" class="btn btn-info btn-round">Save Social Links</button>
                     </div>
                     <div class="tab-pane" id="tab3">
                         <form id="addTuition" method="POST" action="/tuition/">
@@ -361,7 +361,7 @@
                                 </div>
                             </div>
                             <input name="claimedBy" id="claimedByInput" type="hidden">
-                            <button class="btn btn-info" type="submit">Proceed</button>
+                            <button class="btn btn-info btn-round" type="submit">Proceed</button>
                         </form>
                         <!-- pass id of form to initTuition function for AJAX POST req -->
                     </div>
@@ -476,6 +476,7 @@
 <script src="assets/js/dashboard-hide-submenu.js"></script>
 <script src="assets/js/dashboard-add-tuition.js"></script>
 <script src="assets/js/user-claimed.js"></script>
+<script src="assets/js/redirect-on-logout.js"></script>
 <script src="assets/js/dashboard-service.js"></script>
 
 </body>

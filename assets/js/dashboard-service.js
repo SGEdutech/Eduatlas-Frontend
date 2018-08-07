@@ -1,5 +1,6 @@
 PubSub.subscribe('user', (msg, userInfo) => {
     navigationBar.render(userInfo);
+    redirectOnLogout.init(userInfo);
 });
 
 user.getInfo().then(userInfo => {

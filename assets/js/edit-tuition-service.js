@@ -1,5 +1,6 @@
 PubSub.subscribe('user', (msg, userInfo) => {
     navigationBar.render(userInfo);
+    redirectOnLogout.init(userInfo);
 });
 
 PubSub.subscribeOnce('query.load', (msg, queryObject) => {
