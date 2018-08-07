@@ -4,6 +4,7 @@ const claimModal = (() => {
     let $claimModal;
     let $claimConfirmButton;
     let $claimButton;
+    let queryObj;
 
     function cacheDom() {
         $claimModalContainer = $('#claim_modal_container');
@@ -26,21 +27,28 @@ const claimModal = (() => {
         updateClaimButtonModal(info);
     }
 
+    function updateQueryObj(obj) {
+        queryObj = obj;
+    }
+
     function claimListing() {
+        console.log(queryObj);
         //now update tuition by adding claimedBy
         const updateTuitionPromise = $.ajax({
             url: '/tuition/' + queryObj._id,
             type: 'PUT',
-            data: {claimedBy: user._id}
+            data: {claimedBy: userInfo._id}
         });
         //now update user by inserting id of tuition to tuitionsOwned array
         const updateUserPromise = $.ajax({
-            url: '/user/add/tuitionsOwned/' + user._id,
+            url: '/user/add/tuitionsOwned/' + userInfo._id,
             type: 'POST',
             data: {string: queryObj._id}
         });
 
-        Promise.all([updateTuitionPromise, updateUserPromise]).then(() => window.location.assign('User-dashboard.html')).catch(err => console.error(err))
+        Promise.all([updateTuitionPromise, updateUserPromise]).then(() => {
+            window.location.assign('User-dashboard.html')
+        }).catch(err => console.error(err))
     }
 
     function updateClaimButtonModal(userInfo) {
@@ -74,5 +82,5 @@ const claimModal = (() => {
         });
     }
 
-    return {init, updateUserInfo};
+    return {init, updateUserInfo, updateQueryObj};
 })();

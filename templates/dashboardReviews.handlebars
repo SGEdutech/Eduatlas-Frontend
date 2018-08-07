@@ -1,8 +1,12 @@
-<div class="card" id="{{reviewId}}">
+<div class="card" id="{{reviewId}}"
+     data-userId="{{userId}}">
     <div class="card-body">
         <h4 class="card-title">{{name}}</h4>
         <h6 class="card-subtitle mb-2 text-muted">{{rating}}/5</h6>
         <p class="card-text">{{description}}</p>
-        <button class="btn btn-danger btn-round" onclick="deleteReview('{{userId}}','{{tuitionId}}','{{reviewId}}')">Delete</button>
+        <button class="btn btn-danger btn-round delete-review-button" data-tuition-id="{{tuitionId}}"
+                data-review-id="{{reviewId}}" data-user-id="{{userId}}">
+            Delete
+        </button>
     </div>
 </div>
