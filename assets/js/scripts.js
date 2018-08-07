@@ -89,5 +89,32 @@ const helperScripts = {
             let minutes = parseInt(temp[1]);
             return {hours: hours, minutes: minutes}
         }
+    },
+
+    showNextTab($nextTab) {
+        $nextTab.tab('show');
+        //scroll 100 pixels
+        document.body.scrollTop = document.documentElement.scrollTop = 150;
+    },
+
+    saveDetails($form, $nextTab, tuitionId) {
+        const formData = new FormData($form[0]);
+
+        const Promise = $.ajax({
+            url: '/tuition/' + tuitionId,
+            type: 'PUT',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+        });
+
+        Promise.then(() => {
+            this.showNextTab($nextTab);
+        }).catch((err) => {
+            alert('Fail!');
+            console.log(err)
+        })
     }
+
 };

@@ -1,12 +1,22 @@
 const basicDetails = (() => {
     let $basicContainer;
+    let $form;
+    let $saveDetailsBtn;
+    let $contactUsTab;
 
     function cache() {
         $basicContainer = $("#basicContainer");
+        $form = $('#aboutUsForm');
+        $saveDetailsBtn = $('#save_basic_details_btn');
+        $contactUsTab = $(`[href = "#tab2"]`);
     }
 
-    function render(user) {
-        let html = getHtml(user);
+    function bindEvents(tuitionId) {
+        $saveDetailsBtn.click(() => helperScripts.saveDetails($form, $contactUsTab, tuitionId));
+    }
+
+    function render(tuitionInfo) {
+        let html = getHtml(tuitionInfo);
         $basicContainer.append(html);
     }
 
@@ -14,9 +24,10 @@ const basicDetails = (() => {
         return template.userEditTuitionBasic(context);
     }
 
-    function init(user) {
+    function init(tuitionInfo) {
         cache();
-        render(user);
+        render(tuitionInfo);
+        bindEvents(tuitionInfo._id);
     }
 
     return {init};

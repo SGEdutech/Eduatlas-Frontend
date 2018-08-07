@@ -181,7 +181,7 @@ function showDaynTime(array) {
     $("#opration_hours_containers").append(result);
 }
 
-function addAllTimes(array) {
+function addAllTimes() {
     // todo - fix the memory leak
     // temporary - let's delete the time and operation first and add new
     $.ajax({
