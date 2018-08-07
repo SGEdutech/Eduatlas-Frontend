@@ -1,10 +1,10 @@
 {{#each faculty}}
-    <div class="col-4" id="faculty{{id}}">
+    <div class="col-4" id="{{_id}}">
         <div class="card card-nav-tabs">
             <span style="position: absolute;left: 92%;top: -6%;">
             <!-- send (name of the faculty , id of card) as arguments for function deleteFaculty()-->
-            <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn"
-                    onclick="deleteFaculty('{{name}}','faculty{{id}}')">
+            <button class="btn btn-danger btn-fab btn-fab-mini btn-round deleteBtn delete-faculty-button"
+                    data-faculty-id="{{_id}}" data-name="{{name}}">
                 <i class="material-icons">
                     delete
                 </i>

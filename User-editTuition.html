@@ -204,7 +204,7 @@
 
                         </form>
                         <!-- pass id of form to saveDetails function for AJAX put req -->
-                        <button id="save_basic_details_btn" class="btn btn-info">Save And Continue
+                        <button id="save_basic_details_btn" class="btn btn-info btn-round">Save And Continue
                         </button>
 
                     </div>
@@ -274,19 +274,20 @@
                             <!--<button class="btn btn-outline-info mt-md-4" id="saveTimeBtn">Save Operating Hours
                             </button>-->
                         </div>
-                        <button id="saveTimeBtn" class="btn btn-info">Save
-                            And Continue
+                        <button id="saveTimeBtn" class="btn btn-info btn-round">
+                            Save And Continue
                         </button>
                     </div>
 
                     <div class="tab-pane" id="tab3">
                         <div class="row justify-content-around" id="coursesContainer">
                         </div>
-                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
+                        <button class="btn btn-outline-info btn-round" data-toggle="modal"
+                                data-target="#new_course_modal">
                             Add More Course
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="new_course_modal" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -327,23 +328,25 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                                         </button>
-                                        <button type="button" class="btn btn-info" onclick="addCourse()">Save changes
+                                        <button id="add_new_course_button" type="button" class="btn btn-info btn-round">
+                                            Save changes
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-info" onclick="showNextTab('tab4')">Save And Continue</button>
+                        <button id="next_Tab_Button" class="btn btn-info btn-round">Save And Continue</button>
                     </div>
                     <div class="tab-pane" id="tab4">
                         <div class="row justify-content-around" id="resultsContainer">
                         </div>
-                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal3">
+                        <button class="btn btn-outline-info btn-round" data-toggle="modal"
+                                data-target="#new_result_modal">
                             Add More Result
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog"
-                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="new_result_modal" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel3" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -382,24 +385,27 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                                         </button>
-                                        <button type="button" class="btn btn-info" onclick="addResult()">Save
-                                            changes
+                                        <button id="add_new_result_button" type="button" class="btn btn-info btn-round">
+                                            Save changes
                                         </button>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-info" onclick="showNextTab('tab5')">Save And Continue</button>
+                        <button id="next_Tab_Button2" class="btn btn-info btn-round">
+                            Save And Continue
+                        </button>
                     </div>
                     <div class="tab-pane" id="tab5">
                         <div class="row" id="facultyContainer">
                         </div>
-                        <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal4">
+                        <button class="btn btn-outline-info btn-round" data-toggle="modal"
+                                data-target="#new_faculty_modal">
                             Add More Faculty
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="new_faculty_modal" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel4" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -445,13 +451,14 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                                         </button>
-                                        <button type="button" class="btn btn-info" onclick="addFaculty()">Save changes
+                                        <button id="add_new_faculty_button" type="button" class="btn btn-info btn-round">Save
+                                            changes
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-info" onclick="showNextTab('tab6')">Save And Continue</button>
+                        <button id="next_Tab_Button3" class="btn btn-info btn-round">Save And Continue</button>
                     </div>
                     <div class="tab-pane" id="tab6">
                         <div class="form-group form-file-upload form-file-multiple">
@@ -468,7 +475,7 @@
                                 </div>
                             </form>
                         </div>
-                        <button class="btn btn-info" onclick="addGallery()">Save And Exit</button>
+                        <button class="btn btn-info btn-round" onclick="addGallery()">Save And Exit</button>
                     </div>
                 </div>
                 <!--</div>-->
@@ -507,7 +514,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info">Send mail</button>
+                <button type="button" class="btn btn-info btn-round">Send mail</button>
             </div>
         </div>
     </div>
@@ -537,7 +544,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info">Send sms</button>
+                <button type="button" class="btn btn-info btn-round">Send sms</button>
             </div>
         </div>
     </div>
