@@ -3,14 +3,19 @@ const navigationBar = (() => {
     let $logOutBtn;
     let $addTuitionBtn;
     let $dynamicUserBtn;
+    let $document;
     let user;
+    let $navbar;
+    let isTransperent;
 
     function cacheDom() {
+        $document = $(document);
         $navContainer = $('#nav_container');
     }
 
     // TODO: Further Optimise
     function cacheDynamicDom() {
+        $navbar = $('#navigation_bar');
         $logOutBtn = $navContainer.find('#log_out_btn');
         $addTuitionBtn = $navContainer.find('#add_tuition_btn');
         $dynamicUserBtn = $navContainer.find('#dynamic_user_btn');
@@ -31,6 +36,20 @@ const navigationBar = (() => {
         }
     }
 
+    function checkAndChangeNavColor() {
+        if ($document.scrollTop() < 100) {
+            if (isTransperent === false) {
+                $navbar.addClass('navbar-transparent');
+                isTransperent = true;
+            }
+        } else {
+            if (isTransperent === true) {
+                $navbar.removeClass('navbar-transparent');
+                isTransperent = false;
+            }
+        }
+    }
+
     function getHtml() {
         const url = 'nav.html';
         const dataType = 'html';
@@ -39,6 +58,7 @@ const navigationBar = (() => {
 
     function bindEvents() {
         if (user) $logOutBtn.click(helperScripts.logout);
+        $document.scroll(checkAndChangeNavColor);
     }
 
     function render(userInfo) {
@@ -48,6 +68,7 @@ const navigationBar = (() => {
             cacheDynamicDom();
             updateUserStatus();
             cacheDynamicDom();
+            isTransperent = $navbar.hasClass('navbar-transparent');
             bindEvents();
             updateAddTuitionLink();
         }).catch(err => reject(err));
