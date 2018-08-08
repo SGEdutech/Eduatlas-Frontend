@@ -7,7 +7,7 @@ PubSub.subscribe('user', (msg, userInfo) => {
 });
 
 PubSub.subscribeOnce('query.load', (msg, queryObject) => {
-    getInfo.render(queryObject, 'tuition');
+    getInfo.render(queryObject, 'school');
     reportModal.updateTuitionInfo(queryObject);
     reviews.updateTuitionInfo(queryObject);
     claimModal.updateQueryObj(queryObject);

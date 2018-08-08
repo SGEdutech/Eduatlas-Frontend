@@ -21,7 +21,7 @@ const helperScripts = {
         return totalStars / totalReviews;
     },
 
-    openNowInit(data) {
+    openNowInit(data, typeOfInfo) {
         if (data === undefined || data === []) {
             return
         }
@@ -39,12 +39,18 @@ const helperScripts = {
         weekday[5] = "friday";
         weekday[6] = "saturday";
         let day = weekday[d.getDay()];
-        // console.log(day)
+
+        let dayAndTimeOfOperation;
+        if (typeOfInfo === 'tuition') {
+            dayAndTimeOfOperation = data.dayAndTimeOfOperation;
+        }
+        if (typeOfInfo === 'school') {
+            dayAndTimeOfOperation = data.officeTiming;
+        }
 
         let todaysHours;
-        if (data.dayAndTimeOfOperation) {
-            let dayNTimeOfOperation = data.dayAndTimeOfOperation;
-            dayNTimeOfOperation.forEach(obj => {
+        if (dayAndTimeOfOperation) {
+            dayAndTimeOfOperation.forEach(obj => {
                 if (obj.day) {
                     if (obj.day.toLowerCase() == day) {
                         todaysHours = obj;
@@ -54,7 +60,7 @@ const helperScripts = {
         } else {
             return
         }
-        // console.log(todaysHours);
+
         if (todaysHours) {
             let toTime = this.convertTo24Hours(todaysHours.toTime);
             let fromTime = this.convertTo24Hours(todaysHours.fromTime);

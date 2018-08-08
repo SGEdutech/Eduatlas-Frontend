@@ -40,55 +40,9 @@
 </head>
 
 <body>
-<nav class="navbar bg-dark fixed-top navbar-expand-lg" id="sectionsNav">
-    <div class="container">
-        <div class="navbar-translate">
-            <a class="navbar-brand font-weight-bold" href="/">EduAtlas</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="searchdetails.html?page=1&items=18">Institutes/Tuition</a>
-                </li>
-                <li class="nav-item disabled">
-                    <a class="nav-link" href="#">Schools</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">
-                            add
-                        </i>
-                        ADD LISTING</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" onclick="checkLogin('./User-dashboard.html?tab=addTuition')">Add
-                            Tuition
-                        </a>
-                        <!--<div class="dropdown-divider"></div>
-                    <a class="dropdown-item" onclick="checkLogin('#')">Add School</a>-->
-                    </div>
-                </li>
-                <li class="nav-item dropdown" id="dynamicUserBtn">
-                </li>
-                <!--<li class="nav-item disabled">
-                <a class="nav-link" href="#">Events</a>
-            </li>
-            <li class="nav-item disabled">
-                <a class="nav-link" href="#">Blogs</a>
-            </li>-->
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="nav_container">
+
+</div>
 <div id="main_header" class="container mt-5">
     <div class="row">
     </div>
@@ -109,21 +63,17 @@
                                     School Name
                                 </h2>
                                 <div class="mx-3" id="openNow">
-                                    <span class="badge badge-pill badge-success">open now</span>
+
                                 </div>
                             </div>
                             <div class="row" id="categoryPills">
-                                <span class="badge badge-pill badge-info">Tag1</span>
-                                <span class="badge badge-pill badge-info">Tag2</span>
-                                <span class="badge badge-pill badge-info">Tag3</span>
-                                <span class="badge badge-pill badge-info">Tag4</span>
-                                <span class="badge badge-pill badge-info">Tag5</span>
+
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="row justify-content-center">
                                 <button type="button" class="btn btn-info btn-round" style="cursor: default"
-                                        id="verified">Verified
+                                        id="verifiedBadge" hidden>Verified
                                 </button>
                             </div>
                             <div class="row justify-content-center">
@@ -149,23 +99,23 @@
                     <div class="row align-items-center text-center justify-content-around">
                         <div class="col-md-2">
                             <small>Curriculum</small>
-                            <p class="font-weight-bold">CBSE</p>
+                            <p id="curriculum" class="font-weight-bold">CBSE</p>
                         </div>
                         <div class="col-md-2">
                             <small>Grades</small>
-                            <p class="font-weight-bold">Kg to 12th</p>
+                            <p id="grades" class="font-weight-bold">Kg to 12th</p>
                         </div>
                         <div class="col-md-2">
                             <small>Type of Schooling</small>
-                            <p class="font-weight-bold">DayBoarding</p>
+                            <p id="typeOfSchooling" class="font-weight-bold">DayBoarding</p>
                         </div>
                         <div class="col-md-2">
                             <small>Head of School</small>
-                            <p class="font-weight-bold">Ram Prasad</p>
+                            <p id="headOfSchool" class="font-weight-bold">Ram Prasad</p>
                         </div>
                         <div class="col-md-2">
                             <small>Founded</small>
-                            <p class="font-weight-bold">1996</p>
+                            <p id="founded" class="font-weight-bold">1996</p>
                         </div>
                     </div>
                 </div>
@@ -302,7 +252,7 @@
                                                 <div class="card-title h4">
                                                     Email
                                                 </div>
-                                                <div class="email">
+                                                <div id="emailAgain">
 
                                                 </div>
                                                 <div class="card-title h4">
@@ -347,43 +297,6 @@
                                 <div class="tab-pane" id="tab3">
                                     <div class="text-center d-flex flex-wrap justify-content-around"
                                          id="activityContainer">
-
-                                        <div class="card col-md-5 m-1">
-                                            <div class="card-body">
-                                                <h4 class="card-title m-0">Cycling</h4>
-                                            </div>
-                                        </div>
-
-                                        <div class="card col-md-5 m-1">
-                                            <div class="card-body">
-                                                <h4 class="card-title m-0">Para Gliding</h4>
-                                            </div>
-                                        </div>
-
-                                        <div class="card col-md-5 m-1">
-                                            <div class="card-body">
-                                                <h4 class="card-title m-0">Shooting</h4>
-                                            </div>
-                                        </div>
-
-                                        <div class="card col-md-5 m-1">
-                                            <div class="card-body">
-                                                <h4 class="card-title m-0">Horse Riding</h4>
-                                            </div>
-                                        </div>
-
-                                        <div class="card col-md-5 m-1">
-                                            <div class="card-body">
-                                                <h4 class="card-title m-0">Yoga</h4>
-                                            </div>
-                                        </div>
-
-                                        <div class="card col-md-5 m-1">
-                                            <div class="card-body">
-                                                <h4 class="card-title m-0">Smoking Pot</h4>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab4">
@@ -451,21 +364,21 @@
                                 <div class="tab-pane" id="tab8">
                                     <div class="row">
                                         <h4 class="card-title">Fee Details</h4>
-                                        <p>Divide details about your product or agency work into parts. Write a few
-                                            lines
-                                            about each one. A paragraph describing a feature will be enough.</p>
+                                        <p id="fee"></p>
                                     </div>
                                     <div class="row">
-                                        <h4 class="card-title">Admission Process and Criteria</h4>
-                                        <p>Divide details about your product or agency work into parts. Write a few
-                                            lines
-                                            about each one. A paragraph describing a feature will be enough.</p>
+                                        <h4 class="card-title">Admission Process</h4>
+                                        <p id="admission_process"></p>
+                                    </div>
+                                    <div class="row">
+                                        <h4 class="card-title">Eligibility Criteria</h4>
+                                        <p id="eligibility_criteria"></p>
                                     </div>
                                     <div class="row">
                                         <h4 class="card-title">Important Dates</h4>
                                         <div class="col-12">
-                                            <div class="row text-center">
-                                                <div class="col-md-4">
+                                            <div class="row text-center" id="dates_Container">
+                                                <!--<div class="col-md-4">
                                                     <h5 class="font-weight-bold">Admission Start</h5>
                                                     <p>23/12/12</p>
                                                 </div>
@@ -476,7 +389,7 @@
                                                 <div class="col-md-4">
                                                     <h5 class="font-weight-bold">Session Start</h5>
                                                     <p>23/12/12</p>
-                                                </div>
+                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -498,6 +411,12 @@
             <div class="">
                 <div class="my-3">
                     <div id="claimContainer">
+                        <button id="claimButton" type="button" class="btn btn-block btn-round btn-info">
+                            <i class="material-icons">
+                                done
+                            </i>
+                            Claimed
+                        </button>
                     </div>
                     <button type="button" class="btn btn-block btn-round btn-danger" data-toggle="modal"
                             data-target="#reportModal">
@@ -653,6 +572,10 @@
 </div>
 <div id="loginModalContainer">
 </div>
+<div id="claim_modal_container">
+</div>
+<div id="report_modal_container">
+</div>
 
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
@@ -686,23 +609,26 @@
 <!--handle bars-->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 <script src="assets/js/templates.js"></script>
-<script src="assets/js/card-link.js"></script>
-
-<!--login modal-->
-<script src="assets/js/loginModal.js"></script>
-
-<!-- Custom Code -->
-<script src="assets/js/tuition.js"></script>
-<script src="assets/js/login-check.js"></script>
-<script src="assets/js/updateNavBar.js"></script>
-<script src="assets/js/claimBtnAppend.js"></script>
-<script src="assets/js/reviews.js"></script>
-<script src="assets/js/openNow.js"></script>
-<script src="assets/js/bookmark.js"></script>
 
 <!--for gallery-->
 <script src="assets/js/lightbox.min.js"></script>
 <script src="assets/js/gallery.js"></script>
+
+<!-- Custom Code -->
+<!--Docs at: https://github.com/mroderick/PubSubJS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
+<script src="assets/js/get-info.js"></script>
+<script src="assets/js/bookmark.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script src="assets/js/reviews.js"></script>
+<script src="assets/js/login-modal.js"></script>
+<script src="assets/js/navbar.js"></script>
+<script src="assets/js/user.js"></script>
+<script src="assets/js/map.js"></script>
+<script src="assets/js/claim-modal.js"></script>
+<script src="assets/js/report-modal.js"></script>
+<script src="assets/js/query-string.js"></script>
+<script src="assets/js/school-details-service.js"></script>
 
 <!-- endbuild -->
 
