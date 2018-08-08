@@ -4,7 +4,9 @@ PubSub.subscribe('user', (msg, userInfo) => {
 });
 
 user.getInfo().then(userInfo => {
-    navigationBar.init(userInfo);
+    navigationBar.init(userInfo, {
+        colorOnScroll: true
+    });
     userImgAndName.init(userInfo);
     userClaimedTuition.init(userInfo);
     dashboardBookmarks.init(userInfo);

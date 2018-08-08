@@ -12,7 +12,10 @@ PubSub.subscribe('searchCards.load', (msg, nothing) => {
 });
 
 user.getInfo().then(userInfo => {
-    navigationBar.init(userInfo);
+    navigationBar.init(userInfo, {
+        colorOnScroll: false,
+        activeElementId: 'tuition_nav'
+    });
     bookmark.updateUserInfo(userInfo);
 });
 
