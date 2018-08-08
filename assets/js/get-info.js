@@ -1,11 +1,12 @@
-const tuitionInfo = (() => {
+const getInfo = (() => {
     let queryObj;
     let user;
 
-    let $tuitionName;
+    let $name;
     let $address;
     let $primaryNumber;
     let $email;
+    let $emailAgain;
     let $description;
     let $contactPerson;
     let $primaryNumber2;
@@ -20,7 +21,7 @@ const tuitionInfo = (() => {
     let $verifiedBadge;
     let $relatedTuitionContainer;
     let $categoryPills;
-    let $opration_hours_containers;
+    let $opration_hours_containers, $opration_hours_containers2;
     let $facilities_container;
     let $category_container;
     let $linkContainer;
@@ -29,13 +30,18 @@ const tuitionInfo = (() => {
     let $facultyContainer;
     let $gallery;
     let $claimButton;
+    let $curriculum, $grades, $typeOfSchooling, $headOfSchool, $founded;
+    let $activityContainer;
+    let $feeDetails, $admissionProcess, $eligibilityCriteria;
+    let $datesContainer;
 
 
     function cache() {
-        $tuitionName = $('.container #tuition_name');
+        $name = $('.container #tuition_name');
         $address = $('.container #address');
         $primaryNumber = $('.container #phone');
         $email = $('.container #email');
+        $emailAgain = $('.container #emailAgain');
         $description = $('.container #description');
         $contactPerson = $('.container #contact_person');
         $primaryNumber2 = $('.container #primary_number');
@@ -55,6 +61,7 @@ const tuitionInfo = (() => {
         $relatedTuitionContainer = $("#relatedTuitionContainer");
         $categoryPills = $('#categoryPills');
         $opration_hours_containers = $("#opration_hours_containers");
+        $opration_hours_containers2 = $("#opration_hours_containers2");
         $facilities_container = $('#facilities_container');
         $category_container = $('#category_container');
         $linkContainer = $("#linkContainer");
@@ -63,16 +70,34 @@ const tuitionInfo = (() => {
         $facultyContainer = $("#facultyContainer");
         $gallery = $("#gallery");
         $claimButton = $('#claimButton');
+        $curriculum = $('#curriculum');
+        $grades = $('#grades');
+        $typeOfSchooling = $('#typeOfSchooling');
+        $headOfSchool = $('#headOfSchool');
+        $founded = $('#founded');
+        $activityContainer = $('#activityContainer');
+        $feeDetails = $('#fee');
+        $admissionProcess = $('#admission_process');
+        $eligibilityCriteria = $('#eligibility_criteria');
+        $datesContainer = $('#dates_Container');
     }
 
     function bindEvents() {
 
     }
 
-    function getTuitionInfo() {
-        const url = '/tuition';
-        const data = {_id: queryObj._id};
-        return $.ajax({url, data});
+    function getInfoFromDatabase(typeOfInfo) {
+        if (typeOfInfo === 'tuition') {
+            const url = '/tuition';
+            const data = {_id: queryObj._id};
+            return $.ajax({url, data});
+        }
+        if (typeOfInfo === 'school') {
+            const url = '/school';
+            const data = {_id: queryObj._id};
+            return $.ajax({url, data});
+        }
+
     }
 
     function getReviews(reviewsArray) {
@@ -98,24 +123,36 @@ const tuitionInfo = (() => {
         }
     }
 
-    function updateBasicInfo(tuitionInfoObj) {
+    function updateBasicInfo(infoObj, typeOfInfo) {
 
-        $tuitionName.html(tuitionInfoObj.name);
-        $address.html(tuitionInfoObj.addressLine1 + ',' + tuitionInfoObj.addressLine2 + ',' + tuitionInfoObj.city + ',' + tuitionInfoObj.pin);
-        $primaryNumber.html(tuitionInfoObj.primaryNumber);
-        $email.html(tuitionInfoObj.email);
-        $description.html(tuitionInfoObj.description);
-        $contactPerson.html(tuitionInfoObj.contactPerson);
-        $primaryNumber2.html(tuitionInfoObj.secondaryNumber);
-        $secondaryNumber.html(tuitionInfoObj.secondaryNumber);
-        $website.html(tuitionInfoObj.website);
+        $name.html(infoObj.name);
+        $address.html(infoObj.addressLine1 + ',' + infoObj.addressLine2 + ',' + infoObj.city + ',' + infoObj.pin);
+        $primaryNumber.html(infoObj.primaryNumber);
+        $email.html(infoObj.email);
+        $emailAgain.html(infoObj.email);
+        $description.html(infoObj.description);
+        $contactPerson.html(infoObj.contactPerson);
+        $primaryNumber2.html(infoObj.secondaryNumber);
+        $secondaryNumber.html(infoObj.secondaryNumber);
+        $website.html(infoObj.website);
+
+        if (typeOfInfo === 'school') {
+            //only for schools
+            $curriculum.html(infoObj.curriculum);
+            let array = infoObj.grades.split(',');
+            $grades.html(array[0] + ' to ' + array[array.length - 1]);
+            $typeOfSchooling.html(infoObj.type);
+            $headOfSchool.html(infoObj.principalName);
+            $founded.html(infoObj.yearFounded);
+        }
+
     }
 
-    function updateCoverImage(tuitionCoverPic) {
-        if (tuitionCoverPic === undefined || tuitionCoverPic === '') {
+    function updateCoverImage(coverPic) {
+        if (coverPic === undefined || coverPic === '') {
             $coverImage.attr("src", "/assets/img/fourgirls.jpeg");
         } else {
-            $coverImage.attr('src', 'images/' + tuitionCoverPic);
+            $coverImage.attr('src', 'images/' + coverPic);
         }
     }
 
@@ -131,8 +168,8 @@ const tuitionInfo = (() => {
         }
     }
 
-    function updateOpenNow(data) {
-        helperScripts.openNowInit(data);
+    function updateOpenNow(data, typeOfInfo) {
+        helperScripts.openNowInit(data, typeOfInfo);
         if (data.openedNow) {
             $openNow.append(`<span class="badge badge-pill badge-success">open now</span>`)
         }
@@ -169,6 +206,43 @@ const tuitionInfo = (() => {
         const categoryArr = categories ? categories.split(',') : [];
         let result2 = template.tuitionCategory({categories: categoryArr});
         $category_container.html(result2);
+    }
+
+    function showActivities(activitiesArr) {
+        if (activitiesArr === undefined || activitiesArr.length === 0) {
+            $activityContainer.append('Nothing To Show');
+            return;
+        }
+        let toAppend = '';
+        activitiesArr.forEach(activity => {
+            toAppend += `<div class="card col-md-5 m-1">
+                             <div class="card-body">
+                                <h4 class="card-title m-0">${activity}</h4>
+                             </div>
+                         </div>`
+        });
+        $activityContainer.append(toAppend);
+    }
+
+    function showAdmissionAndFeeInfo(fee, admissionProcess, eligibilityCriteria) {
+        $feeDetails.append(fee);
+        $admissionProcess.append(admissionProcess);
+        $eligibilityCriteria.append(eligibilityCriteria);
+    }
+
+    function showImportantDates(datesArr) {
+        let toAppend = '';
+        datesArr.forEach(obj => {
+            if (obj.date && obj.title) {
+                toAppend += `
+                <div class="col-md-4">
+                   <h5 class="font-weight-bold">${obj.title}</h5>
+                   <p>${obj.date}</p>
+                </div>
+                `
+            }
+        });
+        $datesContainer.append(toAppend);
     }
 
     function showCourses(array) {
@@ -262,7 +336,7 @@ const tuitionInfo = (() => {
         $linkContainer.append(result);
     }
 
-    function updateDaynTime(array) {
+    function updateDaynTime(array, $targetElement) {
         if (array === undefined || array === []) {
             return;
         }
@@ -316,7 +390,7 @@ const tuitionInfo = (() => {
             }
         });
         let result = template.tuitionOperationHours(context);
-        $opration_hours_containers.append(result);
+        $targetElement.append(result);
     }
 
     function getRelatedListing(city) {
@@ -362,25 +436,44 @@ const tuitionInfo = (() => {
         });
     }
 
-    function getPopularListing(city) {
+    function getPopularListing(city, typeOfInfo) {
         if (!city) {
             return
         }
         // todo - fix Algorithm to get related listing
         // maybe add server side route to get this
-        let promise = $.ajax({
-            url: '/tuition/search',
-            data: {
-                city: JSON.stringify({
-                    search: city,
-                    fullText: true
-                }),
-                demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
-                limit: 2,
-                skip: 0,
-                sortBy: 'views'
-            }
-        });
+
+        let promise;
+        if (typeOfInfo === 'tuition') {
+            promise = $.ajax({
+                url: '/tuition/search',
+                data: {
+                    city: JSON.stringify({
+                        search: city,
+                        fullText: true
+                    }),
+                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
+                    limit: 2,
+                    skip: 0,
+                    sortBy: 'views'
+                }
+            });
+        }
+        if (typeOfInfo === 'school') {
+            promise = $.ajax({
+                url: '/school/search',
+                data: {
+                    city: JSON.stringify({
+                        search: city,
+                        fullText: true
+                    }),
+                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
+                    limit: 2,
+                    skip: 0,
+                    sortBy: 'views'
+                }
+            });
+        }
 
         let result = '';
 
@@ -409,30 +502,41 @@ const tuitionInfo = (() => {
         user = userInfo;
     }
 
-    function render(obj) {
+    function render(obj, typeOfInfo) {
         queryObj = obj;
         cache();
         bindEvents();
-        getTuitionInfo()
-            .then(tuitionInfoObj => {
-                PubSub.publish('address.ready', tuitionInfoObj.addressLine1 + ',' + tuitionInfoObj.addressLine2 + ',' + tuitionInfoObj.city + ',' + tuitionInfoObj.state);
+        getInfoFromDatabase(typeOfInfo)
+            .then(InfoObj => {
+                PubSub.publish('address.ready', InfoObj.addressLine1 + ',' + InfoObj.addressLine2 + ',' + InfoObj.city + ',' + InfoObj.state);
 
-                updateBasicInfo(tuitionInfoObj);
-                updateOpenNow(tuitionInfoObj);
-                updateCoverImage(tuitionInfoObj.img_tuitionCoverPic);
-                updateClaimButtonHTML(tuitionInfoObj.claimedBy);
-                updateVerifiedBadge(tuitionInfoObj.claimedBy);
-                updateFacilities(tuitionInfoObj.facilities);
-                updateCategories(tuitionInfoObj.category);
-                getReviews(tuitionInfoObj.reviews);
-                getPopularListing(tuitionInfoObj.city);
-                updateCategoryPills(tuitionInfoObj.category);
-                setTimeout(() => updateDaynTime(tuitionInfoObj.dayAndTimeOfOperation));
-                setTimeout(() => updateSocialLinks(tuitionInfoObj.fbLink, tuitionInfoObj.instaLink, tuitionInfoObj.youtubeLink));
-                setTimeout(() => showCourses(tuitionInfoObj.courses));
-                setTimeout(() => showResults(tuitionInfoObj.bragging));
-                setTimeout(() => showFaculty(tuitionInfoObj.team));
-                setTimeout(() => showGallery(tuitionInfoObj.gallery));
+                updateBasicInfo(InfoObj, typeOfInfo);
+                updateOpenNow(InfoObj, typeOfInfo);
+                updateCoverImage(InfoObj.img_tuitionCoverPic);
+                updateClaimButtonHTML(InfoObj.claimedBy);
+                updateVerifiedBadge(InfoObj.claimedBy);
+                updateFacilities(InfoObj.facilities);
+                updateCategories(InfoObj.category);
+                getReviews(InfoObj.reviews);
+                getPopularListing(InfoObj.city, typeOfInfo);
+                updateCategoryPills(InfoObj.category);
+
+                setTimeout(() => updateSocialLinks(InfoObj.fbLink, InfoObj.instaLink, InfoObj.youtubeLink));
+                setTimeout(() => showResults(InfoObj.bragging));
+                setTimeout(() => showFaculty(InfoObj.team));
+
+                if (typeOfInfo === 'tuition') {
+                    setTimeout(() => updateDaynTime(InfoObj.dayAndTimeOfOperation, $opration_hours_containers));
+                    setTimeout(() => showCourses(InfoObj.courses));
+                    setTimeout(() => showGallery(InfoObj.gallery));
+                }
+                if (typeOfInfo === 'school') {
+                    setTimeout(() => updateDaynTime(InfoObj.schoolTiming, $opration_hours_containers));
+                    setTimeout(() => updateDaynTime(InfoObj.officeTiming, $opration_hours_containers2));
+                    setTimeout(() => showActivities(InfoObj.activities));
+                    setTimeout(() => showAdmissionAndFeeInfo(InfoObj.fee, InfoObj.admissionProcess, InfoObj.eligibilityCriteria));
+                    setTimeout(() => showImportantDates(InfoObj.importantDates));
+                }
                 // getRelatedListing(tuitionInfoObj.city);
             })
             .catch(err => console.error(err));
