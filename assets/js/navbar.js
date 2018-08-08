@@ -7,18 +7,20 @@ const navigationBar = (() => {
     let user;
     let $navbar;
     let isTransperent;
+    let $activeElement;
 
     function cacheDom() {
         $document = $(document);
         $navContainer = $('#nav_container');
     }
 
-    // TODO: Further Optimise
-    function cacheDynamicDom() {
+    // TODO: Optimise
+    function cacheDynamicDom(activeElementId) {
         $navbar = $('#navigation_bar');
         $logOutBtn = $navContainer.find('#log_out_btn');
         $addTuitionBtn = $navContainer.find('#add_tuition_btn');
         $dynamicUserBtn = $navContainer.find('#dynamic_user_btn');
+        if (activeElementId) $activeElement = $(`#${activeElementId}`);
     }
 
     function updateUserStatus() {
@@ -58,25 +60,44 @@ const navigationBar = (() => {
 
     function bindEvents() {
         if (user) $logOutBtn.click(helperScripts.logout);
+    }
+
+    function bindNavScroll() {
         $document.scroll(checkAndChangeNavColor);
     }
 
-    function render(userInfo) {
+    function makeNavColorDynamic() {
+        isTransperent = true;
+        $navbar.addClass('navbar-transparent');
+        bindNavScroll();
+    }
+
+    function activateElement() {
+        console.log($activeElement);
+        $activeElement.addClass('active');
+    }
+
+    function render(userInfo, colorOnScroll, activeElementId) {
         user = userInfo;
         getHtml().then(navHtml => {
             $navContainer.html(navHtml);
             cacheDynamicDom();
             updateUserStatus();
             cacheDynamicDom();
-            isTransperent = $navbar.hasClass('navbar-transparent');
             bindEvents();
+            if (colorOnScroll) makeNavColorDynamic();
+            cacheDynamicDom(activeElementId);
+            if (activeElementId) activateElement();
             updateAddTuitionLink();
         }).catch(err => reject(err));
     }
 
-    function init(userInfo) {
+    function init(userInfo, opts) {
+        opts = opts || {};
+        const colorOnScroll = opts.colorOnScroll || false;
+        const activeElementId = opts.activeElementId;
         cacheDom();
-        render(userInfo);
+        render(userInfo, colorOnScroll, activeElementId);
     }
 
     return {init, render};

@@ -4,7 +4,10 @@ PubSub.subscribe('user', (msg, userInfo) => {
 });
 
 user.getInfo().then(userInfo => {
-    navigationBar.init(userInfo);
+    navigationBar.init(userInfo, {
+        colorOnScroll: true,
+        activeElementId: 'home_nav'
+    });
     bookmark.updateUserInfo(userInfo);
 });
 
