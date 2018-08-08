@@ -1,35 +1,44 @@
-function bookmark(queryId) {
+const bookmark = (() => {
+    let userInfo;
+    let $loginModal;
+    let $bookmarkButtons;
 
-    $.ajax({
-        url: '/user/check',
-    }).then((userdata) => {
-        if (userdata == 'LogIn') {
-            $('#loginModal').modal('show');
+    function bindEvents() {
+        $bookmarkButtons.click(bookmarkTuition)
+    }
+
+    function cacheDynamicDom() {
+        $loginModal = $('#loginModal');
+        $bookmarkButtons = $('.bookmark-button')
+    }
+
+    function updateUserInfo(info) {
+        userInfo = info;
+    }
+
+    function bookmarkTuition() {
+        if (!userInfo) {
+            $loginModal.modal('show');
         } else {
-            let AlreadyBookmarked = false;
-            userdata.bookmarkTuitions.forEach(tuitionID => {
-                if (tuitionID == queryId) {
-                    AlreadyBookmarked = true;
+            let tuitionId = $(this).attr('data-id');
+            //todo - keep a check in backend one tuition one bookmark only
+            $.ajax({
+                url: '/user/add/bookmarkTuitions/' + userInfo._id,
+                method: 'POST',
+                data: {
+                    string: tuitionId
                 }
-            });
-            if (AlreadyBookmarked) {
-                //already bookmarked do nothing
-                alert('already bookmarked')
-            } else {
-                //bookmark now
-                $.ajax({
-                    url: '/user/add/bookmarkTuitions/' + userdata._id,
-                    method: 'POST',
-                    data: {
-                        string: queryId
-                    }
-                }).then(data => {
-                    alert('bookmarked successfully')
-                })
-            }
+            }).then(data => {
+                alert('bookmarked successfully')
+            })
 
         }
-    }).catch(err => {
-        console.log(err);
-    })
-}
+    }
+
+    function init() {
+        cacheDynamicDom();
+        bindEvents();
+    }
+
+    return {init, updateUserInfo};
+})();

@@ -1,0 +1,36 @@
+.left-sidebar {
+    box-shadow: 0px 0px 54px 0px rgba(0, 0, 0, 0.17);
+}
+.lis-relative {
+    position: relative;
+}
+.lis-left-0 {
+    left: 0 !important;
+}
+.lis-primary {
+    color: #19b5fe !important;
+}
+.custom-control {
+    margin-right: .4rem;
+}
+.custom-checkbox {    
+    line-height: 20px;
+    cursor: pointer;   
+    user-select: none;
+}
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+}
+.custom-checkbox .custom-control-indicator {
+    width: 20px;
+    height: 20px;
+   /* background-color: transparent;*/
+}
+.custom-control-indicator {
+    border: solid 2px #dadada;
+}
+.custom-control-input:checked ~ .custom-control-indicator {
+    background-color: #19b5fe;
+    border-color: #19b5fe;
+}
