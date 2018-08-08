@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-121945570-1');
+    </script>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>
+        Eduatlas
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'>
+    <!-- CSS Files -->
+    <link href="assets/css/material-kit.css?v=2.1.0" rel="stylesheet"/>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <!-- Material Kit CSS -->
+    <link rel="stylesheet" href="assets/css/material-kit.css">
+
+</head>
+<body class="sections-page sidebar-collapse">
+<div class="container">
+    <h1>Upload Solutions</h1>
+    <form id="solution_form" class="solution_form" action="/slept-through-class" method="post">
+        <div class="form-group">
+            <label for="board_input" class="bmd-label-floating">BOARD</label>
+            <input type="text" name="board" class="form-control" id="board_input">
+        </div>
+        <div class="form-group">
+            <label for="class_input" class="bmd-label-floating">CLASS</label>
+            <input type="text" name="class" class="form-control" id="class_input">
+        </div>
+        <div class="form-group">
+            <label for="subject_input" class="bmd-label-floating">SUBJECT</label>
+            <input type="text" name="subject" class="form-control" id="subject_input">
+        </div>
+        <div class="form-group">
+            <label for="chapter_input" class="bmd-label-floating">CHAPTER</label>
+            <input type="text" name="chapter" class="form-control" id="chapter_input">
+        </div>
+        <div class="form-group form-file-upload form-file-multiple">
+            <input name="pdfPath" type="file" class="inputFileHidden">
+            <div class="input-group">
+                <input type="text" class="form-control inputFileVisible" placeholder="Upload PDF">
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-fab btn-round btn-primary">
+                    <i class="material-icons">attach_file</i>
+                </button>
+            </span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Please Attach A File</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--   Core JS Files   -->
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/bootstrap-material-design.js"></script>
+
+<!-- Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="assets/js/plugins/moment.min.js"></script>
+
+<!-- Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+
+<!-- Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/  -->
+<script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
+
+<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
+
+<!-- Plugin for Small Gallery in Product Page -->
+<script src="assets/js/plugins/jquery.flexisel.js"></script>
+
+<!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+<script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="assets/js/plugins/nouislider.min.js"></script>
+
+<!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+<script src="assets/js/material-kit.js?v=2.0.0"></script>
+
+<!--Costum JS-->
+<script src="assets/js/solution.js"></script>
+</body>
+
+</html>

@@ -133,7 +133,7 @@ h6 {
 
 /*======================== Font-Color Css ===============================*/
 .lis-primary {
-  color: #ff214f !important; }
+  color:#19b5fe !important; }
 
 .lis-dark {
   color: #222222; }
@@ -909,9 +909,9 @@ textarea.form-control {
   box-shadow: none; }
 
 .custom-radio .custom-control-input:checked ~ .custom-control-indicator {
-  border-color: #ff214f;
-  background: #ff214f !important;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #ff214f;
+  border-color: #19b5fe;
+  background: #19b5fe !important;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #19b5fe;
   transition: .28s ease; }
 
 #ex1Slider .slider-selection, #ex7Slider .slider-selection {
@@ -934,8 +934,8 @@ textarea.form-control {
   padding-left: 5px; }
 
 .custom-control-input:checked ~ .custom-control-indicator {
-  background-color: #ff214f;
-  border-color: #ff214f; }
+  background-color:#19b5fe;
+  border-color:#19b5fe; }
 
 /*=============== Google Map =======================*/
 .map-fixed {
