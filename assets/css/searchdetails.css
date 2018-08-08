@@ -34,3 +34,22 @@
     background-color: #19b5fe;
     border-color: #19b5fe;
 }
+.social{
+    background: white;
+    box-shadow: 2px 1px 10px 2px #b3b3a0;
+    margin-top: 0px;
+    width: 70px;
+    padding: 3px;
+    
+}
+.fb{    font-size: 25px;
+    padding: 4px;
+    color: #00bcd4;}
+.whatsup{
+    font-size: 25px;
+    padding: 4px;
+    color: #0dc10d;
+    float: right;
+}
+#showresults{background-color: white!important;}
+#col{margin-top: 40px;}
