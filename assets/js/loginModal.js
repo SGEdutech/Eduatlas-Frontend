@@ -94,13 +94,13 @@ $(form).submit(function (event) {
         } else {
             window.location.reload();
         }
-    }).catch(err => {
-        let errorResponse = err.responseText;
-        if (errorResponse === 'Bad Request') {
-            alert('please fill both username and password')
-        } else {
-            let messageToDisplay = errorResponse.match(new RegExp('<pre>' + "(.*)" + '</pre>'))[1];
-            alert(messageToDisplay)
-        }
-    });
+            }).catch(err => {
+                let errorResponse = err.responseText;
+                if (errorResponse === 'Bad Request') {
+                    alert('please fill both username and password')
+                } else {
+                    let messageToDisplay = errorResponse.match(new RegExp('<pre>' + "(.*)" + '</pre>'))[1];
+                    alert(messageToDisplay)
+                }
+        });
 });

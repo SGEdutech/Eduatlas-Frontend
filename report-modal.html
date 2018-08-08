@@ -1,0 +1,39 @@
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Report issue with this page</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/issue" method="POST" id="issueForm">
+
+                    <div class="form-group m-0">
+                        <label for="name" class="bmd-label-floating">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="contact" class="bmd-label-floating">Your Phone Number</label>
+                        <input type="number" class="form-control" id="contact" name="contact">
+                    </div>
+                    <div class="form-group m-0">
+                        <label for="email2" class="bmd-label-floating">Your Email Address</label>
+                        <input type="email" class="form-control" id="email2" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Message</label>
+                        <textarea class="form-control" name="description" id="desc" rows="3"></textarea>
+                    </div>
+                    <input class="form-control" name="idOfTuition" id="idOfTuition" hidden>
+                    <input class="form-control" name="type" value="tuition" hidden>
+                    <button id="reportButton" type="submit" class="btn btn-info">submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
