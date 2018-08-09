@@ -21,7 +21,6 @@ const bookmark = (() => {
             $loginModal.modal('show');
         } else {
             let tuitionId = $(this).attr('data-id');
-            //todo - keep a check in backend one tuition one bookmark only
             $.ajax({
                 url: '/user/add/bookmarkTuitions/' + userInfo._id,
                 method: 'POST',

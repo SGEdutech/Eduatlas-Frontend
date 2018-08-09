@@ -7,7 +7,7 @@ PubSub.subscribeOnce('query.load', (msg, queryObject) => {
     searchModule.render(queryObject);
 });
 
-PubSub.subscribe('searchCards.load', (msg, nothing) => {
+PubSub.subscribeOnce('searchCards.load', (msg, nothing) => {
     bookmark.init();
 });
 
@@ -21,5 +21,5 @@ user.getInfo().then(userInfo => {
 
 loginModal.init();
 
-queryString.returnQueryString();
+queryString.loadQueryString();
 

@@ -1,6 +1,6 @@
 const queryString = (() => {
 
-    function returnQueryString() {
+    function loadQueryString() {
         let url_string = location.href; //window.location.href
         let url = new URL(url_string);
         let objToReturn = {};
@@ -17,9 +17,7 @@ const queryString = (() => {
         objToReturn.city = url.searchParams.get("city");
         objToReturn.sortBy = url.searchParams.get("sortBy");
         PubSub.publish('query.load', objToReturn);
-
-        // console.log(objToReturn)
     }
 
-    return {returnQueryString};
+    return {loadQueryString};
 })();

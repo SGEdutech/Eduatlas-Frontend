@@ -1,8 +1,8 @@
 const searchModule = (() => {
     let queryObj;
     let user;
-    let pageP1;
-    let pageM1;
+    let pagePlusOne;
+    let pageMinusOne;
     let skip;
 
     let $contentPlaceholder;
@@ -16,8 +16,8 @@ const searchModule = (() => {
 
 
     function cache() {
-        $contentPlaceholder = $("#content-placeholder");
-        $paginationContainer = $("#paginationContainer");
+        $contentPlaceholder = $('#content-placeholder');
+        $paginationContainer = $('#paginationContainer');
         $citySearch = $('#citySearch');
         $sortByInput = $('#sortByInput');
         $searchBox = $('#searchBox');
@@ -29,7 +29,7 @@ const searchModule = (() => {
     function bindEvents() {
         $searchButton.click(initComplexSearch);
 
-        $citySearch.keyup((event) => {
+        $citySearch.keyup(event => {
             if (event.keyCode === 13) {
                 initComplexSearch();
             }
@@ -44,7 +44,7 @@ const searchModule = (() => {
 
         $searchBox.blur(() => setTimeout(function () {
             $suggestionBox.empty()
-        }, 250));
+        }, 100));
     }
 
     function getSuggestions(value) {
@@ -61,7 +61,7 @@ const searchModule = (() => {
             $suggestionBox.empty();
             let toAdd = '';
             data.forEach(obj => {
-                toAdd += `<a href="/TuitionDetails2.0.html?_id=${obj._id}" class="color-white">${obj.name}</a><br>`
+                toAdd += `<a href='/TuitionDetails2.0.html?_id=${obj._id}' class='color-white'>${obj.name}</a><br>`
             });
             $suggestionBox.append(toAdd)
         }).catch(err => {
@@ -70,17 +70,17 @@ const searchModule = (() => {
     }
 
     function doMinorCalculations() {
-        pageP1 = queryObj.page + 1;
-        pageM1 = queryObj.page === 1 ? queryObj.page : queryObj.page - 1;
+        pagePlusOne = queryObj.page + 1;
+        pageMinusOne = queryObj.page === 1 ? queryObj.page : queryObj.page - 1;
         skip = (queryObj.page - 1) * queryObj.items;
     }
 
     function initComplexSearch() {
         queryObj.c = true;
         queryObj.page = 1;
-        pageM1 = 1;
-        pageP1 = 2;
-        skip = (queryObj.page - 1) * queryObj.items;
+        pageMinusOne = 1;
+        pagePlusOne = 2;
+        skip = 0;
         /*state = $('#stateSearch').val();*/
         queryObj.city = $citySearch.val();
         queryObj.sortBy = $sortByInput.val();
@@ -106,8 +106,8 @@ const searchModule = (() => {
                 //updating the pagination links
                 let contextPagination = {
                     page: queryObj.page,
-                    pageM1: pageM1,
-                    pageP1: pageP1,
+                    pageM1: pageMinusOne,
+                    pageP1: pagePlusOne,
                     items: queryObj.items,
                     c: queryObj.c,
                 };
@@ -125,10 +125,10 @@ const searchModule = (() => {
         let queryEntered = '';
         let cityEntered = '';
         if (queryObj.name) {
-            queryEntered = `<span class="badge badge-info">${queryObj.name}</span>`;
+            queryEntered = `<span class='badge badge-info'>${queryObj.name}</span>`;
         }
         if (queryObj.city) {
-            cityEntered = `<span class="badge badge-info"> City = ${queryObj.city}</span>`;
+            cityEntered = `<span class='badge badge-info'> City = ${queryObj.city}</span>`;
         }
         $showingResultsContainer.html('Showing results : ' + queryEntered + ' ' + cityEntered);
 
