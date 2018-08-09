@@ -8,7 +8,7 @@ user.getInfo().then(userInfo => {
         colorOnScroll: true
     });
     userImgAndName.init(userInfo);
-    userClaimedTuition.init(userInfo);
+    userClaimed.init(userInfo);
     dashboardBookmarks.init(userInfo);
     dashboardReviews.init(userInfo);
     dashboardEditProfile.init(userInfo);

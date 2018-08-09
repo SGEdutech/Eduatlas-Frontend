@@ -31,17 +31,16 @@ const claimModal = (() => {
         queryObj = obj;
     }
 
-    function claimListing() {
-        console.log(queryObj);
+    function claimListing(typeOfInfo) {
         //now update tuition by adding claimedBy
         const updateTuitionPromise = $.ajax({
-            url: '/tuition/' + queryObj._id,
+            url: `/${typeOfInfo}/${queryObj._id}`,
             type: 'PUT',
             data: {claimedBy: userInfo._id}
         });
         //now update user by inserting id of tuition to tuitionsOwned array
         const updateUserPromise = $.ajax({
-            url: '/user/add/tuitionsOwned/' + userInfo._id,
+            url: `/user/add/${typeOfInfo}sOwned/${userInfo._id}`,
             type: 'POST',
             data: {string: queryObj._id}
         });
@@ -61,8 +60,8 @@ const claimModal = (() => {
         }
     }
 
-    function bindEvents() {
-        $claimConfirmButton.click(claimListing);
+    function bindEvents(typeOfInfo) {
+        $claimConfirmButton.click(() => claimListing(typeOfInfo));
     }
 
     function render() {
@@ -74,11 +73,11 @@ const claimModal = (() => {
         })
     }
 
-    function init() {
+    function init(typeOfInfo) {
         cacheDom();
         render().then(() => {
             cacheDynamicDom();
-            bindEvents()
+            bindEvents(typeOfInfo)
         });
     }
 

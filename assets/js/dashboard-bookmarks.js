@@ -1,8 +1,10 @@
 const dashboardBookmarks = (() => {
     let $userTuitionBookmarks;
+    let $userSchoolBookmarks;
 
     function cache() {
         $userTuitionBookmarks = $("#userTuitionBookmarks");
+        $userSchoolBookmarks = $("#userSchoolBookmarks");
     }
 
     function cacheDynamic() {
@@ -13,38 +15,39 @@ const dashboardBookmarks = (() => {
         $removeBookmarkButtons.click(e => removeBookmarks(e, userInfo))
     }
 
-    function getTuitionsInfo(tuitionId) {
-        url = '/tuition';
+    function getTuitionsInfo(typeOfInfo, instituteId) {
+        let url = `/${typeOfInfo}`;
         return $.ajax({
             url,
             method: 'GET',
             data: {
-                _id: tuitionId
+                _id: instituteId
             }
             // demands: 'name addressLine1 addressLine2 city state primaryNumber email category reviews'
         });
     }
 
-    function getUserBookmarksHtml(ids) {
+    function getUserBookmarksHtml(typeOfInfo, ids) {
         if (ids === undefined || ids.length === 0) {
             return;
         }
 
-        const tuitionInfoPromiseArr = [];
-        ids.forEach(tuitionId => tuitionInfoPromiseArr.push(getTuitionsInfo(tuitionId)));
+        const instituteInfoPromiseArr = [];
+        ids.forEach(instituteId => instituteInfoPromiseArr.push(getTuitionsInfo(typeOfInfo, instituteId)));
 
         let cardsHtml = '';
 
         return new Promise((resolve, reject) => {
-            Promise.all(tuitionInfoPromiseArr)
-                .then(tuitionInfoArr => {
-                    tuitionInfoArr.forEach(tuitionInfo => {
-                            const averageRating = helperScripts.calcAverageRating(tuitionInfo.reviews);
-                            tuitionInfo.averageRating = averageRating === -1 ? 2.5 : averageRating;
-                            tuitionInfo.col4 = true;
-                            tuitionInfo.hideFooter = true;
-                            tuitionInfo.manageBookmarks = true;
-                            cardsHtml += template.smoothCardHomePage(tuitionInfo);
+            Promise.all(instituteInfoPromiseArr)
+                .then(instituteInfoArr => {
+                    instituteInfoArr.forEach(instituteInfo => {
+                            const averageRating = helperScripts.calcAverageRating(instituteInfo.reviews);
+                            instituteInfo.averageRating = averageRating === -1 ? 2.5 : averageRating;
+                            instituteInfo.col4 = true;
+                            instituteInfo.hideFooter = true;
+                            instituteInfo.manageBookmarks = true;
+                            instituteInfo.typeOfInfo = typeOfInfo;
+                            cardsHtml += template.smoothCardHomePage(instituteInfo);
                         }
                     );
                     resolve(cardsHtml);
@@ -54,8 +57,11 @@ const dashboardBookmarks = (() => {
 
     function removeBookmarks(event, userInfo) {
         let tuitionId = $(event.target).attr('data-id');
+        let typeOfInfo = $(event.target).attr('data-category');
+        // make first character UpperCase
+        typeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.substr(1);
         $.ajax({
-            url: '/user/delete/bookmarkTuitions/' + userInfo._id,
+            url: `/user/delete/bookmark${typeOfInfo}s/${userInfo._id}`,
             method: 'DELETE',
             data: {
                 string: tuitionId
@@ -72,8 +78,15 @@ const dashboardBookmarks = (() => {
 
     function render(user) {
         if (user.bookmarkTuitions) {
-            getUserBookmarksHtml(user.bookmarkTuitions).then(cardsHtml => {
+            getUserBookmarksHtml('tuition', user.bookmarkTuitions).then(cardsHtml => {
                 $userTuitionBookmarks.append(cardsHtml);
+                cacheDynamic();
+                bindEvents(user);
+            });
+        }
+        if (user.bookmarkSchools) {
+            getUserBookmarksHtml('school', user.bookmarkSchools).then(cardsHtml => {
+                $userSchoolBookmarks.append(cardsHtml);
                 cacheDynamic();
                 bindEvents(user);
             });
