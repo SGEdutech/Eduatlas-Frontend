@@ -21,22 +21,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
-    />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Material Kit CSS -->
     <link rel="stylesheet" href="assets/css/material-kit.css">
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/tuition-detail2.0.css">
     <!--for gallery-->
     <link rel="stylesheet" href="assets/css/lightbox.min.css">
     <link rel="stylesheet" href="assets/css/gallery.css">
-
-    <!-- Custom Styles from Tuition-Discovery -->
-    <link rel="stylesheet" href="assets/css/tuitionDiscovery.css">
 </head>
 
 <body>
@@ -313,7 +307,7 @@
                                 </div>
                                 <div class="tab-pane" id="tab7">
                                     <div class="card">
-                                        <div class="card-body">
+                                        <div class="card-body" id="reviewCardbody">
                                             <div class="card-title h3">
                                                 Rate and write a Review
                                             </div>
@@ -322,24 +316,19 @@
                                             </small>
                                             <form action="" id="reviewForm">
                                                 <div class="col-12" id="ratingContainer">
-                                                    <i id="s1" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(1)">
+                                                    <i id="s1" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
-                                                    <i id="s2" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(2)">
+                                                    <i id="s2" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
-                                                    <i id="s3" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(3)">
+                                                    <i id="s3" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
-                                                    <i id="s4" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(4)">
+                                                    <i id="s4" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
-                                                    <i id="s5" class="material-icons" style="cursor: pointer"
-                                                       onclick="changeColor(5)">
+                                                    <i id="s5" class="material-icons" style="cursor: pointer">
                                                         star
                                                     </i>
                                                 </div>
@@ -348,11 +337,10 @@
                                                 <div class="form-group">
                                                     <label for="reviewDescriptionInput">Review</label>
                                                     <textarea class="form-control" id="reviewDescriptionInput" rows="3"
-                                                              name="description" onfocus="checkLogin()"></textarea>
+                                                              name="description"></textarea>
                                                 </div>
                                             </form>
-                                            <button type="submit" class="btn btn-info"
-                                                    onclick="submitReview('reviewForm')">
+                                            <button type="submit" class="btn btn-info" id="submitReviewButton">
                                                 Submit
                                             </button>
                                         </div>
@@ -511,66 +499,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="claimModal" tabindex="-1" role="dialog" aria-labelledby="claimModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="claimModalLabel">Claim This Institute/Tuition</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p> We may call to confirm</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Not my institute</button>
-                <button type="button" class="btn btn-info" onclick="claimListing()">Yes Claim</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Report issue with this page</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/issue" method="POST" id="issueForm">
-
-                    <div class="form-group m-0">
-                        <label for="name" class="bmd-label-floating">Your Name</label>
-                        <input type="text" class="form-control" id="name" name="name">
-                    </div>
-                    <div class="form-group m-0">
-                        <label for="contact" class="bmd-label-floating">Your Phone Number</label>
-                        <input type="number" class="form-control" id="contact" name="contact">
-                    </div>
-                    <div class="form-group m-0">
-                        <label for="email" class="bmd-label-floating">Your Email Address</label>
-                        <input type="email" class="form-control" id="email2" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="desc">Message</label>
-                        <textarea class="form-control" name="description" id="desc" rows="3"></textarea>
-                    </div>
-                    <input class="form-control" name="id" id="idOfTuition" hidden>
-                    <input class="form-control" name="type" value="tuition" hidden>
-                </form>
-                <button onclick="submitIssue('issueForm')" class="btn btn-info">submit</button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="loginModalContainer">
+<div id="login_modal_container">
 </div>
 <div id="claim_modal_container">
 </div>

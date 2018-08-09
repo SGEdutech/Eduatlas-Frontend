@@ -9,7 +9,7 @@ PubSub.subscribe('user', (msg, userInfo) => {
 PubSub.subscribeOnce('query.load', (msg, queryObject) => {
     getInfo.render(queryObject, 'tuition');
     reportModal.updateTuitionInfo(queryObject);
-    reviews.updateTuitionInfo(queryObject);
+    reviews.updateInstituteInfo(queryObject);
     claimModal.updateQueryObj(queryObject);
 });
 
@@ -18,7 +18,7 @@ PubSub.subscribeOnce('address.ready', (msg, address) => {
 });
 
 PubSub.subscribeOnce('loginModal.load', (msg, nothing) => {
-    reviews.init();
+    reviews.init('tuition');
 });
 
 user.getInfo().then(userInfo => {
@@ -30,7 +30,7 @@ user.getInfo().then(userInfo => {
 });
 
 loginModal.init();
-claimModal.init();
+claimModal.init('tuition');
 reportModal.init();
 
 queryString.returnQueryString();

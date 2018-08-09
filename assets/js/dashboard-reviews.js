@@ -15,7 +15,7 @@ const dashboardReviews = (() => {
     }
 
     function getReviewsInfo(reviewInfoObj) {
-        url = '/tuition';
+        let url = `/${reviewInfoObj.category}`;
         return $.ajax({
             url,
             method: 'GET',
@@ -28,27 +28,32 @@ const dashboardReviews = (() => {
 
     function getUserReviewsHtml(user) {
         const reviewsOwned = user.reviewsOwned;
-        const tuitionInfoPromiseArr = [];
-        reviewsOwned.forEach(review => tuitionInfoPromiseArr.push(getReviewsInfo(review)));
+        const instituteInfoPromiseArr = [];
+        const tuitionSchoolSequence = [];
+        reviewsOwned.forEach(review => {
+            tuitionSchoolSequence.push(review.category);
+            instituteInfoPromiseArr.push(getReviewsInfo(review))
+        });
 
         let cardsHtml = '';
 
         return new Promise((resolve, reject) => {
-            Promise.all(tuitionInfoPromiseArr)
-                .then(tuitionInfoArr => {
-                    tuitionInfoArr.forEach(tuitionInfo => {
+            Promise.all(instituteInfoPromiseArr)
+                .then(instituteInfoArr => {
+                    instituteInfoArr.forEach((info, index) => {
                             //first find which review belongs to current user
                             let reviewWeNeed = '';
-                            tuitionInfo.reviews.forEach(review => {
+                            info.reviews.forEach(review => {
                                 if (review.owner == user._id) {
                                     reviewWeNeed = review;
                                 }
                             });
                             let context = {
-                                tuitionId: tuitionInfo._id,
+                                category: tuitionSchoolSequence[index],
+                                tuitionId: info._id,
                                 reviewId: reviewWeNeed._id,
                                 userId: user._id,
-                                name: tuitionInfo.name,
+                                name: info.name,
                                 rating: reviewWeNeed.rating,
                                 description: reviewWeNeed.description
                             };
@@ -64,9 +69,10 @@ const dashboardReviews = (() => {
         let tuitionId = $(event.target).attr('data-tuition-id');
         let userId = $(event.target).attr('data-user-id');
         let reviewId = $(event.target).attr('data-review-id');
+        let category = $(event.target).attr('data-category');
 
         let updateTuitionPromise = $.ajax({
-            url: '/tuition/delete/reviews/' + tuitionId,
+            url: `/${category}/delete/${tuitionId}/reviews`,
             type: 'DELETE',
             data: {
                 owner: userId
