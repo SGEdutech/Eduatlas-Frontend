@@ -93,30 +93,31 @@ const searchModule = (() => {
 
     function showSearchResults(resultsPromise) {
         resultsPromise.then((data) => {
-                let result = '';
-                data.forEach(obj => {
-                    let avgRating = helperScripts.calcAverageRating(obj.reviews);
-                    obj.rating = avgRating === -1 ? 2.5 : avgRating;
-                    helperScripts.openNowInit(obj);
-                    result += template.smoothCard(obj);
-                });
+            let result = '';
+            data.forEach(obj => {
+                let avgRating = helperScripts.calcAverageRating(obj.reviews);
+                obj.averageRating = avgRating === -1 ? 2.5 : avgRating;
+                helperScripts.openNowInit(obj);
+                obj.col4 = true;
+                result += template.smoothCardHomePage(obj);
+            });
 
-                $contentPlaceholder.append(result);
+            $contentPlaceholder.append(result);
 
-                //updating the pagination links
-                let contextPagination = {
-                    page: queryObj.page,
-                    pageM1: pageM1,
-                    pageP1: pageP1,
-                    items: queryObj.items,
-                    c: queryObj.c,
-                };
-                let resultPagi = template.paginationT(contextPagination);
-                $paginationContainer.append(resultPagi);
-                //updating pagination done
+            //updating the pagination links
+            let contextPagination = {
+                page: queryObj.page,
+                pageM1: pageM1,
+                pageP1: pageP1,
+                items: queryObj.items,
+                c: queryObj.c,
+            };
+            let resultPagi = template.paginationT(contextPagination);
+            $paginationContainer.append(resultPagi);
+            //updating pagination done
 
-                PubSub.publish('searchCards.load', null);
-            }
+            PubSub.publish('searchCards.load', null);
+        }
         );
     }
 
@@ -186,5 +187,5 @@ const searchModule = (() => {
         showSearchResults(results)
     }
 
-    return {render, updateUser}
+    return { render, updateUser }
 })();

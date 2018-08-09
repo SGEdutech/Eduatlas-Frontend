@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        
+
         function gtag() {
             dataLayer.push(arguments);
         }
@@ -13,151 +14,176 @@
 
         gtag('config', 'UA-121945570-1');
     </script>
-    
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         Search Details
     </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-          name='viewport'/>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
+    />
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+    />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="./assets/css/material-kit.css?v=2.1.0" rel="stylesheet"/> 
-    <link href="./assets/css/plugins.min.css" rel="stylesheet"/>
-    <link href="./assets/css/searchdetails.css" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet"/>     
+    <link href="./assets/css/material-kit.css?v=2.1.0" rel="stylesheet" />
+    <link href="./assets/css/plugins.min.css" rel="stylesheet" />
+    <link href="./assets/css/searchdetails.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/material-kit.css">
 </head>
+
 <body class="sections-page sidebar-collapse" style="height: 1000px">
-<!--sick navbar-->
-<div id="nav_container"></div>
-<div class="container-fluid maincontainer mt-md-0">
-    <div class="row">
-        <div class="col-12 col-xl-3 py-5 order-xl-1 order-1 left-sidebar z-index-99">
-            <div class="lis-relative">
-                <h5 class="mb-2 mt-md-5" style="font-weight: bold;">What are you looking for?</h5>
-                <p>Search by Category</p>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                          <span class="input-group-text">
-                              <i class="fa fa-search lis-primary lis-left-0"></i>
-                          </span>
+    <!--sick navbar-->
+    <div id="nav_container"></div>
+    <div class="container-fluid maincontainer mt-md-0">
+        <div class="row">
+            <div class="col-12 col-xl-3 py-5 order-xl-1 order-1 left-sidebar z-index-99">
+                <div class="lis-relative">
+                    <h5 class="mb-2 mt-md-5" style="font-weight: bold;">What are you looking for?</h5>
+                    <p>Search by Category</p>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-search lis-primary lis-left-0"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4 searchInput" placeholder="What are you looking for?"
+                            id="searchBox">
                     </div>
-                    <input type="text"
-                           class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4 searchInput"
-                           placeholder="What are you looking for?" id="searchBox">
-                </div>
-                <div id="suggestions" class="position-absolute col-12 text-center">
-                </div>
-                <br>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                          <span class="input-group-text">
-                              <i class="fa fa-map-o lis-primary lis-left-0"></i>
-                          </span>
+                    <div id="suggestions" class="position-absolute col-12 text-center">
                     </div>
-                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4"
-                           placeholder="City" id="citySearch">
-                </div>
-                <br>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                          <span class="input-group-text">
-                              <i class="fa fa-sliders lis-primary lis-left-0"></i>
-                          </span>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-map-o lis-primary lis-left-0"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4" placeholder="City" id="citySearch">
                     </div>
-                    <select id="sortByInput" class="form-control border-0 pl-4">
-                        <option selected value="default">Sort-By</option>
-                        <option value="rating">Reviews</option>
-                        <option value="views">Popularity</option>
-                    </select>
-                </div>
-                <br>
-                <div class="form-group lis-relative">
-                </div>
-                <p class="lis-dark">More Filters</p>
-                <div class="row mt-3">
-                    <div class="col-12 col-xl-6">
-                        <label id="checkbox3" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input" checked="checked" disabled>
-                            <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description">Institute/Tuition </span> </label>
-                        <label id="checkbox1" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input" disabled>
-                            <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description">Schools</span> </label>
-                        <!--<label id="checkbox5" class="custom-control custom-checkbox d-block">
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-sliders lis-primary lis-left-0"></i>
+                            </span>
+                        </div>
+                        <select id="sortByInput" class="form-control border-0 pl-4">
+                            <option selected value="default">Sort-By</option>
+                            <option value="rating">Reviews</option>
+                            <option value="views">Popularity</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group lis-relative">
+                    </div>
+                    <p class="lis-dark">More Filters</p>
+                    <div class="row mt-3">
+                        <div class="col-12 col-xl-6">
+                            <label id="checkbox3" class="custom-control custom-checkbox d-block">
+                                <input type="checkbox" class="custom-control-input" checked="checked" disabled>
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Institute/Tuition </span>
+                            </label>
+                            <label id="checkbox1" class="custom-control custom-checkbox d-block">
+                                <input type="checkbox" class="custom-control-input" disabled>
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Schools</span>
+                            </label>
+                            <!--<label id="checkbox5" class="custom-control custom-checkbox d-block">
                             <input type="checkbox" class="custom-control-input">
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">Colleges</span> </label>-->
-                    </div>
-                    <div class="col-12 col-md-12 pt-4">
-                        <button id="search-button" class="btn btn-info">
-                            <i class="fa fa-search pr-2"></i> Search Place
-                        </button>
+                        </div>
+                        <div class="col-12 col-md-12 pt-4">
+                            <button id="search-button" class="btn btn-info">
+                                <i class="fa fa-search pr-2"></i> Search Place
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-xl-9 order-xl-2 order-2 px-0">
-            <section class="py-5 px-3" id="showresults">
-                <div class="container">
-                    <div class="row mt-md-5">
-                        <div class="col-sm-12 align-self-center">
-                            <p id="showingResultsContainer">Showing results</p>
+            <div class="col-12 col-xl-9 order-xl-2 order-2 px-0">
+                <section class="py-5 px-3" id="showresults">
+                    <div class="container">
+                        <div class="row mt-md-5">
+                            <div class="col-sm-12 align-self-center">
+                                <p id="showingResultsContainer">Showing results</p>
+                            </div>
+                        </div>
+
+                        <div class="row" id="content-placeholder">
+                        </div>
+                        <div class="row justify-content-around">
+                            <nav aria-label="...">
+                                <ul class="pagination my-3" id="paginationContainer">
+                                </ul>
+                            </nav>
                         </div>
                     </div>
-
-                    <div class="row" id="content-placeholder">
-                    </div>
-                    <div class="row justify-content-around">
-                        <nav aria-label="...">
-                            <ul class="pagination my-3" id="paginationContainer">
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </div>
-</div>
-<div id="login_modal_container">
-</div>
+    <div id="login_modal_container">
+    </div>
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/jquery.min.js"></script>
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/bootstrap-material-design.js"></script>
+    <!-- Plugin for Date Time Picker and Full Calendar Plugin-->
+    <script src="assets/js/plugins/moment.min.js"></script>
 
+    <!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
+    <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
 
-<!--   Core JS Files   -->
-<script src="assets/js/core/jquery.min.js"></script>
-<script src="assets/js/core/popper.min.js"></script>
-<script src="assets/js/bootstrap-material-design.js"></script>
+    <!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
+    <script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
 
-<!-- Plugin for Date Time Picker and Full Calendar Plugin-->
-<script src="assets/js/plugins/moment.min.js"></script>
+    <!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
 
-<!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
-<script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <!-- Plugin for Small Gallery in Product Page -->
+    <script src="assets/js/plugins/jquery.flexisel.js"></script>
 
-<!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
-<script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
+    <!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
 
-<!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
+    <!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
+    <script src="assets/js/plugins/nouislider.min.js"></script>
 
-<!-- Plugin for Small Gallery in Product Page -->
-<script src="assets/js/plugins/jquery.flexisel.js"></script>
+    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+    <script src="assets/js/material-kit.js?v=2.0.0"></script>
 
-<!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-<script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <!--HandleBars for templating-->
+    <script src="assets/js/handlebars-v4.0.11.js"></script>
+    <script src="assets/js/templates.js"></script>
 
-<!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
-<script src="assets/js/plugins/nouislider.min.js"></script>
+    <!--importing custom js file-->
+    <!--<script src="assets/js/tuitionDiscovery.js"></script>-->
+    <!--<script src="assets/js/login-check.js"></script>-->
+    <!--<script src="assets/js/updateNavBar.js"></script>-->
+    <!--<script src="assets/js/templates.js"></script>-->
+    <!--&lt;!&ndash;<script src="assets/js/home-v2.js"></script>&ndash;&gt;-->
+    <!--<script src="assets/js/auto-complete.js"></script>-->
+    <!--<script src="assets/js/card-link.js"></script>-->
+    <!--<script src="assets/js/openNow.js"></script>-->
+    <!--<script src="assets/js/reviews.js"></script>-->
+    <!--<script src="assets/js/bookmark.js"></script>-->
 
-<!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
-<script src="assets/js/material-kit.js?v=2.0.0"></script>
+    <!--Docs at: https://github.com/mroderick/PubSubJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/query-string.js"></script>
+    <script src="assets/js/login-modal.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/bookmark.js"></script>
+    <script src="assets/js/user.js"></script>
+    <script src="assets/js/search-module.js"></script>
+    <script src="assets/js/search-service.js"></script>
 
 <!--HandleBars for templating-->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
