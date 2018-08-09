@@ -13,6 +13,7 @@ user.getInfo().then(userInfo => {
     dashboardReviews.init(userInfo);
     dashboardEditProfile.init(userInfo);
     dashboardAddTuition.init(userInfo);
+    dashboardAddSchool.init(userInfo);
 });
 
 dashboardHideSubMenu.init();
