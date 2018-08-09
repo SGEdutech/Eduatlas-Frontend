@@ -115,6 +115,15 @@ const helperScripts = {
             alert('Fail!');
             console.log(err)
         })
+    },
+
+    scrollToElement($element, duration = 1000) {
+        if ($element === undefined) {
+            console.warn('Element not provided');
+            return;
+        }
+        if (this.htmlBody === undefined) this.htmlBody = $('html, body');
+        this.htmlBody.animate({scrollTop: $element.offset().top}, 1000);
     }
 
 };

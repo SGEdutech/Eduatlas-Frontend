@@ -73,7 +73,6 @@ const navigationBar = (() => {
     }
 
     function activateElement() {
-        console.log($activeElement);
         $activeElement.addClass('active');
     }
 
