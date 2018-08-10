@@ -28,10 +28,6 @@ const dashboardBookmarks = (() => {
     }
 
     function getUserBookmarksHtml(typeOfInfo, ids) {
-        if (ids === undefined || ids.length === 0) {
-            return;
-        }
-
         const instituteInfoPromiseArr = [];
         ids.forEach(instituteId => instituteInfoPromiseArr.push(getTuitionsInfo(typeOfInfo, instituteId)));
 

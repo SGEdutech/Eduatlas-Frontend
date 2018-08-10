@@ -6097,14 +6097,14 @@ let cities = [
 ]
 
 $.each(cities, function (index, obj) {
-    $('#inputCity')
+    $('.inputCity')
         .append($('<option>', {value: obj.name})
             .text(obj.name));
 });
 
-$('#inputCity').on('change', function () {
+$('.inputCity').on('change', function () {
     let valueSelected = this.value;
-    let inputState = $('#inputState');
+    let inputState = $('.inputState');
     cities.forEach(function (obj) {
         if (valueSelected === obj.name) {
             inputState.val(obj.state);
