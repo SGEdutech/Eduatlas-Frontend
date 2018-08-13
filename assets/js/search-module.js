@@ -14,6 +14,7 @@ const searchModule = (() => {
     let $suggestionBox;
     let $showingResultsContainer;
     let $typeOfInfoRadio;
+    let $typeOfInfoSchoolButton, $typeOfInfoTuitionButton;
 
 
     function cache() {
@@ -25,6 +26,8 @@ const searchModule = (() => {
         $searchButton = $('#search-button');
         $suggestionBox = $('#suggestions');
         $showingResultsContainer = $('#showingResultsContainer');
+        $typeOfInfoTuitionButton = $("input[name='typeOfInfo'][value='tuition']");
+        $typeOfInfoSchoolButton = $("input[name='typeOfInfo'][value='school']");
     }
 
     function cacheDynamic() {
@@ -80,6 +83,14 @@ const searchModule = (() => {
         skip = (queryObj.page - 1) * queryObj.items;
     }
 
+    function renderTypeOfInfoRadio() {
+        if (queryObj.typeOfInfo === 'tuition') {
+            $typeOfInfoTuitionButton.prop("checked", true);
+        } else if (queryObj.typeOfInfo === 'school') {
+            $typeOfInfoSchoolButton.prop("checked", true);
+        }
+    }
+
     function initComplexSearch() {
         queryObj.c = true;
         queryObj.page = 1;
@@ -101,7 +112,7 @@ const searchModule = (() => {
 
     function showSearchResults(resultsPromise) {
         resultsPromise.then((data) => {
-            let result = '';
+                let result = '';
                 data.forEach(obj => {
                     let avgRating = helperScripts.calcAverageRating(obj.reviews);
                     obj.rating = avgRating === -1 ? 2.5 : avgRating;
@@ -184,6 +195,7 @@ const searchModule = (() => {
         queryObj = queryObject;
         cache();
         bindEvents();
+        renderTypeOfInfoRadio();
         doMinorCalculations();
         let results = getSearchResults();
         showSearchResults(results)
