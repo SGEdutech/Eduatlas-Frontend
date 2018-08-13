@@ -13,7 +13,7 @@
 
         gtag('config', 'UA-121945570-1');
     </script>
-    <title>User-EditTuition</title>
+    <title>Edit School</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
@@ -66,7 +66,8 @@
                                             data-toggle="tab"> Description</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab7" data-toggle="tab">Admission Details</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">Results</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab5" data-toggle="tab">Faculty</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab6" data-toggle="tab">Gallery</a></li>
@@ -86,74 +87,16 @@
                         <form id="aboutUsForm">
 
                             <div id="basicContainer">
-                                <!--<script id="basicInput" type="text/x-handlebars-template">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h2 class="card-title h3">Basic Details:</h2>
-                                            <div class="row align-items-center">
-                                                <div class="col-md-3">
-                                                    <h6>Institute Name</h6>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input id="tName" value="{{name}}" class="form-control" type="text"
-                                                           name="name">
-                                                </div>
+                            </div>
 
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="row">
-                                                        <h6>Address</h6>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label for="al1">Address Line 1</label>
-                                                        <input class="form-control" value="{{addressLine1}}" type="text"
-                                                               id="al1" name="addressLine1">
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label for="al2">Address Line 2</label>
-                                                        <input class="form-control" value="{{addressLine2}}" type="text"
-                                                               id="al2" name="addressLine2">
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label for="city">City</label>
-                                                        <input class="form-control" value="{{city}}" type="text"
-                                                               id="city"
-                                                               name="city">
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label for="dist">District</label>
-                                                        <input class="form-control" value="{{district}}" type="text"
-                                                               id="dist"
-                                                               name="district">
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label for="state">State</label>
-                                                        <input class="form-control" value="{{state}}" type="text"
-                                                               id="state"
-                                                               name="state">
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label for="country">Country</label>
-                                                        <input class="form-control" value="{{country}}" type="text"
-                                                               id="country"
-                                                               name="country">
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <label for="pin">Pin</label>
-                                                        <input class="form-control" value="{{pin}}" type="number"
-                                                               id="pin"
-                                                               name="pin">
-                                                    </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">Other Details:</h2>
+                                    <div id="otherDetailsContainerSchool">
 
-
-                                                </div>
-                                            </div>
-
-                                        </div>
                                     </div>
-                                </script>-->
+
+                                </div>
                             </div>
 
                             <div class="card">
@@ -214,44 +157,7 @@
                             <div class="row justify-content-around">
                                 <div class="card col-md-6">
                                     <div class="card-body" id="contactPersonContainer">
-                                        <!--<script id="contactPersonInput" type="text/x-handlebars-template">
-                                            <div class="card-title h3">
-                                                Contact Us:
-                                            </div>
-                                            <div class="card-title h4">
-                                                Contact Person Name
-                                            </div>
-                                            <div>
-                                                <input class="form-control" value="{{contactPerson}}"
-                                                       name="contactPerson">
-                                            </div>
-                                            <div class="card-title h4">
-                                                Primary Number
-                                            </div>
-                                            <div>
-                                                <input class="form-control" value="{{primaryNumber}}"
-                                                       name="primaryNumber">
-                                            </div>
-                                            <div class="card-title h4">
-                                                Alternate Number
-                                            </div>
-                                            <div>
-                                                <input class="form-control" value="{{secondaryNumber}}"
-                                                       name="secondaryNumber">
-                                            </div>
-                                            <div class="card-title h4">
-                                                Email
-                                            </div>
-                                            <div>
-                                                <input class="form-control" value="{{email}}" name="email">
-                                            </div>
-                                            <div class="card-title h4">
-                                                Website
-                                            </div>
-                                            <div>
-                                                <input class="form-control" value="{{website}}" name="website">
-                                            </div>
-                                        </script>-->
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -266,77 +172,100 @@
                             </div>
                         </form>
                         <div class="card card-nav-tabs row">
-                            <div class="card-header card-header-danger">
-                                Operates on
+                            <div class="card-header card-header-info">
+                                School Operates on
                             </div>
-                            <div id="opration_hours_containers" class="">
+                            <div id="school_timing_containers" class="">
+                            </div>
+                        </div>
+                        <div class="card card-nav-tabs row">
+                            <div class="card-header card-header-info">
+                                Office Operates on
+                            </div>
+                            <div id="office_timing_containers" class="">
                             </div>
                             <!--<button class="btn btn-outline-info mt-md-4" id="saveTimeBtn">Save Operating Hours
                             </button>-->
                         </div>
+
                         <button id="saveTimeBtn" class="btn btn-info btn-round">
                             Save And Continue
                         </button>
                     </div>
 
                     <div class="tab-pane" id="tab3">
-                        <div class="row justify-content-around" id="coursesContainer">
-                        </div>
-                        <button class="btn btn-outline-info btn-round" data-toggle="modal"
-                                data-target="#new_course_modal">
-                            Add More Course
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="new_course_modal" tabindex="-1" role="dialog"
-                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Add Course</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="newCourse">
-                                            <div class="form-group">
-                                                <label for="courseTitle1">Course Title</label>
-                                                <input required class="form-control" name="title" type="text"
-                                                       id="courseTitle1">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="courseAgeGroup">Age Group</label>
-                                                <input class="form-control" name="ageGroup" type="text"
-                                                       id="courseAgeGroup">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="courseDuration">Duration</label>
-                                                <input class="form-control" name="duration" type="text"
-                                                       id="courseDuration">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="courseFee">Fee</label>
-                                                <input class="form-control" name="fee" type="text" id="courseFee">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nextBatch">Next Batch</label>
-                                                <input class="form-control" name="nextBatch" type="date" id="nextBatch">
-                                            </div>
-                                        </form>
-                                        <small><p> Added course will appear after refresh</p></small>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                        </button>
-                                        <button id="add_new_course_button" type="button" class="btn btn-info btn-round">
-                                            Save changes
-                                        </button>
+                        <form class="row" id="activityForm">
+                            <h2 class="card-title h3">Activities:</h2>
+                            <div class="card" id="activitiesContainer">
+                                <div class="card-body">
+                                    <div class="row form-group">
+                                        <label for="acitivitiesInput" class="">Co-Curricular Activities</label>
+                                        <small>put comas to separate different activities</small>
+                                        <input class="form-control" value="" id="acitivitiesInput" name="activities">
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         <button id="next_Tab_Button" class="btn btn-info btn-round">Save And Continue</button>
                     </div>
+
+                    <div class="tab-pane" id="tab7">
+                        <div class="form-group form-file-upload form-file-multiple">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3 row">Admission And Fee Details:</h2>
+                                    <form id="admission_details_form">
+                                        <div class="row form-group">
+                                            <label for="fee" class="">Fee Details</label>
+                                            <input class="form-control" value="" id="fee" name="fee">
+                                        </div>
+                                        <div class="row form-group">
+                                            <label for="admission_process" class="">Admission Process</label>
+                                            <input class="form-control" value="" id="admission_process"
+                                                   name="admissionProcess">
+                                        </div>
+                                        <div class="row form-group">
+                                            <label for="eligibility_criteria" class="">Eligibility Criteria</label>
+                                            <input class="form-control" value="" id="eligibility_criteria"
+                                                   name="eligibilityCriteria">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3 row">Important Dates:</h2>
+                                    <form id="admission_start_date_form">
+                                        <div class="row form-group">
+                                            <label for="admission_start_date" class="">Admission Start Date</label>
+                                            <input class="form-control" value="Admission Start Date" name="title"
+                                                   type="hidden">
+                                            <input class="form-control" type="date" name="date"
+                                                   id="admission_start_date">
+                                        </div>
+                                    </form>
+                                    <form id="admission_end_date_form">
+                                        <div class="row form-group">
+                                            <label for="admission_end_date" class="">Admission End Date</label>
+                                            <input class="form-control" value="Admission End Date" name="title"
+                                                   type="hidden">
+                                            <input class="form-control" type="date" name="date" id="admission_end_date">
+                                        </div>
+                                    </form>
+                                    <form id="session_start_date_form">
+                                        <div class="row form-group">
+                                            <label for="session_start_date" class="">Session Start Date</label>
+                                            <input class="form-control" value="Session Start Date" name="title"
+                                                   type="hidden">
+                                            <input class="form-control" type="date" name="date" id="session_start_date">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-info btn-round" id="next_tab">Save And Continue</button>
+                    </div>
+
                     <div class="tab-pane" id="tab4">
                         <div class="row justify-content-around" id="resultsContainer">
                         </div>
@@ -451,7 +380,8 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                                         </button>
-                                        <button id="add_new_faculty_button" type="button" class="btn btn-info btn-round">Save
+                                        <button id="add_new_faculty_button" type="button"
+                                                class="btn btn-info btn-round">Save
                                             changes
                                         </button>
                                     </div>
@@ -584,11 +514,6 @@
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 <script src="assets/js/templates.js"></script>
 
-<!-- Custom Js file for user-->
-<!--<script src="assets/js/user-editTuition.js"></script>-->
-<!--<script src="assets/js/login-check.js"></script>-->
-<!--<script src="assets/js/updateNavBar.js"></script>-->
-
 <!--Docs at: https://github.com/mroderick/PubSubJS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
 
@@ -599,13 +524,14 @@
 <script src="assets/js/basic-details.js"></script>
 <script src="assets/js/facilities-description-category.js"></script>
 <script src="assets/js/contact-us-tab.js"></script>
-<script src="assets/js/courses-tab.js"></script>
+<script src="assets/js/activities-tab.js"></script>
+<script src="assets/js/admission-details.js"></script>
 <script src="assets/js/results-tab.js"></script>
 <script src="assets/js/faculty-tab.js"></script>
-<script src="assets/js/tuition-details.js"></script>
+<script src="assets/js/get-details.js"></script>
 <script src="assets/js/redirect-on-logout.js"></script>
 <script src="assets/js/query-string.js"></script>
-<script src="assets/js/edit-tuition-service.js"></script>
+<script src="assets/js/edit-school-service.js"></script>
 <!-- endbuild -->
 
 </body>

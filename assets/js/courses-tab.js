@@ -92,7 +92,7 @@ const courses = (() => {
 
         AddedCourse.then((data) => {
             cacheNBindDeleteButtons(tuitionId);
-            // window.location.assign(`User-editTuition.html?a=${data._id}&tab=courses`);
+            // window.location.assign(`user-edit-tuition.html?a=${data._id}&tab=courses`);
             // alert("course added successfully")
         }).catch((err) => {
             console.log(err);

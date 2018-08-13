@@ -103,11 +103,11 @@ const helperScripts = {
         document.body.scrollTop = document.documentElement.scrollTop = 150;
     },
 
-    saveDetails($form, $nextTab, tuitionId) {
+    saveDetails(typeOfInfo, $form, $nextTab, tuitionId) {
         const formData = new FormData($form[0]);
 
         const Promise = $.ajax({
-            url: '/tuition/' + tuitionId,
+            url: `/${typeOfInfo}/${tuitionId}`,
             type: 'PUT',
             data: formData,
             cache: false,
