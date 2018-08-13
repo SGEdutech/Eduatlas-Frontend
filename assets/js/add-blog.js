@@ -5,7 +5,8 @@ function submitForm() {
             body: tinymce.activeEditor.getContent()
         }
     }).then(data => {
-        alert(`View your blogs at http://www.eduatlas.com/blog-viewer.html?id=${data._id}`);
+        // TODO: Set the link back to www after fixing nginx
+        alert(`View your blogs at https://eduatlas.com/blog-viewer.html?id=${data._id}`);
         tinymce.activeEditor.setContent('');
     })
         .catch(err => console.error(err));
