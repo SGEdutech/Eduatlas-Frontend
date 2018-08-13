@@ -5,13 +5,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
         function gtag() {
             dataLayer.push(arguments);
         }
-
         gtag('js', new Date());
-
         gtag('config', 'UA-121945570-1');
     </script>
 
@@ -52,9 +49,7 @@
                                 <i class="fa fa-search lis-primary lis-left-0"></i>
                             </span>
                     </div>
-                    <input type="text"
-                           class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4 searchInput"
-                           placeholder="What are you looking for?"
+                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4 searchInput" placeholder="What are you looking for?"
                            id="searchBox">
                 </div>
                 <div id="suggestions" class="position-absolute col-12 text-center">
@@ -66,8 +61,20 @@
                                 <i class="fa fa-map-o lis-primary lis-left-0"></i>
                             </span>
                     </div>
-                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4"
-                           placeholder="City" id="citySearch">
+                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4" placeholder="City" id="citySearch">
+                </div>
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-sliders lis-primary lis-left-0"></i>
+                            </span>
+                    </div>
+                    <select id="sortByInput" class="form-control border-0 pl-4">
+                        <option selected value="default">Sort-By</option>
+                        <option value="rating">Reviews</option>
+                        <option value="views">Popularity</option>
+                    </select>
                 </div>
                 <select id="sortByInput" class="form-control border-0 pl-4">
                     <option selected value="default">Sort-By</option>
@@ -110,35 +117,53 @@
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description">Schools</span> </label>-->
                 </div>
-                <div class="col-12 col-md-12 pt-4">
-                    <button id="search-button" class="btn btn-info">
-                        <i class="fa fa-search pr-2"></i> Search Place
-                    </button>
+                <p class="lis-dark">More Filters</p>
+                <div class="row mt-3">
+                    <div class="col-12 col-xl-6">
+                        <label id="checkbox3" class="custom-control custom-checkbox d-block">
+                            <input type="checkbox" class="custom-control-input" checked="checked" disabled>
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Institute/Tuition </span>
+                        </label>
+                        <label id="checkbox1" class="custom-control custom-checkbox d-block">
+                            <input type="checkbox" class="custom-control-input" disabled>
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Schools</span>
+                        </label>
+                        <!--<label id="checkbox5" class="custom-control custom-checkbox d-block">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Colleges</span> </label>-->
+                    </div>
+                    <div class="col-12 col-md-12 pt-4">
+                        <button id="search-button" class="btn btn-info">
+                            <i class="fa fa-search pr-2"></i> Search Place
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-12 col-xl-9 order-xl-2 order-2 px-0">
-        <section class="py-5 px-3" id="showresults">
-            <div class="container">
-                <div class="row mt-md-5">
-                    <div class="col-sm-12 align-self-center">
-                        <p id="showingResultsContainer">Showing results</p>
+        <div class="col-12 col-xl-9 order-xl-2 order-2 px-0">
+            <section class="py-5 px-3" id="showresults">
+                <div class="container">
+                    <div class="row mt-md-5">
+                        <div class="col-sm-12 align-self-center">
+                            <p id="showingResultsContainer">Showing results</p>
+                        </div>
+                    </div>
+
+                    <div class="row" id="content-placeholder">
+                    </div>
+                    <div class="row justify-content-around">
+                        <nav aria-label="...">
+                            <ul class="pagination my-3" id="paginationContainer">
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-
-                <div class="row" id="content-placeholder">
-                </div>
-                <div class="row justify-content-around">
-                    <nav aria-label="...">
-                        <ul class="pagination my-3" id="paginationContainer">
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-</div>
 </div>
 <div id="login_modal_container">
 </div>
@@ -173,18 +198,6 @@
 <!--HandleBars for templating-->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
 <script src="assets/js/templates.js"></script>
-
-<!--importing custom js file-->
-<!--<script src="assets/js/tuitionDiscovery.js"></script>-->
-<!--<script src="assets/js/login-check.js"></script>-->
-<!--<script src="assets/js/updateNavBar.js"></script>-->
-<!--<script src="assets/js/templates.js"></script>-->
-<!--&lt;!&ndash;<script src="assets/js/home-v2.js"></script>&ndash;&gt;-->
-<!--<script src="assets/js/auto-complete.js"></script>-->
-<!--<script src="assets/js/card-link.js"></script>-->
-<!--<script src="assets/js/openNow.js"></script>-->
-<!--<script src="assets/js/reviews.js"></script>-->
-<!--<script src="assets/js/bookmark.js"></script>-->
 
 <!--HandleBars for templating-->
 <script src="assets/js/handlebars-v4.0.11.js"></script>
