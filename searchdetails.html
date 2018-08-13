@@ -12,23 +12,21 @@
         gtag('config', 'UA-121945570-1');
     </script>
 
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>
         Search Details
     </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
-    />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'>
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
-    />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="./assets/css/material-kit.css?v=2.1.0" rel="stylesheet" />
-    <link href="./assets/css/plugins.min.css" rel="stylesheet" />
-    <link href="./assets/css/searchdetails.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" />
+    <link href="./assets/css/material-kit.css?v=2.1.0" rel="stylesheet">
+    <link href="./assets/css/plugins.min.css" rel="stylesheet">
+    <link href="./assets/css/searchdetails.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/material-kit.css">
 </head>
 
@@ -74,27 +72,48 @@
                         <option value="views">Popularity</option>
                     </select>
                 </div>
-                <br>
-                <div class="form-group lis-relative">
-                </div>
-                <p class="lis-dark">More Filters</p>
-                <div class="row mt-3">
-                    <div class="col-12 col-xl-6">
-                        <label id="checkbox3" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input" checked="checked" disabled>
-                            <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description">Institute/Tuition </span>
+                <select id="sortByInput" class="form-control border-0 pl-4">
+                    <option selected value="default">Sort-By</option>
+                    <option value="rating">Reviews</option>
+                    <option value="views">Popularity</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group lis-relative">
+            </div>
+            <p class="lis-dark">More Filters</p>
+            <div class="row mt-3">
+                <div class="col-12 col-xl-6">
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios1"
+                                   value="tuition" checked>
+                            Tuition/Coaching Institutes
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
                         </label>
-                        <label id="checkbox1" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input" disabled>
-                            <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description">Schools</span>
+                    </div>
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios2"
+                                   value="school">
+                            Schools
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
                         </label>
-                        <!--<label id="checkbox5" class="custom-control custom-checkbox d-block">
+                    </div>
+                   <!-- <label id="tuition_checkbox" class="custom-control custom-checkbox d-block">
+                        <input type="checkbox" class="custom-control-input" checked="checked">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Institute/Tuition </span> </label>
+                    <label id="school_checkbox" class="custom-control custom-checkbox d-block">
                         <input type="checkbox" class="custom-control-input">
                         <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Colleges</span> </label>-->
-                    </div>
+                        <span class="custom-control-description">Schools</span> </label>-->
+                </div>
+                <div class="row mt-3">
                     <div class="col-12 col-md-12 pt-4">
                         <button id="search-button" class="btn btn-info">
                             <i class="fa fa-search pr-2"></i> Search Place

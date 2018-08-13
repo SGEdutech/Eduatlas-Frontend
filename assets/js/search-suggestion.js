@@ -29,7 +29,7 @@ const searchSuggestion = (() => {
 
     function redirectToSearchPage() {
         query = $searchInput.val();
-        window.location.assign('TuitionDiscovery.html?items=18&page=1&c=true&name=' + query);
+        window.location.assign('searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=&state=&sortBy=default&name=' + query);
     }
 
     function getSuggestion() {

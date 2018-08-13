@@ -2,7 +2,8 @@
     <div class="col-md-4" id="{{_id}}">
 {{/if}}
     <div class="card newFont">
-        <div class=" tuition-cards" style="cursor: pointer" onclick="helperScripts.openTuitionPage('{{_id}}')">
+        <div class=" tuition-cards" style="cursor: pointer"
+             onclick="helperScripts.openDetailsPage('{{typeOfInfo}}','{{_id}}')">
             <div class="card p-0 m-0 rounded-0 rounded-top" style="overflow: hidden;text-overflow: ellipsis">
                 <div class="rounded-top"
                      style="position: absolute; height: 192px;width: 100%;background-color: rgba(0,0,0,0.5)">
@@ -87,14 +88,7 @@
 
                 </div>
 
-            {{/if}} {{#if manageBookmarks}}
-            <div class="col">
-                <button class="btn btn-danger btn-round remove-bookmark-button" data-id="{{_id}}">Remove bookmark
-                </button>
-            </div>
-
-
-        {{/if}}
+            {{/if}}
             {{#if manageBookmarks}}
                 <div class="col">
                     <button class="btn btn-danger btn-round remove-bookmark-button" data-id="{{_id}}"
