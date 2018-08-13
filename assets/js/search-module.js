@@ -13,6 +13,8 @@ const searchModule = (() => {
     let $searchButton;
     let $suggestionBox;
     let $showingResultsContainer;
+    let $typeOfInfoRadio;
+    let $typeOfInfoSchoolButton, $typeOfInfoTuitionButton;
 
 
     function cache() {
@@ -24,6 +26,12 @@ const searchModule = (() => {
         $searchButton = $('#search-button');
         $suggestionBox = $('#suggestions');
         $showingResultsContainer = $('#showingResultsContainer');
+        $typeOfInfoTuitionButton = $("input[name='typeOfInfo'][value='tuition']");
+        $typeOfInfoSchoolButton = $("input[name='typeOfInfo'][value='school']");
+    }
+
+    function cacheDynamic() {
+        $typeOfInfoRadio = $("input[name='typeOfInfo']:checked");
     }
 
     function bindEvents() {
@@ -49,7 +57,7 @@ const searchModule = (() => {
 
     function getSuggestions(value) {
         $.ajax({
-            url: '/tuition/search',
+            url: `/${queryObj.typeOfInfo}/search`,
             data: {
                 name: JSON.stringify({
                     search: value,
@@ -75,16 +83,27 @@ const searchModule = (() => {
         skip = (queryObj.page - 1) * queryObj.items;
     }
 
+    function renderTypeOfInfoRadio() {
+        if (queryObj.typeOfInfo === 'tuition') {
+            $typeOfInfoTuitionButton.prop("checked", true);
+        } else if (queryObj.typeOfInfo === 'school') {
+            $typeOfInfoSchoolButton.prop("checked", true);
+        }
+    }
+
     function initComplexSearch() {
         queryObj.c = true;
         queryObj.page = 1;
         pageMinusOne = 1;
         pagePlusOne = 2;
         skip = 0;
-        /*state = $('#stateSearch').val();*/
+
         queryObj.city = $citySearch.val();
         queryObj.sortBy = $sortByInput.val();
         queryObj.name = $searchBox.val();
+        // cache dynamic will get the updated value of radio object
+        cacheDynamic();
+        queryObj.typeOfInfo = $typeOfInfoRadio.val();
 
         $contentPlaceholder.empty();
         $paginationContainer.empty();
@@ -104,14 +123,9 @@ const searchModule = (() => {
                 $contentPlaceholder.append(result);
 
                 //updating the pagination links
-                let contextPagination = {
-                    page: queryObj.page,
-                    pageM1: pageMinusOne,
-                    pageP1: pagePlusOne,
-                    items: queryObj.items,
-                    c: queryObj.c,
-                };
-                let resultPagi = template.paginationT(contextPagination);
+                queryObj.pageM1 = pageMinusOne;
+                queryObj.pageP1 = pagePlusOne;
+                let resultPagi = template.paginationT(queryObj);
                 $paginationContainer.append(resultPagi);
                 //updating pagination done
 
@@ -140,7 +154,7 @@ const searchModule = (() => {
             showResultsHelper();
 
             return $.ajax({
-                url: '/tuition/search',
+                url: `/${queryObj.typeOfInfo}/search`,
                 data: {
                     name: JSON.stringify({
                         search: queryObj.name,
@@ -163,7 +177,7 @@ const searchModule = (() => {
         } else {
             //means search type is simple
             return $.ajax({
-                url: '/tuition/all',
+                url: `/${queryObj.typeOfInfo}/all`,
                 data: {
                     demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
                     limit: queryObj.items,
@@ -181,6 +195,7 @@ const searchModule = (() => {
         queryObj = queryObject;
         cache();
         bindEvents();
+        renderTypeOfInfoRadio();
         doMinorCalculations();
         let results = getSearchResults();
         showSearchResults(results)

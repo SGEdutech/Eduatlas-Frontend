@@ -72,27 +72,48 @@
                         <option value="views">Popularity</option>
                     </select>
                 </div>
-                <br>
-                <div class="form-group lis-relative">
-                </div>
-                <p class="lis-dark">More Filters</p>
-                <div class="row mt-3">
-                    <div class="col-12 col-xl-6">
-                        <label id="checkbox3" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input" checked="checked" disabled>
-                            <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description">Institute/Tuition </span>
+                <select id="sortByInput" class="form-control border-0 pl-4">
+                    <option selected value="default">Sort-By</option>
+                    <option value="rating">Reviews</option>
+                    <option value="views">Popularity</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group lis-relative">
+            </div>
+            <p class="lis-dark">More Filters</p>
+            <div class="row mt-3">
+                <div class="col-12 col-xl-6">
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios1"
+                                   value="tuition" checked>
+                            Tuition/Coaching Institutes
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
                         </label>
-                        <label id="checkbox1" class="custom-control custom-checkbox d-block">
-                            <input type="checkbox" class="custom-control-input" disabled>
-                            <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description">Schools</span>
+                    </div>
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios2"
+                                   value="school">
+                            Schools
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
                         </label>
-                        <!--<label id="checkbox5" class="custom-control custom-checkbox d-block">
+                    </div>
+                   <!-- <label id="tuition_checkbox" class="custom-control custom-checkbox d-block">
+                        <input type="checkbox" class="custom-control-input" checked="checked">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Institute/Tuition </span> </label>
+                    <label id="school_checkbox" class="custom-control custom-checkbox d-block">
                         <input type="checkbox" class="custom-control-input">
                         <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Colleges</span> </label>-->
-                    </div>
+                        <span class="custom-control-description">Schools</span> </label>-->
+                </div>
+                <div class="row mt-3">
                     <div class="col-12 col-md-12 pt-4">
                         <button id="search-button" class="btn btn-info">
                             <i class="fa fa-search pr-2"></i> Search Place
