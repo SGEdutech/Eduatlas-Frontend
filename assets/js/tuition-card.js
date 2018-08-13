@@ -23,6 +23,7 @@ const tuitionCards = (() => {
         let cardsHtml = '';
         tuitionInfoArray.forEach(tuitionInfo => {
             helperScripts.openNowInit(tuitionInfo);
+            tuitionInfo.typeOfInfo = 'tuition';
             cardsHtml += template.smoothCardHomePage(tuitionInfo)
         });
         return cardsHtml;

@@ -9,8 +9,9 @@ const helperScripts = {
         funtionArray.forEach(fn => fn());
     },
 
-    openTuitionPage(id) {
-        window.location.assign(`/TuitionDetails2.0.html?_id=${id}`)
+    openDetailsPage(typeOfInfo, id) {
+        let upperCaseTypeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.slice(1);
+        window.location.assign(`/${upperCaseTypeOfInfo}Details2.0.html?_id=${id}`)
     },
 
     calcAverageRating(reviewArray) {

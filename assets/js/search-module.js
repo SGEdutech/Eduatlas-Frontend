@@ -68,8 +68,9 @@ const searchModule = (() => {
         }).then(data => {
             $suggestionBox.empty();
             let toAdd = '';
+            let capitalTypeOfInfo = queryObj.typeOfInfo.charAt(0).toUpperCase() + queryObj.typeOfInfo.slice(1);
             data.forEach(obj => {
-                toAdd += `<a href='/TuitionDetails2.0.html?_id=${obj._id}' class='color-white'>${obj.name}</a><br>`
+                toAdd += `<a href='/${capitalTypeOfInfo}Details2.0.html?_id=${obj._id}' class='color-white'>${obj.name}</a><br>`
             });
             $suggestionBox.append(toAdd)
         }).catch(err => {
@@ -117,7 +118,9 @@ const searchModule = (() => {
                     let avgRating = helperScripts.calcAverageRating(obj.reviews);
                     obj.rating = avgRating === -1 ? 2.5 : avgRating;
                     helperScripts.openNowInit(obj);
-                    result += template.smoothCard(obj);
+                    obj.typeOfInfo = queryObj.typeOfInfo;
+                    obj.col4 = true;
+                    result += template.smoothCardHomePage(obj);
                 });
 
                 $contentPlaceholder.append(result);
