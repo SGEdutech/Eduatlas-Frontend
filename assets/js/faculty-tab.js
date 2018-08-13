@@ -20,34 +20,34 @@ const faculty = (() => {
         $deleteButtons = $('.delete-faculty-button');
     }
 
-    function render(tuition) {
-        let html = getHtml(tuition);
+    function render(institute) {
+        let html = getHtml(institute);
         $facultyContainer.append(html);
     }
 
-    function bindEvents(tuitionId) {
-        $addNewFacultyButton.click(() => addFaculty(tuitionId));
+    function bindEvents(typeOfInfo, tuitionId) {
+        $addNewFacultyButton.click(() => addFaculty(typeOfInfo, tuitionId));
         $galleryTabButton.click(() => helperScripts.showNextTab($galleryTab));
         $deleteButtons.click(function () {
-            deleteFaculty(this, tuitionId)
+            deleteFaculty(typeOfInfo, this, tuitionId)
         });
     }
 
-    function cacheNBindDeleteButtons(tuitionId) {
+    function cacheNBindDeleteButtons(instituteId) {
         cacheDynamic();
         $deleteButtons.click(function () {
-            deleteFaculty(this, tuitionId)
+            deleteFaculty(this, instituteId)
         });
     }
 
-    function deleteFaculty(element, tuitionId) {
+    function deleteFaculty(typeOfInfo, element, tuitionId) {
         const $element = $(element);
         let name = $element.attr('data-name');
         let cardId = $element.attr('data-faculty-id');
         eagerRemoveCard(cardId);
 
         $.ajax({
-            url: '/tuition/delete/team/' + tuitionId,
+            url: `/${typeOfInfo}/delete/${tuitionId}/team`,
             type: 'DELETE',
             data: {
                 name: name
@@ -79,14 +79,14 @@ const faculty = (() => {
         $facultyContainer.append(template.userEditTuitionFaculty(contextOuter));
     }
 
-    function addFaculty(tuitionId) {
+    function addFaculty(typeOfInfo, instituteId) {
         const form = $newFacultyForm;
         eagerLoadFaculty(form.serializeArray());
 
         const formData = new FormData(form[0]);
         // get the data and send it in post request
         const promise = $.ajax({
-            url: '/tuition/add/team/' + tuitionId,
+            url: `/${typeOfInfo}/add/team/${instituteId}`,
             type: 'POST',
             data: formData,
             cache: false,
@@ -95,7 +95,7 @@ const faculty = (() => {
         });
 
         promise.then((data) => {
-            cacheNBindDeleteButtons(tuitionId);
+            cacheNBindDeleteButtons(instituteId);
             // alert("result added successfully");
         }).catch((err) => {
             console.log(err);
@@ -103,12 +103,12 @@ const faculty = (() => {
         })
     }
 
-    function getHtml(tuition) {
-        if (!tuition) {
+    function getHtml(institute) {
+        if (!institute) {
             return
         }
         let context = {
-            faculty: tuition.team ? tuition.team : []
+            faculty: institute.team ? institute.team : []
         };
 
         let counter = 1;
@@ -120,11 +120,11 @@ const faculty = (() => {
         return template.userEditTuitionFaculty(context);
     }
 
-    function init(tuition) {
+    function init(typeOfInfo, institute) {
         cache();
-        render(tuition);
+        render(institute);
         cacheDynamic();
-        bindEvents(tuition._id);
+        bindEvents(typeOfInfo, institute._id);
     }
 
     return {init};

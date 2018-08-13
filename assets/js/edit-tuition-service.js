@@ -4,14 +4,14 @@ PubSub.subscribe('user', (msg, userInfo) => {
 });
 
 PubSub.subscribeOnce('query.load', (msg, queryObject) => {
-    tuitionDetails.returnData(queryObject).then((tuitionInfo) => {
-        coverImage.init(tuitionInfo);
-        basicDetails.init(tuitionInfo);
-        facilitiesDescriptionCategory.init(tuitionInfo);
-        contactUs.init(tuitionInfo);
+    getDetails.returnData('tuition', queryObject).then((tuitionInfo) => {
+        coverImage.init('tuition', tuitionInfo);
+        basicDetails.init('tuition', tuitionInfo);
+        facilitiesDescriptionCategory.init('tuition', tuitionInfo);
+        contactUs.init('tuition', tuitionInfo);
         courses.init(tuitionInfo);
-        results.init(tuitionInfo);
-        faculty.init(tuitionInfo);
+        results.init('tuition', tuitionInfo);
+        faculty.init('tuition', tuitionInfo);
     });
 });
 
@@ -19,4 +19,4 @@ user.getInfo().then(userInfo => {
     navigationBar.init(userInfo);
 });
 
-queryString.returnQueryString();
+queryString.loadQueryString();

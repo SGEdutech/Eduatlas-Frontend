@@ -5,8 +5,15 @@ const coverImage = (() => {
         $coverImgContainer = $("#coverImgContainer");
     }
 
-    function render(user) {
-        let html = getCoverHtml(user.img_tuitionCoverPic);
+    function render(typeOfInfo, user) {
+        let html;
+        if (typeOfInfo === 'tuition') {
+            html = getCoverHtml(user.img_tuitionCoverPic);
+        }
+        if (typeOfInfo === 'school') {
+            html = getCoverHtml(user.img_schoolCoverPic);
+        }
+
         $coverImgContainer.append(html);
     }
 
@@ -14,9 +21,9 @@ const coverImage = (() => {
         return template.userEditTuitionCover({path: path});
     }
 
-    function init(user) {
+    function init(typeOfInfo, user) {
         cache();
-        render(user);
+        render(typeOfInfo, user);
     }
 
     return {init};
