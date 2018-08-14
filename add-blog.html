@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Blog</title>
-    <link href="./assets/css/material-kit.css?v=2.1.0" rel="stylesheet">
+    <link href="assets/css/material-kit.css?v=2.1.0" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/material-kit.css">
 </head>
 <body>
 
@@ -11,11 +12,30 @@
     <h1>Add Blog</h1>
     <div class="editor"></div>
     <div class="row justify-content-around">
+
+        <div class="form-group col-12">
+            <label for="title_inp" class="bmd-label-floating">Title</label>
+            <input type="text" class="form-control" id="title_inp">
+            <span class="bmd-help">Enter a awesome and creative title</span>
+        </div>
+
+        <div class="form-group col-12">
+            <label for="category_inp" class="bmd-label-floating">Category</label>
+            <input type="text" class="form-control" id="category_inp">
+        </div>
+
+        <div class="form-group col-12">
+            <label for="author_name_inp" class="bmd-label-floating">Author Name</label>
+            <input type="text" class="form-control" id="author_name_inp">
+        </div>
+
         <button id="save_btn" class="btn btn-info">Save</button>
     </div>
 </div>
 
 <script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/bootstrap-material-design.js"></script>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=arb762g34lcrm72nk48am3b7yiirynjkf80kczkwx8osm4a8"></script>
 <script src="assets/js/mce-config.js"></script>
 <script src="assets/js/add-blog.js"></script>
