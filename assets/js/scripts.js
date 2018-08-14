@@ -103,6 +103,15 @@ const helperScripts = {
         //scroll 100 pixels
         document.body.scrollTop = document.documentElement.scrollTop = 150;
     },
+    getDateObj(date) {
+        let toReturnObj = {};
+        let dateArray = date.split('T')[0].split('-');
+        toReturnObj.date = dateArray[2];
+        toReturnObj.month = dateArray[1];
+        toReturnObj.year = dateArray[0];
+        return toReturnObj;
+    }
+    ,
 
     saveDetails(typeOfInfo, $form, $nextTab, tuitionId) {
         const formData = new FormData($form[0]);
