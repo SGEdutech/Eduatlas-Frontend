@@ -6,6 +6,10 @@ const contactUs = (() => {
     let $coursesTab;
     let $contactUsAndSocialLinksForm;
     let $monForm, $tueForm, $wedForm, $thuForm, $friForm, $satForm, $sunForm;
+    let $monFormSchool, $tueFormSchool, $wedFormSchool, $thuFormSchool, $friFormSchool, $satFormSchool, $sunFormSchool;
+    let $monFormSchoolOffice, $tueFormSchoolOffice, $wedFormSchoolOffice, $thuFormSchoolOffice, $friFormSchoolOffice,
+        $satFormSchoolOffice, $sunFormSchoolOffice;
+    let $schoolTimingContainer, $officeTimingContainer;
 
     function cache() {
         $contactPersonContainer = $("#contactPersonContainer");
@@ -13,33 +17,64 @@ const contactUs = (() => {
         $opration_hours_containers = $("#opration_hours_containers");
         $saveBtn = $('#saveTimeBtn');
         $coursesTab = $(`[href = "#tab3"]`);
+        $schoolTimingContainer = $('#school_timing_containers');
+        $officeTimingContainer = $('#office_timing_containers');
     }
 
-    function cacheDynamic() {
+    function cacheDynamic(typeOfInfo) {
         $contactUsAndSocialLinksForm = $('#contactUsForm');
-        $monForm = $('#monForm');
-        $tueForm = $('#tueForm');
-        $wedForm = $('#wedForm');
-        $thuForm = $('#thrForm');
-        $friForm = $('#friForm');
-        $satForm = $('#satForm');
-        $sunForm = $('#sunForm');
+        if (typeOfInfo === 'tuition') {
+            $monForm = $('#monForm');
+            $tueForm = $('#tueForm');
+            $wedForm = $('#wedForm');
+            $thuForm = $('#thrForm');
+            $friForm = $('#friForm');
+            $satForm = $('#satForm');
+            $sunForm = $('#sunForm');
+        }
+
+        if (typeOfInfo === 'school') {
+            $monFormSchool = $('#monFormSchool');
+            $tueFormSchool = $('#tueFormSchool');
+            $wedFormSchool = $('#wedFormSchool');
+            $thuFormSchool = $('#thrFormSchool');
+            $friFormSchool = $('#friFormSchool');
+            $satFormSchool = $('#satFormSchool');
+            $sunFormSchool = $('#sunFormSchool');
+
+            $monFormSchoolOffice = $('#monFormSchoolOffice');
+            $tueFormSchoolOffice = $('#tueFormSchoolOffice');
+            $wedFormSchoolOffice = $('#wedFormSchoolOffice');
+            $thuFormSchoolOffice = $('#thrFormSchoolOffice');
+            $friFormSchoolOffice = $('#friFormSchoolOffice');
+            $satFormSchoolOffice = $('#satFormSchoolOffice');
+            $sunFormSchoolOffice = $('#sunFormSchoolOffice');
+        }
     }
 
-    function bindEvents(tuitionId) {
+    function bindEvents(typeOfInfo, instituteId) {
         $saveBtn.click(() => {
-            addAllTimes(tuitionId);
-            helperScripts.saveDetails($contactUsAndSocialLinksForm, $coursesTab, tuitionId);
+            addAllTimes(typeOfInfo, instituteId);
+            helperScripts.saveDetails(typeOfInfo, $contactUsAndSocialLinksForm, $coursesTab, instituteId);
         })
     }
 
-    function render(user) {
+    function render(typeOfInfo, user) {
         let contactPersonHtml = getContactPHtml(user);
         let socialHtml = getSocialHtml(user);
-        let dayNTimeHtml = getDayNTimeHtml(user);
+        if (typeOfInfo === 'tuition') {
+            let dayNTimeHtml = getDayNTimeHtml(typeOfInfo, false, user.dayAndTimeOfOperation);
+            $opration_hours_containers.append(dayNTimeHtml);
+        }
+        if (typeOfInfo === 'school') {
+            let dayNTimeHtml = getDayNTimeHtml(typeOfInfo, false, user.schoolTiming);
+            $schoolTimingContainer.append(dayNTimeHtml);
+            let dayNTimeHtml2 = getDayNTimeHtml(typeOfInfo, true, user.officeTiming);
+            $officeTimingContainer.append(dayNTimeHtml2);
+        }
         $contactPersonContainer.append(contactPersonHtml);
         $socialLinkContainer.append(socialHtml);
-        $opration_hours_containers.append(dayNTimeHtml);
+
     }
 
     function getContactPHtml(context) {
@@ -50,12 +85,7 @@ const contactUs = (() => {
         return template.userEditTuitionSocial(context);
     }
 
-    function getDayNTimeHtml(user) {
-        if (user === undefined) {
-            return;
-        }
-        // $('#saveTimeBtn').click(() => addAllTimes(array));
-
+    function getDayNTimeHtml(typeOfInfo, isOffice, dayNtimeInfo) {
         let context = {
             monFrom: '',
             monTo: '',
@@ -72,8 +102,8 @@ const contactUs = (() => {
             sunFrom: '',
             sunTo: '',
         };
-        if (user.dayAndTimeOfOperation) {
-            user.dayAndTimeOfOperation.forEach((obj) => {
+        if (dayNtimeInfo) {
+            dayNtimeInfo.forEach((obj) => {
                 let expr = obj.day.toLowerCase();
                 switch (expr) {
                     case 'monday':
@@ -107,47 +137,94 @@ const contactUs = (() => {
                 }
             });
         }
+        if (typeOfInfo === 'school') {
+            context.school = true;
+        }
+        if (isOffice) {
+            context.office = 'Office';
+        }
         return template.userEditTuitionHours(context);
     }
 
-    function addAllTimes(tuitionId) {
-        // todo - fix the memory leak
+    function addAllTimes(typeOfInfo, instituteId) {
         // temporary - let's delete the time and operation first and add new
-        $.ajax({
-            url: '/tuition/empty/dayAndTimeOfOperation',
-            type: 'DELETE',
-            data: {_id: tuitionId}
-        }).then((data) => {
-            return Promise.all([
-                addDayAndTimeOfOperation($monForm, tuitionId),
-                addDayAndTimeOfOperation($tueForm, tuitionId),
-                addDayAndTimeOfOperation($wedForm, tuitionId),
-                addDayAndTimeOfOperation($thuForm, tuitionId),
-                addDayAndTimeOfOperation($friForm, tuitionId),
-                addDayAndTimeOfOperation($satForm, tuitionId),
-                addDayAndTimeOfOperation($sunForm, tuitionId)
-            ])
-        }).then(() => console.log('Time save successful')).catch(err => {
-            console.log(err);
-            alert("time addition failed")
-        });
+        if (typeOfInfo === 'tuition') {
+            $.ajax({
+                url: `/${typeOfInfo}/empty/dayAndTimeOfOperation`,
+                type: 'DELETE',
+                data: {_id: instituteId}
+            }).then((data) => {
+                return Promise.all([
+                    addDayAndTimeOfOperation(typeOfInfo, $monForm, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $tueForm, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $wedForm, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $thuForm, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $friForm, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $satForm, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $sunForm, instituteId)
+                ])
+            }).then(() => console.log('Time save successful')).catch(err => {
+                console.log(err);
+                alert("time addition failed")
+            });
+        }
+
+        if (typeOfInfo === 'school') {
+            $.ajax({
+                url: `/${typeOfInfo}/empty/schoolTiming`,
+                type: 'DELETE',
+                data: {_id: instituteId}
+            }).then((data) => {
+                return Promise.all([
+                    addDayAndTimeOfOperation(typeOfInfo, $monFormSchool, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $tueFormSchool, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $wedFormSchool, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $thuFormSchool, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $friFormSchool, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $satFormSchool, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $sunFormSchool, instituteId)
+                ])
+            }).then(() => console.log('school Time save successful')).catch(err => {
+                console.log(err);
+                alert("time addition failed")
+            });
+
+            $.ajax({
+                url: `/${typeOfInfo}/empty/officeTiming`,
+                type: 'DELETE',
+                data: {_id: instituteId}
+            }).then((data) => {
+                return Promise.all([
+                    addDayAndTimeOfOperation(typeOfInfo, $monFormSchoolOffice, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $tueFormSchoolOffice, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $wedFormSchoolOffice, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $thuFormSchoolOffice, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $friFormSchoolOffice, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $satFormSchoolOffice, instituteId),
+                    addDayAndTimeOfOperation(typeOfInfo, $sunFormSchoolOffice, instituteId)
+                ])
+            }).then(() => console.log('school office Time save successful')).catch(err => {
+                console.log(err);
+                alert("time addition failed")
+            });
+        }
     }
 
-    function addDayAndTimeOfOperation($form, tuitionId) {
-        // data is in Form
+    function addDayAndTimeOfOperation(typeOfInfo, $form, tuitionId) {
+        // data is in $form
         // get the data and send it in post request
         return $.ajax({
-            url: '/tuition/add/dayAndTimeOfOperation/' + tuitionId,
+            url: `/${typeOfInfo}/add/dayAndTimeOfOperation/${tuitionId}`,
             type: 'POST',
             data: $form.serialize()
         });
     }
 
-    function init(tuitionInfo) {
+    function init(typeOfInfo, instituteInfo) {
         cache();
-        render(tuitionInfo);
-        cacheDynamic();
-        bindEvents(tuitionInfo._id);
+        render(typeOfInfo, instituteInfo);
+        cacheDynamic(typeOfInfo);
+        bindEvents(typeOfInfo, instituteInfo._id);
     }
 
     return {init};

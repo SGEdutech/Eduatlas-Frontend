@@ -19,7 +19,7 @@ this["template"]["userDashboardTuitionCard"] = Handlebars.template({"compiler":[
     + alias4(((helper = (helper = helpers.Email || (depth0 != null ? depth0.Email : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Email","hash":{},"data":data}) : helper)))
     + " </p>\r\n            </div>\r\n            <a href=\"TuitionDetails2.0.html?_id="
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-    + "\"\r\n               class=\"btn btn-info\">Details</a>\r\n            <a href=\"User-editTuition.html?a="
+    + "\"\r\n               class=\"btn btn-info\">Details</a>\r\n            <a href=\"user-edit-tuition.html?a="
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\"\r\n               class=\"btn btn-info\">edit</a>\r\n        </div>\r\n\r\n    </div>\r\n</div>";
 },"useData":true});

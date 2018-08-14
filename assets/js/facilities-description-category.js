@@ -2,20 +2,27 @@ const facilitiesDescriptionCategory = (() => {
     let $facilityContainer;
     let $descriptionContainer;
     let $cateContainer;
+    let $otherDetailsContainer;
 
     function cache() {
         $facilityContainer = $("#facilityContainer");
         $descriptionContainer = $("#descriptionContainer");
-        $cateContainer = $("#cateContainer")
+        $cateContainer = $("#cateContainer");
+        $otherDetailsContainer = $('#otherDetailsContainerSchool');
     }
 
-    function render(user) {
-        let facilityHtml = getFacilitiesHtml(user);
-        let descHtml = getDescriptionHtml(user);
-        let categoryHtml = getCategoryHtml(user);
+    function render(typeOfInfo, school) {
+        let facilityHtml = getFacilitiesHtml(school);
+        let descHtml = getDescriptionHtml(school);
+        let categoryHtml = getCategoryHtml(school);
+        let otherDeatilsHtml;
+        if (typeOfInfo === 'school') {
+            otherDeatilsHtml = getOtherDetailsHtml(school);
+        }
         $facilityContainer.append(facilityHtml);
         $descriptionContainer.append(descHtml);
         $cateContainer.append(categoryHtml);
+        $otherDetailsContainer.append(otherDeatilsHtml);
     }
 
     function getFacilitiesHtml(context) {
@@ -30,9 +37,13 @@ const facilitiesDescriptionCategory = (() => {
         return template.userEditTuitionCategory(context);
     }
 
-    function init(user) {
+    function getOtherDetailsHtml(context) {
+        return template.editSchoolOtherDetails(context);
+    }
+
+    function init(typeOfInfo, school) {
         cache();
-        render(user);
+        render(typeOfInfo, school);
     }
 
     return {init};

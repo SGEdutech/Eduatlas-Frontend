@@ -33,5 +33,5 @@ loginModal.init();
 claimModal.init('school');
 reportModal.init();
 
-queryString.returnQueryString();
+queryString.loadQueryString();
 

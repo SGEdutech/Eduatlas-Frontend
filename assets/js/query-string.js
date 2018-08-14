@@ -16,6 +16,8 @@ const queryString = (() => {
         objToReturn.state = url.searchParams.get("state");
         objToReturn.city = url.searchParams.get("city");
         objToReturn.sortBy = url.searchParams.get("sortBy");
+        // typeOfInfo can be either school or tuition or events
+        objToReturn.typeOfInfo = url.searchParams.get("typeOfInfo");
         PubSub.publish('query.load', objToReturn);
     }
 

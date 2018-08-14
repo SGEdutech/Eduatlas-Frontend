@@ -11,8 +11,8 @@ const basicDetails = (() => {
         $contactUsTab = $(`[href = "#tab2"]`);
     }
 
-    function bindEvents(tuitionId) {
-        $saveDetailsBtn.click(() => helperScripts.saveDetails($form, $contactUsTab, tuitionId));
+    function bindEvents(typeOfInfo, tuitionId) {
+        $saveDetailsBtn.click(() => helperScripts.saveDetails(typeOfInfo, $form, $contactUsTab, tuitionId));
     }
 
     function render(tuitionInfo) {
@@ -24,10 +24,10 @@ const basicDetails = (() => {
         return template.userEditTuitionBasic(context);
     }
 
-    function init(tuitionInfo) {
+    function init(typeOfInfo, tuitionInfo) {
         cache();
         render(tuitionInfo);
-        bindEvents(tuitionInfo._id);
+        bindEvents(typeOfInfo, tuitionInfo._id);
     }
 
     return {init};

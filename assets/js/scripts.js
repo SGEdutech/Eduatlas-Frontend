@@ -9,8 +9,9 @@ const helperScripts = {
         funtionArray.forEach(fn => fn());
     },
 
-    openTuitionPage(id) {
-        window.location.assign(`/TuitionDetails2.0.html?_id=${id}`)
+    openDetailsPage(typeOfInfo, id) {
+        let upperCaseTypeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.slice(1);
+        window.location.assign(`/${upperCaseTypeOfInfo}Details2.0.html?_id=${id}`)
     },
 
     calcAverageRating(reviewArray) {
@@ -103,11 +104,11 @@ const helperScripts = {
         document.body.scrollTop = document.documentElement.scrollTop = 150;
     },
 
-    saveDetails($form, $nextTab, tuitionId) {
+    saveDetails(typeOfInfo, $form, $nextTab, tuitionId) {
         const formData = new FormData($form[0]);
 
         const Promise = $.ajax({
-            url: '/tuition/' + tuitionId,
+            url: `/${typeOfInfo}/${tuitionId}`,
             type: 'PUT',
             data: formData,
             cache: false,

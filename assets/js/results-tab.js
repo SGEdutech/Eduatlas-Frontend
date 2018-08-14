@@ -20,34 +20,37 @@ const results = (() => {
         $deleteButtons = $('.delete-result-button');
     }
 
-    function render(tuition) {
-        let html = getHtml(tuition);
+    function render(typeOfInfo, institute) {
+        let html = getHtml(typeOfInfo, institute);
         $resultsContainer.append(html);
     }
 
-    function bindEvents(tuitionId) {
-        $addNewResultButton.click(() => addResult(tuitionId));
+    function bindEvents(typeOfInfo, instituteId) {
+        $addNewResultButton.click(() => addResult(typeOfInfo, instituteId));
         $facultyTabButton.click(() => helperScripts.showNextTab($facultyTab));
         $deleteButtons.click(function () {
-            deleteResult(this, tuitionId)
+            deleteResult(typeOfInfo, this, instituteId)
         });
     }
 
-    function cacheNBindDeleteButtons(tuitionId) {
+    function cacheNBindDeleteButtons(instituteId) {
         cacheDynamic();
         $deleteButtons.click(function () {
-            deleteResult(this, tuitionId)
+            deleteResult(this, instituteId)
         });
     }
 
-    function deleteResult(element, tuitionId) {
+    function deleteResult(typeOfInfo, element, instituteId) {
         const $element = $(element);
         let title = $element.attr('data-title');
         let cardId = $element.attr('data-result-id');
+        console.log(title);
+        console.log(cardId);
+
         eagerRemoveCard(cardId);
 
         $.ajax({
-            url: '/tuition/delete/bragging/' + tuitionId,
+            url: `/${typeOfInfo}/delete/${instituteId}/bragging`,
             type: 'DELETE',
             data: {
                 title: title
@@ -79,14 +82,14 @@ const results = (() => {
         $resultsContainer.append(template.userEditTuitionResults(contextOuter));
     }
 
-    function addResult(tuitionId) {
+    function addResult(typeOfInfo, instituteId) {
         const form = $newResultForm;
         eagerLoadResult(form.serializeArray());
 
         const formData = new FormData(form[0]);
         // get the data and send it in post request
         const promise = $.ajax({
-            url: '/tuition/add/bragging/' + tuitionId,
+            url: `/${typeOfInfo}/add/bragging/${instituteId}`,
             type: 'POST',
             data: formData,
             cache: false,
@@ -95,7 +98,7 @@ const results = (() => {
         });
 
         promise.then((data) => {
-            cacheNBindDeleteButtons(tuitionId);
+            cacheNBindDeleteButtons(instituteId);
             // alert("result added successfully");
         }).catch((err) => {
             console.log(err);
@@ -103,13 +106,13 @@ const results = (() => {
         })
     }
 
-    function getHtml(tuition) {
-        if (!tuition) {
+    function getHtml(typeOfInfo, institute) {
+        if (!institute) {
             return
         }
 
         let context = {
-            results: tuition.bragging ? tuition.bragging : []
+            results: institute.bragging ? institute.bragging : []
         };
 
         let counter = 1;
@@ -121,11 +124,11 @@ const results = (() => {
         return template.userEditTuitionResults(context);
     }
 
-    function init(tuition) {
+    function init(typeOfInfo, institute) {
         cache();
-        render(tuition);
+        render(typeOfInfo, institute);
         cacheDynamic();
-        bindEvents(tuition._id);
+        bindEvents(typeOfInfo, institute._id);
     }
 
     return {init};

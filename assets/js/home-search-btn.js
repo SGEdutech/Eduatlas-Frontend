@@ -9,7 +9,7 @@ let searchBtn = (() => {
 
     function directToSearchPage() {
         const directLink =
-            'searchdetails.html?items=18&page=1&c=true&city=&state=&sortBy=default&name=' + $searchInput.val();
+            'searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=&state=&sortBy=default&name=' + $searchInput.val();
         window.location.assign(directLink);
     }
 

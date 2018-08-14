@@ -16,6 +16,11 @@ tuitionCards.init().then(cardsContainer => {
     bookmark.init();
 });
 
+schoolCards.init().then(cardsContainer => {
+    carousel.init(cardsContainer);
+    // bookmark.init();
+});
+
 searchBtn.init();
 
 setTimeout(loginModal.init());

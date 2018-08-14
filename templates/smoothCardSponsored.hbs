@@ -1,0 +1,73 @@
+<div class="col">
+    <div class="card newFont" style="cursor: pointer;">
+        <div class=" tuition-cards" onclick="openDetailsPage('{{_id}}')">
+            <div class="card p-0 m-0 rounded-0 rounded-top"
+                 style="overflow: hidden;text-overflow: ellipsis">
+                <div class="rounded-top"
+                     style="position: absolute; height: 160px;width: 100%;background-color: rgba(0,0,0,0.5)">
+                </div>
+                <img class="card-img-top" src="/assets/img/fourgirls.jpeg" alt="Tuition Image"
+                     style="height: 160px;width: 100%;">
+                <div class="card-img-overlay">
+                    <h4 class="card-title text-white">{{name}}</h4>
+                    <span class="badge badge-info">{{rating}}/5</span>
+                    {{#if claimedBy}}
+                        <span class="badge badge-info">verified</span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <!--<div class="card-body pb-0">
+            &lt;!&ndash;<div class="row">
+                <div class="col-1 px-0">
+                    <i class="material-icons md-18" style="color: #00bcd4">
+                        location_on
+                    </i>
+                </div>
+                <div class="col-11">
+                    <p id="address">{{addressLine1}},{{addressLine2}},{{city}},{{state}}</p>
+                </div>
+            </div>&ndash;&gt;
+           &lt;!&ndash; <div class="row">
+                <div class="col-1 px-0">
+                    <i class="material-icons md-18" style="color: #00bcd4">
+                        phone
+                    </i>
+                </div>
+                <div class="col-11">
+                    <p id="phone">{{primaryNumber}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1 px-0">
+                    <i class="material-icons md-18" style="color: #00bcd4">
+                        email
+                    </i>
+                </div>
+                <div class="col-11">
+                    <p id="email">{{email}}</p>
+                </div>
+            </div>&ndash;&gt;
+        </div>-->
+        <!--<div class="pb-0 pt-2 rounded-0 card-footer justify-content-center">
+            &lt;!&ndash;<div class="col">
+                &lt;!&ndash;<i class="material-icons" style="cursor: pointer">
+                    bookmark
+                </i>&ndash;&gt;
+                <i class="material-icons" style="cursor: pointer" onclick="bookmark('{{_id}}')">
+                    bookmark_border
+                </i>
+            </div>&ndash;&gt;
+            &lt;!&ndash;<div class="col-6 text-center">
+                {{#if openedNow}}
+                    <p class="font-weight-bold text-success">Open Now</p>
+                {{/if}}
+            </div>&ndash;&gt;
+           &lt;!&ndash; <div class="col">
+                <i class="material-icons">
+                    share
+                </i>
+            </div>&ndash;&gt;
+        </div>-->
+    </div>
+</div>
