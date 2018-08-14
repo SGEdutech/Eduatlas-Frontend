@@ -27,7 +27,7 @@ gulp.task('imageMin', () =>
 );
 
 gulp.task('templates', function(){
-    gulp.src('templates/*.handlebars')
+    gulp.src('templates/*.hbs')
         .pipe(handlebars())
         .pipe(wrap('Handlebars.template(<%= contents %>)'))
         .pipe(declare({
@@ -41,7 +41,7 @@ gulp.task('templates', function(){
 gulp.task('watch', () => {
     // gulp.watch('*.html', ['minify']);
     // gulp.watch('assets/img/*', ['imageMin']);
-    gulp.watch('templates/*.handlebars', ['templates']);
+    gulp.watch('templates/*.hbs', ['templates']);
 });
 
 gulp.task('default', ['minify', 'imageMin', 'templates', 'watch']);

@@ -5,7 +5,7 @@ const schoolCards = (() => {
         $cardsContainer = $('#cards_container2');
     }
 
-    function getTuitionInfo() {
+    function getSchoolInfo() {
         const url = '/school/all';
         const data = {limit: 15};
         return $.get(url, data); // Returns a promise
@@ -38,7 +38,8 @@ const schoolCards = (() => {
     function init() {
         return new Promise((resolve, reject) => {
             cacheDom();
-            getTuitionInfo().then(schoolInfoArray => {
+            getSchoolInfo().then(schoolInfoArray => {
+                console.log(schoolInfoArray.length);
                 render(schoolInfoArray);
                 resolve($cardsContainer);
             }).catch(err => reject(err));
