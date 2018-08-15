@@ -1,25 +1,36 @@
 const dashboardHideSubMenu = (() => {
-    let $addTuitionSubMenu;
-    let $trigger;
+    let $addTuitionSubMenu, $addSchoolSubMenu;
+    let $triggerAddTuitionSubMenu, $triggerAddSchoolSubMenu;
 
     function cache() {
         $addTuitionSubMenu = $('#addTuitionSubMenu');
-        $trigger = $('a[href="#tab3"]');
+        $addSchoolSubMenu = $('#addSchoolSubMenu');
+        $triggerAddTuitionSubMenu = $('a[href="#tab3"]');
+        $triggerAddSchoolSubMenu = $('a[href="#tab6"]');
     }
 
     function bindEvents() {
-        $trigger.on('show.bs.tab', function (e) {
+        $triggerAddTuitionSubMenu.on('show.bs.tab', function (e) {
             $addTuitionSubMenu.show();
         });
 
-        $trigger.on('hide.bs.tab', function (e) {
+        $triggerAddTuitionSubMenu.on('hide.bs.tab', function (e) {
             $addTuitionSubMenu.hide();
+        });
+
+        $triggerAddSchoolSubMenu.on('show.bs.tab', function (e) {
+            $addSchoolSubMenu.show();
+        });
+
+        $triggerAddSchoolSubMenu.on('hide.bs.tab', function (e) {
+            $addSchoolSubMenu.hide();
         });
     }
 
     function init() {
         cache();
         $addTuitionSubMenu.hide();
+        $addSchoolSubMenu.hide();
         bindEvents();
     }
 

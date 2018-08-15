@@ -14,7 +14,7 @@ const searchModule = (() => {
     let $suggestionBox;
     let $showingResultsContainer;
     let $typeOfInfoRadio;
-    let $typeOfInfoSchoolButton, $typeOfInfoTuitionButton;
+    let $typeOfInfoSchoolButton, $typeOfInfoTuitionButton, $typeOfInfoEventButton;
 
 
     function cache() {
@@ -28,6 +28,7 @@ const searchModule = (() => {
         $showingResultsContainer = $('#showingResultsContainer');
         $typeOfInfoTuitionButton = $("input[name='typeOfInfo'][value='tuition']");
         $typeOfInfoSchoolButton = $("input[name='typeOfInfo'][value='school']");
+        $typeOfInfoEventButton = $("input[name='typeOfInfo'][value='event']");
     }
 
     function cacheDynamic() {
@@ -89,6 +90,8 @@ const searchModule = (() => {
             $typeOfInfoTuitionButton.prop("checked", true);
         } else if (queryObj.typeOfInfo === 'school') {
             $typeOfInfoSchoolButton.prop("checked", true);
+        } else if (queryObj.typeOfInfo === 'event') {
+            $typeOfInfoEventButton.prop("checked", true);
         }
     }
 
@@ -116,10 +119,11 @@ const searchModule = (() => {
                 let result = '';
                 data.forEach(obj => {
                     let avgRating = helperScripts.calcAverageRating(obj.reviews);
-                    obj.rating = avgRating === -1 ? 2.5 : avgRating;
+                    obj.averageRating = avgRating === -1 ? 2.5 : avgRating;
                     helperScripts.openNowInit(obj);
                     obj.typeOfInfo = queryObj.typeOfInfo;
                     obj.col4 = true;
+                    console.log(obj)
                     result += template.smoothCardHomePage(obj);
                 });
 
@@ -171,7 +175,7 @@ const searchModule = (() => {
                         search: queryObj.city,
                         fullText: true
                     }),
-                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
+                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
                     limit: queryObj.items,
                     skip: skip,
                     sortBy: queryObj.sortBy
@@ -182,7 +186,7 @@ const searchModule = (() => {
             return $.ajax({
                 url: `/${queryObj.typeOfInfo}/all`,
                 data: {
-                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
+                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
                     limit: queryObj.items,
                     skip: skip
                 }

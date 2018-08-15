@@ -14,6 +14,7 @@ user.getInfo().then(userInfo => {
     dashboardEditProfile.init(userInfo);
     dashboardAddTuition.init(userInfo);
     dashboardAddSchool.init(userInfo);
+    dashboardAddEvent.init(userInfo);
 });
 
 dashboardHideSubMenu.init();

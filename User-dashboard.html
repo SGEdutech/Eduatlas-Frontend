@@ -2,6 +2,8 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
+    <link rel="apple-touch-icon" href="assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -73,6 +75,9 @@
                     <li class="nav-item"><a id="subMenuTrigger2" class="nav-link" href="#tab6" data-toggle="tab">
                         Add Your School</a>
                     </li>
+                    <li class="nav-item"><a id="subMenuTrigger3" class="nav-link" href="#tab7" data-toggle="tab">
+                        Add Event</a>
+                    </li>
 
                 </ul>
                 <div id="addTuitionSubMenu" class="px-1 px-md-5">
@@ -83,6 +88,21 @@
                         </li>
                         <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Contact Us</a></li>
                         <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Courses</a></li>
+                        <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Results</a></li>
+                        <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Faculty</a></li>
+                        <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Gallery</a></li>
+                    </ul>
+                </div>
+                <div id="addSchoolSubMenu" class="px-1 px-md-5">
+                    <hr>
+                    <ul class="nav nav-pills nav-pills-info flex-column">
+                        <li class="nav-item"><a class="nav-link active" href="#"
+                                                data-toggle="tab"> Description</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Activities</a></li>
+                        <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Admission
+                            Details</a></li>
                         <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Results</a></li>
                         <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Faculty</a></li>
                         <li class="nav-item"><a class="nav-link disabled" href="#" data-toggle="tab">Gallery</a></li>
@@ -467,7 +487,8 @@
                                         </div>
                                         <div class="row form-group">
                                             <label for="yearFounded">Founded</label>
-                                            <input id="yearFounded" class="form-control" type="number" name="yearFounded">
+                                            <input id="yearFounded" class="form-control" type="number"
+                                                   name="yearFounded">
                                         </div>
                                     </div>
 
@@ -666,6 +687,189 @@
                         </form>
                         <!-- pass id of form to initTuition function for AJAX POST req -->
                     </div>
+                    <div class="tab-pane" id="tab7">
+                        <form id="addEvent" method="POST" action="/event">
+                            <div id="basicContainerEvent">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title h3">Basic Details:</h2>
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3">
+                                                <h6>Event Name</h6>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input id="eName" value="" class="form-control" type="text" name="name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Description</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                                      name="description"></textarea>
+                                        </div>
+                                        <div class="row">
+                                            <h6>For Age Group</h6>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="fromAge">From Age</label>
+                                                <input class="form-control" type="number"
+                                                       id="fromAge" name="fromAge">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="toAge">To Age</label>
+                                                <input class="form-control" type="number"
+                                                       id="toAge" name="toAge">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <h6>Day And Time</h6>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="fromDate">From Date</label>
+                                                <input class="form-control" type="date"
+                                                       id="fromDate" name="fromDate">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="toDate">To Date</label>
+                                                <input class="form-control" type="date"
+                                                       id="toDate" name="toDate">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="fromTime">From Time</label>
+                                                <input class="form-control" type="time"
+                                                       id="fromTime" name="fromTime">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="toTime">To Time</label>
+                                                <input class="form-control" type="time"
+                                                       id="toTime" name="toTime">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="last_day_registration">Last Date Of Registration</label>
+                                                <input class="form-control" type="date"
+                                                       id="last_day_registration" name="lastDateRegistration">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <h6>Organiser/Contact Person</h6>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="organiserName">Contact Person Name</label>
+                                                <input class="form-control" type="text"
+                                                       id="organiserName" name="organiserName">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="organiserPhone">Contact Person Phone Number</label>
+                                                <input class="form-control" type="number"
+                                                       id="organiserPhone" name="organiserPhone">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="organiserEmail">Contact Person Email</label>
+                                                <input class="form-control" type="email"
+                                                       id="organiserEmail" name="organiserEmail">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="website">Event Official Website</label>
+                                                <input class="form-control" type="text"
+                                                       id="website" name="website">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <h6>Address</h6>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="al1Event">Address Line 1</label>
+                                                    <input class="form-control" value="" type="text"
+                                                           id="al1Event" name="addressLine1">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="al2Event">Address Line 2</label>
+                                                    <input class="form-control" value="" type="text"
+                                                           id="al2Event" name="addressLine2">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="inputCityEvent">City</label>
+                                                    <select id="inputCityEvent" name="city"
+                                                            class="form-control inputCity">
+                                                        <option selected>Choose...</option>
+                                                    </select>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="distEvent">District</label>
+                                                    <input class="form-control" value="" type="text"
+                                                           id="distEvent"
+                                                           name="district">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="inputStateEvent">State</label>
+                                                    <input class="form-control inputState" value="" type="text"
+                                                           id="inputStateEvent"
+                                                           name="state" disabled="">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="countryEvent">Country</label>
+                                                    <input class="form-control" value="India" type="text"
+                                                           id="countryEvent"
+                                                           name="country" disabled="">
+                                                </div>
+                                                <div class="row form-group">
+                                                    <label for="pinEvent">Pin</label>
+                                                    <input class="form-control" value="" type="number"
+                                                           id="pinEvent"
+                                                           name="pin">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3 class="card-title">Category :</h3>
+                                        <label for="categoryEvent">Category</label>
+                                        <select id="categoryEvent" name="category" class="selectpicker" multiple>
+                                            <option value="" disabled>Choose your option</option>
+                                            <option value="Cultural">Cultural</option>
+                                            <option value="Annual Day">Annual Day</option>
+                                            <option value="Music">Music</option>
+                                            <option value="Programming">Programming</option>
+                                            <option value="Fest">Fest</option>
+                                            <option value="Educational">Educational</option>
+                                            <option value="Comedy">Comedy</option>
+                                            <option value="Food and Drink">Food and Drink</option>
+                                            <option value="Exhibition">Exhibition</option>
+                                            <option value="Travel n Activities">Travel n Activities</option>
+                                            <option value="others">others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title h3">Add/Change Cover Pic</h2>
+                                    <div class="form-group form-file-upload form-file-multiple">
+                                        <input type="file" multiple="" class="inputFileHidden" name="eventCoverPic">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control inputFileVisible"
+                                                   placeholder="Click here">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-fab btn-round btn-info">
+                                                    <i class="material-icons">attach_file</i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="ownerUserId" id="event_owner_id_input">
+                            <button class="btn btn-info btn-round" type="submit">Save Event</button>
+                        </form>
+                    </div>
                     <div class="tab-pane" id="tab4">
                         <div id="userTuitionBookmarks" class="row">
                             <div class="card-title col-12">
@@ -774,6 +978,7 @@
 <script src="assets/js/dashboard-hide-submenu.js"></script>
 <script src="assets/js/dashboard-add-tuition.js"></script>
 <script src="assets/js/dashboard-add-school.js"></script>
+<script src="assets/js/dashboard-add-event.js"></script>
 <script src="assets/js/user-claimed.js"></script>
 <script src="assets/js/redirect-on-logout.js"></script>
 <script src="assets/js/dashboard-service.js"></script>
