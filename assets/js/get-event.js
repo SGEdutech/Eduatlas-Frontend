@@ -65,7 +65,9 @@ const getEvent = (() => {
             $name.html(eventData.name);
             $dateButton.html(fromToDate);
             $ageGroupButton.html(eventData.fromAge + ' TO ' + eventData.toAge);
-            $lastDateRegistration.html(lastDateRegObj.date + '/' + lastDateRegObj.month + '/' + lastDateRegObj.year);
+            if (lastDateRegObj) {
+                $lastDateRegistration.html(lastDateRegObj.date + '/' + lastDateRegObj.month + '/' + lastDateRegObj.year);
+            }
             $descriptionContainer.html(eventData.description);
             $officialSite.html(eventData.website);
             $contactPersonName.html(eventData.organiserName);

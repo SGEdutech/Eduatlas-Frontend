@@ -104,6 +104,9 @@ const helperScripts = {
         document.body.scrollTop = document.documentElement.scrollTop = 150;
     },
     getDateObj(date) {
+        if (date === undefined || date === '') {
+            return undefined;
+        }
         let toReturnObj = {};
         let dateArray = date.split('T')[0].split('-');
         toReturnObj.date = dateArray[2];
