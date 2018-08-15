@@ -57,7 +57,6 @@ const getEvent = (() => {
         queryObj = obj;
         cache();
         getInfoFromDatabase().then((eventData) => {
-            console.log(eventData);
             let fromDateObj = helperScripts.getDateObj(eventData.fromDate);
             let toDateObj = helperScripts.getDateObj(eventData.toDate);
             let fromToDate = fromDateObj.date + '/' + fromDateObj.month + ' To ' + toDateObj.date + '/' + toDateObj.month;
