@@ -49,9 +49,16 @@ const eventDetails = (() => {
         $toTime.val(eventInfo.toTime);
         $fromAge.val(eventInfo.fromAge);
         $toAge.val(eventInfo.toAge);
-        $fromDate.val(eventInfo.fromDate.year + '-' + eventInfo.fromDate.month + '-' + eventInfo.fromDate.date);
-        $toDate.val(eventInfo.toDate.year + '-' + eventInfo.toDate.month + '-' + eventInfo.toDate.date);
-        $lastDateOfRegistration.val(eventInfo.lastDateRegistration.year + '-' + eventInfo.lastDateRegistration.month + '-' + eventInfo.lastDateRegistration.date);
+        if (eventInfo.fromDate) {
+            $fromDate.val(eventInfo.fromDate.year + '-' + eventInfo.fromDate.month + '-' + eventInfo.fromDate.date);
+        }
+        if (eventInfo.toDate) {
+            $toDate.val(eventInfo.toDate.year + '-' + eventInfo.toDate.month + '-' + eventInfo.toDate.date);
+
+        }
+        if (eventInfo.lastDateRegistration) {
+            $lastDateOfRegistration.val(eventInfo.lastDateRegistration.year + '-' + eventInfo.lastDateRegistration.month + '-' + eventInfo.lastDateRegistration.date);
+        }
         $contactPersonName.val(eventInfo.organiserName);
         $contactPersonPhone.val(eventInfo.organiserPhone);
         $contactPersonEmail.val(eventInfo.organiserEmail);
