@@ -56,7 +56,7 @@ const dashboardAddTuition = (() => {
         userUpdatedPromise.then((data) => {
             // console.log('user updated');
             // console.log(data);
-            window.location.replace('./user-edit-tuition.html?a=' + tuitionId)
+            window.location.assign('./user-edit-tuition.html?a=' + tuitionId)
         }).catch(err => {
             console.log(err);
         });
