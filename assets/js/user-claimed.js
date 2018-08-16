@@ -1,10 +1,13 @@
 const userClaimed = (() => {
     let $claimedTuitionContainer;
+    let $claimedSchoolContainer;
+    let $claimedEventContainer;
     let $unclaimButons;
 
     function cache() {
         $claimedTuitionContainer = $('#userOwnedTuitionContainer');
         $claimedSchoolContainer = $('#userOwnedSchoolContainer');
+        $claimedEventContainer = $('#userOwnedEventContainer');
     }
 
     function cacheDynamic() {
@@ -19,6 +22,7 @@ const userClaimed = (() => {
         let tuitionId = $(event.target).attr('data-id');
         let typeOfInfo = $(event.target).attr('data-category');
         //now update tuition by removing claimedBy
+        
         let updateTuitionPromise = $.ajax({
             url: `/${typeOfInfo}/empty/claimedBy`,
             type: 'DELETE',
@@ -88,6 +92,11 @@ const userClaimed = (() => {
         });
         getInstituteCardHtml('school', userInfo.schoolsOwned, $claimedSchoolContainer).then(cardsHtml => {
             $claimedSchoolContainer.append(cardsHtml);
+            cacheDynamic();
+            bindEvents(userInfo);
+        });
+        getInstituteCardHtml('event', userInfo.eventsOwned, $claimedEventContainer).then(cardsHtml => {
+            $claimedEventContainer.append(cardsHtml);
             cacheDynamic();
             bindEvents(userInfo);
         })
