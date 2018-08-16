@@ -124,11 +124,14 @@
                         <div class="card p-md-1" id="userOwnedTuitionCard">
                             <div class="card-body">
                                 <div id="userOwnedTuitionContainer" class="row">
-
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div id="userOwnedSchoolContainer" class="row">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="userOwnedEventContainer" class="row">
                                 </div>
                             </div>
                         </div>
@@ -814,13 +817,13 @@
                                                     <label for="inputStateEvent">State</label>
                                                     <input class="form-control inputState" value="" type="text"
                                                            id="inputStateEvent"
-                                                           name="state" disabled="">
+                                                           name="state">
                                                 </div>
                                                 <div class="row form-group">
                                                     <label for="countryEvent">Country</label>
                                                     <input class="form-control" value="India" type="text"
                                                            id="countryEvent"
-                                                           name="country" disabled="">
+                                                           name="country">
                                                 </div>
                                                 <div class="row form-group">
                                                     <label for="pinEvent">Pin</label>
@@ -866,7 +869,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="ownerUserId" id="event_owner_id_input">
+                            <input type="hidden" name="claimedBy" id="event_owner_id_input">
                             <button class="btn btn-info btn-round" type="submit">Save Event</button>
                         </form>
                     </div>

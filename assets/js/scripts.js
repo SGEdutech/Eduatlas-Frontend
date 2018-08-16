@@ -116,11 +116,11 @@ const helperScripts = {
     }
     ,
 
-    saveDetails(typeOfInfo, $form, $nextTab, tuitionId) {
+    saveDetails(typeOfInfo, $form, $nextTab, instituteId) {
         const formData = new FormData($form[0]);
 
         const Promise = $.ajax({
-            url: `/${typeOfInfo}/${tuitionId}`,
+            url: `/${typeOfInfo}/${instituteId}`,
             type: 'PUT',
             data: formData,
             cache: false,

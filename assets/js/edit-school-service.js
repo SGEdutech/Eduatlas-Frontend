@@ -13,6 +13,7 @@ PubSub.subscribeOnce('query.load', (msg, queryObject) => {
         admissionDetails.init(schoolInfo);
         results.init('school', schoolInfo);
         faculty.init('school', schoolInfo);
+        galleryTab.init('school', schoolInfo);
     });
 });
 
