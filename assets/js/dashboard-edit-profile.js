@@ -52,7 +52,7 @@ const dashboardEditProfile = (() => {
         if (user.img_userProfilePic === '' || user.img_userProfilePic === undefined) {
             pic = `<img src="/assets/img/logo.png" alt="...">`;
         } else {
-            pic = `<img src="images/${data.img_userProfilePic}" alt="..." class="image profilePic rounded">`;
+            pic = `<img src="images/${user.img_userProfilePic}" alt="..." class="image profilePic rounded">`;
         }
         $profilePicContainer.html(pic);
 
