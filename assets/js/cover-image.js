@@ -13,6 +13,9 @@ const coverImage = (() => {
         if (typeOfInfo === 'school') {
             html = getCoverHtml(user.img_schoolCoverPic);
         }
+        if (typeOfInfo === 'event') {
+            html = getCoverHtml(user.img_eventCoverPic);
+        }
 
         $coverImgContainer.append(html);
     }
