@@ -168,21 +168,16 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h2 class="card-title h3">Basic Details:</h2>
-                                        <div class="row align-items-center">
+                                        <div class="row align-items-center mb-3">
                                             <div class="col-md-3">
                                                 <h6>Institute Name</h6>
                                             </div>
                                             <div class="col-md-9">
                                                 <input id="tName" value="" class="form-control" type="text" name="name">
                                             </div>
-
                                         </div>
-                                        <hr>
                                         <div class="row">
                                             <div class="col">
-                                                <div class="row">
-                                                    <h6>Address</h6>
-                                                </div>
                                                 <div class="row form-group">
                                                     <label for="al1">Address Line 1</label>
                                                     <input class="form-control" value="" type="text"
@@ -209,13 +204,13 @@
                                                     <label for="inputState">State</label>
                                                     <input class="form-control inputState" value="" type="text"
                                                            id="inputState"
-                                                           name="state" disabled="">
+                                                           name="state">
                                                 </div>
                                                 <div class="row form-group">
                                                     <label for="country">Country</label>
                                                     <input class="form-control" value="India" type="text"
                                                            id="country"
-                                                           name="country" disabled="">
+                                                           name="country">
                                                 </div>
                                                 <div class="row form-group">
                                                     <label for="pin">Pin</label>
@@ -327,8 +322,8 @@
                                 <div class="card-body">
                                     <h2 class="card-title h3">Category</h2>
                                     <div id="cateContainer">
-                                        <select id="category" name="category" class="selectpicker" multiple>
-                                            <option value="" disabled>Choose your option</option>
+                                        <select id="category" name="category" class="selectpicker form-control"
+                                                data-style="btn btn-link" multiple>
                                             <option value="Library/Study Area">Tuition Centers</option>
                                             <option value="Coaching Centers">Coaching Centers</option>
                                             <option value="Enhanced Learning">Enhanced Learning</option>
@@ -336,11 +331,6 @@
                                             <option value="Sports Center">Sports Center</option>
                                             <option value="Education Companies">Education Companies</option>
                                         </select>
-                                        <!--<label for="category">Category <i class="red-text accent-3">*</i></label>
-                                        <div>
-                                            <input value="" name="category" class="form-control"
-                                                   id="category">
-                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -376,7 +366,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h2 class="card-title h3">Basic Details:</h2>
-                                        <div class="row align-items-center">
+                                        <div class="row align-items-center mb-3">
                                             <div class="col-md-3">
                                                 <h6>School Name</h6>
                                             </div>
@@ -385,12 +375,8 @@
                                             </div>
 
                                         </div>
-                                        <hr>
                                         <div class="row">
                                             <div class="col">
-                                                <div class="row">
-                                                    <h6>Address</h6>
-                                                </div>
                                                 <div class="row form-group">
                                                     <label for="al1School">Address Line 1</label>
                                                     <input class="form-control" value="" type="text"
@@ -418,13 +404,13 @@
                                                     <label for="inputStateSchool">State</label>
                                                     <input class="form-control inputState" value="" type="text"
                                                            id="inputStateSchool"
-                                                           name="state" disabled="">
+                                                           name="state">
                                                 </div>
                                                 <div class="row form-group">
                                                     <label for="countrySchool">Country</label>
                                                     <input class="form-control" value="India" type="text"
                                                            id="countrySchool"
-                                                           name="country" disabled="">
+                                                           name="country">
                                                 </div>
                                                 <div class="row form-group">
                                                     <label for="pinSchool">Pin</label>
@@ -443,45 +429,54 @@
                                 <div class="card-body">
                                     <h2 class="card-title h3">Other Details:</h2>
                                     <div id="otherDetailsContainerSchool">
-                                        <label for="curriculumSchool">Curriculum</label>
-                                        <select id="curriculumSchool" name="curriculum" class="selectpicker">
-                                            <option value="" disabled selected>Choose your option</option>
-                                            <option value="CBSE">CBSE</option>
-                                            <option value="ICSE">ICSE</option>
-                                            <option value="State Board">State Board</option>
-                                            <option value="Open School">Open School</option>
-                                            <option value="IGCSE">IGCSE</option>
-                                            <option value="CIE">CIE</option>
-                                            <option value="IB">IB</option>
-                                            <option value="Others">Others</option>
-                                        </select>
+                                        <div class="row form-group mb-4">
+                                            <label for="curriculumSchool" class="text-dark">Curriculum</label>
+                                            <select id="curriculumSchool" name="curriculum"
+                                                    class="selectpicker form-control" data-style="btn btn-link">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="CBSE">CBSE</option>
+                                                <option value="ICSE">ICSE</option>
+                                                <option value="State Board">State Board</option>
+                                                <option value="Open School">Open School</option>
+                                                <option value="IGCSE">IGCSE</option>
+                                                <option value="CIE">CIE</option>
+                                                <option value="IB">IB</option>
+                                                <option value="Others">Others</option>
+                                            </select>
+                                        </div>
 
-                                        <label for="grades">Grades</label>
-                                        <select id="grades" name="grades" class="selectpicker" multiple>
-                                            <option value="" disabled>Choose multiple</option>
-                                            <option value="Nursery">Nursery</option>
-                                            <option value="Kindergarten">Kindergarten</option>
-                                            <option value="1st">1st</option>
-                                            <option value="2nd">2nd</option>
-                                            <option value="3rd">3rd</option>
-                                            <option value="4th">4th</option>
-                                            <option value="5th">5th</option>
-                                            <option value="6th">6th</option>
-                                            <option value="7th">7th</option>
-                                            <option value="8th">8th</option>
-                                            <option value="9th">9th</option>
-                                            <option value="10th">10th</option>
-                                            <option value="11th">11th</option>
-                                            <option value="12th">12th</option>
-                                        </select>
+                                        <div class="row form-group mb-4">
+                                            <label for="grades" class="text-dark">Grades</label>
+                                            <select id="grades" name="grades" class="selectpicker form-control"
+                                                    data-style="btn btn-link" multiple>
+                                                <option value="" disabled>Choose multiple</option>
+                                                <option value="Nursery">Nursery</option>
+                                                <option value="Kindergarten">Kindergarten</option>
+                                                <option value="1st">1st</option>
+                                                <option value="2nd">2nd</option>
+                                                <option value="3rd">3rd</option>
+                                                <option value="4th">4th</option>
+                                                <option value="5th">5th</option>
+                                                <option value="6th">6th</option>
+                                                <option value="7th">7th</option>
+                                                <option value="8th">8th</option>
+                                                <option value="9th">9th</option>
+                                                <option value="10th">10th</option>
+                                                <option value="11th">11th</option>
+                                                <option value="12th">12th</option>
+                                            </select>
+                                        </div>
 
-                                        <label for="type">Type Of Schooling</label>
-                                        <select id="type" name="type" class="selectpicker">
-                                            <option value="" disabled selected>Choose your option</option>
-                                            <option value="Day">Day School</option>
-                                            <option value="Day Boarding">Day Boarding</option>
-                                            <option value="Boarding/Residential">Boarding/Residential</option>
-                                        </select>
+                                        <div class="row form-group mb-4">
+                                            <label for="type" class="text-dark">Type Of Schooling</label>
+                                            <select id="type" name="type" class="selectpicker form-control"
+                                                    data-style="btn btn-link">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="Day">Day School</option>
+                                                <option value="Day Boarding">Day Boarding</option>
+                                                <option value="Boarding/Residential">Boarding/Residential</option>
+                                            </select>
+                                        </div>
 
                                         <div class="row form-group">
                                             <label for="principalName">Head Of School</label>
@@ -656,7 +651,8 @@
                                 <div class="card-body">
                                     <h2 class="card-title h3">Category</h2>
                                     <div id="cateContainerSchool">
-                                        <select id="categorySchool" name="category" class="selectpicker" multiple>
+                                        <select id="categorySchool" name="category" class="selectpicker form-control"
+                                                data-style="btn btn-link" multiple>
                                             <option value="" disabled>Choose your option</option>
                                             <option value="Pre/Play School">Pre/Play School</option>
                                             <option value="Day Care">Day Care</option>
@@ -696,7 +692,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h2 class="card-title h3">Basic Details:</h2>
-                                        <div class="row align-items-center">
+                                        <div class="row align-items-center mb-3">
                                             <div class="col-md-3">
                                                 <h6>Event Name</h6>
                                             </div>
@@ -730,31 +726,31 @@
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label for="fromDate">From Date</label>
-                                                <input class="form-control" type="date"
+                                                <input class="form-control text-gray" type="date"
                                                        id="fromDate" name="fromDate">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label for="toDate">To Date</label>
-                                                <input class="form-control" type="date"
+                                                <input class="form-control text-gray" type="date"
                                                        id="toDate" name="toDate">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label for="fromTime">From Time</label>
-                                                <input class="form-control" type="time"
+                                                <input class="form-control text-gray" type="time"
                                                        id="fromTime" name="fromTime">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label for="toTime">To Time</label>
-                                                <input class="form-control" type="time"
+                                                <input class="form-control text-gray" type="time"
                                                        id="toTime" name="toTime">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label for="last_day_registration">Last Date Of Registration</label>
-                                                <input class="form-control" type="date"
+                                                <input class="form-control text-gray" type="date"
                                                        id="last_day_registration" name="lastDateRegistration">
                                             </div>
                                         </div>
@@ -835,7 +831,7 @@
                                         </div>
                                         <h3 class="card-title">Category :</h3>
                                         <label for="categoryEvent">Category</label>
-                                        <select id="categoryEvent" name="category" class="selectpicker" multiple>
+                                        <select id="categoryEvent" name="category" class="selectpicker" data-style="btn btn-link" multiple>
                                             <option value="" disabled>Choose your option</option>
                                             <option value="Cultural">Cultural</option>
                                             <option value="Annual Day">Annual Day</option>
