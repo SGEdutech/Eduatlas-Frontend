@@ -55,7 +55,7 @@ const dashboardAddEvent = (() => {
 
     function redirectToDashboard(userUpdatedPromise) {
         userUpdatedPromise.then((data) => {
-            window.location.replace('./User-dashboard.html')
+            window.location.assign('./User-dashboard.html')
         }).catch(err => {
             console.log(err);
         });
