@@ -6,3 +6,9 @@
 .contactform{padding-left:70px;}
 .map{padding:4px;}
 .workss{box-shadow: 2px 0px 17px 1px;}
+.links{}
+@media only screen and (max-width: 600px) {
+    .links {
+    padding: 7px;
+    }
+}
