@@ -47,7 +47,7 @@ const courses = (() => {
         eagerRemoveCard(cardId);
 
         $.ajax({
-            url: '/tuition/delete/courses/' + tuitionId,
+            url: `/tuition/delete/${tuitionId}/courses`,
             type: 'DELETE',
             data: {
                 title: title

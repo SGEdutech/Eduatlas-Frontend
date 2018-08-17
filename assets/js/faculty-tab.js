@@ -28,40 +28,44 @@ const faculty = (() => {
     function bindEvents(typeOfInfo, tuitionId) {
         $addNewFacultyButton.click(() => addFaculty(typeOfInfo, tuitionId));
         $galleryTabButton.click(() => helperScripts.showNextTab($galleryTab));
-        $deleteButtons.click(function () {
-            deleteFaculty(typeOfInfo, this, tuitionId)
+        $deleteButtons.click(function (e) {
+            deleteFaculty(this, typeOfInfo, tuitionId)
         });
     }
 
-    function cacheNBindDeleteButtons(instituteId) {
+    function cacheNBindDeleteButtons(instituteId, typeOfInfo) {
         cacheDynamic();
         $deleteButtons.click(function () {
-            deleteFaculty(this, instituteId)
+            deleteFaculty(this, typeOfInfo, instituteId)
         });
     }
 
-    function deleteFaculty(typeOfInfo, element, tuitionId) {
+    function deleteFaculty(element, typeOfInfo, tuitionId) {
+        console.log(tuitionId);
         const $element = $(element);
         let name = $element.attr('data-name');
         let cardId = $element.attr('data-faculty-id');
         eagerRemoveCard(cardId);
 
-        $.ajax({
-            url: `/${typeOfInfo}/delete/${tuitionId}/team`,
-            type: 'DELETE',
-            data: {
-                name: name
-            }
-        }).then((data) => {
-            // alert("faculty deleted successfully")
-        }).catch((err) => {
-            console.log(err);
-            alert("faculty deletion failed")
-        });
+        if (name !== undefined) {
+            $.ajax({
+                url: `/${typeOfInfo}/delete/${tuitionId}/team`,
+                type: 'DELETE',
+                data: {
+                    name: name
+                }
+            }).then((data) => {
+                // alert("faculty deleted successfully")
+            }).catch((err) => {
+                console.log(err);
+                alert("faculty deletion failed")
+            });
+        } else {
+            alert('to delete newly added faculty please refresh and then press delete button')
+        }
     }
 
     function eagerRemoveCard(cardId) {
-        console.log(cardId);
         //todo - cache properly
         $('#' + cardId).remove()
     }
@@ -95,7 +99,7 @@ const faculty = (() => {
         });
 
         promise.then((data) => {
-            cacheNBindDeleteButtons(instituteId);
+            cacheNBindDeleteButtons(instituteId, typeOfInfo);
             // alert("result added successfully");
         }).catch((err) => {
             console.log(err);
