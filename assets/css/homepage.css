@@ -48,10 +48,10 @@ section h1 {
     }
 
 
-#section03 a {
+#section03  {
   padding-top: 60px;
 }
-#section03 a span {
+#section03  span {
   position: absolute;
   top: 0;
   left: 50%;
@@ -62,7 +62,7 @@ section h1 {
   border-radius: 100%;
   box-sizing: border-box;
 }
-#section03 a span::after {
+#section03  span::after {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -76,7 +76,7 @@ section h1 {
   transform: rotate(-45deg);
   box-sizing: border-box;
 }
-#section03 a span::before {
+#section03  span::before {
   position: absolute;
   top: 0;
   left: 0;
