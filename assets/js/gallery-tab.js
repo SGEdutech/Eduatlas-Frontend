@@ -12,7 +12,7 @@ const galleryTab = (() => {
     }
 
     function addGallery(typeOfInfo, instituteId) {
-        const formData = new FormData($form[0]);
+        /*const formData = new FormData($form[0]);
         // data is in Form
         // form id is newFaculty
         // get the data and send it in post request
@@ -31,7 +31,9 @@ const galleryTab = (() => {
         }).catch((err) => {
             console.error(err);
             alert("Gallery addition failed")
-        })
+        })*/
+
+        window.location.assign('User-dashboard.html');
     }
 
     function init(typeOfInfo, instituteInfo) {

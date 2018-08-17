@@ -4,6 +4,7 @@ const queryString = (() => {
         let url_string = location.href; //window.location.href
         let url = new URL(url_string);
         let objToReturn = {};
+        objToReturn.tab = url.searchParams.get("tab");
         objToReturn._id = url.searchParams.get("_id");
         objToReturn.a = url.searchParams.get("a");
         objToReturn.page = url.searchParams.get("page");

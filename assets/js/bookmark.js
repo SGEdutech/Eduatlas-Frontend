@@ -20,6 +20,7 @@ const bookmark = (() => {
         if (!userInfo) {
             $loginModal.modal('show');
         } else {
+            $(this).html('bookmark');
             let tuitionId = $(this).attr('data-id');
             $.ajax({
                 url: '/user/add/bookmarkTuitions/' + userInfo._id,
