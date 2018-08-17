@@ -3,6 +3,10 @@ PubSub.subscribe('user', (msg, userInfo) => {
     redirectOnLogout.init(userInfo);
 });
 
+PubSub.subscribeOnce('query.load', (msg, queryObject) => {
+    redirectTabs.init(queryObject);
+});
+
 user.getInfo().then(userInfo => {
     navigationBar.init(userInfo, {
         colorOnScroll: true
@@ -14,6 +18,8 @@ user.getInfo().then(userInfo => {
     dashboardEditProfile.init(userInfo);
     dashboardAddTuition.init(userInfo);
     dashboardAddSchool.init(userInfo);
+    dashboardAddEvent.init(userInfo);
 });
 
 dashboardHideSubMenu.init();
+queryString.loadQueryString();

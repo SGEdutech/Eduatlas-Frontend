@@ -12,6 +12,7 @@ PubSub.subscribeOnce('query.load', (msg, queryObject) => {
         courses.init(tuitionInfo);
         results.init('tuition', tuitionInfo);
         faculty.init('tuition', tuitionInfo);
+        galleryTab.init('tuition', tuitionInfo);
     });
 });
 

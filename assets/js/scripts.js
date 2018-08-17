@@ -103,12 +103,24 @@ const helperScripts = {
         //scroll 100 pixels
         document.body.scrollTop = document.documentElement.scrollTop = 150;
     },
+    getDateObj(date) {
+        if (date === undefined || date === '') {
+            return undefined;
+        }
+        let toReturnObj = {};
+        let dateArray = date.split('T')[0].split('-');
+        toReturnObj.date = dateArray[2];
+        toReturnObj.month = dateArray[1];
+        toReturnObj.year = dateArray[0];
+        return toReturnObj;
+    }
+    ,
 
-    saveDetails(typeOfInfo, $form, $nextTab, tuitionId) {
+    saveDetails(typeOfInfo, $form, $nextTab, instituteId) {
         const formData = new FormData($form[0]);
 
         const Promise = $.ajax({
-            url: `/${typeOfInfo}/${tuitionId}`,
+            url: `/${typeOfInfo}/${instituteId}`,
             type: 'PUT',
             data: formData,
             cache: false,
