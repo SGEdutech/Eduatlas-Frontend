@@ -30,6 +30,16 @@ section h1 {
   text-align: center;
   white-space: nowrap;
 }
+/*Category*/
+.cateclass{margin-top:90px!important;}
+.category{margin-right:0px!important;}
+.clas{background: #ececec!important;}
+.micon{margin-left: 0px!important;font-size: 2.25rem;color:#4caf50;float:none;}
+.infoclass{text-align: center;}
+.material-icons{padding-left: 0px!important;}
+.title{margin-top: 5px!important;}
+/*Category*/
+
 
 #section03 {margin-top:100px;}
 
