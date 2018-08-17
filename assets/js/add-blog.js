@@ -1,15 +1,24 @@
+let titleInput = $('#title_inp');
+let categoryInp = $('#category_inp');
+let authorName = $('#author_name_inp');
+
 function submitForm() {
     $.post({
         url: '/blog',
         data: {
-            body: tinymce.activeEditor.getContent()
+            title: titleInput.val(),
+            category: categoryInp.val(),
+            authorName: authorName.val(),
+            body: tinymce.activeEditor.getContent(),
         }
     }).then(data => {
-        // TODO: Set the link back to www after fixing nginx
-        alert(`View your blogs at https://eduatlas.com/blog-viewer.html?id=${data._id}`);
+        titleInput.val('');
+        categoryInp.val('');
+        authorName.val('');
         tinymce.activeEditor.setContent('');
-    })
-        .catch(err => console.error(err));
+        alert(`Your blog id is ${data._id}`);
+    }).catch(err => console.error(err));
+
 }
 
 $('#save_btn').click(submitForm);
