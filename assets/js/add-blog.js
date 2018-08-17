@@ -16,7 +16,7 @@ function submitForm() {
         categoryInp.val('');
         authorName.val('');
         tinymce.activeEditor.setContent('');
-        alert('done');
+        alert(`Your blog id is ${data._id}`);
     }).catch(err => console.error(err));
 
 }
