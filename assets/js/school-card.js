@@ -39,7 +39,6 @@ const schoolCards = (() => {
         return new Promise((resolve, reject) => {
             cacheDom();
             getSchoolInfo().then(schoolInfoArray => {
-                console.log(schoolInfoArray.length);
                 render(schoolInfoArray);
                 resolve($cardsContainer);
             }).catch(err => reject(err));

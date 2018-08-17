@@ -41,17 +41,17 @@ section h1 {
 /*Category*/
 
 
-#section03 {margin-top:100px;}
+#scroll_down_btn_container {margin-top:100px;}
 
 @media only screen and (max-width: 650px) {
-    #section03 {margin-top:0px;}
+    #scroll_down_btn_container {margin-top:0px;}
     }
 
 
-#section03  {
+#scroll_down_btn_container  {
   padding-top: 60px;
 }
-#section03  span {
+#scroll_down_btn_container  span {
   position: absolute;
   top: 0;
   left: 50%;
@@ -62,7 +62,7 @@ section h1 {
   border-radius: 100%;
   box-sizing: border-box;
 }
-#section03  span::after {
+#scroll_down_btn_container  span::after {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -76,7 +76,7 @@ section h1 {
   transform: rotate(-45deg);
   box-sizing: border-box;
 }
-#section03  span::before {
+#scroll_down_btn_container  span::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -120,4 +120,10 @@ section h1 {
   100% {
     opacity: 0;
   }
-}    
+}
+
+#scroll_down_btn {
+    /* Overriding to get pointer working so mouse hovers on element */
+    z-index: 999;
+    cursor:pointer;
+}
