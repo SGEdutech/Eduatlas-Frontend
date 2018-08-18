@@ -1,6 +1,14 @@
 .left-sidebar {
     box-shadow: 0px 0px 54px 0px rgba(0, 0, 0, 0.17);
 }
+@media only screen and (max-width: 800px) {
+    .left-sidebar {
+        margin-top: 30px;
+    }
+}
+
+
+
 .lis-relative {
     position: relative;
 }
@@ -51,5 +59,13 @@
     color: #0dc10d;
     float: right;
 }
+.serch{}
 #showresults{background-color: white!important;}
 #col{margin-top: 40px;}
+
+@media only screen and (max-width: 900px) {
+    .serch {
+        margin-left: -173px!important;
+    margin-top: 40px!important;
+    }
+}
