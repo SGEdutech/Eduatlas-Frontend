@@ -17,6 +17,7 @@ const searchModule = (() => {
     let $typeOfInfoSchoolButton, $typeOfInfoTuitionButton, $typeOfInfoEventButton;
     let $prevPageButtons, $nextPageButtons;
     let $searchQueryStringDisplay, $cityQueryStringDisplay;
+    let $body;
 
 
     function cache() {
@@ -33,6 +34,7 @@ const searchModule = (() => {
         $typeOfInfoEventButton = $("input[name='typeOfInfo'][value='event']");
         $searchQueryStringDisplay = $('#search_query_display');
         $cityQueryStringDisplay = $('#city_query_display');
+        $body = $('body');
     }
 
     function cacheDynamic() {
@@ -43,7 +45,6 @@ const searchModule = (() => {
 
     function bindEvents() {
         $searchButton.click(initComplexSearch);
-
         $citySearch.keyup(event => {
             if (event.keyCode === 13) {
                 initComplexSearch();
@@ -69,12 +70,14 @@ const searchModule = (() => {
 
     function showPrevResults() {
         $contentPlaceholder.empty();
+        helperScripts.scrollToElement($body, 100);
         queryObj.page--;
         render();
     }
 
     function showNextResults() {
         $contentPlaceholder.empty();
+        helperScripts.scrollToElement($body, 100);
         queryObj.page++;
         render();
     }
