@@ -26,5 +26,3 @@ searchBtn.init();
 setTimeout(loginModal.init());
 
 searchSuggestion.init();
-
-scrollToCaetegories.init();
