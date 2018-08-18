@@ -1,9 +1,9 @@
 const searchModule = (() => {
     let queryObj;
     let user;
-    let pagePlusOne;
-    let pageMinusOne;
     let skip;
+    let page = 1;
+    let items = 18;
 
     let $contentPlaceholder;
     let $paginationContainer;
@@ -71,14 +71,14 @@ const searchModule = (() => {
     function showPrevResults() {
         $contentPlaceholder.empty();
         helperScripts.scrollToElement($body, 100);
-        queryObj.page--;
+        page--;
         render();
     }
 
     function showNextResults() {
         $contentPlaceholder.empty();
         helperScripts.scrollToElement($body, 100);
-        queryObj.page++;
+        page++;
         render();
     }
 
@@ -103,12 +103,6 @@ const searchModule = (() => {
         }).catch(err => console.error(err))
     }
 
-    function updatePageVariables() {
-        pagePlusOne = queryObj.page + 1;
-        pageMinusOne = queryObj.page - 1;
-        skip = (queryObj.page - 1) * queryObj.items;
-    }
-
     function renderTypeOfInfoRadio() {
         if (queryObj.typeOfInfo === 'tuition') {
             $typeOfInfoTuitionButton.prop("checked", true);
@@ -121,9 +115,7 @@ const searchModule = (() => {
 
     function initComplexSearch() {
         queryObj.c = true;
-        queryObj.page = 1;
-        pageMinusOne = 0;
-        pagePlusOne = 2;
+        page = 1;
         skip = 0;
 
         queryObj.city = $citySearch.val();
@@ -134,6 +126,7 @@ const searchModule = (() => {
         queryObj.typeOfInfo = $typeOfInfoRadio.val();
 
         getSearchResults().then(showSearchResults);
+        updatePaginationStuff();
     }
 
     function showSearchResults(data) {
@@ -154,10 +147,12 @@ const searchModule = (() => {
     }
 
     function updatePaginationStuff() {
-        queryObj.pageM1 = pageMinusOne;
-        queryObj.pageP1 = pagePlusOne;
-        queryObj.isPrevZero = pageMinusOne === 0;
-        let resultPagi = template.paginationT(queryObj);
+        const paginationInfo = {};
+        paginationInfo.page = page;
+        paginationInfo.pageM1 = page - 1;
+        paginationInfo.pageP1 = page + 1;
+        paginationInfo.isPrevZero = paginationInfo.pageM1 === 0;
+        let resultPagi = template.paginationT(paginationInfo);
         $paginationContainer.html(resultPagi);
     }
 
@@ -168,6 +163,8 @@ const searchModule = (() => {
     }
 
     function getSearchResults() {
+        const skip = (page - 1) * items;
+
         if (queryObj.c) {
             //means search type is complex
             showResultsHelper();
@@ -189,8 +186,8 @@ const searchModule = (() => {
                             fullText: true
                         }),
                         demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
-                        limit: queryObj.items,
-                        skip: skip,
+                        limit: items,
+                        skip,
                         sortBy: queryObj.sortBy
                     }
                 }).then(resolve).catch(reject);
@@ -202,8 +199,8 @@ const searchModule = (() => {
                     url: `/${queryObj.typeOfInfo}/all`,
                     data: {
                         demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
-                        limit: queryObj.items,
-                        skip: skip
+                        limit: items,
+                        skip,
                     }
                 }).then(resolve).catch(reject);
             })
@@ -216,7 +213,6 @@ const searchModule = (() => {
 
     function render() {
         renderTypeOfInfoRadio();
-        updatePageVariables();
         getSearchResults().then(showSearchResults);
         updatePaginationStuff();
         cacheDynamic();
