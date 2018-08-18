@@ -1,3 +1,4 @@
+/* --- Scrool Button Start --- */
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 .mad
 {
@@ -30,18 +31,10 @@ section h1 {
   text-align: center;
   white-space: nowrap;
 }
-/*Category*/
-.cateclass{margin-top:90px!important;}
-.category{margin-right:0px!important;}
-.clas{background: #ececec!important;}
-.micon{margin-left: 0px!important;font-size: 2.25rem;color:#4caf50;float:none;}
-.infoclass{text-align: center;}
-.material-icons{padding-left: 0px!important;}
-.title{margin-top: 5px!important;}
-/*Category*/
 
 
 #scroll_down_btn_container {margin-top:100px;}
+#section03 {margin-top:100px;}
 
 @media only screen and (max-width: 650px) {
     #scroll_down_btn_container {margin-top:0px;}
@@ -120,10 +113,4 @@ section h1 {
   100% {
     opacity: 0;
   }
-}
-
-#scroll_down_btn {
-    /* Overriding to get pointer working so mouse hovers on element */
-    z-index: 999;
-    cursor:pointer;
-}
+}    
