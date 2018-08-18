@@ -32,17 +32,19 @@ section h1 {
   white-space: nowrap;
 }
 
+
+#scroll_down_btn_container {margin-top:100px;}
 #section03 {margin-top:100px;}
 
 @media only screen and (max-width: 650px) {
-    #section03 {margin-top:0px;}
+    #scroll_down_btn_container {margin-top:0px;}
     }
 
 
-#section03  {
+#scroll_down_btn_container  {
   padding-top: 60px;
 }
-#section03  span {
+#scroll_down_btn_container  span {
   position: absolute;
   top: 0;
   left: 50%;
@@ -53,7 +55,7 @@ section h1 {
   border-radius: 100%;
   box-sizing: border-box;
 }
-#section03  span::after {
+#scroll_down_btn_container  span::after {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -67,7 +69,7 @@ section h1 {
   transform: rotate(-45deg);
   box-sizing: border-box;
 }
-#section03  span::before {
+#scroll_down_btn_container  span::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -112,58 +114,3 @@ section h1 {
     opacity: 0;
   }
 }    
-/* --- Scrool Button End --- */
-
-
-/* --- Category Start --- */
-.cateclass{margin-top:90px!important;}
-.category{margin-right:0px!important;}
-.clas{background: #ececec!important;}
-.micon{margin-left: 0px!important;font-size: 2.25rem;color:#4caf50;float:none;}
-.infoclass{text-align: center;}
-.material-icons{padding-left: 0px!important;}
-.title{margin-top: 5px!important;}
-/* --- Category End --- */
-
-
-/* --- Nav Start ---*/
-
-.dropdown-menu .dropdown-item, .dropdown-menu li > a {
-  color: inherit!important;
-  text-decoration: none!important;
-  user-select: none!important;
-  cursor: pointer;
-}
-.dropdown-menu .dropdown-item, .dropdown-menu li > a {
-  background-color:white!important;
-}
-
-
-/* --- Nav End ---*/
-
-
-/*--- section title style --*/
-.section-title {
-  text-align: center;
-  margin-bottom: 45px; }
-  .section-title h2 {
-  margin-bottom: 0;
-  line-height: 62px;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif; }
-  .section-title p {
-  margin-bottom: 0; }
-  .searchview{
-  background-color: white;
-  width:100%;
-  height: auto;
-  margin-top:-30px;
-  border-radius:8px;
-  box-shadow: 1px 1px 2px 1px;
-  }
-  
-
-
-
-
- 

@@ -1,18 +1,18 @@
-<li class="page-item">
-    <a class="page-link"
-       href="searchdetails.html?page={{pageM1}}&items={{items}}&c={{c}}&state={{state}}&city={{city}}&name={{name}}&soryBy={{sortBy}}&typeOfInfo={{typeOfInfo}}"
-       tabindex="-1">Previous</a>
-</li>
-<li class="page-item"><a class="page-link"
-                         href="searchdetails.html?page={{pageM1}}&items={{items}}&c={{c}}&state={{state}}&city={{city}}&name={{name}}&soryBy={{sortBy}}&typeOfInfo={{typeOfInfo}}">{{pageM1}}</a>
-</li>
+{{#if isPrevZero}}
+{{else}}
+	<li class="page-item">
+		<a class="page-link prev-page" tabindex="-1">Previous</a>
+	</li>
+	<li class="page-item">
+        <a class="page-link prev-page">{{pageM1}}</a>
+	</li>
+{{/if}}
 <li class="page-item active">
-    <a class="page-link" href="#">{{page}}<span class="sr-only">(current)</span></a>
-</li>
-<li class="page-item"><a class="page-link"
-                         href="searchdetails.html?page={{pageP1}}&items={{items}}&c={{c}}&state={{state}}&city={{city}}&name={{name}}&soryBy={{sortBy}}&typeOfInfo={{typeOfInfo}}">{{pageP1}}</a>
+	<a class="page-link">{{page}}<span class="sr-only">(current)</span></a>
 </li>
 <li class="page-item">
-    <a class="page-link"
-       href="searchdetails.html?page={{pageP1}}&items={{items}}&c={{c}}&state={{state}}&city={{city}}&name={{name}}&soryBy={{sortBy}}&typeOfInfo={{typeOfInfo}}">Next</a>
+    <a class="page-link next-page">{{pageP1}}</a>
+</li>
+<li class="page-item">
+	<a class="page-link next-page">Next</a>
 </li>
