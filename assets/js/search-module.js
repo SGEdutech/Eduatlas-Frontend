@@ -65,7 +65,7 @@ const searchModule = (() => {
 
     function bindDynamicEvents() {
         $prevPageButtons.click(showPrevResults);
-        $nextPageButtons.click(showNextResults)
+        $nextPageButtons.click(showNextResults);
     }
 
     function showPrevResults() {
@@ -127,6 +127,8 @@ const searchModule = (() => {
 
         getSearchResults().then(showSearchResults);
         updatePaginationStuff();
+        cacheDynamic();
+        bindDynamicEvents();
     }
 
     function showSearchResults(data) {
