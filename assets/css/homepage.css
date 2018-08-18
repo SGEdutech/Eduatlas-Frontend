@@ -1,3 +1,4 @@
+/* --- Scrool Button Start --- */
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 .mad
 {
@@ -30,16 +31,6 @@ section h1 {
   text-align: center;
   white-space: nowrap;
 }
-/*Category*/
-.cateclass{margin-top:90px!important;}
-.category{margin-right:0px!important;}
-.clas{background: #ececec!important;}
-.micon{margin-left: 0px!important;font-size: 2.25rem;color:#4caf50;float:none;}
-.infoclass{text-align: center;}
-.material-icons{padding-left: 0px!important;}
-.title{margin-top: 5px!important;}
-/*Category*/
-
 
 #section03 {margin-top:100px;}
 
@@ -121,3 +112,58 @@ section h1 {
     opacity: 0;
   }
 }    
+/* --- Scrool Button End --- */
+
+
+/* --- Category Start --- */
+.cateclass{margin-top:90px!important;}
+.category{margin-right:0px!important;}
+.clas{background: #ececec!important;}
+.micon{margin-left: 0px!important;font-size: 2.25rem;color:#4caf50;float:none;}
+.infoclass{text-align: center;}
+.material-icons{padding-left: 0px!important;}
+.title{margin-top: 5px!important;}
+/* --- Category End --- */
+
+
+/* --- Nav Start ---*/
+
+.dropdown-menu .dropdown-item, .dropdown-menu li > a {
+  color: inherit!important;
+  text-decoration: none!important;
+  user-select: none!important;
+  cursor: pointer;
+}
+.dropdown-menu .dropdown-item, .dropdown-menu li > a {
+  background-color:white!important;
+}
+
+
+/* --- Nav End ---*/
+
+
+/*--- section title style --*/
+.section-title {
+  text-align: center;
+  margin-bottom: 45px; }
+  .section-title h2 {
+  margin-bottom: 0;
+  line-height: 62px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif; }
+  .section-title p {
+  margin-bottom: 0; }
+  .searchview{
+  background-color: white;
+  width:100%;
+  height: auto;
+  margin-top:-30px;
+  border-radius:8px;
+  box-shadow: 1px 1px 2px 1px;
+  }
+  
+
+
+
+
+ 
