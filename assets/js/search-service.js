@@ -4,7 +4,7 @@ PubSub.subscribe('user', (msg, userInfo) => {
 });
 
 PubSub.subscribeOnce('query.load', (msg, queryObject) => {
-    searchModule.render(queryObject);
+    searchModule.init(queryObject);
 });
 
 PubSub.subscribeOnce('searchCards.load', (msg, nothing) => {
@@ -22,4 +22,3 @@ user.getInfo().then(userInfo => {
 loginModal.init();
 
 queryString.loadQueryString();
-
