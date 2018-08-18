@@ -15,6 +15,8 @@ const searchModule = (() => {
     let $showingResultsContainer;
     let $typeOfInfoRadio;
     let $typeOfInfoSchoolButton, $typeOfInfoTuitionButton, $typeOfInfoEventButton;
+    let $prevPageButtons, $nextPageButtons;
+    let $searchQueryStringDisplay, $cityQueryStringDisplay;
 
 
     function cache() {
@@ -29,10 +31,14 @@ const searchModule = (() => {
         $typeOfInfoTuitionButton = $("input[name='typeOfInfo'][value='tuition']");
         $typeOfInfoSchoolButton = $("input[name='typeOfInfo'][value='school']");
         $typeOfInfoEventButton = $("input[name='typeOfInfo'][value='event']");
+        $searchQueryStringDisplay = $('#search_query_display');
+        $cityQueryStringDisplay = $('#city_query_display');
     }
 
     function cacheDynamic() {
         $typeOfInfoRadio = $("input[name='typeOfInfo']:checked");
+        $prevPageButtons = $('li > a.prev-page');
+        $nextPageButtons = $('li > a.next-page');
     }
 
     function bindEvents() {
@@ -44,7 +50,7 @@ const searchModule = (() => {
             }
         });
 
-        $searchBox.keyup((event) => {
+        $searchBox.keyup(event => {
             if (event.keyCode === 13) {
                 initComplexSearch();
             }
@@ -54,6 +60,23 @@ const searchModule = (() => {
         $searchBox.blur(() => setTimeout(function () {
             $suggestionBox.empty()
         }, 100));
+    }
+
+    function bindDynamicEvents() {
+        $prevPageButtons.click(showPrevResults);
+        $nextPageButtons.click(showNextResults)
+    }
+
+    function showPrevResults() {
+        $contentPlaceholder.empty();
+        queryObj.page--;
+        render();
+    }
+
+    function showNextResults() {
+        $contentPlaceholder.empty();
+        queryObj.page++;
+        render();
     }
 
     function getSuggestions(value) {
@@ -74,14 +97,12 @@ const searchModule = (() => {
                 toAdd += `<a href='/${capitalTypeOfInfo}Details2.0.html?_id=${obj._id}' class='color-white'>${obj.name}</a><br>`
             });
             $suggestionBox.append(toAdd)
-        }).catch(err => {
-            console.log(err);
-        })
+        }).catch(err => console.error(err))
     }
 
-    function doMinorCalculations() {
+    function updatePageVariables() {
         pagePlusOne = queryObj.page + 1;
-        pageMinusOne = queryObj.page === 1 ? queryObj.page : queryObj.page - 1;
+        pageMinusOne = queryObj.page - 1;
         skip = (queryObj.page - 1) * queryObj.items;
     }
 
@@ -98,7 +119,7 @@ const searchModule = (() => {
     function initComplexSearch() {
         queryObj.c = true;
         queryObj.page = 1;
-        pageMinusOne = 1;
+        pageMinusOne = 0;
         pagePlusOne = 2;
         skip = 0;
 
@@ -109,50 +130,38 @@ const searchModule = (() => {
         cacheDynamic();
         queryObj.typeOfInfo = $typeOfInfoRadio.val();
 
-        $contentPlaceholder.empty();
-        $paginationContainer.empty();
-        showSearchResults(getSearchResults());
+        getSearchResults().then(showSearchResults);
     }
 
-    function showSearchResults(resultsPromise) {
-        resultsPromise.then((data) => {
-                let result = '';
-                data.forEach(obj => {
-                    let avgRating = helperScripts.calcAverageRating(obj.reviews);
-                    obj.averageRating = avgRating === -1 ? 2.5 : avgRating;
-                    helperScripts.openNowInit(obj);
-                    obj.typeOfInfo = queryObj.typeOfInfo;
-                    obj.col4 = true;
-                    console.log(obj)
-                    result += template.smoothCardHomePage(obj);
-                });
+    function showSearchResults(data) {
+        let result = '';
+        data.forEach(obj => {
+            let avgRating = helperScripts.calcAverageRating(obj.reviews);
+            obj.averageRating = avgRating === -1 ? 2.5 : avgRating;
+            helperScripts.openNowInit(obj);
+            obj.typeOfInfo = queryObj.typeOfInfo;
+            obj.col4 = true;
+            result += template.smoothCardHomePage(obj);
+        });
 
-                $contentPlaceholder.append(result);
+        $contentPlaceholder.html(result);
 
-                //updating the pagination links
-                queryObj.pageM1 = pageMinusOne;
-                queryObj.pageP1 = pagePlusOne;
-                let resultPagi = template.paginationT(queryObj);
-                $paginationContainer.append(resultPagi);
-                //updating pagination done
 
-                PubSub.publish('searchCards.load', null);
-            }
-        );
+        PubSub.publish('searchCards.load', null);
+    }
+
+    function updatePaginationStuff() {
+        queryObj.pageM1 = pageMinusOne;
+        queryObj.pageP1 = pagePlusOne;
+        queryObj.isPrevZero = pageMinusOne === 0;
+        let resultPagi = template.paginationT(queryObj);
+        $paginationContainer.html(resultPagi);
     }
 
     function showResultsHelper() {
-        $showingResultsContainer.empty();
-        let queryEntered = '';
-        let cityEntered = '';
-        if (queryObj.name) {
-            queryEntered = `<span class='badge badge-info'>${queryObj.name}</span>`;
-        }
-        if (queryObj.city) {
-            cityEntered = `<span class='badge badge-info'> City = ${queryObj.city}</span>`;
-        }
-        $showingResultsContainer.html('Showing results : ' + queryEntered + ' ' + cityEntered);
+        queryObj.name ? $searchQueryStringDisplay.html(queryObj.name) : $searchQueryStringDisplay.empty();
 
+        queryObj.city ? $cityQueryStringDisplay.html(queryObj.city) : $cityQueryStringDisplay.empty();
     }
 
     function getSearchResults() {
@@ -160,37 +169,41 @@ const searchModule = (() => {
             //means search type is complex
             showResultsHelper();
 
-            return $.ajax({
-                url: `/${queryObj.typeOfInfo}/search`,
-                data: {
-                    name: JSON.stringify({
-                        search: queryObj.name,
-                        fullText: false
-                    }),
-                    /*state: JSON.stringify({
-                        search: state,
-                        fullText: true
-                    }),*/
-                    city: JSON.stringify({
-                        search: queryObj.city,
-                        fullText: true
-                    }),
-                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
-                    limit: queryObj.items,
-                    skip: skip,
-                    sortBy: queryObj.sortBy
-                }
-            });
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: `/${queryObj.typeOfInfo}/search`,
+                    data: {
+                        name: JSON.stringify({
+                            search: queryObj.name,
+                            fullText: false
+                        }),
+                        /*state: JSON.stringify({
+                            search: state,
+                            fullText: true
+                        }),*/
+                        city: JSON.stringify({
+                            search: queryObj.city,
+                            fullText: true
+                        }),
+                        demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
+                        limit: queryObj.items,
+                        skip: skip,
+                        sortBy: queryObj.sortBy
+                    }
+                }).then(resolve).catch(reject);
+            })
         } else {
             //means search type is simple
-            return $.ajax({
-                url: `/${queryObj.typeOfInfo}/all`,
-                data: {
-                    demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
-                    limit: queryObj.items,
-                    skip: skip
-                }
-            });
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: `/${queryObj.typeOfInfo}/all`,
+                    data: {
+                        demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
+                        limit: queryObj.items,
+                        skip: skip
+                    }
+                }).then(resolve).catch(reject);
+            })
         }
     }
 
@@ -198,15 +211,21 @@ const searchModule = (() => {
         user = userInfo;
     }
 
-    function render(queryObject) {
+    function render() {
+        renderTypeOfInfoRadio();
+        updatePageVariables();
+        getSearchResults().then(showSearchResults);
+        updatePaginationStuff();
+        cacheDynamic();
+        bindDynamicEvents();
+    }
+
+    function init(queryObject) {
         queryObj = queryObject;
         cache();
         bindEvents();
-        renderTypeOfInfoRadio();
-        doMinorCalculations();
-        let results = getSearchResults();
-        showSearchResults(results)
+        render();
     }
 
-    return {render, updateUser}
+    return {init, updateUser}
 })();
