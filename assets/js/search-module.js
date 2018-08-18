@@ -15,9 +15,6 @@ const searchModule = (() => {
     let $showingResultsContainer;
     let $typeOfInfoRadio;
     let $typeOfInfoSchoolButton, $typeOfInfoTuitionButton, $typeOfInfoEventButton;
-    let $prevPageButtons, $nextPageButtons;
-    let $searchQueryStringDisplay, $cityQueryStringDisplay;
-    let $body;
 
 
     function cache() {
@@ -32,26 +29,22 @@ const searchModule = (() => {
         $typeOfInfoTuitionButton = $("input[name='typeOfInfo'][value='tuition']");
         $typeOfInfoSchoolButton = $("input[name='typeOfInfo'][value='school']");
         $typeOfInfoEventButton = $("input[name='typeOfInfo'][value='event']");
-        $searchQueryStringDisplay = $('#search_query_display');
-        $cityQueryStringDisplay = $('#city_query_display');
-        $body = $('body');
     }
 
     function cacheDynamic() {
         $typeOfInfoRadio = $("input[name='typeOfInfo']:checked");
-        $prevPageButtons = $('li > a.prev-page');
-        $nextPageButtons = $('li > a.next-page');
     }
 
     function bindEvents() {
         $searchButton.click(initComplexSearch);
+
         $citySearch.keyup(event => {
             if (event.keyCode === 13) {
                 initComplexSearch();
             }
         });
 
-        $searchBox.keyup(event => {
+        $searchBox.keyup((event) => {
             if (event.keyCode === 13) {
                 initComplexSearch();
             }
@@ -100,7 +93,9 @@ const searchModule = (() => {
                 toAdd += `<a href='/${capitalTypeOfInfo}Details2.0.html?_id=${obj._id}' class='color-white'>${obj.name}</a><br>`
             });
             $suggestionBox.append(toAdd)
-        }).catch(err => console.error(err))
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     function renderTypeOfInfoRadio() {
@@ -129,21 +124,31 @@ const searchModule = (() => {
         updatePaginationStuff();
     }
 
-    function showSearchResults(data) {
-        let result = '';
-        data.forEach(obj => {
-            let avgRating = helperScripts.calcAverageRating(obj.reviews);
-            obj.averageRating = avgRating === -1 ? 2.5 : avgRating;
-            helperScripts.openNowInit(obj);
-            obj.typeOfInfo = queryObj.typeOfInfo;
-            obj.col4 = true;
-            result += template.smoothCardHomePage(obj);
-        });
+    function showSearchResults(resultsPromise) {
+        resultsPromise.then((data) => {
+                let result = '';
+                data.forEach(obj => {
+                    let avgRating = helperScripts.calcAverageRating(obj.reviews);
+                    obj.averageRating = avgRating === -1 ? 2.5 : avgRating;
+                    helperScripts.openNowInit(obj);
+                    obj.typeOfInfo = queryObj.typeOfInfo;
+                    obj.col4 = true;
+                    console.log(obj)
+                    result += template.smoothCardHomePage(obj);
+                });
 
-        $contentPlaceholder.html(result);
+                $contentPlaceholder.append(result);
 
+                //updating the pagination links
+                queryObj.pageM1 = pageMinusOne;
+                queryObj.pageP1 = pagePlusOne;
+                let resultPagi = template.paginationT(queryObj);
+                $paginationContainer.append(resultPagi);
+                //updating pagination done
 
-        PubSub.publish('searchCards.load', null);
+                PubSub.publish('searchCards.load', null);
+            }
+        );
     }
 
     function updatePaginationStuff() {
@@ -157,9 +162,17 @@ const searchModule = (() => {
     }
 
     function showResultsHelper() {
-        queryObj.name ? $searchQueryStringDisplay.html(queryObj.name) : $searchQueryStringDisplay.empty();
+        $showingResultsContainer.empty();
+        let queryEntered = '';
+        let cityEntered = '';
+        if (queryObj.name) {
+            queryEntered = `<span class='badge badge-info'>${queryObj.name}</span>`;
+        }
+        if (queryObj.city) {
+            cityEntered = `<span class='badge badge-info'> City = ${queryObj.city}</span>`;
+        }
+        $showingResultsContainer.html('Showing results : ' + queryEntered + ' ' + cityEntered);
 
-        queryObj.city ? $cityQueryStringDisplay.html(queryObj.city) : $cityQueryStringDisplay.empty();
     }
 
     function getSearchResults() {
@@ -223,8 +236,11 @@ const searchModule = (() => {
         queryObj = queryObject;
         cache();
         bindEvents();
-        render();
+        renderTypeOfInfoRadio();
+        doMinorCalculations();
+        let results = getSearchResults();
+        showSearchResults(results)
     }
 
-    return {init, updateUser}
+    return {render, updateUser}
 })();

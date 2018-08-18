@@ -29,22 +29,23 @@ const results = (() => {
         $addNewResultButton.click(() => addResult(typeOfInfo, instituteId));
         $facultyTabButton.click(() => helperScripts.showNextTab($facultyTab));
         $deleteButtons.click(function () {
-            deleteResult(this, typeOfInfo, instituteId);
+            deleteResult(typeOfInfo, this, instituteId)
         });
     }
 
-    function cacheNBindDeleteButtons(instituteId, typeOfInfo) {
+    function cacheNBindDeleteButtons(instituteId) {
         cacheDynamic();
         $deleteButtons.click(function () {
-            deleteResult(this, typeOfInfo, instituteId)
+            deleteResult(this, instituteId)
         });
     }
 
-    function deleteResult(element, typeOfInfo, instituteId) {
+    function deleteResult(typeOfInfo, element, instituteId) {
         const $element = $(element);
         let title = $element.attr('data-title');
         let cardId = $element.attr('data-result-id');
-        console.log(title + '-' + cardId);
+        console.log(title);
+        console.log(cardId);
 
         eagerRemoveCard(cardId);
 
@@ -97,7 +98,7 @@ const results = (() => {
         });
 
         promise.then((data) => {
-            cacheNBindDeleteButtons(instituteId, typeOfInfo);
+            cacheNBindDeleteButtons(instituteId);
             // alert("result added successfully");
         }).catch((err) => {
             console.log(err);
