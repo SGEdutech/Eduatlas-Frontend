@@ -32,7 +32,7 @@ section h1 {
   white-space: nowrap;
 }
 
-#section03 {margin-top:100px;}
+#section03 {margin-top:10px;cursor:pointer;}
 
 @media only screen and (max-width: 650px) {
     #section03 {margin-top:0px;}
@@ -40,7 +40,7 @@ section h1 {
 
 
 #section03  {
-  padding-top: 60px;
+  padding-top: 0px;
 }
 #section03  span {
   position: absolute;
