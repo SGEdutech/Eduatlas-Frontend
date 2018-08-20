@@ -139,12 +139,38 @@ const searchModule = (() => {
             helperScripts.openNowInit(obj);
             obj.typeOfInfo = queryObj.typeOfInfo;
             obj.col4 = true;
+
+            //check if already bookmarked
+            // start
+            let isBookmarked = false;
+            if (user) {
+                user.bookmarkTuitions.forEach(id => {
+                    if (id === obj._id) {
+                        isBookmarked = true;
+                    }
+                });
+                user.bookmarkSchools.forEach(id => {
+                    if (id === obj._id) {
+                        isBookmarked = true;
+                    }
+                });
+                user.bookmarkEvents.forEach(id => {
+                    if (id === obj._id) {
+                        isBookmarked = true;
+                    }
+                });
+            }
+            if (isBookmarked) {
+                obj.bookmarked = true;
+            }
+            // end
+
             result += template.smoothCardHomePage(obj);
         });
 
         $contentPlaceholder.html(result);
 
-
+        console.log('cards ready');
         PubSub.publish('searchCards.load', null);
     }
 
@@ -211,6 +237,10 @@ const searchModule = (() => {
 
     function updateUser(userInfo) {
         user = userInfo;
+        if(queryObj){
+            getSearchResults().then(showSearchResults)
+        }
+
     }
 
     function render() {
