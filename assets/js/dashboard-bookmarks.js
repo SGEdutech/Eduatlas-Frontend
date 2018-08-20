@@ -67,8 +67,7 @@ const dashboardBookmarks = (() => {
             data: {
                 string: tuitionId
             }
-        }).then(data => {
-
+        }).then(() => {
         })
     }
 
