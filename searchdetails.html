@@ -5,23 +5,27 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
+
         function gtag() {
             dataLayer.push(arguments);
         }
+
         gtag('js', new Date());
         gtag('config', 'UA-121945570-1');
     </script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="apple-touch-icon"  href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/favicon.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <title>
         Search Details
     </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'>
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="./assets/css/material-kit.css?v=2.1.0" rel="stylesheet">
@@ -46,7 +50,9 @@
                                 <i class="fa fa-search lis-primary lis-left-0"></i>
                             </span>
                     </div>
-                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4 searchInput" placeholder="What are you looking for?"
+                    <input type="text"
+                           class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4 searchInput"
+                           placeholder="What are you looking for?"
                            id="searchBox">
                 </div>
                 <div id="suggestions" class="position-absolute col-12 text-center">
@@ -58,7 +64,8 @@
                                 <i class="fa fa-map-o lis-primary lis-left-0"></i>
                             </span>
                     </div>
-                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4" placeholder="City" id="citySearch">
+                    <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4"
+                           placeholder="City" id="citySearch">
                 </div>
                 <br>
                 <div class="input-group">
@@ -110,17 +117,18 @@
                             </span>
                         </label>
                     </div>
-                   <!-- <label id="tuition_checkbox" class="custom-control custom-checkbox d-block">
-                        <input type="checkbox" class="custom-control-input" checked="checked">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Institute/Tuition </span> </label>
-                    <label id="school_checkbox" class="custom-control custom-checkbox d-block">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">Schools</span> </label>-->
+                    <!-- <label id="tuition_checkbox" class="custom-control custom-checkbox d-block">
+                         <input type="checkbox" class="custom-control-input" checked="checked">
+                         <span class="custom-control-indicator"></span>
+                         <span class="custom-control-description">Institute/Tuition </span> </label>
+                     <label id="school_checkbox" class="custom-control custom-checkbox d-block">
+                         <input type="checkbox" class="custom-control-input">
+                         <span class="custom-control-indicator"></span>
+                         <span class="custom-control-description">Schools</span> </label>-->
                 </div>
                 <div class="row mt-3">
-                    <div class="col-12 col-md-12 pt-4">
+                <div class="col-md-4 col-4"></div>
+                    <div class="col-8 col-md-8 pt-4">
                         <button id="search-button" class="btn btn-info">
                             <i class="fa fa-search pr-2"></i> Search Place
                         </button>
@@ -133,7 +141,10 @@
                 <div class="container">
                     <div class="row mt-md-5">
                         <div class="col-sm-12 align-self-center">
-                            <p id="showingResultsContainer">Showing results</p>
+                            <p id="showingResultsContainer">Showing results:
+                                <span id="search_query_display" class='badge badge-info'></span>;
+                                <span id="city_query_display" class='badge badge-info'></span>;
+                            </p>
                         </div>
                     </div>
 

@@ -1,10 +1,12 @@
 const dashboardBookmarks = (() => {
     let $userTuitionBookmarks;
     let $userSchoolBookmarks;
+    let $userEventBookmarks;
 
     function cache() {
         $userTuitionBookmarks = $("#userTuitionBookmarks");
         $userSchoolBookmarks = $("#userSchoolBookmarks");
+        $userEventBookmarks = $("#userEventBookmarks");
     }
 
     function cacheDynamic() {
@@ -27,9 +29,9 @@ const dashboardBookmarks = (() => {
         });
     }
 
-    function getUserBookmarksHtml(typeOfInfo, ids) {
+    function getUserBookmarksHtml(typeOfInfo, idsArr) {
         const instituteInfoPromiseArr = [];
-        ids.forEach(instituteId => instituteInfoPromiseArr.push(getTuitionsInfo(typeOfInfo, instituteId)));
+        idsArr.forEach(instituteId => instituteInfoPromiseArr.push(getTuitionsInfo(typeOfInfo, instituteId)));
 
         let cardsHtml = '';
 
@@ -54,6 +56,9 @@ const dashboardBookmarks = (() => {
     function removeBookmarks(event, userInfo) {
         let tuitionId = $(event.target).attr('data-id');
         let typeOfInfo = $(event.target).attr('data-category');
+
+        eagerRemoveCard(tuitionId);
+
         // make first character UpperCase
         typeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.substr(1);
         $.ajax({
@@ -62,8 +67,7 @@ const dashboardBookmarks = (() => {
             data: {
                 string: tuitionId
             }
-        }).then(data => {
-            eagerRemoveCard(tuitionId);
+        }).then(() => {
         })
     }
 
@@ -83,6 +87,13 @@ const dashboardBookmarks = (() => {
         if (user.bookmarkSchools) {
             getUserBookmarksHtml('school', user.bookmarkSchools).then(cardsHtml => {
                 $userSchoolBookmarks.append(cardsHtml);
+                cacheDynamic();
+                bindEvents(user);
+            });
+        }
+        if (user.bookmarkEvents) {
+            getUserBookmarksHtml('event', user.bookmarkEvents).then(cardsHtml => {
+                $userEventBookmarks.append(cardsHtml);
                 cacheDynamic();
                 bindEvents(user);
             });

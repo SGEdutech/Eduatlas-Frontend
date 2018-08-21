@@ -4,7 +4,7 @@ const bookmark = (() => {
     let $bookmarkButtons;
 
     function bindEvents() {
-        $bookmarkButtons.click(bookmarkTuition)
+        $bookmarkButtons.click(saveBookmark)
     }
 
     function cacheDynamicDom() {
@@ -16,22 +16,42 @@ const bookmark = (() => {
         userInfo = info;
     }
 
-    function bookmarkTuition() {
+    function saveBookmark() {
         if (!userInfo) {
             $loginModal.modal('show');
         } else {
-            $(this).html('bookmark');
-            let tuitionId = $(this).attr('data-id');
-            $.ajax({
-                url: '/user/add/bookmarkTuitions/' + userInfo._id,
-                method: 'POST',
-                data: {
-                    string: tuitionId
-                }
-            }).then(data => {
-                alert('bookmarked successfully')
-            })
+            let instituteId = $(this).attr('data-id');
+            let typeOfInfo = $(this).attr('data-category');
+            let ifBookmarked = $(this).attr('data-bookmarked');
 
+            if (ifBookmarked) {
+                //do nothing
+                $(this).html('bookmark_border');
+                typeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.slice(1);
+                $.ajax({
+                    url: `/user/delete/bookmark${typeOfInfo}s/${userInfo._id}`,
+                    method: 'DELETE',
+                    data: {
+                        string: instituteId
+                    }
+                }).then(data => {
+                    // alert('bookmarked removed successfully')
+                })
+            } else {
+                // make first character Upper-Case
+                $(this).html('bookmark');
+
+                typeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.slice(1);
+                $.ajax({
+                    url: `/user/add/bookmark${typeOfInfo}s/${userInfo._id}`,
+                    method: 'POST',
+                    data: {
+                        string: instituteId
+                    }
+                }).then(data => {
+                    // alert('bookmarked successfully')
+                })
+            }
         }
     }
 
