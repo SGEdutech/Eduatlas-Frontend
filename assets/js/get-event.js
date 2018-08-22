@@ -57,6 +57,7 @@ const getEvent = (() => {
         queryObj = obj;
         cache();
         getInfoFromDatabase().then((eventData) => {
+            PubSub.publish('address.ready', eventData.addressLine1 + ',' + eventData.addressLine2 + ',' + eventData.city + ',' + eventData.state);
             let fromDateObj = helperScripts.getDateObj(eventData.fromDate);
             let toDateObj = helperScripts.getDateObj(eventData.toDate);
             let fromToDate = fromDateObj.date + '/' + fromDateObj.month + ' To ' + toDateObj.date + '/' + toDateObj.month;

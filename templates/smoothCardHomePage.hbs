@@ -68,8 +68,13 @@
                     <!--<i class="material-icons" style="cursor: pointer">
                         bookmark
                     </i>-->
-                    <i class="material-icons bookmark-button" style="cursor: pointer" data-id="{{_id}}">
-                        bookmark_border
+                    <i class="material-icons bookmark-button" style="cursor: pointer" data-id="{{_id}}"
+                       data-category="{{typeOfInfo}}" data-bookmarked="{{bookmarked}}">
+                        {{#if bookmarked}}
+                            bookmark
+                        {{else}}
+                            bookmark_border
+                        {{/if}}
                     </i>
                 </div>
                 <div class="col-6 text-center">
