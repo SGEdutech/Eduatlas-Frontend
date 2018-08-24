@@ -24,6 +24,7 @@ const schoolCards = (() => {
         schoolInfoArray.forEach(schoolInfo => {
             helperScripts.openNowInit(schoolInfo);
             schoolInfo.typeOfInfo='school';
+            schoolInfo.hideFooter = true;
             cardsHtml += template.smoothCardHomePage(schoolInfo)
         });
         return cardsHtml;
