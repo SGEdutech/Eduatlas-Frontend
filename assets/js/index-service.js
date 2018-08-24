@@ -28,3 +28,5 @@ setTimeout(loginModal.init());
 scrollToCaetegories.init();
 
 searchSuggestion.init();
+
+ipLocation.init();

@@ -7,7 +7,9 @@ const tuitionCards = (() => {
 
     function getTuitionInfo() {
         const url = '/tuition/all';
-        const data = {limit: 15};
+        const data = {
+            limit: 15
+        };
         return $.get(url, data); // Returns a promise
     }
 
@@ -24,6 +26,7 @@ const tuitionCards = (() => {
         tuitionInfoArray.forEach(tuitionInfo => {
             helperScripts.openNowInit(tuitionInfo);
             tuitionInfo.typeOfInfo = 'tuition';
+            tuitionInfo.hideFooter = true;
             cardsHtml += template.smoothCardHomePage(tuitionInfo)
         });
         return cardsHtml;
@@ -45,5 +48,7 @@ const tuitionCards = (() => {
         })
     }
 
-    return {init};
+    return {
+        init
+    };
 })();
