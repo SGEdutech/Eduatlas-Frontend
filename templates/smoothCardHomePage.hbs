@@ -16,6 +16,7 @@
                 </div>
             </div>
         </div>
+        {{#if hideBody}} {{else}}
         <div class="card-body pb-0">
             <div class="row" style="min-height: 70px;max-height: 70px;text-overflow: ellipsis;
             overflow: hidden; ">
@@ -49,6 +50,7 @@
                 </div>
             </div>
         </div>
+        {{/if}}
         <div class="pb-0 pt-2 rounded-0 card-footer justify-content-center">
             {{#if manageClaimed}}
             <div class="col">

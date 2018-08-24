@@ -89,19 +89,30 @@ const getInfo = (() => {
     function getInfoFromDatabase(typeOfInfo) {
         if (typeOfInfo === 'tuition') {
             const url = '/tuition';
-            const data = {_id: queryObj._id};
-            return $.ajax({url, data});
+            const data = {
+                _id: queryObj._id
+            };
+            return $.ajax({
+                url,
+                data
+            });
         }
         if (typeOfInfo === 'school') {
             const url = '/school';
-            const data = {_id: queryObj._id};
-            return $.ajax({url, data});
+            const data = {
+                _id: queryObj._id
+            };
+            return $.ajax({
+                url,
+                data
+            });
         }
 
     }
 
     function getReviews(reviewsArray) {
         if (reviewsArray === undefined || reviewsArray === []) {
+            changeColorOfStars(2.5)
             return;
         }
         let avgRating = helperScripts.calcAverageRating(reviewsArray);
@@ -139,8 +150,10 @@ const getInfo = (() => {
         if (typeOfInfo === 'school') {
             //only for schools
             $curriculum.html(infoObj.curriculum);
-            let array = infoObj.grades.split(',');
-            $grades.html(array[0] + ' to ' + array[array.length - 1]);
+            if (infoObj.grades) {
+                let array = infoObj.grades.split(',');
+                $grades.html(array[0] + ' to ' + array[array.length - 1]);
+            }
             $typeOfSchooling.html(infoObj.type);
             $headOfSchool.html(infoObj.principalName);
             $founded.html(infoObj.yearFounded);
@@ -176,8 +189,7 @@ const getInfo = (() => {
     }
 
     function updateVerifiedBadge(claimedBy) {
-        if (claimedBy === undefined || claimedBy === '') {
-        } else {
+        if (claimedBy === undefined || claimedBy === '') {} else {
             $verifiedBadge.removeAttr('hidden')
         }
     }
@@ -198,13 +210,17 @@ const getInfo = (() => {
 
     function updateFacilities(facilities) {
         const facilityArr = facilities ? facilities.split(',') : [];
-        let result1 = template.tuitionFacility({facilities: facilityArr});
+        let result1 = template.tuitionFacility({
+            facilities: facilityArr
+        });
         $facilities_container.html(result1);
     }
 
     function updateCategories(categories) {
         const categoryArr = categories ? categories.split(',') : [];
-        let result2 = template.tuitionCategory({categories: categoryArr});
+        let result2 = template.tuitionCategory({
+            categories: categoryArr
+        });
         $category_container.html(result2);
     }
 
@@ -319,7 +335,9 @@ const getInfo = (() => {
         }
         let result = '';
         array.forEach(imgPath => {
-            result += template.galleryImg({path: imgPath});
+            result += template.galleryImg({
+                path: imgPath
+            });
         });
         $gallery.append(result);
     }
@@ -393,14 +411,14 @@ const getInfo = (() => {
         $targetElement.append(result);
     }
 
-    function getRelatedListing(city) {
+    function getRelatedListing(city, typeOfInfo) {
         if (!city) {
             return
         }
         // todo - fix Algorithm to get related listing
         // maybe add server side route to get this
         let promise = $.ajax({
-            url: '/tuition/search',
+            url: `/${typeOfInfo}/search`,
             data: {
                 city: JSON.stringify({
                     search: city,
@@ -426,6 +444,9 @@ const getInfo = (() => {
                     helperScripts.openNowInit(obj);
                     obj.averageRating = helperScripts.calcAverageRating(obj.reviews);
                     obj.averageRating = obj.averageRating === -1 ? 2.5 : obj.averageRating;
+                    obj.hideBody = true;
+                    obj.hideFooter = true;
+                    obj.col4 = true;
                     result += template.smoothCardHomePage(obj);
                 });
                 $relatedTuitionContainer.append(result);
@@ -488,6 +509,8 @@ const getInfo = (() => {
                     helperScripts.openNowInit(obj);
                     obj.averageRating = helperScripts.calcAverageRating(obj.reviews);
                     obj.averageRating = obj.averageRating === -1 ? 2.5 : obj.averageRating;
+                    obj.hideFooter = true;
+                    obj.hideBody = true;
                     result += template.smoothCardHomePage(obj);
                 });
                 $sponsoredPopular.append(result);
@@ -519,6 +542,7 @@ const getInfo = (() => {
                 updateCategories(InfoObj.category);
                 getReviews(InfoObj.reviews);
                 getPopularListing(InfoObj.city, typeOfInfo);
+                getRelatedListing(InfoObj.city, typeOfInfo);
                 updateCategoryPills(InfoObj.category);
 
                 setTimeout(() => updateSocialLinks(InfoObj.fbLink, InfoObj.instaLink, InfoObj.youtubeLink));
@@ -542,5 +566,8 @@ const getInfo = (() => {
             .catch(err => console.error(err));
     }
 
-    return {render, updateUser}
+    return {
+        render,
+        updateUser
+    }
 })();
