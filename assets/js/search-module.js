@@ -14,10 +14,13 @@ const searchModule = (() => {
     let $suggestionBox;
     let $showingResultsContainer;
     let $typeOfInfoRadio;
+    let $typeOfInfoInput;
     let $typeOfInfoSchoolButton, $typeOfInfoTuitionButton, $typeOfInfoEventButton;
     let $prevPageButtons, $nextPageButtons;
     let $searchQueryStringDisplay, $cityQueryStringDisplay;
     let $body;
+    let $tuitionCategoryContainer, $schoolCategoryContainer, $eventCategoryContainer;
+    let $subCategoryTuition, $subCategorySchool, $subCategoryEvent;
 
 
     function cache() {
@@ -35,6 +38,13 @@ const searchModule = (() => {
         $searchQueryStringDisplay = $('#search_query_display');
         $cityQueryStringDisplay = $('#city_query_display');
         $body = $('body');
+        $tuitionCategoryContainer = $('#tuition_category_container');
+        $schoolCategoryContainer = $('#school_category_container');
+        $eventCategoryContainer = $('#event_category_container');
+        $typeOfInfoInput = $("input[name='typeOfInfo']");
+        $subCategoryTuition = $("#category");
+        $subCategorySchool = $("#categorySchool");
+        $subCategoryEvent = $("#categoryEvent");
     }
 
     function cacheDynamic() {
@@ -60,7 +70,30 @@ const searchModule = (() => {
 
         $searchBox.blur(() => setTimeout(function () {
             $suggestionBox.empty()
-        }, 100));
+        }, 150));
+
+        subCategoryBind();
+    }
+
+    function subCategoryBind() {
+        $typeOfInfoInput.click(function () {
+            var value = $(this).val();
+            if (value === "tuition") {
+                $tuitionCategoryContainer.css("display", "block");
+            } else {
+                $tuitionCategoryContainer.css("display", "none");
+            }
+            if (value === "school") {
+                $schoolCategoryContainer.css("display", "block");
+            } else {
+                $schoolCategoryContainer.css("display", "none");
+            }
+            if (value === "event") {
+                $eventCategoryContainer.css("display", "block");
+            } else {
+                $eventCategoryContainer.css("display", "none");
+            }
+        });
     }
 
     function bindDynamicEvents() {
@@ -106,10 +139,17 @@ const searchModule = (() => {
     function renderTypeOfInfoRadio() {
         if (queryObj.typeOfInfo === 'tuition') {
             $typeOfInfoTuitionButton.prop("checked", true);
+            $tuitionCategoryContainer.css("display", "block");
+            console.log(queryObj.category);
+            $subCategoryTuition.val(queryObj.category)
         } else if (queryObj.typeOfInfo === 'school') {
             $typeOfInfoSchoolButton.prop("checked", true);
+            $schoolCategoryContainer.css("display", "block");
+            $subCategorySchool.val(queryObj.category);
         } else if (queryObj.typeOfInfo === 'event') {
             $typeOfInfoEventButton.prop("checked", true);
+            $eventCategoryContainer.css("display", "block");
+            $subCategoryEvent.val(queryObj.category);
         }
     }
 
@@ -121,9 +161,30 @@ const searchModule = (() => {
         queryObj.city = $citySearch.val();
         queryObj.sortBy = $sortByInput.val();
         queryObj.name = $searchBox.val();
+        // queryObj.category = $subCategory.find(":selected").val();
+
         // cache dynamic will get the updated value of radio object
         cacheDynamic();
         queryObj.typeOfInfo = $typeOfInfoRadio.val();
+
+        if (queryObj.typeOfInfo === "tuition") {
+            queryObj.category = $subCategoryTuition.find(":selected").text();
+            if (queryObj.category === "tuition subcategory") {
+                delete queryObj.category;
+            }
+        } else if (queryObj.typeOfInfo === "school") {
+            queryObj.category = $subCategorySchool.find(":selected").text();
+            if (queryObj.category === "school subcategory") {
+                delete queryObj.category;
+            }
+        } else if (queryObj.typeOfInfo === "event") {
+            queryObj.category = $subCategoryEvent.find(":selected").text();
+            if (queryObj.category === "event subcategory") {
+                delete queryObj.category;
+            }
+        }
+
+        console.log(queryObj.category);
 
         getSearchResults().then(showSearchResults);
         updatePaginationStuff();
@@ -191,6 +252,7 @@ const searchModule = (() => {
     }
 
     function getSearchResults() {
+        console.log(queryObj);
         const skip = (page - 1) * items;
 
         if (queryObj.c) {
@@ -211,6 +273,10 @@ const searchModule = (() => {
                         }),*/
                         city: JSON.stringify({
                             search: queryObj.city,
+                            fullText: true
+                        }),
+                        category: JSON.stringify({
+                            search: queryObj.category,
                             fullText: true
                         }),
                         demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
@@ -237,7 +303,7 @@ const searchModule = (() => {
 
     function updateUser(userInfo) {
         user = userInfo;
-        if(queryObj){
+        if (queryObj) {
             getSearchResults().then(showSearchResults)
         }
 
@@ -258,5 +324,8 @@ const searchModule = (() => {
         render();
     }
 
-    return {init, updateUser}
+    return {
+        init,
+        updateUser
+    }
 })();
