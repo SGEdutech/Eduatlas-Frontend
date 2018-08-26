@@ -29,4 +29,4 @@ scrollToCaetegories.init();
 
 searchSuggestion.init();
 
-ipLocation.init();
+// ipLocation.init();
