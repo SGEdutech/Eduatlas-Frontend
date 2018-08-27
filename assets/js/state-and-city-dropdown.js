@@ -7,7 +7,7 @@ const dropDown = (() => {
     
     function cache() {
         $stateInp = $('#state_inp');
-        $cityInp = $('#city_inp')
+        $cityInp = $('#city_inp');
     }
 
     function bindEvents() {
