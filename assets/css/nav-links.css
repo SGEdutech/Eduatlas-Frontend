@@ -1,0 +1,32 @@
+/* --- Nav Start ---*/
+
+.dropdown-menu .dropdown-item,
+.dropdown-menu li>a {
+    color: inherit !important;
+    text-decoration: none !important;
+    user-select: none !important;
+    cursor: pointer;
+}
+
+.dropdown-menu .dropdown-item,
+.dropdown-menu li>a {
+    background-color: white !important;
+}
+
+.dropdown-menu a:hover {
+    background-color: #00bcd4 !important;
+}
+
+.dropdown-menu a:focus {
+    background-color: #00bcd4 !important;
+}
+
+.dropdown-menu a:active {
+    background-color: #00bcd4 !important;
+}
+
+.dropdown-menu li>a:hover {
+    background-color: #00bcd4 !important;
+}
+
+/* --- Nav End ---*/
