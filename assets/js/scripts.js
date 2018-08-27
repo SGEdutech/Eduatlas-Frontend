@@ -1,6 +1,8 @@
 const helperScripts = {
     logout() {
-        $.get({url: '/auth/local/logout'})
+        $.get({
+                url: '/auth/local/logout'
+            })
             .then(data => PubSub.publish('user.logout', '')) // Send no user as empty string
             .catch(err => console.error(err));
     },
@@ -19,7 +21,8 @@ const helperScripts = {
         const totalReviews = reviewArray.length;
         let totalStars = 0;
         reviewArray.forEach(review => totalStars += review.rating);
-        return totalStars / totalReviews;
+        let ratingToReturn = totalStars / totalReviews;
+        return Math.round(ratingToReturn * 100) / 100;
     },
 
     openNowInit(data, typeOfInfo) {
@@ -89,12 +92,18 @@ const helperScripts = {
             let AMPM = time.match(/\s(.*)$/)[1];
             if (AMPM == "PM" && hours < 12) hours = hours + 12;
             if (AMPM == "AM" && hours == 12) hours = hours - 12;
-            return {hours: hours, minutes: minutes}
+            return {
+                hours: hours,
+                minutes: minutes
+            }
         } else {
             let temp = time.split(':');
             let hours = parseInt(temp[0]);
             let minutes = parseInt(temp[1]);
-            return {hours: hours, minutes: minutes}
+            return {
+                hours: hours,
+                minutes: minutes
+            }
         }
     },
 
@@ -113,8 +122,7 @@ const helperScripts = {
         toReturnObj.month = dateArray[1];
         toReturnObj.year = dateArray[0];
         return toReturnObj;
-    }
-    ,
+    },
 
     saveDetails(typeOfInfo, $form, $nextTab, instituteId) {
         const formData = new FormData($form[0]);
@@ -142,7 +150,9 @@ const helperScripts = {
             return;
         }
         if (this.htmlBody === undefined) this.htmlBody = $('html, body');
-        this.htmlBody.animate({scrollTop: $element.offset().top}, 1000);
+        this.htmlBody.animate({
+            scrollTop: $element.offset().top
+        }, 1000);
     }
 
 };
