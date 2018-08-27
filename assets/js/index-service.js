@@ -29,4 +29,6 @@ scrollToCaetegories.init();
 
 searchSuggestion.init();
 
-ipLocation.init();
+dropDown.init();
+
+// ipLocation.init();

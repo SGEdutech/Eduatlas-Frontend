@@ -11,6 +11,7 @@
         function gtag() {
             dataLayer.push(arguments);
         }
+
         gtag('js', new Date());
         gtag('config', 'UA-121945570-1');
     </script>
@@ -62,13 +63,54 @@
                                     <div id="discover" class="card-body ">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <div class="form-group bmd-form-group">
-                                                    <input id="state_inp" type="text" placeholder="State" class="form-control">
+                                                <!--State-->
+                                                <div class="form-group">
+                                                    <select class="form-control selectpicker" data-style="btn btn-link" id="state_inp">
+                                                        <option selected disabled>Select State</option>
+                                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands
+                                                        </option>
+                                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                        <option value="Assam">Assam</option>
+                                                        <option value="Bihar">Bihar</option>
+                                                        <option value="Chandigarh">Chandigarh</option>
+                                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                                        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli
+                                                        </option>
+                                                        <option value="Delhi">Delhi</option>
+                                                        <option value="Goa">Goa</option>
+                                                        <option value="Gujarat">Gujarat</option>
+                                                        <option value="Haryana">Haryana</option>
+                                                        <option value="Himachal Praddesh">Himachal Praddesh</option>
+                                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                        <option value="Jharkhand">Jharkhand</option>
+                                                        <option value="Karnataka">Karnataka</option>
+                                                        <option value="Kerala">Kerala</option>
+                                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                        <option value="Maharashtra">Maharashtra</option>
+                                                        <option value="Manipur">Manipur</option>
+                                                        <option value="Meghalaya">Meghalaya</option>
+                                                        <option value="Mizoram">Mizoram</option>
+                                                        <option value="Nagaland">Nagaland</option>
+                                                        <option value="Odisha">Odisha</option>
+                                                        <option value="Puducherry">Puducherry</option>
+                                                        <option value="Punjab">Punjab</option>
+                                                        <option value="Rajasthan">Rajasthan</option>
+                                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                                        <option value="Telangana">Telangana</option>
+                                                        <option value="Tripura">Tripura</option>
+                                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                        <option value="Uttarakhand">Uttarakhand</option>
+                                                        <option value="West Bengal">West Bengal</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <div class="form-group bmd-form-group">
-                                                    <input id="city_inp" type="text" placeholder="City" class="form-control">
+                                                <div class="form-group">
+                                                    <select class="form-control selectpicker" data-style="btn btn-link" id="city_inp">
+                                                        <option selected disabled>Select City</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -87,10 +129,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- scroll below - button -->
-                        <!-- <section id="section03" class="demo">
-                            <span></span>
-                        </section> -->
                     </div>
                 </div>
                 <div class="row cateclass category">
@@ -99,12 +137,11 @@
                         <h5 class="description">Explore By Category And Select The Right</h5>
                     </div>
                 </div>
-                <div class="row category clas">
-                    <div class="col-md-2"></div>
+                <div class="row category clas justify-content-around px-5">
                     <div class="col-md-2">
                         <div class="info info-horizontal infoclass">
                             <a href="searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=&state=&category=Coaching%20Centers&sortBy=default&name=">
-                                <i class="material-icons micon">group_work</i>
+                                <i class="material-icons">library_books</i>
                                 <br>
                                 <h4 class="info-title title">Coaching Center</h4>
                             </a>
@@ -113,7 +150,7 @@
                     <div class="col-md-2">
                         <div class="info info-horizontal infoclass">
                             <a href="searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=&state=&category=Tuition%20Centers&sortBy=default&name=">
-                                <i class="material-icons micon">group_work</i>
+                                <i class="material-icons">local_library</i>
                                 <br>
                                 <h4 class="info-title title">Tuition Center</h4>
                             </a>
@@ -137,73 +174,73 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="row category clas">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-2">
-                        <div class="info info-horizontal infoclass">
-                            <a href="searchdetails.html?typeOfInfo=school&items=18&page=1&c=true&city=&state=&category=Formal%20School&sortBy=default&name=">
-                                <i class="fas fa-school"></i>
-                                <br>
-                                <h4 class="info-title title">Formal School</h4>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="info info-horizontal infoclass">
-                            <a href="searchdetails.html?typeOfInfo=event&items=18&page=1&c=true&city=&state=&category=Cultural&sortBy=default&name=">
-                                <i class="fas fa-award"></i>
-                                <br>
-                                <h4 class="info-title title">Cultural Events</h4>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="info info-horizontal infoclass">
-                            <a href="searchdetails.html?typeOfInfo=event&items=18&page=1&c=true&city=&state=&category=Programming&sortBy=default&name=">
-                                <i class="fas fa-laptop-code"></i>
-                                <br>
-                                <h4 class="info-title title">Programming Events</h4>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="info info-horizontal infoclass">
-                            <a href="searchdetails.html?typeOfInfo=event&items=18&page=1&c=true&city=&state=&category=Educational&sortBy=default&name=">
-                                <i class="fas fa-book-reader"></i>
-                                <br>
-                                <h4 class="info-title title">Educational Events</h4>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-1"></div>
                 </div>
 
-                <div class="popular-listing-section mb-md-4">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Most Popular Institutes/Tuition</h2>
-                            <h6>Discover exclusive popular institutes in your city. Checkout what suits for you.</h6>
-                        </div>
-                        <div id="cards_container" class="row slider-nav">
-
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Most Popular Schools</h2>
-                            <h6>Discover exclusive popular schools in your city. Find the dream school you are looking for.</h6>
-                        </div>
-                        <div id="cards_container2" class="row slider-nav">
-
-                        </div>
+            </div>
+            <div class="row category clas justify-content-around px-5">
+                <div class="col-md-2">
+                    <div class="info info-horizontal infoclass">
+                        <a href="searchdetails.html?typeOfInfo=school&items=18&page=1&c=true&city=&state=&category=Formal%20School&sortBy=default&name=">
+                            <i class="fas fa-school"></i>
+                            <br>
+                            <h4 class="info-title title">Formal School</h4>
+                        </a>
                     </div>
                 </div>
+                <div class="col-md-2">
+                    <div class="info info-horizontal infoclass">
+                        <a href="searchdetails.html?typeOfInfo=event&items=18&page=1&c=true&city=&state=&category=Cultural&sortBy=default&name=">
+                            <i class="fas fa-award"></i>
+                            <br>
+                            <h4 class="info-title title">Cultural Events</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="info info-horizontal infoclass">
+                        <a href="searchdetails.html?typeOfInfo=event&items=18&page=1&c=true&city=&state=&category=Programming&sortBy=default&name=">
+                            <i class="fas fa-laptop-code"></i>
+                            <br>
+                            <h4 class="info-title title">Programming Events</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="info info-horizontal infoclass">
+                        <a href="searchdetails.html?typeOfInfo=event&items=18&page=1&c=true&city=&state=&category=Educational&sortBy=default&name=">
+                            <i class="fas fa-book-reader"></i>
+                            <br>
+                            <h4 class="info-title title">Educational Events</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular-listing-section mb-md-4">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Most Popular Institutes/Tuition</h2>
+                        <h6>Discover exclusive popular institutes in your city. Checkout what suits for you.</h6>
+                    </div>
+                    <div id="cards_container" class="row slider-nav">
+
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Most Popular Schools</h2>
+                        <h6>Discover exclusive popular schools in your city. Find the dream school you are looking for.
+                        </h6>
+                    </div>
+                    <div id="cards_container2" class="row slider-nav">
+
+                    </div>
+                </div>
+            </div>
 
                 <div class="cd-section" id="contactus">
                     <!--     *********    CONTACT US 1     *********      -->
-                    <div class="contactus-1 footer-image">
+                    <div class="contactus-1 section-image" style="background-image: url('./assets/img/office2.jpg')">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-6">
@@ -226,119 +263,127 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <div class="info info-horizontal">
-                                                        <div class="icon icon-info">
-                                                            <i class="material-icons">add</i>
-                                                        </div>
-                                                        <div class="description">
-                                                            <h4 class="info-title">Add/Review Listing</h4>
-                                                            <p> Add your intitute after login and fill the details required for
-                                                                the tuition/school entry.
-                                                            </p>
-                                                        </div>
+                                                    <div class="description">
+                                                        <h4 class="info-title">Sign Up</h4>
+                                                        <p> You can directly login with your Facebook account or with you Gmail
+                                                            account, or you can enter the signup details and create your
+                                                            account.
+                                                        </p>
                                                     </div>
-                                                    <div class="info info-horizontal">
-                                                        <div class="icon icon-info">
-                                                            <i class="material-icons">hotel</i>
-                                                        </div>
-                                                        <div class="description">
-                                                            <h4 class="info-title">Grow Your Business</h4>
-                                                            <p>Register your tuition/school with us so that students can reach
-                                                                out for you easily and efficiently.
-                                                            </p>
-                                                        </div>
+                                                </div>
+                                                <div class="info info-horizontal">
+                                                    <div class="icon icon-info">
+                                                        <i class="material-icons">add</i>
+                                                    </div>
+                                                    <div class="description">
+                                                        <h4 class="info-title">Add/Review Listing</h4>
+                                                        <p> Add your intitute after login and fill the details required for the
+                                                            tuition/school entry.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="info info-horizontal">
+                                                    <div class="icon icon-info">
+                                                        <i class="material-icons">hotel</i>
+                                                    </div>
+                                                    <div class="description">
+                                                        <h4 class="info-title">Grow Your Business</h4>
+                                                        <p>Register your tuition/school with us so that students can reach out
+                                                            for you easily and efficiently.
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                    </div>
-                                    <!-- <div class="card card-contact">
-                                <form id="contact-form" method="post">
-                                    <div class="card-header card-header-raised card-header-info text-center">
-                                        <h4 class="card-title">Contact Us</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group label-floating is-empty bmd-form-group">
-                                                    <label class="bmd-label-floating">First name</label>
-                                                    <input type="text" name="name" class="form-control">
-                                                    <span class="material-input"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group label-floating is-empty bmd-form-group">
-                                                    <label class="bmd-label-floating">Last name</label>
-                                                    <input type="text" name="name" class="form-control">
-                                                    <span class="material-input"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group label-floating is-empty bmd-form-group">
-                                            <label class="bmd-label-floating">Email address</label>
-                                            <input type="email" name="email" class="form-control">
-                                            <span class="material-input"></span>
-                                        </div>
-                                        <div class="form-group label-floating is-empty bmd-form-group">
-                                            <label for="exampleMessage1" class="bmd-label-floating">Your
-                                                Message</label>
-                                            <textarea name="message" class="form-control" id="exampleMessage1"
-                                                    rows="6"></textarea>
-                                            <span class="material-input"></span>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer justify-content-between">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" value=""> I'm not a
-                                                robot
-                                                <span class="form-check-sign">
-                    <span class="check"></span>
-                    </span>
-                                            </label>
-                                        </div>
-                                        <button type="submit" class="btn btn-info pull-right">Send Message
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>-->
                                 </div>
-                                <div class="col-md-6">
-                                    <h2 class="title">Get in Touch</h2>
-                                    <h5 class="description">You need more information? You can either contact us or you can directly visit our office.
-                                    </h5>
-                                    <div class="info info-horizontal">
-                                        <div class="icon icon-info">
-                                            <i class="material-icons">pin_drop</i>
+                                <!-- <div class="card card-contact">
+                            <form id="contact-form" method="post">
+                                <div class="card-header card-header-raised card-header-info text-center">
+                                    <h4 class="card-title">Contact Us</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating is-empty bmd-form-group">
+                                                <label class="bmd-label-floating">First name</label>
+                                                <input type="text" name="name" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
                                         </div>
-                                        <div class="description">
-                                            <h4 class="info-title">Find us at the office</h4>
-                                            <p> 916, Block I, Palam Vihar
-                                                <br> Sector 1,
-                                                <br> Gurugram.
-                                            </p>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating is-empty bmd-form-group">
+                                                <label class="bmd-label-floating">Last name</label>
+                                                <input type="text" name="name" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="info info-horizontal">
-                                        <div class="icon icon-info">
-                                            <i class="material-icons">phone</i>
-                                        </div>
-                                        <div class="description">
-                                            <h4 class="info-title">Give us a ring</h4>
-                                            <p> +91 935 552 9720
-                                                <br> Mon - Sun, 8:00-24:00
-                                            </p>
-                                        </div>
+                                    <div class="form-group label-floating is-empty bmd-form-group">
+                                        <label class="bmd-label-floating">Email address</label>
+                                        <input type="email" name="email" class="form-control">
+                                        <span class="material-input"></span>
+                                    </div>
+                                    <div class="form-group label-floating is-empty bmd-form-group">
+                                        <label for="exampleMessage1" class="bmd-label-floating">Your
+                                            Message</label>
+                                        <textarea name="message" class="form-control" id="exampleMessage1"
+                                                rows="6"></textarea>
+                                        <span class="material-input"></span>
+                                    </div>
+                                </div>
+                                <div class="card-footer justify-content-between">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" value=""> I'm not a
+                                            robot
+                                            <span class="form-check-sign">
+                <span class="check"></span>
+                </span>
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-info pull-right">Send Message
+                                    </button>
+                                </div>
+                            </form>
+                        </div>-->
+                            </div>
+                            <div class="col-md-6">
+                                <h2 class="title">Get in Touch</h2>
+                                <h5 class="description">You need more information? You can either contact us or you can directly visit our office.
+                                </h5>
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-info">
+                                        <i class="material-icons">pin_drop</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Find us at the office</h4>
+                                        <p> 916, Block I, Palam Vihar
+                                            <br> Sector 1,
+                                            <br> Gurugram.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-info">
+                                        <i class="material-icons">phone</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Give us a ring</h4>
+                                        <p> +91 935 552 9720
+                                            <br> Mon - Sun, 8:00-24:00
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--     *********    END CONTACT US 1      *********      -->
                 </div>
+                <!--     *********    END CONTACT US 1      *********      -->
             </div>
         </div>
+    </div>
     </div>
     <footer class="footer footer-black">
 
@@ -398,8 +443,8 @@
 
                 <!--Grid column-->
                 <!--<div class="col-md-2">
-        <h6 class="title font-bold"><a href="#!">Contact Us</a></h6>
-    </div>-->
+    <h6 class="title font-bold"><a href="#!">Contact Us</a></h6>
+</div>-->
                 <!--Grid column-->
 
             </div>
@@ -422,8 +467,8 @@
                         </a>
                         <!--Google +-->
                         <!-- <a class="icons-sm gplus-ic">
-                        <i class="fa fa-google-plus fa-lg white-text mx-md-4"> </i>
-                    </a> -->
+                    <i class="fa fa-google-plus fa-lg white-text mx-md-4"> </i>
+                </a> -->
                         <!--Linkedin-->
                         <a href="https://in.linkedin.com/in/eduatlas-india-537a6916a" class="icons-sm li-ic">
                             <i class="fa fa-linkedin fa-lg white-text mx-md-4"> </i>
@@ -434,8 +479,8 @@
                         </a>
                         <!--Pinterest-->
                         <!-- <a class="icons-sm pin-ic">
-                        <i class="fa fa-pinterest fa-lg white-text ml-md-4"> </i>
-                    </a> -->
+                    <i class="fa fa-pinterest fa-lg white-text ml-md-4"> </i>
+                </a> -->
                     </div>
                 </div>
                 <!--Grid column-->
@@ -448,10 +493,14 @@
     </footer>
     <!--/Footer-->
     <div id="login_modal_container"></div>
+
     <script src="assets/js/core/jquery.min.js"></script>
     <script src="assets/js/core/popper.min.js"></script>
     <script src="assets/js/bootstrap-material-design.js"></script>
     <!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="assets/js/plugins/moment.min.js"></script>
+    <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
     <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="assets/js/handlebars-v4.0.11.js"></script>
@@ -473,8 +522,11 @@
     <script src="assets/js/search-suggestion.js"></script>
     <script src="assets/js/carosel.js"></script>
     <script src="assets/js/home-search-btn.js"></script>
-    <script src="assets/js/location.js"></script>
+    <!--<script src="assets/js/location.js"></script>-->
+    <script src="assets/cities/seed.js"></script>
+    <script src="assets/js/state-and-city-dropdown.js"></script>
     <script src="assets/js/index-service.js"></script>
 </body>
+
 
 </html>
