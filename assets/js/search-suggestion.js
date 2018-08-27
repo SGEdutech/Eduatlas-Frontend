@@ -16,7 +16,7 @@ const searchSuggestion = (() => {
     function removeSuggestion() {
         setTimeout(function () {
             $suggestionContainer.empty();
-        }, 1);
+        }, 150);
     }
 
     function checkKey(event) {
