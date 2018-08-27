@@ -126,22 +126,6 @@ section h1 {
 /* --- Category End --- */
 
 
-/* --- Nav Start ---*/
-
-.dropdown-menu .dropdown-item, .dropdown-menu li > a {
-  color: inherit!important;
-  text-decoration: none!important;
-  user-select: none!important;
-  cursor: pointer;
-}
-.dropdown-menu .dropdown-item, .dropdown-menu li > a {
-  background-color:white!important;
-}
-
-
-/* --- Nav End ---*/
-
-
 /*--- section title style --*/
 .section-title {
   text-align: center;
