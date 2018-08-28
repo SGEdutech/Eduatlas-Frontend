@@ -32,7 +32,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/material-kit.css">
+    <!-- overriding material kit nav links color -->
     <link rel="stylesheet" href="assets/css/nav-links.css">
+    <!-- overriding material kit input underline color -->
+    <link rel="stylesheet" href="assets/css/input-color.css">
 </head>
 
 <body class="sections-page sidebar-collapse" style="height: 1000px">
@@ -65,13 +68,13 @@
                         <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4" placeholder="City" id="citySearch">
                     </div>
                     <br>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
+                    <div class="input-group row">
+                        <div class="input-group-prepend col-3">
                             <span class="input-group-text">
                                 <i class="fa fa-sliders lis-primary lis-left-0"></i>
                             </span>
                         </div>
-                        <select id="sortByInput" class="form-control border-0 pl-4">
+                        <select id="sortByInput" class="selectpicker form-control col-9 text-uppercase"  data-style="btn btn-link">
                             <option selected disabled value="default">Sort-By</option>
                             <option value="rating">Reviews</option>
                             <option value="views">Popularity</option>
@@ -112,8 +115,8 @@
                         <div id="category_container">
                             <p class="lis-dark mt-4 mb-0">Sub Category</p>
                             <div id="tuition_category_container" style="display: none">
-                                <select id="category" name="category" class="selectpicker form-control" data-style="btn btn-link">
-                                    <option disabled selected>tuition subcategory</option>
+                                <select id="category" name="category" class="selectpicker form-control text-uppercase" data-style="btn btn-link">
+                                    <option disabled selected>Tuition Subcategory</option>
                                     <option value="Tuition Centers">Tuition Centers</option>
                                     <option value="Coaching Centers">Coaching Centers</option>
                                     <option value="Enhanced Learning">Enhanced Learning</option>
@@ -172,8 +175,8 @@
                         <div class="row mt-md-5">
                             <div class="col-sm-12 align-self-center">
                                 <p id="showingResultsContainer">Showing results:
-                                    <span id="search_query_display" class='badge badge-info'></span>;
-                                    <span id="city_query_display" class='badge badge-info'></span>;
+                                    <span id="search_query_display" class='badge badge-info'></span>
+                                    <span id="city_query_display" class='badge badge-info'></span>
                                 </p>
                             </div>
                         </div>

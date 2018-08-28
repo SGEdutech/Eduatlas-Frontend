@@ -1,6 +1,8 @@
 const searchSuggestion = (() => {
     let $suggestionContainer = $('#autocomplete_container');
     let $searchInput = $('#search_input');
+    let $searchState = $('#state_inp');
+    let $searchCity = $('#city_inp');
     let query;
 
     function cacheDom() {
@@ -28,8 +30,10 @@ const searchSuggestion = (() => {
     }
 
     function redirectToSearchPage() {
-        query = $searchInput.val();
-        window.location.assign('searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=&state=&category=&sortBy=default&name=' + query);
+        let query = $searchInput.val();
+        let state = $searchState.val();
+        let city = $searchCity.val();
+        window.location.assign(`searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=${city}&state=${state}&category=&sortBy=default&name=${query}`);
     }
 
     function getSuggestion() {
@@ -43,11 +47,16 @@ const searchSuggestion = (() => {
             limit: 5,
             demands: 'name'
         };
-        return $.ajax({url, data}); //Returns a promise
+        return $.ajax({
+            url,
+            data
+        }); //Returns a promise
     }
 
     function render(suggestionArray) {
-        const context = {suggestionArray};
+        const context = {
+            suggestionArray
+        };
         const suggestionHtml = template.searchResult(context);
         $suggestionContainer.html(suggestionHtml);
     }
@@ -57,5 +66,7 @@ const searchSuggestion = (() => {
         bindEvents();
     }
 
-    return {init};
+    return {
+        init
+    };
 })();

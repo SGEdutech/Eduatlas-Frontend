@@ -13,6 +13,12 @@
                     {{#if claimedBy}}
                     <span class="badge badge-info">verified</span>
                     {{/if}}
+                    <br>
+                    <div class="my-1">
+                        {{#each categories}}
+                        <span class="badge badge-success my-1">{{this}}</span>
+                        {{/each}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +59,7 @@
             </div>
         </div>
         {{/if}}
-        <div class="pb-0 pt-2 rounded-0 card-footer justify-content-center">
+        <div class="pb-0 pt-0 rounded-0 card-footer justify-content-center">
             {{#if manageClaimed}}
             <div class="col">
                 <a class="btn btn-info btn-round" href="user-edit-{{typeOfInfo}}.html?a={{_id}}">Edit</a>

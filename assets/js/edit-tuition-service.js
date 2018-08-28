@@ -5,7 +5,7 @@ PubSub.subscribe('user', (msg, userInfo) => {
 
 PubSub.subscribeOnce('query.load', (msg, queryObject) => {
     getDetails.returnData('tuition', queryObject).then((tuitionInfo) => {
-        coverImage.init('tuition', tuitionInfo);
+        // coverImage.init('tuition', tuitionInfo);
         basicDetails.init('tuition', tuitionInfo);
         facilitiesDescriptionCategory.init('tuition', tuitionInfo);
         contactUs.init('tuition', tuitionInfo);

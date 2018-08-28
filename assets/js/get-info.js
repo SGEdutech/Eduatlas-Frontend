@@ -14,7 +14,6 @@ const getInfo = (() => {
     let $website;
     let $savedReviews;
     let $reviewRationInput;
-    let $star1, $star2, $star3, $star4, $star5;
     let $coverImage;
     let $sponsoredPopular;
     let $openNow;
@@ -34,6 +33,7 @@ const getInfo = (() => {
     let $activityContainer;
     let $feeDetails, $admissionProcess, $eligibilityCriteria;
     let $datesContainer;
+    let $starsInner;
 
 
     function cache() {
@@ -49,11 +49,6 @@ const getInfo = (() => {
         $website = $('.container #website');
         $savedReviews = $('#savedReviews');
         $reviewRationInput = $('#reviewRatingInput');
-        $star1 = $('#star1');
-        $star2 = $('#star2');
-        $star3 = $('#star3');
-        $star4 = $('#star4');
-        $star5 = $('#star5');
         $coverImage = $('#cover_image');
         $sponsoredPopular = $("#sponsoredPopular");
         $openNow = $('#openNow');
@@ -80,6 +75,7 @@ const getInfo = (() => {
         $admissionProcess = $('#admission_process');
         $eligibilityCriteria = $('#eligibility_criteria');
         $datesContainer = $('#dates_Container');
+        $starsInner = $('.stars-inner')
     }
 
     function bindEvents() {
@@ -128,10 +124,11 @@ const getInfo = (() => {
         if (rating === -1) {
             rating = 2.5;
         }
-        let array = [$star1, $star2, $star3, $star4, $star5];
-        for (let i = 0; i <= rating - 1; i++) {
-            array[i].css('color', '#00bcd4')
-        }
+        const starTotal = 5;
+
+        const starPercentage = (rating / starTotal) * 100;
+        const starPercentageRounded = `${(Math.round(starPercentage / 10) * 10)}%`;
+        $starsInner.css("width", starPercentageRounded);
     }
 
     function updateBasicInfo(infoObj, typeOfInfo) {
@@ -442,11 +439,15 @@ const getInfo = (() => {
             } else {
                 data.forEach(obj => {
                     helperScripts.openNowInit(obj);
+                    obj.typeOfInfo = typeOfInfo;
                     obj.averageRating = helperScripts.calcAverageRating(obj.reviews);
                     obj.averageRating = obj.averageRating === -1 ? 2.5 : obj.averageRating;
                     obj.hideBody = true;
                     obj.hideFooter = true;
                     obj.col4 = true;
+                    if (obj.category) {
+                        obj.categories = obj.category.split(',')
+                    }
                     result += template.smoothCardHomePage(obj);
                 });
                 $relatedTuitionContainer.append(result);
@@ -507,10 +508,14 @@ const getInfo = (() => {
             } else {
                 data.forEach(obj => {
                     helperScripts.openNowInit(obj);
+                    obj.typeOfInfo = typeOfInfo;
                     obj.averageRating = helperScripts.calcAverageRating(obj.reviews);
                     obj.averageRating = obj.averageRating === -1 ? 2.5 : obj.averageRating;
                     obj.hideFooter = true;
                     obj.hideBody = true;
+                    if (obj.category) {
+                        obj.categories = obj.category.split(',')
+                    }
                     result += template.smoothCardHomePage(obj);
                 });
                 $sponsoredPopular.append(result);

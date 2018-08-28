@@ -125,10 +125,14 @@ const getEvent = (() => {
             } else {
                 data.forEach(obj => {
                     helperScripts.openNowInit(obj);
+                    obj.typeOfInfo = typeOfInfo;
                     obj.averageRating = helperScripts.calcAverageRating(obj.reviews);
                     obj.averageRating = obj.averageRating === -1 ? 2.5 : obj.averageRating;
                     obj.hideFooter = true;
                     obj.hideBody = true;
+                    if (obj.category) {
+                        obj.categories = obj.category.split(',')
+                    }
                     result += template.smoothCardHomePage(obj);
                 });
                 $sponsoredPopular.append(result);
@@ -169,11 +173,15 @@ const getEvent = (() => {
             } else {
                 data.forEach(obj => {
                     helperScripts.openNowInit(obj);
+                    obj.typeOfInfo = typeOfInfo;
                     obj.averageRating = helperScripts.calcAverageRating(obj.reviews);
                     obj.averageRating = obj.averageRating === -1 ? 2.5 : obj.averageRating;
                     obj.hideBody = true;
                     obj.hideFooter = true;
                     obj.col4 = true;
+                    if (obj.category) {
+                        obj.categories = obj.category.split(',')
+                    }
                     result += template.smoothCardHomePage(obj);
                 });
                 $relatedEventContainer.append(result);

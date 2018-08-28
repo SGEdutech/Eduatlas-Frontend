@@ -1,15 +1,19 @@
 let searchBtn = (() => {
     let $searchBtn;
     let $searchInput;
+    let $searchState;
+    let $searchCity;
 
     function cacheDom() {
         $searchBtn = $('#search_btn');
         $searchInput = $('#search_input');
+        $searchState = $('#state_inp');
+        $searchCity = $('#city_inp');
     }
 
     function directToSearchPage() {
         const directLink =
-            'searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=&state=&category=&sortBy=default&name=' + $searchInput.val();
+            `searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=${$searchCity.val()}&state=${$searchState.val()}&category=&sortBy=default&name=${$searchInput.val()}`;
         window.location.assign(directLink);
     }
 
@@ -22,5 +26,7 @@ let searchBtn = (() => {
         bindEvents();
     }
 
-    return {init};
+    return {
+        init
+    };
 })();

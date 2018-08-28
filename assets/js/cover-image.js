@@ -8,20 +8,24 @@ const coverImage = (() => {
     function render(typeOfInfo, user) {
         let html;
         if (typeOfInfo === 'tuition') {
-            html = getCoverHtml(user.img_tuitionCoverPic);
+            html = getCoverHtml('images/' + user.img_tuitionCoverPic);
+        } else if (typeOfInfo === 'school') {
+            html = getCoverHtml('images/' + user.img_schoolCoverPic);
+        } else if (typeOfInfo === 'event') {
+            if (user.img_eventCoverPic) {
+                html = getCoverHtml('images/' + user.img_eventCoverPic);
+            } else {
+                html = getCoverHtml('assets/img/event2.png');
+            }
         }
-        if (typeOfInfo === 'school') {
-            html = getCoverHtml(user.img_schoolCoverPic);
-        }
-        if (typeOfInfo === 'event') {
-            html = getCoverHtml(user.img_eventCoverPic);
-        }
-
-        $coverImgContainer.append(html);
+        console.log(html);
+        $coverImgContainer.html(html);
     }
 
     function getCoverHtml(path) {
-        return template.userEditTuitionCover({path: path});
+        return template.userEditTuitionCover({
+            path: path
+        });
     }
 
     function init(typeOfInfo, user) {
@@ -29,5 +33,7 @@ const coverImage = (() => {
         render(typeOfInfo, user);
     }
 
-    return {init};
+    return {
+        init
+    };
 })();
