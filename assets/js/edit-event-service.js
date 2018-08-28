@@ -5,7 +5,7 @@ PubSub.subscribe('user', (msg, userInfo) => {
 
 PubSub.subscribeOnce('query.load', (msg, queryObject) => {
     getDetails.returnData('event', queryObject).then((eventInfo) => {
-        coverImage.init('event', eventInfo);
+        // coverImage.init('event', eventInfo);
         eventDetails.init(eventInfo);
         galleryTab.init('event', eventInfo);
     });

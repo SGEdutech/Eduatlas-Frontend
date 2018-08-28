@@ -2,7 +2,7 @@
     min-height: 45vh; /*Override material kit's height*/
     height: 45vh;
     object-fit: cover;
-    display: inline-block;
+    /* display: inline-block; */
 }
 #map {
     width: 100%;

@@ -9,7 +9,7 @@ PubSub.subscribeOnce('query.load', (msg, queryObject) => {
 
 user.getInfo().then(userInfo => {
     navigationBar.init(userInfo, {
-        colorOnScroll: true
+        colorOnScroll: false
     });
     userImgAndName.init(userInfo);
     userClaimed.init(userInfo);
