@@ -130,7 +130,7 @@ const searchModule = (() => {
             let toAdd = '';
             let capitalTypeOfInfo = queryObj.typeOfInfo.charAt(0).toUpperCase() + queryObj.typeOfInfo.slice(1);
             data.forEach(obj => {
-                toAdd += `<a href='/${capitalTypeOfInfo}Details2.0.html?_id=${obj._id}' class='color-white'>${obj.name}</a><br>`
+                toAdd += `<a class="text-info" href='/${capitalTypeOfInfo}Details2.0.html?_id=${obj._id}' class='color-white'>${obj.name}</a><br>`
             });
             $suggestionBox.append(toAdd)
         }).catch(err => console.error(err))
@@ -225,8 +225,20 @@ const searchModule = (() => {
                 obj.bookmarked = true;
             }
             // end
-
-            result += template.smoothCardHomePage(obj);
+            if (queryObj.typeOfInfo === "event") {
+                console.log(obj);
+                if (obj.fromDate) {
+                    obj.fromDate = helperScripts.getDateObj(obj.fromDate)
+                    obj.fromDate = obj.fromDate.date + " " + obj.fromDate.monthName;
+                }
+                if (obj.lastDateRegistration) {
+                    obj.lastDateRegistration = helperScripts.getDateObj(obj.lastDateRegistration)
+                    obj.lastDateRegistration = obj.lastDateRegistration.date + " " + obj.lastDateRegistration.monthName;
+                }
+                result += template.eventCard(obj);
+            } else {
+                result += template.smoothCardHomePage(obj);
+            }
         });
 
         $contentPlaceholder.html(result);
@@ -252,7 +264,6 @@ const searchModule = (() => {
     }
 
     function getSearchResults() {
-        console.log(queryObj);
         const skip = (page - 1) * items;
 
         if (queryObj.c) {
@@ -279,7 +290,7 @@ const searchModule = (() => {
                             search: queryObj.category,
                             fullText: true
                         }),
-                        demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
+                        demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail fromTime toTime fromDate toDate lastDateRegistration',
                         limit: items,
                         skip,
                         sortBy: queryObj.sortBy
@@ -292,7 +303,7 @@ const searchModule = (() => {
                 $.ajax({
                     url: `/${queryObj.typeOfInfo}/all`,
                     data: {
-                        demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail',
+                        demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail fromTime toTime fromDate toDate lastDateRegistration',
                         limit: items,
                         skip,
                     }

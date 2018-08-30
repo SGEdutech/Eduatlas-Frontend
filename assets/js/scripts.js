@@ -116,10 +116,14 @@ const helperScripts = {
         if (date === undefined || date === '') {
             return undefined;
         }
+        const monthNames = ["Ja", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
         let toReturnObj = {};
         let dateArray = date.split('T')[0].split('-');
         toReturnObj.date = dateArray[2];
         toReturnObj.month = dateArray[1];
+        toReturnObj.monthName = monthNames[parseInt(toReturnObj.month)];
         toReturnObj.year = dateArray[0];
         return toReturnObj;
     },
