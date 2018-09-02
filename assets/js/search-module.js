@@ -235,7 +235,10 @@ const searchModule = (() => {
                     obj.lastDateRegistration = helperScripts.getDateObj(obj.lastDateRegistration)
                     obj.lastDateRegistration = obj.lastDateRegistration.date + " " + obj.lastDateRegistration.monthName;
                 }
-                result += template.eventCard(obj);
+                obj.averageRating = null;
+                obj.claimedBy = false;
+                obj.event = true;
+                result += template.smoothCardHomePage(obj);
             } else {
                 result += template.smoothCardHomePage(obj);
             }
