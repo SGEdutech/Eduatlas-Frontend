@@ -22,11 +22,13 @@ const userClaimed = (() => {
         let tuitionId = $(event.target).attr('data-id');
         let typeOfInfo = $(event.target).attr('data-category');
         //now update tuition by removing claimedBy
-        
+
         let updateTuitionPromise = $.ajax({
             url: `/${typeOfInfo}/empty/claimedBy`,
             type: 'DELETE',
-            data: {_id: tuitionId}
+            data: {
+                _id: tuitionId
+            }
         });
 
         //now update user by deleting id of tuition/school from tuitionsOwned/schoolsOwned array
@@ -34,7 +36,9 @@ const userClaimed = (() => {
         let updateUserPromise = $.ajax({
             url: `/user/delete/${typeOfInfo}sOwned/${userInfo._id}`,
             type: 'DELETE',
-            data: {string: tuitionId}
+            data: {
+                string: tuitionId
+            }
         });
 
         Promise.all([updateTuitionPromise, updateUserPromise]).then(() => window.location.assign('User-dashboard.html')).catch(err => console.error(err))
@@ -47,20 +51,16 @@ const userClaimed = (() => {
 
         return $.get({
             url,
-            data: {_id: tuitionId}
+            data: {
+                _id: tuitionId
+            }
         });
     }
 
     function getInstituteCardHtml(typeOfInfo, instituteIdArr, $container) {
-        if (instituteIdArr.length === 0) {
-            $container.append(`<div class="card-title col-12">
-                                                 Claim or List your institute if you own one
-                                           </div>`)
-        } else {
-            $container.append(`<div class="card-title col-12">
+        $container.append(`<div class="card-title col-12">
                                                  Manage Your ${typeOfInfo}
                                            </div>`)
-        }
         const instituteInfoPromiseArr = [];
         instituteIdArr.forEach(instituteId => instituteInfoPromiseArr.push(getTuitionsInfo(typeOfInfo, instituteId)));
 
@@ -70,15 +70,19 @@ const userClaimed = (() => {
             Promise.all(instituteInfoPromiseArr)
                 .then(tuitionInfoArr => {
                     tuitionInfoArr.forEach(tuitionInfo => {
-                            const averageRating = helperScripts.calcAverageRating(tuitionInfo.reviews);
-                            tuitionInfo.averageRating = averageRating === -1 ? 2.5 : averageRating;
-                            tuitionInfo.col4 = true;
-                            tuitionInfo.manageClaimed = true;
-                            tuitionInfo.hideFooter = true;
-                            tuitionInfo.typeOfInfo = typeOfInfo;
-                            cardsHtml += template.smoothCardHomePage(tuitionInfo);
+                        const averageRating = helperScripts.calcAverageRating(tuitionInfo.reviews);
+                        tuitionInfo.averageRating = averageRating === -1 ? 2.5 : averageRating;
+                        tuitionInfo.col4 = true;
+                        tuitionInfo.manageClaimed = true;
+                        tuitionInfo.hideFooter = true;
+                        tuitionInfo.typeOfInfo = typeOfInfo;
+                        if (tuitionInfo.typeOfInfo === "event") {
+                            tuitionInfo.event = true;
+                            tuitionInfo.averageRating = null;
+                            tuitionInfo.claimedBy = null;
                         }
-                    );
+                        cardsHtml += template.smoothCardHomePage(tuitionInfo);
+                    });
                     resolve(cardsHtml);
                 }).catch(err => reject(err));
         })
@@ -86,19 +90,46 @@ const userClaimed = (() => {
 
     function render(userInfo) {
         getInstituteCardHtml('tuition', userInfo.tuitionsOwned, $claimedTuitionContainer).then(cardsHtml => {
-            $claimedTuitionContainer.append(cardsHtml);
-            cacheDynamic();
-            bindEvents(userInfo);
+            if (!cardsHtml) {
+                const context = {
+                    title: "No Data",
+                    description: "please add your tuition if you own one."
+                }
+                cardsHtml = template.noDataCard(context);
+                $claimedEventContainer.append(cardsHtml);
+            } else {
+                $claimedTuitionContainer.append(cardsHtml);
+                cacheDynamic();
+                bindEvents(userInfo);
+            }
         });
         getInstituteCardHtml('school', userInfo.schoolsOwned, $claimedSchoolContainer).then(cardsHtml => {
-            $claimedSchoolContainer.append(cardsHtml);
-            cacheDynamic();
-            bindEvents(userInfo);
+            if (!cardsHtml) {
+                const context = {
+                    title: "No Data",
+                    description: "please add your school if you own one."
+                }
+                cardsHtml = template.noDataCard(context);
+                $claimedEventContainer.append(cardsHtml);
+            } else {
+                $claimedSchoolContainer.append(cardsHtml);
+                cacheDynamic();
+                bindEvents(userInfo);
+            }
         });
         getInstituteCardHtml('event', userInfo.eventsOwned, $claimedEventContainer).then(cardsHtml => {
-            $claimedEventContainer.append(cardsHtml);
-            cacheDynamic();
-            bindEvents(userInfo);
+            if (!cardsHtml) {
+                const context = {
+                    title: "No Data",
+                    description: "please add your event if you own one."
+                }
+                cardsHtml = template.noDataCard(context);
+                $claimedEventContainer.append(cardsHtml);
+            } else {
+                $claimedEventContainer.append(cardsHtml);
+                cacheDynamic();
+                bindEvents(userInfo);
+            }
         })
     }
 
@@ -107,5 +138,7 @@ const userClaimed = (() => {
         render(userInfo);
     }
 
-    return {init};
+    return {
+        init
+    };
 })();

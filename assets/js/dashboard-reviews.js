@@ -41,25 +41,24 @@ const dashboardReviews = (() => {
             Promise.all(instituteInfoPromiseArr)
                 .then(instituteInfoArr => {
                     instituteInfoArr.forEach((info, index) => {
-                            //first find which review belongs to current user
-                            let reviewWeNeed = '';
-                            info.reviews.forEach(review => {
-                                if (review.owner == user._id) {
-                                    reviewWeNeed = review;
-                                }
-                            });
-                            let context = {
-                                category: tuitionSchoolSequence[index],
-                                tuitionId: info._id,
-                                reviewId: reviewWeNeed._id,
-                                userId: user._id,
-                                name: info.name,
-                                rating: reviewWeNeed.rating,
-                                description: reviewWeNeed.description
-                            };
-                            cardsHtml += template.dashboardReviews(context);
-                        }
-                    );
+                        //first find which review belongs to current user
+                        let reviewWeNeed = '';
+                        info.reviews.forEach(review => {
+                            if (review.owner == user._id) {
+                                reviewWeNeed = review;
+                            }
+                        });
+                        let context = {
+                            category: tuitionSchoolSequence[index],
+                            tuitionId: info._id,
+                            reviewId: reviewWeNeed._id,
+                            userId: user._id,
+                            name: info.name,
+                            rating: reviewWeNeed.rating,
+                            description: reviewWeNeed.description
+                        };
+                        cardsHtml += template.dashboardReviews(context);
+                    });
                     resolve(cardsHtml);
                 }).catch(err => reject(err));
         });
@@ -100,9 +99,18 @@ const dashboardReviews = (() => {
     function render(user) {
         if (user) {
             getUserReviewsHtml(user).then(cardsHtml => {
-                $userReviews.append(cardsHtml);
-                cacheDynamic();
-                bindEvents();
+                if (!cardsHtml) {
+                    const context = {
+                        title: "No Data",
+                        description: "review or rate institutes to help people choose best institutes out there."
+                    }
+                    cardsHtml = template.noDataCard(context);
+                    $userReviews.append(cardsHtml);
+                } else {
+                    $userReviews.append(cardsHtml);
+                    cacheDynamic();
+                    bindEvents();
+                }
             });
         }
     }
@@ -112,5 +120,7 @@ const dashboardReviews = (() => {
         render(user);
     }
 
-    return {init};
+    return {
+        init
+    };
 })();
