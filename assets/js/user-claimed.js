@@ -96,7 +96,7 @@ const userClaimed = (() => {
                     description: "please add your tuition if you own one."
                 }
                 cardsHtml = template.noDataCard(context);
-                $claimedEventContainer.append(cardsHtml);
+                $claimedTuitionContainer.append(cardsHtml);
             } else {
                 $claimedTuitionContainer.append(cardsHtml);
                 cacheDynamic();
@@ -110,7 +110,7 @@ const userClaimed = (() => {
                     description: "please add your school if you own one."
                 }
                 cardsHtml = template.noDataCard(context);
-                $claimedEventContainer.append(cardsHtml);
+                $claimedSchoolContainer.append(cardsHtml);
             } else {
                 $claimedSchoolContainer.append(cardsHtml);
                 cacheDynamic();
