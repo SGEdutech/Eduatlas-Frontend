@@ -140,7 +140,7 @@ const getInfo = (() => {
         $emailAgain.html(infoObj.email);
         $description.html(infoObj.description);
         $contactPerson.html(infoObj.contactPerson);
-        $primaryNumber2.html(infoObj.secondaryNumber);
+        $primaryNumber2.html(infoObj.primaryNumber);
         $secondaryNumber.html(infoObj.secondaryNumber);
         $website.html(infoObj.website);
 
