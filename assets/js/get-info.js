@@ -131,29 +131,37 @@ const getInfo = (() => {
         $starsInner.css("width", starPercentageRounded);
     }
 
+    function filterNullEntries(entry) {
+        if (!entry) {
+            return template.noDataText();
+        } else {
+            return entry
+        }
+    }
+
     function updateBasicInfo(infoObj, typeOfInfo) {
 
         $name.html(infoObj.name);
         $address.html(infoObj.addressLine1 + ',' + infoObj.addressLine2 + ',' + infoObj.city + ',' + infoObj.pin);
-        $primaryNumber.html(infoObj.primaryNumber);
-        $email.html(infoObj.email);
-        $emailAgain.html(infoObj.email);
-        $description.html(infoObj.description);
-        $contactPerson.html(infoObj.contactPerson);
-        $primaryNumber2.html(infoObj.primaryNumber);
-        $secondaryNumber.html(infoObj.secondaryNumber);
-        $website.html(infoObj.website);
+        $primaryNumber.html(filterNullEntries(infoObj.primaryNumber));
+        $email.html(filterNullEntries(infoObj.email));
+        $emailAgain.html(filterNullEntries(infoObj.email));
+        $description.html(filterNullEntries(infoObj.description));
+        $contactPerson.html(filterNullEntries(infoObj.contactPerson));
+        $primaryNumber2.html(filterNullEntries(infoObj.primaryNumber));
+        $secondaryNumber.html(filterNullEntries(infoObj.secondaryNumber));
+        $website.html(filterNullEntries(infoObj.website));
 
         if (typeOfInfo === 'school') {
             //only for schools
-            $curriculum.html(infoObj.curriculum);
+            $curriculum.html(filterNullEntries(infoObj.curriculum));
             if (infoObj.grades) {
                 let array = infoObj.grades.split(',');
                 $grades.html(array[0] + ' to ' + array[array.length - 1]);
             }
             $typeOfSchooling.html(infoObj.type);
             $headOfSchool.html(infoObj.principalName);
-            $founded.html(infoObj.yearFounded);
+            $founded.html(filterNullEntries(infoObj.yearFounded));
         }
 
     }
@@ -223,7 +231,7 @@ const getInfo = (() => {
 
     function showActivities(activitiesArr) {
         if (activitiesArr === undefined || activitiesArr.length === 0) {
-            $activityContainer.append('Nothing To Show');
+            $activityContainer.append(template.noDataText());
             return;
         }
         let toAppend = '';
@@ -238,9 +246,9 @@ const getInfo = (() => {
     }
 
     function showAdmissionAndFeeInfo(fee, admissionProcess, eligibilityCriteria) {
-        $feeDetails.append(fee);
-        $admissionProcess.append(admissionProcess);
-        $eligibilityCriteria.append(eligibilityCriteria);
+        $feeDetails.append(filterNullEntries(fee));
+        $admissionProcess.append(filterNullEntries(admissionProcess));
+        $eligibilityCriteria.append(filterNullEntries(eligibilityCriteria));
     }
 
     function showImportantDates(datesArr) {
@@ -255,6 +263,7 @@ const getInfo = (() => {
                 `
             }
         });
+        toAppend = filterNullEntries(toAppend);
         $datesContainer.append(toAppend);
     }
 
@@ -277,6 +286,7 @@ const getInfo = (() => {
             counter++;
         });
         let result = template.tuitionCourses(context);
+        result = filterNullEntries(result)
         $coursesContainer.append(result);
     }
 
@@ -298,6 +308,7 @@ const getInfo = (() => {
         });
 
         let result = template.tuitionResult(context);
+        result = filterNullEntries(result);
         $resultsContainer.append(result);
 
     }
@@ -321,13 +332,13 @@ const getInfo = (() => {
         });
 
         let result = template.tuitionFaculty(context);
+        result = filterNullEntries(result);
         $facultyContainer.append(result);
-
     }
 
     function showGallery(array) {
         if (array === undefined || array === [] || array.length === 0) {
-            $gallery.append(`<p>Nothing to show</p>`);
+            $gallery.append(`<small>no data provided</small>`);
             return
         }
         let result = '';

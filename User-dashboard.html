@@ -213,22 +213,22 @@
                                                     <h6>Institute Name</h6>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input id="tName" value="" class="form-control" type="text" name="name">
+                                                    <input id="tName" value="" class="form-control" type="text" name="name" required>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="row form-group">
                                                         <label for="al1">Address Line 1</label>
-                                                        <input class="form-control" value="" type="text" id="al1" name="addressLine1">
+                                                        <input class="form-control" value="" type="text" id="al1" name="addressLine1" required>
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="al2">Address Line 2</label>
-                                                        <input class="form-control" value="" type="text" id="al2" name="addressLine2">
+                                                        <input class="form-control" value="" type="text" id="al2" name="addressLine2" required>
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="inputCity">City</label>
-                                                        <select id="inputCity" name="city" class="form-control inputCity">
+                                                        <select id="inputCity" name="city" class="form-control inputCity" required>
                                                             <option selected>Choose...</option>
                                                         </select>
                                                     </div>
@@ -239,7 +239,7 @@
                                                     <div class="row form-group">
                                                         <label for="inputState">State</label>
                                                         <input class="form-control inputState" value="" type="text" id="inputState"
-                                                            name="state">
+                                                            name="state" required>
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="country">Country</label>
@@ -249,7 +249,7 @@
                                                     <div class="row form-group">
                                                         <label for="pin">Pin</label>
                                                         <input class="form-control" value="" type="number" id="pin"
-                                                            name="pin">
+                                                            name="pin" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -349,7 +349,7 @@
                                         <h2 class="card-title h3">Category</h2>
                                         <div id="cateContainer">
                                             <select id="category" name="category" class="selectpicker form-control"
-                                                data-style="btn btn-link" multiple>
+                                                data-style="btn btn-link" multiple required>
                                                 <option value="Tuition Centers">Tuition Centers</option>
                                                 <option value="Coaching Centers">Coaching Centers</option>
                                                 <option value="Enhanced Learning">Enhanced Learning</option>
@@ -410,7 +410,7 @@
                                                     <h6>School Name</h6>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input id="sName" value="" class="form-control" type="text" name="name">
+                                                    <input id="sName" value="" class="form-control" type="text" name="name" required>
                                                 </div>
 
                                             </div>
@@ -419,16 +419,16 @@
                                                     <div class="row form-group">
                                                         <label for="al1School">Address Line 1</label>
                                                         <input class="form-control" value="" type="text" id="al1School"
-                                                            name="addressLine1">
+                                                            name="addressLine1" required>
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="al2School">Address Line 2</label>
                                                         <input class="form-control" value="" type="text" id="al2School"
-                                                            name="addressLine2">
+                                                            name="addressLine2" required>
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="inputCitySchool">City</label>
-                                                        <select id="inputCitySchool" name="city" class="form-control inputCity">
+                                                        <select id="inputCitySchool" name="city" class="form-control inputCity" required>
                                                             <option selected>Choose...</option>
                                                         </select>
                                                     </div>
@@ -440,7 +440,7 @@
                                                     <div class="row form-group">
                                                         <label for="inputStateSchool">State</label>
                                                         <input class="form-control inputState" value="" type="text" id="inputStateSchool"
-                                                            name="state">
+                                                            name="state" required>
                                                     </div>
                                                     <div class="row form-group">
                                                         <label for="countrySchool">Country</label>
@@ -450,7 +450,7 @@
                                                     <div class="row form-group">
                                                         <label for="pinSchool">Pin</label>
                                                         <input class="form-control" value="" type="number" id="pinSchool"
-                                                            name="pin">
+                                                            name="pin" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -466,7 +466,7 @@
                                             <div class="row form-group mb-4">
                                                 <label for="curriculumSchool" class="text-dark">Curriculum</label>
                                                 <select id="curriculumSchool" name="curriculum" class="selectpicker form-control"
-                                                    data-style="btn btn-link">
+                                                    data-style="btn btn-link" required>
                                                     <option value="" disabled selected>Choose your option</option>
                                                     <option value="CBSE">CBSE</option>
                                                     <option value="ICSE">ICSE</option>
@@ -482,7 +482,7 @@
                                             <div class="row form-group mb-4">
                                                 <label for="grades" class="text-dark">Grades</label>
                                                 <select id="grades" name="grades" class="selectpicker form-control"
-                                                    data-style="btn btn-link" multiple>
+                                                    data-style="btn btn-link" multiple required>
                                                     <option value="" disabled>Choose multiple</option>
                                                     <option value="Nursery">Nursery</option>
                                                     <option value="Kindergarten">Kindergarten</option>
@@ -504,7 +504,7 @@
                                             <div class="row form-group mb-4">
                                                 <label for="type" class="text-dark">Type Of Schooling</label>
                                                 <select id="type" name="type" class="selectpicker form-control"
-                                                    data-style="btn btn-link">
+                                                    data-style="btn btn-link" required>
                                                     <option value="" disabled selected>Choose your option</option>
                                                     <option value="Day">Day School</option>
                                                     <option value="Day Boarding">Day Boarding</option>
@@ -514,7 +514,7 @@
 
                                             <div class="row form-group">
                                                 <label for="principalName">Head Of School</label>
-                                                <input id="principalName" class="form-control" type="text" name="principalName">
+                                                <input id="principalName" class="form-control" type="text" name="principalName" required>
                                             </div>
                                             <div class="row form-group">
                                                 <label for="yearFounded">Founded</label>
@@ -670,7 +670,7 @@
                                         <h2 class="card-title h3">Category</h2>
                                         <div id="cateContainerSchool">
                                             <select id="categorySchool" name="category" class="selectpicker form-control"
-                                                data-style="btn btn-link" multiple>
+                                                data-style="btn btn-link" multiple required>
                                                 <option value="" disabled>Choose your option</option>
                                                 <option value="Pre/Play School">Pre/Play School</option>
                                                 <option value="Day Care">Day Care</option>
