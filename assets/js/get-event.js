@@ -228,9 +228,9 @@ const getEvent = (() => {
             $toDate.html(toDateObj.date + '/' + toDateObj.month + '/' + toDateObj.year);
             $fromTime.html(eventData.fromTime);
             $toTime.html(eventData.toTime);
-            $attending.html(eventData.going);
-            $notAttending.html(eventData.notGoing);
-            $maybeAttending.html(eventData.mayBeGoing);
+            $attending.html(eventData.goingUsers.length);
+            $notAttending.html(eventData.notGoingUsers.length);
+            $maybeAttending.html(eventData.mayBeGoingUsers.length);
             getGoingUsers(eventData.goingUsers).forEach(promise => {
                 promise.then(userData => {
                     console.log(userData);

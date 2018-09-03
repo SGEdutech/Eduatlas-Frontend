@@ -1,14 +1,16 @@
 const rspvModal = (() => {
+    let userInfo;
     let $rspvModalContainer;
     let $goingBtn, $maybeBtn, $notGoingBtn;
-    let $loginModal;
+    let $loginModal, $rspvModal;
 
     function cacheDom() {
         $rspvModalContainer = $('#rspv_modal_container');
     }
 
     function cacheDynamicDom() {
-        $loginModal = $('#rspv_modal');
+        $loginModal = $('#loginModal')
+        $rspvModal = $('#rspv_modal')
         $goingBtn = $('#going_btn');
         $maybeBtn = $('#maybe_btn');
         $notGoingBtn = $('#not_going_btn');
@@ -17,31 +19,46 @@ const rspvModal = (() => {
     function getHtml() {
         const url = 'rspv-modal.html';
         const dataType = 'html';
-        return $.get({url, dataType}); // Returns Promise
+        return $.get({
+            url,
+            dataType
+        }); // Returns Promise
     }
 
-    function bindEvents() {
+    function updateUser(user) {
+        userInfo = user;
     }
 
-    function submitForm(event) {
-        // TODO: Make more elegent
-        event.preventDefault();
-        let formData = $form.serialize();
-        $.post({
-            url: $form.attr('action'),
-            data: formData,
-        }).then(user => {
-            PubSub.publish('user.login', user);
-            $loginModal.modal('hide');
-        }).catch(err => {
-            const errorResponse = err.responseText;
-            if (errorResponse === 'Bad Request') {
-                alert('please fill both username and password')
-            } else {
-                let messageToDisplay = errorResponse.match(new RegExp('<pre>' + "(.*)" + '</pre>'))[1];
-                alert(messageToDisplay)
-            }
+    function bindEvents(queryObject) {
+        $goingBtn.click(function () {
+            addToList(queryObject, $goingBtn.attr("data-typeoflist"))
         });
+        $maybeBtn.click(function () {
+            addToList(queryObject, $maybeBtn.attr("data-typeoflist"))
+        });
+        $notGoingBtn.click(function () {
+            addToList(queryObject, $notGoingBtn.attr("data-typeoflist"))
+        });
+    }
+
+    function addToList(queryObject, typeoflist) {
+        console.log(typeoflist);
+        if (userInfo) {
+            $.ajax({
+                url: `/event/add/${typeoflist}Users/${queryObject._id}`,
+                method: 'POST',
+                data: {
+                    string: userInfo._id
+                }
+            }).then(data => {
+                // alert('saved successfully')
+                $rspvModal.modal('hide')
+            })
+        } else {
+            // user not logged-in
+            $rspvModal.modal('hide');
+            $loginModal.modal('show');
+        }
     }
 
     function render() {
@@ -53,14 +70,17 @@ const rspvModal = (() => {
         })
     }
 
-    function init() {
+    function init(queryObject) {
         cacheDom();
         render().then(() => {
             PubSub.publish('rspvModal.load', null);
             cacheDynamicDom();
-            bindEvents();
+            bindEvents(queryObject);
         });
     }
 
-    return {init};
+    return {
+        init,
+        updateUser
+    };
 })();

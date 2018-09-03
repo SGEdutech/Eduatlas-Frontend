@@ -3,18 +3,21 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Attend This event</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Respond to Event</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <button class="btn btn-info btn-round" id="going_btn">
-                    <i class="material-icons">favorite</i> I'm Going for sure
+                <button class="btn btn-info btn-round" id="going_btn" data-typeoflist="going">
+                    <i class="material-icons text-danger">favorite</i> I'm Going for sure
                 </button>
-                <button class="btn btn-info btn-round" id="maybe_btn">
+                <button class="btn btn-warning btn-round" id="maybe_btn" data-typeoflist="notGoing">
                      Maybe
                 </button>
+                <button class="btn btn-danger btn-round" id="not_going_btn" data-typeoflist="maybeGoing">
+                    Not Going
+               </button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
