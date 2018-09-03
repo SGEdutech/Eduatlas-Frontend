@@ -1,6 +1,6 @@
 /* --- Scrool Button Start --- */
+@import url(https: //fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 .mad {
   margin-top: 200px !important;
 }
@@ -36,7 +36,6 @@ section h1 {
 }
 
 /* scroll below - button */
-
 /* #section03 {margin-top:10px;cursor:pointer;}
 
 @media only screen and (max-width: 650px) {
@@ -87,18 +86,20 @@ section h1 {
   animation: sdb03 3s infinite;
   box-sizing: border-box;
 } */
-
 @-webkit-keyframes sdb03 {
   0% {
     opacity: 0;
   }
+
   30% {
     opacity: 1;
   }
+
   60% {
     box-shadow: 0 0 0 60px rgba(255, 255, 255, .1);
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }
@@ -108,22 +109,23 @@ section h1 {
   0% {
     opacity: 0;
   }
+
   30% {
     opacity: 1;
   }
+
   60% {
     box-shadow: 0 0 0 60px rgba(255, 255, 255, .1);
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }
 }
 
 /* --- Scrool Button End --- */
-
 /* --- Category Start --- */
-
 .cateclass {
   margin-top: 90px !important;
 }
@@ -156,9 +158,7 @@ section h1 {
 }
 
 /* --- Category End --- */
-
 /*--- section title style --*/
-
 .section-title {
   text-align: center;
   margin-bottom: 45px;
@@ -176,59 +176,63 @@ section h1 {
 }
 
 .searchview {
-  background-color: white;
+  background-color:white;
   width: 100%;
   height: auto;
   margin-top: -30px;
   border-radius: 8px;
-  box-shadow: 1px 1px 2px 1px;
+  border: 1px grey solid;
+  /* box-shadow: 1px 1px 1px 1px; */
 }
-.header-image{
-  background-image: url('../img/stupid-kids-stidying.jpg');
+
+.header-image {
+  background-image: url('../img/art-artistic-blue.jpg');
   max-height: 300px;
   background-color: darkgray;
 }
-.header-padding{
+
+.header-padding {
   padding-top: 0px !important;
 }
-.footer-image{
-  background-image: url('../img/office2.jpg');
+
+.footer-image {
+  background-image: url('../img/colors-crayons-colored-pencils-darker.jpg');
+  background-size: 100%, 100%;
+  /* filter: brightness(50%);
+  -webkit-filter: brightness(50%);
+  -moz-filter: brightness(50%);
+  -o-filter: brightness(50%);
+  -ms-filter: brightness(50%); */
 }
-.fa-color1{
+
+.fa-color1 {
   color: powderblue;
 }
-.fa-color2{
+
+.fa-color2 {
   color: burlywood;
 }
-.fa-color3{
+
+.fa-color3 {
   color: gray;
 }
-.fa-color4{
+
+.fa-color4 {
   color: palevioletred;
 }
-.fa-color5{
+
+.fa-color5 {
   color: teal;
 }
-.fa-color6{
+
+.fa-color6 {
   color: violet;
 }
-.fa-color7{
+
+.fa-color7 {
   color: indianred;
 }
-.fa-color8{
-  color:darkkhaki;
+
+.fa-color8 {
+  color: darkkhaki;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
