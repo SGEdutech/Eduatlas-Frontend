@@ -39,10 +39,11 @@ const dashboardAddEvent = (() => {
             // console.log(userData);
             const eventIdCreated = data._id;
             const userUpdatedPromise = $.ajax({
-                url: '/user/add/eventsOwned/' + user._id,
+                url: '/user/add/claims/' + user._id,
                 method: 'POST',
                 data: {
-                    string: data._id
+                    objectId: data._id,
+                    category: "event"
                 }
             });
 
@@ -66,5 +67,7 @@ const dashboardAddEvent = (() => {
         bindEvents(user);
     }
 
-    return {init};
+    return {
+        init
+    };
 })();

@@ -34,10 +34,10 @@ const userClaimed = (() => {
         //now update user by deleting id of tuition/school from tuitionsOwned/schoolsOwned array
         //todo - we need to delete from array
         let updateUserPromise = $.ajax({
-            url: `/user/delete/${typeOfInfo}sOwned/${userInfo._id}`,
+            url: `/user/delete/claims/${userInfo._id}`,
             type: 'DELETE',
             data: {
-                string: tuitionId
+                objectId: tuitionId
             }
         });
 
@@ -62,8 +62,11 @@ const userClaimed = (() => {
                                                  Manage Your ${typeOfInfo}
                                            </div>`)
         const instituteInfoPromiseArr = [];
-        instituteIdArr.forEach(instituteId => instituteInfoPromiseArr.push(getTuitionsInfo(typeOfInfo, instituteId)));
-
+        instituteIdArr.forEach(object => {
+            if (object.category === typeOfInfo) {
+                instituteInfoPromiseArr.push(getTuitionsInfo(typeOfInfo, object.objectId))
+            }
+        });
         let cardsHtml = '';
 
         return new Promise((resolve, reject) => {
@@ -89,7 +92,7 @@ const userClaimed = (() => {
     }
 
     function render(userInfo) {
-        getInstituteCardHtml('tuition', userInfo.tuitionsOwned, $claimedTuitionContainer).then(cardsHtml => {
+        getInstituteCardHtml('tuition', userInfo.claims, $claimedTuitionContainer).then(cardsHtml => {
             if (!cardsHtml) {
                 const context = {
                     title: "No Data",
@@ -103,7 +106,7 @@ const userClaimed = (() => {
                 bindEvents(userInfo);
             }
         });
-        getInstituteCardHtml('school', userInfo.schoolsOwned, $claimedSchoolContainer).then(cardsHtml => {
+        getInstituteCardHtml('school', userInfo.claims, $claimedSchoolContainer).then(cardsHtml => {
             if (!cardsHtml) {
                 const context = {
                     title: "No Data",
@@ -117,7 +120,7 @@ const userClaimed = (() => {
                 bindEvents(userInfo);
             }
         });
-        getInstituteCardHtml('event', userInfo.eventsOwned, $claimedEventContainer).then(cardsHtml => {
+        getInstituteCardHtml('event', userInfo.claims, $claimedEventContainer).then(cardsHtml => {
             if (!cardsHtml) {
                 const context = {
                     title: "No Data",

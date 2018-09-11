@@ -35,10 +35,11 @@ const dashboardAddSchool = (() => {
             const schoolIdCreated = data._id;
             const userUpdatedPromise = $.ajax({
                 // todo - need to fix
-                url: '/user/add/schoolsOwned/' + user._id,
+                url: '/user/add/claims/' + user._id,
                 method: 'POST',
                 data: {
-                    string: data._id
+                    objectId: data._id,
+                    category: "school"
                 }
             });
 
@@ -62,5 +63,7 @@ const dashboardAddSchool = (() => {
         bindEvents(user);
     }
 
-    return {init};
+    return {
+        init
+    };
 })();

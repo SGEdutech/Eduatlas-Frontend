@@ -19,7 +19,10 @@ const claimModal = (() => {
     function getHtml() {
         const url = 'claim-modal.html';
         const dataType = 'html';
-        return $.get({url, dataType}); // Returns Promise
+        return $.get({
+            url,
+            dataType
+        }); // Returns Promise
     }
 
     function updateUserInfo(info) {
@@ -36,13 +39,18 @@ const claimModal = (() => {
         const updateTuitionPromise = $.ajax({
             url: `/${typeOfInfo}/${queryObj._id}`,
             type: 'PUT',
-            data: {claimedBy: userInfo._id}
+            data: {
+                claimedBy: userInfo._id
+            }
         });
         //now update user by inserting id of tuition to tuitionsOwned array
         const updateUserPromise = $.ajax({
-            url: `/user/add/${typeOfInfo}sOwned/${userInfo._id}`,
+            url: `/user/add/claims/${userInfo._id}`,
             type: 'POST',
-            data: {string: queryObj._id}
+            data: {
+                objectId: queryObj._id,
+                category: typeOfInfo,
+            }
         });
 
         Promise.all([updateTuitionPromise, updateUserPromise]).then(() => {
@@ -81,5 +89,9 @@ const claimModal = (() => {
         });
     }
 
-    return {init, updateUserInfo, updateQueryObj};
+    return {
+        init,
+        updateUserInfo,
+        updateQueryObj
+    };
 })();

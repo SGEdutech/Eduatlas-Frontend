@@ -38,10 +38,11 @@ const dashboardAddTuition = (() => {
             const tuitionIdCreated = data._id;
             const userUpdatedPromise = $.ajax({
                 // todo - need to fix
-                url: '/user/add/tuitionsOwned/' + user._id,
+                url: '/user/add/claims/' + user._id,
                 method: 'POST',
                 data: {
-                    string: data._id
+                    objectId: data._id,
+                    category: "tuition"
                 }
             });
 
@@ -67,5 +68,7 @@ const dashboardAddTuition = (() => {
         bindEvents(user);
     }
 
-    return {init};
+    return {
+        init
+    };
 })();
