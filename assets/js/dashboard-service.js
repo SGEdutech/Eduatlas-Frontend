@@ -12,14 +12,8 @@ user.getInfo().then(userInfo => {
         colorOnScroll: false
     });
     userImgAndName.init(userInfo);
-    userClaimed.init(userInfo);
     dashboardBookmarks.init(userInfo);
     dashboardReviews.init(userInfo);
     dashboardEditProfile.init(userInfo);
-    dashboardAddTuition.init(userInfo);
-    dashboardAddSchool.init(userInfo);
-    dashboardAddEvent.init(userInfo);
 });
-
-dashboardHideSubMenu.init();
 queryString.loadQueryString();

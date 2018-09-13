@@ -1,7 +1,7 @@
 const navigationBar = (() => {
     let $navContainer;
     let $logOutBtn;
-    let $addTuitionBtn,$addSchoolBtn,$addEventBtn;
+    let $addTuitionBtn, $addSchoolBtn, $addEventBtn;
     let $dynamicUserBtn;
     let $document;
     let user;
@@ -33,9 +33,9 @@ const navigationBar = (() => {
 
     function updateAddTuitionLink() {
         if (user) {
-            $addTuitionBtn.attr('href', './User-dashboard.html?tab=addTuition');
-            $addSchoolBtn.attr('href', './User-dashboard.html?tab=addSchool');
-            $addEventBtn.attr('href', './User-dashboard.html?tab=addEvent');
+            $addTuitionBtn.attr('href', 'https://erp.eduatlas.com/Dashboard-Pro.html?tab=addTuition');
+            $addSchoolBtn.attr('href', 'https://erp.eduatlas.com/Dashboard-Pro.html?tab=addSchool');
+            $addEventBtn.attr('href', 'https://erp.eduatlas.com/Dashboard-Pro.html?tab=addEvent');
         } else {
             $addTuitionBtn.attr('data-toggle', 'modal');
             $addTuitionBtn.attr('data-target', '#loginModal');
@@ -63,7 +63,10 @@ const navigationBar = (() => {
     function getHtml() {
         const url = 'nav.html';
         const dataType = 'html';
-        return $.get({url, dataType}); // Returns Promise
+        return $.get({
+            url,
+            dataType
+        }); // Returns Promise
     }
 
     function bindEvents() {
@@ -107,5 +110,8 @@ const navigationBar = (() => {
         render(userInfo, colorOnScroll, activeElementId);
     }
 
-    return {init, render};
+    return {
+        init,
+        render
+    };
 })();

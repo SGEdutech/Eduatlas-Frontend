@@ -1,6 +1,5 @@
 PubSub.subscribe('user', (msg, userInfo) => {
 	navigationBar.render(userInfo);
-	bookmark.updateUserInfo(userInfo);
 });
 
 user.getInfo().then(userInfo => {
@@ -8,7 +7,6 @@ user.getInfo().then(userInfo => {
 		colorOnScroll: true,
 		activeElementId: 'home_nav'
 	});
-	bookmark.updateUserInfo(userInfo);
 });
 
 tuitionCards.init().then(cardsContainer => {

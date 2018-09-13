@@ -30,9 +30,9 @@ const searchSuggestion = (() => {
     }
 
     function redirectToSearchPage() {
-        let query = $searchInput.val();
-        let state = $searchState.val();
-        let city = $searchCity.val();
+        let query = $searchInput.val() ? $searchInput.val() : "";
+        let state = $searchState.val() ? $searchState.val() : "";
+        let city = $searchCity.val() ? $searchCity.val() : "";
         window.location.assign(`searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=${city}&state=${state}&category=&sortBy=default&name=${query}`);
     }
 
