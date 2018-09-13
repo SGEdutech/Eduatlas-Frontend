@@ -54,7 +54,7 @@ const claimModal = (() => {
         });
 
         Promise.all([updateTuitionPromise, updateUserPromise]).then(() => {
-            window.location.assign('User-dashboard.html')
+            window.location.assign('https://erp.eduatlas.com/Dashboard-Pro.html');
         }).catch(err => console.error(err))
     }
 
