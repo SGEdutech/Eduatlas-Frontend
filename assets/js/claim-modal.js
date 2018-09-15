@@ -35,25 +35,12 @@ const claimModal = (() => {
     }
 
     function claimListing(typeOfInfo) {
-        //now update tuition by adding claimedBy
-        const updateTuitionPromise = $.ajax({
-            url: `/${typeOfInfo}/${queryObj._id}`,
-            type: 'PUT',
-            data: {
-                claimedBy: userInfo._id
-            }
-        });
-        //now update user by inserting id of tuition to tuitionsOwned array
-        const updateUserPromise = $.ajax({
-            url: `/user/add/claims/${userInfo._id}`,
-            type: 'POST',
-            data: {
-                objectId: queryObj._id,
-                category: typeOfInfo,
-            }
-        });
+        const updateUserPromise = userApiCalls.putInArrayInUser(userInfo._id, "claims", {
+            listingCategory: typeOfInfo,
+            listingId: queryObj._id
+        })
 
-        Promise.all([updateTuitionPromise, updateUserPromise]).then(() => {
+        updateUserPromise.then(() => {
             window.location.assign('https://erp.eduatlas.com/Dashboard-Pro.html');
         }).catch(err => console.error(err))
     }
