@@ -84,24 +84,14 @@ const getInfo = (() => {
 
     function getInfoFromDatabase(typeOfInfo) {
         if (typeOfInfo === 'tuition') {
-            const url = '/tuition';
-            const data = {
+            return tuitionApiCalls.getSpecificTuition({
                 _id: queryObj._id
-            };
-            return $.ajax({
-                url,
-                data
-            });
+            })
         }
         if (typeOfInfo === 'school') {
-            const url = '/school';
-            const data = {
+            return schoolApiCalls.getSpecificSchool({
                 _id: queryObj._id
-            };
-            return $.ajax({
-                url,
-                data
-            });
+            })
         }
 
     }

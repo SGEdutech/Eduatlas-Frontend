@@ -31,31 +31,40 @@ const bookmark = (() => {
                 $(this).html('bookmark_border');
                 $(this).attr('data-bookmarked', 'false');
                 typeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.slice(1);
-                $.ajax({
-                    url: `/user/delete/bookmark${typeOfInfo}s/${userInfo._id}`,
-                    method: 'DELETE',
-                    data: {
+
+                if (typeOfInfo === "tuition") {
+                    userApiCalls.deleteInArrayInUser(userInfo._id, "bookmarkTuitions", {
                         string: instituteId
-                    }
-                }).then(data => {
-                    // alert('bookmarked removed successfully')
-                })
+                    }).catch(err => console.error(err))
+                } else if (typeOfInfo === "school") {
+                    userApiCalls.deleteInArrayInUser(userInfo._id, "bookmarkSchools", {
+                        string: instituteId
+                    }).catch(err => console.error(err))
+                } else {
+                    userApiCalls.deleteInArrayInUser(userInfo._id, "bookmarkEvents", {
+                        string: instituteId
+                    }).catch(err => console.error(err))
+                }
             } else {
                 console.log("not bookmarked");
                 $(this).html('bookmark');
                 $(this).attr('data-bookmarked', 'true');
-
+                console.log(userInfo);
                 // make first character Upper-Case
                 typeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.slice(1);
-                $.ajax({
-                    url: `/user/add/bookmark${typeOfInfo}s/${userInfo._id}`,
-                    method: 'POST',
-                    data: {
+                if (typeOfInfo === "tuition") {
+                    userApiCalls.putInArrayInUser(userInfo._id, "bookmarkTuitions", {
                         string: instituteId
-                    }
-                }).then(data => {
-                    // alert('bookmarked successfully')
-                })
+                    }).catch(err => console.error(err))
+                } else if (typeOfInfo === "school") {
+                    userApiCalls.putInArrayInUser(userInfo._id, "bookmarkSchools", {
+                        string: instituteId
+                    }).catch(err => console.error(err))
+                } else {
+                    userApiCalls.putInArrayInUser(userInfo._id, "bookmarkEvents", {
+                        string: instituteId
+                    }).catch(err => console.error(err))
+                }
             }
         }
     }

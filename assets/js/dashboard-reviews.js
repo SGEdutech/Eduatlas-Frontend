@@ -79,7 +79,7 @@ const dashboardReviews = (() => {
         });
 
         let updateUserPromise = $.ajax({
-            url: '/user/delete/reviewsOwned/' + userId,
+            url: `/user/delete/${userId}/reviewsOwned`,
             method: 'DELETE',
             data: {
                 outerId: tuitionId

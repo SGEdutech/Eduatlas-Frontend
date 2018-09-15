@@ -6,6 +6,7 @@ PubSub.subscribe('user', (msg, userInfo) => {
 
 PubSub.subscribe('user.login', (msg, userInfo) => {
     searchModule.updateUser(userInfo);
+    bookmark.updateUserInfo(userInfo);
 });
 
 PubSub.subscribeOnce('query.load', (msg, queryObject) => {
