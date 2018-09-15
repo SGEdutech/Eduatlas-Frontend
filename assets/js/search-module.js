@@ -116,16 +116,32 @@ const searchModule = (() => {
     }
 
     function getSuggestions(value) {
-        $.ajax({
-            url: `/${queryObj.typeOfInfo}/search`,
-            data: {
+        let Promise;
+        const demands = "name"
+        if (queryObj.typeOfInfo === "tuition") {
+            Promise = tuitionApiCalls.searchTuitions(0, 1, "Default", demands, {
                 name: JSON.stringify({
                     search: value,
                     fullTextSearch: false,
-                }),
-                limit: 1,
-            }
-        }).then(data => {
+                })
+            })
+        } else if (queryObj.typeOfInfo === "school") {
+            Promise = schoolApiCalls.searchSchools(0, 1, "Default", demands, {
+                name: JSON.stringify({
+                    search: value,
+                    fullTextSearch: false,
+                })
+            })
+        } else {
+            Promise = eventApiCalls.searchEvents(0, 1, "Default", demands, {
+                name: JSON.stringify({
+                    search: value,
+                    fullTextSearch: false,
+                })
+            })
+        }
+
+        Promise.then(data => {
             $suggestionBox.empty();
             let toAdd = '';
             let capitalTypeOfInfo = queryObj.typeOfInfo.charAt(0).toUpperCase() + queryObj.typeOfInfo.slice(1);
@@ -226,7 +242,6 @@ const searchModule = (() => {
             }
             // end
             if (queryObj.typeOfInfo === "event") {
-                console.log(obj);
                 if (obj.fromDate) {
                     obj.fromDate = helperScripts.getDateObj(obj.fromDate)
                     obj.fromDate = obj.fromDate.date + " " + obj.fromDate.monthName;
@@ -246,7 +261,7 @@ const searchModule = (() => {
 
         $contentPlaceholder.html(result);
 
-        console.log('cards ready');
+        // console.log('cards ready');
         PubSub.publish('searchCards.load', null);
     }
 
@@ -268,49 +283,44 @@ const searchModule = (() => {
 
     function getSearchResults() {
         const skip = (page - 1) * items;
+        const demands = "name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail fromTime toTime fromDate toDate lastDateRegistration";
 
         if (queryObj.c) {
             //means search type is complex
             showResultsHelper();
-
             return new Promise((resolve, reject) => {
-                $.ajax({
-                    url: `/${queryObj.typeOfInfo}/search`,
-                    data: {
-                        name: JSON.stringify({
-                            search: queryObj.name,
-                            fullText: false
-                        }),
-                        /*state: JSON.stringify({
-                            search: state,
-                            fullText: true
-                        }),*/
-                        city: JSON.stringify({
-                            search: queryObj.city,
-                            fullText: true
-                        }),
-                        category: JSON.stringify({
-                            search: queryObj.category,
-                            fullText: true
-                        }),
-                        demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail fromTime toTime fromDate toDate lastDateRegistration',
-                        limit: items,
-                        skip,
-                        sortBy: queryObj.sortBy
-                    }
-                }).then(resolve).catch(reject);
+                const extraInfoObj = {
+                    name: JSON.stringify({
+                        search: queryObj.name,
+                        fullText: false
+                    }),
+                    city: JSON.stringify({
+                        search: queryObj.city,
+                        fullText: true
+                    }),
+                    category: JSON.stringify({
+                        search: queryObj.category,
+                        fullText: true
+                    }),
+                };
+                if (queryObj.typeOfInfo === "tuition") {
+                    tuitionApiCalls.searchTuitions(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
+                } else if (queryObj.typeOfInfo === "school") {
+                    schoolApiCalls.searchSchools(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
+                } else {
+                    eventApiCalls.searchEvents(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
+                }
             })
         } else {
             //means search type is simple
             return new Promise((resolve, reject) => {
-                $.ajax({
-                    url: `/${queryObj.typeOfInfo}/all`,
-                    data: {
-                        demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail fromTime toTime fromDate toDate lastDateRegistration',
-                        limit: items,
-                        skip,
-                    }
-                }).then(resolve).catch(reject);
+                if (queryObj.typeOfInfo === "tuition") {
+                    tuitionApiCalls.getAllTuitions(skip, items, demands).then(resolve).catch(reject)
+                } else if (queryObj.typeOfInfo === "school") {
+                    schoolApiCalls.getAllSchools(skip, items, demands).then(resolve).catch(reject)
+                } else {
+                    eventApiCalls.getAllEvents(skip, items, demands).then(resolve).catch(reject)
+                }
             })
         }
     }

@@ -94,7 +94,7 @@ const reviews = (() => {
                 };
 
                 $.ajax({
-                    url: `/${typeOfInfo}/add/reviews/${instituteId}`,
+                    url: `/${typeOfInfo}/add/${instituteId}/reviews`,
                     method: 'POST',
                     data: $reviewForm.serialize()
                 }).then((institute) => {
@@ -104,21 +104,10 @@ const reviews = (() => {
                             addedReviewID = obj._id;
                         }
                     });
-                    // update user now
-                    $.ajax({
-                        url: '/user/add/reviewsOwned/' + userInfo._id,
-                        method: 'POST',
-                        data: {
-                            category: typeOfInfo,
-                            outerId: institute._id,
-                            innerId: addedReviewID
-                        }
-                    }).then(updatedUser => {
-                        let HTML = template.tuitionReviews(reviewToShow);
-                        $savedReviews.append(HTML);
-                        $reviewForm[0].reset();
-                        alert('review added success')
-                    })
+                    let HTML = template.tuitionReviews(reviewToShow);
+                    $savedReviews.append(HTML);
+                    $reviewForm[0].reset();
+                    alert('review added success')
                 }).catch(err => console.error(err))
             }
 
@@ -132,5 +121,9 @@ const reviews = (() => {
         updateReviewDiv();
     }
 
-    return {init, updateUserInfo, updateInstituteInfo};
+    return {
+        init,
+        updateUserInfo,
+        updateInstituteInfo
+    };
 })();

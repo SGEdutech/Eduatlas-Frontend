@@ -5,14 +5,6 @@ const tuitionCards = (() => {
         $cardsContainer = $('#cards_container');
     }
 
-    function getTuitionInfo() {
-        const url = '/tuition/all';
-        const data = {
-            limit: 15
-        };
-        return $.get(url, data); // Returns a promise
-    }
-
     function insertAverageRating(tuitionInfoArray = []) {
         tuitionInfoArray.forEach(tuitionInfo => {
             const averageRating = helperScripts.calcAverageRating(tuitionInfo.reviews);
@@ -41,7 +33,7 @@ const tuitionCards = (() => {
     function init() {
         return new Promise((resolve, reject) => {
             cacheDom();
-            getTuitionInfo().then(tuitionInfoArray => {
+            tuitionApiCalls.getAllTuitions(15).then(tuitionInfoArray => {
                 render(tuitionInfoArray);
                 resolve($cardsContainer);
             }).catch(err => reject(err));

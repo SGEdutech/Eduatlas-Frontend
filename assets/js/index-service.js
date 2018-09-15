@@ -11,12 +11,10 @@ user.getInfo().then(userInfo => {
 
 tuitionCards.init().then(cardsContainer => {
 	carousel.init(cardsContainer);
-	bookmark.init();
 });
 
 schoolCards.init().then(cardsContainer => {
 	carousel.init(cardsContainer);
-	// bookmark.init();
 });
 
 searchBtn.init();
@@ -28,5 +26,4 @@ scrollToCaetegories.init();
 searchSuggestion.init();
 
 dropDown.init();
-
 // ipLocation.init();

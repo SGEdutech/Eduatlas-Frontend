@@ -5,12 +5,6 @@ const schoolCards = (() => {
         $cardsContainer = $('#cards_container2');
     }
 
-    function getSchoolInfo() {
-        const url = '/school/all';
-        const data = {limit: 15};
-        return $.get(url, data); // Returns a promise
-    }
-
     function insertAverageRating(schoolInfoArray = []) {
         schoolInfoArray.forEach(schoolInfo => {
             const averageRating = helperScripts.calcAverageRating(schoolInfo.reviews);
@@ -23,7 +17,7 @@ const schoolCards = (() => {
         let cardsHtml = '';
         schoolInfoArray.forEach(schoolInfo => {
             helperScripts.openNowInit(schoolInfo);
-            schoolInfo.typeOfInfo='school';
+            schoolInfo.typeOfInfo = 'school';
             schoolInfo.hideFooter = true;
             cardsHtml += template.smoothCardHomePage(schoolInfo)
         });
@@ -39,13 +33,14 @@ const schoolCards = (() => {
     function init() {
         return new Promise((resolve, reject) => {
             cacheDom();
-            getSchoolInfo().then(schoolInfoArray => {
-                console.log(schoolInfoArray.length);
+            schoolApiCalls.getAllSchools(15).then(schoolInfoArray => {
                 render(schoolInfoArray);
                 resolve($cardsContainer);
             }).catch(err => reject(err));
         })
     }
 
-    return {init};
+    return {
+        init
+    };
 })();

@@ -130,15 +130,14 @@ const helperScripts = {
 
     saveDetails(typeOfInfo, $form, $nextTab, instituteId) {
         const formData = new FormData($form[0]);
-
-        const Promise = $.ajax({
-            url: `/${typeOfInfo}/${instituteId}`,
-            type: 'PUT',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-        });
+        let Promise;
+        if (typeOfInfo === "tuition") {
+            Promise = tuitionApiCalls.updateInTuition(instituteId, formData, true);
+        } else if (typeOfInfo === "school") {
+            Promise = schoolApiCalls.updateInSchool(instituteId, formData, true);
+        } else {
+            Promise = eventApiCalls.updateInEvent(instituteId, formData, true);
+        }
 
         Promise.then(() => {
             this.showNextTab($nextTab);

@@ -17,7 +17,10 @@ const loginModal = (() => {
     function getHtml() {
         const url = 'login-modal.html';
         const dataType = 'html';
-        return $.get({url, dataType}); // Returns Promise
+        return $.get({
+            url,
+            dataType
+        }); // Returns Promise
     }
 
     function bindEvents() {
@@ -28,21 +31,18 @@ const loginModal = (() => {
         // TODO: Make more elegent
         event.preventDefault();
         let formData = $form.serialize();
-        $.post({
-            url: $form.attr('action'),
-            data: formData,
-        }).then(user => {
+        oauthApiCalls.login(formData).then(user => {
             PubSub.publish('user.login', user);
             $loginModal.modal('hide');
         }).catch(err => {
-                const errorResponse = err.responseText;
-                if (errorResponse === 'Bad Request') {
-                    alert('please fill both username and password')
-                } else {
-                    let messageToDisplay = errorResponse.match(new RegExp('<pre>' + "(.*)" + '</pre>'))[1];
-                    alert(messageToDisplay)
-                }
-            });
+            const errorResponse = err.responseText;
+            if (errorResponse === 'Bad Request') {
+                alert('please fill both username and password')
+            } else {
+                let messageToDisplay = errorResponse.match(new RegExp('<pre>' + "(.*)" + '</pre>'))[1];
+                alert(messageToDisplay)
+            }
+        });
     }
 
     function render() {
@@ -63,5 +63,7 @@ const loginModal = (() => {
         });
     }
 
-    return {init};
+    return {
+        init
+    };
 })();

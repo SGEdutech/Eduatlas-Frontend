@@ -38,19 +38,12 @@ const searchSuggestion = (() => {
 
     function getSuggestion() {
         query = $searchInput.val();
-        const url = '/tuition/search';
-        const data = {
+        return tuitionApiCalls.searchTuitions(0, 5, "Default", "name", {
             name: JSON.stringify({
                 search: query,
                 fullTextSearch: false,
-            }),
-            limit: 5,
-            demands: 'name'
-        };
-        return $.ajax({
-            url,
-            data
-        }); //Returns a promise
+            })
+        })
     }
 
     function render(suggestionArray) {
