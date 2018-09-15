@@ -76,7 +76,7 @@ const getEvent = (() => {
 
     function updateCoverImage(coverPic) {
         if (coverPic === undefined || coverPic === '') {
-            $coverImage.attr("src", "/assets/img/event2.png");
+            $coverImage.attr("src", "/assets/img/education-61040.jpg");
         } else {
             $coverImage.attr('src', 'images/' + coverPic);
         }

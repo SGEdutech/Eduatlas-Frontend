@@ -168,7 +168,7 @@ const getInfo = (() => {
 
     function updateCoverImage(coverPic) {
         if (coverPic === undefined || coverPic === '') {
-            $coverImage.attr("src", "/assets/img/fourgirls.jpeg");
+            $coverImage.attr("src", "/assets/img/fourgirls.jpg");
         } else {
             $coverImage.attr('src', 'images/' + coverPic);
         }
