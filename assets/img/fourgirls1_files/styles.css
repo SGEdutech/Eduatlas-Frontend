@@ -1,0 +1,285 @@
+body { font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000; background-color: #FFFFFF; margin: 0px; }
+
+td { font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif; }
+
+h1 { font-size: 18px; color: #335188; margin-top: 0px; margin-bottom: 5px; }
+
+.mainnavlink { font-size: 11px; font-weight: bold; color: #274003; text-decoration: none; background-color: transparent; }
+A.mainnavlink:visited { font-size: 11px; font-weight: bold; color: #274003; text-decoration: none; background-color: transparent; }
+A.mainnavlink:hover { font-size: 11px; font-weight: bold; color: #A71C1C; text-decoration: underline; background-color: transparent; }
+
+.h1link { font-size: 18px; color: #335188; margin-top: 0px; margin-bottom: 5px; }
+A.h1link:visited { font-size: 18px; color: #335188; margin-top: 0px; margin-bottom: 5px; }
+A.h1link:hover { font-size: 18px; color: #E3AAA2; margin-top: 0px; margin-bottom: 5px; }
+
+
+
+.standardlink { font-size: 11px; font-family: Verdana, Arial; color: #8A754C; text-decoration: none; font-weight: bold;}
+A.standardlink:visited { font-size: 11px; font-family: Verdana, Arial; color: #8A754C; text-decoration: none;; font-weight: bold; }
+A.standardlink:hover { font-size: 11px; font-family: Verdana, Arial; color: #E3AA22; text-decoration: underline; font-weight: bold; }
+
+
+
+form#uploadform { background-color: #FCFCFC; color: #000000; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; border: 1px solid #A0A0A0; border-collapse: collapse;}
+#uploadform th { background-color: #427195; font-size: 13px; color: #FFFFFF; font-weight: bold; padding: 3px; text-align: left; }
+#uploadform td { font-size: 11px; padding-top: 8px; padding-bottom: 3px; padding-left: 10px; padding-right: 3px; }
+#uploadform .smalltext { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; width: 40px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #111111; text-align: center; }
+#uploadform .buttons { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; margin: 6px; cursor: pointer; text-align: center; }
+#uploadform .text { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; width: 140px; background-color: #FFFFFF; margin: 3px; color: #333333; }
+#uploadform .label { font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #555555; margin-top: 3px; padding-top: 5px; }
+#uploadform .smalllabel { font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: normal; color: #111111; font-size: 9px; }
+
+
+
+
+#standardform .text { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; width: 140px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #333333; }
+#standardform .smalltext { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 0.9em; width: 60px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #111111;}
+#standardform .select { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #333333; }
+#standardform .label { font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #555555; margin-top: 3px; padding-top: 5px; }
+#standardform .buttons { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; background-color: #FFFFFF; color: #555555; margin: 3px; border: 1px solid #838383; cursor: pointer; }
+#standardform .textarea { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #333333; }
+#standardform .largetext { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; width: 200px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #333333; }
+/*#standardform .checkbox { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #333333; }*/
+#standardform .file { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; width: 160px; background-color: #FFFFFF; margin: 3px;  color: #333333; }
+
+#standardform .smalltextright { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 0.9em; width: 60px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #111111; text-align: right; }
+#standardform .smalllabel { font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: normal; color: #111111; font-size: 9px; }
+#standardform .smallboldlabel { font-size: 10px; font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #555555; }
+#standardform .header { font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #373737; margin: 3px; line-height: 20px; }
+#standardform .selectfixed { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #333333; width: 140px; }
+#standardform .tinytextcenter { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 0.9em; width: 30px; background-color: #FFFFFF; margin: 3px; border: 1px solid #838383; color: #111111; text-align: center; }
+
+
+
+
+
+.displaytable {
+	border: 1px solid #A0A0A0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	background-color: #F9F9F9;
+}
+
+.displaytable td {
+	font-size: 10px;
+	border: 1px solid #A0A0A0;	
+	padding: 5px;
+}
+
+.displaytable th {
+	font-size: 0.7em;
+	border: 1px solid #A0A0A0;
+	background-color: #CCCCCC;
+	font-weight: bold;
+	text-align: center;
+	background-image: url('images/template_images/th_bg.jpg');
+	background-repeat: repeat-x;
+	padding: 3px;
+	color: #555555;
+}
+
+.displaytable caption {
+	font-size: 0.9em;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #33517A;
+	text-align: left;
+	padding-top: 3px;
+	padding-bottom: 8px;
+}
+
+
+
+#contact table {
+ background-color: #f3f3f3;
+ color: #000000;
+ border: 1px solid #304870;
+ border-collapse: collapse;
+}
+
+#contact td {
+ border: 1px solid #304870;
+ padding: 3px;
+}
+
+.labelcell {
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ color: #304870;
+ font-weight: bold;
+ background-color: transparent;
+ width: 150px;
+ text-align: right;
+}
+
+.fieldcell {
+ background-color: #f3f3f3;
+ color: #000000;
+ text-align: left;
+ margin-right: 0px;
+ padding-right: 0px;
+}
+
+
+.fieldcell input {
+ width: 200px;
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ background-color: #ffffff;
+ color: #304870;
+ border: 1px solid #304870;
+ margin-right: 0px;
+ margin-left: 2px;
+}
+
+
+.fieldcell select {
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ background-color: #ffffff;
+ color: #304870;
+ border: 1px solid #304870;
+ margin-left: 2px;
+}
+
+.fieldcell textarea {
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ background-color: #ffffff;
+ color: #304870;
+ border: 1px solid #304870;
+ margin-right: 0px;
+ margin-left: 2px;
+}
+
+
+
+
+.button {
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ background-color: #164f9c;
+ color: #ffffff;
+ margin-left: 12px;
+ margin-top: 3px;
+ margin-bottom: 2px;
+ text-align: center;
+}
+
+
+
+
+/*
+
+
+#uploadform table {
+ background-color: #F9F9F9;
+ color: #000000;
+ border: 1px solid #B29A6A;
+ border-collapse: collapse;
+}
+
+#uploadform th {
+ border: 1px solid #B29A6A;
+ padding: 3px;
+}
+
+#uploadform td {
+ border: 0px solid #B29A6A;
+ padding: 3px;
+ padding-top: 10px;
+}
+
+.labelcell {
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ color: #8B7853;
+ font-weight: bold;
+ background-color: transparent;
+}
+
+
+.labelcell input {
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ background-color: #F9F1DE;
+ color: #3F3625;
+ border: 0px solid #83714E;
+ margin-right: 0px;
+ margin-left: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fieldcell {
+ background-color: #FCF8ED;
+ color: #000000;
+ text-align: left;
+ margin-right: 0px;
+ padding-right: 0px;
+}
+
+
+.fieldcell input {
+ width: 200px;
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ background-color: #F9F1DE;
+ color: #3F3625;
+ border: 1px solid #83714E;
+ margin-right: 0px;
+ margin-left: 2px;
+}
+
+
+.fieldcell select {
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ background-color: #F9F1DE;
+ color: #3F3625;
+ border: 1px solid #83714E;
+ margin-left: 2px;
+}
+
+.fieldcell textarea {
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ background-color: #F9F1DE;
+ color: #3F3625;
+ border: 1px solid #83714E;
+ margin-right: 0px;
+ margin-left: 2px;
+}
+
+
+
+
+.button {
+ font: 11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ background-color: #F7EED9;
+ color: #3F3625;
+ margin-left: 12px;
+ margin-top: 3px;
+ margin-bottom: 2px;
+ text-align: center;
+}
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

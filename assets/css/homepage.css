@@ -2,7 +2,7 @@
 @import url(https: //fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 
 .mad {
-  margin-top: 200px !important;
+  margin-top: 100px !important;
 }
 
 section {
@@ -126,13 +126,6 @@ section h1 {
 
 /* --- Scrool Button End --- */
 /* --- Category Start --- */
-.cateclass {
-  margin-top: 90px !important;
-}
-
-.category {
-  margin-right: 0px !important;
-}
 
 .clas {
   background: #ececec !important;
@@ -187,7 +180,7 @@ section h1 {
 
 .header-image {
   background-image: url('../img/education-banner-1.jpg');
-  max-height: 300px;
+  max-height: 400px;
   background-color: darkgray;
 }
 
