@@ -33,7 +33,8 @@ const tuitionCards = (() => {
     function init() {
         return new Promise((resolve, reject) => {
             cacheDom();
-            tuitionApiCalls.getAllTuitions(15).then(tuitionInfoArray => {
+            const demands = "name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail fromTime toTime fromDate toDate lastDateRegistration"
+            tuitionApiCalls.getAllTuitions(0, 15, demands).then(tuitionInfoArray => {
                 render(tuitionInfoArray);
                 resolve($cardsContainer);
             }).catch(err => reject(err));
