@@ -33,7 +33,8 @@ const schoolCards = (() => {
     function init() {
         return new Promise((resolve, reject) => {
             cacheDom();
-            schoolApiCalls.getAllSchools(15).then(schoolInfoArray => {
+            const demands = "name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail fromTime toTime fromDate toDate lastDateRegistration"
+            schoolApiCalls.getAllSchools(0, 15, demands).then(schoolInfoArray => {
                 render(schoolInfoArray);
                 resolve($cardsContainer);
             }).catch(err => reject(err));
