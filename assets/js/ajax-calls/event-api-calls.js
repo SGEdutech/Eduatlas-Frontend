@@ -24,16 +24,23 @@ const eventApiCalls = (() => {
         });
     }
 
-    function searchEvents(skip = 0, limit = 0, sortBy, demands) {
+    function searchEvents(skip = 0, limit = 0, sortBy, demands, extraInfoObj = {}) {
+        let basicData = {
+            skip: skip,
+            limit: limit,
+            sortBy: sortBy,
+            demands: demands
+        }
+
+        let data = {
+            ...basicData,
+            ...extraInfoObj
+        }
+
         return $.ajax({
             type: "GET",
             url: `/event/search`,
-            data: {
-                skip: skip,
-                limit: limit,
-                sortBy: sortBy,
-                demands: demands
-            },
+            data: data,
         });
     }
 
