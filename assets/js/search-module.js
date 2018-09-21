@@ -209,6 +209,7 @@ const searchModule = (() => {
     }
 
     function showSearchResults(data) {
+        console.log(data);
         let result = '';
         data.forEach(obj => {
             let avgRating = helperScripts.calcAverageRating(obj.reviews);

@@ -23,16 +23,23 @@ const schoolApiCalls = (() => {
         });
     }
 
-    function searchSchools(skip = 0, limit = 0, sortBy, demands) {
+    function searchSchools(skip = 0, limit = 0, sortBy, demands, extraInfoObj = {}) {
+        let basicData = {
+            skip: skip,
+            limit: limit,
+            sortBy: sortBy,
+            demands: demands
+        }
+
+        let data = {
+            ...basicData,
+            ...extraInfoObj
+        }
+
         return $.ajax({
             type: "GET",
             url: `/school/search`,
-            data: {
-                skip: skip,
-                limit: limit,
-                sortBy: sortBy,
-                demands: demands
-            },
+            data: data,
         });
     }
 
