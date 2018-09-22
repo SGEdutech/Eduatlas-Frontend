@@ -35,10 +35,7 @@ const claimModal = (() => {
     }
 
     function claimListing(typeOfInfo) {
-        const updateUserPromise = userApiCalls.putInArrayInUser(userInfo._id, "claims", {
-            listingCategory: typeOfInfo,
-            listingId: queryObj._id
-        })
+        const updateUserPromise = userApiCalls.addClaim(typeOfInfo, queryObj._id)
 
         updateUserPromise.then(() => {
             window.location.assign('https://erp.eduatlas.com/Dashboard-Pro.html');

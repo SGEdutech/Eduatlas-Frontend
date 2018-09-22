@@ -22,7 +22,6 @@ const tuitionApiCalls = (() => {
     }
 
     function getSpecificTuition(idenfifierObj = {}) {
-        console.log(idenfifierObj);
         return $.ajax({
             type: "GET",
             url: `/tuition`,
@@ -66,28 +65,50 @@ const tuitionApiCalls = (() => {
         });
     }
 
-    function putInArrayInTuition(idOfTuition, arrayName, bodyObj) {
+    function putInArrayInTuition(idOfTuition, arrayName, bodyObj, isForm = false) {
         if (!checkForHexRegExp.test(idOfTuition)) {
             console.error("Not a valid idOfTuition");
         }
 
         if (arrayName in validArrayNames) {
-            return $.ajax({
-                type: "POST",
-                url: `/tuition/add/${arrayName}/${idOfTuition}`,
-                data: bodyObj,
-            });
+            if (isForm) {
+                return $.ajax({
+                    type: "POST",
+                    url: `/tuition/add/${idOfSchool}/${arrayName}`,
+                    data: bodyObj,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                });
+            } else {
+                return $.ajax({
+                    type: "POST",
+                    url: `/tuition/add/${idOfSchool}/${arrayName}`,
+                    data: bodyObj,
+                });
+            }
         } else {
             console.error("Not a valid array name in tuitions");
         }
     }
 
-    function putNewTuition(bodyObj) {
-        return $.ajax({
-            type: "POST",
-            url: `/tuition/`,
-            data: bodyObj,
-        });
+    function putNewTuition(bodyObj, isForm = false) {
+        if (isForm) {
+            return $.ajax({
+                type: "POST",
+                url: `/tuition/`,
+                data: bodyObj,
+                cache: false,
+                contentType: false,
+                processData: false,
+            });
+        } else {
+            return $.ajax({
+                type: "POST",
+                url: `/tuition/`,
+                data: bodyObj,
+            });
+        }
     }
 
     function updateInArrayInTuition(idOfTuition, arrayName, idOfNestedObj, bodyObj) {

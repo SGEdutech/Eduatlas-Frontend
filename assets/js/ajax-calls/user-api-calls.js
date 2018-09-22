@@ -36,7 +36,7 @@ const userApiCalls = (() => {
         }
         return $.ajax({
             type: "GET",
-            url: `/user/`,
+            url: `/user`,
             data: idenfifierObj,
         });
     }
@@ -44,8 +44,22 @@ const userApiCalls = (() => {
     function putNewUser(bodyObj) {
         return $.ajax({
             type: "POST",
-            url: `/user/`,
+            url: `/user`,
             data: bodyObj,
+        });
+    }
+
+    function addClaim(listingCategory, listingId) {
+        if (!checkForHexRegExp.test(listingId)) {
+            console.error("Not a valid idOfListing");
+        }
+        return $.ajax({
+            type: "POST",
+            url: "user/add-claim",
+            data: {
+                listingCategory: listingCategory,
+                listingId: listingId,
+            },
         });
     }
 
@@ -140,6 +154,7 @@ const userApiCalls = (() => {
         getAllUsers,
         getSpecificUser,
         putNewUser,
+        addClaim,
         putInArrayInUser,
         updateInArrayInUser,
         updateInUser,
