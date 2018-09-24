@@ -5,13 +5,13 @@ const schoolApiCalls = (() => {
         team: true,
         gallery: true,
         bragging: true,
-        acticities: true,
+        activities: true,
         reviews: true,
         importantDates: true
     };
     const checkForHexRegExp = new RegExp("^[0-9a-fA-F]{24}$");
 
-    function getAllSchools(skip = 0, limit = 0, demands) {
+function getAllSchools(skip = 0, limit = 0, demands) {
         return $.ajax({
             type: "GET",
             url: `/school/all`,
@@ -51,28 +51,51 @@ const schoolApiCalls = (() => {
         });
     }
 
-    function putInArrayInSchool(idOfSchool, arrayName, bodyObj) {
+    function putInArrayInSchool(idOfSchool, arrayName, bodyObj, isForm = false) {
+        console.log(bodyObj);
         if (!checkForHexRegExp.test(idOfSchool)) {
             console.error("Not a valid idOfSchool");
         }
 
         if (arrayName in validArrayNames) {
-            return $.ajax({
-                type: "POST",
-                url: `/school/add/${arrayName}/${idOfSchool}`,
-                data: bodyObj,
-            });
+            if (isForm) {
+                return $.ajax({
+                    type: "POST",
+                    url: `/school/add/${idOfSchool}/${arrayName}`,
+                    data: bodyObj,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                });
+            } else {
+                return $.ajax({
+                    type: "POST",
+                    url: `/school/add/${idOfSchool}/${arrayName}`,
+                    data: bodyObj,
+                });
+            }
         } else {
             console.error("Not a valid array name in schools");
         }
     }
 
-    function putNewSchool(bodyObj) {
-        return $.ajax({
-            type: "POST",
-            url: `/school/`,
-            data: bodyObj,
-        });
+    function putNewSchool(bodyObj, isForm = false) {
+        if (isForm) {
+            return $.ajax({
+                type: "POST",
+                url: `/school`,
+                data: bodyObj,
+                cache: false,
+                contentType: false,
+                processData: false,
+            });
+        } else {
+            return $.ajax({
+                type: "POST",
+                url: `/school`,
+                data: bodyObj,
+            });
+        }
     }
 
     function updateInArrayInSchool(idOfSchool, arrayName, idOfNestedObj, bodyObj) {
