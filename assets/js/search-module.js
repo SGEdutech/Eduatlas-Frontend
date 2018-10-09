@@ -209,7 +209,6 @@ const searchModule = (() => {
     }
 
     function showSearchResults(data) {
-        console.log(data);
         let result = '';
         data.forEach(obj => {
             let avgRating = helperScripts.calcAverageRating(obj.reviews);
@@ -254,7 +253,8 @@ const searchModule = (() => {
                 obj.averageRating = null;
                 obj.claimedBy = false;
                 obj.event = true;
-                result += template.smoothCardHomePage(obj);
+                console.log(obj);
+                result += template.cardv2(obj);
             } else {
                 result += template.smoothCardHomePage(obj);
             }

@@ -332,9 +332,9 @@ const getInfo = (() => {
             return
         }
         let result = '';
-        array.forEach(imgPath => {
+        array.forEach(galleryObj => {
             result += template.galleryImg({
-                path: imgPath
+                path: galleryObj.img_path
             });
         });
         $gallery.append(result);
@@ -564,6 +564,7 @@ const getInfo = (() => {
                     setTimeout(() => updateDaynTime(InfoObj.schoolTiming, $opration_hours_containers));
                     setTimeout(() => updateDaynTime(InfoObj.officeTiming, $opration_hours_containers2));
                     setTimeout(() => showActivities(InfoObj.activities));
+                    setTimeout(() => showGallery(InfoObj.gallery));
                     setTimeout(() => showAdmissionAndFeeInfo(InfoObj.fee, InfoObj.admissionProcess, InfoObj.eligibilityCriteria));
                     setTimeout(() => showImportantDates(InfoObj.importantDates));
                 }
