@@ -4,7 +4,7 @@ const userApiCalls = (() => {
         reviewsOwned: true,
         goingEvents: true,
         maybeGoingEvents: true,
-        bookmarkUsers: true,
+        bookmarkTuitions: true,
         bookmarkSchools: true,
         bookmarkEvents: true,
         bookmarkBlogs: true
