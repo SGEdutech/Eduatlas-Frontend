@@ -74,7 +74,7 @@
                 <div class="row justify-content-center">
                     <i class="material-icons bookmark-button" style="cursor: pointer" data-id="{{_id}}" data-category="{{typeOfInfo}}"
                         data-bookmarked="{{bookmarked}}">
-                        bookmark_border
+                        {{#if bookmarked}} bookmark {{else}} bookmark_border {{/if}}
                     </i>
                     <a href="#" style="color: black;">BOOKMARK</a>
                 </div>

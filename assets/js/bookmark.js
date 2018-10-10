@@ -30,7 +30,7 @@ const bookmark = (() => {
                 //do nothing
                 $(this).html('bookmark_border');
                 $(this).attr('data-bookmarked', 'false');
-                typeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.slice(1);
+                typeOfInfo = typeOfInfo.toLowerCase();
 
                 if (typeOfInfo === "tuition") {
                     userApiCalls.deleteInArrayInUser(userInfo._id, "bookmarkTuitions", {
@@ -49,9 +49,8 @@ const bookmark = (() => {
                 console.log("not bookmarked");
                 $(this).html('bookmark');
                 $(this).attr('data-bookmarked', 'true');
-                console.log(userInfo);
                 // make first character Upper-Case
-                typeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.slice(1);
+                typeOfInfo = typeOfInfo.toLowerCase();
                 if (typeOfInfo === "tuition") {
                     userApiCalls.putInArrayInUser(userInfo._id, "bookmarkTuitions", {
                         string: instituteId
@@ -60,7 +59,7 @@ const bookmark = (() => {
                     userApiCalls.putInArrayInUser(userInfo._id, "bookmarkSchools", {
                         string: instituteId
                     }).catch(err => console.error(err))
-                } else {
+                } else if(typeOfInfo === "event") {
                     userApiCalls.putInArrayInUser(userInfo._id, "bookmarkEvents", {
                         string: instituteId
                     }).catch(err => console.error(err))

@@ -156,7 +156,6 @@ const searchModule = (() => {
         if (queryObj.typeOfInfo === 'tuition') {
             $typeOfInfoTuitionButton.prop("checked", true);
             $tuitionCategoryContainer.css("display", "block");
-            console.log(queryObj.category);
             $subCategoryTuition.val(queryObj.category)
         } else if (queryObj.typeOfInfo === 'school') {
             $typeOfInfoSchoolButton.prop("checked", true);
