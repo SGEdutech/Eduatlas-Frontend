@@ -1,0 +1,92 @@
+<div class="col-md-4 col-xs-12" id="5b961f6f47100119ee783f64">
+    <div class="card newFont">
+        <div class=" tuition-cards" style="cursor: pointer" onclick="helperScripts.openDetailsPage('event','5b961f6f47100119ee783f64')">
+            <div class="card p-0 m-0 rounded-0 rounded-top" style="overflow: hidden;text-overflow: ellipsis;background-color: rgba(0,0,0,0.5)">
+                <img class="card-img-top" src="assets/img/event2-darken.png" alt="Tuition Image" style="height: 218px;width: 100%;">
+                <div class="card-img-overlay">
+                    <div>
+                        <h3 class="card-title text-white mt-0">{{name}}</h3>
+                        {{!-- <p style="color:black;font-weight:bold;font-size: 25px;">{{name}}</p> --}}
+                        <button class="btn btn-warning p-0" style="position: absolute;padding-top: 4px!important;padding-right:4px!important;border-radius: 30px;padding-left: 18px!important;padding-right: 18px!important;padding-bottom: 4px !important;">2.5/5</button>
+                        {{#if claimedBy}}
+                        <button class="btn btn-danger p-0" style="left:30%;!important;background: #00bcd4;position: absolute;padding-top: 4px!important;padding-right:4px!important;border-radius: 30px;padding-left: 18px!important;padding-right: 18px!important;padding-bottom: 4px !important;">VERIFIED</button>
+                        {{else}} {{/if}}
+                    </div>
+                    <button class="btn btn-danger" style=" position: absolute;
+            top: 100%;
+            left: 100%;
+            transform: translate(-110%,-130%);
+            color: white;
+            background-color: #00bcd4!important;
+            font-size: 34px;
+            padding: 1px;
+            font-weight: bold;
+            padding-left: 6px;
+            padding-right: 6px;">{{fromDate}}
+                        <br>
+                        <small style="color:black;font-size:12px;"> {{fromMonth}}</small>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body pb-0">
+            <div class="" style="overflow: hidden;margin: -5%">
+                <small class="text-secondary" style="font-style: italic;">{{description}}</small>
+                {{!-- <P class="m-0 mt-2 p-0" style="font-size: 23px;">
+                </P> --}}
+            </div>
+            <br>
+            <div class="row mt-1" style="text-overflow: ellipsis;overflow: hidden;">
+                <div class="col-1 px-0">
+                    <i class="material-icons md-18" style="color: #00bcd4">
+                        alarm
+                    </i>
+                </div>
+                <div class="col-11">
+                    <p id="phone" class="my-0" style="font-weight: bold;">{{fromTime}}-{{toTime}}</p>
+                </div>
+            </div>
+            <div class="row mt-1" style="text-overflow: ellipsis;
+                    overflow: hidden; ">
+                <div class="col-1 px-0">
+                    <i class="material-icons md-18" style="color: #00bcd4">
+                        phone
+                    </i>
+                </div>
+                <div class="col-11">
+                    <p id="address" class="my-0 font-weight-bold">{{organiserPhone}}</p>
+                </div>
+            </div>
+            <div class="row mt-1" style="text-overflow: ellipsis;overflow: hidden">
+                <div class="col-1 px-0">
+                    <i class="material-icons md-18" style="color: #00bcd4">
+                        location_on
+                    </i>
+                </div>
+                <div class="col-11">
+                    <p id="phone" class="my-0" style="font-weight: bold;height:47px;text-overflow: ellipsis;">{{addressLine1}},{{addressLine2}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="p-0 mt-2 rounded-0 card-footer" style="border-top: 1px solid #00bcd4;max-height: 40px;overflow: hidden">
+            <div class="col-6 py-2" style="border-right: 1px solid #00bcd4;">
+                <div class="row justify-content-center">
+                    <i class="material-icons bookmark-button" style="cursor: pointer" data-id="{{_id}}" data-category="{{typeOfInfo}}"
+                        data-bookmarked="{{bookmarked}}">
+                        bookmark_border
+                    </i>
+                    <a href="#" style="color: black;">BOOKMARK</a>
+                </div>
+            </div>
+            <div class="col-6 py-2">
+                <div class="row justify-content-center">
+                    <i class="material-icons share" style="cursor: pointer">
+                        share
+                    </i>
+                    <a href="#" style="color: black;">SHARE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
