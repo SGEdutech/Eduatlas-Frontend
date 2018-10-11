@@ -12,19 +12,13 @@
                         <button class="btn btn-danger p-0" style="left:30%;!important;background: #00bcd4;position: absolute;padding-top: 4px!important;padding-right:4px!important;border-radius: 30px;padding-left: 18px!important;padding-right: 18px!important;padding-bottom: 4px !important;">VERIFIED</button>
                         {{else}} {{/if}}
                     </div>
-                    <button class="btn btn-danger" style=" position: absolute;
-            top: 100%;
-            left: 100%;
-            transform: translate(-110%,-130%);
-            color: white;
-            background-color: #00bcd4!important;
-            font-size: 34px;
-            padding: 1px;
-            font-weight: bold;
-            padding-left: 6px;
-            padding-right: 6px;">{{fromDate}}
-                        <br>
-                        <small style="color:black;font-size:12px;"> {{fromMonth}}</small>
+                    <button class="btn btn-danger" style="min-width: 53px;position: absolute;top: 100%;left: 100%;transform: translate(-110%,-130%);color: white;background-color: #00bcd4!important;font-size: 34px;padding: 1px;font-weight: bold;">
+                        <div class="row justify-content-center">
+                            {{fromDate}}
+                        </div>
+                        <div class="row justify-content-center">
+                            <small style="color:black;font-size:12px;"> {{fromMonth}}</small>
+                        </div>
                     </button>
                 </div>
             </div>
@@ -36,6 +30,17 @@
                 </P> --}}
             </div>
             <br>
+            <div class="row mt-1" style="text-overflow: ellipsis;
+                    overflow: hidden; ">
+                <div class="col-1 px-0">
+                    <i class="material-icons md-18" style="color: #00bcd4">
+                        calendar_today
+                    </i>
+                </div>
+                <div class="col-11">
+                    <p id="dates" class="my-0 font-weight-bold">{{fromDate}} {{fromMonth}} - {{toDate}} {{toMonth}}</p>
+                </div>
+            </div>
             <div class="row mt-1" style="text-overflow: ellipsis;overflow: hidden;">
                 <div class="col-1 px-0">
                     <i class="material-icons md-18" style="color: #00bcd4">
@@ -43,18 +48,7 @@
                     </i>
                 </div>
                 <div class="col-11">
-                    <p id="phone" class="my-0" style="font-weight: bold;">{{fromTime}}-{{toTime}}</p>
-                </div>
-            </div>
-            <div class="row mt-1" style="text-overflow: ellipsis;
-                    overflow: hidden; ">
-                <div class="col-1 px-0">
-                    <i class="material-icons md-18" style="color: #00bcd4">
-                        phone
-                    </i>
-                </div>
-                <div class="col-11">
-                    <p id="address" class="my-0 font-weight-bold">{{organiserPhone}}</p>
+                    <p id="phone" class="my-0" style="font-weight: bold;">{{fromTime}} - {{toTime}}</p>
                 </div>
             </div>
             <div class="row mt-1" style="text-overflow: ellipsis;overflow: hidden">

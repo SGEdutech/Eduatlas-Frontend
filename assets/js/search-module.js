@@ -242,15 +242,21 @@ const searchModule = (() => {
 			// end
 			if (queryObj.typeOfInfo === "event") {
 				if (obj.fromDate) {
-					obj.fromDate = helperScripts.getDateObj(obj.fromDate)
-					obj.fromDate = obj.fromDate.date + " " + obj.fromDate.monthName;
+					const dateObj = helperScripts.getDateObj(obj.fromDate)
+					obj.fromDate = dateObj.date;
+					obj.fromMonth = dateObj.monthName;
+				}
+				if (obj.toDate) {
+					const dateObj = helperScripts.getDateObj(obj.toDate)
+					obj.toDate = dateObj.date;
+					obj.toMonth = dateObj.monthName;
 				}
 				if (obj.lastDateRegistration) {
 					obj.lastDateRegistration = helperScripts.getDateObj(obj.lastDateRegistration)
 					obj.lastDateRegistration = obj.lastDateRegistration.date + " " + obj.lastDateRegistration.monthName;
 				}
 				if (obj.description) {
-                    obj.description = obj.description.slice(0,55)
+					obj.description = obj.description.slice(0, 55)
 				}
 				obj.averageRating = null;
 				obj.claimedBy = false;
