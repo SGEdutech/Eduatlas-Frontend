@@ -228,9 +228,15 @@ const getEvent = (() => {
             $toDate.html(toDateObj.date + '/' + toDateObj.month + '/' + toDateObj.year);
             $fromTime.html(eventData.fromTime);
             $toTime.html(eventData.toTime);
-            $attending.html(eventData.goingUsers.length);
+            if (eventData.goingUsers) {
+                $attending.html(eventData.goingUsers.length);
+            }
+            if (eventData.notGoingUsers) {
             $notAttending.html(eventData.notGoingUsers.length);
+            }
+            if (eventData.mayBeGoingUsers) {
             $maybeAttending.html(eventData.mayBeGoingUsers.length);
+            }
             getGoingUsers(eventData.goingUsers).forEach(promise => {
                 promise.then(userData => {
                     console.log(userData);
