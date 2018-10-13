@@ -35,15 +35,15 @@ const bookmark = (() => {
 				if (typeOfInfo === "tuition") {
 					userApiCalls.deleteInArrayInUser(userInfo._id, "bookmarkTuitions", {
 						string: instituteId
-					}).catch(err => console.error(err))
+					}).then(()=> alert("bookmark removed")).catch(err => console.error(err))
 				} else if (typeOfInfo === "school") {
 					userApiCalls.deleteInArrayInUser(userInfo._id, "bookmarkSchools", {
 						string: instituteId
-					}).catch(err => console.error(err))
+					}).then(()=> alert("bookmark removed")).catch(err => console.error(err))
 				} else {
 					userApiCalls.deleteInArrayInUser(userInfo._id, "bookmarkEvents", {
 						string: instituteId
-					}).catch(err => console.error(err))
+					}).then(()=> alert("bookmark removed")).catch(err => console.error(err))
 				}
 			} else {
 				console.log("not bookmarked");
@@ -54,15 +54,15 @@ const bookmark = (() => {
 				if (typeOfInfo === "tuition") {
 					userApiCalls.putInArrayInUser(userInfo._id, "bookmarkTuitions", {
 						string: instituteId
-					}).catch(err => console.error(err))
+					}).then(()=> alert("bookmark added")).catch(err => console.error(err))
 				} else if (typeOfInfo === "school") {
 					userApiCalls.putInArrayInUser(userInfo._id, "bookmarkSchools", {
 						string: instituteId
-					}).catch(err => console.error(err))
+					}).then(()=> alert("bookmark added")).catch(err => console.error(err))
 				} else if (typeOfInfo === "event") {
 					userApiCalls.putInArrayInUser(userInfo._id, "bookmarkEvents", {
 						string: instituteId
-					}).catch(err => console.error(err))
+					}).then(()=> alert("bookmark added")).catch(err => console.error(err))
 				}
 			}
 		}

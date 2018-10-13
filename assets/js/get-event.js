@@ -14,6 +14,7 @@ const getEvent = (() => {
     let $coverImage;
     let $address, $primaryNumber, $email;
     let $sponsoredPopular, $relatedEventContainer;
+    let $fromDateBigger, $fromMonthBigger;
 
     function cache() {
         $name = $('#name');
@@ -41,7 +42,9 @@ const getEvent = (() => {
         $toTime = $('#toTime');
         $attending = $('#Attending');
         $notAttending = $('#notAttending');
-        $maybeAttending = $('#maybeAttending')
+        $maybeAttending = $('#maybeAttending');
+        $fromDateBigger = $('#from_date_bigger');
+        $fromMonthBigger = $('#from_month_bigger')
     }
 
     function bindEvents() {
@@ -76,9 +79,9 @@ const getEvent = (() => {
 
     function updateCoverImage(coverPic) {
         if (coverPic === undefined || coverPic === '') {
-            $coverImage.attr("src", "/assets/img/education-61040.jpg");
+            $coverImage.attr("src", "/assets/img/event2.png");
         } else {
-            $coverImage.attr('src', 'images/' + coverPic);
+            $coverImage.attr('src', '/images/' + coverPic);
         }
     }
 
@@ -213,6 +216,8 @@ const getEvent = (() => {
             updateCoverImage(eventData.img_eventCoverPic);
             getPopularListing(eventData.city, "event");
             getRelatedListing(eventData.city, "event");
+            $fromDateBigger.html(fromDateObj.date);
+            $fromMonthBigger.html(fromDateObj.monthName);
             $address.html(eventData.addressLine1 + ',' + eventData.addressLine2 + ',' + eventData.city + ',' + eventData.pin);
             $primaryNumber.html(eventData.organiserPhone);
             $email.html(eventData.organiserEmail);
