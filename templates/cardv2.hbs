@@ -2,7 +2,13 @@
     <div class="card newFont">
         <div class=" tuition-cards" style="cursor: pointer" onclick="helperScripts.openDetailsPage('event','{{_id}}')">
             <div class="card p-0 m-0 rounded-0 rounded-top" style="overflow: hidden;text-overflow: ellipsis;background-color: rgba(0,0,0,0.5)">
-                <img class="card-img-top" src="assets/img/event2-darken.png" alt="Tuition Image" style="height: 218px;width: 100%;">
+
+                {{#if img_eventCoverPic}}
+                <img class="card-img-top" src="images/{{img_eventCoverPic}}" alt="Event Image" style="height: 218px;width: 100%;">
+                {{else}}
+                <img class="card-img-top" src="assets/img/event2-darken.png" alt="Event Image" style="height: 218px;width: 100%;">
+                {{/if}}
+
                 <div class="card-img-overlay">
                     <div>
                         <h3 class="card-title text-white mt-0">{{name}}</h3>
