@@ -90,18 +90,18 @@
             <div class="col-6 py-2" style="border-right: 1px solid #00bcd4;">
                 <div class="row justify-content-center bookmark-button" style="cursor: pointer" data-id="{{_id}}"
                     data-category="{{typeOfInfo}}" data-bookmarked="{{bookmarked}}">
-                    <i class="material-icons">
+                    <i class="material-icons" style="color:#00bcd4">
                         {{#if bookmarked}} bookmark {{else}} bookmark_border {{/if}}
                     </i>
-                    <a style="color: black;">BOOKMARK</a>
+                    <a style="color:rgba(0,0,0,0.87)">BOOKMARK</a>
                 </div>
             </div>
             <div class="col-6 py-2">
                 <div class="row justify-content-center">
-                    <i class="material-icons share" style="cursor: pointer">
+                    <i class="material-icons share" style="cursor: pointer; color: #00bcd4">
                         share
                     </i>
-                    <a href="#" style="color: black;">SHARE</a>
+                    <a style="color:rgba(0,0,0,0.87)">SHARE</a>
                 </div>
             </div>
             {{/if}} {{#if manageBookmarks}}
