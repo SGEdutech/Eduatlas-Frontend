@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
         function gtag() {
             dataLayer.push(arguments);
@@ -15,173 +16,178 @@
         gtag('config', 'UA-121945570-1');
     </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Add a Event</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<title>Add a Event</title>
 </head>
+
 <body>
 
-<div class="container">
+	<div class="container">
 
-    <div id="school_added_modal" class="modal">
-        <div class="modal-content">
-            <h4>Event Added</h4>
-            <p>Keep going</p>
-        </div>
-    </div>
+		<div id="school_added_modal" class="modal">
+			<div class="modal-content">
+				<h4>Event Added</h4>
+				<p>Keep going</p>
+			</div>
+		</div>
 
-    <h1 class="center-align">Add a event</h1>
+		<h1 class="center-align">Add a event</h1>
 
-    <div class="row">
-        <form id="the_form" class="col s12" method="post" action="/event"
-              enctype="multipart/form-data">
+		<div class="row">
+			<form id="the_form" class="col s12" method="post" action="/event" enctype="multipart/form-data">
 
-            <div class="input-field col s6">
-                <input name="name" id="name" type="text" class="validate" required>
-                <label for="name">Event Name <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s6">
+					<input name="name" id="name" type="text" class="validate" required>
+					<label for="name">Event Name <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <div class="input-field col s6">
-                <select id="category" name="category" multiple>
-                    <option value="" disabled>Choose your option</option>
-                    <option value="Cultural">Cultural</option>
-                    <option value="Annual Day">Annual Day</option>
-                    <option value="Music">Music</option>
-                    <option value="Programming">Programming</option>
-                    <option value="Fest">Fest</option>
-                    <option value="Educational">Educational</option>
-                    <option value="Comedy">Comedy</option>
-                    <option value="Food and Drink">Food and Drink</option>
-                    <option value="Exhibition">Exhibition</option>
-                    <option value="Travel n Activities">Travel n Activities</option>
-                    <option value="others">others</option>
-                </select>
-                <label for="category">Category <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s6">
+					<select id="category" name="category" multiple>
+						<option value="" disabled>Choose your option</option>
+						<option value="Cultural">Cultural</option>
+						<option value="Annual Day">Annual Day</option>
+						<option value="Music">Music</option>
+						<option value="Programming">Programming</option>
+						<option value="Fest">Fest</option>
+						<option value="Educational">Educational</option>
+						<option value="Comedy">Comedy</option>
+						<option value="Food and Drink">Food and Drink</option>
+						<option value="Exhibition">Exhibition</option>
+						<option value="Travel n Activities">Travel n Activities</option>
+						<option value="others">others</option>
+					</select>
+					<label for="category">Category <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <div class="input-field col s12">
-                <input name="description" id="description" type="text" class="validate" required>
-                <label for="description">Description <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s12">
+					<input name="description" id="description" type="text" class="validate" required>
+					<label for="description">Description <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <h4 class="col s12">Age Group:</h4>
+				<div class="input-field col s12">
+					<input name="entryFee" id="entry_fee" type="number" class="validate">
+					<label for="entry_fee">Entry Fee <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <div class="input-field col s6">
-                <input name="fromAge" id="from_age" type="number" class="validate" required>
-                <label for="from_age">From <i class="red-text accent-3">*</i></label>
-            </div>
+				<h4 class="col s12">Age Group:</h4>
 
-            <div class="input-field col s6">
-                <input name="toAge" id="to_age" type="number" class="validate" required>
-                <label for="to_age">To <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s6">
+					<input name="fromAge" id="from_age" type="number" class="validate">
+					<label for="from_age">From</label>
+				</div>
 
-            <h4 class="col s12">Location:</h4>
+				<div class="input-field col s6">
+					<input name="toAge" id="to_age" type="number" class="validate">
+					<label for="to_age">To</label>
+				</div>
 
-            <div class="input-field col s4">
-                <input name="addressLine1" id="address_line_1" type="text" class="validate" required>
-                <label for="address_line_1">Address Line 1 <i class="red-text accent-3">*</i></label>
-            </div>
+				<h4 class="col s12">Location:</h4>
 
-            <div class="input-field col s4">
-                <input name="addressLine2" id="address_line_2" type="text" class="validate" required>
-                <label for="address_line_2">Address Line 2 <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s4">
+					<input name="addressLine1" id="address_line_1" type="text" class="validate" required>
+					<label for="address_line_1">Address Line 1 <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <div class="input-field col s4">
-                <input name="city" id="city" type="text" class="validate" required>
-                <label for="city">City <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s4">
+					<input name="addressLine2" id="address_line_2" type="text" class="validate">
+					<label for="address_line_2">Address Line 2 </label>
+				</div>
 
-            <div class="input-field col s4">
-                <input name="state" id="state" type="text" class="validate" required>
-                <label for="state">State <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s4">
+					<input name="city" id="city" type="text" class="validate" required>
+					<label for="city">City <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <div class="input-field col s4">
-                <input name="country" id="country" type="text" value="India" class="validate" required>
-                <label for="country">Country <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s4">
+					<input name="state" id="state" type="text" class="validate" required>
+					<label for="state">State <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <div class="input-field col s4">
-                <input name="pin" id="pin" type="number" class="validate" required>
-                <label for="pin">Pin <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s4">
+					<input name="country" id="country" type="text" value="India" class="validate" required>
+					<label for="country">Country <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <h4 class="col s12">Day N Time: <i class="red-text accent-3">*</i></h4>
-            <div class="input-field col s6">
-                <input name="fromDate" id="from_date" type="date" class="validate" required>
-                <label for="from_date">Event Start Date <i class="red-text accent-3">*</i></label>
-            </div>
-            <div class="input-field col s6">
-                <input name="toDate" id="to_date" type="date" class="validate" required>
-                <label for="to_date">Event End Date <i class="red-text accent-3">*</i></label>
-            </div>
-            <div class="input-field col s6">
-                <input name="fromTime" id="from_time" type="time" class="validate" required>
-                <label for="from_time">Event Start Time <i class="red-text accent-3">*</i></label>
-            </div>
-            <div class="input-field col s6">
-                <input name="toTime" id="to_time" type="time" class="validate" required>
-                <label for="to_time">Event End Time <i class="red-text accent-3">*</i></label>
-            </div>
-            <div class="input-field col s6">
-                <input name="lastDateRegistration" id="last_date_registration" type="date" class="validate" required>
-                <label for="last_date_registration">Last Date Of Registration <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s4">
+					<input name="pin" id="pin" type="number" class="validate" required>
+					<label for="pin">Pin <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <h4 class="col s12">Organiser/Contact Person:</h4>
+				<h4 class="col s12">Day N Time: <i class="red-text accent-3">*</i></h4>
+				<div class="input-field col s6">
+					<input name="fromDate" id="from_date" type="date" class="validate" required>
+					<label for="from_date">Event Start Date <i class="red-text accent-3">*</i></label>
+				</div>
+				<div class="input-field col s6">
+					<input name="toDate" id="to_date" type="date" class="validate" required>
+					<label for="to_date">Event End Date <i class="red-text accent-3">*</i></label>
+				</div>
+				<div class="input-field col s6">
+					<input name="fromTime" id="from_time" type="time" class="validate" required>
+					<label for="from_time">Event Start Time <i class="red-text accent-3">*</i></label>
+				</div>
+				<div class="input-field col s6">
+					<input name="toTime" id="to_time" type="time" class="validate" required>
+					<label for="to_time">Event End Time <i class="red-text accent-3">*</i></label>
+				</div>
+				<div class="input-field col s6">
+					<input name="lastDateRegistration" id="last_date_registration" type="date" class="validate" required>
+					<label for="last_date_registration">Last Date Of Registration <i class="red-text accent-3">*</i></label>
+				</div>
 
-            <div class="input-field col s4">
-                <input name="organiserName" id="organiser_name" type="text" class="validate" required>
-                <label for="organiser_name">Contact Person Name<i class="red-text accent-3">*</i></label>
-            </div>
+				<h4 class="col s12">Organiser/Contact Person:</h4>
 
-            <div class="input-field col s4">
-                <input name="organiserPhone" id="organiser_phone" type="number" class="validate" required>
-                <label for="organiser_phone">Phone Number <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s4">
+					<input name="organiserName" id="organiser_name" type="text" class="validate" required>
+					<label for="organiser_name">Contact Person Name<i class="red-text accent-3">*</i></label>
+				</div>
 
-            <div class="input-field col s4">
-                <input name="organiserEmail" id="organiser_email" type="email" class="validate" required>
-                <label for="organiser_email">Email <i class="red-text accent-3">*</i></label>
-            </div>
+				<div class="input-field col s4">
+					<input name="organiserPhone" id="organiser_phone" type="number" class="validate">
+					<label for="organiser_phone">Phone Number</label>
+				</div>
 
-            <div class="input-field col s4">
-                <input name="website" id="website" type="text" class="validate">
-                <label for="website">Website</label>
-            </div>
+				<div class="input-field col s4">
+					<input name="organiserEmail" id="organiser_email" type="email" class="validate">
+					<label for="organiser_email">Email</label>
+				</div>
+
+				<div class="input-field col s4">
+					<input name="website" id="website" type="text" class="validate">
+					<label for="website">Website</label>
+				</div>
 
 
-            <div class="file-field input-field col s12">
-                <div class="btn">
-                    <span>Cover Pic</span>
-                    <input type="file" name="eventCoverPic">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder="Maximum 1 MB">
-                </div>
-            </div>
-            <!--todo - add gallery input-->
-            <div class="input-field col s4">
-                <input name="signedBy" id="signed_by" type="text" class="validate">
-                <label for="signed_by">Signed By</label>
-            </div>
+				<div class="file-field input-field col s12">
+					<div class="btn">
+						<span>Cover Pic</span>
+						<input type="file" name="eventCoverPic">
+					</div>
+					<div class="file-path-wrapper">
+						<input class="file-path validate" type="text" placeholder="Maximum 1 MB">
+					</div>
+				</div>
+				<!--todo - add gallery input-->
+				<div class="input-field col s4">
+					<input name="signedBy" id="signed_by" type="text" class="validate">
+					<label for="signed_by">Signed By</label>
+				</div>
 
-            <button class="btn waves-effect waves-light col s12 center-align" type="submit">Submit
-                <i class="material-icons right">send</i>
-            </button>
+				<button class="btn waves-effect waves-light col s12 center-align" type="submit">Submit
+					<i class="material-icons right">send</i>
+				</button>
 
-        </form>
-    </div>
-</div>
+			</form>
+		</div>
+	</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-<script src="assets/js/form.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+	<script src="assets/js/form.js"></script>
 </body>
+
 </html>
