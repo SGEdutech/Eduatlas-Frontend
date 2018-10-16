@@ -428,7 +428,7 @@ const getInfo = (() => {
 					search: city,
 					fullText: true
 				}),
-				demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
+				demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews coursesOffered',
 				limit: 3,
 				skip: 0,
 				sortBy: ''
@@ -566,7 +566,7 @@ const getInfo = (() => {
 
 				if (typeOfInfo === 'tuition') {
 					setTimeout(() => updateDaynTime(InfoObj.dayAndTimeOfOperation, $opration_hours_containers));
-					setTimeout(() => showCourses(InfoObj.courses));
+					setTimeout(() => showCourses(InfoObj.coursesOffered));
 					setTimeout(() => showGallery(InfoObj.gallery));
 				}
 				if (typeOfInfo === 'school') {
