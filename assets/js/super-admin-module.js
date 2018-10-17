@@ -7,7 +7,7 @@ const superAdmin = (() => {
 
 	function submitRequest(queryObj) {
 		// FIXME: Url
-		const url = 'http://localhost:6868/school/super-admin';
+		const url = '/school/super-admin';
 		return $.get({ url, data: queryObj });
 	}
 
@@ -68,18 +68,6 @@ const superAdmin = (() => {
 
 	function bindEvents() {
 		$submitBtn.click(queryFormAndRenderListings);
-	}
-
-	function cacheDynamic() {
-
-	}
-
-	function bindDynamic() {
-
-	}
-
-	function render() {
-
 	}
 
 	function init() {
