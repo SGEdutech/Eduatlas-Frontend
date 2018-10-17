@@ -1,9 +1,11 @@
 const superAdmin = (() => {
+	let listingDataArr;
 	let $signedByInp;
 	let $fromDateInp;
 	let $toDateInp;
 	let $submitBtn;
 	let $listingContainer;
+	let $listingDeleteBtn;
 
 	function submitRequest(queryObj) {
 		// FIXME: Url
@@ -11,40 +13,11 @@ const superAdmin = (() => {
 		return $.get({ url, data: queryObj });
 	}
 
-	function renderListing(listingDataArr) {
-		let name;
-		let signedBy;
-		let updated;
-		let _id;
-		let html = '';
-		listingDataArr.forEach(data => {
-			name = data.name;
-			signedBy = data.signedBy;
-			const dateObj = new Date(Date.parse(data.updated));
-			updated = dateObj.toDateString();
-			_id = data._id;
-			const template = `
-			<tr>
-				<td class="text-center">1</td>
-				<td>${name}</td>
-				<td>${signedBy}</td>
-				<td>${updated}</td>
-				<td class="td-actions text-right">
-					<a href="https://eduatlas.com/SchoolDetails2.0.html?_id=${_id}" type="button" rel="tooltip" class="btn btn-info">
-						<i class="material-icons">person</i>
-					</a>
-					<a type="button" rel="tooltip" class="btn btn-success">
-						<i class="material-icons">edit</i>
-					</a>
-					<a type="button" rel="tooltip" class="btn btn-danger">
-						<i class="material-icons">close</i>
-					</a>
-				</td>
-			</tr>
-		`;
-			html += template;
-		});
+	function renderListing() {
+		const html = template.superAdminTableColoum({ listings: listingDataArr });
 		$listingContainer.html(html);
+		cacheDynamic();
+		bindDynamic();
 	}
 
 	function queryForm() {
@@ -54,8 +27,34 @@ const superAdmin = (() => {
 		return submitRequest({ signedBy, fromDate, toDate });
 	}
 
+	function adjustDate() {
+		listingDataArr.forEach(listingObj => {
+			const dateObj = new Date(Date.parse(listingObj.updated));
+			listingObj.updated = dateObj.toDateString()
+		});
+	}
+
 	function queryFormAndRenderListings() {
-		queryForm().then(data => renderListing(data)).catch(err => console.error(err))
+		queryForm().then(listings => {
+			listingDataArr = listings;
+			adjustDate();
+			renderListing();
+		}).catch(err => console.error(err))
+	}
+
+	function submitDeleteRequest(listingId) {
+		const url = `/school/${listingId}`;
+		return $.ajax({ url, type: 'DELETE' });
+	}
+
+	function deleteListing(event) {
+		const $deleteBtn = $(event.target);
+		const listingId = $deleteBtn.attr('data-listing-id')
+		
+		submitDeleteRequest(listingId).then(() => {
+			listingDataArr = listingDataArr.filter(listingObj => listingObj._id !== listingId);
+			renderListing();
+		}).catch(err => console.error(err));
 	}
 
 	function cache() {
@@ -70,10 +69,17 @@ const superAdmin = (() => {
 		$submitBtn.click(queryFormAndRenderListings);
 	}
 
+	function cacheDynamic() {
+		$listingDeleteBtn = $('.listing-delete-btn');
+	}
+
+	function bindDynamic() {
+		$listingDeleteBtn.click(deleteListing);
+	}
+
 	function init() {
 		cache();
 		bindEvents();
-		render();
 		cacheDynamic();
 		bindDynamic();
 	}
