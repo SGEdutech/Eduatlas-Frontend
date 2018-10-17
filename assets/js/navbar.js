@@ -99,7 +99,7 @@ const navigationBar = (() => {
             cacheDynamicDom(activeElementId);
             if (activeElementId) activateElement();
             updateAddTuitionLink();
-        }).catch(err => reject(err));
+        }).catch(err => console.error(err));
     }
 
     function init(userInfo, opts) {

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Hello, world!</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!-- Material Kit CSS -->
+	<link rel="stylesheet" href="assets/css/material-kit.css">
+
+</head>
+
+<body>
+
+	<h1 class="text-center">Hi Renu! What would you like to search today?</h1>
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="form-group col-4">
+				<label for="signed_by_inp" class="bmd-label-floating">Signed By</label>
+				<input type="text" class="form-control" id="signed_by_inp">
+			</div>
+			<div class="form-group col-4">
+				<label for="from_date_inp">From Date</label>
+				<input type="text" class="form-control datetimepicker" id="from_date_inp">
+			</div>
+			<div class="form-group col-4">
+				<label for="to_date_inp">To Date</label>
+				<input type="text" class="form-control datetimepicker" id="to_date_inp">
+			</div>
+			<button type="submit" id="search_btn" class="btn btn-primary btn-round">
+				<i class="material-icons">search</i> Search
+			</button>
+		</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th class="text-center">#</th>
+				<th>Name</th>
+				<th>Signed By</th>
+				<th>Date</th>
+				<th class="text-right">Actions</th>
+			</tr>
+		</thead>
+		<tbody id="listing_container">
+
+		</tbody>
+	</table>
+</div>
+
+	<!--   Core JS Files   -->
+	<script src="assets/js/core/jquery.min.js"></script>
+	<script src="assets/js/core/popper.min.js"></script>
+	<script src="assets/js/bootstrap-material-design.js"></script>
+
+	<!-- Plugin for Date Time Picker and Full Calendar Plugin-->
+	<script src="assets/js/plugins/moment.min.js"></script>
+
+	<!-- Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+	<script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+
+	<!-- Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/  -->
+	<script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
+
+	<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+	<script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
+
+	<!-- Plugin for Small Gallery in Product Page -->
+	<script src="assets/js/plugins/jquery.flexisel.js"></script>
+
+	<!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+	<script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+
+	<!-- Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="assets/js/plugins/nouislider.min.js"></script>
+
+	<!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+	<script src="assets/js/material-kit.js?v=2.0.0"></script>
+
+	<script src="assets/js/super-admin-datetimepicjer.js"></script>
+
+	<script src="assets/js/super-admin-module.js"></script>
+
+</body>
+
+</html>

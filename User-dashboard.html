@@ -2,11 +2,11 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
-    <link rel="apple-touch-icon" href="assets/img/favicon.png">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
-    <script>
-        window.dataLayer = window.dataLayer || [];
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121945570-1"></script>
+	<link rel="apple-touch-icon" href="assets/img/favicon.png">
+	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
         function gtag() {
             dataLayer.push(arguments);
@@ -16,219 +16,419 @@
 
         gtag('config', 'UA-121945570-1');
     </script>
-    <title>User-dashboard</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Material Kit CSS -->
-    <link rel="stylesheet" href="assets/css/material-kit.css">
-    <link rel="stylesheet" href="assets/css/userdashboard.css">
-    <!--for nav links color  -->
-    <link rel="stylesheet" href="assets/css/nav-links.css">
-    <!-- steps in adding new thing -->
-    <!-- <link rel="stylesheet" href="assets/css/steps.css"> -->
-    <!-- overriding material kit input underline color -->
-    <link rel="stylesheet" href="assets/css/input-color.css">
+	<title>User-dashboard</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Material Kit CSS -->
+	<link rel="stylesheet" href="assets/css/material-kit.css">
+	<link rel="stylesheet" href="assets/css/userdashboard.css">
+	<!--for nav links color  -->
+	<link rel="stylesheet" href="assets/css/nav-links.css">
+	<!-- steps in adding new thing -->
+	<!-- <link rel="stylesheet" href="assets/css/steps.css"> -->
+	<!-- overriding material kit input underline color -->
+	<link rel="stylesheet" href="assets/css/input-color.css">
 </head>
 
 <body>
-    <div id="nav_container">
-    </div>
-    <!-- <div id="coverImgContainer">
+	<div id="nav_container">
+	</div>
+	<!-- <div id="coverImgContainer">
         <div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark" style="background-image: url(assets/img/bg2.jpg);">
         </div>
     </div> -->
-    <div id="secondary_info" class="row p-0 mt-5">
-        <div class="col-md-2 text-center">
+	<div id="secondary_info" class="row p-0 mt-5">
+		<div class="col-md-2 text-center">
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="fileinput fileinput-new text-center">
-                        <div class="fileinput-new thumbnail img-raised">
-                            <img id="profile_pic" src="" alt="User Profile Pic">
-                        </div>
-                    </div>
-                    <div class="card-subtitle text-muted h5" id="userIdContainer"></div>
-                    <button class="btn btn-outline-info btn-round" onclick="logout()">Logout</button>
-                </div>
+			<div class="card">
+				<div class="card-body">
+					<div class="fileinput fileinput-new text-center">
+						<div class="fileinput-new thumbnail img-raised">
+							<img id="profile_pic" src="" alt="User Profile Pic">
+						</div>
+					</div>
+					<div class="card-subtitle text-muted h5" id="userIdContainer"></div>
+					<button class="btn btn-outline-info btn-round" onclick="logout()">Logout</button>
+				</div>
 
-            </div>
+			</div>
 
-            <div class="card">
-                <div class="card-body p-1 p-md-3">
-                    <ul class="nav nav-pills nav-pills-info flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#tab1" data-toggle="tab"> Notifications</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="#tab4" data-toggle="tab"> Bookmarks</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="#tab5" data-toggle="tab"> My Reviews</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#tab2" data-toggle="tab">
-                                Edit Profile</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+			<div class="card">
+				<div class="card-body p-1 p-md-3">
+					<ul class="nav nav-pills nav-pills-info flex-column">
+						<li class="nav-item">
+							<a class="nav-link active" href="#tab1" data-toggle="tab"> Notifications</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#tab3" data-toggle="tab"> Study Monitor</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link " href="#tab4" data-toggle="tab"> Bookmarks</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link " href="#tab5" data-toggle="tab"> My Reviews</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#tab2" data-toggle="tab">
+								Edit Profile</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 
-        </div>
+		</div>
 
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-body p-1 p-md-3">
-                    <div class="tab-content">
+		<div class="col-md-10">
+			<div class="card">
+				<div class="card-body p-0">
+					<div class="tab-content">
 
-                        <div class="tab-pane active" id="tab1">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <h4 class="card-title">No Notifications</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab2">
-                            <form id="Form1" method="" action="">
+						<div class="tab-pane active" id="tab1">
+							<div class="container">
+								<div class="row">
+									<div class="card text-center">
+										<div class="card-body">
+											<h4 class="card-title">No Notifications</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab2">
+							<form id="Form1" method="" action="">
 
-                                <div id="basicContainer">
-                                </div>
+								<div id="basicContainer">
+								</div>
 
-                            </form>
-                            <button id="saveFrom1" class="btn btn-info btn-round">Save Personal Info</button>
-                            <form id="Form2" method="" action="">
+							</form>
+							<button id="saveFrom1" class="btn btn-info btn-round">Save Personal Info</button>
+							<form id="Form2" method="" action="">
 
-                                <div class="card" id="userSocialLinksContainer">
-                                </div>
+								<div class="card" id="userSocialLinksContainer">
+								</div>
 
-                            </form>
+							</form>
 
-                            <button id="saveFrom2" class="btn btn-info btn-round">Save Social Links</button>
-                        </div>
-                        <div class="tab-pane" id="tab4">
-                            <div class="container">
-                                <div id="userTuitionBookmarks" class="row">
-                                    <div class="card-title col-12">
-                                        Tuitions Bookmarked
-                                    </div>
-                                </div>
-                                <div id="userSchoolBookmarks" class="row">
-                                    <div class="card-title col-12">
-                                        Schools Bookmarked
-                                    </div>
-                                </div>
-                                <div id="userEventBookmarks" class="row">
-                                    <div class="card-title col-12">
-                                        Events Bookmarked
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab5">
-                            <div id="userReviews" class="row container">
-                                <div class="card-title col-12">
-                                    Your Reviews
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+							<button id="saveFrom2" class="btn btn-info btn-round">Save Social Links</button>
+						</div>
+						<div class="tab-pane" id="tab4">
+							<div class="container">
+								<div id="userTuitionBookmarks" class="row">
+									<div class="card-title col-12">
+										Tuitions Bookmarked
+									</div>
+								</div>
+								<div id="userSchoolBookmarks" class="row">
+									<div class="card-title col-12">
+										Schools Bookmarked
+									</div>
+								</div>
+								<div id="userEventBookmarks" class="row">
+									<div class="card-title col-12">
+										Events Bookmarked
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab5">
+							<div id="userReviews" class="row container">
+								<div class="card-title col-12">
+									Your Reviews
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab3">
+							<ul class="nav nav-pills nav-pills-success bg-info p-2" id="batches_pills_container">
+								<li class="nav-item"><a class="nav-link active rounded-0" href="#IMSP" data-toggle="tab">IMS Pitumpura</a></li>
+								<li class="nav-item"><a class="nav-link rounded-0 disabled" href="#pill2" data-toggle="tab">Quantum Classes</a></li>
+							</ul>
+							<div class="tab-content tab-space" id="batches_panes_container">
+								<div class="tab-pane active" id="{{_id}}">
+									<div class="row m-0">
+										<div class="col-md-2" style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
+											<ul class="nav nav-pills nav-pills-success flex-column">
+												<li class="nav-item"><a class="nav-link active rounded-0" href="#forum" data-toggle="tab">Forum</a></li>
+												<li class="nav-item"><a class="nav-link rounded-0" href="#attendance" data-toggle="tab">Attendence</a></li>
+												<!-- <li class="nav-item"><a class="nav-link rounded-0 disabled" href="#test{{_id}}" data-toggle="tab">Test Report</a></li> -->
+												<li class="nav-item"><a class="nav-link rounded-0" href="#fee" data-toggle="tab">Fee Report</a></li>
+											</ul>
+										</div>
+										<div class="col-md-10">
+											<div class="tab-content">
+												<div class="tab-pane active" id="forum">
+													<div class="card">
+														<div class="card-body row">
+															<div class="col-md-2">
+																<div class="card-avatar">
+																	<a href="#pablo">
+																		<img class="img" src="assets/img/card-profile4-square.jpg" style="height:100px;width:100px;">
+																	</a>
+																	<div class="ripple-container"></div>
+																</div>
+															</div>
+															<div class="col-10 text-left">
+																<a class="row card-link" href="#">
+																	<h3 class="card-heading font-weight-bold">Announcement Thread</h3>
+																</a>
+																<div class="row">
+																	<small><span class="text-secondary">submitted</span> 3 days ago <span class="text-secondary">by</span>
+																		Principal</small>
+																</div>
+																<div class="row">
+																	<small class="text-secondary">326 comments</small>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="tab-pane" id="attendance">
+													<div class="card m-0 mb-4">
+														<div class="card-title col-12 h3">
+															Batch Name
+														</div>
+														<div class="row">
+															<div class="col-md-3">
+																<div class="card-title col-12 h4 font-weight-normal">
+																	Attendence
+																</div>
+															</div>
+															<div class="col-md-3">
+																<div class="card-title col-12 h4" style="color:#00bcd4 !important">
+																	70%
+																</div>
+															</div>
+														</div><br>
+														<div class="col-12 mb-3">
+															<div style="width:100%;height:195px!important;overflow-y: scroll!important;">
+																<table class="table" style="background-color: darkgrey;">
+																	<thead>
+																		<tr>
+																			<th class="text-center">Date</th>
+																			<th>Topic</th>
+																			<th>Faculty</th>
+																			<th>Status</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td class="text-center">23/11/2018</td>
+																			<td>Andrew Mike</td>
+																			<td>Develop</td>
+																			<td class="text-success">Present</td>
+																		</tr>
+																		<tr>
+																			<td class="text-center">23/11/2018</td>
+																			<td>Andrew Mike</td>
+																			<td>Develop</td>
+																			<td class="text-success">Present</td>
+																		</tr>
+																		<tr>
+																			<td class="text-center">23/11/2018</td>
+																			<td>Andrew Mike</td>
+																			<td>Develop</td>
+																			<td class="text-success">Present</td>
+																		</tr>
+																		<tr>
+																			<td class="text-center">23/11/2018</td>
+																			<td>Andrew Mike</td>
+																			<td>Develop</td>
+																			<td class="text-danger">Absent</td>
+																		</tr>
+																		<tr>
+																			<td class="text-center">23/11/2018</td>
+																			<td>Andrew Mike</td>
+																			<td>Develop</td>
+																			<td class="text-danger">Absent</td>
+																		</tr>
+																		<tr>
+																			<td class="text-center">23/11/2018</td>
+																			<td>John Doe</td>
+																			<td>Design</td>
+																			<td class="text-danger">Absent</td>
+																		</tr>
+																		<tr>
+																			<td class="text-center">23/11/2018</td>
+																			<td>Alex Mike</td>
+																			<td>Design</td>
+																			<td class="text-danger">Absent</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+													<div class="card m-0 mb-4">
+														<div class="card-title col-12 h3">
+															Batch Name
+														</div>
+													</div>
+												</div>
+												<div class="tab-pane" id="fee">
+													<div class="card m-0 mb-4">
+														<div class="card-title col-12 h3">
+															Course Name
+														</div>
+														<div class="row">
+															<div class="col-md-1"></div>
+															<div class="col-md-12">
+																<div class="col-md-6">
+																	<div class="card-title  h5 font-weight-normal float-left">
+																		Fee Submited
+																	</div>
+																</div>
+																<div class="col-md-6">
+																	<div class="card-title  h5 font-weight-normal float-right">
+																		29000/-
+																	</div>
+																</div>
+															</div>
 
-    </div>
+															<div class="col-md-12">
+																<div class="col-md-6">
+																	<div class="card-title  h5 font-weight-normal float-left">
+																		Discount
+																	</div>
+																</div>
+																<div class="col-md-6">
+																	<div class="card-title  h5 font-weight-normal float-right">
+																		5000/-
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-12">
+																<div class="col-md-6">
+																	<div class="card-title  h5 font-weight-normal float-left">
+																		Fee Remaining
+																	</div>
+																</div>
+																<div class="col-md-6">
+																	<div class="card-title  h5 font-weight-normal float-right">
+																		20000/-
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-12">
+																<div class="col-md-6">
+																	<div class="card-title  h5 font-weight-normal float-left">
+																		Next Date Of Submission
+																	</div>
+																</div>
+																<div class="col-md-6">
+																	<div class="card-title  h5 font-weight-normal float-right">
+																		29 Feb 2018
+																	</div>
+																</div>
+															</div>
+															<div class="card-title col-12 h5 font-weight-normal">
+																<button type="button" class="btn btn-info float-right mr-2">PAY NOW<div class="ripple-container"></div></button>
+																<br>
+															</div>
 
-    <!-- Email Modal -->
-    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Contact via E-mail:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group m-0">
-                            <label for="email_name" class="bmd-label-floating">Name</label>
-                            <input type="text" class="form-control" id="email_name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email_message">Message</label>
-                            <textarea class="form-control" id="email_message" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-info">Send mail</button>
-                </div>
-            </div>
-        </div>
-    </div>
+														</div>
 
-    <!--   Core JS Files   -->
-    <script src="assets/js/core/jquery.min.js"></script>
-    <script src="assets/js/core/popper.min.js"></script>
-    <script src="assets/js/bootstrap-material-design.js"></script>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <!-- Plugin for Date Time Picker and Full Calendar Plugin-->
-    <script src="assets/js/plugins/moment.min.js"></script>
+	<!-- Email Modal -->
+	<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Contact via E-mail:</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group m-0">
+							<label for="email_name" class="bmd-label-floating">Name</label>
+							<input type="text" class="form-control" id="email_name">
+						</div>
+						<div class="form-group">
+							<label for="email_message">Message</label>
+							<textarea class="form-control" id="email_message" rows="3"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-info">Send mail</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
-    <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+	<!--   Core JS Files   -->
+	<script src="assets/js/core/jquery.min.js"></script>
+	<script src="assets/js/core/popper.min.js"></script>
+	<script src="assets/js/bootstrap-material-design.js"></script>
 
-    <!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
-    <script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
+	<!-- Plugin for Date Time Picker and Full Calendar Plugin-->
+	<script src="assets/js/plugins/moment.min.js"></script>
 
-    <!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
+	<!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
+	<script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
 
-    <!-- Plugin for Small Gallery in Product Page -->
-    <script src="assets/js/plugins/jquery.flexisel.js"></script>
+	<!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
+	<script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
 
-    <!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-    <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+	<!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
+	<script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
 
-    <!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
-    <script src="assets/js/plugins/nouislider.min.js"></script>
+	<!-- Plugin for Small Gallery in Product Page -->
+	<script src="assets/js/plugins/jquery.flexisel.js"></script>
 
-    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
-    <script src="assets/js/material-kit.js?v=2.0.0"></script>
+	<!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+	<script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
 
-    <!--HandleBars for templating-->
-    <script src="assets/js/handlebars-v4.0.11.js"></script>
-    <script src="assets/js/templates.js"></script>
+	<!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
+	<script src="assets/js/plugins/nouislider.min.js"></script>
 
-    <!--seed cities-->
-    <!--Docs at: https://github.com/mroderick/PubSubJS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
-    <script src="assets/js/ajax-calls/oauth-api-calls.js"></script>
-    <script src="assets/js/ajax-calls/tuition-api-calls.js"></script>
-    <script src="assets/js/ajax-calls/school-api-calls.js"></script>
-    <script src="assets/js/ajax-calls/event-api-calls.js"></script>
-    <script src="assets/js/ajax-calls/user-api-calls.js"></script>
-    <script src="assets/js/navbar.js"></script>
-    <script src="assets/js/scripts.js"></script>
-    <script src="assets/js/user.js"></script>
-    <script src="assets/js/dashboard-bookmarks.js"></script>
-    <script src="assets/js/dashboard-reviews.js"></script>
-    <script src="assets/js/dashboard-edit-profile.js"></script>
-    <script src="assets/js/dashboard-name-and-img.js"></script>
-    <script src="assets/js/query-string.js"></script>
-    <script src="assets/js/redirect-tabs.js"></script>
-    <script src="assets/js/redirect-on-logout.js"></script>
-    <script src="assets/js/dashboard-service.js"></script>
+	<!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+	<script src="assets/js/material-kit.js?v=2.0.0"></script>
+
+	<!--HandleBars for templating-->
+	<script src="assets/js/handlebars-v4.0.11.js"></script>
+	<script src="assets/js/templates.js"></script>
+
+	<!--seed cities-->
+	<!--Docs at: https://github.com/mroderick/PubSubJS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
+	<script src="assets/js/ajax-calls/oauth-api-calls.js"></script>
+	<script src="assets/js/ajax-calls/tuition-api-calls.js"></script>
+	<script src="assets/js/ajax-calls/school-api-calls.js"></script>
+	<script src="assets/js/ajax-calls/event-api-calls.js"></script>
+	<script src="assets/js/ajax-calls/user-api-calls.js"></script>
+	<script src="assets/js/navbar.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	<script src="assets/js/user.js"></script>
+	<script src="assets/js/dashboard-bookmarks.js"></script>
+	<script src="assets/js/dashboard-reviews.js"></script>
+	<script src="assets/js/dashboard-edit-profile.js"></script>
+	<script src="assets/js/dashboard-name-and-img.js"></script>
+	<script src="assets/js/study-monitor-module.js"></script>
+	<script src="assets/js/query-string.js"></script>
+	<script src="assets/js/redirect-tabs.js"></script>
+	<script src="assets/js/redirect-on-logout.js"></script>
+	<script src="assets/js/dashboard-service.js"></script>
 
 </body>
 

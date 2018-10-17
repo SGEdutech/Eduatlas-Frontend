@@ -2,39 +2,39 @@
 // Value of state must be same as state name
 
 const dropDown = (() => {
-    let $stateInp;
-    let $cityInp;
-    
-    function cache() {
-        $stateInp = $('#state_inp');
-        $cityInp = $('#city_inp');
-    }
+	let $stateInp;
+	let $cityInp;
 
-    function bindEvents() {
-        $stateInp.change(renderCityDropdown);
-    }
+	function cache() {
+		$stateInp = $('#state_inp');
+		$cityInp = $('#city_inp');
+	}
 
-    function getSelectedState() {
-        $stateInp.val();
-    }
+	function bindEvents() {
+		$stateInp.change(renderCityDropdown);
+	}
 
-    function renderCityDropdown() {
-        const selectedState = $stateInp.val();
-        let optionsString = '<option selected disabled>Select city</option>'; // Default select option
-        cities.forEach(cityData => {
-            if (cityData.state === selectedState) {
-                optionsString += `<option>${cityData.name}</option>`;
-            }
-        });
-        $cityInp.html(optionsString);
-        $cityInp.selectpicker('refresh');
-    }
-    
-    function init() {
-        cache();
-        bindEvents();
-        renderCityDropdown();
-    }
-    
-    return { init }
+	function getSelectedState() {
+		$stateInp.val();
+	}
+
+	function renderCityDropdown() {
+		const selectedState = $stateInp.val();
+		let optionsString = '<option selected disabled>Select city</option>'; // Default select option
+		cities.forEach(cityData => {
+			if (cityData.state === selectedState) {
+				optionsString += `<option>${cityData.name}</option>`;
+			}
+		});
+		$cityInp.html(optionsString);
+		$cityInp.selectpicker('refresh');
+	}
+
+	function init() {
+		cache();
+		bindEvents();
+		renderCityDropdown();
+	}
+
+	return { init }
 })();
