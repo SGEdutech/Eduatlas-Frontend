@@ -1,0 +1,3 @@
+{{#each tuitions as |tuition|}}
+<li class="nav-item"><a class="nav-link {{#if @first}}active{{/if}} rounded-0" href="#{{tuition._id}}" data-toggle="tab">{{tuition.name}}</a></li>
+{{/each}}
