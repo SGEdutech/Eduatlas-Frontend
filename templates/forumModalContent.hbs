@@ -1,0 +1,30 @@
+<div class="col-12">
+    <h3 class="card-title">{{ title}}</h3>
+    <p class="card-text">
+        {{ body}}
+    </p>
+</div>
+<div class="col-12">
+    <small class="text-danger">COMMENTS</small>
+    {{#each comments as |comment|}}
+    <div class="media" id="{{comment._id}}" style="background-color:rgb(184, 184, 184)">
+        <a class="float-left" href="#pablo">
+            <div class="avatar">
+                <img class="media-object" src="../assets/img/logo.png" alt="...">
+            </div>
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">{{comment.userEmail}}</h4>
+            <p class="text-dark">{{comment.content}}</p>
+            {{!-- <div class="row justify-content-end mx-3">
+                <form class="delete-comment-form" data-comment-id="{{comment._id}}" data-forum-id="{{ _id}}"
+                    data-tuition-id="{{ tuitionId}}" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-round">
+                        <i class="material-icons text-danger" style="top: 0%; cursor: pointer;">delete</i>
+                    </button>
+                </form>
+            </div> --}}
+        </div>
+    </div>
+    {{/each}}
+</div>
