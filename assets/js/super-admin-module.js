@@ -1,5 +1,5 @@
 const superAdmin = (() => {
-	let listingDataArr;
+	let listingDataArr = [];
 	let $signedByInp;
 	let $fromDateInp;
 	let $toDateInp;
@@ -8,16 +8,13 @@ const superAdmin = (() => {
 	let $listingDeleteBtn;
 
 	function submitRequest(queryObj) {
-		// FIXME: Url
 		const url = '/school/super-admin';
 		return $.get({ url, data: queryObj });
 	}
 
-	function renderListing() {
+	function render() {
 		const html = template.superAdminTableColoum({ listings: listingDataArr });
 		$listingContainer.html(html);
-		cacheDynamic();
-		bindDynamic();
 	}
 
 	function queryForm() {
@@ -38,7 +35,7 @@ const superAdmin = (() => {
 		queryForm().then(listings => {
 			listingDataArr = listings;
 			adjustDate();
-			renderListing();
+			render();
 		}).catch(err => console.error(err))
 	}
 
@@ -50,10 +47,10 @@ const superAdmin = (() => {
 	function deleteListing(event) {
 		const $deleteBtn = $(event.target);
 		const listingId = $deleteBtn.attr('data-listing-id')
-		
+
 		submitDeleteRequest(listingId).then(() => {
 			listingDataArr = listingDataArr.filter(listingObj => listingObj._id !== listingId);
-			renderListing();
+			refresh();
 		}).catch(err => console.error(err));
 	}
 
@@ -77,11 +74,16 @@ const superAdmin = (() => {
 		$listingDeleteBtn.click(deleteListing);
 	}
 
+	function refresh() {
+		adjustDate();
+		render();
+		cacheDynamic();
+		bindDynamic();
+	}
+
 	function init() {
 		cache();
 		bindEvents();
-		cacheDynamic();
-		bindDynamic();
 	}
 
 	return { init };

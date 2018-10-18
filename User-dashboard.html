@@ -63,7 +63,7 @@
 				<div class="card-body p-1 p-md-3">
 					<ul class="nav nav-pills nav-pills-info flex-column">
 						<li class="nav-item">
-							<a class="nav-link active" href="#tab1" data-toggle="tab"> Notifications</a>
+							<a class="nav-link active" id="notification-read-trigger" href="#tab1" data-toggle="tab"> Notifications<span class="badge badge-default" id="notification-number"></span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#tab3" data-toggle="tab"> Study Monitor</a>
@@ -91,13 +91,10 @@
 
 						<div class="tab-pane active" id="tab1">
 							<div class="container">
-								<div class="row">
-									<div class="card text-center">
-										<div class="card-body">
-											<h4 class="card-title">No Notifications</h4>
-										</div>
+								<form id="notification-update-form">
+									<div class="row px-3" id="notification-container">
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 						<div class="tab-pane" id="tab2">
@@ -145,199 +142,8 @@
 						</div>
 						<div class="tab-pane" id="tab3">
 							<ul class="nav nav-pills nav-pills-success bg-info p-2" id="batches_pills_container">
-								<li class="nav-item"><a class="nav-link active rounded-0" href="#IMSP" data-toggle="tab">IMS Pitumpura</a></li>
-								<li class="nav-item"><a class="nav-link rounded-0 disabled" href="#pill2" data-toggle="tab">Quantum Classes</a></li>
 							</ul>
 							<div class="tab-content tab-space" id="batches_panes_container">
-								<div class="tab-pane active" id="{{_id}}">
-									<div class="row m-0">
-										<div class="col-md-2" style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
-											<ul class="nav nav-pills nav-pills-success flex-column">
-												<li class="nav-item"><a class="nav-link active rounded-0" href="#forum" data-toggle="tab">Forum</a></li>
-												<li class="nav-item"><a class="nav-link rounded-0" href="#attendance" data-toggle="tab">Attendence</a></li>
-												<!-- <li class="nav-item"><a class="nav-link rounded-0 disabled" href="#test{{_id}}" data-toggle="tab">Test Report</a></li> -->
-												<li class="nav-item"><a class="nav-link rounded-0" href="#fee" data-toggle="tab">Fee Report</a></li>
-											</ul>
-										</div>
-										<div class="col-md-10">
-											<div class="tab-content">
-												<div class="tab-pane active" id="forum">
-													<div class="card">
-														<div class="card-body row">
-															<div class="col-md-2">
-																<div class="card-avatar">
-																	<a href="#pablo">
-																		<img class="img" src="assets/img/card-profile4-square.jpg" style="height:100px;width:100px;">
-																	</a>
-																	<div class="ripple-container"></div>
-																</div>
-															</div>
-															<div class="col-10 text-left">
-																<a class="row card-link" href="#">
-																	<h3 class="card-heading font-weight-bold">Announcement Thread</h3>
-																</a>
-																<div class="row">
-																	<small><span class="text-secondary">submitted</span> 3 days ago <span class="text-secondary">by</span>
-																		Principal</small>
-																</div>
-																<div class="row">
-																	<small class="text-secondary">326 comments</small>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="attendance">
-													<div class="card m-0 mb-4">
-														<div class="card-title col-12 h3">
-															Batch Name
-														</div>
-														<div class="row">
-															<div class="col-md-3">
-																<div class="card-title col-12 h4 font-weight-normal">
-																	Attendence
-																</div>
-															</div>
-															<div class="col-md-3">
-																<div class="card-title col-12 h4" style="color:#00bcd4 !important">
-																	70%
-																</div>
-															</div>
-														</div><br>
-														<div class="col-12 mb-3">
-															<div style="width:100%;height:195px!important;overflow-y: scroll!important;">
-																<table class="table" style="background-color: darkgrey;">
-																	<thead>
-																		<tr>
-																			<th class="text-center">Date</th>
-																			<th>Topic</th>
-																			<th>Faculty</th>
-																			<th>Status</th>
-																		</tr>
-																	</thead>
-																	<tbody>
-																		<tr>
-																			<td class="text-center">23/11/2018</td>
-																			<td>Andrew Mike</td>
-																			<td>Develop</td>
-																			<td class="text-success">Present</td>
-																		</tr>
-																		<tr>
-																			<td class="text-center">23/11/2018</td>
-																			<td>Andrew Mike</td>
-																			<td>Develop</td>
-																			<td class="text-success">Present</td>
-																		</tr>
-																		<tr>
-																			<td class="text-center">23/11/2018</td>
-																			<td>Andrew Mike</td>
-																			<td>Develop</td>
-																			<td class="text-success">Present</td>
-																		</tr>
-																		<tr>
-																			<td class="text-center">23/11/2018</td>
-																			<td>Andrew Mike</td>
-																			<td>Develop</td>
-																			<td class="text-danger">Absent</td>
-																		</tr>
-																		<tr>
-																			<td class="text-center">23/11/2018</td>
-																			<td>Andrew Mike</td>
-																			<td>Develop</td>
-																			<td class="text-danger">Absent</td>
-																		</tr>
-																		<tr>
-																			<td class="text-center">23/11/2018</td>
-																			<td>John Doe</td>
-																			<td>Design</td>
-																			<td class="text-danger">Absent</td>
-																		</tr>
-																		<tr>
-																			<td class="text-center">23/11/2018</td>
-																			<td>Alex Mike</td>
-																			<td>Design</td>
-																			<td class="text-danger">Absent</td>
-																		</tr>
-																	</tbody>
-																</table>
-															</div>
-														</div>
-													</div>
-													<div class="card m-0 mb-4">
-														<div class="card-title col-12 h3">
-															Batch Name
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="fee">
-													<div class="card m-0 mb-4">
-														<div class="card-title col-12 h3">
-															Course Name
-														</div>
-														<div class="row">
-															<div class="col-md-1"></div>
-															<div class="col-md-12">
-																<div class="col-md-6">
-																	<div class="card-title  h5 font-weight-normal float-left">
-																		Fee Submited
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="card-title  h5 font-weight-normal float-right">
-																		29000/-
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-12">
-																<div class="col-md-6">
-																	<div class="card-title  h5 font-weight-normal float-left">
-																		Discount
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="card-title  h5 font-weight-normal float-right">
-																		5000/-
-																	</div>
-																</div>
-															</div>
-															<div class="col-md-12">
-																<div class="col-md-6">
-																	<div class="card-title  h5 font-weight-normal float-left">
-																		Fee Remaining
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="card-title  h5 font-weight-normal float-right">
-																		20000/-
-																	</div>
-																</div>
-															</div>
-															<div class="col-md-12">
-																<div class="col-md-6">
-																	<div class="card-title  h5 font-weight-normal float-left">
-																		Next Date Of Submission
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="card-title  h5 font-weight-normal float-right">
-																		29 Feb 2018
-																	</div>
-																</div>
-															</div>
-															<div class="card-title col-12 h5 font-weight-normal">
-																<button type="button" class="btn btn-info float-right mr-2">PAY NOW<div class="ripple-container"></div></button>
-																<br>
-															</div>
-
-														</div>
-
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -371,6 +177,28 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-info">Send mail</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="empty_modal_container">
+		<div class="modal fade bd-example-modal-lg" id="forum_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-body p-0">
+						<div id="modal_body"></div>
+						<div class="col-12">
+							<div class="form-group label-floating bmd-form-group">
+								<textarea name="content" class="form-control" rows="3" id="comment_text" placeholder="write your comment here"></textarea>
+							</div>
+						</div>
+						<div class="row justify-content-end m-2">
+							<button class="btn btn-primary btn-round btn-wd" type="button" id="add_comment_btn">Post
+								Comment</button>
+							<button type="button" class="btn btn-round btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -417,14 +245,20 @@
 	<script src="assets/js/ajax-calls/school-api-calls.js"></script>
 	<script src="assets/js/ajax-calls/event-api-calls.js"></script>
 	<script src="assets/js/ajax-calls/user-api-calls.js"></script>
+	<script src="assets/js/ajax-calls/notification-api-calls.js"></script>
+
 	<script src="assets/js/navbar.js"></script>
 	<script src="assets/js/scripts.js"></script>
 	<script src="assets/js/user.js"></script>
+	<script src="assets/js/user-notification.js"></script>
+	<script src="assets/js/sm-modal.js"></script>
 	<script src="assets/js/dashboard-bookmarks.js"></script>
 	<script src="assets/js/dashboard-reviews.js"></script>
 	<script src="assets/js/dashboard-edit-profile.js"></script>
 	<script src="assets/js/dashboard-name-and-img.js"></script>
-	<script src="assets/js/study-monitor-module.js"></script>
+	<script src="assets/js/study-monitor-forums.js"></script>
+	<script src="assets/js/study-monitor-panes.js"></script>
+	<script src="assets/js/study-monitor-attendance.js"></script>
 	<script src="assets/js/query-string.js"></script>
 	<script src="assets/js/redirect-tabs.js"></script>
 	<script src="assets/js/redirect-on-logout.js"></script>

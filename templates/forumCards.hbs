@@ -1,8 +1,11 @@
 {{#each forums as |post|}}
 <div class="card m-1" id="{{post._id}}">
     <div class="card-body">
-        <a class="row nav nav-item nav-link p-0" data-toggle="modal" data-target="#showPostModal{{post._id}}" style="cursor: pointer">
+        <a class="row nav nav-item nav-link p-0" style="cursor: pointer">
             <h3 class="card-heading font-weight-bold m-0">{{post.title}}</h3>
+            <i class="material-icons show-forum-post" data-forum-id="{{post._id}}">
+                remove_red_eye
+            </i>
         </a>
         <div class="row">
             <small><span class="text-secondary">posted</span>
@@ -10,11 +13,11 @@
                 {{post.tuitionName}}
             </small>
         </div>
-        <div class="row">
+        {{!-- <div class="row">
             <small class="text-secondary">
                 {{post.numComments}} comments
             </small>
-        </div>
+        </div> --}}
     </div>
 </div>
 {{/each}}
