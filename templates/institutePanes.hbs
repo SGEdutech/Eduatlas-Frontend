@@ -1,0 +1,91 @@
+{{#each tuitions as |tuition|}}
+<div class="tab-pane {{#if @first}}active{{/if}} " id="{{tuition._id}}">
+    <div class="row m-0">
+        <div class="col-md-2" style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
+            <ul class="nav nav-pills nav-pills-success flex-column">
+                <li class="nav-item"><a class="nav-link active rounded-0" href="#forum{{tuition._id}}" data-toggle="tab">Forum</a></li>
+                <li class="nav-item"><a class="nav-link rounded-0" href="#attendance{{tuition._id}}" data-toggle="tab">Attendence</a></li>
+                <!-- <li class="nav-item"><a class="nav-link rounded-0 disabled" href="#test{{_id}}" data-toggle="tab">Test Report</a></li> -->
+                <li class="nav-item"><a class="nav-link rounded-0" href="#fee{{tuition._id}}" data-toggle="tab">Fee
+                        Report</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="tab-content">
+                <div class="tab-pane active" id="forum{{tuition._id}}">
+                    <div class="active-forums" data-tuition-id="{{tuition._id}}">
+                    </div>
+                </div>
+                <div class="tab-pane" id="attendance{{tuition._id}}">
+                    <div class="attendace-container" data-tuition-id="{{tuition._id}}">
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="fee{{tuition._id}}">
+                    <div class="card m-0 mb-4">
+                        <div class="card-title col-12 h3">
+                            Course Name
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="card-title  h5 font-weight-normal float-left">
+                                        Fee Submited
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-title  h5 font-weight-normal float-right">
+                                        29000/-
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="card-title  h5 font-weight-normal float-left">
+                                        Discount
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-title  h5 font-weight-normal float-right">
+                                        5000/-
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="card-title  h5 font-weight-normal float-left">
+                                        Fee Remaining
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-title  h5 font-weight-normal float-right">
+                                        20000/-
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="card-title  h5 font-weight-normal float-left">
+                                        Next Date Of Submission
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-title  h5 font-weight-normal float-right">
+                                        29 Feb 2018
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-title col-12 h5 font-weight-normal">
+                                <button type="button" class="btn btn-info float-right mr-2">PAY NOW<div class="ripple-container"></div></button>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
