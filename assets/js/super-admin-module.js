@@ -32,9 +32,10 @@ const superAdmin = (() => {
 	function submitRequest(queryObj) {
 		clearAllListings();
 		cacheCheckedListing();
-		if ($selectedListing === undefined) {
+		// FIXME: Not Working
+		if ($selectedListing.length === 0) {
 			alert('Select listing category stupid!!');
-			return;
+			return new Promise((__, reject) => reject('No listing category selected!'));
 		}
 		const listingCategory = $selectedListing.val();
 		const url = `/${listingCategory}/super-admin`;
