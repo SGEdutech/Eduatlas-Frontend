@@ -68,7 +68,8 @@ $(form).submit(function (event) {
             type: form.attr('method'),
             data: formData,
         }).then(() => {
-            window.location.assign('/?m=login');
+            alert("Signup Successful, Please login to continue");
+            window.location.assign('/');
         }).catch(err => {
             alert(err.responseText);
         });
