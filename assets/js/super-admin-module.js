@@ -75,12 +75,13 @@ const superAdmin = (() => {
 	function queryFormAndRenderListings() {
 		queryForm().then(listings => {
 			listingDataArr = listings;
-			render();
+			refresh();
 		}).catch(err => console.error(err))
 	}
 
 	function submitDeleteRequest(listingId, listingCategory) {
 		const url = `/${listingCategory}/${listingId}`;
+		console.log(url);
 		return $.ajax({ url, type: 'DELETE' });
 	}
 
