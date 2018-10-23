@@ -6,13 +6,61 @@ const superAdmin = (() => {
 	let $submitBtn;
 	let $listingContainer;
 	let $listingDeleteBtn;
+	let $selectedListing;
+
+	const editPage = {
+		tuition: 'user-edit-tuition.html',
+		school: 'user-edit-school.html',
+		event: 'user-edit-event.html'
+	};
+
+	const viewPage = {
+		tuition: 'TuitionDetails2.0.html',
+		school: 'SchoolDetails2.0.html',
+		event: 'EventDetails2.0.html'
+	};
+
+	// These only ougth to be cached when user submits a request
+	function cacheCheckedListing() {
+		$selectedListing = $('input[name="listingCategory"]:checked');
+	}
+
+	function clearAllListings() {
+		$listingContainer.html('');
+	}
 
 	function submitRequest(queryObj) {
-		const url = '/school/super-admin';
+		clearAllListings();
+		cacheCheckedListing();
+		if ($selectedListing === undefined) {
+			alert('Select listing category stupid!!');
+			return;
+		}
+		const listingCategory = $selectedListing.val();
+		const url = `/${listingCategory}/super-admin`;
 		return $.get({ url, data: queryObj });
 	}
 
+	function adjustDate() {
+		listingDataArr.forEach(listingObj => {
+			// Events and tuition has field updatedOn and schools have updated
+			listingObj.updated = listingObj.updated || listingObj.updatedOn;
+			const dateObj = new Date(Date.parse(listingObj.updated));
+			listingObj.updated = dateObj.toDateString()
+		});
+	}
+
+	function injectEditAndViewPage() {
+		const listingCategory = $selectedListing.val();
+		listingDataArr.forEach(listingObj => {
+			listingObj.editPage = editPage[listingCategory];
+			listingObj.viewPage = viewPage[listingCategory];
+		});
+	}
+
 	function render() {
+		adjustDate();
+		injectEditAndViewPage();
 		const html = template.superAdminTableColoum({ listings: listingDataArr });
 		$listingContainer.html(html);
 	}
@@ -24,31 +72,24 @@ const superAdmin = (() => {
 		return submitRequest({ signedBy, fromDate, toDate });
 	}
 
-	function adjustDate() {
-		listingDataArr.forEach(listingObj => {
-			const dateObj = new Date(Date.parse(listingObj.updated));
-			listingObj.updated = dateObj.toDateString()
-		});
-	}
-
 	function queryFormAndRenderListings() {
 		queryForm().then(listings => {
 			listingDataArr = listings;
-			adjustDate();
 			render();
 		}).catch(err => console.error(err))
 	}
 
-	function submitDeleteRequest(listingId) {
-		const url = `/school/${listingId}`;
+	function submitDeleteRequest(listingId, listingCategory) {
+		const url = `/${listingCategory}/${listingId}`;
 		return $.ajax({ url, type: 'DELETE' });
 	}
 
 	function deleteListing(event) {
 		const $deleteBtn = $(event.target);
+		const listingCategory = $selectedListing.val();
 		const listingId = $deleteBtn.attr('data-listing-id')
 
-		submitDeleteRequest(listingId).then(() => {
+		submitDeleteRequest(listingId, listingCategory).then(() => {
 			listingDataArr = listingDataArr.filter(listingObj => listingObj._id !== listingId);
 			refresh();
 		}).catch(err => console.error(err));

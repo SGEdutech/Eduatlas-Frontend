@@ -36,25 +36,49 @@
 				<label for="to_date_inp">To Date</label>
 				<input type="text" class="form-control datetimepicker" id="to_date_inp">
 			</div>
+			<div class="form-check form-check-radio form-check-inline">
+				<label class="form-check-label">
+					<input class="form-check-input" type="radio" name="listingCategory" id="inlineRadio1" value="tuition"> Tuition
+					<span class="circle">
+						<span class="check"></span>
+					</span>
+				</label>
+			</div>
+			<div class="form-check form-check-radio form-check-inline">
+				<label class="form-check-label">
+					<input class="form-check-input" type="radio" name="listingCategory" id="inlineRadio2" value="school"> School
+					<span class="circle">
+						<span class="check"></span>
+					</span>
+				</label>
+			</div>
+			<div class="form-check form-check-radio form-check-inline">
+				<label class="form-check-label">
+					<input class="form-check-input" type="radio" name="listingCategory" id="inlineRadio2" value="event"> Event
+					<span class="circle">
+						<span class="check"></span>
+					</span>
+				</label>
+			</div>
 			<button type="submit" id="search_btn" class="btn btn-primary btn-round">
 				<i class="material-icons">search</i> Search
 			</button>
 		</div>
-	<table class="table">
-		<thead>
-			<tr>
-				<th class="text-center">#</th>
-				<th>Name</th>
-				<th>Signed By</th>
-				<th>Date</th>
-				<th class="text-right">Actions</th>
-			</tr>
-		</thead>
-		<tbody id="listing_container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="text-center">#</th>
+					<th>Name</th>
+					<th>Signed By</th>
+					<th>Date</th>
+					<th class="text-right">Actions</th>
+				</tr>
+			</thead>
+			<tbody id="listing_container">
 
-		</tbody>
-	</table>
-</div>
+			</tbody>
+		</table>
+	</div>
 
 	<!--   Core JS Files   -->
 	<script src="assets/js/core/jquery.min.js"></script>
@@ -87,8 +111,8 @@
 
 	<script src="assets/js/handlebars-v4.0.11.js"></script>
 
-    <script src="assets/js/templates.js"></script>
-	
+	<script src="assets/js/templates.js"></script>
+
 	<script src="assets/js/super-admin-datetimepicjer.js"></script>
 
 	<script src="assets/js/super-admin-module.js"></script>
