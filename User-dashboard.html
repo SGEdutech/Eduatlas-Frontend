@@ -43,39 +43,37 @@
         <div id="cover_image" class="page-header header-filter header-small" data-parallax="true" filter-color="dark" style="background-image: url(assets/img/bg2.jpg);">
         </div>
     </div> -->
-	<div id="secondary_info" class="row p-0 mt-5">
+	<div id="secondary_info" class="row m-3 mt-5">
 		<div class="col-md-2 text-center">
 
 			<div class="card">
 				<div class="card-body">
 					<div class="fileinput fileinput-new text-center">
 						<div class="fileinput-new thumbnail img-raised">
-							<img id="profile_pic" src="" alt="User Profile Pic">
+							<img id="profile_pic" alt="User Profile Pic">
 						</div>
 					</div>
 					<div class="card-subtitle text-muted h5" id="userIdContainer"></div>
-					<button class="btn btn-outline-info btn-round" onclick="logout()">Logout</button>
 				</div>
-
 			</div>
 
 			<div class="card">
-				<div class="card-body p-1 p-md-3">
-					<ul class="nav nav-pills nav-pills-info flex-column">
+				<div class="card-body p-0">
+					<ul class="nav nav-pills nav-pills-info flex-column p-0 text-left">
 						<li class="nav-item">
-							<a class="nav-link active" id="notification-read-trigger" href="#tab1" data-toggle="tab"> Notifications<span class="badge badge-default" id="notification-number"></span></a>
+							<a class="nav-link active rounded-0 text-left" id="notification-read-trigger" href="#tab1" data-toggle="tab"> Notifications<span class="badge badge-default" id="notification-number"></span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#tab3" data-toggle="tab"> Study Monitor</a>
+							<a class="nav-link rounded-0 text-left" href="#tab3" data-toggle="tab"> Study Monitor</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link " href="#tab4" data-toggle="tab"> Bookmarks</a>
+							<a class="nav-link rounded-0 text-left" href="#tab4" data-toggle="tab"> Bookmarks</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link " href="#tab5" data-toggle="tab"> My Reviews</a>
+							<a class="nav-link rounded-0 text-left" href="#tab5" data-toggle="tab"> My Reviews</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#tab2" data-toggle="tab">
+							<a class="nav-link rounded-0 text-left" href="#tab2" data-toggle="tab">
 								Edit Profile</a>
 						</li>
 					</ul>
@@ -92,7 +90,7 @@
 						<div class="tab-pane active" id="tab1">
 							<div class="container">
 								<form id="notification-update-form">
-									<div class="row px-3" id="notification-container">
+									<div class="row px-3 mt-3" id="notification-container">
 									</div>
 								</form>
 							</div>
@@ -100,33 +98,36 @@
 						<div class="tab-pane" id="tab2">
 							<form id="Form1" method="" action="">
 
-								<div id="basicContainer">
+								<div id="basicContainer" class="p-3">
 								</div>
 
 							</form>
-							<button id="saveFrom1" class="btn btn-info btn-round">Save Personal Info</button>
+							<div class="row justify-content-end mx-3">
+								<button id="saveFrom1" class="btn btn-info btn-round">Save Personal Info</button>
+							</div>
 							<form id="Form2" method="" action="">
 
-								<div class="card" id="userSocialLinksContainer">
+								<div id="userSocialLinksContainer" class="p-3">
 								</div>
 
 							</form>
-
-							<button id="saveFrom2" class="btn btn-info btn-round">Save Social Links</button>
+							<div class="row justify-content-end mx-3">
+								<button id="saveFrom2" class="btn btn-info btn-round">Save Social Links</button>
+							</div>
 						</div>
 						<div class="tab-pane" id="tab4">
-							<div class="container">
-								<div id="userTuitionBookmarks" class="row">
+							<div class="container mt-3">
+								<div id="userTuitionBookmarks" class="row px-3">
 									<div class="card-title col-12">
 										Tuitions Bookmarked
 									</div>
 								</div>
-								<div id="userSchoolBookmarks" class="row">
+								<div id="userSchoolBookmarks" class="row px-3">
 									<div class="card-title col-12">
 										Schools Bookmarked
 									</div>
 								</div>
-								<div id="userEventBookmarks" class="row">
+								<div id="userEventBookmarks" class="row px-3">
 									<div class="card-title col-12">
 										Events Bookmarked
 									</div>
