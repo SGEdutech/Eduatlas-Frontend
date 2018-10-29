@@ -2,7 +2,8 @@
     <div class="card newFont">
         <div class=" tuition-cards" style="cursor: pointer" onclick="helperScripts.openDetailsPage('event','{{_id}}')">
             <div class="card p-0 m-0 rounded-0 rounded-top" style="overflow: hidden;text-overflow: ellipsis;background-color: rgba(0,0,0,0.5)">
-
+                <div class="rounded-top" style="position: absolute; height: 100%;width: 100%;background-color: rgba(0,0,0,0.5)">
+                </div>
                 {{#if img_eventCoverPic}}
                 <img class="card-img-top" src="images/{{img_eventCoverPic}}" alt="Event Image" style="height: 218px;width: 100%;">
                 {{else}}
@@ -29,6 +30,8 @@
                 </div>
             </div>
         </div>
+        {{#if hideBody}}
+        {{else}}
         <div class="card-body pb-0">
             <div class="" style="overflow: hidden;margin: -5%">
                 <small class="text-secondary" style="font-style: italic;">{{description}}</small>
@@ -69,7 +72,17 @@
                 </div>
             </div>
         </div>
+        {{/if}}
+        {{#if hideFooter}}
+        {{else}}
         <div class="p-0 mt-2 rounded-0 card-footer" style="border-top: 1px solid #00bcd4;max-height: 40px;overflow: hidden">
+            {{#if manageBookmarks}}
+            <div class="col row justify-content-center">
+                <button class="btn btn-danger btn-round remove-bookmark-button" data-id="{{_id}}" data-category="{{typeOfInfo}}">Remove
+                    bookmark
+                </button>
+            </div>
+            {{else}}
             <div class="col-6 py-2" style="border-right: 1px solid #00bcd4;">
                 <div class="row justify-content-center bookmark-button" style="cursor: pointer" data-id="{{_id}}"
                     data-category="{{typeOfInfo}}" data-bookmarked="{{bookmarked}}">
@@ -87,6 +100,9 @@
                     <a style="color: black;">SHARE</a>
                 </div>
             </div>
+            {{/if}}
+
         </div>
+        {{/if}}
     </div>
 </div>

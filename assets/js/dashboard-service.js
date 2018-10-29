@@ -36,6 +36,4 @@ async function initModules() {
 initModules();
 
 userNotification.init();
-
-
 queryString.loadQueryString();

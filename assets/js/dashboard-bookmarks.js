@@ -46,11 +46,31 @@ const dashboardBookmarks = (() => {
 						instituteInfo.manageBookmarks = true;
 						instituteInfo.typeOfInfo = typeOfInfo;
 						if (instituteInfo.typeOfInfo === "event") {
+							instituteInfo.hideFooter = false;
 							instituteInfo.event = true;
 							instituteInfo.averageRating = null;
 							instituteInfo.claimedBy = null;
+							if (instituteInfo.fromDate) {
+								const dateObj = helperScripts.getDateObj(instituteInfo.fromDate)
+								instituteInfo.fromDate = dateObj.date;
+								instituteInfo.fromMonth = dateObj.monthName;
+							}
+							if (instituteInfo.toDate) {
+								const dateObj = helperScripts.getDateObj(instituteInfo.toDate)
+								instituteInfo.toDate = dateObj.date;
+								instituteInfo.toMonth = dateObj.monthName;
+							}
+							if (instituteInfo.lastDateRegistration) {
+								instituteInfo.lastDateRegistration = helperScripts.getDateObj(instituteInfo.lastDateRegistration)
+								instituteInfo.lastDateRegistration = instituteInfo.lastDateRegistration.date + " " + instituteInfo.lastDateRegistration.monthName;
+							}
+							if (instituteInfo.description) {
+								instituteInfo.description = instituteInfo.description.slice(0, 55)
+							}
+							cardsHtml += template.cardv2(instituteInfo);
+						} else {
+							cardsHtml += template.smoothCardHomePage(instituteInfo);
 						}
-						cardsHtml += template.smoothCardHomePage(instituteInfo);
 					});
 					resolve(cardsHtml);
 				}).catch(err => reject(err));
@@ -63,9 +83,9 @@ const dashboardBookmarks = (() => {
 
 		// make first character UpperCase
 		typeOfInfo = typeOfInfo.charAt(0).toUpperCase() + typeOfInfo.substr(1);
-		userApiCalls.deleteInArrayInUser(userInfo._id, `bookmark${typeOfInfo}s`, { string: tuitionId }).then(()=>{
-            removeCard(tuitionId);
-        });
+		userApiCalls.deleteInArrayInUser(userInfo._id, `bookmark${typeOfInfo}s`, { string: tuitionId }).then(() => {
+			removeCard(tuitionId);
+		});
 	}
 
 	function removeCard(cardId) {

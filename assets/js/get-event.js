@@ -136,7 +136,17 @@ const getEvent = (() => {
 					if (obj.category) {
 						obj.categories = obj.category.split(',')
 					}
-					result += template.smoothCardHomePage(obj);
+					if (obj.fromDate) {
+						const dateObj = helperScripts.getDateObj(obj.fromDate)
+						obj.fromDate = dateObj.date;
+						obj.fromMonth = dateObj.monthName;
+					}
+					if (obj.toDate) {
+						const dateObj = helperScripts.getDateObj(obj.toDate)
+						obj.toDate = dateObj.date;
+						obj.toMonth = dateObj.monthName;
+					}
+					result += template.cardv2(obj);
 				});
 				$sponsoredPopular.append(result);
 			}
@@ -185,7 +195,17 @@ const getEvent = (() => {
 					if (obj.category) {
 						obj.categories = obj.category.split(',')
 					}
-					result += template.smoothCardHomePage(obj);
+					if (obj.fromDate) {
+						const dateObj = helperScripts.getDateObj(obj.fromDate)
+						obj.fromDate = dateObj.date;
+						obj.fromMonth = dateObj.monthName;
+					}
+					if (obj.toDate) {
+						const dateObj = helperScripts.getDateObj(obj.toDate)
+						obj.toDate = dateObj.date;
+						obj.toMonth = dateObj.monthName;
+					}
+					result += template.cardv2(obj);
 				});
 				$relatedEventContainer.append(result);
 			}
@@ -226,17 +246,17 @@ const getEvent = (() => {
 			if (eventData.organiserName) {
 				$contactPersonName.html(eventData.organiserName);
 			} else {
-                $contactPersonName.html(template.noDataText());
+				$contactPersonName.html(template.noDataText());
 			}
 			if (eventData.organiserPhone) {
 				$contactPersonPhone.html(eventData.organiserPhone);
 			} else {
-                $contactPersonPhone.html(template.noDataText());
+				$contactPersonPhone.html(template.noDataText());
 			}
 			if (eventData.organiserEmail) {
 				$contactPersonEmail.html(eventData.organiserEmail);
 			} else {
-                $contactPersonEmail.html(template.noDataText());
+				$contactPersonEmail.html(template.noDataText());
 			}
 			$addressLines.html(eventData.addressLine1 + ',' + eventData.addressLine2);
 			$city.html(eventData.city + ',' + eventData.pin);
