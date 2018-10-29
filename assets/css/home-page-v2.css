@@ -8,6 +8,16 @@
     left: 0;
 }
 
+   .footerimage{}       
+
+  @media only screen and (max-width: 600px) {
+    #autocomplete_container {
+        top: 116%;
+    }
+
+    .footerimage{background-image: none!important;background-color:black;}
+}
+
 .tuition-cards {
     cursor: pointer;
 }
