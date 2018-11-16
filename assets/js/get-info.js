@@ -1,6 +1,7 @@
 const getInfo = (() => {
 	let queryObj;
 	let user;
+	let tuitionInfo
 
 	let $name;
 	let $address;
@@ -76,24 +77,6 @@ const getInfo = (() => {
 		$eligibilityCriteria = $('#eligibility_criteria');
 		$datesContainer = $('#dates_Container');
 		$starsInner = $('.stars-inner')
-	}
-
-	function bindEvents() {
-
-	}
-
-	function getInfoFromDatabase(typeOfInfo) {
-		if (typeOfInfo === 'tuition') {
-			return tuitionApiCalls.getSpecificTuition({
-				_id: queryObj._id
-			})
-		}
-		if (typeOfInfo === 'school') {
-			return schoolApiCalls.getSpecificSchool({
-				_id: queryObj._id
-			})
-		}
-
 	}
 
 	function getReviews(reviewsArray) {
@@ -537,52 +520,52 @@ const getInfo = (() => {
 		user = userInfo;
 	}
 
-	function render(obj, typeOfInfo) {
-		queryObj = obj;
+	function render(InfoObj, typeOfInfo) {
+		
+		PubSub.publish('address.ready', InfoObj.addressLine1 + ',' + InfoObj.addressLine2 + ',' + InfoObj.city + ',' + InfoObj.state);
+
+		updateBasicInfo(InfoObj, typeOfInfo);
+		updateOpenNow(InfoObj, typeOfInfo);
+		updateCoverImage(InfoObj.img_tuitionCoverPic);
+		updateClaimButtonHTML(InfoObj.claimedBy);
+		updateVerifiedBadge(InfoObj.claimedBy);
+		updateFacilities(InfoObj.facilities);
+		updateCategories(InfoObj.category);
+		getReviews(InfoObj.reviews);
+		getPopularListing(InfoObj.city, typeOfInfo);
+		getRelatedListing(InfoObj.city, typeOfInfo);
+		updateCategoryPills(InfoObj.category);
+
+		setTimeout(() => updateSocialLinks(InfoObj.fbLink, InfoObj.instaLink, InfoObj.youtubeLink));
+		setTimeout(() => showResults(InfoObj.bragging));
+		setTimeout(() => showFaculty(InfoObj.team));
+
+		if (typeOfInfo === 'tuition') {
+			setTimeout(() => updateDaynTime(InfoObj.dayAndTimeOfOperation, $opration_hours_containers));
+			setTimeout(() => showCourses(InfoObj.coursesOffered));
+			setTimeout(() => showGallery(InfoObj.gallery));
+		}
+		if (typeOfInfo === 'school') {
+			setTimeout(() => updateDaynTime(InfoObj.schoolTiming, $opration_hours_containers));
+			setTimeout(() => updateDaynTime(InfoObj.officeTiming, $opration_hours_containers2));
+			setTimeout(() => showActivities(InfoObj.activities));
+			setTimeout(() => showGallery(InfoObj.gallery));
+			setTimeout(() => showAdmissionAndFeeInfo(InfoObj.fee, InfoObj.admissionProcess, InfoObj.eligibilityCriteria));
+			setTimeout(() => showImportantDates(InfoObj.importantDates));
+		}
+		// getRelatedListing(tuitionInfoObj.city);
+	}
+
+	function init(tuitionInfo, typeOfInfo) {
+		if (tuitionInfo === undefined) throw new Error('tuitionInfo not defined');
+		tuitionInfo = JSON.parse(JSON.stringify(tuitionInfo));
+
 		cache();
-		bindEvents();
-		getInfoFromDatabase(typeOfInfo)
-			.then(InfoObj => {
-				if (!InfoObj) {
-					window.location.assign('/error-page.html');
-				}
-				PubSub.publish('address.ready', InfoObj.addressLine1 + ',' + InfoObj.addressLine2 + ',' + InfoObj.city + ',' + InfoObj.state);
-
-				updateBasicInfo(InfoObj, typeOfInfo);
-				updateOpenNow(InfoObj, typeOfInfo);
-				updateCoverImage(InfoObj.img_tuitionCoverPic);
-				updateClaimButtonHTML(InfoObj.claimedBy);
-				updateVerifiedBadge(InfoObj.claimedBy);
-				updateFacilities(InfoObj.facilities);
-				updateCategories(InfoObj.category);
-				getReviews(InfoObj.reviews);
-				getPopularListing(InfoObj.city, typeOfInfo);
-				getRelatedListing(InfoObj.city, typeOfInfo);
-				updateCategoryPills(InfoObj.category);
-
-				setTimeout(() => updateSocialLinks(InfoObj.fbLink, InfoObj.instaLink, InfoObj.youtubeLink));
-				setTimeout(() => showResults(InfoObj.bragging));
-				setTimeout(() => showFaculty(InfoObj.team));
-
-				if (typeOfInfo === 'tuition') {
-					setTimeout(() => updateDaynTime(InfoObj.dayAndTimeOfOperation, $opration_hours_containers));
-					setTimeout(() => showCourses(InfoObj.coursesOffered));
-					setTimeout(() => showGallery(InfoObj.gallery));
-				}
-				if (typeOfInfo === 'school') {
-					setTimeout(() => updateDaynTime(InfoObj.schoolTiming, $opration_hours_containers));
-					setTimeout(() => updateDaynTime(InfoObj.officeTiming, $opration_hours_containers2));
-					setTimeout(() => showActivities(InfoObj.activities));
-					setTimeout(() => showGallery(InfoObj.gallery));
-					setTimeout(() => showAdmissionAndFeeInfo(InfoObj.fee, InfoObj.admissionProcess, InfoObj.eligibilityCriteria));
-					setTimeout(() => showImportantDates(InfoObj.importantDates));
-				}
-				// getRelatedListing(tuitionInfoObj.city);
-			})
-			.catch(err => console.error(err));
+		render(tuitionInfo, typeOfInfo);
 	}
 
 	return {
+		init,
 		render,
 		updateUser
 	}
