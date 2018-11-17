@@ -37,85 +37,125 @@
     <!-- overriding material kit input underline color -->
     <link rel="stylesheet" href="assets/css/input-color.css">
 </head>
-
 <body class="sections-page sidebar-collapse" style="height: 1000px">
     <!--sick navbar-->
     <div id="nav_container"></div>
     <div class="container-fluid maincontainer mt-md-0">
         <div class="row">
-            <div class="col-12 col-xl-3 py-5 order-xl-1 order-1 left-sidebar z-index-99">
-                <div class="lis-relative">
-                    <h5 class="mb-2 mt-md-5" style="font-weight: bold;">What are you looking for?</h5>
-                    <p>Search by Category</p>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fa fa-search lis-primary lis-left-0"></i>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4 searchInput" placeholder="What are you looking for?"
+            <div class="col-3 col-xl-3  mt-5">
+            <div class="card card-profile">
+                <div class="card-body ">
+                    <h4 class="card-title">What are you looking for?</h4>
+                    <h6 class="card-category text-gray">Search By Category</h6>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="material-icons">group</i>
+                                </span>
+                            </div>                            
+                            <input type="text" class="form-control col-9" placeholder="What are you looking for?"
                             id="searchBox">
+                        </div>
                     </div>
-                    <div id="suggestions" class="position-absolute col-12 text-center">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="material-icons">
+                                        location_city
+                                    </i>
+                                </span>
+                            </div>                            
+                            <input type="text" class="form-control col-9" placeholder="City" id="citySearch">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="material-icons">group</i>
+                                </span>
+                                <select id="sortByInput" class="selectpicker form-control col-9 text-uppercase" data-style="btn btn-link">
+                                    <option selected disabled value="default">Sort-By</option>
+                                    <option value="rating">Reviews</option>
+                                    <option value="views">Popularity</option>
+                                </select>                                
+                            </div>
+                        </div>
+                </form>
+                </div>
+                <div class="card-body ">
+                    <h4 class="card-title">More Filters</h4>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios1" value="tuition" checked> Institutes                                  
+                                    <span class="circle" style="border-color: #00bcd4">
+                                        <span class="check" style="background-color: #00bcd4;"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios2" value="school"> Schools                                   
+                                    <span class="circle" style="border-color: #00bcd4">
+                                        <span class="check" style="background-color: #00bcd4;"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios3" value="event"> Events                                    
+                                    <span class="circle" style="border-color: #00bcd4">
+                                        <span class="check" style="background-color: #00bcd4;"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <br>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fa fa-map-o lis-primary lis-left-0"></i>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 pl-4" placeholder="City" id="citySearch">
-                    </div>
-                    <br>
-                    <div class="input-group row">
-                        <div class="input-group-prepend col-3">
-                            <span class="input-group-text">
-                                <i class="fa fa-sliders lis-primary lis-left-0"></i>
-                            </span>
-                        </div>
-                        <select id="sortByInput" class="selectpicker form-control col-9 text-uppercase" data-style="btn btn-link">
-                            <option selected disabled value="default">Sort-By</option>
-                            <option value="rating">Reviews</option>
-                            <option value="views">Popularity</option>
-                        </select>
-                    </div>
+                    <button  class="btn btn-info" id="search-button">
+                        <i class="material-icons">
+                            search
+                        </i>Search</button>
                 </div>
-                <br>
-                <div class="form-group lis-relative">
-                </div>
-                <p class="lis-dark">More Filters</p>
-                <div class="row mt-3">
-                    <div class="col-12 col-xl-12">
-                        <div class="form-check form-check-radio">
-                            <label class="form-check-label">
-                                <input class="form-check-input" style="background-color: #00bcd4" type="radio" name="typeOfInfo" id="exampleRadios1" value="tuition"
-                                    checked> Tuition/Coaching Institutes
-                                <span class="circle" style="border-color: #00bcd4">
-                                    <span class="check" style="background-color: #00bcd4"></span>
-                                </span>
-                            </label>
-                        </div>
-                        <div class="form-check form-check-radio">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios2" value="school"> Schools
-                                <span class="circle" style="border-color: #00bcd4">
-                                    <span class="check" style="background-color: #00bcd4"></span>
-                                </span>
-                            </label>
-                        </div>
-                        <div class="form-check form-check-radio">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios3" value="event"> Events
-                                <span class="circle" style="border-color: #00bcd4">
-                                    <span class="check" style="background-color: #00bcd4"></span>
-                                </span>
-                            </label>
-                        </div>
-                        <div id="category_container">
-                            <p class="lis-dark mt-4 mb-0">Sub Category</p>
-                            <div id="tuition_category_container" style="display: none">
-                                <select id="category" name="category" class="selectpicker form-control text-uppercase" data-style="btn btn-link">
+            </div>
+            </div>
+            <div class="col-9 col-xl-9 mt-4">
+                    <section class="py-5 px-3" id="showresults">
+                    <div class="container">
+                        <div class="row mt-md-5">
+                            <div class="col-sm-6 align-self-center">
+                                <p id="showingResultsContainer" class="float-left card-title">Showing results:
+                                    <span id="search_query_display" class="badge badge-info"></span>
+                                    <span id="city_query_display" class="badge badge-info"></span>
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group  float-right">
+                                    <div class="input-group-prepend col-3">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-sliders lis-primary lis-left-0"></i>
+                                        </span>
+                                    </div>
+                                    <!-- <select id="sortByInput" class="selectpicker form-control col-9 text-uppercase" data-style="btn btn-link">
+                                        <option selected disabled value="default">Sort-By</option>
+                                        <option value="rating">Reviews</option>
+                                        <option value="views">Popularity</option>
+                                    </select> -->
+
+                                    <!-- <p class="lis-dark mt-4 mb-0">Sub Category</p> -->
+                            <div id="tuition_category_container" style="display: none" class="col-9">
+                                <select id="category" name="category" class="selectpicker  form-control text-uppercase" data-style="btn btn-link">
                                     <option disabled selected>Tuition Subcategory</option>
                                     <option value="Tuition Centers">Tuition Centers</option>
                                     <option value="Coaching Centers">Coaching Centers</option>
@@ -148,38 +188,10 @@
                                     <option value="Travel n Activities">Travel n Activities</option>
                                     <option value="others">others</option>
                                 </select>
+                                </div>
                             </div>
                         </div>
-                        <!-- <label id="tuition_checkbox" class="custom-control custom-checkbox d-block">
-                         <input type="checkbox" class="custom-control-input" checked="checked">
-                         <span class="custom-control-indicator"></span>
-                         <span class="custom-control-description">Institute/Tuition </span> </label>
-                     <label id="school_checkbox" class="custom-control custom-checkbox d-block">
-                         <input type="checkbox" class="custom-control-input">
-                         <span class="custom-control-indicator"></span>
-                         <span class="custom-control-description">Schools</span> </label>-->
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-md-4 col-4"></div>
-                        <div class="col-8 col-md-8 pt-4">
-                            <button id="search-button" class="btn btn-info">
-                                <i class="fa fa-search pr-2"></i> Search Place
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-xl-9 order-xl-2 order-2 px-0">
-                <section class="py-5 px-3" id="showresults">
-                    <div class="container">
-                        <div class="row mt-md-5">
-                            <div class="col-sm-12 align-self-center">
-                                <p id="showingResultsContainer">Showing results:
-                                    <span id="search_query_display" class="badge badge-info"></span>
-                                    <span id="city_query_display" class="badge badge-info"></span>
-                                </p>
-                            </div>
-                        </div>
 
                         <div class="row" id="content-placeholder">
                         </div>
