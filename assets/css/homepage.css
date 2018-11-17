@@ -178,7 +178,7 @@ section h1 {
 
 .header-image {
   background-image: url('../img/education-banner-1.jpg');
-  max-height: 400px;
+ /* max-height: 400px;*/
   background-color: darkgray;
 }
 
