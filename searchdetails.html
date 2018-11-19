@@ -42,7 +42,7 @@
     <div id="nav_container"></div>
     <div class="container-fluid maincontainer mt-md-0">
         <div class="row">
-            <div class="col-3 col-xl-3  mt-5">
+            <div class="col-md-3 col-xl-3 col-xs-12  mt-5">
             <div class="card card-profile">
                 <div class="card-body ">
                     <h4 class="card-title">What are you looking for?</h4>
@@ -71,8 +71,28 @@
                             </div>                            
                             <input type="text" class="form-control col-9" placeholder="City" id="citySearch">
                         </div>
-                    </div>                    
-                </form>                
+                    </div> 
+                     <!-- For Future Use  -->
+                     
+                    <!-- <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="material-icons text-info">
+                                        class
+                                    </i>
+                                </span>
+                            </div>                            
+                            <input type="text" class="form-control col-9" placeholder="Tag Text"  id="citySearch">                                                       
+                        </div>
+                    </div>  
+                    <div class="row">
+                   <div class="col-md-1"></div>
+                   <div class="col-md-11">
+                        <input type="text" value="Amsterdam,Washington,Sydney,Beijing" class="ml-3 col-9 tagsinput form-control" data-role="tagsinput" data-color="info">
+                   </div>
+                    </div>                  -->
+                    </form>                
                 <div class="card-body ">
                     <h4 class="card-title">More Filters</h4>
                     <div class="row">
@@ -165,22 +185,24 @@
                                 </p>
                             </div>
                             <div class="col-sm-4">
-                                <div class="input-group  float-right">
-                                    <div class="input-group-prepend col-2">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-sliders lis-primary lis-left-0"></i>
-                                        </span>
-                                    </div>                                                                        
-                                    <select id="sortByInput" class="selectpicker form-control col-9 text-uppercase" data-style="btn btn-link">
-                                        <option selected disabled value="default">Sort-By</option>
-                                        <option value="rating">Reviews</option>
-                                        <option value="views">Popularity</option>
-                                        </select>  
-                                    </div>
-                                </div>
-                            </div>                         
-                                        <div class="row" id="content-placeholder">
+                                    <div class="form-group bmd-form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                            <i class="fa fa-sliders lis-primary lis-left-0"></i>
+                                                    </span>
+                                                </div>                            
+                                                <select id="sortByInput" class="selectpicker form-control col-9 text-uppercase mt-0 " data-style="btn btn-link">
+                                                        <option selected disabled value="default">Sort-By</option>
+                                                        <option value="rating">Reviews</option>
+                                                        <option value="views">Popularity</option>
+                                                        </select> 
+                                            </div>
                                         </div>
+                                    </div>         
+                        </div>               
+                            <div class="row" id="content-placeholder">
+                            </div>
                         <div class="row justify-content-around">
                             <nav aria-label="...">
                                 <ul class="pagination my-3" id="paginationContainer">
