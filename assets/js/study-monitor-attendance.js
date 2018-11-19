@@ -30,9 +30,20 @@ const attendance = (() => {
 		keysArrOfSplitObj.forEach(key => {
 			let numberOfPresents = 0;
 			splitObj[key].forEach(scheduleObj => {
-				if (scheduleObj.isAbsent === false) numberOfPresents++;
+				const scheduleIsOld = moment(scheduleObj.date).isBefore(moment(Date.now()));
+				if (scheduleIsOld) {
+					if (scheduleObj.isAbsent === false) numberOfPresents++;
+				} else {
+					scheduleObj.yetToCome = true;
+				}
 			});
 			const attendencePercentage = (numberOfPresents / splitObj[key].length) * 100;
+			splitObj[key].forEach(scheduleObj => {
+				if (scheduleObj.date) {
+					scheduleObj.date = moment(scheduleObj.date).format('MMM Do');
+				}
+			})
+			console.log(splitObj[key]);
 			attendaceCardsHTML += template.attendanceCards({ schedules: splitObj[key], attendencePercentage });
 		});
 		$attendanceContainer.html(attendaceCardsHTML);

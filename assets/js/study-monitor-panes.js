@@ -1,11 +1,13 @@
 const pillsAndPanes = (() => {
 	let batchesArr
-	let $pillsContainer;
-	let $panesContainer;
+	let $navPillsList;
+	// let $panesContainer;
+	let $tabContainer;
 
 	function cache() {
-		$pillsContainer = $('#batches_pills_container');
-		$panesContainer = $('#batches_panes_container');
+		$navPillsList = $('#nav-pills-list');
+		// $panesContainer = $('#batches_panes_container');
+		$tabContainer = $('#tab-container');
 	}
 
 	function getUniqueInstitutes(batchArr) {
@@ -26,13 +28,25 @@ const pillsAndPanes = (() => {
 		return uniqueTuitionIdsArr;
 	}
 
-	function render(tuitionsArr) {
+	function render() {
 		const uniqueInstitutesArr = getUniqueInstitutes(batchesArr);
-		const pillsHTML = template.institutePills({ tuitions: uniqueInstitutesArr });
-		$pillsContainer.html(pillsHTML);
+		uniqueInstitutesArr.forEach((obj, index) => {
+			const tabNumber = (index + 1) * 10;
+			obj.tabNumber = tabNumber
+			let shortName = obj.name;
+			if (obj.name.length > 20) {
+				shortName = obj.name.substr(0, 18) + '..';
+			}
+			$navPillsList.append(`<li class="nav-item">
+			<a class="nav-link rounded-0 text-left dashboard-nav-pills" href="#tab${tabNumber}" data-toggle="tab">${shortName}</a>
+			</li>`);
+
+		})
+		// const pillsHTML = template.institutePills({ tuitions: uniqueInstitutesArr });
+		// $navPillsList.append(pillsHTML);
 
 		const panesHTML = template.institutePanes({ tuitions: uniqueInstitutesArr });
-		$panesContainer.html(panesHTML);
+		$tabContainer.append(panesHTML);
 	}
 
 	function init(batches) {

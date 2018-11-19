@@ -1,0 +1,46 @@
+<div class="card-title col-12 h3 bg-info">
+    {{title}}
+</div>
+<div class="col-12">
+    <p style="font-size:1.188rem;line-height: 1.5em; color:#555">{{body}}</p>
+</div>
+<hr>
+<div class="col-12">
+    <div class="row px-3">
+        <small class="text-danger">comments</small>
+    </div>
+    {{#each comments as |comment|}}
+    <div class="media">
+        <a class="float-left" href="#pablo">
+            <div class="avatar">
+                <img class="media-object" alt="Tim Picture" src="./assets/img/logo.png">
+            </div>
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">{{userEmail}} <small>· {{fromNow}}</small></h4>
+
+            <p style="color:#555">{{content}}</p>
+
+            {{!-- <div class="media-footer text-danger">
+                <i class="material-icons float-right delete-comment-btn" style="cursor: pointer; font-size: 18px"
+                    data-comment-id="{{comment._id}}" data-post-id="{{../_id}}" data-tuition-id="{{../tuitionId}}">delete</i>
+            </div> --}}
+        </div>
+    </div>
+    {{/each}}
+    <div class="media media-post">
+        <a class="author float-left" href="#pablo">
+            <div class="avatar">
+                <img class="media-object" alt="64x64" src="./assets/img/logo.png">
+            </div>
+        </a>
+        <div class="media-body">
+            <span class="bmd-form-group"><textarea class="form-control comment-content-textarea" placeholder="Write some nice stuff or nothing..."
+                    rows="6" data-post-id="{{_id}}"></textarea></span>
+            <div class="media-footer">
+                <a href="#pablo" class="btn btn-success btn-round float-right add-comment-btn" data-post-id="{{_id}}"
+                    data-tuition-id="{{tuitionId}}">Post Comment</a>
+            </div>
+        </div>
+    </div>
+</div>

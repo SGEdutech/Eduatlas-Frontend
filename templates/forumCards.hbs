@@ -1,23 +1,20 @@
 {{#each forums as |post|}}
 <div class="card m-1" id="{{post._id}}">
     <div class="card-body">
-        <a class="row nav nav-item nav-link p-0" style="cursor: pointer">
-            <h3 class="card-heading font-weight-bold m-0">{{post.title}}</h3>
-            <i class="material-icons show-forum-post" data-forum-id="{{post._id}}">
-                remove_red_eye
-            </i>
-        </a>
         <div class="row">
-            <small><span class="text-secondary">posted</span>
-                {{post.createdAt}} days ago <span class="text-secondary">by </span>
-                {{post.tuitionName}}
+            <h4 class="card-title m-0 p-0 col-12 post-heading" data-post-id="{{post._id}}" data-tuition-id="{{post.tuitionId}}"
+                style="cursor: pointer">{{post.title}}</h4>
+            <small>
+                <span class="text-secondary">posted</span>
+                <span class="text-info">{{post.fromNow}}</span> <span class="text-secondary">by </span>
+                <span class="text-info">{{post.tuitionName}}</span>
             </small>
         </div>
-        {{!-- <div class="row">
+        <div class="row">
             <small class="text-secondary">
-                {{post.numComments}} comments
+                <span class="text-info">{{post.comments.length}}</span> comments
             </small>
-        </div> --}}
+        </div>
     </div>
 </div>
 {{/each}}

@@ -30,6 +30,7 @@ async function initModules() {
 		pillsAndPanes.init(batches);
 		forum.init(forums);
 		attendance.init(schedules);
+		triggerPills.init();
 	} catch (err) {console.error(err);}
 }
 
