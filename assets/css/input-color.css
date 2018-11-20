@@ -6,6 +6,34 @@ input.form-control {
     background-image: linear-gradient(to top, #00bcd4 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
 }
 
+textarea.form-control {
+    background-image: linear-gradient(to top, #00bcd4 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px); }
+
 .is-focused .bmd-label-static {
     color: #00bcd4
 }
+
+#Form1 input[type="text"],
+#Form1 input[type="number"],
+#Form1 input[type="email"],
+#Form1 input[type="date"],
+#Form1 input[type="time"],
+#Form1 textarea,
+#Form1 select,
+#Form1 .dropdown-toggle {
+	border: 0.5px solid #00bcd4
+}
+
+#Form2 input[type="text"],
+#Form2 input[type="number"],
+#Form2 input[type="email"],
+#Form2 input[type="date"],
+#Form2 input[type="time"],
+#Form2 textarea,
+#Form2 select,
+#Form2 .dropdown-toggle {
+	border: 0.5px solid #00bcd4
+}
+
+.card-title.bg-info {
+    background-color: #00bcd44d !important; }

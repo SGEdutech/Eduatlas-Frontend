@@ -1,30 +1,39 @@
 const userImgAndName = (() => {
-    let $profilePic;
-    let $userNameContainer;
-    function cache() {
-        $profilePic = $('#profile_pic');
-        $userNameContainer = $('#userIdContainer');
-    }
+	let $profilePic;
+	let $userNameContainer;
+	let $eaIdContainer;
 
-    function render(user) {
-        // handle google pic
-        if (user.img_userProfilePic) {
-            $profilePic.attr('src', `images/${user.img_userProfilePic}`);
-        } else {
-            $profilePic.attr('src', 'assets/img/logo.png');
-        }
+	function cache() {
+		$profilePic = $('#profile_pic');
+		$userNameContainer = $('#userIdContainer');
+		$eaIdContainer = $('#ea_id_container');
+	}
 
-        if (user.firstName) {
-            $userNameContainer.html(user.firstName);
-        } else {
-            $userNameContainer.html('Unknown unicorn');
-        }
-    }
+	function render(user) {
+		// handle google pic
+		if (user.img_userProfilePic) {
+			$profilePic.attr('src', `images/${user.img_userProfilePic}`);
+		} else {
+			$profilePic.attr('src', 'assets/img/logo.png');
+		}
 
-    function init(user) {
-        cache();
-        render(user);
-    }
+		if (user.firstName) {
+			$userNameContainer.html(user.firstName);
+		} else {
+			$userNameContainer.html('Unknown unicorn');
+		}
 
-    return {init};
+		if (user.eANumber) {
+			$eaIdContainer.html(eAIdsAndNumbers.numberToEaId(user.eANumber))
+		} else {
+			$eaIdContainer.html('No EA Id')
+		}
+	}
+
+	function init(user) {
+		cache();
+		render(user);
+	}
+
+	return { init };
 })();

@@ -128,6 +128,7 @@ const getEvent = (() => {
 			} else {
 				data.forEach(obj => {
 					helperScripts.openNowInit(obj);
+					obj.col4 = false;
 					obj.typeOfInfo = typeOfInfo;
 					obj.averageRating = helperScripts.calcAverageRating(obj.reviews);
 					obj.averageRating = obj.averageRating === -1 ? 2.5 : obj.averageRating;
@@ -146,7 +147,7 @@ const getEvent = (() => {
 						obj.toDate = dateObj.date;
 						obj.toMonth = dateObj.monthName;
 					}
-					result += template.cardv2(obj);
+					result += template.eventShortCard(obj);
 				});
 				$sponsoredPopular.append(result);
 			}
@@ -186,6 +187,7 @@ const getEvent = (() => {
 			} else {
 				data.forEach(obj => {
 					helperScripts.openNowInit(obj);
+					obj.col4 = true;
 					obj.typeOfInfo = typeOfInfo;
 					obj.averageRating = helperScripts.calcAverageRating(obj.reviews);
 					obj.averageRating = obj.averageRating === -1 ? 2.5 : obj.averageRating;
@@ -205,7 +207,7 @@ const getEvent = (() => {
 						obj.toDate = dateObj.date;
 						obj.toMonth = dateObj.monthName;
 					}
-					result += template.cardv2(obj);
+					result += template.eventShortCard(obj);
 				});
 				$relatedEventContainer.append(result);
 			}
