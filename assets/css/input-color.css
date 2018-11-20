@@ -36,4 +36,23 @@ textarea.form-control {
 }
 
 .card-title.bg-info {
-    background-color: #00bcd44d !important; }
+    background-color: #00bcd44d !important; 
+}   
+
+
+#bmd-form .input-group {
+    border: 0.5px solid #00bcd4
+}
+body input[type="text"],
+body input[type="number"],
+body input[type="email"],
+body input[type="date"],
+body input[type="time"],
+body  .txtarea,
+body select,
+body #category,
+body #categorySchool,
+body #categoryEvent,
+body .dropdown-toggle {
+	border: 0.5px solid #00bcd4
+}

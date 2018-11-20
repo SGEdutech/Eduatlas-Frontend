@@ -37,44 +37,45 @@
     <!-- overriding material kit input underline color -->
     <link rel="stylesheet" href="assets/css/input-color.css">
 </head>
+
 <body class="sections-page sidebar-collapse" style="height: 1000px;background-color:white;">
     <!--sick navbar-->
     <div id="nav_container"></div>
     <div class="container-fluid maincontainer mt-md-0">
         <div class="row">
             <div class="col-md-3 col-xl-3 col-xs-12  mt-5">
-            <div class="card card-profile">
-                <div class="card-body ">
-                    <h4 class="card-title">What are you looking for?</h4>
-                    <h6 class="card-category text-gray">Search By Category</h6>
-                </div>
-                <form>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="material-icons text-info">group</i>
-                                </span>
-                            </div>                            
-                            <input type="text" class="form-control col-9" placeholder="What are you looking for?"
-                            id="searchBox">
-                        </div>
+                <div class="card card-profile">
+                    <div class=" ">
+                        <h4 class="card-title">What are you looking for?</h4>
+                        <!-- <h6 class="card-category text-gray">Search By Category</h6> -->
                     </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="material-icons text-info">
-                                        location_city
-                                    </i>
-                                </span>
-                            </div>                            
-                            <input type="text" class="form-control col-9" placeholder="City" id="citySearch">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="material-icons text-info">group</i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control col-9" placeholder="What are you looking for?"
+                                    id="searchBox">
+                            </div>
                         </div>
-                    </div> 
-                     <!-- For Future Use  -->
-                     
-                    <!-- <div class="form-group">
+                        <div class="form-group pt-1">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="material-icons text-info">
+                                            location_city
+                                        </i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control col-9" placeholder="City" id="citySearch">
+                            </div>
+                        </div>
+                        <!-- For Future Use  -->
+
+                        <!-- <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -92,90 +93,150 @@
                         <input type="text" value="Amsterdam,Washington,Sydney,Beijing" class="ml-3 col-9 tagsinput form-control" data-role="tagsinput" data-color="info">
                    </div>
                     </div>                  -->
-                    </form>                
-                <div class="card-body ">
-                    <h4 class="card-title">More Filters</h4>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-check form-check-radio">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios1" value="tuition" checked> Institutes                                  
-                                    <span class="circle" style="border-color: #00bcd4">
-                                        <span class="check" style="background-color: #00bcd4;"></span>
-                                    </span>
-                                </label>
+                    </form>
+                    <div>
+                        <h4 class="card-title">More Filters</h4>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-check form-check-radio">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios1"
+                                            value="tuition" checked> Institutes
+                                        <span class="circle" style="border-color: #00bcd4">
+                                            <span class="check" style="background-color: #00bcd4;"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check form-check-radio">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios2"
+                                            value="school"> Schools
+                                        <span class="circle" style="border-color: #00bcd4">
+                                            <span class="check" style="background-color: #00bcd4;"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check form-check-radio">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios3"
+                                            value="event"> Events
+                                        <span class="circle" style="border-color: #00bcd4">
+                                            <span class="check" style="background-color: #00bcd4;"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div id="category_container">
+                            <h4 class="card-title">Search By SubCategory</h4><br>
+                            <!-- <p class="lis-dark mt-4 mb-0 card-title">Search By SubCategory</p> -->
+                            <div id="tuition_category_container" style="display: none;margin-top:-20px;">
+                                <select id="category" name="category" class="selectpicker form-control text-uppercase"
+                                    data-style="btn btn-link">
+                                    <option disabled selected>Tuition Subcategory</option>
+                                    <option value="Tuition Centers">Tuition Centers</option>
+                                    <option value="Coaching Centers">Coaching Centers</option>
+                                    <option value="Enhanced Learning">Enhanced Learning</option>
+                                    <option value="Hobby Centers">Hobby Centers</option>
+                                    <option value="Sports Center">Sports Center</option>
+                                    <option value="Education Companies">Education Companies</option>
+                                </select>
+                            </div>
+                            <div id="school_category_container" style="display: none;margin-top:-20px;">
+                                <select id="categorySchool" name="category" class="selectpicker form-control"
+                                    data-style="btn btn-link">
+                                    <option disabled selected>school subcategory</option>
+                                    <option value="Pre/Play School">Pre/Play School</option>
+                                    <option value="Day Care">Day Care</option>
+                                    <option value="Formal School">Formal School</option>
+                                </select>
+                            </div>
+                            <div id="event_category_container" style="display: none;margin-top:-20px;">
+                                <select id="categoryEvent" name="category" class="selectpicker form-control" data-style="btn btn-link">
+                                    <option disabled selected>event subcategory</option>
+                                    <option value="Cultural">Cultural</option>
+                                    <option value="Annual Day">Annual Day</option>
+                                    <option value="Music">Music</option>
+                                    <option value="Programming">Programming</option>
+                                    <option value="Fest">Fest</option>
+                                    <option value="Educational">Educational</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Food and Drink">Food and Drink</option>
+                                    <option value="Exhibition">Exhibition</option>
+                                    <option value="Travel n Activities">Travel n Activities</option>
+                                    <option value="others">others</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="form-check form-check-radio">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios2" value="school"> Schools                                   
-                                    <span class="circle" style="border-color: #00bcd4">
-                                        <span class="check" style="background-color: #00bcd4;"></span>
-                                    </span>
-                                </label>
+                        <br>
+                        <!--Event Date Filter For Future Use-->
+
+                        <!-- <div>
+                            <h4 class="card-title">Event Date Filter</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-check form-check-radio ">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="typeOfInfo" id="datetoday"
+                                                value="tuition" checked> Today
+                                            <span class="circle" style="border-color: #00bcd4">
+                                                <span class="check" style="background-color: #00bcd4;"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="typeOfInfo" id="datetoday"
+                                                value="tuition" checked> Tomorrow
+                                            <span class="circle" style="border-color: #00bcd4">
+                                                <span class="check" style="background-color: #00bcd4;"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="typeOfInfo" id="datetoday"
+                                                value="tuition" checked> This Week
+                                            <span class="circle" style="border-color: #00bcd4">
+                                                <span class="check" style="background-color: #00bcd4;"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-check form-check-radio">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="typeOfInfo" id="datetoday"
+                                                value="tuition" checked> Next Week
+                                            <span class="circle" style="border-color: #00bcd4">
+                                                <span class="check" style="background-color: #00bcd4;"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-check form-check-radio">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="typeOfInfo" id="exampleRadios3" value="event"> Events                                    
-                                    <span class="circle" style="border-color: #00bcd4">
-                                        <span class="check" style="background-color: #00bcd4;"></span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div><br>
-                            <div id="category_container">
-                                    <h4 class="card-title">Search By SubCategory</h4><br>
-                                <!-- <p class="lis-dark mt-4 mb-0 card-title">Search By SubCategory</p> -->
-                                <div id="tuition_category_container" style="display: none">
-                                    <select id="category" name="category" class="selectpicker form-control text-uppercase" data-style="btn btn-link">
-                                        <option disabled selected>Tuition Subcategory</option>
-                                        <option value="Tuition Centers">Tuition Centers</option>
-                                        <option value="Coaching Centers">Coaching Centers</option>
-                                        <option value="Enhanced Learning">Enhanced Learning</option>
-                                        <option value="Hobby Centers">Hobby Centers</option>
-                                        <option value="Sports Center">Sports Center</option>
-                                        <option value="Education Companies">Education Companies</option>
-                                    </select>
-                                </div>
-                                <div id="school_category_container" style="display: none">
-                                    <select id="categorySchool" name="category" class="selectpicker form-control" data-style="btn btn-link">
-                                        <option disabled selected>school subcategory</option>
-                                        <option value="Pre/Play School">Pre/Play School</option>
-                                        <option value="Day Care">Day Care</option>
-                                        <option value="Formal School">Formal School</option>
-                                    </select>
-                                </div>
-                                <div id="event_category_container" style="display: none">
-                                    <select id="categoryEvent" name="category" class="selectpicker form-control" data-style="btn btn-link">
-                                        <option disabled selected>event subcategory</option>
-                                        <option value="Cultural">Cultural</option>
-                                        <option value="Annual Day">Annual Day</option>
-                                        <option value="Music">Music</option>
-                                        <option value="Programming">Programming</option>
-                                        <option value="Fest">Fest</option>
-                                        <option value="Educational">Educational</option>
-                                        <option value="Comedy">Comedy</option>
-                                        <option value="Food and Drink">Food and Drink</option>
-                                        <option value="Exhibition">Exhibition</option>
-                                        <option value="Travel n Activities">Travel n Activities</option>
-                                        <option value="others">others</option>
-                                    </select>
-                                </div>
-                            </div>                        
-                    <br>
-                    <button  class="btn btn-info" id="search-button">
-                        <i class="material-icons">
-                            search
-                        </i>Search</button>
+                        </div> -->
+
+                        <button class="btn btn-info" id="search-button">
+                            <i class="material-icons">
+                                search
+                            </i>Search</button>
+                    </div>
                 </div>
             </div>
-            </div>
             <div class="col-9 col-xl-9 mt-4">
-                    <section class="py-5 px-3" id="showresults">
+                <section class="py-5 px-3" id="showresults">
                     <div class="container">
                         <div class="row mt-md-5">
                             <div class="col-sm-8 align-self-center">
@@ -185,24 +246,25 @@
                                 </p>
                             </div>
                             <div class="col-sm-4">
-                                    <div class="form-group bmd-form-group">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                            <i class="fa fa-sliders lis-primary lis-left-0"></i>
-                                                    </span>
-                                                </div>                            
-                                                <select id="sortByInput" class="selectpicker form-control col-9 text-uppercase mt-0 " data-style="btn btn-link">
-                                                        <option selected disabled value="default">Sort-By</option>
-                                                        <option value="rating">Reviews</option>
-                                                        <option value="views">Popularity</option>
-                                                        </select> 
-                                            </div>
+                                <div class="form-group bmd-form-group" id="bmd-form">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-sliders lis-primary lis-left-0"></i>
+                                            </span>
                                         </div>
-                                    </div>         
-                        </div>               
-                            <div class="row" id="content-placeholder">
+                                        <select id="sortByInput" class="selectpicker form-control col-9 text-uppercase mt-0 "
+                                            data-style="btn btn-link">
+                                            <option selected disabled value="default">Sort-By</option>
+                                            <option value="rating">Reviews</option>
+                                            <option value="views">Popularity</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="row" id="content-placeholder">
+                        </div>
                         <div class="row justify-content-around">
                             <nav aria-label="...">
                                 <ul class="pagination my-3" id="paginationContainer">
@@ -263,7 +325,6 @@
     <script src="assets/js/user.js"></script>
     <script src="assets/js/search-module.js"></script>
     <script src="assets/js/search-service.js"></script>
-
     <!-- endbuild -->
 </body>
 
