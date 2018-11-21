@@ -23,7 +23,6 @@ const attendance = (() => {
 	}
 
 	function sortByDate(arr) {
-		arr.forEach(obj => console.log(obj.date))
 		arr.sort((a, b) => {
 			if (moment(a.date) > moment(b.date)) {
 				return -1;
@@ -66,6 +65,9 @@ const attendance = (() => {
 			// console.log(splitObj[key]);
 			attendaceCardsHTML += template.attendanceCards({ schedules: splitObj[key], attendencePercentage });
 		});
+		if (attendaceCardsHTML === '') {
+			attendaceCardsHTML = `<small class="text-danger">No Record Found</small>`
+		}
 		return attendaceCardsHTML;
 	}
 
