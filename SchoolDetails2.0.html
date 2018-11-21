@@ -37,17 +37,15 @@
     <link rel="stylesheet" href="assets/css/nav-links.css">
     <!-- stars for rating -->
     <link rel="stylesheet" href="assets/css/stars.css">
+    <link rel="stylesheet" href="assets/css/input-color.css">
 </head>
-
 <body>
     <div id="nav_container">
-
     </div>
     <div id="main_header" class="container mt-5">
         <div class="row">
         </div>
     </div>
-
     <div id="secondary_info" class="container p-0">
         <div class="row">
             <div class="col-md-9">
@@ -110,7 +108,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card my-md-0" id="map" style="height: 50%"></div>
+                <div class="card my-md-0 mt-0" id="map" style="height: 50%"></div>
                 <div class="card my-0">
                     <div class="card-body">
                         <div class="row">
@@ -157,7 +155,7 @@
                 </div>
             </div>
         </div><br>
-        <div class="row align-content-between">
+        <div class="row align-content-between description">
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body p-1 p-md-3">
@@ -328,7 +326,7 @@
                                                     <input id="reviewRatingInput" type="hidden" name="rating" value="">
                                                     <div class="form-group">
                                                         <label for="reviewDescriptionInput">Review</label>
-                                                        <textarea class="form-control" id="reviewDescriptionInput" rows="3"
+                                                        <textarea class="form-control txtarea" id="reviewDescriptionInput" rows="3"
                                                             name="description"></textarea>
                                                     </div>
                                                 </form>
@@ -338,7 +336,6 @@
                                             </div>
                                         </div>
                                         <div id="savedReviews">
-
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab8">
@@ -375,14 +372,10 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row" id="relatedTuitionContainer">
-
                     <h6 class="col-md-12 card-title">Related Listing:</h6>
                 </div>
-
             </div>
-
             <div class="col-md-3">
                 <div class="row">
                     <small class="col-12 mt-4">Sponsored And Popular</small>
@@ -390,7 +383,6 @@
                     <div class="col-12" id="sponsoredPopular">
                     </div>
                 </div>
-
                 <div class="my-3">
                     <div id="claimContainer">
                         <button id="claimButton" type="button" class="btn btn-block btn-round btn-info">
@@ -435,7 +427,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email_message">Message</label>
-                            <textarea class="form-control" id="email_message" rows="3"></textarea>
+                            <textarea class="form-control txtarea" id="email_message" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
@@ -472,7 +464,7 @@
                         </div>
                         <div class="form-group">
                             <label for="sms_message">Message</label>
-                            <textarea class="form-control" id="sms_message" rows="3"></textarea>
+                            <textarea class="form-control txtarea" id="sms_message" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
@@ -483,51 +475,37 @@
             </div>
         </div>
     </div>
-
     <div id="login_modal_container">
     </div>
     <div id="claim_modal_container">
     </div>
     <div id="report_modal_container">
     </div>
-
     <!--   Core JS Files   -->
     <script src="assets/js/core/jquery.min.js"></script>
     <script src="assets/js/core/popper.min.js"></script>
     <script src="assets/js/bootstrap-material-design.js"></script>
-
     <!-- Plugin for Date Time Picker and Full Calendar Plugin-->
     <script src="assets/js/plugins/moment.min.js"></script>
-
     <!-- Plugin for Select, full documentation here: https://silviomoreto.github.io/bootstrap-select -->
     <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
-
     <!-- Plugin for Tags, full documentation here: https://xoxco.com/projects/code/tagsinput/  -->
     <script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
-
     <!-- Plugin for Fileupload, full documentation here: https://www.jasny.net/bootstrap/javascript/#fileinput -->
     <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
-
     <!-- Plugin for Small Gallery in Product Page -->
     <script src="assets/js/plugins/jquery.flexisel.js"></script>
-
     <!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
     <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
-
     <!-- Plugin for the Sliders, full documentation here: https://refreshless.com/nouislider/ -->
     <script src="assets/js/plugins/nouislider.min.js"></script>
-
     <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
-    <script src="assets/js/material-kit.js?v=2.0.0"></script>
-
-    <!--handle bars-->
+    <script src="assets/js/material-kit.js?v=2.0.0"></script>    <!--handle bars-->
     <script src="assets/js/handlebars-v4.0.11.js"></script>
     <script src="assets/js/templates.js"></script>
-
     <!--for gallery-->
     <script src="assets/js/lightbox.min.js"></script>
     <script src="assets/js/gallery.js"></script>
-
     <!-- Custom Code -->
     <!--Docs at: https://github.com/mroderick/PubSubJS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.6.0/pubsub.min.js"></script>
@@ -547,14 +525,9 @@
     <script src="assets/js/report-modal.js"></script>
     <script src="assets/js/query-string.js"></script>
     <script src="assets/js/school-details-service.js"></script>
-
     <!-- endbuild -->
-
     <!--Google Map-->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8fHii6yy5NABpk8Isz-FRkYEdQHYvLg4" type="text/javascript"></script>
-
     <script src="assets/js/google-map.js"></script>
-
 </body>
-
 </html>

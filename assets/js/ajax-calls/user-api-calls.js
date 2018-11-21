@@ -51,6 +51,13 @@ const userApiCalls = (() => {
 		});
 	}
 
+	function getAllSMPayments() {
+		return $.ajax({
+			type: 'GET',
+			url: '/user/payments'
+		});
+	}
+
 	function getSpecificUser(idenfifierObj) {
 		if (!checkForHexRegExp.test(idenfifierObj._id)) {
 			console.error("Not a valid _id Of User");
@@ -176,6 +183,7 @@ const userApiCalls = (() => {
 		getAllSMBatches,
 		getAllSMForums,
 		getAllSMSchedules,
+		getAllSMPayments,
 		getSpecificUser,
 		putNewUser,
 		addClaim,
