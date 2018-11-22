@@ -12,8 +12,9 @@
 
   @media only screen and (max-width: 600px) {
     #autocomplete_container {
-        top: 116%;
+        top: 116%;        
     }
+    .slick-arrow{display:none!important;}
 
     .footerimage{background-image: none!important;background-color:black;}
 }
