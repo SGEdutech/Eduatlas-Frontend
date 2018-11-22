@@ -1,0 +1,115 @@
+{{#each payments as |payment|}}
+<div class="card">
+    <div class="card-body p-0">
+        <div class="card bg-info m-0 rounded-0">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 font-weight-bold">Course Code:</div>
+                    <div class="col-md-3">{{payment.courseCode}}</div>
+                    <div class="col-md-3 font-weight-bold">
+                        Course Fee:
+                    </div>
+                    <div class="col-md-3">
+                        {{payment.courseFee}}
+                    </div>
+                    <div class="col-md-3 font-weight-bold">
+                        Discount Amount:
+                    </div>
+                    <div class="col-md-3">
+                        {{payment.discountAmount}}
+                    </div>
+                    <div class="col-md-3 font-weight-bold">
+                        Discount Reason:
+                    </div>
+                    <div class="col-md-3">
+                        {{payment.discountReason}}
+                    </div>
+                    <div class="col-md-3 font-weight-bold">
+                        Net Fee:
+                    </div>
+                    <div class="col-md-3">
+                        {{payment.netFee}}
+                    </div>
+                    <div class="col-md-3 font-weight-bold">
+                        Pending Balance:
+                    </div>
+                    <div class="col-md-3">
+                        {{payment.pendingBalance}}
+                    </div>
+                    <div class="col-md-3 font-weight-bold">
+                        Next Installment Date:
+                    </div>
+                    <div class="col-md-3 text-danger">
+                        {{payment.nextInstallmentDate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="px-3">
+            {{#each payment.installments as |installment|}}
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title m-0 h4 mb-3">Installment {{inc @index}}</div>
+                    <div class="row">
+                        <div class="col-md-3 font-weight-bold">
+                            Collected Fee:
+                        </div>
+                        <div class="col-md-3">
+                            {{installment.feeCollected}}
+                        </div>
+                        <div class="col-md-3 font-weight-bold">
+                            Mode Of Payment:
+                        </div>
+                        <div class="col-md-3">
+                            {{installment.modeOfPayment}}
+                        </div>
+                        {{#if installment.bank}}
+                        <div class="col-md-3 font-weight-bold">
+                            Bank Name:
+                        </div>
+                        <div class="col-md-3">
+                            {{installment.bank}}
+                        </div>
+                        {{/if}}
+                        {{#if installment.dateOfCheque}}
+                        <div class="col-md-3 font-weight-bold">
+                            Date Of Cheque:
+                        </div>
+                        <div class="col-md-3">
+                            {{installment.dateOfCheque}}
+                        </div>
+                        {{/if}}
+                        {{#if installment.chequeNumber}}
+                        <div class="col-md-3 font-weight-bold">
+                            Cheque Number:
+                        </div>
+                        <div class="col-md-3">
+                            {{installment.chequeNumber}}
+                        </div>
+                        {{/if}}
+                        {{#if installment.cardNumber}}
+                        <div class="col-md-3 font-weight-bold">
+                            Card Number:
+                        </div>
+                        <div class="col-md-3">
+                            {{installment.cardNumber}}
+                        </div>
+                        {{/if}}
+                        {{#if installment.transactionId}}
+                        <div class="col-md-3 font-weight-bold">
+                            Transaction Id:
+                        </div>
+                        <div class="col-md-3">
+                            {{installment.transactionId}}
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{else}}
+<small class="text-danger">No Payment Initiated</small>
+{{/each}}
