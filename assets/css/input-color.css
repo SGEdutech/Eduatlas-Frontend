@@ -54,5 +54,9 @@ body #category,
 body #categorySchool,
 body #categoryEvent,
 body .dropdown-toggle {
-	border: 0.5px solid #00bcd4
+    border: 0.5px solid #00bcd4;
+    padding-left:9px;
 }
+
+.nav-link
+{border:0px solid;}
