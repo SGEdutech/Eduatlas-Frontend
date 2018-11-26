@@ -1,3 +1,4 @@
+{{#each notifications as |notification|}}
 {{#if col4}}
 <div class="col-4">
     {{/if}}
@@ -5,7 +6,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12">
-                    <h4 class="media-heading">{{senderId}}<br>
+                    <h4 class="media-heading card-title">{{#if instituteName}}{{instituteName}}{{else}}{{senderId}}{{/if}}<br>
                         <small class="text-danger">{{createdAt}}</small>
                     </h4>
                     <h6 class="text-muted"></h6>
@@ -18,3 +19,4 @@
     {{#if col4}}
 </div>
 {{/if}}
+{{/each}}

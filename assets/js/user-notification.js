@@ -1,4 +1,6 @@
 const userNotification = (() => {
+	let distinctInstitutesArr;
+	let distinctNotificationsArr;
 	let $notificationContainer;
 	let $notificationNumber;
 	let $notificationUpdateForm;
@@ -19,28 +21,21 @@ const userNotification = (() => {
 	}
 
 	function render() {
-		notificationApiCalls.getUserNotifications().then((result) => {
-			if (result) {
-				if (result.length === 0) {
-					// nothing to show
-					const context = { col4: false, title: "No Notifications" };
-					$notificationContainer.html(template.noDataCard(context));
-				} else {
-					// notifications to show 
-					result.forEach(item => {
-						const dateObj = helperScripts.getDateObj(item.createdAt);
-						item.createdAt = dateObj.date + " " + dateObj.monthName;
-						$notificationContainer.append(template.userNotification(item));
-					})
-					// update notifiaction number pill
-					$notificationNumber.html(result.length);
-				}
-			} else {
-				// nothing to show
-				const context = { col4: false, title: "No Notifications" };
-				$notificationContainer.html(template.noDataCard(context));
-			}
-		}).catch((err) => console.error(err));
+		if (distinctNotificationsArr.length === 0) {
+			// nothing to show
+			const context = { col4: false, title: "No Notifications" };
+			$notificationContainer.html(template.noDataCard(context));
+		} else {
+			distinctNotificationsArr.forEach(item => {
+				const dateObj = helperScripts.getDateObj(item.createdAt);
+				item.createdAt = dateObj.date + " " + dateObj.monthName;
+				item.instituteName = distinctInstitutesArr.find(instituteObj => item.senderId === instituteObj.tuitionId).tuitionName;
+			})
+			const notificationCardHTML = template.userNotification({ notifications: distinctNotificationsArr });
+			$notificationContainer.html(notificationCardHTML);
+			// update notifiaction number pill
+			$notificationNumber.html(distinctNotificationsArr.length);
+		}
 	}
 
 	function markAsRead() {
@@ -56,7 +51,12 @@ const userNotification = (() => {
 		}).catch(err => console.error(err))
 	}
 
-	function init() {
+	function init(enrollInfo, notifications) {
+		if (enrollInfo === undefined) throw new Error('enrollInfo not provided');
+		if (notifications === undefined) throw new Error('Notifications not provided');
+		distinctInstitutesArr = JSON.parse(JSON.stringify(enrollInfo));
+		distinctNotificationsArr = JSON.parse(JSON.stringify(notifications));
+
 		cache();
 		render();
 		bindEvents();

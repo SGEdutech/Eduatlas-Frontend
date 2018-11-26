@@ -3,7 +3,11 @@
     <div class="card-body">
         <div class="row">
             <h4 class="card-title m-0 p-0 col-12 post-heading" data-post-id="{{post._id}}" data-tuition-id="{{post.tuitionId}}"
-                style="cursor: pointer">{{post.title}}</h4>
+                style="cursor: pointer">{{post.title}}
+                <i class="material-icons pull-right post-heading" data-post-id="{{post._id}}" data-tuition-id="{{post.tuitionId}}">
+                    remove_red_eye
+                </i>
+            </h4>
             <small>
                 <span class="text-secondary">posted</span>
                 <span class="text-info">{{post.fromNow}}</span> <span class="text-secondary">by </span>
@@ -17,4 +21,6 @@
         </div>
     </div>
 </div>
+{{else}}
+<small class="text-danger">No Post in Forums</small>
 {{/each}}

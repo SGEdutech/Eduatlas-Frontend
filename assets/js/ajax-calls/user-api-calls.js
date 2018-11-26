@@ -58,6 +58,13 @@ const userApiCalls = (() => {
 		});
 	}
 
+	function getAllSMRegistrationInfo() {
+		return $.ajax({
+			type: 'GET',
+			url: '/user/registeration-info'
+		})
+	}
+
 	function getSpecificUser(idenfifierObj) {
 		if (!checkForHexRegExp.test(idenfifierObj._id)) {
 			console.error("Not a valid _id Of User");
@@ -184,6 +191,7 @@ const userApiCalls = (() => {
 		getAllSMForums,
 		getAllSMSchedules,
 		getAllSMPayments,
+		getAllSMRegistrationInfo,
 		getSpecificUser,
 		putNewUser,
 		addClaim,

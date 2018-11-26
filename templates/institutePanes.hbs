@@ -2,8 +2,8 @@
 <div class="tab-pane" id="tab{{tabNumber}}">
     <div class="card bg-info m-0">
         <div class="card-body px-3">
-            <h3 class="card-title text-dark" data-id="{{tuition._id}}" data-tabnumber="10">
-                {{tuition.name}}
+            <h3 class="card-title text-dark" data-id="{{tuition.tuitionId}}" data-tabnumber="10">
+                {{tuition.tuitionName}}
             </h3>
             <h5 class="card-title">
                 Study Monitor
@@ -11,36 +11,42 @@
         </div>
     </div>
     <ul class="nav nav-pills nav-pills-success mt-3">
-        <li class="nav-item"><a class="nav-link active rounded-0" href="#forum{{tuition._id}}" data-toggle="tab">Forum</a></li>
-        <li class="nav-item"><a class="nav-link rounded-0" href="#attendance{{tuition._id}}" data-toggle="tab">Attendence</a></li>
+        <li class="nav-item"><a class="nav-link active rounded-0" href="#institute_notification{{tuition.tuitionId}}"
+                data-toggle="tab">Notifications</a></li>
+        <li class="nav-item"><a class="nav-link rounded-0" href="#forum{{tuition.tuitionId}}" data-toggle="tab">Forum</a></li>
+        <li class="nav-item"><a class="nav-link rounded-0" href="#attendance{{tuition.tuitionId}}" data-toggle="tab">Attendence</a></li>
         <!-- <li class="nav-item"><a class="nav-link rounded-0 disabled" href="#test{{_id}}" data-toggle="tab">Test Report</a></li> -->
-        <li class="nav-item"><a class="nav-link rounded-0" href="#fee{{tuition._id}}" data-toggle="tab">Fee
+        <li class="nav-item"><a class="nav-link rounded-0" href="#fee{{tuition.tuitionId}}" data-toggle="tab">Fee
                 Report</a></li>
+        <li class="nav-item"><a class="nav-link rounded-0" href="#enroll_details{{tuition.tuitionId}}" data-toggle="tab">Enrollment Details</a></li>
     </ul>
     <hr>
     <div class="row m-0">
         <div class="col-md-12">
             <div class="tab-content">
-                <div class="tab-pane active" id="forum{{tuition._id}}">
-                    <div class="forum-landing-container" data-tuition-id="{{tuition._id}}">
-                        <div class="active-forums mb-3" data-tuition-id="{{tuition._id}}">
+                <div class="tab-pane active" id="institute_notification{{tuition.tuitionId}}">
+                    <div class="institute-notification-container" data-tuition-id="{{tuition.tuitionId}}"></div>
+                </div>
+                <div class="tab-pane" id="forum{{tuition.tuitionId}}">
+                    <div class="forum-landing-container" data-tuition-id="{{tuition.tuitionId}}">
+                        <div class="active-forums" data-tuition-id="{{tuition.tuitionId}}">
                         </div>
                     </div>
-                    <div class="forum-detail-container d-none" data-tuition-id="{{tuition._id}}">
-                        <button class="btn btn-sm btn-info go-to-landing-page-btn" data-tuition-id="{{tuition._id}}">
-                            <i class="material-icons" data-tuition-id="{{tuition._id}}">
+                    <div class="forum-detail-container d-none" data-tuition-id="{{tuition.tuitionId}}">
+                        <button class="btn btn-sm btn-info go-to-landing-page-btn" data-tuition-id="{{tuition.tuitionId}}">
+                            <i class="material-icons" data-tuition-id="{{tuition.tuitionId}}">
                                 arrow_back
                             </i>
                         </button>
-                        <div class="forum-detail-body" data-tuition-id="{{tuition._id}}"></div>
+                        <div class="forum-detail-body" data-tuition-id="{{tuition.tuitionId}}"></div>
                     </div>
                 </div>
-                <div class="tab-pane" id="attendance{{tuition._id}}">
-                    <div class="attendace-container" data-tuition-id="{{tuition._id}}">
+                <div class="tab-pane" id="attendance{{tuition.tuitionId}}">
+                    <div class="attendace-container" data-tuition-id="{{tuition.tuitionId}}">
 
                     </div>
                 </div>
-                <div class="tab-pane" id="fee{{tuition._id}}">
+                <div class="tab-pane" id="fee{{tuition.tuitionId}}">
                     {{!-- <div class="card m-0 mb-4">
                         <div class="card-title col-12 h3">
                             Course Name
@@ -102,7 +108,10 @@
                             </div>
                         </div>
                     </div> --}}
-                    <div class="fee-report-container" data-tuition-id="{{tuition._id}}"></div>
+                    <div class="fee-report-container" data-tuition-id="{{tuition.tuitionId}}"></div>
+                </div>
+                <div class="tab-pane" id="enroll_details{{tuition.tuitionId}}">
+                    <div class="enrollment-details-container mb-3" data-tuition-id="{{tuition.tuitionId}}"></div>
                 </div>
             </div>
         </div>
