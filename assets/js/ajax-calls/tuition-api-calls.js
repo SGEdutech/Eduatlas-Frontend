@@ -221,6 +221,17 @@ const tuitionApiCalls = (() => {
 		});
 	}
 
+	function sendLeadMail(idOfTuition, bodyObj) {
+		if (!checkForHexRegExp.test(idOfTuition)) {
+			console.error('Not a valid idOfTuition');
+		}
+		return $.ajax({
+			type: 'POST',
+			url: `/tuition/${idOfTuition}/mail`,
+			data: bodyObj
+		});
+	}
+
 	return {
 		getAllTuitions,
 		getSpecificTuition,
@@ -235,6 +246,7 @@ const tuitionApiCalls = (() => {
 		deleteInArrayInTuition,
 		deleteTuition,
 		putCommentInPost,
-		deleteCommentInPost
+		deleteCommentInPost,
+		sendLeadMail
 	};
 })();
