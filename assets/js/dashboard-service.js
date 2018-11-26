@@ -24,24 +24,26 @@ user.getInfo().then(userInfo => {
 async function initModules() {
 	try {
 		const promiseArr = [];
-		promiseArr.push(userApiCalls.getAllSMBatches());
+		// promiseArr.push(userApiCalls.getAllSMBatches());
 		promiseArr.push(userApiCalls.getAllSMForums());
 		promiseArr.push(userApiCalls.getAllSMSchedules());
 		promiseArr.push(userApiCalls.getAllSMPayments());
+		promiseArr.push(userApiCalls.getAllSMRegistrationInfo());
 		promiseArr.push(notificationApiCalls.getUserNotifications());
 
-		const [batches, forums, schedules, payments, notificationsArr] =
+		const [forums, schedules, payments, registrationInfo, notificationsArr] =
 		await Promise.all(promiseArr);
 
 
-		userNotification.init(batches, notificationsArr);
+		userNotification.init(registrationInfo, notificationsArr);
 
-		pillsAndPanes.init(batches);
+		pillsAndPanes.init(registrationInfo);
 		forum.init(forums);
 		attendance.init(schedules);
 		triggerPills.init();
 		fee.init(payments);
-		notifications.init(batches, notificationsArr);
+		notifications.init(registrationInfo, notificationsArr);
+		enrollmentDetails.init(registrationInfo);
 	} catch (err) { console.error(err); }
 }
 

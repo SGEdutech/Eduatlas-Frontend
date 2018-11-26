@@ -6,19 +6,6 @@ const userNotification = (() => {
 	let $notificationUpdateForm;
 	let $notificationReadTrigger;
 
-	function getUniqueInstitutes(batchArr) {
-		if (Array.isArray(batchArr) === false) throw new Error('batchArr provided is not an array');
-		const uniqueInstituteIds = {};
-		const uniqueInstituteArr = [];
-		for (const i in batchArr) {
-			if (uniqueInstituteIds[batchArr[i].tuitionId] !== true) {
-				uniqueInstituteArr.push({ name: batchArr[i].tuitionName, _id: batchArr[i].tuitionId });
-				uniqueInstituteIds[batchArr[i].tuitionId] = true;
-			}
-		}
-		return uniqueInstituteArr;
-	}
-
 	function cache() {
 		$notificationContainer = $('#notification-container');
 		$notificationNumber = $('#notification-number');
@@ -39,11 +26,10 @@ const userNotification = (() => {
 			const context = { col4: false, title: "No Notifications" };
 			$notificationContainer.html(template.noDataCard(context));
 		} else {
-			// notifications to show 
 			distinctNotificationsArr.forEach(item => {
 				const dateObj = helperScripts.getDateObj(item.createdAt);
 				item.createdAt = dateObj.date + " " + dateObj.monthName;
-				item.instituteName = distinctInstitutesArr.find(instituteObj => item.senderId === instituteObj._id).name;
+				item.instituteName = distinctInstitutesArr.find(instituteObj => item.senderId === instituteObj.tuitionId).tuitionName;
 			})
 			const notificationCardHTML = template.userNotification({ notifications: distinctNotificationsArr });
 			$notificationContainer.html(notificationCardHTML);
@@ -65,12 +51,11 @@ const userNotification = (() => {
 		}).catch(err => console.error(err))
 	}
 
-	function init(batches, notifications) {
-		if (batches === undefined) throw new Error('Batches not provided');
+	function init(enrollInfo, notifications) {
+		if (enrollInfo === undefined) throw new Error('enrollInfo not provided');
 		if (notifications === undefined) throw new Error('Notifications not provided');
-		const batchesArr = JSON.parse(JSON.stringify(batches));
+		distinctInstitutesArr = JSON.parse(JSON.stringify(enrollInfo));
 		distinctNotificationsArr = JSON.parse(JSON.stringify(notifications));
-		distinctInstitutesArr = getUniqueInstitutes(batchesArr);
 
 		cache();
 		render();
