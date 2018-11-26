@@ -11,7 +11,8 @@
         </div>
     </div>
     <ul class="nav nav-pills nav-pills-success mt-3">
-        <li class="nav-item"><a class="nav-link active rounded-0" href="#forum{{tuition._id}}" data-toggle="tab">Forum</a></li>
+        <li class="nav-item"><a class="nav-link active rounded-0" href="#institute_notification{{tuition._id}}" data-toggle="tab">Notifications</a></li>
+        <li class="nav-item"><a class="nav-link rounded-0" href="#forum{{tuition._id}}" data-toggle="tab">Forum</a></li>
         <li class="nav-item"><a class="nav-link rounded-0" href="#attendance{{tuition._id}}" data-toggle="tab">Attendence</a></li>
         <!-- <li class="nav-item"><a class="nav-link rounded-0 disabled" href="#test{{_id}}" data-toggle="tab">Test Report</a></li> -->
         <li class="nav-item"><a class="nav-link rounded-0" href="#fee{{tuition._id}}" data-toggle="tab">Fee
@@ -21,7 +22,10 @@
     <div class="row m-0">
         <div class="col-md-12">
             <div class="tab-content">
-                <div class="tab-pane active" id="forum{{tuition._id}}">
+                <div class="tab-pane active" id="institute_notification{{tuition._id}}">
+                    <div class="institute-notification-container" data-tuition-id="{{tuition._id}}"></div>
+                </div>
+                <div class="tab-pane" id="forum{{tuition._id}}">
                     <div class="forum-landing-container" data-tuition-id="{{tuition._id}}">
                         <div class="active-forums mb-3" data-tuition-id="{{tuition._id}}">
                         </div>
