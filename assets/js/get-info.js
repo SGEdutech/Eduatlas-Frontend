@@ -113,9 +113,13 @@ const getInfo = (() => {
 	}
 
 	function updateBasicInfo(infoObj, typeOfInfo) {
+		let address = infoObj.addressLine1 ? infoObj.addressLine1 + ', ' : '';
+		address += infoObj.addressLine2 ? infoObj.addressLine2 + ', ' : '';
+		address += infoObj.city ? infoObj.city + ', ' : '';
+		address += infoObj.pin ? infoObj.pin : '';
 
 		$name.html(infoObj.name);
-		$address.html(infoObj.addressLine1 + ',' + infoObj.addressLine2 + ',' + infoObj.city + ',' + infoObj.pin);
+		$address.html(address);
 		$primaryNumber.html(filterNullEntries(infoObj.primaryNumber));
 		$email.html(filterNullEntries(infoObj.email));
 		$emailAgain.html(filterNullEntries(infoObj.email));
@@ -521,8 +525,11 @@ const getInfo = (() => {
 	}
 
 	function render(InfoObj, typeOfInfo) {
-		
-		PubSub.publish('address.ready', InfoObj.addressLine1 + ',' + InfoObj.addressLine2 + ',' + InfoObj.city + ',' + InfoObj.state);
+		let addressForMap = InfoObj.addressLine1 ? InfoObj.addressLine1 + ', ' : '';
+		addressForMap += InfoObj.addressLine2 ? InfoObj.addressLine2 + ', ' : '';
+		addressForMap += InfoObj.city ? InfoObj.city + ', ' : '';
+		addressForMap += InfoObj.pin ? InfoObj.pin : '';
+		PubSub.publish('address.ready', addressForMap);
 
 		updateBasicInfo(InfoObj, typeOfInfo);
 		updateOpenNow(InfoObj, typeOfInfo);

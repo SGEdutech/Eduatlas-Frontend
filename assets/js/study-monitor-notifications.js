@@ -17,6 +17,7 @@ const notifications = (() => {
 				notificationsObj.createdAt = dateObj.date + " " + dateObj.monthName;
 				notificationsObj.instituteName = distinctInstitutesArr.find(instituteObj => notificationsObj.senderId === instituteObj.tuitionId).tuitionName;
 			});
+			notificationsOfThisInstitute.reverse();
 			const notificationCardsHTML = template.userNotification({ notifications: notificationsOfThisInstitute });
 			$container.html(notificationCardsHTML);
 		});

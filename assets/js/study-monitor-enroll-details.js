@@ -11,7 +11,6 @@ const enrollmentDetails = (() => {
 			$container = $(container);
 			const tuitionId = $container.attr('data-tuition-id');
             const enrollDetailsOfThisInstitute = distinctEnrollmentsArr.find(enrollInfoObj => enrollInfoObj.tuitionId === tuitionId);
-            console.log(enrollDetailsOfThisInstitute);
 			const enrollmentDetailsHTML = template.enrollmentDetails(enrollDetailsOfThisInstitute);
 			$container.html(enrollmentDetailsHTML);
 		});
@@ -20,7 +19,6 @@ const enrollmentDetails = (() => {
 	function init(enrollmentDetails) {
 		if (enrollmentDetails === undefined) throw new Error('EnrollmentDetails not provided');
 		distinctEnrollmentsArr = JSON.parse(JSON.stringify(enrollmentDetails));
-		console.log(distinctEnrollmentsArr);
 
 		cache();
 		render();
