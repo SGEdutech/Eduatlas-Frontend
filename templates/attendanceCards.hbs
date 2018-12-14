@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card-title h4 mx-3 text-info">
+            <div class="card-title h4 mx-3 text-info text-uppercase">
                 {{#each schedules as |schedule|}}
                 {{#if @first}}
                 {{schedule.batchCode}}
@@ -43,8 +43,8 @@
                     {{#each schedules as |schedule|}}
                     <tr>
                         <td class="text-center p-0">{{schedule.date}}</td>
-                        <td class="p-0">{{schedule.topic}}</td>
-                        <td class="p-0">{{schedule.faculty}}</td>
+                        <td class="p-0 text-capitalize">{{schedule.topic}}</td>
+                        <td class="p-0 text-capitalize">{{schedule.faculty}}</td>
 
                         {{#if isAbsent}}
                         <td class="text-danger p-0">Absent</td>

@@ -40,7 +40,11 @@ const attendance = (() => {
 	}
 
 	function getHTML(splitObj, keysArrOfSplitObj) {
-		let attendaceCardsHTML = '';
+		// FIXME: decrease complexity
+		// returns html arranged in objects on basis of groupID
+
+		let htmlObj = {};
+		// let attendaceCardsHTML = '';
 
 		keysArrOfSplitObj.forEach(key => {
 			sortByDate(splitObj[key]);
@@ -62,27 +66,33 @@ const attendance = (() => {
 					scheduleObj.date = moment(scheduleObj.date).format('MMM Do');
 				}
 			})
-			// console.log(splitObj[key]);
-			attendaceCardsHTML += template.attendanceCards({ schedules: splitObj[key], attendencePercentage });
+			htmlObj[key] = template.attendanceCards({ schedules: splitObj[key], attendencePercentage });
 		});
-		if (attendaceCardsHTML === '') {
-			attendaceCardsHTML = `<small class="text-danger">No Record Found</small>`
-		}
-		return attendaceCardsHTML;
+		return htmlObj;
 	}
 
 	function render() {
 		const splitObj = splitVariousArray(schedulesArr, 'batchId');
 		const keysArrOfSplitObj = Object.keys(splitObj);
-		let attendaceCardsHTML = getHTML(splitObj, keysArrOfSplitObj);
-		$attendanceContainer.html(attendaceCardsHTML);
+		let attendaceCardsHTMLObj = getHTML(splitObj, keysArrOfSplitObj);
+
+		$attendanceContainer.each((__, container) => {
+			let attendanceCardsHTML = '';
+			$container = $(container);
+			const tuitionId = $container.attr('data-tuition-id');
+			keysArrOfSplitObj.forEach(batchKey => {
+				if (splitObj[batchKey][0].tuitionId === tuitionId) {
+					attendanceCardsHTML += attendaceCardsHTMLObj[batchKey];
+				}
+			});
+			$container.html(attendanceCardsHTML)
+		});
 	}
 
 	function init(schedules) {
 		if (schedules === undefined) throw new Error('Forums not provided');
 		schedulesArr = JSON.parse(JSON.stringify(schedules));
 		appendIsAbsent();
-
 		cache();
 		render();
 	}

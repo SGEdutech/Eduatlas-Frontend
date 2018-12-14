@@ -30,8 +30,9 @@ async function initModules() {
 		promiseArr.push(userApiCalls.getAllSMPayments());
 		promiseArr.push(userApiCalls.getAllSMRegistrationInfo());
 		promiseArr.push(notificationApiCalls.getUserNotifications());
+		promiseArr.push(userApiCalls.getAllReviews());
 
-		const [forums, schedules, payments, registrationInfo, notificationsArr] =
+		const [forums, schedules, payments, registrationInfo, notificationsArr, reviewsArr] =
 		await Promise.all(promiseArr);
 
 
@@ -44,6 +45,7 @@ async function initModules() {
 		fee.init(payments);
 		notifications.init(registrationInfo, notificationsArr);
 		enrollmentDetails.init(registrationInfo);
+		reviews.init(reviewsArr);
 	} catch (err) { console.error(err); }
 }
 

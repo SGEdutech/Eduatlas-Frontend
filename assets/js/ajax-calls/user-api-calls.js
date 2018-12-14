@@ -184,6 +184,13 @@ const userApiCalls = (() => {
 		});
 	}
 
+	function getAllReviews() {
+		return $.ajax({
+			type: "GET",
+			url: `/user/reviews`,
+		});
+	}
+
 	return {
 		getCurrentUser,
 		getAllUsers,
@@ -200,6 +207,7 @@ const userApiCalls = (() => {
 		updateInUser,
 		deleteInArrayInUser,
 		deleteArrayInUser,
-		deleteUser
+		deleteUser,
+		getAllReviews
 	};
 })();
