@@ -1,28 +1,28 @@
 <div class="row">
     <div class="col-md-3 font-weight-bold">Registered Name:</div>
-    <div class="col-md-3">{{name}}</div>
+    <div class="col-md-3">{{#if name}}{{name}}{{else}}<small>no data</small>{{/if}}</div>
     <div class="col-md-3 font-weight-bold">
         Email:
     </div>
     <div class="col-md-3">
-        {{email}}
+        {{#if email}}{{email}}{{else}}<small>no data</small>{{/if}}
     </div>
     <div class="col-md-3 font-weight-bold">
         Roll Number:
     </div>
     <div class="col-md-3">
-        {{rollNumber}}
+        {{#if rollNumber}}{{rollNumber}}{{else}}<small>no data</small>{{/if}}
     </div>
     <div class="col-md-3 font-weight-bold">
         Address:
     </div>
     <div class="col-md-3">
-        {{address}}
+        {{#if address}}{{address}}{{else}}<small>no data</small>{{/if}}
     </div>
     <div class="col-md-3 font-weight-bold">
         Contact Number:
     </div>
     <div class="col-md-3">
-        {{contactNumber}}
+        {{#if contactNumber}}{{contactNumber}}{{else}}<small>no data</small>{{/if}}
     </div>
 </div>
