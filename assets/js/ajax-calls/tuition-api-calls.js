@@ -96,7 +96,7 @@ const tuitionApiCalls = (() => {
 		if (isForm) {
 			return $.ajax({
 				type: "POST",
-				url: `/tuition/`,
+				url: `/tuition/new`,
 				data: bodyObj,
 				cache: false,
 				contentType: false,
@@ -105,7 +105,7 @@ const tuitionApiCalls = (() => {
 		} else {
 			return $.ajax({
 				type: "POST",
-				url: `/tuition/`,
+				url: `/tuition/new`,
 				data: bodyObj,
 			});
 		}
