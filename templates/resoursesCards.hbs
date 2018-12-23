@@ -1,0 +1,25 @@
+{{#each resources as |resource|}}
+<div class="col-md-6 mb-3">
+    <div class="card m-0">
+        <div class="card-body">
+            <h4 class="card-title" style="text-transform: uppercase">
+                <p class="text-secondary mb-0">File Name :</p>
+                <p class="text-danger">{{resource.title}}</p>
+            </h4>
+            <p class="card-text mb-0" style="overflow: hidden;text-overflow: ellipsis;max-height: 30px">
+                <small class="text-secondary">Description :</small>
+                <small class="text-danger">{{resource.description}}</small>
+            </p>
+            {{!-- <p class="card-text mb-0">
+                <small class="text-secondary">Number of Students Shared With:</small>
+                <small class="text-danger" style="text-transform: uppercase">{{resourse.students.length}}</small>
+            </p> --}}
+            <form method="get" action="{{resource.path}}">
+                <button class="btn btn-round btn-info btn-block" type="submit">Download</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{else}}
+<small class="text-danger">No Study Materials Found</small>
+{{/each}}
