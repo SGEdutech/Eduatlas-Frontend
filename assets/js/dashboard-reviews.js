@@ -1,4 +1,5 @@
-const dashboardReviews = (() => {
+const reviews = (() => {
+	let reviewsArr;
 	let $userReviews;
 	let $deleteReviewButton;
 
@@ -113,7 +114,10 @@ const dashboardReviews = (() => {
 		});
 	}
 
-	function init() {
+	function init(reviews) {
+		if (reviews === undefined) throw new Error('Reviews not provided');
+		reviewsArr = JSON.parse(JSON.stringify(reviews));
+		console.log(reviewsArr);
 		cache();
 		render();
 	}

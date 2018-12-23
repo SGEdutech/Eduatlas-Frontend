@@ -19,6 +19,7 @@
         {{!-- <li class="nav-item"><a class="nav-link rounded-0" href="#fee{{tuition.tuitionId}}" data-toggle="tab">Fee
                 Report</a></li> --}}
         <li class="nav-item"><a class="nav-link rounded-0" href="#enroll_details{{tuition.tuitionId}}" data-toggle="tab">Enrollment And Fee Details</a></li>
+        <li class="nav-item"><a class="nav-link rounded-0" href="#study_materials{{tuition.tuitionId}}" data-toggle="tab">Study Materials</a></li>
     </ul>
     <hr>
     <div class="row m-0">
@@ -52,6 +53,11 @@
                 <div class="tab-pane" id="enroll_details{{tuition.tuitionId}}">
                     <div class="enrollment-details-container mb-3" data-tuition-id="{{tuition.tuitionId}}"></div>
                     <div class="fee-report-container" data-tuition-id="{{tuition.tuitionId}}"></div>
+                </div>
+                <div class="tab-pane" id="study_materials{{tuition.tuitionId}}">
+                    <div class="resourses-container row" data-tuition-id="{{tuition.tuitionId}}">
+
+                    </div>
                 </div>
             </div>
         </div>
