@@ -291,7 +291,7 @@ const searchModule = (() => {
 
 	function getSearchResults() {
 		const skip = (page - 1) * items;
-		const demands = "name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail fromTime toTime fromDate toDate lastDateRegistration img_tuitionCoverPic img_schoolCoverPic img_eventCoverPic";
+		const demands = "name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews organiserPhone organiserEmail fromTime toTime fromDate toDate lastDateRegistration img_coverPic img_schoolCoverPic img_eventCoverPic";
 
 		if (queryObj.c) {
 			//means search type is complex

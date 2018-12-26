@@ -533,7 +533,7 @@ const getInfo = (() => {
 
 		updateBasicInfo(InfoObj, typeOfInfo);
 		updateOpenNow(InfoObj, typeOfInfo);
-		updateCoverImage(InfoObj.img_tuitionCoverPic);
+		updateCoverImage(InfoObj.img_coverPic);
 		updateClaimButtonHTML(InfoObj.claimedBy);
 		updateVerifiedBadge(InfoObj.claimedBy);
 		updateFacilities(InfoObj.facilities);

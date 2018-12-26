@@ -8,7 +8,7 @@ const coverImage = (() => {
     function render(typeOfInfo, user) {
         let html;
         if (typeOfInfo === 'tuition') {
-            html = getCoverHtml('images/' + user.img_tuitionCoverPic);
+            html = getCoverHtml('images/' + user.img_coverPic);
         } else if (typeOfInfo === 'school') {
             html = getCoverHtml('images/' + user.img_schoolCoverPic);
         } else if (typeOfInfo === 'event') {
