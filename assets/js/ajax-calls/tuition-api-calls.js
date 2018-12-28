@@ -64,6 +64,26 @@ const tuitionApiCalls = (() => {
 			data: data,
 		});
 	}
+	
+	function searchTuitionsRelevent(skip = 0, limit = 0, sortBy, demands, extraInfoObj = {}) {
+		let basicData = {
+			skip: skip,
+			limit: limit,
+			// sortBy: sortBy,
+			// demands: demands
+		}
+
+		let data = {
+			...basicData,
+			...extraInfoObj
+		}
+
+		return $.ajax({
+			type: "GET",
+			url: `/tuition/relevent`,
+			data: data,
+		});
+	}
 
 	function putInArrayInTuition(idOfTuition, arrayName, bodyObj, isForm = false) {
 		if (!checkForHexRegExp.test(idOfTuition)) {
@@ -249,6 +269,7 @@ const tuitionApiCalls = (() => {
 		getSpecificTuitionWithCourses,
 		getSpecificTuitionWithCoursesNBatches,
 		searchTuitions,
+		searchTuitionsRelevent,
 		putInArrayInTuition,
 		putNewTuition,
 		updateInArrayInTuition,
