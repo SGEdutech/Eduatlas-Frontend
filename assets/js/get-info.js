@@ -415,7 +415,7 @@ const getInfo = (() => {
 					search: city,
 					fullText: true
 				}),
-				demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews coursesOffered',
+				demands: `name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews coursesOffered img_${typeOfInfo}CoverPic`,
 				limit: 3,
 				skip: 0,
 				sortBy: ''
@@ -468,7 +468,7 @@ const getInfo = (() => {
 						search: city,
 						fullText: true
 					}),
-					demands: 'name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews',
+					demands: `name addressLine1 addressLine2 city state primaryNumber email category description claimedBy dayAndTimeOfOperation reviews img_${typeOfInfo}CoverPic`,
 					limit: 2,
 					skip: 0,
 					sortBy: 'views'
