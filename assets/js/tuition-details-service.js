@@ -20,6 +20,7 @@ async function initModules() {
 		reviews.updateInstituteInfo(tuitionInfo);
 		claimModal.updateQueryObj(queryObject);
 		leadEmail.init(queryObject);
+		leads.init(tuitionInfo);
 	} catch (error) { console.error(error) }
 }
 
