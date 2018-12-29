@@ -297,26 +297,26 @@ const searchModule = (() => {
 			//means search type is complex
 			showResultsHelper();
 			return new Promise((resolve, reject) => {
-				const extraInfoObj = {};
-				if (queryObj.name) extraInfoObj.search = queryObj.name;
-				if (queryObj.city) extraInfoObj.city = queryObj.city;
-				if (queryObj.category) extraInfoObj.category = queryObj.category;
-				// const extraInfoObj = {
-				// 	name: JSON.stringify({
-				// 		search: queryObj.name,
-				// 		fullText: false
-				// 	}),
-				// 	city: JSON.stringify({
-				// 		search: queryObj.city,
-				// 		fullText: true
-				// 	}),
-				// 	category: JSON.stringify({
-				// 		search: queryObj.category,
-				// 		fullText: true
-				// 	}),
-				// };
+				// const extraInfoObj = {};
+				// if (queryObj.name) extraInfoObj.search = queryObj.name;
+				// if (queryObj.city) extraInfoObj.city = queryObj.city;
+				// if (queryObj.category) extraInfoObj.category = queryObj.category;
+				const extraInfoObj = {
+					name: JSON.stringify({
+						search: queryObj.name,
+						fullText: false
+					}),
+					city: JSON.stringify({
+						search: queryObj.city,
+						fullText: true
+					}),
+					category: JSON.stringify({
+						search: queryObj.category,
+						fullText: true
+					}),
+				};
 				if (queryObj.typeOfInfo === "tuition") {
-					tuitionApiCalls.searchTuitionsRelevent(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
+					tuitionApiCalls.searchTuitions(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
 				} else if (queryObj.typeOfInfo === "school") {
 					schoolApiCalls.searchSchools(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
 				} else {
