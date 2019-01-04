@@ -26,8 +26,8 @@ gulp.task('imageMin', () =>
 	.pipe(gulp.dest('dist/img'))
 );
 
-gulp.task('templates', function() {
-	gulp.src('templates/*.hbs')
+gulp.task('templates', () => {
+	return gulp.src('templates/*.hbs')
 		.pipe(handlebars())
 		.pipe(wrap('Handlebars.template(<%= contents %>)'))
 		.pipe(declare({
