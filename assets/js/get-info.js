@@ -257,7 +257,8 @@ const getInfo = (() => {
 				duration: obj.duration,
 				fee: obj.fee,
 				ageGroup: obj.ageGroup,
-				nextBatch: obj.nextBatch ? obj.nextBatch.split('T')[0] : ''
+				nextBatch: obj.nextBatch ? moment(obj.nextBatch).format("MMM Do YY") : ''
+
 			};
 			context.courses.push(newObj);
 			counter++;

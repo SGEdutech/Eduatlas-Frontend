@@ -33,7 +33,7 @@ const leads = (() => {
 	}
 
 	function bindEvents() {
-		setTimeout(initLeadModal, 5000);
+		setTimeout(initLeadModal, 10000);
 		$addLeadForm.submit(submitLeadForm)
 	}
 
