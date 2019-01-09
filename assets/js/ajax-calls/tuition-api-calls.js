@@ -64,7 +64,7 @@ const tuitionApiCalls = (() => {
 			data: data,
 		});
 	}
-	
+
 	function searchTuitionsRelevent(skip = 0, limit = 0, sortBy, demands, extraInfoObj = {}) {
 		let basicData = {
 			skip: skip,
@@ -263,6 +263,36 @@ const tuitionApiCalls = (() => {
 		});
 	}
 
+	function updateReviewInTuition(idOfTuition, idOfReview, bodyObj) {
+		if (!checkForHexRegExp.test(idOfTuition)) {
+			console.error('Not a valid idOfTuition');
+		}
+		if (!checkForHexRegExp.test(idOfReview)) {
+			console.error('Not a valid idOfReview');
+		}
+		return $.ajax({
+			type: 'PUT',
+			url: `/tuition/update/${idOfTuition}/reviews/${idOfReview}`,
+			data: bodyObj
+		});
+	}
+
+	function deleteReviewInTuition(idOfTuition, idOfReview) {
+		if (!checkForHexRegExp.test(idOfTuition)) {
+			console.error('Not a valid idOfTuition');
+		}
+		if (!checkForHexRegExp.test(idOfReview)) {
+			console.error('Not a valid idOfReview');
+		}
+		return $.ajax({
+			type: 'DELETE',
+			url: `/tuition/delete/${idOfTuition}/reviews`,
+			data: {
+				_id: idOfReview
+			}
+		});
+	}
+
 	return {
 		getAllTuitions,
 		getSpecificTuition,
@@ -280,6 +310,8 @@ const tuitionApiCalls = (() => {
 		putCommentInPost,
 		deleteCommentInPost,
 		sendLeadMail,
-		putLeadsInTuition
+		putLeadsInTuition,
+		updateReviewInTuition,
+		deleteReviewInTuition
 	};
 })();

@@ -30,10 +30,10 @@ async function initModules() {
 		promiseArr.push(userApiCalls.getAllSMPayments());
 		promiseArr.push(userApiCalls.getAllSMRegistrationInfo());
 		promiseArr.push(notificationApiCalls.getUserNotifications());
-		// promiseArr.push(userApiCalls.getAllReviews());
+		promiseArr.push(userApiCalls.getAllReviews());
 		promiseArr.push(userApiCalls.getAllResourses());
 
-		const [forums, schedules, payments, registrationInfo, notificationsArr, resoursesArr] =
+		const [forums, schedules, payments, registrationInfo, notificationsArr, reviewsArr, resoursesArr] =
 		await Promise.all(promiseArr);
 
 
@@ -47,8 +47,7 @@ async function initModules() {
 		notifications.init(registrationInfo, notificationsArr);
 		enrollmentDetails.init(registrationInfo);
 		resourses.init(resoursesArr);
-
-		// reviews.init(reviewsArr);
+		reviews.init(reviewsArr);
 	} catch (err) { console.error(err); }
 }
 

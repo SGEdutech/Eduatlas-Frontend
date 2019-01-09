@@ -1,4 +1,5 @@
 const reviews = (() => {
+	let reviewAlredythere = false;
 	let userInfo;
 	let instituteInfo;
 	let $reviewOwnerInput;
@@ -72,10 +73,9 @@ const reviews = (() => {
 
 	function submitReview(typeOfInfo) {
 		if ($reviewRatingInput.val() === '' || $reviewRatingInput.val() === undefined) {
-			alert('please give some rating by clicking on stars')
+			alert('please give some rating by clicking on stars');
 		} else {
 			//check if a review already there
-			let reviewAlredythere = false;
 			instituteInfo.reviews.forEach(reviewObj => {
 				if (reviewObj.owner === userInfo._id) reviewAlredythere = true;
 			})
@@ -91,6 +91,11 @@ const reviews = (() => {
 					description: $('#reviewDescriptionInput').val()
 				};
 
+				// insert userName
+				reviewToShow.userName = userInfo.firstName ? userInfo.firstName + ' ' : '';
+				reviewToShow.userName += userInfo.middleName ? userInfo.middleName + ' ' : '';
+				reviewToShow.userName += userInfo.lastName ? userInfo.lastName + ' ' : '';
+
 				$.ajax({
 					url: `/${typeOfInfo}/add/${instituteInfo._id}/reviews`,
 					method: 'POST',
@@ -105,6 +110,7 @@ const reviews = (() => {
 					let HTML = template.tuitionReviews(reviewToShow);
 					$savedReviews.append(HTML);
 					$reviewForm[0].reset();
+					reviewAlredythere = true;
 					alert('review added success')
 				}).catch(err => console.error(err))
 			}

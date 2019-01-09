@@ -2,7 +2,6 @@ const getInfo = (() => {
 	let queryObj;
 	let user;
 	let tuitionInfo
-
 	let $name;
 	let $address;
 	let $primaryNumber;
@@ -79,18 +78,31 @@ const getInfo = (() => {
 		$starsInner = $('.stars-inner')
 	}
 
-	function getReviews(reviewsArray) {
-		if (reviewsArray === undefined || reviewsArray === []) {
-			changeColorOfStars(2.5)
-			return;
+	async function getReviews(reviewsArray) {
+		try {
+			if (reviewsArray === undefined || reviewsArray === []) {
+				changeColorOfStars(2.5)
+				return;
+			}
+			let avgRating = helperScripts.calcAverageRating(reviewsArray);
+			changeColorOfStars(avgRating);
+			let toAppend = '';
+			// console.log(reviewsArray);
+			// put userName in reviews
+			const promiseArr = [];
+			reviewsArray.forEach(reviewObj => promiseArr.push(userApiCalls.getSpecificUser({ _id: reviewObj.owner })));
+			const results = await Promise.all(promiseArr);
+
+			reviewsArray.forEach((obj, index) => {
+				obj.userName = results[index].firstName ? results[index].firstName + ' ' : '';
+				obj.userName += results[index].middleName ? results[index].middleName + ' ' : '';
+				obj.userName += results[index].lastName ? results[index].lastName + ' ' : '';
+				toAppend += template.tuitionReviews(obj);
+			});
+			$savedReviews.append(toAppend);
+		} catch (e) {
+			console.error(e);
 		}
-		let avgRating = helperScripts.calcAverageRating(reviewsArray);
-		changeColorOfStars(avgRating);
-		let toAppend = '';
-		reviewsArray.forEach(obj => {
-			toAppend += template.tuitionReviews(obj)
-		});
-		$savedReviews.append(toAppend)
 	}
 
 	function changeColorOfStars(rating) {
@@ -269,54 +281,20 @@ const getInfo = (() => {
 	}
 
 	function showResults(array) {
-		let context = {
-			results: []
-		};
-
-		let counter = 1;
-		array.forEach((obj) => {
-			let newObj = {
-				id: counter,
-				img_path: obj.img_path,
-				title: obj.title,
-				description: obj.description,
-			};
-			context.results.push(newObj);
-			counter++;
-		});
-
-		let result = template.tuitionResult(context);
-		result = filterNullEntries(result);
+		const result = template.tuitionResult({ results: array });
 		$resultsContainer.append(result);
-
 	}
 
 	function showFaculty(array) {
-		let context = {
-			faculty: []
-		};
-
-		let counter = 1;
-		array.forEach((obj) => {
-			let newObj = {
-				id: counter,
-				img_path: obj.img_path,
-				name: obj.name,
-				description: obj.description,
-				qualification: obj.qualification
-			};
-			context.faculty.push(newObj);
-			counter++;
-		});
-
-		let result = template.tuitionFaculty(context);
-		result = filterNullEntries(result);
+		const result = template.tuitionFaculty({ faculty: array });
 		$facultyContainer.append(result);
+		console.log(array);
+		console.log(result);
 	}
 
 	function showGallery(array) {
 		if (array === undefined || array === [] || array.length === 0) {
-			$gallery.append(`<small>no data provided</small>`);
+			$gallery.append('<small>no data provided</small>');
 			return
 		}
 		let result = '';

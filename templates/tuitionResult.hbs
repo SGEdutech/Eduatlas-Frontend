@@ -1,11 +1,10 @@
 {{#each results}}
-    <div class="col-4" id="result{{id}}">
+    <div class="col-4">
         <div class="card">
             <span style="position: absolute;left: 92%;top: -6%;">
-                <!-- send (_id of result obj received , id of card) as arguments for function deleteResult()-->
             </span>
-            {{#if img_path}}
-            <img class="card-img-top" src="images/{{img_path}}" alt="">
+            {{#if img_cover}}
+            <img class="card-img-top" src="images/{{img_cover}}" alt="Result Image">
             {{/if}}
             <div class="card-body">
                 <div class="card-title">
@@ -15,4 +14,6 @@
             </div>
         </div>
     </div>
+    {{else}}
+    <small class="text-danger">No data</small>
 {{/each}}
