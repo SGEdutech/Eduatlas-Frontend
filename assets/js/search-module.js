@@ -173,9 +173,9 @@ const searchModule = (() => {
 		page = 1;
 		skip = 0;
 
-		queryObj.city = $citySearch.val();
-		queryObj.sortBy = $sortByInput.val();
-		queryObj.name = $searchBox.val();
+		queryObj.location = $citySearch.val();
+		// queryObj.sortBy = $sortByInput.val();
+		queryObj.search = $searchBox.val();
 		// queryObj.category = $subCategory.find(":selected").val();
 
 		// cache dynamic will get the updated value of radio object
@@ -199,7 +199,7 @@ const searchModule = (() => {
 			}
 		}
 
-		console.log(queryObj.category);
+		// console.log(queryObj.category);
 
 		getSearchResults().then(showSearchResults);
 		updatePaginationStuff();
@@ -284,9 +284,9 @@ const searchModule = (() => {
 	}
 
 	function showResultsHelper() {
-		queryObj.name ? $searchQueryStringDisplay.html(queryObj.name) : $searchQueryStringDisplay.empty();
+		queryObj.search ? $searchQueryStringDisplay.html(queryObj.search) : $searchQueryStringDisplay.empty();
 
-		queryObj.city ? $cityQueryStringDisplay.html(queryObj.city) : $cityQueryStringDisplay.empty();
+		queryObj.location ? $cityQueryStringDisplay.html(queryObj.location) : $cityQueryStringDisplay.empty();
 	}
 
 	function getSearchResults() {
@@ -297,11 +297,11 @@ const searchModule = (() => {
 			//means search type is complex
 			showResultsHelper();
 			return new Promise((resolve, reject) => {
-				// const extraInfoObj = {};
-				// if (queryObj.name) extraInfoObj.search = queryObj.name;
-				// if (queryObj.city) extraInfoObj.city = queryObj.city;
-				// if (queryObj.category) extraInfoObj.category = queryObj.category;
-				const extraInfoObj = {
+				const extraInfoObj = {};
+				if (queryObj.search) extraInfoObj.search = queryObj.search;
+				if (queryObj.location) extraInfoObj.location = queryObj.location;
+
+				/* const extraInfoObj = {
 					name: JSON.stringify({
 						search: queryObj.name,
 						fullText: false
@@ -314,9 +314,11 @@ const searchModule = (() => {
 						search: queryObj.category,
 						fullText: true
 					}),
-				};
+				}; */
+
 				if (queryObj.typeOfInfo === "tuition") {
-					tuitionApiCalls.searchTuitions(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
+					tuitionApiCalls.searchTuitionsRelevent(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
+					// tuitionApiCalls.searchTuitions(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
 				} else if (queryObj.typeOfInfo === "school") {
 					schoolApiCalls.searchSchools(skip, items, queryObj.sortBy, demands, extraInfoObj).then(resolve).catch(reject);
 				} else {

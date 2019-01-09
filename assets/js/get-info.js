@@ -79,18 +79,31 @@ const getInfo = (() => {
 		$starsInner = $('.stars-inner')
 	}
 
-	function getReviews(reviewsArray) {
-		if (reviewsArray === undefined || reviewsArray === []) {
-			changeColorOfStars(2.5)
-			return;
+	async function getReviews(reviewsArray) {
+		try {
+			if (reviewsArray === undefined || reviewsArray === []) {
+				changeColorOfStars(2.5)
+				return;
+			}
+			let avgRating = helperScripts.calcAverageRating(reviewsArray);
+			changeColorOfStars(avgRating);
+			let toAppend = '';
+			// console.log(reviewsArray);
+			// put userName in reviews
+			const promiseArr = [];
+			reviewsArray.forEach(reviewObj => promiseArr.push(userApiCalls.getSpecificUser({ _id: reviewObj.owner })));
+			const results = await Promise.all(promiseArr);
+
+			reviewsArray.forEach((obj, index) => {
+				obj.userName = results[index].firstName ? results[index].firstName + ' ' : '';
+				obj.userName += results[index].middleName ? results[index].middleName + ' ' : '';
+				obj.userName += results[index].lastName ? results[index].lastName + ' ' : '';
+				toAppend += template.tuitionReviews(obj);
+			});
+			$savedReviews.append(toAppend);
+		} catch (e) {
+			console.error(e);
 		}
-		let avgRating = helperScripts.calcAverageRating(reviewsArray);
-		changeColorOfStars(avgRating);
-		let toAppend = '';
-		reviewsArray.forEach(obj => {
-			toAppend += template.tuitionReviews(obj)
-		});
-		$savedReviews.append(toAppend)
 	}
 
 	function changeColorOfStars(rating) {

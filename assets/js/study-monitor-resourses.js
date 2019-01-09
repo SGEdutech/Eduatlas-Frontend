@@ -11,9 +11,9 @@ const resourses = (() => {
 			$container = $(container);
 			const tuitionId = $container.attr('data-tuition-id');
 			const resoursesOfThisInstitute = distinctResoursesArr.filter(resourseObj => resourseObj.tuitionId === tuitionId);
-			console.log(resoursesOfThisInstitute);
+			// console.log(resoursesOfThisInstitute);
 			const resoursesHTML = template.resoursesCards({ resources: resoursesOfThisInstitute });
-			console.log(resoursesHTML);
+			// console.log(resoursesHTML);
 			$container.html(resoursesHTML);
 		});
 	}

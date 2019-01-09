@@ -13,9 +13,9 @@ const queryString = (() => {
         objToReturn.items = parseInt(objToReturn.items);
         objToReturn.c = url.searchParams.get("c");
         objToReturn.c = (objToReturn.c === 'true');
-        objToReturn.name = url.searchParams.get("name");
-        objToReturn.state = url.searchParams.get("state");
-        objToReturn.city = url.searchParams.get("city");
+        objToReturn.search = url.searchParams.get("search");
+        // objToReturn.state = url.searchParams.get("state");
+        objToReturn.location = url.searchParams.get("location");
         objToReturn.category = url.searchParams.get("category");
         objToReturn.sortBy = url.searchParams.get("sortBy");
         // typeOfInfo can be either school or tuition or events
