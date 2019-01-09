@@ -2,7 +2,6 @@ const getInfo = (() => {
 	let queryObj;
 	let user;
 	let tuitionInfo
-
 	let $name;
 	let $address;
 	let $primaryNumber;
@@ -269,54 +268,20 @@ const getInfo = (() => {
 	}
 
 	function showResults(array) {
-		let context = {
-			results: []
-		};
-
-		let counter = 1;
-		array.forEach((obj) => {
-			let newObj = {
-				id: counter,
-				img_path: obj.img_path,
-				title: obj.title,
-				description: obj.description,
-			};
-			context.results.push(newObj);
-			counter++;
-		});
-
-		let result = template.tuitionResult(context);
-		result = filterNullEntries(result);
+		const result = template.tuitionResult({ results: array });
 		$resultsContainer.append(result);
-
 	}
 
 	function showFaculty(array) {
-		let context = {
-			faculty: []
-		};
-
-		let counter = 1;
-		array.forEach((obj) => {
-			let newObj = {
-				id: counter,
-				img_path: obj.img_path,
-				name: obj.name,
-				description: obj.description,
-				qualification: obj.qualification
-			};
-			context.faculty.push(newObj);
-			counter++;
-		});
-
-		let result = template.tuitionFaculty(context);
-		result = filterNullEntries(result);
+		const result = template.tuitionFaculty({ faculty: array });
 		$facultyContainer.append(result);
+		console.log(array);
+		console.log(result);
 	}
 
 	function showGallery(array) {
 		if (array === undefined || array === [] || array.length === 0) {
-			$gallery.append(`<small>no data provided</small>`);
+			$gallery.append('<small>no data provided</small>');
 			return
 		}
 		let result = '';
