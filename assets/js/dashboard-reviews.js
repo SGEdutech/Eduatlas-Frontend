@@ -1,125 +1,145 @@
 const reviews = (() => {
-	let reviewsArr;
-	let $userReviews;
+	let reviewsObj;
+	let $userTuitionReviewsContainer;
+	let $userSchoolReviewsContainer;
 	let $deleteReviewButton;
+	let $editReviewButton;
+	let $editReviewModal;
+	let $editForm;
+	let $editFormBodyContainer;
+	let $editFormRatingInp;
+	let $editFormDescriptionInp;
+
+	function initEditReviewModal() {
+		const $btn = $(event.currentTarget);
+		let tuitionId = $btn.attr('data-tuition-id');
+		let reviewId = $btn.attr('data-review-id');
+		let category = $btn.attr('data-category');
+		$editForm.attr('data-tuition-id', tuitionId);
+		$editForm.attr('data-review-id', reviewId);
+		$editForm.attr('data-category', category);
+
+		if (category === 'tuition') {
+			const reviewInfo = reviewsObj.tuitionReviews.find(reviewsObj => reviewsObj._id === reviewId);
+			const formBodyHTML = template.editReviewModalBody(reviewInfo);
+			$editFormBodyContainer.html(formBodyHTML);
+		}
+		if (category === 'school') {
+			const reviewInfo = reviewsObj.schoolReviews.find(reviewsObj => reviewsObj._id === reviewId);
+			const formBodyHTML = template.editReviewModalBody(reviewInfo);
+			$editFormBodyContainer.html(formBodyHTML);
+		}
+		cacheModalInputs();
+		$editReviewModal.modal('show');
+	}
 
 	function cache() {
-		$userReviews = $("#userReviews");
+		$userTuitionReviewsContainer = $("#userTuitionReviews");
+		$userSchoolReviewsContainer = $("#userSchoolReviews");
+		$editReviewModal = $('#edit_review_modal');
+		$editForm = $('#edit_review_form')
+		$editFormBodyContainer = $('#edit_review_body_container')
+	}
+
+	function bindEvents() {
+		$editForm.submit(editReview);
 	}
 
 	function cacheDynamic() {
 		$deleteReviewButton = $(".delete-review-button");
+		$editReviewButton = $(".edit-review-button");
 	}
 
-	function bindEvents() {
-		$deleteReviewButton.click(e => deleteReview(e))
+	function cacheModalInputs() {
+		$editFormRatingInp = $('#edit_review_rating_inp');
+		$editFormDescriptionInp = $('#edit_review_desc_inp');
 	}
 
-	function getReviewsInfo(reviewInfoObj) {
-		let url = `/${reviewInfoObj.category}`;
-		return $.ajax({
-			url,
-			method: 'GET',
-			data: {
-				_id: reviewInfoObj.outerId
+	function bindDynamicEvents() {
+		$deleteReviewButton.click(deleteReview);
+		$editReviewButton.click(initEditReviewModal);
+	}
+
+	async function deleteReview(event) {
+		try {
+			const $btn = $(event.currentTarget);
+			let tuitionId = $btn.attr('data-tuition-id');
+			let reviewId = $btn.attr('data-review-id');
+			let category = $btn.attr('data-category');
+
+			if (category === 'tuition') {
+				const deletedReview = await tuitionApiCalls.deleteReviewInTuition(tuitionId, reviewId);
+				reviewsObj.tuitionReviews = reviewsObj.tuitionReviews.filter(reviewsObj => reviewsObj._id !== reviewId);
 			}
-			// demands: 'name reviews'
-		});
-	}
-
-	function getUserReviewsHtml(user) {
-		const reviewsOwned = user.reviewsOwned;
-		const instituteInfoPromiseArr = [];
-		const tuitionSchoolSequence = [];
-		reviewsOwned.forEach(review => {
-			tuitionSchoolSequence.push(review.category);
-			instituteInfoPromiseArr.push(getReviewsInfo(review))
-		});
-
-		let cardsHtml = '';
-
-		return new Promise((resolve, reject) => {
-			Promise.all(instituteInfoPromiseArr)
-				.then(instituteInfoArr => {
-					instituteInfoArr.forEach((info, index) => {
-						//first find which review belongs to current user
-						let reviewWeNeed = '';
-						info.reviews.forEach(review => {
-							if (review.owner == user._id) {
-								reviewWeNeed = review;
-							}
-						});
-						let context = {
-							category: tuitionSchoolSequence[index],
-							tuitionId: info._id,
-							reviewId: reviewWeNeed._id,
-							userId: user._id,
-							name: info.name,
-							rating: reviewWeNeed.rating,
-							description: reviewWeNeed.description
-						};
-						cardsHtml += template.dashboardReviews(context);
-					});
-					resolve(cardsHtml);
-				}).catch(err => reject(err));
-		});
-	}
-
-	function deleteReview(event) {
-		let tuitionId = $(event.target).attr('data-tuition-id');
-		let userId = $(event.target).attr('data-user-id');
-		let reviewId = $(event.target).attr('data-review-id');
-		let category = $(event.target).attr('data-category');
-
-		let updateTuitionPromise = $.ajax({
-			url: `/${category}/delete/${tuitionId}/reviews`,
-			type: 'DELETE',
-			data: {
-				owner: userId
+			if (category === 'school') {
+				const deletedReview = await schoolApiCalls.deleteReviewInSchool(tuitionId, reviewId);
+				reviewsObj.schoolReviews = reviewsObj.schoolReviews.filter(reviewsObj => reviewsObj._id !== reviewId);
 			}
-		});
-
-		let updateUserPromise = $.ajax({
-			url: `/user/delete/${userId}/reviewsOwned`,
-			method: 'DELETE',
-			data: {
-				outerId: tuitionId
-			}
-		});
-
-		Promise.all([updateTuitionPromise, updateUserPromise]).then(() => {
-			eagerRemoveCard(reviewId);
-		}).catch(err => console.error(err))
+			refresh();
+		} catch (e) {
+			console.error(e);
+		}
 	}
 
-	function eagerRemoveCard(cardId) {
-		//todo - cache properly
-		$('#' + cardId).remove()
+	async function editReview(event) {
+		try {
+			event.preventDefault();
+			const $form = $(event.currentTarget);
+			let tuitionId = $form.attr('data-tuition-id');
+			let reviewId = $form.attr('data-review-id');
+			let category = $form.attr('data-category');
+
+			if (category === 'tuition') {
+				const editedReview = await tuitionApiCalls.updateReviewInTuition(tuitionId, reviewId, $form.serialize());
+				const previousReview = reviewsObj.tuitionReviews.find(reviewsObj => reviewsObj._id === reviewId);
+				previousReview.rating = $editFormRatingInp.val();
+				previousReview.description = $editFormDescriptionInp.val();
+			}
+			if (category === 'school') {
+				const editedReview = await schoolApiCalls.updateReviewInSchool(tuitionId, reviewId, $form.serialize());
+				const previousReview = reviewsObj.schoolReviews.find(reviewsObj => reviewsObj._id === reviewId);
+				previousReview.rating = $editFormRatingInp.val();
+				previousReview.description = $editFormDescriptionInp.val();
+			}
+			refresh();
+			$editReviewModal.modal('hide');
+		} catch (e) {
+			console.error(e);
+		}
+
 	}
 
 	function render() {
-		getUserReviewsHtml(user).then(cardsHtml => {
-			if (!cardsHtml) {
-				const context = {
-					title: "No Data",
-					description: "review or rate institutes to help people choose best institutes out there."
-				}
-				cardsHtml = template.noDataCard(context);
-				$userReviews.append(cardsHtml);
-			} else {
-				$userReviews.append(cardsHtml);
-				cacheDynamic();
-				bindEvents();
-			}
-		});
+		// insert category
+		reviewsObj.tuitionReviews.forEach(reviewsObj => reviewsObj.category = 'tuition');
+		const tuitionReviewsHTML = template.dashboardReviews({ reviews: reviewsObj.tuitionReviews });
+		$userTuitionReviewsContainer.html(tuitionReviewsHTML);
+
+		// insert category
+		reviewsObj.schoolReviews.forEach(reviewsObj => reviewsObj.category = 'school');
+		const schoolReviewsHTML = template.dashboardReviews({ reviews: reviewsObj.schoolReviews });
+		$userSchoolReviewsContainer.html(schoolReviewsHTML);
+	}
+
+	function refresh() {
+		render();
+		cacheDynamic();
+		bindDynamicEvents();
 	}
 
 	function init(reviews) {
 		if (reviews === undefined) throw new Error('Reviews not provided');
-		reviewsArr = JSON.parse(JSON.stringify(reviews));
-		console.log(reviewsArr);
+		reviewsObj = JSON.parse(JSON.stringify(reviews));
+		if (reviews.tuitionReviews === undefined) throw new Error('Tuition Reviews not provided');
+		if (reviews.schoolReviews === undefined) throw new Error('School Reviews not provided');
+		if (Array.isArray(reviews.tuitionReviews) === false) throw new Error('Tuition Reviews not a Array');
+		if (Array.isArray(reviews.schoolReviews) === false) throw new Error('School Reviews not a Array');
+
 		cache();
+		bindEvents();
 		render();
+		cacheDynamic();
+		bindDynamicEvents();
 	}
 
 	return {

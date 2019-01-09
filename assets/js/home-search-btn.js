@@ -3,18 +3,20 @@ let searchBtn = (() => {
     let $searchInput;
     let $searchState;
     let $searchCity;
+    let $searchWhereInp;
 
     function cacheDom() {
         $searchBtn = $('#search_btn');
         $searchInput = $('#search_input');
         $searchState = $('#state_inp');
         $searchCity = $('#city_inp');
+        $searchWhereInp = $('#where_input');
     }
 
     function directToSearchPage() {
-        const cityValue = $searchCity.val() ? $searchCity.val() : "";
+        const whereValue = $searchWhereInp.val() ? $searchWhereInp.val() : "";
         const directLink =
-            `searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&city=${cityValue}&state=${$searchState.val()}&category=&sortBy=default&name=${$searchInput.val()}`;
+            `searchdetails.html?typeOfInfo=tuition&items=18&page=1&c=true&location=${whereValue}&search=${$searchInput.val()}`;
         window.location.assign(directLink);
     }
 

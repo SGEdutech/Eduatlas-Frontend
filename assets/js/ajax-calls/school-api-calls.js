@@ -191,6 +191,36 @@ function getAllSchools(skip = 0, limit = 0, demands) {
         }
     */
 
+   function updateReviewInSchool(idOfSchool, idOfReview, bodyObj) {
+    if (!checkForHexRegExp.test(idOfSchool)) {
+        console.error('Not a valid idOfTuition');
+    }
+    if (!checkForHexRegExp.test(idOfReview)) {
+        console.error('Not a valid idOfReview');
+    }
+    return $.ajax({
+        type: 'PUT',
+        url: `/school/update/${idOfSchool}/reviews/${idOfReview}`,
+        data: bodyObj
+    });
+}
+
+function deleteReviewInSchool(idOfSchool, idOfReview) {
+    if (!checkForHexRegExp.test(idOfSchool)) {
+        console.error('Not a valid idOfSchool');
+    }
+    if (!checkForHexRegExp.test(idOfReview)) {
+        console.error('Not a valid idOfReview');
+    }
+    return $.ajax({
+        type: 'DELETE',
+        url: `/school/delete/${idOfSchool}/reviews`,
+        data: {
+            _id: idOfReview
+        }
+    });
+}
+
     return {
         getAllSchools,
         getSpecificSchool,
@@ -201,6 +231,8 @@ function getAllSchools(skip = 0, limit = 0, demands) {
         updateInSchool,
         deleteArrayInSchool,
         deleteInArrayInSchool,
-        deleteSchool
+        deleteSchool,
+        updateReviewInSchool,
+        deleteReviewInSchool
     };
 })();
