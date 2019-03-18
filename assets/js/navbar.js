@@ -19,8 +19,8 @@ const navigationBar = (() => {
         $navbar = $('#navigation_bar');
         $logOutBtn = $navContainer.find('#log_out_btn');
         $addTuitionBtn = $navContainer.find('#add_tuition_btn');
-        $addSchoolBtn = $navContainer.find('#add_school_btn');
-        $addEventBtn = $navContainer.find('#add_event_btn');
+        // $addSchoolBtn = $navContainer.find('#add_school_btn');
+        // $addEventBtn = $navContainer.find('#add_event_btn');
         $dynamicUserBtn = $navContainer.find('#dynamic_user_btn');
         if (activeElementId) $activeElement = $(`#${activeElementId}`);
     }
@@ -33,16 +33,16 @@ const navigationBar = (() => {
 
     function updateAddTuitionLink() {
         if (user) {
-            $addTuitionBtn.attr('href', 'https://erp.eduatlas.com/Dashboard-Pro.html?tab=addTuition');
-            $addSchoolBtn.attr('href', 'https://erp.eduatlas.com/Dashboard-Pro.html?tab=addSchool');
-            $addEventBtn.attr('href', 'https://erp.eduatlas.com/Dashboard-Pro.html?tab=addEvent');
+            $addTuitionBtn.attr('href', 'https://erp.eduatlas.com');
+            // $addSchoolBtn.attr('href', 'https://erp.eduatlas.com/Dashboard-Pro.html?tab=addSchool');
+            // $addEventBtn.attr('href', 'https://erp.eduatlas.com/Dashboard-Pro.html?tab=addEvent');
         } else {
             $addTuitionBtn.attr('data-toggle', 'modal');
             $addTuitionBtn.attr('data-target', '#loginModal');
-            $addSchoolBtn.attr('data-toggle', 'modal');
-            $addSchoolBtn.attr('data-target', '#loginModal');
-            $addEventBtn.attr('data-toggle', 'modal');
-            $addEventBtn.attr('data-target', '#loginModal');
+            // $addSchoolBtn.attr('data-toggle', 'modal');
+            // $addSchoolBtn.attr('data-target', '#loginModal');
+            // $addEventBtn.attr('data-toggle', 'modal');
+            // $addEventBtn.attr('data-target', '#loginModal');
         }
     }
 
