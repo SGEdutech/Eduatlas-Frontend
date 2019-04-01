@@ -159,7 +159,8 @@ const getInfo = (() => {
 		if (coverPic === undefined || coverPic === '') {
 			$coverImage.attr("src", "/assets/img/fourgirls.jpg");
 		} else {
-			$coverImage.attr('src', '/images/' + coverPic);
+			if (coverPic.includes('https')) $coverImage.attr('src', coverPic)
+			else $coverImage.attr('src', '/images/' + coverPic)
 		}
 	}
 
@@ -183,7 +184,7 @@ const getInfo = (() => {
 	}
 
 	function updateVerifiedBadge(claimedBy) {
-		if (claimedBy === undefined || claimedBy === '') {} else {
+		if (claimedBy === undefined || claimedBy === '') { } else {
 			$verifiedBadge.removeAttr('hidden')
 		}
 	}
