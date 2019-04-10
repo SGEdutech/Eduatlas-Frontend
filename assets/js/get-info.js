@@ -29,6 +29,7 @@ const getInfo = (() => {
 	let $facultyContainer;
 	let $gallery;
 	let $claimButton;
+	let $studyMonitorContainer;
 	let $curriculum, $grades, $typeOfSchooling, $headOfSchool, $founded;
 	let $activityContainer;
 	let $feeDetails, $admissionProcess, $eligibilityCriteria;
@@ -65,6 +66,7 @@ const getInfo = (() => {
 		$facultyContainer = $("#facultyContainer");
 		$gallery = $("#gallery");
 		$claimButton = $('#claimButton');
+		$studyMonitorContainer = $('#studyMonitorContainer');
 		$curriculum = $('#curriculum');
 		$grades = $('#grades');
 		$typeOfSchooling = $('#typeOfSchooling');
@@ -173,6 +175,19 @@ const getInfo = (() => {
 			$claimButton.attr('disabled', 'true');
 		} else {
 			$claimButton.html(`Claim This Page`);
+		}
+	}
+
+	function updateStudyMonitorButtonHTML(claimedBy, tuitionId) {
+		if (claimedBy) {
+			$studyMonitorContainer.append(`
+			<a href="https://erp.eduatlas.com/app/${tuitionId}" class="btn btn-block btn-round btn-info">
+				<i class="material-icons">
+					dashboard
+				</i>
+			Study Monitor
+			</a>`
+			);
 		}
 	}
 
@@ -515,6 +530,7 @@ const getInfo = (() => {
 		updateOpenNow(InfoObj, typeOfInfo);
 		updateCoverImage(InfoObj.img_tuitionCoverPic);
 		updateClaimButtonHTML(InfoObj.claimedBy);
+		updateStudyMonitorButtonHTML(InfoObj.claimedBy, InfoObj._id);
 		updateVerifiedBadge(InfoObj.claimedBy);
 		updateFacilities(InfoObj.facilities);
 		updateCategories(InfoObj.category);
