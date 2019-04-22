@@ -26,7 +26,7 @@ const navigationBar = (() => {
     }
 
     function updateUserStatus() {
-        user.loggedIn = Boolean(user);
+        user.loggedIn = Object.keys(user).length !== 0;
         const dynamicButtonHtml = template.userStatus(user);
         $dynamicUserBtn.html(dynamicButtonHtml);
     }
@@ -89,6 +89,7 @@ const navigationBar = (() => {
 
     function render(userInfo, colorOnScroll, activeElementId) {
         user = userInfo;
+        console.log(user)
         getHtml().then(navHtml => {
             $navContainer.html(navHtml);
             cacheDynamicDom();
